@@ -11,8 +11,8 @@
         $routeProvider
         
           .when('/',{
-            controller: 'homeController',
-            templateUrl: 'home/homeController.view.html',
+            controller: 'LandingController',
+            templateUrl: 'landing/LandingController.view.html',
             controllerAs: 'vm'
         })
             .when('/studentprofile', {
@@ -46,7 +46,7 @@
             controllerAs: 'vm'
         }) 
             .when('/unicourses', {
-            controller: 'uniCoursesController',
+            controller: 'UniCoursesController',
             templateUrl: 'uniCourses/uniCourses.view.html',
             controllerAs: 'vm'
         }) 
@@ -60,6 +60,11 @@
             templateUrl: 'offering/offering.view.html',
             controllerAs: 'vm'
         }) 
+            .when('/workprofile',{
+            controller:'WorkProfileController',
+            templateUrl: 'workProfile/workProfile.view.html',
+            controllerAs: 'vm'
+        })
         
             .otherwise({ redirectTo: '/login' });
     }
@@ -77,7 +82,7 @@
 
             $rootScope.SERVER = "url";
             // redirect to login page if not logged in and trying to access a restricted page
-        //    var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
+        //    var restrictedPage = $.inArray($location.path(), ['/login', '/register','/']) === -1;
          //   var loggedIn = $rootScope.globals.currentUser;
     //        if (restrictedPage && !loggedIn) {
   //              $location.path('/login');

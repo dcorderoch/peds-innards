@@ -1,249 +1,113 @@
-<style>
-    .navbar-default {
-        background-color: #1d2731;
-        border-color: #1d2731;
-    }
-    .navbar-default .navbar-brand {
-        color: #D9B310;
-        font-size:1.5em;
-    }
-    .navbar-default .navbar-nav > li > a {
-        color: #D9B310;
-    }
-    .navbar-default .navbar-nav  >.active > a{
-        color: #D9B310;
-    }
-    p{
-        color: #1d2731;
-    }
-    h4{
-        color: #D9B310;
-    }
-    h3{
-        color: #D9B310;
-    }
-    h2{
-        color: #D9B310;
-    }
-    span.glyphicon {
-        font-size:1.2em;
-    }
-    span{
-        font-size:1.2em;
-    }
-    button.btn-default{
-        float: right;
-        color: #D9B310;
-    }
-    hr {
-        background-color: white;
-        display: block;
-        height: 1px;
-        border: 0;
-        border-top: 1px solid #ccc;
-        margin: 1em 0;
-        padding: 0; 
-    }
-    a{
-        font-size:1.5em;
-    }
-    .panel-body {
-        background:#eee;
-    }
-    .panel-default > .panel-heading {
-        background-color: #1d2731;
-    }
-    .rows{
-        margin: 1%;
-    }
-    .panel-default{
-        border-style: solid;
-        border-width: 3px;
-        border-color: #1d2731;
-    }
-    .panel-default .insidePanel .panel-body{
-        /*        border: 0;*/
-        background-color: white;
-    }
-    .search{
-        border-radius: 5px;
-        border: 1px solid ;
-        width:90%;
-        height:34px;
-    }
 
-</style>
-<div class="rows"> 
-    <nav class="navbar navbar-default" >
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#studentprofile">MyLearn</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#studentprofile"><span  class="glyphicon glyphicon-home"></span> Profile</a></li>
-                <li><a href="#unicourses"><span  class="glyphicon glyphicon-education"></span> Browse courses</a></li>
-                <li><a href="#searcher"><span  class="glyphicon glyphicon-search"></span> Search freelance</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#notifications"><span class="glyphicon glyphicon-bell"></span> Notifications </a></li>
-                <li><a href="#login"><span  class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
-            </ul>
-        </div>
-    </nav>
+<div  class="upperBar" >
+    <object type="image/svg+xml"  data="assets/logoSVG.svg">
+        Your browser does not support SVG
+    </object>
+
+    <div class="elementsBar"><a href="#login"><span  class="spanIcons glyphicon glyphicon-log-out"></span> </a></div>
+    <div class="elementsBar"><a  href="#notifications"><span class="spanIcons glyphicon glyphicon-bell"></span> </a></div>
+    <div class="elementsBar"><a href="#studentprofile"><span class="spanIcons glyphicon glyphicon-home"></span></a></div>
+    <div class="textBarRight" >Mi Perfil </div>
+
 </div>
-<br>
+
+
 <div class="rows">
     <div class="border row"> 
-        <div class="border col-md-2" >
-            <div class="panel panel-default" >
-                <div  class="panel-heading"><h3>Average score</h3></div>
-                <div  class="panel-body"><p>96%</p>
+        <div class="border col-md-4" >
 
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+            <div class="left-panel">
+                <img class="img-circle" src="assets/pp.jpeg">
 
-                </div>
-            </div>
-        </div>
+                <div class="personalInformation"> 
+                    <p><strong>Nombre:</strong> Nicolás Jiménez García</p>
+                    <p><strong>Universidad:</strong> Tecnológico de Costa Rica</p>
+                    <p><strong>Link hoja de vida:</strong> <a>C.V.</a></p>
+                    <p><strong>Id:</strong> 115780293</p>
+                    <p><strong>Link repositorio:</strong> <a>link Dropbox</a> </p>
+                    <p><strong>Ubicación:</strong> Tres Ríos</p>
+                    <p><strong>Tecnologías:</strong> Visual Basic, Visual Fox Pro</p>
+                    <p><strong>Número de proyectos realizados:</strong> 34</p>
 
-        <div class="border col-md-2">
-            <div class="panel panel-default" >
-                <div class="panel-heading"><h4>Number of projects</h4></div>
-                <div class="panel-body"><p>15</p>
-
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                </div>
-            </div>
-        </div>
-        <div class="border col-md-2">
-            <div class="panel panel-default" >
-                <div class="panel-heading"><h4>Score of projects</h4></div>
-                <div class="panel-body"><p>65%</p>
-
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                </div>
-            </div>
-        </div>
-
-        <div class="border col-md-4">
-            <div class="panel panel-default">
-                <div  class="panel-heading"><h4>Personal information</h4></div>
-                <div class="panel-body"><p>Name: Nicolás Jiménez</p>
-                    <p>University: Tecnológico de Costa Rica</p>
-                    <p>Link: <a>C.V.</a></p>
-                    <p>Id: 115780293</p>
-                    <p>Location: Tres Ríos</p>
-                    <p>Technologies: Visual Basic, Visual Fox Pro</p>
-                </div>
-            </div>
-        </div>
-        <div class="border col-md-2">
-            <div class="panel panel-default" >
-                <div  class="panel-heading"><h4>Profile photo</h4></div>
-
-                <div style="text-align: center;" class="panel-body"><span class="glyphicon glyphicon-user" style="font-size: 5.2em;"></span>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <button class="btn btn-warning">Disable account</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<hr>
-
-<div class="rows"> 
-    <div class="border row">
-        <div class="border col-md-6">
-            <div class="panel panel-default" >
-                <div  class="panel-heading"><h4>Active courses</h4></div>
-                <div class="panel-body">
-
-                    <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p>Taller de programación<button  type="button" class="btn btn-default">Open course Project</button></p> </div>
+                    <strong>Nota promedio de cursos</strong>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                            70%
+                        </div>
                     </div>
 
-                    <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p> Arquitectura de computadores I<button type="button" class="btn btn-default">Open course Project</button></p></div>
+                    <strong>Nota promedio de proyectos</strong>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                            80%
+                        </div>
                     </div>
+                    <button class="btn btn-danger">Deshabilitar cuenta</button>
+
+
                 </div>
-            </div>
-        </div>
-        <div class="border col-md-6">
-            <div class="panel panel-default" >
-                <div class="panel-heading"><h4>Closed courses</h4></div>
-                <div class="panel-body">
 
-                    <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p>Lenguajes, compiladores e interpretes<button  class="btn btn-default">Open course</button></p> </div>
-                    </div>
-
-                    <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p> Matemática discreta<button type="button" class="btn btn-default">Open course</button></p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> 
-
-<hr>
-
-<div class="rows"> 
-    <div class="border row">
-        <div class="border col-md-6">
-            <div class="panel panel-default" >
-                <div class="panel-heading"><h4>Active work</h4></div>
-                <div class="panel-body">
-
-                    <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p>Trabajo en Intel, paralelismo pipeline<button type="button" class="btn btn-default">Open work</button></p> </div>
-                    </div>
-
-                    <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p> Trabajo en X-MP, Full-Stack developer<button type="button" class="btn btn-default">Open work</button></p></div>
-                    </div>
-                </div>
             </div>
 
         </div>
-        <div class="border col-md-6">
-            <div class="panel panel-default" >
-                <div  class="panel-heading"><h4>Closed work</h4></div>
-                <div class="panel-body">
+        <div class="border col-md-8" >
 
-                    <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p>Trabajo en Fiserv, Bases de datos hadoop<button type="button" class="btn btn-default">Open work</button></p> </div>
+            <h2>Título</h2>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#studentprofile"><h4> Mis cursos</h4></a></li>
+                <li><a href="#workprofile"><h4>Mis trabajos</h4></a></li>
+                <li><a href="#unicourses"><h4>Cursos de mi universidad</h4></a></li>
+                <li><a href="#searcher"><h4>Buscar trabajos</h4></a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active container">
+
+                    <h3>Cursos activos</h3>
+                    <hr class="hr2">
+
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
+                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button                    ng-click="vm.goArea()"  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
                     </div>
 
-                    <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p> Trabajo en CRSoftware, Front-end developer
-                            <button type="button" class="btn btn-default">Open work</button></p></div>
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
+                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button ng-click="vm.goArea2()" type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
+                    </div>
+
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
+                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
+                    </div>
+
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
+                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
+                    </div>
+
+                    <br>     
+                    <h3>Cursos terminados</h3>
+                    <hr class="hr2">
+
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
+                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
+                    </div>
+
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
+                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
+                    </div>
+
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
+                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
+                    </div>
+
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
+                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
                     </div>
                 </div>
             </div>
@@ -251,5 +115,4 @@
     </div>
 </div>
 
-<hr>
 

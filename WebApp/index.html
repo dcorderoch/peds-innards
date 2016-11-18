@@ -3,65 +3,23 @@
     <head>
         <meta charset="utf-8" />
         <title>MyLearn</title>
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <style>
 
-            body{
-                background-color:#328CC1;
-            }
-            h1{
-                font-family: "Josefin Sans", Times, serif;
-                color: #D9B310;
-            }
-            h2{
-                font-family: "Josefin Sans", Times, serif;
-                /*    color negro            color: #1d2731;*/
-            }
-            h3{
-                font-family: "Josefin Sans", Times, serif;
-            }
-            h4{
-                font-family: "Josefin Sans", Times, serif;
-            }
-            p{
-                font-family: "Libre Baskerville", Helvetica, monospace;
-            }
-            span{
-                font-family: "Libre Baskerville", Helvetica, monospace;
-            }
-            input{
-                font-family: "Libre Baskerville", Helvetica, monospace;
-            }
-            button {
-                font-family: "Libre Baskerville", Helvetica, monospace;
-            }
-            a{
-                font-family: "Libre Baskerville", Helvetica, monospace;
-            }
-            label{
-                font-family: "Libre Baskerville", Helvetica, monospace;
-            }
-            input{
-                font-family: "Libre Baskerville", Helvetica, monospace;
-            }
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+        <!--        <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">-->
+        <link rel="stylesheet" type="text/css" href="styles.css">
 
-        </style>
 
     </head>
     <body>
 
-        <div class="col-sm-8 col-sm-offset-2">
+        <div >
             <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
         </div>
-        <div class="row" style="margin:1%">
-            <div style="margin:1%;" > 
-                <div style ="float:left; margin-left:-1%"> <img  src="assets/MyLearnLogo.jpg" alt="Logo MyLearn" style="width:150px;height:150;"></div>
-                <div style=" margin-left:1% ;margin-top:1%;float:left"> <h1 >MyLearn</h1></div>
-            </div>
-        </div>
+
         <div ng-view></div>
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 
         <!--Modulos de AngularJS-->
@@ -86,6 +44,8 @@
         <script src="sharedArea/sharedArea.controller.js"></script>
         <script src="studentProfile/studentProfile.controller.js"></script>
         <script src="uniCourses/uniCourses.controller.js"></script>
+        <script src="landing/landing.controller.js"></script>
+        <script src="workProfile/workProfile.controller.js"></script>
 
     </body>
 </html>

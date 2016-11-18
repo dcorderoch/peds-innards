@@ -1,114 +1,34 @@
-<style>
-    .navbar-default {
-        background-color: #1d2731;
-        border-color: #1d2731;
-    }
-    .navbar-default .navbar-brand {
-        color: #D9B310;
-        font-size:1.5em;
-    }
-    .navbar-default .navbar-nav > li > a {
-        color: #D9B310;
-    }
-    .navbar-default .navbar-nav  >.active > a{
-        color: #D9B310;
-    }
-    p{
-        color: #1d2731;
-    }
-    h4{
-        color: #D9B310;
-    }
-    h2{
-        color: #D9B310;
-    }
-    span.glyphicon {
-        font-size:1.2em;
-    }
-    .rightSpan{
-        float:right;
-        font-size:1em;
-    }
-    span{
-        font-size:1.2em;
-    }
-    button.btn-default{
-        float: right;
-        color: #D9B310;
-    }
-    hr {
-        background-color: white;
-        display: block;
-        height: 1px;
-        border: 0;
-        border-top: 1px solid #ccc;
-        margin: 1em 0;
-        padding: 0; 
-    }
-    a{
-        font-size:1.5em;
-    }
-    .panel-body {
-        background:#eee;
-    }
-    .panel-default > .panel-heading {
-        background-color: #1d2731;
-    }
-    .rows{
-        margin: 1%;
-    }
-    .panel-default{
-        border-style: solid;
-        border-width: 3px;
-        border-color: #1d2731;
-    }
-    .panel-default .insidePanel .panel-body{
-        /*        border: 0;*/
-        background-color: white;
-    }
 
-</style>
+<div  class="upperBar" >
+    <img  class="imageBar" src="assets/MyLearnLogo.jpg" alt="Logo MyLearn" >
 
-<div class="rows"> 
-    <nav class="navbar navbar-default" >
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#studentprofile">MyLearn</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="#studentprofile"><span  class="glyphicon glyphicon-home"></span> Profile</a></li>
-                <li><a href="#unicourses"><span  class="glyphicon glyphicon-education"></span> Browse courses</a></li>
-                <li><a href="#searcher"><span  class="glyphicon glyphicon-search"></span> Search freelance</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#notifications"><span class="glyphicon glyphicon-bell"></span> Notifications </a></li>
-                <li><a href="#login"><span  class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="elementsBar"><a href="#login"><span  class="spanIcons glyphicon glyphicon-log-out"></span> </a></div>
+    <div class="elementsBar"><a  href="#notifications"><span class="spanIcons glyphicon glyphicon-bell"></span> </a></div>
+    <div class="elementsBar"><a href="#studentprofile"><span class="spanIcons glyphicon glyphicon-home"></span></a></div>
+    <div class="textBarLongRight" >Mis Notifcaciones </div>
+
 </div>
-<br>
 
 <div class="rows">
     <div class="border row"> 
         <div class="border col-md-6 col-md-offset-3" >
             <div class="panel panel-default" >
-                <div  class="panel-heading"><h4>Notifications</h4></div>
+                <div  class="panel-heading"><h1>Notificaciones</h1></div>
                 <div  class="panel-body">
 
                     <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p>Auction: JavaRemoteproject. <span class="rightSpan" >Status: Lost</span></p> </div>
+                        <div class="panel-body"><p><strong>Subasta:</strong> JavaRemoteproject. <span class="rightSpan" >Status: Perdido</span></p> </div>
                     </div>
 
                     <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p>Project: Logic gates diagramer.<span class="rightSpan" >Status: Accepted</span></p> </div>
+                        <div class="panel-body"><p><strong>Proyecto:</strong> Logic gates diagramer.<span class="rightSpan" >Status: Aceptado</span></p> </div>
                     </div>
                     <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p>Auction: JavaRemoteproject. <span class="rightSpan" >Status: Lost</span></p> </div>
+                        <div class="panel-body"><p><strong>Subasta:</strong> JavaRemoteproject. <span class="rightSpan" >Status: Perdido</span></p> </div>
                     </div>
 
                     <div class="panel panel-default insidePanel">
-                        <div class="panel-body"><p>Project: Pyrhon hello world, reason: This project is too easy.<span class="rightSpan" >Status: Declined</span></p> </div>
+                        <div class="panel-body"><p><strong>Proyecto:</strong> Pyrhon hello world, razón: Proyecto es muy fácil.<span class="rightSpan" >Status: Declinado</span></p> </div>
                     </div>
                 </div>
             </div>

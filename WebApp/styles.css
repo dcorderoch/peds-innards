@@ -1,0 +1,362 @@
+
+body{
+    background-color:white;
+}
+h1{
+    font-family: "Helvetica", monospace, serif;
+    color: white;
+}
+h2{
+    font-family: "Helvetica", monospace, serif;
+    /*    color negro            color: #1d2731;*/
+}
+h3{
+    font-family: "Helvetica", monospace, serif;
+}
+h4{
+    font-family: "Helvetica", monospace, serif;
+}
+p{
+    font-family: "Helvetica",  monospace;
+}
+span{
+    font-family: "Helvetica",  monospace;
+}
+input{
+    font-family: "Helvetica",  monospace;
+}
+button {
+    font-family: "Helvetica",  monospace;
+}
+a{
+    font-family: "Helvetica",  monospace;
+    font-size:1em;
+}
+label{
+    font-family: "Helvetica", monospace;
+}
+
+
+.navbar-default {
+    background-color: #1d2731;
+    border-color: #1d2731;
+}
+.navbar-default .navbar-brand {
+    color: #D9B310;
+    font-size:1.5em;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #D9B310;
+}
+.navbar-default .navbar-nav  >.active > a{
+    color: #D9B310;
+}
+p{
+    color: #1d2731;
+}
+
+
+
+span{
+    font-size:0.8em;
+}
+
+hr {
+    background-color: white;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+    width:85%;
+}
+
+.panel-body {
+    background: white;
+}
+.panel-default > .panel-heading {
+    background-color: #338DBC;
+}
+.rows{
+    margin: 1%;
+}
+.panel-default{
+    border-style: solid;
+    border-width: 3px;
+    border-color: #338DBC;
+}
+.panel-default .insidePanel .panel-body{
+    /*        border: 0;*/
+    background-color: #E6E6E6;
+}
+.badges{
+    /*    display: inline;*/
+    float: left;
+    margin: 4px;
+    text-align: center;
+}
+.loginSpace{
+    padding-bottom: 7%;
+    padding-top: 7%
+}
+.upperBar{
+    background-color: #0C3C5A;
+    height: 80px;
+
+}
+
+hr {
+    background-color: white;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+.search{
+    border-radius: 5px;
+    border: 2px solid ;
+    width:85%;
+    height:34px;
+}
+
+.newComment{
+    border-radius: 5px;
+    border: 1px solid ;
+    width:83%;
+    height:34px;
+}
+
+.leftComment{
+    float:left;
+    width:75%;
+    border-radius: 10px;
+}
+.rightComment{
+    float:right;
+    width:75%;
+    border-radius: 10px;
+
+}
+
+form{
+    margin-left: 15%;
+    margin-right:15%;
+    width: 70%;
+}
+
+.verticalSpace{
+    margin-bottom: 3%;
+}
+
+.imageBar{
+    height:100%; 
+    margin-left:3%;
+    float:left;
+}
+
+.upperBar .textBarRight{
+
+    float:right;
+    height: 50%;
+    width:10%;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin-top: 1.3%;
+    margin-right:1%; 
+    color: white;
+    font-size: 1.7em;
+    text-align: center;
+}
+form .form-actions {
+    margin: 0 auto;
+    width: 100px; 
+
+}
+
+.btn-default{
+    background-color: #D9B23F;
+    color: white;
+    border-radius: 1px;
+    /*    margin-top: 10px;*/
+}
+
+.form-control {
+    background-color: #E6E6E6;
+    font-family: "Helvetica",  monospace;   
+    color:black;
+}
+
+.well {
+    background-color: white;
+    /*    border-color: #338DBC;*/
+    border: 2px solid #338DBC;
+    border-radius: 0px;
+}
+
+
+
+
+.active {
+
+    /*    border: 2px solid #338DBC;*/
+    /*    margin-bottom: 0;*/
+    /*    border-radius: 4px;*/
+
+    /*    margin-right:-10px;*/
+}
+
+
+
+.left-panel {
+    width:100%;
+    height:100%;
+    border: 3px solid #D9B23F;
+    border-radius: 2%;
+    background-color: #D9B23F;
+    padding:3px;
+}
+
+.img-circle {
+
+    border-radius: 50%;
+    width:170px;
+    height:170px;    
+    display: block;
+    margin: auto;
+    margin-top:2em;
+}
+
+.personalInformation {
+    margin: 2em;
+    font-size: 1.3em;
+}
+
+strong {
+    font-family: helvetica;
+    color:black;
+}
+
+.elementsBar {
+    float:right; 
+    position: relative;
+}
+
+.spanIcons {
+    /*    height: 200%;*/
+    /*    width:100%;*/
+    font-size: 2em; 
+    margin-top:27px;
+    margin-left:20px;
+    margin-right:20px;
+    margin-bottom:15px;
+    /*    margin:20px;*/
+    color:white;
+}
+
+.openCourse {
+    float: right;
+}
+
+.panelProfile {
+    width:75%;
+}
+
+.tab-content {
+    border: 2px solid #338DBC 
+}
+
+
+
+.rightSpan {
+    font-size: 1em;
+    float: right;
+}
+
+.uniCourse {
+    float: right;
+    margin-top:-10px;
+}
+
+.searchPanel {
+    width:85%;
+}
+
+.hr2 {
+    background-color: white;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+    width:75%;
+}
+
+.textBarLongRight {
+    float:right;
+    height: 50%;
+    width:18%;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin-top: 1.3%;
+    margin-right:1%; 
+    color: white;
+    font-size: 1.7em;
+    text-align: center;
+}
+
+.sharedAreaTitle {
+    color:black;
+    text-align: center;
+}
+
+.hr3 {
+    display: block;
+    height: 5px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+    width:100%;
+}
+
+.comments {
+    font-size:1.3em;
+}
+
+.radiusComments {
+    border-radius: 10px;
+    padding:4px;
+}
+
+.sendIcon {
+    font-size:1em;
+    margin:1%;
+    /*    margin:1%;    */
+    /*    height:34px;*/
+}
+
+.nestedLeft {
+    margin-top:-2%;
+    margin-left:25%;
+    float:left;
+    width:50%;
+    border-radius: 10px;
+}
+
+.nestedRight {
+    margin-top:-2%;
+    margin-right:25%;
+    float:right;
+    width:50%;
+    border-radius: 10px;
+}
+
+.formLabel {
+    text-align: right;
+    font-size: 1.3em;
+}
