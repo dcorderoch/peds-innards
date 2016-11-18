@@ -26,5 +26,18 @@ namespace MyLearn.Controllers
 
             return Json(retVal);
         }
+        [RequireHttps]
+        [HttpGet]
+        public JsonResult<List<string>> GetTHEM()
+        {
+            List<string> retVal = new List<string>();
+            for (int i = 0; i < 10; i++)
+            {
+                var crap = new string(string.Format("haha{0}", i.ToString()).ToCharArray());
+                retVal.Add(crap);
+            }
+
+            return Json(retVal);
+        }
     }
 }
