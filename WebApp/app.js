@@ -9,12 +9,7 @@
     config.$inject = ['$routeProvider', '$locationProvider'];
     function config($routeProvider, $locationProvider) {
         $routeProvider
-        
-          .when('/',{
-            controller: 'LandingController',
-            templateUrl: 'landing/LandingController.view.html',
-            controllerAs: 'vm'
-        })
+
             .when('/studentprofile', {
             controller: 'StudentProfileController',
             templateUrl: 'studentProfile/studentProfile.view.html',
@@ -30,6 +25,16 @@
             templateUrl: 'register/register.view.html',
             controllerAs: 'vm'
         })
+            .when('/register2', {
+            controller: 'Register2Controller',
+            templateUrl: 'register2/register2.view.html',
+            controllerAs: 'vm'
+        })
+            .when('/register3', {
+            controller: 'Register3Controller',
+            templateUrl: 'register3/register3.view.html',
+            controllerAs: 'vm'
+        })
             .when('/notifications', {
             controller: 'NotificationsController',
             templateUrl: 'notifications/notifications.view.html',
@@ -43,6 +48,11 @@
             .when('/sharedarea', {
             controller: 'SharedAreaController',
             templateUrl: 'sharedArea/sharedArea.view.html',
+            controllerAs: 'vm'
+        }) 
+            .when('/sharedareaprofessor', {
+            controller: 'SharedAreaProfessorController',
+            templateUrl: 'sharedAreaProfessor/sharedAreaProfessor.view.html',
             controllerAs: 'vm'
         }) 
             .when('/unicourses', {
@@ -65,7 +75,41 @@
             templateUrl: 'workProfile/workProfile.view.html',
             controllerAs: 'vm'
         })
-        
+            .when('/admin',{
+            controller:'AdminController',
+            templateUrl: 'admin/admin.view.html',
+            controllerAs: 'vm'
+        }) 
+            .when('/professorprofile',{
+            controller:'ProfessorProfileController',
+            templateUrl: 'professorProfile/professorProfile.view.html',
+            controllerAs: 'vm'
+        })  
+            .when('/employerprofile',{
+            controller:'EmployerProfileController',
+            templateUrl: 'employerProfile/employerProfile.view.html',
+            controllerAs: 'vm'
+        }) 
+            .when('/newcourse',{
+            controller:'NewCourseController',
+            templateUrl: 'newCourse/newCourse.view.html',
+            controllerAs: 'vm'
+        })   
+            .when('/newproject',{
+            controller:'NewProjectController',
+            templateUrl: 'newProject/newProject.view.html',
+            controllerAs: 'vm'
+        })  
+            .when('/auction',{
+            controller:'AuctionController',
+            templateUrl: 'auction/auction.view.html',
+            controllerAs: 'vm'
+        })  
+            .when('/courseoverview',{
+            controller:'CourseOverviewController',
+            templateUrl: 'courseOverview/courseOverview.view.html',
+            controllerAs: 'vm'
+        })  
             .otherwise({ redirectTo: '/login' });
     }
 
@@ -82,11 +126,11 @@
 
             $rootScope.SERVER = "url";
             // redirect to login page if not logged in and trying to access a restricted page
-        //    var restrictedPage = $.inArray($location.path(), ['/login', '/register','/']) === -1;
-         //   var loggedIn = $rootScope.globals.currentUser;
-    //        if (restrictedPage && !loggedIn) {
-  //              $location.path('/login');
-//            }
+            //    var restrictedPage = $.inArray($location.path(), ['/login', '/register','/']) === -1;
+            //   var loggedIn = $rootScope.globals.currentUser;
+            //        if (restrictedPage && !loggedIn) {
+            //              $location.path('/login');
+            //            }
         });
     }
 
