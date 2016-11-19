@@ -59,9 +59,10 @@
             return request;
         }
 
-        function SetCredentials(Id, Password) {   //Se  mantiene el usuario a pesar de refresh de pagina
+        function SetCredentials(Id, Password, data) {   //Se  mantiene el usuario a pesar de refresh de pagina
+            console.log(Id);
             var authdata = Base64.encode(Id + ':' + Password);
-
+            console.log(authdata);
             $rootScope.globals = {
                 currentUser: {
                     Id: Id,
@@ -71,6 +72,7 @@
 
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
             $cookieStore.put('globals', $rootScope.globals);
+            $cookieStore.put('dataLogin',data);
         }
 
         function ClearCredentials() {   // cuando se deslogea el usuario
@@ -83,6 +85,10 @@
             $http.defaults.headers.common.Authorization = 'Basic';
         }
     }
+    
+    
+    
+    
     //Para no perder datos, no hay que cambiar nada aqui
     // Base64 encoding service used by AuthenticationService
     var Base64 = {

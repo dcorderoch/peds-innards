@@ -5,8 +5,8 @@
         .module('app')
         .controller('RegisterController', RegisterController);
 
-    RegisterController.$inject = ['$location',  'FlashService', 'UserService','$rootScope'];
-    function RegisterController($location,  FlashService, UserService, $rootScope) {
+    RegisterController.$inject = ['$location',  'FlashService', 'UserService','$rootScope', 'RegService'];
+    function RegisterController($location,  FlashService, UserService, $rootScope, RegService) {
         var vm = this;
 
         vm.register=register;
@@ -18,6 +18,21 @@
         // selected fruits
         vm.regData.Idiomas = [];
         vm.regData.Tecnologias = [];
+
+        initController();
+        function initController(){
+            loadTechnologies();
+        }
+        function loadTechnologies(){
+            RegService.GetTechnologies()
+                .then(function (response) {
+                if (response.success) {
+                    vm.technologies = response.data.Technologies;
+                } 
+            },function(response){
+                console.log("supongo")
+            });
+        }
 
         // toggle selection for a given fruit by name
         vm.toggleSelectionLanguage = function toggleSelectionTech(language) {
@@ -46,6 +61,8 @@
                 vm.regData.Tecnologias.push(technology);
             }
         };
+
+
 
         function register() {
             console.log("entro");

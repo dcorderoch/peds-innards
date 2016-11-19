@@ -58,7 +58,7 @@ p{
 
 
 span{
-    font-size:0.8em;
+/*    font-size:0.8em;*/
 }
 
 hr {
@@ -217,7 +217,7 @@ form .form-actions {
     border: 3px solid #D9B23F;
     border-radius: 2%;
     background-color: #D9B23F;
-    padding:3px;
+    padding:2px;
 }
 
 .img-circle {

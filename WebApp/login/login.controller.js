@@ -11,14 +11,43 @@
 
         vm.login = login;
         vm.loginData={};
-        
+
         initController();
-        
+
         function initController(){
             $rootScope.userData = {};
+            $rootScope.globals= {};
+            console.log($rootScope.globals);
         }
 
         function login(){
+
+            $rootScope.userData= {"NombreContacto":"Nicolas",
+                                  "ApellidoContacto":"Jimenez",
+                                  "Ubicacion":"Tres Ríos",
+                                  "Email":"nicolas.j2007@gmail.com",
+                                  "Telefono":"87715959",
+                                  "Fecha_Registro":"05/08/2014",
+                                  "Password":"crave",
+                                  "TipoRepositorioArchivos":"Dropbox",
+                                  "Foto":"bla ba",
+                                  "Carnet":"201258421",
+                                  "Universidad":"Tecnológico de Costa Rica",
+                                  "EnlaceRepositorioCodigo":"https://www.google.com/",
+                                  "EnlaceACurriculum":"https://www.google.com/",
+                                  "PromedioProyectos":"98",
+                                  "PromedioCursos":"99",
+                                  "Idiomas":["Español","Inglés"],
+                                  "CursosAprobados":"90",
+                                  "CursosReprobados":"4",
+                                  "ProyectosExitisos":"90",
+                                  "ProyectosFallidos":"90",
+                                  "Tecnologias":["Java","C++"]};
+            
+            AuthenticationService.SetCredentials( $rootScope.userData.Email, $rootScope.userData.Password, $rootScope.userData);
+            console.log($rootScope.globals);
+            $location.path('/studentprofile');    
+            return;
 
             console.log(vm.loginData);
             AuthenticationService.Login( vm.loginData)
@@ -62,21 +91,9 @@
 
                     })
                 }
-                //                if (response.data.UserTypeCode=== "3" ){
-                //                    FlashService.Success("Login exitoso");
-                //
-                //                    AuthenticationService.loginAdmin(vm.loginData)
-                //                        .then(function(response){
-                //
-                //                    },function(response){
-                //
-                //                    })
-                //                }
                 else{
-                    $location.path('/homeP');    
-                    $rootScope.userId= response.data.UserId;
-                    $rootScope.patientName = response.data.Name;
-                    console.log($rootScope.userId);
+                    FlashService.Error("Usuario no existe");//errores
+                    vm.dataLoading = false;
                 }
             },function(response){
                 console.log( vm.loginData);

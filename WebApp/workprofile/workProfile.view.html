@@ -15,33 +15,43 @@
         <div class="border col-md-4" >
 
             <div class="left-panel">
-                <img class="img-circle" src="assets/pp.jpeg">
+                <img class="img-circle" data-ng-src="{{vm.Foto}}">
 
                 <div class="personalInformation"> 
-                    <p><strong>Nombre:</strong> Nicolás Jiménez García</p>
-                    <p><strong>Universidad:</strong> Tecnológico de Costa Rica</p>
-                    <p><strong>Link hoja de vida:</strong> <a>C.V.</a></p>
-                    <p><strong>Id:</strong> 115780293</p>
-                    <p><strong>Link repositorio:</strong> <a>link Dropbox</a> </p>
-                    <p><strong>Ubicación:</strong> Tres Ríos</p>
-                    <p><strong>Tecnologías:</strong> Visual Basic, Visual Fox Pro</p>
-                    <p><strong>Número de proyectos realizados:</strong> 34</p>
+                    <p><strong>Nombre Contacto: </strong> {{vm.NombreContacto}}</p>
+                    <p><strong>Apellido Contacto: </strong> {{vm.ApellidoContacto}} </p>
+                    <p><strong>Ubicación: </strong> {{vm.Ubicacion}}</p>
+                    <p><strong>Correo electrónico: </strong> {{vm.Email}}</p>
+                    <p><strong>Teléfono:</strong> {{vm.Telefono}}</p>
+                    <p><strong>Tipo Repositorio Archivos: </strong> {{vm.TipoRepositorioArchivos}}</p>
+                    <p><strong>Fecha de registro: </strong> {{vm.Fecha_Registro}}</p>
+                    <p><strong>Carnet: </strong> {{vm.Carnet}}</p>
+                    <p><strong>Universidad: </strong> {{vm.Universidad}}</p>
+                    <p><strong>Enlace repositorio código: </strong> <a href="{{vm.EnlaceRepositorioCodigo}}">Link</a></p>
+                    <p><strong>Enlace curriculum: </strong> <a href="{{vm.EnlaceACurriculum}}">Link</a></p>
+                    <p><strong>Cursos aprobados: </strong> {{vm.CursosAprobados}} </p>
+                    <p><strong>Cursos reprobados: </strong> {{vm.CursosReprobados}} </p>
+                    <p><strong>Proyectos exitosos: </strong> {{vm.ProyectosExitisos}} </p>
+                    <p><strong>Proyectos fallidos: </strong> {{vm.ProyectosFallidos}} </p>
+                    <p><strong>Tecnologías: </strong> 
+                        <span ng-repeat="tecnologia in vm.Tecnologias">{{tecnologia}},  </span> </p>
+                    <p><strong>Idiomas: </strong> 
+                        <span ng-repeat="idioma in vm.Idiomas">{{idioma}},  </span> </p>
 
                     <strong>Nota promedio de cursos</strong>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                            70%
+                        <div class="progress-bar" ng-style="vm.courseAverageWidth" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" >
+                            {{vm.PromedioCursos}}%
                         </div>
                     </div>
 
                     <strong>Nota promedio de proyectos</strong>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
-                            80%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100" ng-style="vm.projectAverageWidth">
+                            {{vm.PromedioProyectos}}%
                         </div>
                     </div>
                     <button class="btn btn-danger">Deshabilitar cuenta</button>
-
 
                 </div>
 

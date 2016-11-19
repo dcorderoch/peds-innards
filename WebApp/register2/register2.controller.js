@@ -5,15 +5,29 @@
         .module('app')
         .controller('Register2Controller', Register2Controller);
 
-    Register2Controller.$inject = ['$location',  'FlashService', 'UserService','$rootScope'];
-    function Register2Controller($location,  FlashService, UserService, $rootScope) {
+    Register2Controller.$inject = ['$location',  'FlashService', 'UserService','$rootScope', 'RegService'];
+    function Register2Controller($location,  FlashService, UserService, $rootScope,RegService) {
         var vm = this;
 
         vm.register=register;
         vm.repositories=['Google Drive', 'Dropbox'];
         vm.universities=['Tecnológico de Costa Rica', 'Oxford University', 'Universidad Autónoma de Colombia']
         vm.regData={};
-        // selected fruits
+
+        initController();
+        function initController(){
+            loadUniversities();
+        }
+        function loadUniversities(){
+            RegService.GetUniversities()
+                .then(function (response) {
+                if (response.success) {
+                    vm.universities = response.data.Universidades;
+                } 
+            },function(response){
+                console.log("supongo")
+            });
+        }
 
         function register() {
             console.log("entro");
