@@ -37,5 +37,13 @@ namespace MyLearn.Controllers
             // Subject to Change
             return Json(retVal);
         }
+        [RequireHttps]
+        [HttpGet]
+        public JsonResult<InfoAdmin> LoginAdmin(LoginInfo userCredentials)
+        {
+            var retVal = new InfoAdmin();
+            // Subject to Change
+            return Json(retVal);
+        }
     }
 }
