@@ -91,3 +91,17 @@ and then Receives
 	"NombreEmpresarial":"algo",
 	"EnlaceSitioWeb":"algo"
 }
+
+################################################# LOGIN ADMIN
+https://host/Api/Login/LoginAdmin
+Web Application sends
+{
+    "UserName":"algo",
+    "Password":"algo"
+}
+
+and then Receives
+{
+    "Tecnologias":["algo","algo"],
+    "Univerdidades":["algo","algo"]
+}
