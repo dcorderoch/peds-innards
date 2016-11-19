@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MyLearn.Models
+﻿namespace MyLearn.Models
 {
     public class InfoEmpleador
     {

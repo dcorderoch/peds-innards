@@ -1,22 +1,21 @@
-################################################# LOGIN
-https://host/Api/Login/Login
+################################################# REGISTER STUDENT
+https://host/Api/Register/RegisterStudent
 Web Application sends
 {
-    "UserName":"algo",
-    "Password":"algo"
-}
-
-and then Receives
-{
-    "UserTypeCode":[0-4]
-}
-
-################################################# LOGIN ESTUDIANTE
-https://host/Api/Login/LoginStudent
-Web Application sends
-{
-    "UserName":"algo",
-    "Password":"algo"
+	"NombreContacto":"algo",
+	"ApellidoContacto":"algo",
+	"Ubicacion":"algo",
+	"Email":"algo",
+	"Telefono":"algo",
+	"Password":"algo",
+	"TipoRepositorioArchivos":"algo",
+	"Foto":"algo",
+	"Carnet":"algo",
+	"Universidad":"algo",
+	"EnlaceRepositorioCodigo":"algo",
+	"EnlaceACurriculum":"algo",
+	"Idiomas":["algo","algo"],
+	"Tecnologías":["algo","algo"]
 }
 
 and then Receives
@@ -44,12 +43,20 @@ and then Receives
 	"Tecnologias":["algo","algo"]
 }
 
-################################################# LOGIN PROFESSOR
-https://host/Api/Login/LoginProfessor
+################################################# REGISTER PROFESSOR
+https://host/Api/Register/RegisterProfessor
 Web Application sends
 {
-    "UserName":"algo",
-    "Password":"algo"
+	"NombreContacto":"algo",
+	"ApellidoContacto":"algo",
+	"Ubicacion":"algo",
+	"Email":"algo",
+	"Telefono":"algo",
+	"Password":"algo",
+	"TipoRepositorioArchivos":"algo",
+	"Foto":"algo",
+	"Universidad":"algo",
+	"HorarioAtencion":"algo"
 }
 
 and then Receives
@@ -68,12 +75,20 @@ and then Receives
 	"HorarioAtencion":"algo"
 }
 
-################################################# LOGIN EMPLOYER
-https://host/Api/Login/LoginEmployer
+################################################# REGISTER EMPLOYER
+https://host/Api/Register/RegisterEmployer
 Web Application sends
 {
-    "UserName":"algo",
-    "Password":"algo"
+	"NombreContacto":"algo",
+	"ApellidoContacto":"algo",
+	"Ubicacion":"algo",
+	"Email":"algo",
+	"Telefono":"algo",
+	"Password":"algo",
+	"TipoRepositorioArchivos":"algo",
+	"Foto":"algo",
+	"NombreEmpresarial":"algo",
+	"EnlaceSitioWeb":"algo"
 }
 
 and then Receives
