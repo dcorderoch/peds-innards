@@ -102,6 +102,7 @@ Web Application sends
 
 and then Receives
 {
+    "UserName":"algo",
     "Tecnologias":["algo","algo"],
     "Univerdidades":["algo","algo"]
 }
