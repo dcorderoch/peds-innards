@@ -1,0 +1,23 @@
+################################################# Get All Technologies
+Web Application "queries"
+https://host/Api/Technology/GetAll
+
+and then Receives
+{
+    "Technologies":["algo","algo"]
+}
+
+################################################# Create new Technology
+https://host/Api/Technology/Create
+Web Application sends
+{
+    "TechnologyName":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito
