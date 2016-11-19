@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\RequireHttpsAttribute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -104,6 +105,10 @@
     <Compile Include="Models\InfoEstudiante.cs" />
     <Compile Include="Models\InfoProfesor.cs" />
     <Compile Include="Models\LoginInfo.cs" />
+    <Compile Include="Models\RegisterEmployerInfo.cs" />
+    <Compile Include="Models\RegisterEstudianteInfo.cs" />
+    <Compile Include="Models\RegisterProfessorInfo.cs" />
+    <Compile Include="Models\RegisterStatus.cs" />
     <Compile Include="Models\UserCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterPoster\OAuthInfo.cs" />
