@@ -29,6 +29,11 @@
                             <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">El apellido de contacto es requerido </span>
                         </div>
 
+                        <div class="form-group" ng-class="{ 'has-error': form.location.$dirty && form.location.$error.required }">
+                            <input placeholder ="Ubicación" type="text" name="location"  class="form-control" ng-model="vm.regData.Ubicacion" required />
+                            <span ng-show="form.location.$dirty && form.location.$error.required" class="help-block">La ubicación es requerida </span>
+                        </div>
+
                         <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
                             <input placeholder ="Correo eléctronico " type="email" name="email" class="form-control" ng-model="vm.regData.Email" required />
                             <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">El correo es requerido</span>
@@ -46,13 +51,15 @@
                             <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">La contraseña es requerida</span>
                         </div>
 
+                        <label>Escoge tu repositorio de archivos</label>
                         <div class="form-group" ng-class="{ 'has-error': form.repo.$dirty && form.repo.$error.required }">
-                            <select value="Escoja repositorio de archivos"ng-model="vm.regData.TipoRepositorioArchivos" ng-options="x for x in vm.repositories">
+                            <select value="Escoja repositorio de archivos"ng-model="vm.regData.TipoRepositorioArchivos" ng-options="x for x in vm.repositories" required>
                             </select> 
                         </div>
 
+                        <label>Escoge tu foto de perfil</label>
                         <div class="form-group" ng-class="{ 'has-error': form.photo.$dirty && form.photo.$error.required }">           
-                            <input name="photos" accept="image/*" class="btn btn-info" type="file" name="file"   ng-model="vm.regData.Photo" base-sixty-four-input >
+                            <input name="photos" accept="image/*" class="btn btn-info" type="file" name="file"   ng-model="vm.regData.Photo" base-sixty-four-input required>
                         </div>
 
                         <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
@@ -71,6 +78,7 @@
                             <span ng-show="form.link.$dirty && form.link.$error.required" class="help-block">El enlace del repositorio es requerido</span>
                         </div>
 
+                        <label>Escoge los idiomas que conozcas</label>
                         <div class="form-group" ng-class="{ 'has-error': form.selectedLanguages.$dirty && form.selectedLanguages.$error.required }">
                             <div class="checkbox">
 
@@ -81,12 +89,13 @@
                                            value="{{language}}"
                                            ng-checked="vm.regData.Idiomas.indexOf(language) > -1"
                                            ng-click="vm.toggleSelectionLanguage(language)"
-                                           > {{language}}
+                                      required/> {{language}}
                                 </label>
                             </div>
 
                         </div>
 
+                        <label>Escoge los lenguajes de programación que conozcas</label>
                         <div class="form-group" ng-class="{ 'has-error': form.technology.$dirty && form.technology.$error.required }">
                             <div class="checkbox">
 
@@ -97,7 +106,7 @@
                                            value="{{technology}}"
                                            ng-checked="vm.regData.Tecnologías.indexOf(technology) > -1"
                                            ng-click="vm.toggleSelectionTech(technology)"
-                                           > {{technology}}
+                                   required/> {{technology}}
                                 </label>
                             </div>
 

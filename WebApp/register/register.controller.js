@@ -49,6 +49,8 @@
 
         function register() {
             console.log("entro");
+            vm.regData.Carnet = vm.regData.Carnet.toString();
+            vm.regData.Telefono = vm.regData.Telefono.toString();
             vm.dataLoading = true;
             UserService.RegisterStudent(vm.regData)
                 .then(function (response) {
@@ -60,6 +62,10 @@
                     FlashService.Error(response.message);
                     vm.dataLoading = false;
                 }
+            },function(response){
+                console.log( vm.regData);
+                FlashService.Error("Usuario no existe");//errores
+                vm.dataLoading = false;
             });
         }
     }
