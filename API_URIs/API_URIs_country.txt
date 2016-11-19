@@ -1,0 +1,8 @@
+################################################# Get All Technologies
+Web Application "queries"
+https://host/Api/Country/GetAll
+
+and then Receives
+{
+    "Country":["algo","algo"]
+}

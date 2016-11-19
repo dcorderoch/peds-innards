@@ -33,13 +33,13 @@ and then Receives
 	"Universidad":"algo",
 	"EnlaceRepositorioCodigo":"algo",
 	"EnlaceACurriculum":"algo",
-	"PromedioProyectos":"algo",
-	"PromedioCursos":"algo",
+	"PromedioProyectos":[0-9],
+	"PromedioCursos":[0-9],
 	"Idiomas":["algo","algo"],
-	"CursosAprobados":"algo",
-	"CursosReprobados":"algo",
-	"ProyectosExitisos":"algo",
-	"ProyectosFallidos":"algo",
+	"CursosAprobados":[0-9],
+	"CursosReprobados":[0-9],
+	"ProyectosExitisos":[0-9],
+	"ProyectosFallidos":[0-9],
 	"Tecnologias":["algo","algo"]
 }
 
