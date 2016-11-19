@@ -15,7 +15,7 @@ Web Application sends
 	"EnlaceRepositorioCodigo":"algo",
 	"EnlaceACurriculum":"algo",
 	"Idiomas":["algo","algo"],
-	"Tecnologías":["algo","algo"]
+	"Tecnologias":["algo","algo"]
 }
 
 and then Receives
@@ -38,7 +38,7 @@ and then Receives
 	"Idiomas":["algo","algo"],
 	"CursosAprobados":[0-9],
 	"CursosReprobados":[0-9],
-	"ProyectosExitisos":[0-9],
+	"ProyectosExitosos":[0-9],
 	"ProyectosFallidos":[0-9],
 	"Tecnologias":["algo","algo"]
 }
