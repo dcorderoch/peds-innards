@@ -39,6 +39,22 @@
                             <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">El carné es requerido</span>
                         </div>
 
+                        <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
+                            <div class="checkbox">
+
+                                <label ng-repeat="fruitName in vm.fruits">
+                                    <input
+                                           type="checkbox"
+                                           name="selectedFruits[]"
+                                           value="{{fruitName}}"
+                                           ng-checked="vm.selection.indexOf(fruitName) > -1"
+                                           ng-click="vm.toggleSelection(fruitName)"
+                                           > {{fruitName}}
+                                </label>
+                            </div>
+
+                        </div>
+
                         <div class="form-group" ng-class="{ 'has-error': form.technologies.$dirty && form.technologies.$error.required }">
                             <input placeholder ="Tecnologías dominadas" accept="image/*" name="technologies" type="text"class="form-control" ng-model="vm.technologies" required />
                             <span ng-show="form.technologies.$dirty && form.technologies.$error.required" class="help-block">Las tecnologías son requeridas</span>

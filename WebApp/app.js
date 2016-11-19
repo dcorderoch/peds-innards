@@ -110,6 +110,16 @@
             templateUrl: 'courseOverview/courseOverview.view.html',
             controllerAs: 'vm'
         })  
+            .when('/sharedareaemployer',{
+            controller:'SharedAreaEmployerController',
+            templateUrl: 'sharedAreaEmployer/sharedAreaEmployer.view.html',
+            controllerAs: 'vm'
+        }) 
+            .when('/sharedstudentemployer',{
+            controller:'SharedStudentEmployerController',
+            templateUrl: 'sharedStudentEmployer/sharedStudentEmployer.view.html',
+            controllerAs: 'vm'
+        }) 
             .otherwise({ redirectTo: '/login' });
     }
 

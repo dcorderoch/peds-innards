@@ -432,3 +432,10 @@ strong {
 .panelAuction {
     width:100%;
 }
+
+.finishProject {
+    border-radius: 5px;
+    border: 1px solid ;
+    width:80%;
+    height:30px;
+}
