@@ -1,0 +1,93 @@
+################################################# LOGIN
+https://host/Api/Login/Login
+Web Application sends
+{
+    "UserName":"algo",
+    "Password":"algo"
+}
+
+and then Receives
+{
+    "UserTypeCode":[0-9]+
+}
+
+################################################# LOGIN ESTUDIANTE
+https://host/Api/Login/LoginStudent
+Web Application sends
+{
+    "UserName":"algo",
+    "Password":"algo"
+}
+
+and then Receives
+{
+	"NombreContacto":"algo",
+	"ApellidoContacto":"algo",
+	"Ubicacion":"algo",
+	"Email":"algo",
+	"Telefono":"algo",
+	"Fecha_Registro":"algo",
+	"Password":"algo",
+	"TipoRepositorioArchivos":"algo",
+	"Foto":"algo",
+	"Carnet":"algo",
+	"Universidad":"algo",
+	"EnlaceRepositorioCodigo":"algo",
+	"EnlaceACurriculum":"algo",
+	"PromedioProyectos":"algo",
+	"PromedioCursos":"algo",
+	"Idiomas":"algo",
+	"CursosAprobados":"algo",
+	"CursosReprobados":"algo",
+	"ProyectosExitisos":"algo",
+	"ProyectosFallidos":"algo",
+	"Tecnologias":"algo"
+}
+
+################################################# LOGIN PROFESSOR
+https://host/Api/Login/LoginProfessor
+Web Application sends
+{
+    "UserName":"algo",
+    "Password":"algo"
+}
+
+and then Receives
+{
+	"NombreContacto":"algo",
+	"ApellidoContacto":"algo",
+	"Ubicacion":"algo",
+	"Email":"algo",
+	"Telefono":"algo",
+	"Fecha_Registro":"algo",
+	"Password":"algo",
+	"TipoRepositorioArchivos":"algo",
+	"Foto":"algo",
+	"IdProfesor":"algo",
+	"Universidad":"algo",
+	"HorarioAtencion":"algo"
+}
+
+################################################# LOGIN EMPLOYER
+https://host/Api/Login/LoginEmployer
+Web Application sends
+{
+    "UserName":"algo",
+    "Password":"algo"
+}
+
+and then Receives
+{
+	"NombreContacto":"algo",
+	"ApellidoContacto":"algo",
+	"Ubicacion":"algo",
+	"Email":"algo",
+	"Telefono":"algo",
+	"Fecha_Registro":"algo",
+	"Password":"algo",
+	"TipoRepositorioArchivos":"algo",
+	"Foto":"algo",
+	"IdEmpleador":"algo",
+	"NombreEmpresarial":"algo",
+	"EnlaceSitioWeb":"algo"
+}
