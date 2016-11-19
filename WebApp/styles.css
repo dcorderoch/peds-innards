@@ -439,3 +439,10 @@ strong {
     width:80%;
     height:30px;
 }
+
+.btn-info {
+    background-color: #E6E6E6;
+    font-family: "Helvetica",  monospace;   
+    color:black;
+    width:100%;
+}

@@ -23,9 +23,41 @@
                 url:    $rootScope.url+"api/User/Login",
                 data:loginData
             });
-                return request;
+            return request;
         }
-
+        
+        function LoginStudent(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
+            console.log(loginData);
+            console.log($rootScope.url+"api/User/Login");
+            var request = $http({
+                method:"post",
+                url:    $rootScope.url+"api/User/Login",
+                data:loginData
+            });
+            return request;
+        }
+        
+        function LoginProfessor(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
+            console.log(loginData);
+            console.log($rootScope.url+"api/User/Login");
+            var request = $http({
+                method:"post",
+                url:    $rootScope.url+"api/User/Login",
+                data:loginData
+            });
+            return request;
+        }
+        
+        function LoginEmployer(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
+            console.log(loginData);
+            console.log($rootScope.url+"api/User/Login");
+            var request = $http({
+                method:"post",
+                url:    $rootScope.url+"api/User/Login",
+                data:loginData
+            });
+            return request;
+        }
 
         function SetCredentials(Id, Password) {   //Se  mantiene el usuario a pesar de refresh de pagina
             var authdata = Base64.encode(Id + ':' + Password);
@@ -43,15 +75,15 @@
 
         function ClearCredentials() {   // cuando se deslogea el usuario
             $rootScope.globals = {};
-             $rootScope.userId = "";
-             $rootScope.patientName = "";
-             $rootScope.doctorId = "";
-             $rootScope.doctorName = "";
+            $rootScope.userId = "";
+            $rootScope.patientName = "";
+            $rootScope.doctorId = "";
+            $rootScope.doctorName = "";
             $cookieStore.remove('globals');
             $http.defaults.headers.common.Authorization = 'Basic';
         }
     }
-   //Para no perder datos, no hay que cambiar nada aqui
+    //Para no perder datos, no hay que cambiar nada aqui
     // Base64 encoding service used by AuthenticationService
     var Base64 = {
 
@@ -101,8 +133,8 @@
             var base64test = /[^A-Za-z0-9\+\/\=]/g;
             if (base64test.exec(input)) {
                 window.alert("There were invalid base64 characters in the input text.\n" +
-                    "Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +
-                    "Expect errors in decoding.");
+                             "Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +
+                             "Expect errors in decoding.");
             }
             input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
 

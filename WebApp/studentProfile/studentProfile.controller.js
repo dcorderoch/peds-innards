@@ -5,8 +5,8 @@
         .module('app')
         .controller('StudentProfileController', StudentProfileController);
 
-    StudentProfileController.$inject = ['$location',  'FlashService'];
-    function StudentProfileController($location,  FlashService) {
+    StudentProfileController.$inject = ['$location',  'FlashService',  '$rootScope' ];
+    function StudentProfileController($location,  FlashService, $rootScope) {
         var vm = this;
 
         vm.goArea =goArea;
