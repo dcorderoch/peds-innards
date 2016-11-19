@@ -1,4 +1,4 @@
-################################################# Get All Technologies
+################################################# Get All Countries
 Web Application "queries"
 https://host/Api/Country/GetAll
 
