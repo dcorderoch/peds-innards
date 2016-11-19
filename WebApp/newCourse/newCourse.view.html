@@ -16,21 +16,21 @@
         <div class="border col-md-4" >
 
             <div class="left-panel">
-                <img class="img-circle" src="assets/pp.jpeg">
+                <img class="img-circle" data-ng-src="{{vm.Foto}}">
 
                 <div class="personalInformation"> 
-                    <p><strong>Nombre:</strong> Nicolás Jiménez García</p>
-                    <p><strong>Universidad:</strong> Tecnológico de Costa Rica</p>
-                    <p><strong>Link hoja de vida:</strong> <a>C.V.</a></p>
-                    <p><strong>Id:</strong> 115780293</p>
-                    <p><strong>Link repositorio:</strong> <a>link Dropbox</a> </p>
-                    <p><strong>Ubicación:</strong> Tres Ríos</p>
-                    <p><strong>Tecnologías:</strong> Visual Basic, Visual Fox Pro</p>
-                    <p><strong>Número de proyectos realizados:</strong> 34</p>
-
-                    <button class="btn btn-danger">Deshabilitar cuenta</button>
-
+                    <p><strong>Nombre Contacto: </strong> {{vm.NombreContacto}}</p>
+                    <p><strong>Apellido Contacto: </strong> {{vm.ApellidoContacto}} </p>
+                    <p><strong>Ubicación: </strong> {{vm.Ubicacion}}</p>
+                    <p><strong>Correo electrónico: </strong> {{vm.Email}}</p>
+                    <p><strong>Teléfono:</strong> {{vm.Telefono}}</p>
+                    <p><strong>Tipo Repositorio Archivos: </strong> {{vm.TipoRepositorioArchivos}}</p>
+                    <p><strong>Fecha de registro: </strong> {{vm.Fecha_Registro}}</p>
+                    <p><strong>Universidad: </strong> {{vm.Universidad}}</p>
+                    <p><strong>Horario de atención: </strong>{{vm.HorarioAtencion}}</p>
                 </div>
+                <button class="btn btn-danger">Deshabilitar cuenta</button>
+
             </div>
 
         </div>
