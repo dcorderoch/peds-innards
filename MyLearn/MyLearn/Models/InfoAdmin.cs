@@ -6,6 +6,6 @@ namespace MyLearn.Models
     {
         public string UserName { get; set; }
         public List<string> Tecnologias { get; set; }
-        public List<string> Univerdidades { get; set; }
+        public List<string> Universidades { get; set; }
     }
 }

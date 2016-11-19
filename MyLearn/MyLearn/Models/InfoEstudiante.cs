@@ -22,8 +22,12 @@ namespace MyLearn.Models
         public string Idiomas { get; set; }
         public List<string> CursosAprobados { get; set; }
         public List<string> CursosReprobados { get; set; }
-        public List<string> ProyectosExitisos { get; set; }
+        public List<string> ProyectosExitosos { get; set; }
         public List<string> ProyectosFallidos { get; set; }
         public List<string> Tecnologias { get; set; }
+        public List<string> ListaCursosTerminados { get; set; }
+        public List<string> ListaCursosActivos { get; set; }
+        public List<string> ListaProyectosTerminados { get; set; }
+        public List<string> ListaProyectosActivos { get; set; }
     }
 }

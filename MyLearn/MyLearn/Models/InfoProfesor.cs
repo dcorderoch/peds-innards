@@ -14,5 +14,9 @@
         public string IdProfesor { get; set; }
         public string Universidad { get; set; }
         public string HorarioAtencion { get; set; }
+        public List<string> ListaCursosTerminados { get; set; }
+        public List<string> ListaCursosActivos { get; set; }
+        public List<string> ListaProyectosTerminados { get; set; }
+        public List<string> ListaProyectosActivos { get; set; }
     }
 }

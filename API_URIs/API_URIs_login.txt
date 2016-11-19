@@ -69,7 +69,11 @@ and then Receives
 	"Foto":"algo",
 	"IdProfesor":"algo",
 	"Universidad":"algo",
-	"HorarioAtencion":"algo"
+	"HorarioAtencion":"algo",
+	"ListaCursosTerminados":["algo","algo"],
+	"ListaCursosActivos":["algo","algo"],
+	"ListaProyectosTerminados":["algo","algo"],
+	"ListaProyectosActivos":["algo","algo"]
 }
 
 ################################################# LOGIN EMPLOYER
@@ -93,7 +97,9 @@ and then Receives
 	"Foto":"algo",
 	"IdEmpleador":"algo",
 	"NombreEmpresarial":"algo",
-	"EnlaceSitioWeb":"algo"
+	"EnlaceSitioWeb":"algo",
+	"ListaProyectosTerminados":["algo","algo"],
+	"ListaProyectosActivos":["algo","algo"]
 }
 
 ################################################# LOGIN ADMIN

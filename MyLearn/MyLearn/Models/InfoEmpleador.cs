@@ -14,5 +14,7 @@
         public string IdEmpleador { get; set; }
         public string NombreEmpresarial { get; set; }
         public string EnlaceSitioWeb { get; set; } //Opcional
+        public List<string> ListaProyectosTerminados { get; set; }
+        public List<string> ListaProyectosActivos { get; set; }
     }
 }
