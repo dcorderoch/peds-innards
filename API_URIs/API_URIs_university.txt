@@ -1,0 +1,23 @@
+################################################# Get All Universities
+Web Application "queries"
+https://host/Api/University/GetAll
+
+and then Receives
+{
+    "Technologies":["algo","algo"]
+}
+
+################################################# Create new University
+https://host/Api/University/Create
+Web Application sends
+{
+    "UniversityName":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito
