@@ -93,7 +93,7 @@ hr {
 .badges{
     /*    display: inline;*/
     float: left;
-    margin: 4px;
+    margin: 8px;
     text-align: center;
 }
 .loginSpace{

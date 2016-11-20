@@ -5,11 +5,16 @@
         .module('app')
         .controller('SharedAreaEmployerController', SharedAreaEmployerController);
 
-    SharedAreaEmployerController.$inject = ['$location',  'FlashService', '$scope'];
-    function SharedAreaEmployerController($location,  FlashService, $scope) {
+    SharedAreaEmployerController.$inject = ['$location',  'FlashService', '$scope', '$rootScope'];
+    function SharedAreaEmployerController($location,  FlashService, $scope, $rootScope) {
         var vm = this;
 
+        initController();
+        function initController(){
 
+            vm.courseData = $rootScope.currentCourseData;
+
+        }
     }
 
 })();

@@ -74,27 +74,23 @@
                     <h3>Cursos activos</h3>
                     <hr class="hr2">
 
-                    <div ng-repeat="activeCourse in vm.ListaCursosActivos">
-                        <p>{{activeCourse}}</p>
-
+                    <div ng-repeat="activeCourse in vm.ActiveCoursesList">
                         <div class="panel panel-default panelProfile">
-                            <div class="panel-body"><strong>Nombre del curso: {{activeCourse.nombre}}</strong><p>
-                                <button  ng-click="goCourse(activeCourse.id,activeCourse.status)"  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
+                            <div class="panel-body"><strong>Nombre del curso:</strong> {{activeCourse.course}}<p>
+                                <button  ng-click="vm.goCourseActive(activeCourse.courseid,activeCourse.accepted)"  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
                         </div>               
                     </div>
-
-
-
 
                     <br>     
                     <h3>Cursos terminados</h3>
                     <hr class="hr2">
 
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
-                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
+                    <div ng-repeat="finishedCourse in vm.FinishedCoursesList">
+                        <div class="panel panel-default panelProfile">
+                            <div class="panel-body"><strong>Nombre del curso:</strong> {{finishedCourse.course}}<p>
+                                <button  ng-click="vm.goCourseFinished(finishedCourse.courseid)"  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
+                        </div>
                     </div>
-
 
                 </div>
             </div>

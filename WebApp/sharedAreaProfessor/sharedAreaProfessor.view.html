@@ -1,7 +1,7 @@
 <div  class="upperBar" >
     <img  class="imageBar" src="assets/MyLearn-Logo.png" alt="Logo MyLearn" >
     <h1 class="header">MyLearn</h1>
-    
+
     <div class="elementsBar"><a href="#login"><span  class="spanIcons glyphicon glyphicon-log-out"></span> </a></div>
     <div class="elementsBar"><a href="#professorprofile"><span class="spanIcons glyphicon glyphicon-home"></span></a></div>
     <div class="textBarLongRight" >Área compartida</div>
@@ -16,74 +16,30 @@
             <div class="left-panel">
                 <div class="personalInformation"> 
 
-                    <p><strong>Descripción del curso: </strong>Iisque nostrum ad nec, eu eirmod veritus moderatius vim, eam tibique lobortis in. Mundi aperiam no ius, qui simul affert ad. In has dicam facete detraxit. Eum inani ignota suscipit no, principes gloriatur id has. An odio nostrum deterruisset mei.Usu et habemus mentitum definiebas, te duo dolores placerat. Et viderer principes adversarium mea, per fierent molestiae ne. No eam iracundia constituam, eu vidit efficiendi pro. Ea tale utamur pri, posse conclusionemque eos no. </p>
 
+                    <p><strong>Nombre del curso: </strong>{{vm.courseData.CourseName}}</p>
+                    <p><strong>Carnet del estudiante: </strong>{{vm.courseData.Carnet}}</p>
+                    <p><strong>Descripción del curso: </strong>{{vm.courseData.CourseDescription}}</p>
+                    <p><strong>Grupo del curso: </strong>{{vm.courseData.Group}}</p>
+                    
+<!--
                     <p> <strong>Nota parcial: </strong></p>
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
                             10%
                         </div>
                     </div>
+-->
 
                     <div>
                         <input  class="updateScore" type=number placeholder="Actualizar nota" name="search">
                         <button class="updateIcon btn btn-primary glyphicon glyphicon-triangle-right"></button> 
                     </div>
 
-                    <p> <strong>Badges:</strong></p>
+                    <p> <strong>Dar badge:</strong></p>
 
-                    <div class="row" >
 
-                        <div class="badges" > 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>Listas enlazadas</p>
-                        </div>
 
-                        <div class="badges"> 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>Dijkstra</p>
-                        </div>
-
-                        <div class="badges"> 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>machine learning</p>
-                        </div>
-                    </div>
-
-                    <div class="row"> 
-                        <div class="badges"> 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>Diagramas UML</p>
-                        </div>
-
-                        <div class="badges"> 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>machine learning</p>
-                        </div>
-
-                        <div class="badges"> 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>Diagramas UML</p>
-                        </div>
-                    </div >
-
-                    <div class="row">
-                        <br>
-                        <strong>Agregar un nuevo badge</strong>
-                        <br>
-                        <div>
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Badges
-                                    <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Habilidad1</a></li>
-                                    <li><a href="#">Habilidad2</a></li>
-                                    <li><a href="#">Habilidad3</a></li>
-                                </ul>
-                                <button class="addButton btn btn-primary">Agregar</button> 
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -18,6 +18,7 @@
             $rootScope.userData = {};
             $rootScope.globals= {};
             console.log($rootScope.globals);
+            $rootScope.currentCourseData = {};
         }
 
         function login(){
@@ -72,10 +73,10 @@
                                   "ProyectosExitisos":"90",
                                   "ProyectosFallidos":"90",
                                   "Tecnologias":["Java","C++"],
-                                  ListaCursosTerminados: [{id:"1", nombre:"curse1"}],
-                                  ListaCursosActivos: [{id:"1", nombre:"curse1", status:"0"}],
-                                  ListaProyectosTerminados:[{id:"1", nombre:"proy"}],
-                                  ListaProyectosActivos:[{id:"1", nombre:"proy2"}]
+                                  FinishedCoursesList: [{courseid:"1", course:"curse1"}],
+                                  ActiveCoursesList: [{courseid:"1", course:"curse1", accepted:"0"}],
+                                  FinishedProjectsList:[{projectid:"1", project:"proy"}],
+                                  ActiveProjectsList:[{projectid:"1", project:"proy2"}]
                                  };
 
             AuthenticationService.SetCredentials( $rootScope.userData.Email, $rootScope.userData.Password, $rootScope.userData);

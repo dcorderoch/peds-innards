@@ -5,11 +5,12 @@
         .module('app')
         .controller('StudentProfileController', StudentProfileController);
 
-    StudentProfileController.$inject = ['$location',  'FlashService',  '$rootScope' ];
-    function StudentProfileController($location,  FlashService, $rootScope) {
+    StudentProfileController.$inject = ['$location',  'FlashService',  '$rootScope', 'CourseService' ];
+    function StudentProfileController($location,  FlashService, $rootScope, CourseService) {
         var vm = this;
 
-
+        vm.goCourseActive = goCourseActive;
+        vm.goCourseFinished = goCourseFinished;
 
         initController();
 
@@ -40,15 +41,43 @@
 
             vm.courseAverageWidth = {'width': vm.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};   
-            
-            vm.ListaCursosTerminados = $rootScope.userData.ListaCursosTerminados;
-            vm.ListaCursosActivos = $rootScope.userData.ListaCursosActivos;
-            vm.ListaProyectosTerminados = $rootScope.userData.ListaProyectosTerminados;
-            vm.ListaProyectosActivos = $rootScope.userData.ListaProyectosActivos;
-            console.log(vm)
+
+            vm.FinishedCoursesList = $rootScope.userData.FinishedCoursesList;
+            vm.ActiveCoursesList = $rootScope.userData.ActiveCoursesList;
+            vm.FinishedProjectsList = $rootScope.userData.FinishedProjectsList;
+            vm.ListaProyectosActivos = $rootScope.userData.ActiveProjectsList;
+            console.log(vm);
         }
 
+        function goCourseFinished(id){
 
+            CourseService.GetCourseAsStudent(id)
+                .then(function(response){
+
+                $rootScope.currentCourseData = response.data;
+                $location.path('/sharedArea');    
+
+            }, function(response){
+                console.log("no sirvio")
+            });
+        }
+        function goCourseActive(id, status){
+
+            CourseService.GetCourseAsStudent(id)
+                .then(function(response){
+                
+                $rootScope.currentCourseData = response.data;
+                if(status===0){
+                    $location.path('/coursearea');  
+                }
+                else{
+                    $location.path('/sharedarea');
+                }
+
+            }, function(response){
+                console.log("no sirvio")
+            });
+        }
     }
 
 })();

@@ -2,7 +2,7 @@
 <div  class="upperBar" >
     <img  class="imageBar" src="assets/MyLearn-Logo.png" alt="Logo MyLearn" >
     <h1 class="header">MyLearn</h1>
-    
+
     <div class="elementsBar"><a href="#login"><span  class="spanIcons glyphicon glyphicon-log-out"></span> </a></div>
     <div class="elementsBar"><a  href="#notifications"><span class="spanIcons glyphicon glyphicon-bell"></span> </a></div>
     <div class="elementsBar"><a href="#studentprofile"><span class="spanIcons glyphicon glyphicon-home"></span></a></div>
@@ -18,52 +18,29 @@
             <div class="left-panel">
                 <div class="personalInformation"> 
 
-                    <p><strong>Descripción del curso: </strong>Iisque nostrum ad nec, eu eirmod veritus moderatius vim, eam tibique lobortis in. Mundi aperiam no ius, qui simul affert ad. In has dicam facete detraxit. Eum inani ignota suscipit no, principes gloriatur id has. An odio nostrum deterruisset mei.Usu et habemus mentitum definiebas, te duo dolores placerat. Et viderer principes adversarium mea, per fierent molestiae ne. No eam iracundia constituam, eu vidit efficiendi pro. Ea tale utamur pri, posse conclusionemque eos no. </p>
-
-                    <p> <strong>Nota parcial: </strong></p>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
-                            10%
-                        </div>
-                    </div> 
-
+                    <p><strong>Nombre del curso: </strong>{{vm.courseData.CourseName}}</p>
+                    <p><strong>Carnet del estudiante: </strong>{{vm.courseData.Carnet}}</p>
+                    <p><strong>Descripción del curso: </strong>{{vm.courseData.CourseDescription}}</p>
+                    <p><strong>Grupo del curso: </strong>{{vm.courseData.Group}}</p>
+                    
+                    <!--
+<p> <strong>Nota parcial: </strong></p>
+<div class="progress">
+<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+10%
+</div>
+</div> 
+-->
                     <p> <strong>Badges:</strong></p>
 
-                    <div class="row" >
+                    <div class="row" ng-repeat="badge in  vm.courseData.badges" >
 
                         <div class="badges" > 
                             <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>Listas enlazadas</p>
+                            <p>{{badge.badgeDescription}}, {{badge.value}}</p>
                             <button ng-disabled="true" class="btn btn-success">Alardear</button>
                         </div>
 
-                        <div class="badges"> 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>Dijkstra</p>
-                            <button class="btn btn-success">Alardear</button>
-                        </div>
-                        <div class="badges"> 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>machine learning</p>
-                            <button class="btn btn-success">Alardear</button>
-                        </div>
-                    </div>
-                    <div class="row"> 
-                        <div class="badges"> 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>Diagramas UML</p>
-                            <button class="btn btn-success">Alardear</button>
-                        </div>
-                        <div class="badges"> 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>machine learning</p>
-                            <button class="btn btn-success">Alardear</button>
-                        </div>
-                        <div class="badges"> 
-                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
-                            <p>Diagramas UML</p>
-                            <button class="btn btn-success">Alardear</button>
-                        </div>
                     </div>
                 </div>
             </div>

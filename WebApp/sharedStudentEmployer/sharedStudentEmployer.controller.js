@@ -9,7 +9,12 @@
     function SharedStudentEmployerController($location,  FlashService) {
         var vm = this;
 
+        initController();
+        function initController(){
 
+            vm.courseData = $rootScope.currentCourseData;
+
+        }
     }
 
 })();
