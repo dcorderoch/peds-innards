@@ -1,4 +1,4 @@
-################################################# LOGIN ESTUDIANTE
+################################################# Get a Project by StudentId as a Professor
 https://host/Api/Project/GetProject
 Web Application sends
 {

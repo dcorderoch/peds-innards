@@ -40,7 +40,49 @@ and then Receives
     "CursosReprobados":[0-9],
     "ProyectosExitosos":[0-9],
     "ProyectosFallidos":[0-9],
-    "Tecnologias":["algo","algo"]
+    "Tecnologias":["algo","algo"],
+    "FinishedCoursesList":[
+                              {
+                                  "course":"algo",
+		                          "courseid": "id"
+		                      },
+		                      {
+                                  "course":"algo",
+		                          "courseid": "id"
+		                      }
+		                  ],
+    "ActiveCoursesList":[
+                            {
+                                "course":"algo",
+		                        "courseid": "id",
+		                        "accepted":(0|1)
+		                    },
+		                    {
+                                "course":"algo",
+		                        "courseid": "id",
+		                        "accepted":(0|1)
+		                    }
+		                ],
+    "FinishedProjectsList":[
+                              {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      },
+		                      {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      }
+		                  ],
+    "ActiveProjectsList":[
+                              {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      },
+		                      {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      }
+		                  ]
 }
 
 ################################################# REGISTER PROFESSOR
@@ -72,7 +114,27 @@ and then Receives
     "Foto":"algo",
     "IdProfesor":"algo",
     "Universidad":"algo",
-    "HorarioAtencion":"algo"
+    "HorarioAtencion":"algo",
+    "FinishedCoursesList":[
+                              {
+                                  "course":"algo",
+		                          "courseid": "id"
+		                      },
+		                      {
+                                  "course":"algo",
+		                          "courseid": "id"
+		                      }
+		                  ],
+    "ActiveCoursesList":[
+                            {
+                                "course":"algo",
+		                        "courseid": "id"
+		                    },
+		                    {
+                                "course":"algo",
+		                        "courseid": "id"
+		                    }
+		                ]
 }
 
 ################################################# REGISTER EMPLOYER
@@ -104,5 +166,25 @@ and then Receives
     "Foto":"algo",
     "IdEmpleador":"algo",
     "NombreEmpresarial":"algo",
-    "EnlaceSitioWeb":"algo"
+    "EnlaceSitioWeb":"algo",
+    "FinishedProjectsList":[
+                              {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      },
+		                      {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      }
+		                  ],
+    "ActiveProjectsList":[
+                              {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      },
+		                      {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      }
+		                  ]
 }
