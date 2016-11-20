@@ -2,107 +2,107 @@
 https://host/Api/Register/RegisterStudent
 Web Application sends
 {
-	"NombreContacto":"algo",
-	"ApellidoContacto":"algo",
-	"Ubicacion":"algo",
-	"Email":"algo",
-	"Telefono":"algo",
-	"Password":"algo",
-	"TipoRepositorioArchivos":"algo",
-	"Foto":"algo",
-	"Carnet":"algo",
-	"Universidad":"algo",
-	"EnlaceRepositorioCodigo":"algo",
-	"EnlaceACurriculum":"algo",
-	"Idiomas":["algo","algo"],
-	"Tecnologias":["algo","algo"]
+    "NombreContacto":"algo",
+    "ApellidoContacto":"algo",
+    "Ubicacion":"algo",
+    "Email":"algo",
+    "Telefono":"algo",
+    "Password":"algo",
+    "TipoRepositorioArchivos":"algo",
+    "Foto":"algo",
+    "Carnet":"algo",
+    "Universidad":"algo",
+    "EnlaceRepositorioCodigo":"algo",
+    "EnlaceACurriculum":"algo",
+    "Idiomas":["algo","algo"],
+    "Tecnologias":["algo","algo"]
 }
 
 and then Receives
 {
-	"NombreContacto":"algo",
-	"ApellidoContacto":"algo",
-	"Ubicacion":"algo",
-	"Email":"algo",
-	"Telefono":"algo",
-	"Fecha_Registro":"algo",
-	"Password":"algo",
-	"TipoRepositorioArchivos":"algo",
-	"Foto":"algo",
-	"Carnet":"algo",
-	"Universidad":"algo",
-	"EnlaceRepositorioCodigo":"algo",
-	"EnlaceACurriculum":"algo",
-	"PromedioProyectos":[0-9],
-	"PromedioCursos":[0-9],
-	"Idiomas":["algo","algo"],
-	"CursosAprobados":[0-9],
-	"CursosReprobados":[0-9],
-	"ProyectosExitosos":[0-9],
-	"ProyectosFallidos":[0-9],
-	"Tecnologias":["algo","algo"]
+    "NombreContacto":"algo",
+    "ApellidoContacto":"algo",
+    "Ubicacion":"algo",
+    "Email":"algo",
+    "Telefono":"algo",
+    "Fecha_Registro":"algo",
+    "Password":"algo",
+    "TipoRepositorioArchivos":"algo",
+    "Foto":"algo",
+    "Carnet":"algo",
+    "Universidad":"algo",
+    "EnlaceRepositorioCodigo":"algo",
+    "EnlaceACurriculum":"algo",
+    "PromedioProyectos":[0-9],
+    "PromedioCursos":[0-9],
+    "Idiomas":["algo","algo"],
+    "CursosAprobados":[0-9],
+    "CursosReprobados":[0-9],
+    "ProyectosExitosos":[0-9],
+    "ProyectosFallidos":[0-9],
+    "Tecnologias":["algo","algo"]
 }
 
 ################################################# REGISTER PROFESSOR
 https://host/Api/Register/RegisterProfessor
 Web Application sends
 {
-	"NombreContacto":"algo",
-	"ApellidoContacto":"algo",
-	"Ubicacion":"algo",
-	"Email":"algo",
-	"Telefono":"algo",
-	"Password":"algo",
-	"TipoRepositorioArchivos":"algo",
-	"Foto":"algo",
-	"Universidad":"algo",
-	"HorarioAtencion":"algo"
+    "NombreContacto":"algo",
+    "ApellidoContacto":"algo",
+    "Ubicacion":"algo",
+    "Email":"algo",
+    "Telefono":"algo",
+    "Password":"algo",
+    "TipoRepositorioArchivos":"algo",
+    "Foto":"algo",
+    "Universidad":"algo",
+    "HorarioAtencion":"algo"
 }
 
 and then Receives
 {
-	"NombreContacto":"algo",
-	"ApellidoContacto":"algo",
-	"Ubicacion":"algo",
-	"Email":"algo",
-	"Telefono":"algo",
-	"Fecha_Registro":"algo",
-	"Password":"algo",
-	"TipoRepositorioArchivos":"algo",
-	"Foto":"algo",
-	"IdProfesor":"algo",
-	"Universidad":"algo",
-	"HorarioAtencion":"algo"
+    "NombreContacto":"algo",
+    "ApellidoContacto":"algo",
+    "Ubicacion":"algo",
+    "Email":"algo",
+    "Telefono":"algo",
+    "Fecha_Registro":"algo",
+    "Password":"algo",
+    "TipoRepositorioArchivos":"algo",
+    "Foto":"algo",
+    "IdProfesor":"algo",
+    "Universidad":"algo",
+    "HorarioAtencion":"algo"
 }
 
 ################################################# REGISTER EMPLOYER
 https://host/Api/Register/RegisterEmployer
 Web Application sends
 {
-	"NombreContacto":"algo",
-	"ApellidoContacto":"algo",
-	"Ubicacion":"algo",
-	"Email":"algo",
-	"Telefono":"algo",
-	"Password":"algo",
-	"TipoRepositorioArchivos":"algo",
-	"Foto":"algo",
-	"NombreEmpresarial":"algo",
-	"EnlaceSitioWeb":"algo"
+    "NombreContacto":"algo",
+    "ApellidoContacto":"algo",
+    "Ubicacion":"algo",
+    "Email":"algo",
+    "Telefono":"algo",
+    "Password":"algo",
+    "TipoRepositorioArchivos":"algo",
+    "Foto":"algo",
+    "NombreEmpresarial":"algo",
+    "EnlaceSitioWeb":"algo"
 }
 
 and then Receives
 {
-	"NombreContacto":"algo",
-	"ApellidoContacto":"algo",
-	"Ubicacion":"algo",
-	"Email":"algo",
-	"Telefono":"algo",
-	"Fecha_Registro":"algo",
-	"Password":"algo",
-	"TipoRepositorioArchivos":"algo",
-	"Foto":"algo",
-	"IdEmpleador":"algo",
-	"NombreEmpresarial":"algo",
-	"EnlaceSitioWeb":"algo"
+    "NombreContacto":"algo",
+    "ApellidoContacto":"algo",
+    "Ubicacion":"algo",
+    "Email":"algo",
+    "Telefono":"algo",
+    "Fecha_Registro":"algo",
+    "Password":"algo",
+    "TipoRepositorioArchivos":"algo",
+    "Foto":"algo",
+    "IdEmpleador":"algo",
+    "NombreEmpresarial":"algo",
+    "EnlaceSitioWeb":"algo"
 }

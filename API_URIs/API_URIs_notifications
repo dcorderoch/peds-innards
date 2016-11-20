@@ -7,5 +7,5 @@ Web Application sends
 
 and then Receives
 {
-	"Notifications":["algo","algo"]
+    "Notifications":["algo","algo"]
 }

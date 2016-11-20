@@ -4,5 +4,14 @@ https://host/Api/Country/GetAll
 
 and then Receives
 {
-    "Country":["algo","algo"]
+    "countries":[
+                    {
+                        "country":"algo",
+                        "countryid": "id"
+                    },
+                    {
+                        "country":"algo",
+                        "countryid": "id"
+                    }
+                ]
 }

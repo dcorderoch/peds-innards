@@ -4,14 +4,23 @@ https://host/Api/Technology/GetAll
 
 and then Receives
 {
-    "Technologies":["algo","algo"]
+    "technologies":[
+                    {
+                        "technology":"algo",
+                        "technologyid": "id"
+                    },
+                    {
+                        "technology":"algo",
+                        "technologyid": "id"
+                    }
+                ]
 }
 
 ################################################# Create new Technology
 https://host/Api/Technology/Create
 Web Application sends
 {
-    "TechnologyName":"algo"
+    "TechnologyName":{"tecnology":"algo"}
 }
 
 and then Receives

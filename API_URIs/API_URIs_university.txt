@@ -4,5 +4,14 @@ https://host/Api/University/GetAll
 
 and then Receives
 {
-    "Universities":["algo","algo"]
+    "universities":[
+                    {
+                        "university":"algo",
+                        "universityid": "id"
+                    },
+                    {
+                        "university":"algo",
+                        "universityid": "id"
+                    }
+                ]
 }
