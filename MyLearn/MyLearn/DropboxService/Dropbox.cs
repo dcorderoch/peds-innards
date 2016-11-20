@@ -15,15 +15,7 @@ namespace MyLearn.DropboxService
         private HttpAuthorization Authorization;
 
         private string CurrentPath = "";
-        private FileStream DownloadFileStream;
-        private readonly byte[] DownloadReadBuffer = new byte[4096];
-
-        private Stream DownloadReader;
-        private BinaryWriter DownloadWriter;
-
-        private long UploadingFileLength;
-
-
+    
         public void DropboxManager()
         {
             if (string.IsNullOrEmpty(Settings.Default.AccessToken))
@@ -131,8 +123,7 @@ namespace MyLearn.DropboxService
                     contentType: "application/octet-stream",
                     authorization: Authorization,
                     // handler of result
-                    callback: Upload_Result,
-                    
+                    callback: Upload_Result
                 );
         }
 
