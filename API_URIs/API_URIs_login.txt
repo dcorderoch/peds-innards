@@ -42,10 +42,48 @@ and then Receives
     "ProyectosExitosos":[0-9],
     "ProyectosFallidos":[0-9],
     "Tecnologias":["algo","algo"],
-    "ListaCursosTerminados":["id","id"],
-    "ListaCursosActivos":["id","id"],
-    "ListaProyectosTerminados":["id","id"],
-    "ListaProyectosActivos":["id","id"]
+    "FinishedCoursesList":[
+                              {
+                                  "course":"algo",
+		                          "courseid": "id"
+		                      },
+		                      {
+                                  "course":"algo",
+		                          "courseid": "id"
+		                      }
+		                  ],
+    "ActiveCoursesList":[
+                            {
+                                "course":"algo",
+		                        "courseid": "id",
+		                        "accepted":(0|1)
+		                    },
+		                    {
+                                "course":"algo",
+		                        "courseid": "id",
+		                        "accepted":(0|1)
+		                    }
+		                ],
+    "FinishedProjectsList":[
+                              {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      },
+		                      {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      }
+		                  ],
+    "ActiveProjectsList":[
+                              {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      },
+		                      {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      }
+		                  ]
 }
 
 ################################################# LOGIN PROFESSOR
@@ -70,10 +108,26 @@ and then Receives
     "IdProfesor":"algo",
     "Universidad":"algo",
     "HorarioAtencion":"algo",
-    "ListaCursosTerminados":["algo","algo"],
-    "ListaCursosActivos":["algo","algo"],
-    "ListaProyectosTerminados":["algo","algo"],
-    "ListaProyectosActivos":["algo","algo"]
+    "FinishedCoursesList":[
+                              {
+                                  "course":"algo",
+		                          "courseid": "id"
+		                      },
+		                      {
+                                  "course":"algo",
+		                          "courseid": "id"
+		                      }
+		                  ],
+    "ActiveCoursesList":[
+                            {
+                                "course":"algo",
+		                        "courseid": "id"
+		                    },
+		                    {
+                                "course":"algo",
+		                        "courseid": "id"
+		                    }
+		                ]
 }
 
 ################################################# LOGIN EMPLOYER
@@ -98,8 +152,26 @@ and then Receives
     "IdEmpleador":"algo",
     "NombreEmpresarial":"algo",
     "EnlaceSitioWeb":"algo",
-    "ListaProyectosTerminados":["algo","algo"],
-    "ListaProyectosActivos":["algo","algo"]
+    "FinishedProjectsList":[
+                              {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      },
+		                      {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      }
+		                  ],
+    "ActiveProjectsList":[
+                              {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      },
+		                      {
+                                  "project":"algo",
+		                          "projectid": "id"
+		                      }
+		                  ]
 }
 
 ################################################# LOGIN ADMIN
