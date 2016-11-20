@@ -37,11 +37,13 @@ and then Receives
     "badges":[
                     {
                         "badgeDescription":"algo",
-                        "value":1?[0-9]{2}
+                        "value":1?[0-9]{2},
+                        "alardeado":(0|1)
                     },
                     {
                         "badgeDescription":"algo",
-                        "value":1?[0-9]{2}
+                        "value":1?[0-9]{2},
+                        "alardeado":(0|1)
                     }
                 ],
     "CourseId":"algo",
