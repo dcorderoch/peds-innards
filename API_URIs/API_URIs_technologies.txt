@@ -20,7 +20,7 @@ and then Receives
 https://host/Api/Technology/Create
 Web Application sends
 {
-    "TechnologyName":{"tecnology":"algo"}
+    "TechnologyName":"algo"
 }
 
 and then Receives
