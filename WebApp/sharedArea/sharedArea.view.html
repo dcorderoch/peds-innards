@@ -22,7 +22,7 @@
                     <p><strong>Carnet del estudiante: </strong>{{vm.courseData.Carnet}}</p>
                     <p><strong>Descripción del curso: </strong>{{vm.courseData.CourseDescription}}</p>
                     <p><strong>Grupo del curso: </strong>{{vm.courseData.Group}}</p>
-                    
+
                     <!--
 <p> <strong>Nota parcial: </strong></p>
 <div class="progress">
@@ -38,9 +38,14 @@
                         <div class="badges" > 
                             <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
                             <p>{{badge.badgeDescription}}, {{badge.value}}</p>
-                            <button ng-disabled="true" class="btn btn-success">Alardear</button>
+                            <button ng-disabled="0" class="btn btn-success">Alardear</button>
                         </div>
 
+                    </div>
+                    <div class="badges" > 
+                        <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
+                        <p>{{badge.badgeDescription}}, {{badge.value}}</p>
+                        <button ng-disabled="badge.alardeado" class="btn btn-success">Alardear</button>
                     </div>
                 </div>
             </div>

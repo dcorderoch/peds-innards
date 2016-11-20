@@ -9,6 +9,9 @@
     function WorkProfileController($location,  FlashService, $rootScope) {
         var vm = this;
 
+        vm.goWorkActive = goWorkActive;
+        vm.goWorkFinished = goWorkFinished;
+
         initController();
 
         function initController(){
@@ -37,9 +40,44 @@
             vm.Tecnologias = $rootScope.userData.Tecnologias;
 
             vm.courseAverageWidth = {'width': vm.PromedioCursos+'%'};  
-            vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};          
+            vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};    
 
+            vm.FinishedCoursesList = $rootScope.userData.FinishedCoursesList;
+            vm.ActiveCoursesList = $rootScope.userData.ActiveCoursesList;
+            vm.FinishedProjectsList = $rootScope.userData.FinishedProjectsList;
+            vm.ActiveProjectsList = $rootScope.userData.ActiveProjectsList;
+            console.log(vm)
+        }
+
+
+        function goWorkFinished(id){
+
+//            CourseService.GetCourseAsStudent(id)
+//                .then(function(response){
+//
+//                $rootScope.currentCourseData = response.data;
+//                $location.path('/sharedArea');    
+//
+//            }, function(response){
+//                console.log("no sirvio")
+//            });
+        }
+        function goWorkActive(id){
+
+//            CourseService.GetCourseAsStudent(id)
+//                .then(function(response){
+//
+//                $rootScope.currentCourseData = response.data;
+//                if(status===0){
+//                    $location.path('/coursearea');  
+//                }
+//                else{
+//                    $location.path('/sharedarea');
+//                }
+//
+//            }, function(response){
+//                console.log("no sirvio")
+//            });
         }
     }
-
 })();
