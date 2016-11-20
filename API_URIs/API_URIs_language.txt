@@ -1,0 +1,8 @@
+################################################# Get All Technologies
+Web Application "queries"
+https://host/Api/Language/GetAll
+
+and then Receives
+{
+    "Languages":["algo","algo"]
+}
