@@ -33,7 +33,16 @@ and then Receives
     "ProfessorId":"algo",
     "UniversityId":"algo",
     "MinGrade":1?[0-9]{2},
-    "Badges":["logro","logro"],
+    "badges":[
+                    {
+                        "badgeDescription":"algo",
+                        "value":1?[0-9]{2}
+                    },
+                    {
+                        "badgeDescription":"algo",
+                        "value":1?[0-9]{2}
+                    }
+                ],
     "CourseId":"algo",
     "CourseDescription":"algo",
     "Group":[0-9]+,
