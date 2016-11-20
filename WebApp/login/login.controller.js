@@ -71,7 +71,12 @@
                                   "CursosReprobados":"4",
                                   "ProyectosExitisos":"90",
                                   "ProyectosFallidos":"90",
-                                  "Tecnologias":["Java","C++"]};
+                                  "Tecnologias":["Java","C++"],
+                                  ListaCursosTerminados: [{id:"1", nombre:"curse1"}],
+                                  ListaCursosActivos: [{id:"1", nombre:"curse1", status:"0"}],
+                                  ListaProyectosTerminados:[{id:"1", nombre:"proy"}],
+                                  ListaProyectosActivos:[{id:"1", nombre:"proy2"}]
+                                 };
 
             AuthenticationService.SetCredentials( $rootScope.userData.Email, $rootScope.userData.Password, $rootScope.userData);
             console.log($rootScope.globals);

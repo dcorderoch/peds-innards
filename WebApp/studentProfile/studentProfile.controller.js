@@ -9,8 +9,7 @@
     function StudentProfileController($location,  FlashService, $rootScope) {
         var vm = this;
 
-        vm.goArea =goArea;
-        vm.goArea2= goArea2;
+
 
         initController();
 
@@ -40,17 +39,16 @@
             vm.Tecnologias = $rootScope.userData.Tecnologias;
 
             vm.courseAverageWidth = {'width': vm.PromedioCursos+'%'};  
-            vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};          
+            vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};   
+            
+            vm.ListaCursosTerminados = $rootScope.userData.ListaCursosTerminados;
+            vm.ListaCursosActivos = $rootScope.userData.ListaCursosActivos;
+            vm.ListaProyectosTerminados = $rootScope.userData.ListaProyectosTerminados;
+            vm.ListaProyectosActivos = $rootScope.userData.ListaProyectosActivos;
+            console.log(vm)
         }
 
 
-        function goArea(){
-
-            $location.path('/coursearea');
-        }
-        function goArea2(){
-            $location.path('/sharedarea');
-        }
     }
 
 })();

@@ -10,8 +10,8 @@
         var vm = this;
 
         vm.register=register;
-        vm.repositories=['Google Drive', 'Dropbox'];
-        vm.countries=['Costa Rica', 'Nepal'];
+        vm.repositories=[{tipo:'Google Drive', id:1}, {tipo:'Dropbox',id:0}];
+        vm.countries=[ {"country":"costa rica","countryid": "1"}, {"country":"nicaragua","countryid": "2"}];
         vm.regData={};
         initController();
 
@@ -23,7 +23,7 @@
             RegService.GetCountries()
                 .then(function (response) {
                 if (response.success) {
-                    vm.countries = response.data.Country;
+                    vm.countries = response.data.countries;
                 } 
             },function(response){
                 console.log("supongo2")

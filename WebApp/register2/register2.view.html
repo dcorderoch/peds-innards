@@ -33,7 +33,7 @@
 
                         <label>Escoge tu pais</label>
                         <div class="form-group" >
-                            <select ng-model="vm.regData.Ubicacion" ng-options="x for x in vm.countries" required>
+                            <select ng-model="vm.regData.Ubicacion" ng-options="x.countryid as x.country for x in vm.countries" required>
                             </select> 
                         </div>
 
@@ -56,8 +56,8 @@
 
                         <label>Escoge tu repositorio de archivos</label>
                         <div class="form-group" ng-class="{ 'has-error': form.repo.$dirty && form.repo.$error.required }">
-                            <select ng-model="vm.regData.TipoRepositorioArchivos" ng-options="x for x in vm.repositories" required>
-                            </select > 
+                            <select value="Escoja repositorio de archivos"ng-model="vm.regData.TipoRepositorioArchivos" ng-options="x.id as x.tipo for x in vm.repositories" required>
+                            </select> 
                         </div>
 
                         <label>Escoge tu foto de perfil</label>
@@ -67,7 +67,7 @@
 
                         <label>Escoge tu universidad</label>
                         <div class="form-group" ng-class="{ 'has-error': form.university.$dirty && form.university.$error.required }">
-                            <select name="university" ng-model="vm.regData.Universidad" ng-options="x for x in vm.universities" required>
+                            <select name="university" ng-model="vm.regData.Universidad" ng-options="x.universityid as x.university for x in vm.universities" required>
                             </select > 
                         </div>
 

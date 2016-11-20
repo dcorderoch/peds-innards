@@ -10,9 +10,9 @@
         var vm = this;
 
         vm.register=register;
-        vm.repositories=['Google Drive', 'Dropbox'];
-        vm.universities=['Tecnológico de Costa Rica', 'Oxford University', 'Universidad Autónoma de Colombia']
-        vm.countries=['Costa Rica', 'Nepal'];
+        vm.repositories=[{tipo:'Google Drive', id:1}, {tipo:'Dropbox',id:0}];
+        vm.universities=[{university:'Tecnológico de Costa Rica',universityid:0}, {university:'Oxford University' ,universityid:1}, {university:'Universidad Autónoma de Colombia',universityid:2}];
+        vm.countries=[ {"country":"costa rica","countryid": "1"}, {"country":"nicaragua","countryid": "2"}];
 
         vm.regData={};
 
@@ -22,25 +22,25 @@
             loadCountries();
         }
 
-        function loadUniversities(){
-            RegService.GetUniversities()
-                .then(function (response) {
-                if (response.success) {
-                    vm.universities = response.data.Universidades;
-                } 
-            },function(response){
-                console.log("supongo")
-            });
-        }
-
         function loadCountries(){
             RegService.GetCountries()
                 .then(function (response) {
                 if (response.success) {
-                    vm.countries = response.data.Country;
+                    vm.countries = response.data.countries;
                 } 
             },function(response){
                 console.log("supongo2")
+            });
+        }
+
+        function loadUniversities(){
+            RegService.GetUniversities()
+                .then(function (response) {
+                if (response.success) {
+                    vm.universities = response.data.universities;
+                } 
+            },function(response){
+                console.log("supongo3")
             });
         }
 

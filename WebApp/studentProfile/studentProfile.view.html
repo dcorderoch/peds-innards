@@ -74,30 +74,17 @@
                     <h3>Cursos activos</h3>
                     <hr class="hr2">
 
-                    <div ng-repeat="activeCourse in vm.activeCourses">
-                        
+                    <div ng-repeat="activeCourse in vm.ListaCursosActivos">
+                        <p>{{activeCourse}}</p>
+
                         <div class="panel panel-default panelProfile">
-                            <div class="panel-body"><strong>Nombre del curso: {{activeCourse.NombreCurso}}</strong><p>
-                                Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button                    ng-click="vm.goArea()"  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
+                            <div class="panel-body"><strong>Nombre del curso: {{activeCourse.nombre}}</strong><p>
+                                <button  ng-click="goCourse(activeCourse.id,activeCourse.status)"  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
                         </div>               
                     </div>
 
 
 
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
-                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button ng-click="vm.goArea2()" type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
-                    </div>
-
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
-                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
-                    </div>
-
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
-                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
-                    </div>
 
                     <br>     
                     <h3>Cursos terminados</h3>
@@ -108,20 +95,7 @@
                             Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
                     </div>
 
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
-                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
-                    </div>
 
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
-                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
-                    </div>
-
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body"><strong>Nombre del curso: {{nombreCurso}}</strong><p>
-                            Descripción, tecnologías, nombre del profesor, evaluación,  número de grupo.<button  type="button" class="btn btn-default uniCourse">Abrir curso</button></p> </div>
-                    </div>
                 </div>
             </div>
         </div>
