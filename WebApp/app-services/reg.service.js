@@ -11,6 +11,7 @@
 
         service.GetTechnologies = GetTechnologies;
         service.GetUniversities = GetUniversities;
+        service.GetCountries = GetCountries;
 
         return service;
         /**
@@ -20,15 +21,23 @@
         function GetTechnologies(regData) {
             var response=$http({
                 method:"get",
-                url:$rootScope.url+"api/medicalrecords/viewallbypatient"
+                url:$rootScope.url+"Api/Technology/GetAll"
             });
             return response;    
         }
-        
+
+        function GetCountries(regData) {
+            var response=$http({
+                method:"get",
+                url:$rootScope.url+"Api/Country/GetAll"
+            });
+            return response;    
+        }
+
         function GetUniversities(regData) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"api/medicalrecords/viewallbypatient"
+                url:$rootScope.url+"Api/University/GetAll"
             });
             return response;    
         }

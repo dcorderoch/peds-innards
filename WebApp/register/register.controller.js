@@ -12,6 +12,8 @@
         vm.register=register;
         vm.repositories=['Google Drive', 'Dropbox'];
         vm.technologies=['Java', 'C++'];
+        vm.universities=['Tecnológico de Costa Rica', 'Oxford University', 'Universidad Autónoma de Colombia']
+        vm.countries=['Costa Rica', 'Nepal'];
 
         vm.languages = ['Español', 'Inglés', 'Francés', 'Portugués'];
         vm.regData={};
@@ -22,6 +24,8 @@
         initController();
         function initController(){
             loadTechnologies();
+            loadUniversities();
+            loadCountries();
         }
         function loadTechnologies(){
             RegService.GetTechnologies()
@@ -30,7 +34,29 @@
                     vm.technologies = response.data.Technologies;
                 } 
             },function(response){
-                console.log("supongo")
+                console.log("supongo1")
+            });
+        }
+
+        function loadCountries(){
+            RegService.GetCountries()
+                .then(function (response) {
+                if (response.success) {
+                    vm.countries = response.data.Country;
+                } 
+            },function(response){
+                console.log("supongo2")
+            });
+        }
+
+        function loadUniversities(){
+            RegService.GetUniversities()
+                .then(function (response) {
+                if (response.success) {
+                    vm.universities = response.data.Universidades;
+                } 
+            },function(response){
+                console.log("supongo3")
             });
         }
 

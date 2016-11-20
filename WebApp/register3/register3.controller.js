@@ -5,13 +5,30 @@
         .module('app')
         .controller('Register3Controller', Register3Controller);
 
-    Register3Controller.$inject = ['$location',  'FlashService', 'UserService'];
-    function Register3Controller($location,  FlashService, UserService) {
+    Register3Controller.$inject = ['$location',  'FlashService', 'UserService', 'RegService'];
+    function Register3Controller($location,  FlashService, UserService, RegService) {
         var vm = this;
 
         vm.register=register;
         vm.repositories=['Google Drive', 'Dropbox'];
+        vm.countries=['Costa Rica', 'Nepal'];
         vm.regData={};
+        initController();
+
+        function initController(){
+            loadCountries();
+        }
+
+        function loadCountries(){
+            RegService.GetCountries()
+                .then(function (response) {
+                if (response.success) {
+                    vm.countries = response.data.Country;
+                } 
+            },function(response){
+                console.log("supongo2")
+            });
+        }
 
         function register() {
             console.log("entro");

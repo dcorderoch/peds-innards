@@ -12,12 +12,16 @@
         vm.register=register;
         vm.repositories=['Google Drive', 'Dropbox'];
         vm.universities=['Tecnológico de Costa Rica', 'Oxford University', 'Universidad Autónoma de Colombia']
+        vm.countries=['Costa Rica', 'Nepal'];
+
         vm.regData={};
 
         initController();
         function initController(){
             loadUniversities();
+            loadCountries();
         }
+
         function loadUniversities(){
             RegService.GetUniversities()
                 .then(function (response) {
@@ -26,6 +30,17 @@
                 } 
             },function(response){
                 console.log("supongo")
+            });
+        }
+
+        function loadCountries(){
+            RegService.GetCountries()
+                .then(function (response) {
+                if (response.success) {
+                    vm.countries = response.data.Country;
+                } 
+            },function(response){
+                console.log("supongo2")
             });
         }
 
