@@ -1,8 +1,7 @@
 
 <div  class="upperBar" >
-    <object type="image/svg+xml"  data="assets/logoSVG.svg">
-        Your browser does not support SVG
-    </object>
+    <img  class="imageBar" src="assets/MyLearn-Logo.png" alt="Logo MyLearn" >
+    <h1 class="header">MyLearn</h1>
 
     <div class="elementsBar"><a href="#login"><span  class="spanIcons glyphicon glyphicon-log-out"></span> </a></div>
     <div class="elementsBar"><a href="#professorprofile"><span class="spanIcons glyphicon glyphicon-home"></span></a></div>
@@ -48,8 +47,9 @@
                     <hr class="hr2">
 
                     <div >
-                        <input ng-model="courseName" class="newCourseSet" type=text placeholder=" Nombre curso" name="name">
-                        <input ng-model="groupName" class="newCourseSet" type=number placeholder=" Grupo" name="group">
+                        <input ng-model="vm.courseName" class="newCourseSet" type=text placeholder=" Nombre curso" name="name">
+                        <input ng-model="vm.groupName" class="newCourseSet" type=number placeholder=" Grupo" name="group">
+                        <input ng-model="vm.description" class="newCourseSet" type=text placeholder=" Descripción" name="group">
                     </div>
 
                     <h3>Definir evaluación</h3>

@@ -22,45 +22,60 @@
 
         function login(){
 
-            $rootScope.userData ={
-                "NombreContacto":"Nicolas",
-                "ApellidoContacto":"Jimenez",
-                "Ubicacion":"Tres Ríos",
-                "Email":"nicolas.j2007@gmail.com",
-                "Telefono":"87715959",
-                "Password":"crave",
-                "TipoRepositorioArchivos":"https://www.google.com/",
-                "Foto":"algo",
-                "Universidad":"Tecnológico de Costa Rica",
-                "HorarioAtencion":"8:00",
-                "Fecha_Registro":"05/08/2014"
-            };
-
-            //            $rootScope.userData= {"NombreContacto":"Nicolas",
+            //            $rootScope.userData ={"NombreContacto":"Nicolas",
             //                                  "ApellidoContacto":"Jimenez",
             //                                  "Ubicacion":"Tres Ríos",
             //                                  "Email":"nicolas.j2007@gmail.com",
             //                                  "Telefono":"87715959",
             //                                  "Fecha_Registro":"05/08/2014",
-            //                                  "Password":"crave",
-            //                                  "TipoRepositorioArchivos":"Dropbox",
-            //                                  "Foto":"bla ba",
-            //                                  "Carnet":"201258421",
-            //                                  "Universidad":"Tecnológico de Costa Rica",
-            //                                  "EnlaceRepositorioCodigo":"https://www.google.com/",
-            //                                  "EnlaceACurriculum":"https://www.google.com/",
-            //                                  "PromedioProyectos":"98",
-            //                                  "PromedioCursos":"99",
-            //                                  "Idiomas":["Español","Inglés"],
-            //                                  "CursosAprobados":"90",
-            //                                  "CursosReprobados":"4",
-            //                                  "ProyectosExitisos":"90",
-            //                                  "ProyectosFallidos":"90",
-            //                                  "Tecnologias":["Java","C++"]};
+            //                                  "Password":"algo",
+            //                                  "TipoRepositorioArchivos":"algo",
+            //                                  "Foto":"algo",
+            //                                  "IdEmpleador":"algo",
+            //                                  "NombreEmpresarial":"algo",
+            //                                  "EnlaceSitioWeb":"algo",
+            //                                  "ListaProyectosTerminados":["algo","algo"],
+            //                                  "ListaProyectosActivos":["algo","algo"]};
+
+            //            $rootScope.userData ={
+            //                "NombreContacto":"Nicolas",
+            //                "ApellidoContacto":"Jimenez",
+            //                "Ubicacion":"Tres Ríos",
+            //                "Email":"nicolas.j2007@gmail.com",
+            //                "Telefono":"87715959",
+            //                "Password":"crave",
+            //                "TipoRepositorioArchivos":"https://www.google.com/",
+            //                "Foto":"algo",
+            //                "Universidad":"Tecnológico de Costa Rica",
+            //                "HorarioAtencion":"8:00",
+            //                "Fecha_Registro":"05/08/2014"
+            //            };
+
+            $rootScope.userData= {"NombreContacto":"Nicolas",
+                                  "ApellidoContacto":"Jimenez",
+                                  "Ubicacion":"Tres Ríos",
+                                  "Email":"nicolas.j2007@gmail.com",
+                                  "Telefono":"87715959",
+                                  "Fecha_Registro":"05/08/2014",
+                                  "Password":"crave",
+                                  "TipoRepositorioArchivos":"Dropbox",
+                                  "Foto":"bla ba",
+                                  "Carnet":"201258421",
+                                  "Universidad":"Tecnológico de Costa Rica",
+                                  "EnlaceRepositorioCodigo":"https://www.google.com/",
+                                  "EnlaceACurriculum":"https://www.google.com/",
+                                  "PromedioProyectos":"86",
+                                  "PromedioCursos":"79",
+                                  "Idiomas":["Español","Inglés"],
+                                  "CursosAprobados":"90",
+                                  "CursosReprobados":"4",
+                                  "ProyectosExitisos":"90",
+                                  "ProyectosFallidos":"90",
+                                  "Tecnologias":["Java","C++"]};
 
             AuthenticationService.SetCredentials( $rootScope.userData.Email, $rootScope.userData.Password, $rootScope.userData);
             console.log($rootScope.globals);
-            $location.path('/professorprofile');    
+            $location.path('/studentprofile');    
             return;
 
             console.log(vm.loginData);

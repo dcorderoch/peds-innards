@@ -1,5 +1,7 @@
 <div  class="upperBar" >
-    <img  class="imageBar" src="assets/MyLearnLogo.jpg" alt="Logo MyLearn" >
+    <img  class="imageBar" src="assets/MyLearn-Logo.png" alt="Logo MyLearn" >
+    <h1 class="header">MyLearn</h1>
+
     <div class="textBarRight" > Unete </div>
 </div>
 
@@ -16,7 +18,7 @@
                     <li><a href="#/register2">Como profesor</a></li>
                     <li class="active" ><a href="#/register3">Como empleador</a></li>
                 </ul> 
-<div class= "well"> 
+                <div class= "well"> 
                     <form name="form" ng-submit="vm.register()" role="form">
 
                         <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
@@ -71,7 +73,7 @@
                             <input placeholder ="Enlace sitio web" type="text" name="link" class="form-control" ng-model="vm.regData.EnlaceSitioWeb" required />
                             <span ng-show="form.web.$dirty && form.web.$error.required" class="help-block">La página  web es requerida</span>
                         </div>
-                
+
                         <div class="form-actions">
                             <button  type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-default">Registrarse</button>
                             <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />

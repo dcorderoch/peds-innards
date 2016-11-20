@@ -58,7 +58,7 @@ p{
 
 
 span{
-/*    font-size:0.8em;*/
+    /*    font-size:0.8em;*/
 }
 
 hr {
@@ -103,7 +103,7 @@ hr {
 .upperBar{
     background-color: #0C3C5A;
     height: 80px;
-
+    display: block;
 }
 
 hr {
@@ -445,4 +445,9 @@ strong {
     font-family: "Helvetica",  monospace;   
     color:black;
     width:100%;
+}
+
+.header {
+    float:left; 
+    display:inline
 }
