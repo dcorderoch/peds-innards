@@ -1,4 +1,6 @@
-﻿namespace MyLearn.Models
+﻿using System.Collections.Generic;
+
+namespace MyLearn.Models
 {
     public class InfoProfesor
     {

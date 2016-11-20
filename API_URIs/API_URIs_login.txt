@@ -42,10 +42,10 @@ and then Receives
 	"ProyectosExitosos":[0-9],
 	"ProyectosFallidos":[0-9],
 	"Tecnologias":["algo","algo"],
-	"ListaCursosTerminados":["algo","algo"],
-	"ListaCursosActivos":["algo","algo"],
-	"ListaProyectosTerminados":["algo","algo"],
-	"ListaProyectosActivos":["algo","algo"]
+	"ListaCursosTerminados":["id","id"],
+	"ListaCursosActivos":["id","id"],
+	"ListaProyectosTerminados":["id","id"],
+	"ListaProyectosActivos":["id","id"]
 }
 
 ################################################# LOGIN PROFESSOR

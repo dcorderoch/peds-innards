@@ -1,0 +1,11 @@
+################################################# Get Notificaciones
+https://host/Api/Notifications/GetByStudent
+Web Application sends
+{
+    "Carnet":"algo"
+}
+
+and then Receives
+{
+	"Notifications":["id","id"]
+}
