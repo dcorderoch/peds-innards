@@ -14,7 +14,8 @@
             
             console.log($rootScope.currentCourseData);
             vm.courseData = $rootScope.currentCourseData;
-
+//            vm.gradeWidth = {'width': vm.courseData.grade+'%'};  
+//            vm.courseData.grade = vm.courseData;
         }
     }
 

@@ -83,7 +83,7 @@ hr {
 }
 .panel-default{
     border-style: solid;
-    border-width: 1px;
+/*    border-width: 1px;*/
     border-color: #338DBC;
 }
 .panel-default .insidePanel .panel-body{
@@ -263,6 +263,7 @@ strong {
 
 .panelProfile {
     width:75%;
+    border-width: 3px;
 }
 
 .tab-content {
