@@ -74,7 +74,7 @@
                                   "ProyectosFallidos":"90",
                                   "Tecnologias":["Java","C++"],
                                   FinishedCoursesList: [{courseid:"1", course:"curse1"}],
-                                  ActiveCoursesList: [{courseid:"1", course:"curse1", accepted:"0"}],
+                                  ActiveCoursesList: [{courseid:"1", course:"curse1", accepted:"0", CourseDescription:"algo"}],
                                   FinishedProjectsList:[{projectid:"1", project:"proy"}],
                                   ActiveProjectsList:[{projectid:"1", project:"proy2"}]
                                  };
