@@ -47,6 +47,7 @@
             vm.FinishedProjectsList = $rootScope.userData.FinishedProjectsList;
             vm.ListaProyectosActivos = $rootScope.userData.ActiveProjectsList;
             console.log(vm);
+            $rootScope.currentCourseData={};
         }
 
         function goCourseFinished(id){

@@ -5,10 +5,16 @@
         .module('app')
         .controller('AuctionController', AuctionController);
 
-    AuctionController.$inject = ['$location',  'FlashService'];
-    function AuctionController($location,  FlashService) {
+    AuctionController.$inject = ['$location',  'FlashService', '$rootScope'];
+    function AuctionController($location,  FlashService, $rootScope) {
         var vm = this;
+        
+        initController();
 
+        function initController(){
+
+            $rootScope.currentCourseData={};
+        }
 
     }
 

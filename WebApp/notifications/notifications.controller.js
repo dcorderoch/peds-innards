@@ -13,12 +13,13 @@
         initController();
 
         function initController(){
-            
+
             vm.notifications.push("algo perdido");
             vm.notifications.push("algo ganado");
-            
+
             getNotifications();
             console.log(vm.notifications);
+            $rootScope.currentCourseData={};
         }
 
         var Carnet = $rootScope.userData.Carnet;

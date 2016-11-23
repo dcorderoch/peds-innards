@@ -47,27 +47,29 @@
                     <hr class="hr2">
 
                     <div >
-                        <input ng-model="vm.courseName" class="newCourseSet" type=text placeholder=" Nombre curso" name="name">
-                        <input ng-model="vm.groupName" class="newCourseSet" type=number placeholder=" Grupo" name="group">
-                        <input ng-model="vm.description" class="newCourseSet" type=text placeholder=" Descripción" name="group">
+                        <input ng-model="vm.CourseName" class="newCourseSet" type=text placeholder=" Nombre curso" name="name">
+                        <input ng-model="vm.Group" class="newCourseSet" type=number placeholder=" Grupo" name="group">
+                        <input ng-model="vm.MinGrade" class="newCourseSet" type=text placeholder=" Nota mínima" name="minGrade">
+                        <input ng-model="vm.CourseDescription" class="newCourseSet" type=text placeholder=" Descripción" name="group">
                     </div>
 
                     <h3>Definir evaluación</h3>
                     <hr class="hr2">
 
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body"><strong>Evaluación: {{vm.nombreUniversidad}}, 
-                            Porcentaje: {{vm.percentage}}</strong>
+                    <div ng-repeat="evaluation in vm.evaluations"> 
+                        <div class="panel panel-default panelProfile">
+                            <div class="panel-body"><strong>Evaluación: {{evaluation.nombreUniversidad}}, 
+                                Porcentaje: {{evaluation.porcentaje}}</strong>
+                            </div>
                         </div>
                     </div>
-
 
                     <hr class="hr2">
 
                     <div >
-                        <input  class="newCourseAdd" type=text placeholder="Nueva evaluación" name="newCourse">
-                        <input  class="newCourseAdd2" type=number placeholder="Porcentaje"  name="percentaje">
-                        <button  class="btn btn-success" >Agregar</button>
+                        <input ng-model="nombreEval" class="newCourseAdd" type=text placeholder="Nueva evaluación" name="newCourse">
+                        <input ng-model="porcentaje" class="newCourseAdd2" type=number placeholder="Porcentaje"  name="percentaje">
+                        <button ng-click="vm.newEvaluation(nombreEval,porcentaje)" class="btn btn-success" >Agregar</button>
                     </div> 
 
                     <hr class="hr2">

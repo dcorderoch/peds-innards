@@ -5,10 +5,13 @@
         .module('app')
         .controller('NewCourseController', NewCourseController);
 
-    NewCourseController.$inject = ['$location',  'FlashService', '$rootScope'];
-    function NewCourseController($location,  FlashService, $rootScope) {
+    NewCourseController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService' ];
+    function NewCourseController($location,  FlashService, $rootScope, CourseService) {
         var vm = this;
+
         initController();
+        vm.newEvaluation = newEvaluation;
+        vm.createCourse = createCourse;
 
         function initController(){
 
@@ -25,7 +28,30 @@
 
             vm.Universidad = $rootScope.userData.Universidad;
             vm.HorarioAtencion = $rootScope.userData.HorarioAtencion;
+            $rootScope.currentCourseData={};
+            vm.evaluations=[];
 
+        }
+
+        function newEvaluation(nombreEval,pocentaje){
+
+            vm.evaluations.push({nombreUniversidad:nombreEval,porcentaje:pocentaje});
+        }
+
+        function createCourse(){
+
+            var enviar = {CourseName:vm.CourseName, CourseDescription: vm.CourseDescription,
+                          Group: vm.Group, MinGrade: vm.MinGrade, ProfessorId: "id", UniversityId: "123", Evaluations: vm.evaluations}
+
+            CourseService.CreateCourse()
+                .then( function(response){
+                if (reponse.sucess){
+                    FlashService.Success("Curso creado");
+                }
+            }, function(response){
+                FlashService.Error("No se pudo crear el curso");
+                console.log(enviar);
+            })
         }
     }
 

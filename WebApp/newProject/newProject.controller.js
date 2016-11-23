@@ -26,6 +26,7 @@
 
             vm.NombreEmpresarial = $rootScope.userData.NombreEmpresarial;
             vm.EnlaceSitioWeb = $rootScope.userData.EnlaceSitioWeb;
+            $rootScope.currentCourseData={};
 
         }
     }

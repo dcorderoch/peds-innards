@@ -30,6 +30,9 @@
             vm.Universidad = $rootScope.userData.Universidad;
             vm.HorarioAtencion = $rootScope.userData.HorarioAtencion;
 
+            vm.FinishedCoursesList = $rootScope.userData.FinishedCoursesList;
+            vm.ActiveCoursesList = $rootScope.userData.ActiveCoursesList;
+//            vm.ActiveCoursesList.push({"course":"curso1","courseid": "123"})
         }
 
         function goCourseFinished(id){
@@ -38,7 +41,7 @@
                 .then(function(response){
 
                 $rootScope.currentCourseData = response.data;
-                $location.path('/sharedArea');    
+                $location.path('/courseoverview');    
 
             }, function(response){
                 console.log("no sirvio")
@@ -50,7 +53,7 @@
                 .then(function(response){
 
                 $rootScope.currentCourseData = response.data;
-                $location.path('/sharedareaprofessor');
+                $location.path('/courseoverview');
 
 
             }, function(response){

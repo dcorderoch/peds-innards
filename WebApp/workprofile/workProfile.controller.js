@@ -47,37 +47,39 @@
             vm.FinishedProjectsList = $rootScope.userData.FinishedProjectsList;
             vm.ActiveProjectsList = $rootScope.userData.ActiveProjectsList;
             console.log(vm)
+            $rootScope.currentCourseData={};
+
         }
 
 
         function goWorkFinished(id){
 
-//            CourseService.GetCourseAsStudent(id)
-//                .then(function(response){
-//
-//                $rootScope.currentCourseData = response.data;
-//                $location.path('/sharedArea');    
-//
-//            }, function(response){
-//                console.log("no sirvio")
-//            });
+            //            CourseService.GetCourseAsStudent(id)
+            //                .then(function(response){
+            //
+            //                $rootScope.currentCourseData = response.data;
+            //                $location.path('/sharedArea');    
+            //
+            //            }, function(response){
+            //                console.log("no sirvio")
+            //            });
         }
         function goWorkActive(id){
 
-//            CourseService.GetCourseAsStudent(id)
-//                .then(function(response){
-//
-//                $rootScope.currentCourseData = response.data;
-//                if(status===0){
-//                    $location.path('/coursearea');  
-//                }
-//                else{
-//                    $location.path('/sharedarea');
-//                }
-//
-//            }, function(response){
-//                console.log("no sirvio")
-//            });
+            //            CourseService.GetCourseAsStudent(id)
+            //                .then(function(response){
+            //
+            //                $rootScope.currentCourseData = response.data;
+            //                if(status===0){
+            //                    $location.path('/coursearea');  
+            //                }
+            //                else{
+            //                    $location.path('/sharedarea');
+            //                }
+            //
+            //            }, function(response){
+            //                console.log("no sirvio")
+            //            });
         }
     }
 })();

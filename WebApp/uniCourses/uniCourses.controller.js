@@ -9,7 +9,7 @@
     function UniCoursesController($location,  FlashService, $rootScope) {
         var vm = this;
 
-   initController();
+        initController();
 
         function initController(){
 
@@ -37,7 +37,9 @@
             vm.Tecnologias = $rootScope.userData.Tecnologias;
 
             vm.courseAverageWidth = {'width': vm.PromedioCursos+'%'};  
-            vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};          
+            vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};      
+            $rootScope.currentCourseData={};
+
         }
     }
 
