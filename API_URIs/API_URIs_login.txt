@@ -46,22 +46,26 @@ and then Receives
     "FinishedCoursesList":[
                               {
                                   "course":"algo",
-		                          "courseid": "id"
+		                          "courseid": "id",
+                                  "CourseDescription":"algo"
 		                      },
 		                      {
                                   "course":"algo",
-		                          "courseid": "id"
+		                          "courseid": "id",
+                                  "CourseDescription":"algo"
 		                      }
 		                  ],
     "ActiveCoursesList":[
                             {
                                 "course":"algo",
 		                        "courseid": "id",
+                                "CourseDescription":"algo",
 		                        "accepted":(0|1)
 		                    },
 		                    {
                                 "course":"algo",
 		                        "courseid": "id",
+                                "CourseDescription":"algo",
 		                        "accepted":(0|1)
 		                    }
 		                ],
@@ -113,21 +117,25 @@ and then Receives
     "FinishedCoursesList":[
                               {
                                   "course":"algo",
-		                          "courseid": "id"
+		                          "courseid": "id",
+                                  "CourseDescription":"algo"
 		                      },
 		                      {
                                   "course":"algo",
-		                          "courseid": "id"
+		                          "courseid": "id",
+                                  "CourseDescription":"algo"
 		                      }
 		                  ],
     "ActiveCoursesList":[
                             {
                                 "course":"algo",
-		                        "courseid": "id"
+		                        "courseid": "id",
+                                  "CourseDescription":"algo"
 		                    },
 		                    {
                                 "course":"algo",
-		                        "courseid": "id"
+		                        "courseid": "id",
+                                  "CourseDescription":"algo"
 		                    }
 		                ]
 }

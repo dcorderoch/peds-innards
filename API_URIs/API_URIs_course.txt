@@ -25,6 +25,8 @@ Web Application sends
 {
     "Carnet":"algo",
     "ProfessorId":"algo",
+    "UniversityId":"algo",
+    "Group":"algo",
     "Courseid": "id"
 }
 
@@ -49,45 +51,51 @@ and then Receives
                    {
                        "CommentId":"algo",
                        "ParentId":"algo",
+                       "Date":"fecha en ISO8601",
                        "Comment":"algo",
                        "Nested":[
                                     {
-	                                    "CommentId":"algo",
-				                        "ParentId":"algo",
-				                        "Comment":"algo"
+                                        "CommentId":"algo",
+                                        "ParentId":"algo",
+                                        "Date":"fecha en ISO8601",
+                                        "Comment":"algo"
                                     },
                                     {
-	                                    "CommentId":"algo",
-				                        "ParentId":"algo",
-				                        "Comment":"algo"
+                                        "CommentId":"algo",
+                                        "ParentId":"algo",
+                                        "Date":"fecha en ISO8601",
+                                        "Comment":"algo"
                                     }
-                                ]
+                            ]
                    },
                    {
                        "CommentId":"algo",
                        "ParentId":"algo",
+                       "Date":"fecha en ISO8601",
                        "Comment":"algo",
                        "Nested":[
                                     {
-	                                    "CommentId":"algo",
-				                        "ParentId":"algo",
-				                        "Comment":"algo"
+                                        "CommentId":"algo",
+                                        "ParentId":"algo",
+                                        "Date":"fecha en ISO8601",
+                                        "Comment":"algo"
                                     },
                                     {
-	                                    "CommentId":"algo",
-				                        "ParentId":"algo",
-				                        "Comment":"algo"
+                                        "CommentId":"algo",
+                                        "ParentId":"algo",
+                                        "Date":"fecha en ISO8601",
+                                        "Comment":"algo"
                                     }
-                                ]
+                            ]
                    }
-               ]
+            ]
 }
 
 ################################################# GET A COURSE
 https://host/Api/Course/GetCourseAsStudent
 Web Application sends
 {
-    "CourseId":"id"
+    "Courseid": "id"
 }
 
 and then Receives

@@ -1,5 +1,5 @@
-################################################# Get a Project by StudentId as a Professor
-https://host/Api/Comment/GetAllByCourseId
+################################################# Get a Project's Comments
+https://host/Api/Comment/GetAll
 Web Application sends
 {
     "Carnet":"algo",
@@ -9,46 +9,52 @@ Web Application sends
 
 and then Receives
 {
-	"Comments":[
+    "Comments":[
                    {
                        "CommentId":"algo",
                        "ParentId":"algo",
+                       "Date":"fecha en ISO8601",
                        "Comment":"algo",
                        "Nested":[
                                     {
-	                                    "CommentId":"algo",
-				                        "ParentId":"algo",
-				                        "Comment":"algo"
+                                        "CommentId":"algo",
+                                        "ParentId":"algo",
+                                        "Date":"fecha en ISO8601",
+                                        "Comment":"algo"
                                     },
                                     {
-	                                    "CommentId":"algo",
-				                        "ParentId":"algo",
-				                        "Comment":"algo"
+                                        "CommentId":"algo",
+                                        "ParentId":"algo",
+                                        "Date":"fecha en ISO8601",
+                                        "Comment":"algo"
                                     }
-                                ]
+                            ]
                    },
                    {
                        "CommentId":"algo",
                        "ParentId":"algo",
+                       "Date":"fecha en ISO8601",
                        "Comment":"algo",
                        "Nested":[
                                     {
-	                                    "CommentId":"algo",
-				                        "ParentId":"algo",
-				                        "Comment":"algo"
+                                        "CommentId":"algo",
+                                        "ParentId":"algo",
+                                        "Date":"fecha en ISO8601",
+                                        "Comment":"algo"
                                     },
                                     {
-	                                    "CommentId":"algo",
-				                        "ParentId":"algo",
-				                        "Comment":"algo"
+                                        "CommentId":"algo",
+                                        "ParentId":"algo",
+                                        "Date":"fecha en ISO8601",
+                                        "Comment":"algo"
                                     }
-                                ]
+                            ]
                    }
-               ]
+            ]
 }
 
 ################################################# Get a Project by StudentId as a Professor
-https://host/Api/Comment/GetAllByCourseId
+https://host/Api/Comment/Create
 Web Application sends
 {
     "Carnet":"algo",
