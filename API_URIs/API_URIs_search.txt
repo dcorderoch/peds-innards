@@ -1,0 +1,41 @@
+################################################# Get up to 1k Top Students
+Web Application "queries"
+https://host/Api/Studen/GetTop
+Web Application sends
+{
+    "NumberOfTopStudents":[0-9]+
+}
+
+and then Receives
+{
+    "Students":[
+                   {
+                       "Name":"algo",
+                       "PhoneNum":"algo",
+                       "Email":"algo"
+                   },
+                   {
+                       "Name":"algo",
+                       "PhoneNum":"algo",
+                       "Email":"algo"
+                   }
+               ]
+}
+
+################################################# Get up to 1k Top Students, selective
+Web Application "queries"
+https://host/Api/Studen/GetTopSelective
+Web Application sends
+{
+    "NumberOfTopStudents":[0-9]+,
+    "CourseAvgWeight":[0-9]+,
+    "CourseSuccessRateWeight":[0-9]+,
+    "ProjectAvgWeight":[0-9]+,
+    "ProjectSuccessRateWeight":[0-9]+
+
+}
+
+and then Receives
+{
+    "Notifications":["algo","algo"]
+}
