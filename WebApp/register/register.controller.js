@@ -74,7 +74,7 @@
 
         // toggle selection for a given fruit by name
         vm.toggleSelectionLanguage = function toggleSelectionTech(language) {
-            var idx = vm.regData.Idiomas.indexOf(language);
+            var idx = vm.regData.Idiomas.indexOf(language.languageid);
 
             // is currently selected
             if (idx > -1) {
@@ -83,11 +83,11 @@
 
             // is newly selected
             else {
-                vm.regData.Idiomas.push(language.languageid);
+                    vm.regData.Idiomas.push(language.languageid);
             }
         };
         vm.toggleSelectionTech = function toggleSelectionTech(technology) {
-            var idx = vm.regData.Tecnologias.indexOf(technology);
+            var idx = vm.regData.Tecnologias.indexOf(technology.technologyid);
 
             // is currently selected
             if (idx > -1) {
@@ -123,5 +123,7 @@
                 vm.dataLoading = false;
             });
         }
+
+
     }
 })();
