@@ -56,6 +56,7 @@
                 .then(function(response){
 
                 $rootScope.currentCourseData = response.data;
+                $rootScope.currentCourseData.status = false;
                 $location.path('/sharedArea');    
 
             }, function(response){
@@ -66,7 +67,7 @@
 
             CourseService.GetCourseAsStudent(id)
                 .then(function(response){
-                
+
                 $rootScope.currentCourseData = response.data;
                 if(status===0){
                     $location.path('/coursearea');  

@@ -73,10 +73,10 @@
                                   "ProyectosExitisos":"90",
                                   "ProyectosFallidos":"90",
                                   "Tecnologias":["Java","C++"],
-                                  FinishedCoursesList: [{courseid:"1", course:"curse1"}],
-                                  ActiveCoursesList: [{courseid:"1", course:"curse1", accepted:"0", CourseDescription:"algo"}],
-                                  FinishedProjectsList:[{projectid:"1", project:"proy"}],
-                                  ActiveProjectsList:[{projectid:"1", project:"proy2"}]
+                                  FinishedCoursesList: [{courseId:"1", course:"curse1", CourseDescription:"algo"}],
+                                  ActiveCoursesList: [{courseId:"1", course:"curse1", accepted:"0", CourseDescription:"algo"}],
+                                  FinishedProjectsList:[{projectId:"1", project:"proy"}],
+                                  ActiveProjectsList:[{projectId:"1", project:"proy2"}]
                                  };
 
             AuthenticationService.SetCredentials( $rootScope.userData.Email, $rootScope.userData.Password, $rootScope.userData);

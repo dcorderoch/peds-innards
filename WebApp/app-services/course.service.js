@@ -12,6 +12,7 @@
         service.GetCourseAsStudent = GetCourseAsStudent;
         service.GetCourseAsProfessor = GetCourseAsProfessor;
         service.CreateCourse = CreateCourse;
+        service.GetComments = GetComments;
 
         return service;
 
@@ -23,7 +24,7 @@
             });
             return response;    
         }
-        
+
         function GetCourseAsProfessor(id) {
             var response=$http({
                 method:"post",
@@ -32,7 +33,7 @@
             });
             return response;    
         }
-        
+
         function CreateCourse(data) {
             var response=$http({
                 method:"post",
@@ -42,6 +43,16 @@
             return response;    
         }
 
+        function GetComments(sharedAreaData){
+            var response = $http({
+                method:"post",
+                url: $rootScope.url+"/Comment/GetAll",
+                data: sharedAreaData
+            });
+            return response 
+        }
     }
 
-})();
+}
+
+ })();
