@@ -32,6 +32,7 @@ and then Receives
     "Foto":"algo",
     "Carnet":"algo",
     "Universidad":"algo",
+    "universityid": "id",
     "EnlaceRepositorioCodigo":"algo",
     "EnlaceACurriculum":"algo",
     "PromedioProyectos":[0-9],
@@ -107,6 +108,7 @@ and then Receives
     "Foto":"algo",
     "IdProfesor":"algo",
     "Universidad":"algo",
+    "universityid": "id",
     "HorarioAtencion":"algo",
     "FinishedCoursesList":[
                               {

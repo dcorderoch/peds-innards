@@ -1,0 +1,67 @@
+################################################# Get a Project by StudentId as a Professor
+https://host/Api/Comment/GetAllByCourseId
+Web Application sends
+{
+    "Carnet":"algo",
+    "ProfessorId":"algo",
+    "Courseid": "id"
+}
+
+and then Receives
+{
+	"Comments":[
+                   {
+                       "CommentId":"algo",
+                       "ParentId":"algo",
+                       "Comment":"algo",
+                       "Nested":[
+                                    {
+	                                    "CommentId":"algo",
+				                        "ParentId":"algo",
+				                        "Comment":"algo"
+                                    },
+                                    {
+	                                    "CommentId":"algo",
+				                        "ParentId":"algo",
+				                        "Comment":"algo"
+                                    }
+                                ]
+                   },
+                   {
+                       "CommentId":"algo",
+                       "ParentId":"algo",
+                       "Comment":"algo",
+                       "Nested":[
+                                    {
+	                                    "CommentId":"algo",
+				                        "ParentId":"algo",
+				                        "Comment":"algo"
+                                    },
+                                    {
+	                                    "CommentId":"algo",
+				                        "ParentId":"algo",
+				                        "Comment":"algo"
+                                    }
+                                ]
+                   }
+               ]
+}
+
+################################################# Get a Project by StudentId as a Professor
+https://host/Api/Comment/GetAllByCourseId
+Web Application sends
+{
+    "Carnet":"algo",
+    "ProfessorId":"algo",
+    "Courseid": "id",
+    "Comment":"algo",
+    "ParentId":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito
