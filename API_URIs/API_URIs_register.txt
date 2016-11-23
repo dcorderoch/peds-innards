@@ -43,46 +43,46 @@ and then Receives
     "Tecnologias":["algo","algo"],
     "FinishedCoursesList":[
                               {
-                                  "course":"algo",
-		                          "courseid": "id"
+                                  "Course":"algo",
+		                          "CourseId": "id"
 		                      },
 		                      {
-                                  "course":"algo",
-		                          "courseid": "id"
-		                      }
+                                  "Course":"algo",
+                                  "CourseId": "id"
+                              }
 		                  ],
     "ActiveCoursesList":[
                             {
-                                "course":"algo",
-		                        "courseid": "id",
-		                        "accepted":(0|1)
+                                "Course":"algo",
+                                "CourseId": "id",
+		                        "Accepted":(0|1)
 		                    },
 		                    {
-                                "course":"algo",
-		                        "courseid": "id",
-		                        "accepted":(0|1)
-		                    }
+                                "Course":"algo",
+                                "CourseId": "id",
+                                "Accepted":(0|1)
+                            }
 		                ],
     "FinishedProjectsList":[
                               {
-                                  "project":"algo",
-		                          "projectid": "id"
+                                  "Project":"algo",
+		                          "ProjectId": "id"
 		                      },
 		                      {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      }
+                                  "Project":"algo",
+                                  "ProjectId": "id"
+                              }
 		                  ],
     "ActiveProjectsList":[
-                              {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      },
-		                      {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      }
-		                  ]
+                             {
+                                 "Project":"algo",
+                                 "ProjectId": "id"
+                             },
+		                     {
+                                 "Project":"algo",
+                                 "ProjectId": "id"
+                             }
+		                 ]
 }
 
 ################################################# REGISTER PROFESSOR
@@ -117,24 +117,24 @@ and then Receives
     "HorarioAtencion":"algo",
     "FinishedCoursesList":[
                               {
-                                  "course":"algo",
-		                          "courseid": "id"
-		                      },
-		                      {
-                                  "course":"algo",
-		                          "courseid": "id"
-		                      }
-		                  ],
+                                  "Course":"algo",
+                                  "CourseId": "id"
+                              },
+                              {
+                                  "Course":"algo",
+                                  "CourseId": "id"
+                              }
+                          ],
     "ActiveCoursesList":[
                             {
-                                "course":"algo",
-		                        "courseid": "id"
-		                    },
-		                    {
-                                "course":"algo",
-		                        "courseid": "id"
-		                    }
-		                ]
+                                "Course":"algo",
+                                "CourseId": "id"
+                            },
+                            {
+                                "Course":"algo",
+                                "CourseId": "id"
+                            }
+                        ]
 }
 
 ################################################# REGISTER EMPLOYER
@@ -168,23 +168,23 @@ and then Receives
     "NombreEmpresarial":"algo",
     "EnlaceSitioWeb":"algo",
     "FinishedProjectsList":[
-                              {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      },
-		                      {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      }
-		                  ],
+                               {
+                                   "Project":"algo",
+                                   "ProjectId": "id"
+                               },
+                               {
+                                   "Project":"algo",
+                                   "ProjectId": "id"
+                               }
+                           ],
     "ActiveProjectsList":[
-                              {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      },
-		                      {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      }
-		                  ]
+                             {
+                                 "Project":"algo",
+                                 "ProjectId": "id"
+                             },
+                             {
+                                 "Project":"algo",
+                                 "ProjectId": "id"
+                             }
+                         ]
 }

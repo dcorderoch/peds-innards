@@ -4,14 +4,14 @@ https://host/Api/Language/GetAll
 
 and then Receives
 {
-    "languages":[
+    "Languages":[
                     {
-                        "language":"algo",
-                        "languageid": "id"
+                        "Language":"algo",
+                        "LanguageId": "id"
                     },
                     {
-                        "language":"algo",
-                        "languageid": "id"
+                        "Language":"algo",
+                        "LanguageId": "id"
                     }
                 ]
 }

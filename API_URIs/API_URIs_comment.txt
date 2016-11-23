@@ -53,7 +53,7 @@ and then Receives
             ]
 }
 
-################################################# Get a Project by StudentId as a Professor
+################################################# Create a New Comment
 https://host/Api/Comment/Create
 Web Application sends
 {

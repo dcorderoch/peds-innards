@@ -46,49 +46,49 @@ and then Receives
     "FinishedCoursesList":[
                               {
                                   "course":"algo",
-		                          "courseid": "id",
+		                              "CourseId": "id",
                                   "CourseDescription":"algo"
-		                      },
-		                      {
+		                          },
+                              {
                                   "course":"algo",
-		                          "courseid": "id",
+                                  "CourseId": "id",
                                   "CourseDescription":"algo"
-		                      }
-		                  ],
+                              }
+		                      ],
     "ActiveCoursesList":[
                             {
                                 "course":"algo",
-		                        "courseid": "id",
+		                            "CourseId": "id",
                                 "CourseDescription":"algo",
-		                        "accepted":(0|1)
-		                    },
-		                    {
+		                            "accepted":(0|1)
+                            },
+                            {
                                 "course":"algo",
-		                        "courseid": "id",
+                                "CourseId": "id",
                                 "CourseDescription":"algo",
-		                        "accepted":(0|1)
-		                    }
+                                "accepted":(0|1)
+                            }
 		                ],
     "FinishedProjectsList":[
-                              {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      },
-		                      {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      }
-		                  ],
+                               {
+                                   "Project":"algo",
+		                               "ProjectId": "id"
+		                           },
+                               {
+                                   "Project":"algo",
+                                   "ProjectId": "id"
+                               }
+		                       ],
     "ActiveProjectsList":[
-                              {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      },
-		                      {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      }
-		                  ]
+                             {
+                                 "Project":"algo",
+                                 "ProjectId": "id"
+                             },
+                             {
+                                 "Project":"algo",
+                                 "ProjectId": "id"
+                             }
+                         ]
 }
 
 ################################################# LOGIN PROFESSOR
@@ -116,28 +116,28 @@ and then Receives
     "HorarioAtencion":"algo",
     "FinishedCoursesList":[
                               {
-                                  "course":"algo",
-		                          "courseid": "id",
+                                  "Course":"algo", 
+                                  "CourseId": "id",
                                   "CourseDescription":"algo"
-		                      },
-		                      {
-                                  "course":"algo",
-		                          "courseid": "id",
+		                          },
+                              {
+                                  "Course":"algo", 
+                                  "CourseId": "id",
                                   "CourseDescription":"algo"
-		                      }
-		                  ],
+                              }
+		                      ],
     "ActiveCoursesList":[
                             {
-                                "course":"algo",
-		                        "courseid": "id",
-                                  "CourseDescription":"algo"
-		                    },
-		                    {
-                                "course":"algo",
-		                        "courseid": "id",
-                                  "CourseDescription":"algo"
-		                    }
-		                ]
+                                "Course":"algo", 
+                                "CourseId": "id",
+                                "CourseDescription":"algo"
+                            },
+                            {
+                                "Course":"algo", 
+                                "CourseId": "id",
+                                "CourseDescription":"algo"
+                            }
+                        ]
 }
 
 ################################################# LOGIN EMPLOYER
@@ -163,25 +163,25 @@ and then Receives
     "NombreEmpresarial":"algo",
     "EnlaceSitioWeb":"algo",
     "FinishedProjectsList":[
-                              {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      },
-		                      {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      }
-		                  ],
+                               {
+                                   "Project":"algo",
+                                   "ProjectId": "id"
+                               },
+                               {
+                                   "Project":"algo",
+                                   "ProjectId": "id"
+                               }
+                           ],
     "ActiveProjectsList":[
-                              {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      },
-		                      {
-                                  "project":"algo",
-		                          "projectid": "id"
-		                      }
-		                  ]
+                             {
+                                 "Project":"algo",
+                                 "ProjectId": "id"
+                             },
+                             {
+                                 "Project":"algo",
+                                 "ProjectId": "id"
+                             }
+                         ]
 }
 
 ################################################# LOGIN ADMIN

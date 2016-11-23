@@ -27,7 +27,7 @@ Web Application sends
     "ProfessorId":"algo",
     "UniversityId":"algo",
     "Group":"algo",
-    "Courseid": "id"
+    "CourseId": "id"
 }
 
 and then Receives
@@ -35,59 +35,17 @@ and then Receives
     "NombreContacto":"algo",
     "ApellidoContacto":"algo",
     "Grade":[0-9],
-    "badges":[
+    "Badges":[
                 {
-                    "badgeDescription":"algo",
-                    "value":1?[0-9]{2},
-                    "alardeado":(0|1)
+                    "BadgeDescription":"algo",
+                    "Value":1?[0-9]{2},
+                    "Alardeado":(0|1)
                 },
                 {
-                    "badgeDescription":"algo",
-                    "value":1?[0-9]{2},
-                    "alardeado":(0|1)
+                    "BadgeDescription":"algo",
+                    "Value":1?[0-9]{2},
+                    "Alardeado":(0|1)
                 }
-            ],
-    "Comments":[
-                   {
-                       "CommentId":"algo",
-                       "ParentId":"algo",
-                       "Date":"fecha en ISO8601",
-                       "Comment":"algo",
-                       "Nested":[
-                                    {
-                                        "CommentId":"algo",
-                                        "ParentId":"algo",
-                                        "Date":"fecha en ISO8601",
-                                        "Comment":"algo"
-                                    },
-                                    {
-                                        "CommentId":"algo",
-                                        "ParentId":"algo",
-                                        "Date":"fecha en ISO8601",
-                                        "Comment":"algo"
-                                    }
-                            ]
-                   },
-                   {
-                       "CommentId":"algo",
-                       "ParentId":"algo",
-                       "Date":"fecha en ISO8601",
-                       "Comment":"algo",
-                       "Nested":[
-                                    {
-                                        "CommentId":"algo",
-                                        "ParentId":"algo",
-                                        "Date":"fecha en ISO8601",
-                                        "Comment":"algo"
-                                    },
-                                    {
-                                        "CommentId":"algo",
-                                        "ParentId":"algo",
-                                        "Date":"fecha en ISO8601",
-                                        "Comment":"algo"
-                                    }
-                            ]
-                   }
             ]
 }
 
@@ -95,7 +53,7 @@ and then Receives
 https://host/Api/Course/GetCourseAsStudent
 Web Application sends
 {
-    "Courseid": "id"
+    "CourseId": "id"
 }
 
 and then Receives
@@ -105,16 +63,16 @@ and then Receives
     "ProfessorId":"algo",
     "UniversityId":"algo",
     "Grade":1?[0-9]{2},
-    "badges":[
+    "Badges":[
                 {
-                    "badgeDescription":"algo",
-                    "value":1?[0-9]{2},
-                    "alardeado":(0|1)
+                    "BadgeDescription":"algo",
+                    "Value":1?[0-9]{2},
+                    "Alardeado":(0|1)
                 },
                 {
-                    "badgeDescription":"algo",
-                    "value":1?[0-9]{2},
-                    "alardeado":(0|1)
+                    "BadgeDescription":"algo",
+                    "Value":1?[0-9]{2},
+                    "Alardeado":(0|1)
                 }
             ],
     "CourseId":"algo",
@@ -136,14 +94,16 @@ Web Application sends
     "UniversityId":"algo",
     "Group":[0-9]+,
     "MinGrade":1?[0-9]{2},
-    "badges":[
+    "Badges":[
                 {
-                    "badge":"algo",
-                    "value": [0-9]
+                    "BadgeDescription":"algo",
+                    "Value":1?[0-9]{2},
+                    "Alardeado":(0|1)
                 },
                 {
-                    "badge":"algo",
-                    "value": [0-9]
+                    "BadgeDescription":"algo",
+                    "Value":1?[0-9]{2},
+                    "Alardeado":(0|1)
                 }
             ]
 }

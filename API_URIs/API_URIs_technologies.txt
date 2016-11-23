@@ -4,14 +4,14 @@ https://host/Api/Technology/GetAll
 
 and then Receives
 {
-    "technologies":[
+    "Technologies":[
                     {
-                        "technology":"algo",
-                        "technologyid": "id"
+                        "Technology":"algo",
+                        "TechnologyId": "id"
                     },
                     {
-                        "technology":"algo",
-                        "technologyid": "id"
+                        "Technology":"algo",
+                        "TechnologyId": "id"
                     }
                 ]
 }
