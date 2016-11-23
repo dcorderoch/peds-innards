@@ -4,7 +4,7 @@ Web Application sends
 {
     "Carnet":"algo",
     "ProfessorId":"algo",
-    "Courseid": "id"
+    "CourseId": "Id"
 }
 
 and then Receives
@@ -59,7 +59,7 @@ Web Application sends
 {
     "Carnet":"algo",
     "ProfessorId":"algo",
-    "Courseid": "id",
+    "CourseId": "Id",
     "Comment":"algo",
     "ParentId":"algo"
 }

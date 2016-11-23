@@ -44,43 +44,43 @@ and then Receives
     "FinishedCoursesList":[
                               {
                                   "Course":"algo",
-		                          "CourseId": "id"
+		                          "CourseId": "Id"
 		                      },
 		                      {
                                   "Course":"algo",
-                                  "CourseId": "id"
+                                  "CourseId": "Id"
                               }
 		                  ],
     "ActiveCoursesList":[
                             {
                                 "Course":"algo",
-                                "CourseId": "id",
+                                "CourseId": "Id",
 		                        "Accepted":(0|1)
 		                    },
 		                    {
                                 "Course":"algo",
-                                "CourseId": "id",
+                                "CourseId": "Id",
                                 "Accepted":(0|1)
                             }
 		                ],
     "FinishedProjectsList":[
                               {
                                   "Project":"algo",
-		                          "ProjectId": "id"
+		                          "ProjectId": "Id"
 		                      },
 		                      {
                                   "Project":"algo",
-                                  "ProjectId": "id"
+                                  "ProjectId": "Id"
                               }
 		                  ],
     "ActiveProjectsList":[
                              {
                                  "Project":"algo",
-                                 "ProjectId": "id"
+                                 "ProjectId": "Id"
                              },
 		                     {
                                  "Project":"algo",
-                                 "ProjectId": "id"
+                                 "ProjectId": "Id"
                              }
 		                 ]
 }
@@ -118,21 +118,21 @@ and then Receives
     "FinishedCoursesList":[
                               {
                                   "Course":"algo",
-                                  "CourseId": "id"
+                                  "CourseId": "Id"
                               },
                               {
                                   "Course":"algo",
-                                  "CourseId": "id"
+                                  "CourseId": "Id"
                               }
                           ],
     "ActiveCoursesList":[
                             {
                                 "Course":"algo",
-                                "CourseId": "id"
+                                "CourseId": "Id"
                             },
                             {
                                 "Course":"algo",
-                                "CourseId": "id"
+                                "CourseId": "Id"
                             }
                         ]
 }
@@ -170,21 +170,21 @@ and then Receives
     "FinishedProjectsList":[
                                {
                                    "Project":"algo",
-                                   "ProjectId": "id"
+                                   "ProjectId": "Id"
                                },
                                {
                                    "Project":"algo",
-                                   "ProjectId": "id"
+                                   "ProjectId": "Id"
                                }
                            ],
     "ActiveProjectsList":[
                              {
                                  "Project":"algo",
-                                 "ProjectId": "id"
+                                 "ProjectId": "Id"
                              },
                              {
                                  "Project":"algo",
-                                 "ProjectId": "id"
+                                 "ProjectId": "Id"
                              }
                          ]
 }

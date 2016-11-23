@@ -7,11 +7,11 @@ and then Receives
     "Countries":[
                     {
                         "Country":"algo",
-                        "CountryId": "id"
+                        "CountryId": "Id"
                     },
                     {
                         "Country":"algo",
-                        "CountryId": "id"
+                        "CountryId": "Id"
                     }
                 ]
 }

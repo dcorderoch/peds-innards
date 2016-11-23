@@ -2,7 +2,7 @@
 https://host/Api/Course/GetCourseAsProfessor
 Web Application sends
 {
-    "CourseId":"id"
+    "CourseId":"Id"
 }
 
 and then Receives
@@ -27,7 +27,7 @@ Web Application sends
     "ProfessorId":"algo",
     "UniversityId":"algo",
     "Group":"algo",
-    "CourseId": "id"
+    "CourseId": "Id"
 }
 
 and then Receives
@@ -53,7 +53,7 @@ and then Receives
 https://host/Api/Course/GetCourseAsStudent
 Web Application sends
 {
-    "CourseId": "id"
+    "CourseId": "Id"
 }
 
 and then Receives

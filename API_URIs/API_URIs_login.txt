@@ -32,7 +32,7 @@ and then Receives
     "Foto":"algo",
     "Carnet":"algo",
     "Universidad":"algo",
-    "universityid": "id",
+    "UniversityId": "Id",
     "EnlaceRepositorioCodigo":"algo",
     "EnlaceACurriculum":"algo",
     "PromedioProyectos":[0-9],
@@ -46,25 +46,25 @@ and then Receives
     "FinishedCoursesList":[
                               {
                                   "course":"algo",
-		                              "CourseId": "id",
+		                              "CourseId": "Id",
                                   "CourseDescription":"algo"
 		                          },
                               {
                                   "course":"algo",
-                                  "CourseId": "id",
+                                  "CourseId": "Id",
                                   "CourseDescription":"algo"
                               }
 		                      ],
     "ActiveCoursesList":[
                             {
                                 "course":"algo",
-		                            "CourseId": "id",
+		                            "CourseId": "Id",
                                 "CourseDescription":"algo",
 		                            "accepted":(0|1)
                             },
                             {
                                 "course":"algo",
-                                "CourseId": "id",
+                                "CourseId": "Id",
                                 "CourseDescription":"algo",
                                 "accepted":(0|1)
                             }
@@ -72,21 +72,21 @@ and then Receives
     "FinishedProjectsList":[
                                {
                                    "Project":"algo",
-		                               "ProjectId": "id"
+		                               "ProjectId": "Id"
 		                           },
                                {
                                    "Project":"algo",
-                                   "ProjectId": "id"
+                                   "ProjectId": "Id"
                                }
 		                       ],
     "ActiveProjectsList":[
                              {
                                  "Project":"algo",
-                                 "ProjectId": "id"
+                                 "ProjectId": "Id"
                              },
                              {
                                  "Project":"algo",
-                                 "ProjectId": "id"
+                                 "ProjectId": "Id"
                              }
                          ]
 }
@@ -112,29 +112,29 @@ and then Receives
     "Foto":"algo",
     "IdProfesor":"algo",
     "Universidad":"algo",
-    "universityid": "id",
+    "UniversityId": "Id",
     "HorarioAtencion":"algo",
     "FinishedCoursesList":[
                               {
                                   "Course":"algo", 
-                                  "CourseId": "id",
+                                  "CourseId": "Id",
                                   "CourseDescription":"algo"
 		                          },
                               {
                                   "Course":"algo", 
-                                  "CourseId": "id",
+                                  "CourseId": "Id",
                                   "CourseDescription":"algo"
                               }
 		                      ],
     "ActiveCoursesList":[
                             {
                                 "Course":"algo", 
-                                "CourseId": "id",
+                                "CourseId": "Id",
                                 "CourseDescription":"algo"
                             },
                             {
                                 "Course":"algo", 
-                                "CourseId": "id",
+                                "CourseId": "Id",
                                 "CourseDescription":"algo"
                             }
                         ]
@@ -165,21 +165,21 @@ and then Receives
     "FinishedProjectsList":[
                                {
                                    "Project":"algo",
-                                   "ProjectId": "id"
+                                   "ProjectId": "Id"
                                },
                                {
                                    "Project":"algo",
-                                   "ProjectId": "id"
+                                   "ProjectId": "Id"
                                }
                            ],
     "ActiveProjectsList":[
                              {
                                  "Project":"algo",
-                                 "ProjectId": "id"
+                                 "ProjectId": "Id"
                              },
                              {
                                  "Project":"algo",
-                                 "ProjectId": "id"
+                                 "ProjectId": "Id"
                              }
                          ]
 }
@@ -196,5 +196,5 @@ and then Receives
 {
     "UserName":"algo",
     "Tecnologias":["algo","algo"],
-    "Univerdidades":["algo","algo"]
+    "Universidades":["algo","algo"]
 }

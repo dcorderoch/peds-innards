@@ -7,11 +7,11 @@ and then Receives
     "Universities":[
                     {
                         "University":"algo",
-                        "UniversityId": "id"
+                        "UniversityId": "Id"
                     },
                     {
                         "University":"algo",
-                        "UniversityId": "id"
+                        "UniversityId": "Id"
                     }
                 ]
 }
