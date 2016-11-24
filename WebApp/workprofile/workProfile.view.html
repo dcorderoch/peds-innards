@@ -79,11 +79,9 @@
                     <div ng-repeat="activeWork in vm.ActiveProjectsList">
                         <div class="panel panel-default panelProfile">
                             <div class="panel-body"><strong>Nombre del trabajo:</strong> {{activeWork.project}}<p>
-                                <button  ng-click="vm.goCourseWork(activeCourse.projectid)"  type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p> </div>
+                                <button  ng-click="vm.goWorkActive(activeCourse.JobOfferId)"  type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p> </div>
                         </div>               
                     </div>
-
-
 
                     <br>     
                     <h3>Trabajos terminados</h3>
@@ -92,7 +90,7 @@
                     <div ng-repeat="finishedWork in vm.FinishedProjectsList">
                         <div class="panel panel-default panelProfile">
                             <div class="panel-body"><strong>Nombre del trabajo:</strong> {{finishedWork.project}}<p>
-                                <button  ng-click="vm.goWorkFinished(finishedWork.projectid)"  type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p> </div>
+                                <button  ng-click="vm.goWorkFinished(finishedWork.JobOfferId)"  type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p> </div>
                         </div>               
                     </div>
 

@@ -2,7 +2,7 @@
 <div  class="upperBar" >
     <img  class="imageBar" src="assets/MyLearn-Logo.png" alt="Logo MyLearn" >
     <h1 class="header">MyLearn</h1>
-    
+
     <div class="elementsBar"><a href="#login"><span  class="spanIcons glyphicon glyphicon-log-out"></span> </a></div>
     <div class="elementsBar"><a  href="#notifications"><span class="spanIcons glyphicon glyphicon-bell"></span> </a></div>
     <div class="elementsBar"><a href="#studentprofile"><span class="spanIcons glyphicon glyphicon-home"></span></a></div>
@@ -15,7 +15,7 @@
     <div class="border row"> 
         <div class="border col-md-4" >
 
-<div class="left-panel">
+            <div class="left-panel">
                 <img class="img-circle" data-ng-src="{{vm.Foto}}">
 
                 <div class="personalInformation"> 
@@ -77,37 +77,30 @@
                         <div class="border col-md-2 " >
                             <form >
                                 <div class="radio" style="margin-bottom:15px">
-                                    <label><input type="radio" name="optradio">Nombre</label>
+                                    <label><input ng-model="vm.nameSearch" type="radio" name="optradio">Nombre</label>
                                 </div>
                                 <div class="radio">
-                                    <label><input type="radio" name="optradio">Tecnología</label>
+                                    <label><input ng-model="vm.techSearch" type="radio" name="optradio">Tecnología</label>
                                 </div>
                             </form>                        
                         </div>
 
                         <div class="border col-md-8 " >
 
-                            <input  class ="search" type=text placeholder=" Buscar" name="search">
-                            <button type="button" class="btn btn-success">
+                            <input class ="search" type=text placeholder=" Buscar" name="search">
+                            <button  ng-click="" type="button" class="btn btn-success">
                                 <span class="glyphicon glyphicon-search"></span> 
                             </button>
 
                             <hr>
-                            <div class="panel panel-default searchPanel">
-                                <div class="panel-body">
-                                    <strong>Empleador:</strong>
-                                    <p> Descripción del trabajo<button type="button" ng-click="vm.goOffering()"class="btn btn-default yellowButton uniCourse">Ofertar</button></p></div>
+                            <div ng-repeat="result in vm.results"> 
+                                <div class="panel panel-default searchPanel">
+                                    <div class="panel-body">
+                                        <strong>Empleador:</strong>
+                                        <p> Descripción del trabajo<button type="button" ng-click="vm.goOffering()"class="btn btn-default yellowButton uniCourse">Ofertar</button></p></div>
+                                </div>
                             </div>
-                            <div class="panel panel-default searchPanel">
-                                <div class="panel-body">
-                                    <strong>Empleador:</strong>
-                                    <p>Descripción del trabajo<button type="button" class="btn btn-default yellowButton uniCourse">Ofertar</button></p></div>
-                            </div>
-                            <div class="panel panel-default searchPanel">
-                                <div class="panel-body">
-                                    <strong>Empleador:</strong>
-                                    <p>Descripción del trabajo<button type="button" class="btn btn-default yellowButton uniCourse">Ofertar</button></p></div>
-                            </div>
+
                         </div>
                     </div>
 

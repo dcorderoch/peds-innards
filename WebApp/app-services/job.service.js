@@ -10,7 +10,11 @@
         var service = {};
 
         service.Create = Create;
-
+        service.GetById = GetById;
+        service.GetByEmployer = GetByEmployer;
+        service.GetByTechnology = GetByTechnology;
+        service.GetByName = GetByName;
+        service.GetBidsById = GetBidsById;
 
         return service;
 
@@ -23,7 +27,51 @@
             return response;    
         }
 
-        
+        function GetById( jobId){
+            var response=$http({
+                method:"post",
+                url:$rootScope.url+"host/Api/JobOffer/GetById",
+                data:{JobOfferId:jobId}
+            });
+            return response;
+        }
+
+        function GetByEmployer( idEmployer){
+            var response=$http({
+                method:"post",
+                url:$rootScope.url+"host/Api/JobOffer/GetByEmployer",
+                data:{JobOfferId:jobId}
+            });
+            return response;
+        }    
+
+        function GetByTechnology( technology){
+            var response=$http({
+                method:"post",
+                url:$rootScope.url+"host/Api/JobOffer/GetByTechnology",
+                data: {Technology:technology}
+            });
+            return response;
+        }
+
+
+        function GetByName(name){
+            var response=$http({
+                method:"post",
+                url:$rootScope.url+"host/Api/JobOffer/GetByName",
+                data: {JobOffer:name}
+            });
+            return response;
+        }       
+
+        function GetBidsById(jobOfferId){
+            var response=$http({
+                method:"post",
+                url:$rootScope.url+"host/Api/JobOffer/GetBidsById",
+                data: {JobOfferId:jobOfferId}
+            });
+            return response;
+        }    
     }
 
 })();

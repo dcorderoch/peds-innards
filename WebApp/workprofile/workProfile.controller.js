@@ -5,8 +5,8 @@
         .module('app')
         .controller('WorkProfileController', WorkProfileController);
 
-    WorkProfileController.$inject = ['$location',  'FlashService', '$rootScope'];
-    function WorkProfileController($location,  FlashService, $rootScope) {
+    WorkProfileController.$inject = ['$location',  'FlashService', '$rootScope','JobService'];
+    function WorkProfileController($location,  FlashService, $rootScope, JobService) {
         var vm = this;
 
         vm.goWorkActive = goWorkActive;
@@ -54,32 +54,32 @@
 
         function goWorkFinished(id){
 
-            //            CourseService.GetCourseAsStudent(id)
-            //                .then(function(response){
-            //
-            //                $rootScope.currentCourseData = response.data;
-            //                $location.path('/sharedArea');    
-            //
-            //            }, function(response){
-            //                console.log("no sirvio")
-            //            });
+            JobService.GetById(id)
+                .then(function(response){
+
+                $rootScope.currentworkData = response.data;
+                $location.path('/sharedStudentEmployer');    
+
+            }, function(response){
+                console.log("no sirvio")
+            });
         }
         function goWorkActive(id){
 
-            //            CourseService.GetCourseAsStudent(id)
-            //                .then(function(response){
-            //
-            //                $rootScope.currentCourseData = response.data;
-            //                if(status===0){
-            //                    $location.path('/coursearea');  
-            //                }
-            //                else{
-            //                    $location.path('/sharedarea');
-            //                }
-            //
-            //            }, function(response){
-            //                console.log("no sirvio")
-            //            });
+            JobService.GetById(id)
+                .then(function(response){
+
+                $rootScope.currentworkData = response.data;
+                if(status===0){
+                    $location.path('/sharedStudentEmployer');  
+                }
+                else{
+                    $location.path('/sharedStudentEmployer');
+                }
+
+            }, function(response){
+                console.log("no sirvio")
+            });
         }
     }
 })();
