@@ -29,7 +29,7 @@ namespace MyLearn.BLL
         /// <param name="userId"></param>
         /// <param name="password"></param>
         /// <returns>User information.</returns>
-        public InfoEstudiante StudentLogin(int username, string password)
+        public InfoEstudiante StudentLogin(string username, string password)
         {
             InfoEstudiante student = new InfoEstudiante();
        //     DBUser dbUserInstance = new DBUser();
