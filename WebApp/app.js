@@ -129,21 +129,42 @@
         // keep user logged in after page refresh
         $rootScope.globals = $cookieStore.get('globals') || {};
         $rootScope.userData = $cookieStore.get('dataLogin') || {};
+
+        console.log("cookies es"+ $cookieStore.get('currentCourseData') );
+        $rootScope.currentCourseData = $cookieStore.get('currentCourseData') || {}
+
         console.log($rootScope.globals);
         if ($rootScope.globals.currentUser) {
-            console.log($rootScope.globals.currentUser);
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; 
         }
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
 
-            $rootScope.url = "url";
-   //         redirect to login page if not logged in and trying to access a restricted page
+            $rootScope.url = "http://dakemanimylearn.azurewebsites.net/api/";
+
             var restrictedPage = $.inArray($location.path(), ['/login', '/register','/register2', '/register3']) === -1;
+
+            var studentRestricted = $.inArray($location.path(), ['/auction', '/courseareaprofessor', '/courseoverview', 'employerprofile', '/newcourse', 'newproject', '/professorprofile', '/sharedareaprofessor', '/sharedareaemployer'] ) === -1;
+
+            var professorRestricted = $.inArray($location.path(), ['/workprofile', '/unicourses', '/studentprofile', '/sharedstudentemployer', '/sharedareaemployer', '/sharedarea', 'searcher', '/offering', '/notifications', '/newproject', '/employerprofile', '/coursearea'] ) === -1;
+
+            var employerRestricted = $.inArray($location.path(), ['/workprofile', '/unicourses', '/studentprofile', '/sharedstudentemployer', '/sharedareprofessor', '/sharedarea', 'searcher', '/offering', '/notifications', '/newcourse', '/profesorprofile', '/coursearea'] ) === -1;
+
+            var studentUser = $cookieStore.get('dataLogin').Carnet;
+            var professorUser = $cookieStore.get('dataLogin').IdProfesor;
+            var employerUser = $cookieStore.get('dataLogin').IdEmpleador;
+
             var loggedIn = $rootScope.globals.currentUser;
+
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
             }
+
+            if ( (!studentRestricted && studentUser) || (!professorRestricted && professorUser) || (!employerRestricted && employerUser) ) {
+                window.history.back();
+            }
+
+
         });
     }
 

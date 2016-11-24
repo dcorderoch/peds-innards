@@ -17,10 +17,10 @@
 
         function Login(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
             console.log(loginData);
-            console.log($rootScope.url+"api/User/Login");
+            console.log($rootScope.url+"login/login");
             var request = $http({
-                method:"post",
-                url:    $rootScope.url+"api/User/Login",
+                method:"get",
+                url:    $rootScope.url+"login/login",
                 data:loginData
             }); 
             return request;

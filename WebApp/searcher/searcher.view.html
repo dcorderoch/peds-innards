@@ -77,18 +77,20 @@
                         <div class="border col-md-2 " >
                             <form >
                                 <div class="radio" style="margin-bottom:15px">
-                                    <label><input ng-model="vm.nameSearch" type="radio" name="optradio">Nombre</label>
+                                    <label><input ng-model="searchParameter" value="0" type="radio"
+                                                  name="optradio">Nombre</label>
                                 </div>
                                 <div class="radio">
-                                    <label><input ng-model="vm.techSearch" type="radio" name="optradio">Tecnología</label>
+                                    <label><input ng-model="searchParameter" value="1" type="radio"
+                                                  name="optradio">Tecnología</label>
                                 </div>
-                            </form>                        
+                            </form>
                         </div>
 
                         <div class="border col-md-8 " >
 
-                            <input class ="search" type=text placeholder=" Buscar" name="search">
-                            <button  ng-click="" type="button" class="btn btn-success">
+                            <input class ="search" ng-model="query" type=text placeholder=" Buscar" name="search">
+                            <button  ng-click="vm.search(query,searchParameter)" type="button" class="btn btn-success">
                                 <span class="glyphicon glyphicon-search"></span> 
                             </button>
 
@@ -100,10 +102,8 @@
                                         <p> Descripción del trabajo<button type="button" ng-click="vm.goOffering()"class="btn btn-default yellowButton uniCourse">Ofertar</button></p></div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

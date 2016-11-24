@@ -5,8 +5,8 @@
         .module('app')
         .controller('StudentProfileController', StudentProfileController);
 
-    StudentProfileController.$inject = ['$location',  'FlashService',  '$rootScope', 'CourseService', 'UserService' ];
-    function StudentProfileController($location,  FlashService, $rootScope, CourseService, UserService) {
+    StudentProfileController.$inject = ['$location', '$cookieStore', 'FlashService',  '$rootScope', 'CourseService', 'UserService' ];
+    function StudentProfileController($location, $cookieStore, FlashService, $rootScope, CourseService, UserService) {
         var vm = this;
 
         vm.goCourseActive = goCourseActive;
@@ -58,19 +58,25 @@
 
                 $rootScope.currentCourseData = response.data;
                 $rootScope.currentCourseData.status = false;
+
+                $cookieStore.put('courseData', $rootScope.currentCourseData );
+
+
                 $location.path('/sharedArea');    
 
             }, function(response){
                 console.log("no sirvio")
             });
         }
-        
+
         function goCourseActive(id, status){
 
             CourseService.GetCourseAsStudent(id)
                 .then(function(response){
 
                 $rootScope.currentCourseData = response.data;
+                $cookieStore.put('courseData', $rootScope.currentCourseData );
+
                 if(status===0){
                     $location.path('/coursearea');  
                 }
@@ -82,15 +88,15 @@
                 console.log("no sirvio")
             });
         }
-        
+
         function disableAccount(){
-            
+
             UserService.Disable(vm.UserId)
                 .then(function(response){
-                
+
                 FlashService.success("Cuenta deshabilitada");
                 $location.path("/login")
-                
+
             }, function(response){
                 console.log("no funcó");
             })

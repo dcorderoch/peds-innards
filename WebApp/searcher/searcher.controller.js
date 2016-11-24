@@ -5,13 +5,16 @@
         .module('app')
         .controller('SearcherController', SearcherController);
 
-    SearcherController.$inject = ['$location',  'FlashService', '$scope', '$rootScope'];
-    function SearcherController($location,  FlashService, $scope, $rootScope) {
+    SearcherController.$inject = ['$location',  'FlashService', '$scope', '$rootScope', 'JobService'];
+    function SearcherController($location,  FlashService, $scope, $rootScope, JobService) {
         var vm = this;
 
         initController();
 
         vm.goOffering = goOffering;
+        vm.search = search;
+        vm.results=[];
+
 
         function goOffering(){
             $location.path('/offering');
@@ -45,8 +48,38 @@
             vm.courseAverageWidth = {'width': vm.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};  
             $rootScope.currentCourseData={};
+        }
 
+        function search(query,parameter){
+
+            if (parameter == 0) {
+
+                JobService.GetByName(query)
+                    .then(function(response){
+
+                    vm.results = response.data;
+
+                },function(response){
+
+                    FlashService.Error("Fallo en traer resultados para búsqueda por nombre");
+                    console.log( "no sirvió");
+                });                
+            }
+
+            if (parameter ==1){ 
+                JobService.GetByTechnology(query)
+                    .then(function(response){
+
+                    vm.results = response.data;
+
+                },function(response){
+
+                    FlashService.Error("Fallo en traer resultados para búsqueda por tecnología");
+                    console.log("no sirvió");
+                });
+            }
         }
     }
 
 })();
+
