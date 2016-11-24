@@ -86,5 +86,43 @@ namespace MyLearn.BLL
 
             return student;
         }
+
+        public InfoProfesor ProfessorLogin(string username, string password)
+        {
+            InfoProfesor professor = new InfoProfesor();
+            //     DBUser dbUserInstance = new DBUser();
+            //subject to change
+
+            professor.UserId = "";
+            professor.NombreContacto = "";
+            professor.ApellidoContacto = "";
+            professor.Ubicacion = "";
+            professor.Email = "";
+            professor.Telefono = "";
+            professor.Fecha_Registro = "";
+            professor.Password = "";
+            professor.TipoRepositorioArchivos = "";
+            professor.Foto = "";
+            professor.IdProfesor = "";
+            professor.Universidad = "";
+            professor.UniversityId = "";
+            professor.HorarioAtencion = "";
+
+            List<FinishedCoursesList> finishedCoursesList = new List<FinishedCoursesList>();
+            FinishedCoursesList finishedCourse = new FinishedCoursesList();
+            finishedCourse.CourseDescription = "";
+            finishedCourse.CourseId = "";
+            finishedCourse.course = "";
+            professor.FinishedCoursesList = finishedCoursesList;
+
+            List<ActiveCoursesList> activeCoursesList = new List<ActiveCoursesList>();
+            ActiveCoursesList activeCourses = new ActiveCoursesList();
+            activeCourses.course = "";
+            activeCourses.CourseId = "";
+            activeCourses.CourseDescription = "";
+            professor.ActiveCoursesList = activeCoursesList;
+            return professor;
+        }
+
     }
 }
