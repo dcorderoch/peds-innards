@@ -18,9 +18,20 @@ namespace MyLearn.BLL
         {
             InfoProfesor retProfessor = new InfoProfesor();
             AccountManager accountSession = new AccountManager();
-            //AddProfessorToDB(newProfessor);
+            AddProfessorToDB(newProfessor);
             retProfessor = accountSession.ProfessorLogin(newProfessor.Email, newProfessor.Password);
             return retProfessor;
+
+        }
+
+        public InfoEmpleador EmployerRegister(RegisterEmployerInfo newEmployer)
+        {
+            InfoEmpleador retEmployer = new InfoEmpleador();
+            AccountManager accountSession = new AccountManager();
+            AddEmployerToDB(newEmployer);
+            retEmployer = accountSession.EmployerLogin(newEmployer.Email, newEmployer.Password);
+            return retEmployer;
+
         }
 
         private void AddStudentToDB(RegisterEstudianteInfo newStudent)
@@ -40,5 +51,48 @@ namespace MyLearn.BLL
                 dbobject.Add(newStudent.Idiomas);
                 dbobject.Add(newStudent.Tecnologias);*/
         }
+
+        private void AddProfessorToDB(RegisterProfessorInfo newProfessor)
+        {
+            //Add new professor to DB
+            /*dbobject.Add(newProfessor.NombreContacto);
+            dbobject.Add(newProfessor.ApellidoContacto);
+            dbobject.Add(newProfessor.Ubicacion);
+            dbobject.Add(newProfessor.Email);
+            dbobject.Add(newProfessor.Telefono);
+            dbobject.Add(newProfessor.Password);
+            dbobject.Add(newProfessor.TipoRepositorioArchivos);
+            dbobject.Add(newProfessor.Foto);
+            dbobject.Add(newProfessor.Universidad);
+            dbobject.Add(newProfessor.HorarioAtencion);*/        
+    }
+
+        private void AddEmployerToDB(RegisterEmployerInfo newEmployer)
+        {
+            //Add new employer to DB
+            /*dbobject.Add(newEmployer.NombreContacto);
+            dbobject.Add(newEmployer.ApellidoContacto);
+            dbobject.Add(newEmployer.Ubicacion);
+            dbobject.Add(newEmployer.Email);
+            dbobject.Add(newEmployer.Telefono);
+            dbobject.Add(newEmployer.Password);
+            dbobject.Add(newEmployer.TipoRepositorioArchivos);
+            dbobject.Add(newEmployer.Foto);
+            dbobject.Add(newEmployer.NombreEmpresarial);
+            dbobject.Add(newEmployer.EnlaceSitioWeb);*/
+        }
+
+
+
     }
 }
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
