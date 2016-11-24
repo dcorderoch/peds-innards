@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyLearn.Models
 {
-    public class RegisterStatus
+    public class ReturnCode
     {
         public int StatusCode { get; set; }
     }
