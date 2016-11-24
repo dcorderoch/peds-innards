@@ -105,10 +105,10 @@
     <Compile Include="Models\InfoEmpleador.cs" />
     <Compile Include="Models\InfoEstudiante.cs" />
     <Compile Include="Models\InfoProfesor.cs" />
-    <Compile Include="Models\LoginInfo.cs" />
-    <Compile Include="Models\RegisterEmployerInfo.cs" />
-    <Compile Include="Models\RegisterEstudianteInfo.cs" />
-    <Compile Include="Models\RegisterProfessorInfo.cs" />
+    <Compile Include="InputModels\LoginInfo.cs" />
+    <Compile Include="InputModels\RegisterEmployerInfo.cs" />
+    <Compile Include="InputModels\RegisterEstudianteInfo.cs" />
+    <Compile Include="InputModels\RegisterProfessorInfo.cs" />
     <Compile Include="Models\RegisterStatus.cs" />
     <Compile Include="Models\UserCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
