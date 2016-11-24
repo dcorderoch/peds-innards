@@ -83,7 +83,7 @@ hr {
 }
 .panel-default{
     border-style: solid;
-/*    border-width: 1px;*/
+    /*    border-width: 1px;*/
     border-color: #338DBC;
 }
 .panel-default .insidePanel .panel-body{
@@ -334,8 +334,8 @@ strong {
 
 .sendIcon {
     font-size:1em;
-    margin:1%;
-
+    margin-left:1%;
+    margin-right: 1%;
 }
 
 .nestedLeft {
@@ -451,4 +451,28 @@ strong {
 .header {
     float:left; 
     display:inline
+}
+
+.replyComment {
+    border-radius: 5px;
+    border: 1px solid ;
+    width:50%;
+    margin-left:25%;
+    float:left;
+    height:34px;
+}
+
+.hr4 {
+    display: block;
+    height: 5px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: auto;
+    padding: 0; 
+    width:50%;
+}
+
+.replyButton {
+    float:left; 
+    margin-left:0.4em;
 }
