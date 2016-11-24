@@ -17,7 +17,8 @@
     <AssemblyName>MyLearn</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>44371</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -140,6 +141,7 @@
     <Compile Include="InputModels\UserIdentifier.cs" />
     <Compile Include="Models\ActiveCoursesList.cs" />
     <Compile Include="Models\ActiveJobOffersList.cs" />
+    <Compile Include="InputModels\Badge.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\FinishedCoursesList.cs" />
     <Compile Include="Models\FinishedJobOffersList.cs" />
@@ -147,6 +149,7 @@
     <Compile Include="Models\InfoEmpleador.cs" />
     <Compile Include="Models\InfoEstudiante.cs" />
     <Compile Include="Models\InfoProfesor.cs" />
+    <Compile Include="InputModels\NewCourse.cs" />
     <Compile Include="Models\ReturnCode.cs" />
     <Compile Include="Models\StudentInCourse.cs" />
     <Compile Include="Models\TopStudent.cs" />
@@ -162,9 +165,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Properties\PublishProfiles\DakemaniMyLearn - Web Deploy.pubxml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
