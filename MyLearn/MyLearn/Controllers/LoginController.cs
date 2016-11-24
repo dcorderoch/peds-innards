@@ -7,14 +7,14 @@ namespace MyLearn.Controllers
     public class LoginController : ApiController
     {
         //[RequireHttps]
-        [HttpGet]
+        [HttpPost]
         public JsonResult<UserCode> Login(LoginInfo userCredentials) {
             var retVal = new UserCode();
             retVal.UserTypeCode = 1; // Subject to Change
             return Json(retVal);
         }
         //[RequireHttps]
-        [HttpGet]
+        [HttpPost]
         public JsonResult<InfoEstudiante> LoginStudent(LoginInfo userCredentials)
         {
             var retVal = new InfoEstudiante();
@@ -22,7 +22,7 @@ namespace MyLearn.Controllers
             return Json(retVal);
         }
         //[RequireHttps]
-        [HttpGet]
+        [HttpPost]
         public JsonResult<InfoProfesor> LoginProfessor(LoginInfo userCredentials)
         {
             var retVal = new InfoProfesor();
@@ -30,7 +30,7 @@ namespace MyLearn.Controllers
             return Json(retVal);
         }
         //[RequireHttps]
-        [HttpGet]
+        [HttpPost]
         public JsonResult<InfoEmpleador> LoginEmployer(LoginInfo userCredentials)
         {
             var retVal = new InfoEmpleador();
@@ -38,7 +38,7 @@ namespace MyLearn.Controllers
             return Json(retVal);
         }
         //[RequireHttps]
-        [HttpGet]
+        [HttpPost]
         public JsonResult<InfoAdmin> LoginAdmin(LoginInfo userCredentials)
         {
             var retVal = new InfoAdmin();

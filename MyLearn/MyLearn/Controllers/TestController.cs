@@ -14,7 +14,7 @@ namespace MyLearn.Controllers
         /// This Method returns all information of all Products in the Database
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         public JsonResult<List<string>> GetAll()
         {
             List<string> retVal = new List<string>();
@@ -23,11 +23,9 @@ namespace MyLearn.Controllers
                 var crap = new string(string.Format("haha{0}", i.ToString()).ToCharArray());
                 retVal.Add(crap);
             }
-
             return Json(retVal);
         }
-        ////[RequireHttps]
-        [HttpGet]
+        [HttpPost]
         public JsonResult<List<string>> GetTHEM()
         {
             List<string> retVal = new List<string>();
@@ -36,7 +34,6 @@ namespace MyLearn.Controllers
                 var crap = new string(string.Format("PORN... OGRAPHY!{0}", i.ToString()).ToCharArray());
                 retVal.Add(crap);
             }
-
             return Json(retVal);
         }
     }

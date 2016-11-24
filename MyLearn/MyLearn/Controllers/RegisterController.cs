@@ -7,24 +7,21 @@ namespace MyLearn.Controllers
 {
     public class RegisterController : ApiController
     {
-        //[RequireHttps]
-        [HttpGet]
+        [HttpPost]
         public JsonResult<InfoEstudiante> RegisterStudent(RegisterEstudianteInfo userInformation)
         {
             var retVal = new InfoEstudiante();
             // Subject to Change
             return Json(retVal);
         }
-        //[RequireHttps]
-        [HttpGet]
+        [HttpPost]
         public JsonResult<InfoProfesor> RegisterProfessor(RegisterProfessorInfo userInformation)
         {
             var retVal = new InfoProfesor();
             // Subject to Change
             return Json(retVal);
         }
-        //[RequireHttps]
-        [HttpGet]
+        [HttpPost]
         public JsonResult<InfoEmpleador> RegisterEmployer(RegisterEmployerInfo userInformation)
         {
             var retVal = new InfoEmpleador();
