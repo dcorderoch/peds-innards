@@ -33,7 +33,7 @@
 
                         <label>Escoge tu pais</label>
                         <div class="form-group" >
-                            <select ng-model="vm.regData.Ubicacion" ng-options="x.countryid as x.country for x in vm.countries" required>
+                            <select ng-model="vm.regData.Ubicacion" ng-options="x.CountryId as x.Country for x in vm.countries" required>
                             </select> 
                         </div>
 
@@ -67,7 +67,7 @@
 
                         <label>Escoge tu universidad</label>
                         <div class="form-group" ng-class="{ 'has-error': form.university.$dirty && form.university.$error.required }">
-                            <select name="university" ng-model="vm.regData.Universidad" ng-options="x.universityid as x.university for x in vm.universities" required>
+                            <select name="university" ng-model="vm.regData.Universidad" ng-options="x.UniversityId as x.University for x in vm.universities" required>
                             </select > 
                         </div>
 

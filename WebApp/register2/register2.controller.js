@@ -11,8 +11,10 @@
 
         vm.register=register;
         vm.repositories=[{tipo:'Google Drive', id:1}, {tipo:'Dropbox',id:0}];
-        vm.universities=[{university:'Tecnológico de Costa Rica',universityid:0}, {university:'Oxford University' ,universityid:1}, {university:'Universidad Autónoma de Colombia',universityid:2}];
-        vm.countries=[ {"country":"costa rica","countryid": "1"}, {"country":"nicaragua","countryid": "2"}];
+        
+        vm.universities=[{University:'Tecnológico de Costa Rica',UniversityId:0}, {University:'Oxford University' ,UniversityId:1}];
+        
+        vm.countries=[ {"Country":"costa rica","CountryId": "1"}, {"Country":"nicaragua","CountryId": "2"}];
 
         vm.regData={};
 
