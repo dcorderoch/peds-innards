@@ -51,7 +51,7 @@ and then Receives
 }
 
 ################################################# Get JobOffersById
-https://host/Api/JobOffer/GetByEmployer
+https://host/Api/JobOffer/GetById
 Web Application sends
 {
     "JobOfferId":"algo"
@@ -66,4 +66,97 @@ and then Receives
     "EndDate":"fecha en ISO8601",
     "Description":"algo",
     "Budget":[0-9]+
+}
+
+################################################# Get Job Offers
+https://host/Api/JobOffer/GetByTechnology
+Web Application sends
+{
+    "Technology":"algo"
+}
+
+and then Receives
+{
+    "JobOffers":[
+                    {
+                        "JobOffer":"algo",
+                        "JobOfferId": "Id",
+                        "Technologies":["algo","algo"],
+                        "Location":"algo",
+                        "StartDate":"fecha en ISO8601",
+                        "EndDate":"fecha en ISO8601",
+                        "Description":"algo",
+                        "Budget":[0-9]+
+                    },
+                    {
+                        "JobOffer":"algo",
+                        "JobOfferId": "Id",
+                        "Technologies":["algo","algo"],
+                        "Location":"algo",
+                        "StartDate":"fecha en ISO8601",
+                        "EndDate":"fecha en ISO8601",
+                        "Description":"algo",
+                        "Budget":[0-9]+
+                    }
+                ]
+}
+
+################################################# Get Job Offers
+https://host/Api/JobOffer/GetByName
+Web Application sends
+{
+    "JobOffer":"algo"
+}
+
+and then Receives
+{
+    "JobOffers":[
+                    {
+                        "JobOffer":"algo",
+                        "JobOfferId": "Id",
+                        "Technologies":["algo","algo"],
+                        "Location":"algo",
+                        "StartDate":"fecha en ISO8601",
+                        "EndDate":"fecha en ISO8601",
+                        "Description":"algo",
+                        "Budget":[0-9]+
+                    },
+                    {
+                        "JobOffer":"algo",
+                        "JobOfferId": "Id",
+                        "Technologies":["algo","algo"],
+                        "Location":"algo",
+                        "StartDate":"fecha en ISO8601",
+                        "EndDate":"fecha en ISO8601",
+                        "Description":"algo",
+                        "Budget":[0-9]+
+                    }
+                ]
+}
+
+################################################# Get Job Offers
+https://host/Api/JobOffer/GetBidsById
+Web Application sends
+{
+    "JobOfferId":"algo"
+}
+
+and then Receives
+{
+    "JobOfferBids":[
+                       {
+                           "Money":"algo",
+                           "DurationInDays": [0-9],
+                           "StudentName":"algo",
+                           "StudentSurname":"algo",
+                           "StudentId":"Id"
+                       },
+                       {
+                           "Money":"algo",
+                           "DurationInDays": [0-9],
+                           "StudentName":"algo",
+                           "StudentSurname":"algo",
+                           "StudentId":"Id"
+                       }
+                   ]
 }
