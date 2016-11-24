@@ -124,5 +124,51 @@ namespace MyLearn.BLL
             return professor;
         }
 
+        public InfoEmpleador EmployerLogin(string username, string password)
+        {
+         InfoEmpleador employer = new InfoEmpleador();
+            //     DBUser dbUserInstance = new DBUser();
+            //subject to change
+            employer.UserId = "";
+            employer.NombreContacto = "";
+            employer.ApellidoContacto = "";
+            employer.Ubicacion = "";
+            employer.Email = "";
+            employer.Telefono = "";
+            employer.Fecha_Registro = "";
+            employer.Password = "";
+            employer.TipoRepositorioArchivos = "";
+            employer.Foto = "";
+            employer.IdEmpleador = "";
+            employer.NombreEmpresarial = "";
+            employer.EnlaceSitioWeb = "";
+
+            List<FinishedJobOffersList> finishedJobOffersLists = new List<FinishedJobOffersList>();
+            FinishedJobOffersList finishedJobOffers = new FinishedJobOffersList();
+            finishedJobOffers.JobOffer = "";
+            finishedJobOffers.JobOfferId = "";
+            employer.FinishedJobOffersList = finishedJobOffersLists;
+
+            List<ActiveJobOffersList> activeJobOffersLists = new List<ActiveJobOffersList>();
+            ActiveJobOffersList activeJobOffers = new ActiveJobOffersList();
+            activeJobOffers.JobOffer = "";
+            activeJobOffers.JobOfferId = "";
+            employer.ActiveJobOffersList = activeJobOffersLists;
+
+            return employer;      
+        }
+
+        public InfoAdmin AdminLogin(string username, string password)
+        {
+            InfoAdmin admin = new InfoAdmin();
+            //subject to change
+
+            admin.UserId = "";
+            admin.UserName="";
+            admin.Tecnologias = new List<string>();
+            admin.Universidades = new List<string>();
+
+            return admin;
+        }
     }
 }
