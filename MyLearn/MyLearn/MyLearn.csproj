@@ -17,7 +17,7 @@
     <AssemblyName>MyLearn</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44371</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -123,7 +123,9 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BLL\AccountManager.cs" />
+    <Compile Include="BLL\NotificationManager.cs" />
     <Compile Include="BLL\RegisterManager.cs" />
+    <Compile Include="BLL\SearchManager.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -131,7 +133,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InputModels\LoginInfo.cs" />
-    <Compile Include="InputModels\NumberOfTopStudents.cs" />
     <Compile Include="InputModels\RegisterEmployerInfo.cs" />
     <Compile Include="InputModels\RegisterEstudianteInfo.cs" />
     <Compile Include="InputModels\RegisterProfessorInfo.cs" />
@@ -145,7 +146,6 @@
     <Compile Include="Models\InfoEstudiante.cs" />
     <Compile Include="Models\InfoProfesor.cs" />
     <Compile Include="Models\ReturnCode.cs" />
-    <Compile Include="Models\TopStudent.cs" />
     <Compile Include="Models\UserCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterPoster\OAuthInfo.cs" />
