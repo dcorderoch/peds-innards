@@ -13,7 +13,16 @@ and then Receives
     "CourseId":"algo",
     "CourseDescription":"algo",
     "Group":[0-9]+,
-    "StudentsCarnet":["algo","algo"]
+    "StudentsCarnet":[
+                         {
+                             "Nombre":"algo",
+                             "Carnet":"algo"
+                         },
+                         {
+                             "Nombre":"algo",
+                             "Carnet":"algo"
+                         }
+                     ]
 }
 
 Nota: - 0 inactivo
@@ -174,3 +183,18 @@ and then Receives
                   }
               ]
 }
+
+################################################# Close Course
+https://host/Api/Course/Close
+Web Application sends
+{
+    "CourseId":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito
