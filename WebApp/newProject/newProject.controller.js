@@ -5,11 +5,28 @@
         .module('app')
         .controller('NewProjectController', NewProjectController);
 
-    NewProjectController.$inject = ['$location',  'FlashService' ,'$rootScope'];
-    function NewProjectController($location,  FlashService, $rootScope) {
+    NewProjectController.$inject = ['$location',  'FlashService' ,'$rootScope', 'RegService', 'JobService'];
+    function NewProjectController($location,  FlashService, $rootScope, RegService, JobService) {
         var vm = this;
 
         initController();
+        vm.job={};
+        vm.createJob = createJob;
+
+        vm.technologies=[{ Technology:"Java", TechnologyId: "0"}, { Technology:"C++",TechnologyId: "1"}];
+        vm.job.Technologies = [];
+
+
+        function loadTechnologies(){
+            RegService.GetTechnologies()
+                .then(function (response) {
+                if (response.success) {
+                    vm.technologies = response.data.technologies;
+                } 
+            },function(response){
+                console.log("supongo1")
+            });
+        }
 
         function initController(){
 
@@ -27,8 +44,35 @@
             vm.NombreEmpresarial = $rootScope.userData.NombreEmpresarial;
             vm.EnlaceSitioWeb = $rootScope.userData.EnlaceSitioWeb;
             $rootScope.currentCourseData={};
+            loadTechnologies();
 
         }
+
+        vm.toggleSelectionTech = function toggleSelectionTech(technology) {
+            var idx = vm.job.Technologies.indexOf(technology.TechnologyId);
+
+            // is currently selected
+            if (idx > -1) {
+                vm.job.Technologies.splice(idx, 1);
+            }
+
+            // is newly selected
+            else {
+                vm.job.Technologies.push(technology.TechnologyId);
+            }
+        };
+
+        function createJob(){
+
+            JobService.Create(vm.job)
+                .then(function(response){
+                console.log(response.data);
+                FlashService.success("Trabajo creado");
+            },function(response){
+                console.log("supongo3")
+            });
+        }
+
     }
 
 })();

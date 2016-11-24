@@ -74,9 +74,13 @@ hr {
 
 .panel-body {
     background: white;
+    border-width: 2px;
+
 }
 .panel-default > .panel-heading {
     background-color: #338DBC;
+    border-width: 2px;
+
 }
 .rows{
     margin: 1%;

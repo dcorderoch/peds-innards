@@ -46,43 +46,56 @@
 
                     <h3>Crear un nuevo proyecto</h3>
                     <hr class="hr2">
+                    <p>{{vm.job}}</p>
 
-                    <form class="newProject" name="form" ng-submit="vm.login()" role="form">
+                    <form class="newProject" name="form" ng-submit="vm.createJob()" role="form">
 
-                        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
-                            <input placeholder =" Nombre de proyecto" type="text" name="username"  class="form-control" ng-model="vm.username" required />
-                            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">El nombre del proyecto </span>
+                        <div class="form-group" ng-class="{ 'has-error': form.name.$dirty && form.name.$error.required }">
+                            <input placeholder =" Nombre de proyecto" type="text" name="name"  class="form-control" ng-model="vm.job.JobOffer" required />
+                            <span ng-show="form.name.$dirty && form.name.$error.required" class="help-block">El nombre del proyecto es requerido</span>
                         </div>
 
-                        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
-                            <input placeholder ="Lista de tecnologías" type=text name="password" class="form-control" ng-model="vm.password" required />
-                            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">La lista de tecnologías es requerida</span>
+                        <label>Escoge los lenguajes de programación que conozcas</label>
+                        <div class="form-group" ng-class="{ 'has-error': form.technology.$dirty && form.technology.$error.required }">
+                            <div class="checkbox">
+
+                                <label ng-repeat="technology in vm.technologies">
+                                    <input
+                                           type="checkbox"
+                                           name="technology"
+                                           value="{{technology}}"
+                                           ng-checked="vm.job.Technologies.indexOf(technology) > -1"
+                                           ng-click="vm.toggleSelectionTech(technology)"
+                                           /> {{technology.Technology}}
+                                </label>
+                            </div>
+
                         </div>
 
                         <div class="form-group" ng-class="{ 'has-error': form.location.$dirty && form.location.$error.required }">
-                            <input placeholder ="ubicación" type="text" name="location" class="form-control" ng-model="vm.location" required />
+                            <input placeholder ="Ubicación" type="text" name="location" class="form-control" ng-model="vm.job.Location" required />
                             <span ng-show="form.location.$dirty && form.location.$error.required" class="help-block">La ubicación es requerida</span>
                         </div>
 
                         <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
-                            <input placeholder="Fecha de inicio" class="form-control" type="text" onfocus="(this.type='date')"  model="vm.startDate" name="startDate" required /> 
+                            <input placeholder="Fecha de inicio" class="form-control" type="text" onfocus="(this.type='date')"  ng-model="vm.job.StartDate" name="startDate" required /> 
 
                             <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">La fecha de inicio es requerida</span>
                         </div>
                         
                         <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
-                            <input placeholder="Fecha de finalización" class="form-control" type="text" onfocus="(this.type='date')"  model="vm.endDate" name="endDate" required /> 
+                            <input placeholder="Fecha de finalización" class="form-control" type="text" onfocus="(this.type='date')"  ng-model="vm.job.EndDate" name="endDate" required /> 
                             <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">La fecha de finalización</span>
                         </div>
 
                         <div class="form-group" ng-class="{ 'has-error': form.technologies.$dirty && form.technologies.$error.required }">
-                            <input placeholder ="Descripción" accept="image/*" name="technologies" type="text"class="form-control" ng-model="vm.description" required />
+                            <input placeholder ="Descripción" accept="image/*" name="technologies" type="text"class="form-control" ng-model="vm.job.Description" required />
                             <span ng-show="form.technologies.$dirty && form.technologies.$error.required" class="help-block">La descripción es requerida</span>
                         </div>
 
                         <div class="form-group" ng-class="{ 'has-error': form.repository.$dirty && form.repository.$error.required }">
-                            <input placeholder ="Presupuesto" name="repository" type="number"  class="form-control" ng-model="vm.budget" required />
-                            <span ng-show="form.repository.$dirty && form.repository.$error.required" class="help-block">El presupuesto es requeriod</span>
+                            <input placeholder ="Presupuesto" name="repository" type="number"  class="form-control" ng-model="vm.job.Budget" required />
+                            <span ng-show="form.repository.$dirty && form.repository.$error.required" class="help-block">El presupuesto es requerido</span>
                         </div>
 
 

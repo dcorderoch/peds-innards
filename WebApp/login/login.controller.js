@@ -23,34 +23,6 @@
 
         function login(){
 
-            //            $rootScope.userData ={"NombreContacto":"Nicolas",
-            //                                  "ApellidoContacto":"Jimenez",
-            //                                  "Ubicacion":"Tres Ríos",
-            //                                  "Email":"nicolas.j2007@gmail.com",
-            //                                  "Telefono":"87715959",
-            //                                  "Fecha_Registro":"05/08/2014",
-            //                                  "Password":"algo",
-            //                                  "TipoRepositorioArchivos":"algo",
-            //                                  "Foto":"algo",
-            //                                  "IdEmpleador":"algo",
-            //                                  "NombreEmpresarial":"algo",
-            //                                  "EnlaceSitioWeb":"algo",
-            //                                  "ListaProyectosTerminados":["algo","algo"],
-            //                                  "ListaProyectosActivos":["algo","algo"]};
-
-            //            $rootScope.userData ={
-            //                "NombreContacto":"Nicolas",
-            //                "ApellidoContacto":"Jimenez",
-            //                "Ubicacion":"Tres Ríos",
-            //                "Email":"nicolas.j2007@gmail.com",
-            //                "Telefono":"87715959",
-            //                "Password":"crave",
-            //                "TipoRepositorioArchivos":"https://www.google.com/",
-            //                "Foto":"algo",
-            //                "Universidad":"Tecnológico de Costa Rica",
-            //                "HorarioAtencion":"8:00",
-            //                "Fecha_Registro":"05/08/2014"
-            //            };
 
             $rootScope.userData= {"NombreContacto":"Nicolas",
                                   "ApellidoContacto":"Jimenez",

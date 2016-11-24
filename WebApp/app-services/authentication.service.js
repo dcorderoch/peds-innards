@@ -22,7 +22,7 @@
                 method:"post",
                 url:    $rootScope.url+"api/User/Login",
                 data:loginData
-            });
+            }); 
             return request;
         }
         
