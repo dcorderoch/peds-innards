@@ -5,12 +5,14 @@
         .module('app')
         .controller('UniCoursesController', UniCoursesController);
 
-    UniCoursesController.$inject = ['$location',  'FlashService', '$rootScope'];
-    function UniCoursesController($location,  FlashService, $rootScope) {
+    UniCoursesController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService'];
+    function UniCoursesController($location,  FlashService, $rootScope, CourseService) {
         var vm = this;
 
         initController();
 
+        vm.courses=[];
+        
         function initController(){
 
             vm.NombreContacto = $rootScope.userData.NombreContacto;
@@ -39,8 +41,22 @@
             vm.courseAverageWidth = {'width': vm.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};      
             $rootScope.currentCourseData={};
+            loadCourses();
 
+        }
+        
+        function loadCourses(){
+            
+            CourseService.GetAllByUniversity(vm.UniversidadId)
+                .then(function(response){
+                    
+                    vm.courses = response.data; 
+                   
+            }, function(response){
+                console.log("No funcó")
+            });
         }
     }
 
 })();
+            

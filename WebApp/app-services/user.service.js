@@ -12,6 +12,7 @@
         service.RegisterStudent = RegisterStudent;
         service.RegisterProfessor = RegisterProfessor;
         service.RegisterEmployer = RegisterEmployer;
+        service.Disable = Disable;
 
         return service;
         /**
@@ -44,6 +45,16 @@
             });
             return response;    
         }
+        
+        function Disable(userId){
+            var response=$http({
+                method:"post",
+                url:$rootScope.url+"Api/Account/Disable",
+                data: {UserId:userId}
+            });
+            return response;
+        }
+        
         // private functions
 
         function handleSuccess(res) {

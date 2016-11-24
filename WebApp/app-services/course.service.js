@@ -13,6 +13,7 @@
         service.GetCourseAsProfessor = GetCourseAsProfessor;
         service.CreateCourse = CreateCourse;
         service.GetComments = GetComments;
+        service.GetAllByUniversity = GetAllByUniversity;
 
         return service;
 
@@ -46,12 +47,21 @@
         function GetComments(sharedAreaData){
             var response = $http({
                 method:"post",
-                url: $rootScope.url+"/Comment/GetAll",
+                url: $rootScope.url+"Api/Comment/GetAll",
                 data: sharedAreaData
             });
             return response 
         }
-    }
 
+        function GetAllByUniversity(universityId){
+            var response  = $http({
+                method:"post",
+                url:$rootScope.url+"/Api/Course/GetAllByUniversity",
+                data: {UniversityId: universityId}
+            });
+            return response;
+        }
+
+    }
 
 })();
