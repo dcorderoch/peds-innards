@@ -1,12 +1,13 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Results;
 using MyLearn.Models;
+using MyLearn.InputModels;
 
 namespace MyLearn.Controllers
 {
     public class RegisterController : ApiController
     {
-        [RequireHttps]
+        //[RequireHttps]
         [HttpGet]
         public JsonResult<InfoEstudiante> RegisterStudent(RegisterEstudianteInfo userInformation)
         {
@@ -14,7 +15,7 @@ namespace MyLearn.Controllers
             // Subject to Change
             return Json(retVal);
         }
-        [RequireHttps]
+        //[RequireHttps]
         [HttpGet]
         public JsonResult<InfoProfesor> RegisterProfessor(RegisterProfessorInfo userInformation)
         {
@@ -22,7 +23,7 @@ namespace MyLearn.Controllers
             // Subject to Change
             return Json(retVal);
         }
-        [RequireHttps]
+        //[RequireHttps]
         [HttpGet]
         public JsonResult<InfoEmpleador> RegisterEmployer(RegisterEmployerInfo userInformation)
         {
