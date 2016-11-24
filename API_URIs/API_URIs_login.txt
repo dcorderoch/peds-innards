@@ -10,6 +10,9 @@ and then Receives
 {
     "UserTypeCode":[0-4]
 }
+Nota: - 0 admin
+      - 1 student
+      - 
 
 ################################################# LOGIN ESTUDIANTE
 https://host/Api/Login/LoginStudent

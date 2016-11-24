@@ -101,6 +101,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActiveCoursesList.cs" />
+    <Compile Include="Models\ActiveJobOffersList.cs" />
+    <Compile Include="Models\FinishedCoursesList.cs" />
+    <Compile Include="Models\FinishedJobOffersList.cs" />
     <Compile Include="Models\InfoAdmin.cs" />
     <Compile Include="Models\InfoEmpleador.cs" />
     <Compile Include="Models\InfoEstudiante.cs" />
