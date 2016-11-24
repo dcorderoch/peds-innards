@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using MyLearn.Models;
 
 
 namespace MyLearn.BLL
@@ -10,13 +11,14 @@ namespace MyLearn.BLL
     /// </summary>
     public class AccountManager
     {
-        public int GetUserTypeCode(string username, string password)
+        public UserCode GetUserTypeCode(string username, string password)
         {
-            //if user does not exist return -1.
-            int userTypeCode =0;
+            //Admin:0 Student:1 Professor:2 Employer:3 Error: -1
+            UserCode userTypeCode = new UserCode();
+            int code = 0;
 
 
-
+            //code goes here
 
 
             return userTypeCode;
@@ -27,19 +29,62 @@ namespace MyLearn.BLL
         /// <param name="userId"></param>
         /// <param name="password"></param>
         /// <returns>User information.</returns>
-        public List<string> AuthorizeLogin(int username, string password)
+        public InfoEstudiante StudentLogin(int username, string password)
         {
-            List<string> retVal = new List<string>();
+            InfoEstudiante student = new InfoEstudiante();
        //     DBUser dbUserInstance = new DBUser();
-            try
-            {
-             
-            }
-            catch (Exception)
-            {
-                
-            }
-            return retVal;
+       // SUBJECT TO CHANGE
+            student.UserId = "";
+            student.NombreContacto = "";
+            student.ApellidoContacto= "";
+            student.Ubicacion= "";
+            student.Email = "";
+            student.Telefono = "";
+            student.Fecha_Registro = "";
+            student.Password ="";
+            student.TipoRepositorioArchivos = "";
+            student.Foto = "";
+            student.Universidad = "";
+            student.UniversityId = "";
+            student.EnlaceRepositorioCodigo = "";
+            student.EnlaceACurriculum = "";
+            student.PromedioProyectos = 1;
+            student.PromedioCursos = 1;
+            student.Idiomas= new List<string>();
+            student.CursosAprobados = 0;
+            student.CursosReprobados=0;
+            student.ProyectosExitosos = 0;
+            student.ProyectosFallidos = 0;
+            student.Tecnologias=new List<string>();
+
+            List<FinishedCoursesList> finishedCoursesList = new List<FinishedCoursesList>();
+            FinishedCoursesList finishedCourse = new FinishedCoursesList();
+            finishedCourse.CourseDescription = "";
+            finishedCourse.CourseId = "";
+            finishedCourse.course = "";
+            student.FinishedCoursesList= finishedCoursesList;
+            
+            List<ActiveCoursesList> activeCoursesList = new List<ActiveCoursesList>();
+            ActiveCoursesList activeCourses = new ActiveCoursesList();
+            activeCourses.course = "";
+            activeCourses.CourseId = "";
+            activeCourses.CourseDescription ="";
+            student.ActiveCoursesList = activeCoursesList;
+
+            List<FinishedJobOffersList> finishedJobOffersLists = new List<FinishedJobOffersList>();
+            FinishedJobOffersList finishedJobOffers = new FinishedJobOffersList();
+            finishedJobOffers.JobOffer = "";
+            finishedJobOffers.JobOfferId = "";
+            student.FinishedJobOffersList = finishedJobOffersLists;
+
+            List<ActiveJobOffersList> activeJobOffersLists = new List<ActiveJobOffersList>();
+            ActiveJobOffersList activeJobOffers = new ActiveJobOffersList();
+            activeJobOffers.JobOffer = "";
+            activeJobOffers.JobOfferId = "";
+            student.ActiveJobOffersList = activeJobOffersLists;
+
+
+            return student;
         }
     }
 }
