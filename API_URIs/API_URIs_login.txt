@@ -36,7 +36,7 @@ and then Receives
     "Password":"algo",
     "TipoRepositorioArchivos":"algo",
     "Foto":"algo",
-    "Carnet":"algo",
+    "StudentUserId":"algo",
     "Universidad":"algo",
     "UniversityId": "Id",
     "EnlaceRepositorioCodigo":"algo",
@@ -167,7 +167,7 @@ and then Receives
     "Password":"algo",
     "TipoRepositorioArchivos":"algo",
     "Foto":"algo",
-    "IdEmpleador":"algo",
+    "EmployerUserId":"algo",
     "NombreEmpresarial":"algo",
     "EnlaceSitioWeb":"algo",
     "FinishedJobOffersList":[

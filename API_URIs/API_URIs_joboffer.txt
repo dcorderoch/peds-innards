@@ -23,7 +23,7 @@ Nota: - 0 error
 https://host/Api/JobOffer/GetByEmployer
 Web Application sends
 {
-    "IdEmpleador":"algo"
+    "EmployerUserId":"algo"
 }
 
 and then Receives
@@ -149,14 +149,14 @@ and then Receives
                            "DurationInDays": [0-9],
                            "StudentName":"algo",
                            "StudentSurname":"algo",
-                           "StudentId":"Id"
+                           "StudentUserId":"Id"
                        },
                        {
                            "Money":"algo",
                            "DurationInDays": [0-9],
                            "StudentName":"algo",
                            "StudentSurname":"algo",
-                           "StudentId":"Id"
+                           "StudentUserId":"Id"
                        }
                    ]
 }

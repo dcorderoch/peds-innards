@@ -2,8 +2,8 @@
 https://host/Api/Comment/GetAll
 Web Application sends
 {
-    "Carnet":"algo",
-    "ProfessorId":"algo",
+    "StudentUserId":"algo",
+    "ProfUserId":"algo",
     "CourseId": "Id"
 }
 
@@ -65,8 +65,8 @@ Nota: - 0
 https://host/Api/Comment/Create
 Web Application sends
 {
-    "Carnet":"algo",
-    "ProfessorId":"algo",
+    "StudentUserId":"algo",
+    "ProfUserId":"algo",
     "CourseId": "Id",
     "Comment":"algo",
     "ParentId":"algo",

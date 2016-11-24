@@ -2,7 +2,7 @@
 https://host/Api/Notifications/GetByStudent
 Web Application sends
 {
-    "Carnet":"algo"
+    "StudentUserId":"algo"
 }
 
 and then Receives

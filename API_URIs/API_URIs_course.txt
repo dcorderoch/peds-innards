@@ -13,14 +13,14 @@ and then Receives
     "CourseId":"algo",
     "CourseDescription":"algo",
     "Group":[0-9]+,
-    "StudentsCarnet":[
+    "Students":[
                          {
                              "Nombre":"algo",
-                             "Carnet":"algo"
+                             "StudentUserId":"algo"
                          },
                          {
                              "Nombre":"algo",
-                             "Carnet":"algo"
+                             "StudentUserId":"algo"
                          }
                      ]
 }
@@ -32,8 +32,8 @@ Nota: - 0 inactivo
 https://host/Api/Course/GetSpecificCourse
 Web Application sends
 {
-    "Carnet":"algo",
-    "ProfessorId":"algo",
+    "StudentUserId":"algo",
+    "ProfUserId":"algo",
     "UniversityId":"algo",
     "Group":"algo",
     "CourseId": "Id"
@@ -68,8 +68,8 @@ Web Application sends
 and then Receives
 {
     "CourseName":"algo",
-    "Carnet":"algo",
-    "ProfessorId":"algo",
+    "StudentUserId":"algo",
+    "ProfUserId":"algo",
     "ProfessorName":"algo",
     "UniversityId":"algo",
     "Grade":1?[0-9]{2},
@@ -100,7 +100,7 @@ Web Application sends
 {
     "CourseName":"algo",
     "CourseDescription"
-    "ProfessorId":"algo",
+    "ProfUserId":"algo",
     "UniversityId":"algo",
     "Group":[0-9]+,
     "MinGrade":1?[0-9]{2},
@@ -130,7 +130,7 @@ Nota: - 0 error
 https://host/Api/Course/GetAllByProfessor
 Web Application sends
 {
-    "ProfessorId": "Id"
+    "ProfUserId": "Id"
 }
 
 and then Receives
