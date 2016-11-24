@@ -11,6 +11,7 @@
 
         vm.goCourseActive = goCourseActive;
         vm.goCourseFinished = goCourseFinished;
+        vm.disableAccount =disableAccount;
 
         initController();
 
@@ -91,7 +92,7 @@
                 $location.path("/login")
                 
             }, function(response){
-                console.log("no funco");
+                console.log("no funcó");
             })
         }
     }
