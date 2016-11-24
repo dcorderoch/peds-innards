@@ -1,15 +1,13 @@
-################################################# Get a Project's Comments
-https://host/Api/Comment/GetAll
+################################################# Get a Job Offer's Comments
+https://host/Api/JobOfferComment/GetAll
 Web Application sends
 {
-    "Carnet":"algo",
-    "ProfessorId":"algo",
-    "CourseId": "Id"
+    "JobOfferId":"algo"
 }
 
 and then Receives
 {
-    "Comments":[
+    "JobOfferComments":[
                    {
                        "CommentId":"algo",
                        "ParentId":"algo",
@@ -54,21 +52,17 @@ and then Receives
                                         "IsFromStudent":(0|1),
                                         "Comment":"algo"
                                     }
-                            ]
+                                ]
                    }
             ]
 }
-Nota: - 0
-      - 1 de Estudiante
 
 ################################################# Create a New Comment
-https://host/Api/Comment/Create
+https://host/Api/JobOfferComment/Create
 Web Application sends
 {
-    "Carnet":"algo",
-    "ProfessorId":"algo",
-    "CourseId": "Id",
-    "Comment":"algo",
+    "JobOfferId":"algo",
+    "JobOfferComment":"algo",
     "ParentId":"algo",
     "Commenter":(0|1)
 }

@@ -21,6 +21,7 @@ Web Application sends
 
 and then Receives
 {
+    "UserId":"Id",
     "NombreContacto":"algo",
     "ApellidoContacto":"algo",
     "Ubicacion":"algo",
@@ -68,25 +69,25 @@ and then Receives
                                 "CourseDescription":"algo",
                                 "accepted":(0|1)
                             }
-		                ],
-    "FinishedProjectsList":[
+		                    ],
+    "FinishedJobOffersList":[
                                {
-                                   "Project":"algo",
-		                               "ProjectId": "Id"
-		                           },
+                                   "JobOffer":"algo",
+                                   "JobOfferId": "Id"
+                               },
                                {
-                                   "Project":"algo",
-                                   "ProjectId": "Id"
+                                   "JobOffer":"algo",
+                                   "JobOfferId": "Id"
                                }
-		                       ],
-    "ActiveProjectsList":[
+                           ],
+    "ActiveJobOffersList":[
                              {
-                                 "Project":"algo",
-                                 "ProjectId": "Id"
+                                 "JobOffer":"algo",
+                                 "JobOfferId": "Id"
                              },
                              {
-                                 "Project":"algo",
-                                 "ProjectId": "Id"
+                                 "JobOffer":"algo",
+                                 "JobOfferId": "Id"
                              }
                          ]
 }
@@ -101,6 +102,7 @@ Web Application sends
 
 and then Receives
 {
+    "UserId":"Id",
     "NombreContacto":"algo",
     "ApellidoContacto":"algo",
     "Ubicacion":"algo",
@@ -150,6 +152,7 @@ Web Application sends
 
 and then Receives
 {
+    "UserId":"Id",
     "NombreContacto":"algo",
     "ApellidoContacto":"algo",
     "Ubicacion":"algo",
@@ -162,24 +165,24 @@ and then Receives
     "IdEmpleador":"algo",
     "NombreEmpresarial":"algo",
     "EnlaceSitioWeb":"algo",
-    "FinishedProjectsList":[
+    "FinishedJobOffersList":[
                                {
-                                   "Project":"algo",
-                                   "ProjectId": "Id"
+                                   "JobOffer":"algo",
+                                   "JobOfferId": "Id"
                                },
                                {
-                                   "Project":"algo",
-                                   "ProjectId": "Id"
+                                   "JobOffer":"algo",
+                                   "JobOfferId": "Id"
                                }
                            ],
-    "ActiveProjectsList":[
+    "ActiveJobOffersList":[
                              {
-                                 "Project":"algo",
-                                 "ProjectId": "Id"
+                                 "JobOffer":"algo",
+                                 "JobOfferId": "Id"
                              },
                              {
-                                 "Project":"algo",
-                                 "ProjectId": "Id"
+                                 "JobOffer":"algo",
+                                 "JobOfferId": "Id"
                              }
                          ]
 }
@@ -194,6 +197,7 @@ Web Application sends
 
 and then Receives
 {
+    "UserId":"Id",
     "UserName":"algo",
     "Tecnologias":["algo","algo"],
     "Universidades":["algo","algo"]

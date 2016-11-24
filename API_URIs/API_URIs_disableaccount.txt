@@ -1,0 +1,14 @@
+################################################# Disable Account
+https://host/Api/Account/Disable
+Web Application sends
+{
+    "UserId":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito

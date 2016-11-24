@@ -5,15 +5,15 @@ https://host/Api/Technology/GetAll
 and then Receives
 {
     "Technologies":[
-                    {
-                        "Technology":"algo",
-                        "TechnologyId": "Id"
-                    },
-                    {
-                        "Technology":"algo",
-                        "TechnologyId": "Id"
-                    }
-                ]
+                       {
+                           "Technology":"algo",
+                           "TechnologyId": "Id"
+                       },
+                       {
+                           "Technology":"algo",
+                           "TechnologyId": "Id"
+                       }
+                   ]
 }
 
 ################################################# Create new Technology

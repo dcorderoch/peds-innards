@@ -1,0 +1,69 @@
+################################################# Create new Job Offer
+https://host/Api/JobOffer/Create
+Web Application sends
+{
+    "JobOffer":"algo",
+    "Technologies":["algo","algo"],
+    "Location":"algo",
+    "StartDate":"fecha en ISO8601",
+    "EndDate":"fecha en ISO8601",
+    "Description":"algo",
+    "Budget":[0-9]+
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito
+
+################################################# Get JobOffersByEmployerId
+https://host/Api/JobOffer/GetByEmployer
+Web Application sends
+{
+    "IdEmpleador":"algo"
+}
+
+and then Receives
+{
+    "FinishedJobOffersList":[
+                               {
+                                   "JobOffer":"algo",
+                                   "JobOfferId": "Id"
+                               },
+                               {
+                                   "JobOffer":"algo",
+                                   "JobOfferId": "Id"
+                               }
+                           ],
+    "ActiveJobOffersList":[
+                             {
+                                 "JobOffer":"algo",
+                                 "JobOfferId": "Id"
+                             },
+                             {
+                                 "JobOffer":"algo",
+                                 "JobOfferId": "Id"
+                             }
+                         ]
+}
+
+################################################# Get JobOffersById
+https://host/Api/JobOffer/GetByEmployer
+Web Application sends
+{
+    "JobOfferId":"algo"
+}
+
+and then Receives
+{
+    "JobOffer":"algo",
+    "Technologies":["algo","algo"],
+    "Location":"algo",
+    "StartDate":"fecha en ISO8601",
+    "EndDate":"fecha en ISO8601",
+    "Description":"algo",
+    "Budget":[0-9]+
+}

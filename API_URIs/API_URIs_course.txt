@@ -115,3 +115,61 @@ and then Receives
 
 Nota: - 0 error
       - 1 exito
+
+################################################# Get all Professor's Courses
+https://host/Api/Course/GetAllByProfessor
+Web Application sends
+{
+    "ProfessorId": "Id"
+}
+
+and then Receives
+{
+    "FinishedCoursesList":[
+                              {
+                                  "Course":"algo", 
+                                  "CourseId": "Id",
+                                  "CourseDescription":"algo"
+                              },
+                              {
+                                  "Course":"algo", 
+                                  "CourseId": "Id",
+                                  "CourseDescription":"algo"
+                              }
+                          ],
+    "ActiveCoursesList":[
+                            {
+                                "Course":"algo", 
+                                "CourseId": "Id",
+                                "CourseDescription":"algo"
+                            },
+                            {
+                                "Course":"algo", 
+                                "CourseId": "Id",
+                                "CourseDescription":"algo"
+                            }
+                        ]
+}
+
+################################################# Get all University's Courses
+https://host/Api/Course/GetAllByUniversity
+Web Application sends
+{
+    "UniversityId": "Id"
+}
+
+and then Receives
+{
+    "Courses":[
+                  {
+                      "Course":"algo", 
+                      "CourseId": "Id",
+                      "CourseDescription":"algo"
+                  },
+                  {
+                      "Course":"algo", 
+                      "CourseId": "Id",
+                      "CourseDescription":"algo"
+                  }
+              ]
+}
