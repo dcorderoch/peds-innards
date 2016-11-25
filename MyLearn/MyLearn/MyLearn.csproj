@@ -124,6 +124,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BLL\AccountManager.cs" />
     <Compile Include="BLL\CommentManager.cs" />
+    <Compile Include="BLL\CountryManager.cs" />
     <Compile Include="BLL\CourseManager.cs" />
     <Compile Include="BLL\JobManager.cs" />
     <Compile Include="BLL\NotificationManager.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Models\AllProfessorsCourses.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseAsStudent.cs" />
     <Compile Include="Models\CourseShort.cs" />
