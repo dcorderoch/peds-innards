@@ -133,7 +133,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InputModels\Badge.cs" />
+    <Compile Include="InputModels\CourseIdentifier.cs" />
     <Compile Include="InputModels\LoginInfo.cs" />
+    <Compile Include="InputModels\NewCourse.cs" />
+    <Compile Include="InputModels\NewJobOffer.cs" />
+    <Compile Include="InputModels\NumberOfTopStudents.cs" />
     <Compile Include="InputModels\RegisterEmployerInfo.cs" />
     <Compile Include="InputModels\RegisterEstudianteInfo.cs" />
     <Compile Include="InputModels\RegisterProfessorInfo.cs" />
@@ -141,7 +146,6 @@
     <Compile Include="InputModels\UserIdentifier.cs" />
     <Compile Include="Models\ActiveCoursesList.cs" />
     <Compile Include="Models\ActiveJobOffersList.cs" />
-    <Compile Include="InputModels\Badge.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseAsStudent.cs" />

@@ -51,10 +51,13 @@ namespace MyLearn.BLL
 
         }
 
-        public GetSpecificCourse(string studentId, string professorId, string universityId,
-            string group, string courseId)
+        public SpecificCourse GetSpecificCourse(SharedAreaCredentials credentials)
         {
+         SpecificCourse specificCourse = new SpecificCourse();
             
+            
+            
+            return specificCourse;   
         }
 
         public GetCourseAsStudent(string courseId)
