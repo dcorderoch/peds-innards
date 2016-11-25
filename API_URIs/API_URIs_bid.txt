@@ -1,0 +1,37 @@
+################################################# Create a Bid
+https://host/Api/Bid/Create
+Web Application sends
+{
+    "JobOfferId":"algo",
+    "Money":"algo",
+    "DurationDays":"[0-9]",
+    "StudentSurname":"algo",
+    "StudentUserId":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito
+
+################################################# Update a Bid
+https://host/Api/Bid/Update
+Web Application sends
+{
+    "JobOfferId":"algo",
+    "Money":"algo",
+    "DurationDays":"[0-9]",
+    "StudentSurname":"algo",
+    "StudentUserId":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito

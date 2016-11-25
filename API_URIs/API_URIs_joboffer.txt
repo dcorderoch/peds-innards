@@ -139,7 +139,7 @@ and then Receives
     "JobOffers":[
                     {
                         "EmployerUserId":"algo",
-                        "EmployerName":"algo",
+                        "Emploc○○yerName":"algo",
                         "JobOffer":"algo",
                         "JobOfferId": "Id",
                         "Technologies":["algo","algo"],
@@ -195,19 +195,4 @@ and then Receives
                    ]
 }
 
-################################################# Close Course
-https://host/Api/JobOffer/Close
-Web Application sends
-{
-    "JobOfferId":"algo",
-    "State":"NUMERO",
-    "StateDescription":"RazonEnTexto"
-}
-
-and then Receives
-{
-    "ReturnStatus":(0|1)
-}
-
-Nota: - 0 error
-      - 1 exito
+○
