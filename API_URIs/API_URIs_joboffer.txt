@@ -79,6 +79,8 @@ and then Receives
 {
     "JobOffers":[
                     {
+                        "EmployerUserId":"algo",
+                        "EmployerName":"algo",
                         "JobOffer":"algo",
                         "JobOfferId": "Id",
                         "Technologies":["algo","algo"],
@@ -89,6 +91,8 @@ and then Receives
                         "Budget":[0-9]+
                     },
                     {
+                        "EmployerUserId":"algo",
+                        "EmployerName":"algo",
                         "JobOffer":"algo",
                         "JobOfferId": "Id",
                         "Technologies":["algo","algo"],
@@ -112,6 +116,8 @@ and then Receives
 {
     "JobOffers":[
                     {
+                        "EmployerUserId":"algo",
+                        "EmployerName":"algo",
                         "JobOffer":"algo",
                         "JobOfferId": "Id",
                         "Technologies":["algo","algo"],
@@ -122,6 +128,8 @@ and then Receives
                         "Budget":[0-9]+
                     },
                     {
+                        "EmployerUserId":"algo",
+                        "EmployerName":"algo",
                         "JobOffer":"algo",
                         "JobOfferId": "Id",
                         "Technologies":["algo","algo"],
