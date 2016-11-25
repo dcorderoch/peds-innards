@@ -195,3 +195,19 @@ and then Receives
 
 Nota: - 0 error
       - 1 exito
+
+################################################# Join a Course (as a Student)
+https://host/Api/Course/Join
+Web Application sends
+{
+    "CourseId":"algo",
+    "StudentUserId":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito
