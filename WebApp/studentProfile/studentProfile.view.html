@@ -97,7 +97,7 @@
                 <div id="home" class="tab-pane fade in active container">
 
                     <h3>Cursos activos</h3>
-                    <hr class="hr2">
+                    <hr class="hr3">
 
                     <div ng-repeat="activeCourse in vm.userData.ActiveCoursesList">
                         <div class="panel panel-default panelProfile">
@@ -105,7 +105,7 @@
                                 <strong>Nombre del curso:</strong> {{activeCourse.course}},
                                 <strong>  Descripción: </strong>{{activeCourse.CourseDescription}}
                                 <span> 
-                                    <button  ng-click="vm.goCourseActive(activeCourse.courseId,activeCourse.accepted)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button> 
+                                    <button  ng-click="vm.goCourseActive(activeCourse.courseId,1)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button> 
                                 </span>
                             </div>
                         </div>               

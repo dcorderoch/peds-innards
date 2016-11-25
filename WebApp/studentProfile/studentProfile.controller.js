@@ -75,7 +75,8 @@
         }
 
         function goCourseActive(id, status){
-
+            $location.path('/coursearea');    
+            return;
             CourseService.GetCourseAsStudent(id)
                 .then(function(response){
 

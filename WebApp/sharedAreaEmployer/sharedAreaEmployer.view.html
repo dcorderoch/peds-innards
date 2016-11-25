@@ -58,7 +58,7 @@
                             </div>
                             <div ng-show="vm.writeReply">
                                 <input ng-model="vm.replyMessage" style="float:left" class="replyComment" type=text placeholder="Escribe una respuesta" name="reply">
-                                <button ng-click="vm.sendReply(comment.CommentId)" class="btn btn-success replyButton">Enviar</button>
+                                <button ng-click="vm.sendReply(comment.CommentId)" class="btn btn-primary replyButton">Enviar</button>
                                 <br>
                                 <br>
                                 <hr class="hr4">
@@ -85,7 +85,7 @@
                             </div>
                             <div ng-show="vm.writeReply">
                                 <input ng-model="vm.replyMessage" style="float:left" class="replyComment" type=text placeholder="Escribe una respuesta" name="reply">
-                                <button ng-click="vm.sendReply(comment.CommentId)" class="btn btn-success replyButton">Enviar</button>
+                                <button ng-click="vm.sendReply(comment.CommentId)" class="btn btn-primary replyButton">Enviar</button>
                                 <br>
                                 <br>
                                 <hr class="hr4">
@@ -107,7 +107,7 @@
                     <hr class="hr3">
                     <input ng-disabled="!vm.workData.status" class="newComment" type=text placeholder="Escribe un comentario" name="search">
                     <button ng-disabled="!vm.workData.status" class="sendIcon btn btn-primary glyphicon glyphicon-paperclip"></button> 
-                    <button ng-disabled="!vm.workData.status" class="btn btn-success" >Enviar</button>
+                    <button ng-disabled="!vm.workData.status" class="btn btn-primary" >Enviar</button>
 
                 </div>
             </div>
