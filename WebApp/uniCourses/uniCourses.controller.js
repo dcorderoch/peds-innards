@@ -13,7 +13,7 @@
 
         vm.courses=[];
         vm.joinCourse = joinCourse;
-        
+
         function initController(){
 
             vm.NombreContacto = $rootScope.userData.NombreContacto;
@@ -43,28 +43,39 @@
             vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};      
             $rootScope.currentCourseData={};
             loadCourses();
-
         }
-        
+
         function loadCourses(){
-            
+
             CourseService.GetAllByUniversity(vm.UniversidadId)
                 .then(function(response){
-                    
-                    vm.courses = response.data; 
-                   
+
+                vm.courses = response.data; 
+
             }, function(response){
                 console.log("No funcó")
             });
         }
-        
+
         function joinCourse( universityId ){
-         
+
+            var send = {StudentUserId: vm.StudentUserId, CourseId: vm.UniversityId}
+            CourseService.JoinCourse( send)
+                .then( function(response){
+
+                if (response.ReturnStatus==1)
+                    FlashService.Success("Te has unido exitosamente a este curso");
+                loadCourses();
             
-            
+            }, function(response){
+                
+                FlashService.Error("No te has podido unir exitosamente a este curso");
+                console.log("No sirvió el unirse a curso"); 
+            });
+
         }
-        
+
     }
 
 })();
-            
+

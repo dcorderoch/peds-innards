@@ -14,6 +14,7 @@
         service.CreateCourse = CreateCourse;
         service.GetComments = GetComments;
         service.GetAllByUniversity = GetAllByUniversity;
+        service.JoinCourse = JoinCourse;
 
         return service;
 
@@ -58,6 +59,15 @@
                 method:"post",
                 url:$rootScope.url+"/Api/Course/GetAllByUniversity",
                 data: {UniversityId: universityId}
+            });
+            return response;
+        }
+        
+        function JoinCourse(dataJoin){
+            var response = $http({
+                method: "post",
+                url: $rootScope.url+"Course/Join",
+                data: dataJoin
             });
             return response;
         }
