@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Results;
+using MyLearn.BLL;
+using MyLearn.Models;
+using MyLearn.InputModels;
+
+namespace MyLearn.Controllers
+{
+    public class BidController : ApiController
+    {
+        [HttpPost]
+        public JsonResult<ReturnCode> Create(NewBadge newBadge)
+        {
+            var status = new BidManager();
+            var retVal = status.Create(newBadge);
+            return Json(retVal);
+        }
+        [HttpPost]
+        public JsonResult<ReturnCode> Update(NewBadge newBadge)
+        {
+            var status = new BidManager();
+            var retVal = status.Update(newBadge);
+            return Json(retVal);
+        }
+    }
+}
