@@ -50,8 +50,11 @@
 
                     <div ng-repeat="activeCourse in vm.ActiveCoursesList">
                         <div class="panel panel-default panelProfile">
-                            <div class="panel-body"><strong>Nombre del curso:</strong> {{activeCourse.course}}<p>
-                                <button  ng-click="vm.goCourseActive(activeCourse.courseid)"  type="button" class="btn btn-default yellowButton uniCourse">Abrir curso</button></p> </div>
+                            <div class="panel-body">
+                                <strong>Nombre del curso:</strong> {{activeCourse.Course}}
+                                <strong> Descripción: </strong> {{activeCourse.CourseDescription}}
+                                <button  ng-click="vm.goCourseActive(activeCourse.CourseId)"  type="button" class="btn btn-default yellowButton uniCourse">Abrir curso</button> 
+                            </div>
                         </div>               
                     </div>
 
@@ -61,8 +64,11 @@
 
                     <div ng-repeat="finishedCourse in vm.FinishedCoursesList">
                         <div class="panel panel-default panelProfile">
-                            <div class="panel-body"><strong>Nombre del curso:</strong> {{finishedCourse.course}}<p>
-                                <button  ng-click="vm.goCourseFinished(finishedCourse.courseid)"  type="button" class="btn btn-default yellowButton uniCourse">Abrir curso</button></p> </div>
+                            <div class="panel-body">
+                                <strong>Nombre del curso:</strong> {{finishedCourse.Course}}
+                                <strong> Descripción:</strong> {{finishedCourse.CourseDescription}}
+                                <button  ng-click="vm.goCourseFinished(finishedCourse.CourseId)"  type="button" class="btn btn-default yellowButton uniCourse">Abrir curso</button> 
+                            </div>
                         </div>
                     </div>
 

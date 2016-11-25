@@ -17,12 +17,12 @@
             <div class="panel panel-default" >
                 <div  class="panel-body">
 
-                    <div ng-repeat="carnet in vm.courseData.StudentsCarnet"> 
+                    <div ng-repeat="student in vm.courseData.Students"> 
                         <div class="panel panel-default panelAuction">
                             <div class="panel-body">
-                                <p>Nonbre estudiante
+                                <p>Nombre estudiante: {{student.Nombre}}
                                     
-                                    <button ng-click="vm.goArea(carnet)" style="margin:2px" type="button" class="btn btn-primary uniCourse"> Abrir área compartida </button>
+                                    <button ng-click="vm.goArea(student.StudentUserId)" style="margin:2px" type="button" class="btn btn-primary uniCourse"> Abrir área compartida </button>
                                 </p> 
                             </div>
                         </div>

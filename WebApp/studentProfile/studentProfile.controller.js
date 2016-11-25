@@ -48,6 +48,7 @@
             vm.ActiveCoursesList = $rootScope.userData.ActiveCoursesList;
             vm.FinishedProjectsList = $rootScope.userData.FinishedProjectsList;
             vm.ListaProyectosActivos = $rootScope.userData.ActiveProjectsList;
+            
             var currentCourseData={
                 "status":"true",
                 "CourseName":"algo",

@@ -5,8 +5,8 @@
         .module('app')
         .controller('ProfessorProfileController', ProfessorProfileController);
 
-    ProfessorProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService'];
-    function ProfessorProfileController($location,  FlashService, $rootScope, CourseService) {
+    ProfessorProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'ProfileCourseService'];
+    function ProfessorProfileController($location,  FlashService, $rootScope, CourseService, ProfileCourseService) {
         var vm = this;
 
         initController();
@@ -32,29 +32,48 @@
 
             vm.FinishedCoursesList = $rootScope.userData.FinishedCoursesList;
             vm.ActiveCoursesList = $rootScope.userData.ActiveCoursesList;
-//            vm.ActiveCoursesList.push({"course":"curso1","courseid": "123"})
+
+            var currentCourseData={
+                "CourseName":"algo",
+                "UniversityId":"algo",
+                "MinGrade":70,
+                "CourseId":"algo",
+                "CourseDescription":"algo",
+                "Group":8,
+                "Students":[ { "Nombre":"algo", "StudentUserId":"123"}, {"Nombre":"algo","StudentUserId":"124"}]};
+
+
+            ProfileCourseService.SetCourseData(currentCourseData);
+
         }
 
         function goCourseFinished(id){
 
+            $location.path('/courseoverview');    
+            return;
+
             CourseService.GetCourseAsProfessor(id)
                 .then(function(response){
 
-                $rootScope.currentCourseData = response.data;
+                var currentCourseData = response.data;
+                currentCourseData.status = false;
+
+                ProfileCourseService.SetCourseData(currentCourseData);
                 $location.path('/courseoverview');    
 
             }, function(response){
                 console.log("no sirvio")
             });
         }
-        function goCourseActive(id){
+        function goCourseActive(id, status){
 
             CourseService.GetCourseAsProfessor(id)
                 .then(function(response){
 
-                $rootScope.currentCourseData = response.data;
-                $location.path('/courseoverview');
+                var currentCourseData = response.data;
+                currentCourseData.status=true;
 
+                ProfileCourseService.SetCourseData(currentCourseData);
 
             }, function(response){
                 console.log("no sirvio")
