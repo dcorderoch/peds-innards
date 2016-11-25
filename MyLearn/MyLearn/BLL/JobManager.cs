@@ -12,7 +12,7 @@ namespace MyLearn.BLL
         public ReturnCode CreateJobOffer(NewJobOffer newOffer)
         {
             ReturnCode success = new ReturnCode();
-            
+
             //Create new offer
             //Add new course to DB
             /*dbobject.Add(newOffer.JobOffer);
@@ -27,20 +27,47 @@ namespace MyLearn.BLL
             return success;
         }
 
-        public AllJobOffers GetJobOffersByEmployer(string employerId)
+        public AllJobOffersByEmployer GetJobOffersByEmployer(string employerId)
         {
-            AllJobOffers jobOffers = new AllJobOffers();
-            //get all employer's offers
-            ActiveJobOffersList activeJobs = new ActiveJobOffersList();
-            FinishedJobOffersList finishedJobs = new FinishedJobOffersList();
-            //get from db
-            activeJobs = new ActiveJobOffersList();
-            finishedJobs = new FinishedCoursesList();
+            AllJobOffersByEmployer jobOffers = new AllJobOffersByEmployer();
+            //get all professor's courses
+            List<ActiveJobOffersList> activeJobOffers = new List<ActiveJobOffersList>();
+            List<FinishedJobOffer> finishedJobOffers = new List<FinishedJobOffer>();
+            //get from db and add them here, once the repositories are up and running
 
-            allCourses.ActiveCourses = activeCourses;
-            allCourses.FInishedCourses = finishedCourses;
+            //activeCourses = ;
+            //finishedCourses = ;
 
-            return allCourses;
+            jobOffers.ActiveJobOffers = activeJobOffers;
+            jobOffers.FinishedJobOffers = finishedJobOffers;
+
+            return jobOffers;
+        }
+
+        public JobOffer GetJobOffer(string jobOfferId)
+        {
+            JobOffer jobOffer = new JobOffer();
+            jobOffer.JobOfferTitle = "";
+            jobOffer.Technologies = new List<string>();
+            jobOffer.Location = "";
+            jobOffer.StartDate = "";
+            jobOffer.EndDate= "";
+            jobOffer.Description= "";
+            jobOffer.Budget = 1;
+            return jobOffer;
+            
+        }
+
+        public List<JobOffer> GetJobOffers(string technology)
+        {
+            List<JobOffer> result = new List<JobOffer>();
+            int n = 100;
+            for (int i = 0; i < n; i++)
+            {
+                JobOffer jobOffer = new JobOffer();
+                result.Add(jobOffer);
+            }
+            return result;
         }
     }
 }
