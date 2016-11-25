@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MyLearnDAL.Models
 {
     [Table("StudentCourse")]
-    class StudentCourse
+    public class StudentCourse
     {
         [Key]
         [ForeignKey("Student")]
