@@ -77,10 +77,10 @@ namespace MyLearn.BLL
             finishedJobOffers.JobOfferId = "";
             student.FinishedJobOffersList = finishedJobOffersLists;
 
-            List<ActiveJobOffersList> activeJobOffersLists = new List<ActiveJobOffersList>();
-            ActiveJobOffersList activeJobOffers = new ActiveJobOffersList();
-            activeJobOffers.JobOffer = "";
-            activeJobOffers.JobOfferId = "";
+            List<ActiveJobOffer> activeJobOffersLists = new List<ActiveJobOffer>();
+            List<ActiveJobOffer> activeJobOffers = new List<ActiveJobOffer>();
+            //activeJobOffers.JobOffer = "";
+            //activeJobOffers.JobOfferId = "";
             student.ActiveJobOffersList = activeJobOffersLists;
 
 
@@ -143,17 +143,17 @@ namespace MyLearn.BLL
             employer.NombreEmpresarial = "";
             employer.EnlaceSitioWeb = "";
 
-            List<FinishedJobOffer> finishedJobOffersLists = new List<FinishedJobOffer>();
-            FinishedJobOffer finishedJobOffers = new FinishedJobOffer();
-            finishedJobOffers.JobOffer = "";
-            finishedJobOffers.JobOfferId = "";
-            employer.FinishedJobOffersList = finishedJobOffersLists;
+            List<FinishedJobOffer> finishedJobOffersList = new List<FinishedJobOffer>();
+            //FinishedJobOffer finishedJobOffers = new FinishedJobOffer();
+            //finishedJobOffers.JobOffer = "";
+            //finishedJobOffers.JobOfferId = "";
+            employer.FinishedJobOffersList = finishedJobOffersList;
 
-            List<ActiveJobOffersList> activeJobOffersLists = new List<ActiveJobOffersList>();
-            ActiveJobOffersList activeJobOffers = new ActiveJobOffersList();
-            activeJobOffers.JobOffer = "";
-            activeJobOffers.JobOfferId = "";
-            employer.ActiveJobOffersList = activeJobOffersLists;
+            List<ActiveJobOffer> activeJobOffersList = new List<ActiveJobOffer>();
+            //ActiveJobOffersList activeJobOffers = new ActiveJobOffersList();
+            //activeJobOffers.JobOffer = "";
+            //activeJobOffers.JobOfferId = "";
+            employer.ActiveJobOffersList = activeJobOffersList;
 
             return employer;      
         }

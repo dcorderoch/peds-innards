@@ -18,6 +18,6 @@ namespace MyLearn.Models
         public string NombreEmpresarial { get; set; }
         public string EnlaceSitioWeb { get; set; }
         public List<FinishedJobOffer> FinishedJobOffersList { get; set; }
-        public List<ActiveJobOffersList> ActiveJobOffersList { get; set; }
+        public List<ActiveJobOffer> ActiveJobOffersList { get; set; }
     }
 }

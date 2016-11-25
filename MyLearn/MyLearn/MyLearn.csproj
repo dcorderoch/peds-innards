@@ -146,7 +146,7 @@
     <Compile Include="InputModels\SharedAreaCredentials.cs" />
     <Compile Include="InputModels\UserIdentifier.cs" />
     <Compile Include="Models\ActiveCourse.cs" />
-    <Compile Include="Models\ActiveJobOffersList.cs" />
+    <Compile Include="Models\ActiveJobOffer.cs" />
     <Compile Include="Models\AllJobOffersByEmployer.cs" />
     <Compile Include="Models\AllProfessorsCourses.cs" />
     <Compile Include="Models\Badge.cs" />

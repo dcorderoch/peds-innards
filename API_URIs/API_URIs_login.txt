@@ -77,23 +77,31 @@ and then Receives
 		                    ],
     "FinishedJobOffersList":[
                                {
+                                   "EmployerName":"algo",
                                    "JobOffer":"algo",
+                                   "Description":"algo",
                                    "JobOfferId": "Id"
                                },
                                {
+                                   "EmployerName":"algo",
                                    "JobOffer":"algo",
+                                   "Description":"algo",
                                    "JobOfferId": "Id"
                                }
                            ],
     "ActiveJobOffersList":[
                              {
-                                 "JobOffer":"algo",
-                                 "JobOfferId": "Id"
-                             },
-                             {
-                                 "JobOffer":"algo",
-                                 "JobOfferId": "Id"
-                             }
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id"
+                               },
+                               {
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id"
+                               }
                          ]
 }
 
@@ -172,23 +180,31 @@ and then Receives
     "EnlaceSitioWeb":"algo",
     "FinishedJobOffersList":[
                                {
+                                   "EmployerName":"algo",
                                    "JobOffer":"algo",
+                                   "Description":"algo",
                                    "JobOfferId": "Id"
                                },
                                {
+                                   "EmployerName":"algo",
                                    "JobOffer":"algo",
+                                   "Description":"algo",
                                    "JobOfferId": "Id"
                                }
                            ],
     "ActiveJobOffersList":[
                              {
-                                 "JobOffer":"algo",
-                                 "JobOfferId": "Id"
-                             },
-                             {
-                                 "JobOffer":"algo",
-                                 "JobOfferId": "Id"
-                             }
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id"
+                               },
+                               {
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id"
+                               }
                          ]
 }
 

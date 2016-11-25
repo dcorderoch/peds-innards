@@ -31,7 +31,7 @@ namespace MyLearn.BLL
         {
             AllJobOffersByEmployer jobOffers = new AllJobOffersByEmployer();
             //get all professor's courses
-            List<ActiveJobOffersList> activeJobOffers = new List<ActiveJobOffersList>();
+            List<ActiveJobOffer> activeJobOffers = new List<ActiveJobOffer>();
             List<FinishedJobOffer> finishedJobOffers = new List<FinishedJobOffer>();
             //get from db and add them here, once the repositories are up and running
 

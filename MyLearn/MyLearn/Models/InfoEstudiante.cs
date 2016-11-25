@@ -30,6 +30,6 @@ namespace MyLearn.Models
         public List<FinishedCourse> FinishedCoursesList { get; set; }
         public List<ActiveCourse> ActiveCoursesList { get; set; }
         public List<FinishedJobOffer> FinishedJobOffersList { get; set; }
-        public List<ActiveJobOffersList> ActiveJobOffersList { get; set; }
+        public List<ActiveJobOffer> ActiveJobOffersList { get; set; }
     }
 }

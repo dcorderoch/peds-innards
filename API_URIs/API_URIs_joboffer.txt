@@ -30,11 +30,13 @@ and then Receives
 {
     "FinishedJobOffersList":[
                                {
+                                   "EmployerName":"algo",
                                    "JobOffer":"algo",
                                    "Description":"algo",
                                    "JobOfferId": "Id"
                                },
                                {
+                                   "EmployerName":"algo",
                                    "JobOffer":"algo",
                                    "Description":"algo",
                                    "JobOfferId": "Id"
@@ -42,15 +44,17 @@ and then Receives
                            ],
     "ActiveJobOffersList":[
                              {
-                                 "JobOffer":"algo",
-                                 "Description":"algo",
-                                 "JobOfferId": "Id"
-                             },
-                             {
-                                 "JobOffer":"algo",
-                                 "Description":"algo",
-                                 "JobOfferId": "Id"
-                             }
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id"
+                               },
+                               {
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id"
+                               }
                          ]
 }
 
