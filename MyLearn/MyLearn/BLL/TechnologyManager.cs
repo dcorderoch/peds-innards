@@ -27,7 +27,7 @@ namespace MyLearn.BLL
             //create new comment in db
 
 
-            success.StatusCode = 1;
+            success.ReturnStatus = 1;
             return success;
         }
     }

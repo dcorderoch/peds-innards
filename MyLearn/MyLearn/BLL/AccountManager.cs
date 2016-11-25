@@ -177,7 +177,7 @@ namespace MyLearn.BLL
 
             //code goes here
 
-            success.StatusCode = 1;
+            success.ReturnStatus = 1;
             return success;
         }
     }

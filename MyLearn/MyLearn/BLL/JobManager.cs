@@ -23,7 +23,7 @@ namespace MyLearn.BLL
             dbobject.Add(newOffer.Description);
             dbobject.Add(newOffer.Budget);*/
 
-            success.StatusCode = 1;
+            success.ReturnStatus = 1;
             return success;
         }
 

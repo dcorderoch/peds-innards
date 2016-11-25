@@ -35,5 +35,16 @@ Web Application sends
 
 and then Receives
 {
-    "Notifications":["algo","algo"]
+    "Students":[
+                   {
+                       "Name":"algo",
+                       "PhoneNum":"algo",
+                       "Email":"algo"
+                   },
+                   {
+                       "Name":"algo",
+                       "PhoneNum":"algo",
+                       "Email":"algo"
+                   }
+               ]
 }

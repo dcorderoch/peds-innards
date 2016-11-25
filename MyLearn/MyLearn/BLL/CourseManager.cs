@@ -23,7 +23,7 @@ namespace MyLearn.BLL
             dbobject.Add(newCourse.MinGrade);
             dbobject.Add(newCourse.Badges);*/
             //hard-coded
-            retVal.StatusCode = 1;
+            retVal.ReturnStatus = 1;
             return retVal;
         }
 
@@ -33,7 +33,7 @@ namespace MyLearn.BLL
             //Call function
             int retVal = 0;
             //retVal  = CloseCourseDB(courseId);
-            returnCode.StatusCode = retVal;
+            returnCode.ReturnStatus = retVal;
             return returnCode;
         }
 

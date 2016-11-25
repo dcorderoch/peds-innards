@@ -7,6 +7,6 @@ namespace MyLearn.Models
 {
     public class ReturnCode
     {
-        public int StatusCode { get; set; }
+        public int ReturnStatus { get; set; }
     }
 }
