@@ -170,5 +170,15 @@ namespace MyLearn.BLL
 
             return admin;
         }
+
+        public ReturnCode DisableAccount(string userId)
+        {
+            ReturnCode success = new ReturnCode();
+
+            //code goes here
+
+            success.StatusCode = 1;
+            return success;
+        }
     }
 }
