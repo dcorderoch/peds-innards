@@ -111,7 +111,7 @@
                         <div class="border col-md-8 " >
 
                             <input class ="search" ng-model="query" type=text placeholder=" Buscar" name="search">
-                            <button  ng-click="vm.search(query,searchParameter)" type="button" class="btn btn-success">
+                            <button  ng-click="vm.search(query,searchParameter)" type="button" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-search"></span> 
                             </button>
 
@@ -120,7 +120,7 @@
                                 <div class="panel panel-default searchPanel">
                                     <div class="panel-body">
                                         <strong>Empleador:{{result.JobOffer}}</strong>
-                                        <p> Descripción del trabajo: {{result.Description}}<button type="button" ng-click="vm.goOffering(result)"class="btn btn-default yellowButton uniCourse">Ofertar</button></p></div>
+                                        <p> Descripción del trabajo: {{result.Description}}<button type="button" ng-click="vm.goOffering(result)"class="btn btn-primary  uniCourse">Ofertar</button></p></div>
                                 </div>
                             </div>
                         </div>
