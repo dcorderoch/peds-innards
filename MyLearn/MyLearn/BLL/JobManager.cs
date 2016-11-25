@@ -58,7 +58,7 @@ namespace MyLearn.BLL
             
         }
 
-        public List<JobOffer> GetJobOffers(string technology)
+        public List<JobOffer> GetJobOffersByTechnology(string technology)
         {
             List<JobOffer> result = new List<JobOffer>();
             int n = 100;
@@ -69,5 +69,20 @@ namespace MyLearn.BLL
             }
             return result;
         }
+
+        public List<JobOffer> GetJobOffersByName(string jobOfferTitle)
+        {
+            List<JobOffer> result = new List<JobOffer>();
+            int n = 100;
+            for (int i = 0; i < n; i++)
+            {
+                JobOffer jobOffer = new JobOffer();
+                result.Add(jobOffer);
+            }
+            return result;
+        }
+
+
+
     }
 }
