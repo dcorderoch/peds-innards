@@ -436,7 +436,7 @@ strong {
 
 .panelAuction {
     width:100%;
-        border-width: 3px;
+    border-width: 3px;
 
 }
 
@@ -487,4 +487,9 @@ strong {
     background-color: #D9B23F;
     color: white;
     border-radius: 1px;
+}
+
+.centerBadgeText {
+    position: relative;
+    bottom: 20px;
 }

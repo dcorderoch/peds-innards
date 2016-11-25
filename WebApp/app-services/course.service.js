@@ -20,7 +20,7 @@
         function GetCourseAsStudent(id) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"Api/Course/GetCourseAsProfessor",
+                url:$rootScope.url+"Api/Course/GetCourseAsStudent",
                 data: {"CourseId":id}
             });
             return response;    

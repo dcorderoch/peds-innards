@@ -5,8 +5,8 @@
         .module('app')
         .controller('SharedAreaController', SharedAreaController);
 
-    SharedAreaController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService'];
-    function SharedAreaController($location,  FlashService, $rootScope, CourseService) {
+    SharedAreaController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'ProfileCourseService'];
+    function SharedAreaController($location,  FlashService, $rootScope, CourseService, ProfileCourseService) {
         var vm = this;
 
         vm.comments = [];
@@ -20,12 +20,15 @@
             vm.writeReply=false;
 
             vm.courseData = {};
-            console.log($rootScope.currentCourseData);
-            //            vm.courseData = $rootScope.currentCourseData;
-            vm.courseData.status=true;
-            //            vm.gradeWidth = {'width': vm.courseData.grade+'%'};  
-            //            vm.courseData.grade = vm.courseData;
+
+            vm.courseData =ProfileCourseService.GetCourseData();
+            vm.courseData.Carnet = $rootScope.userData.Carnet;
+            //            vm.courseData.status=true;
+            vm.gradeWidth = {'width': vm.courseData.Grade+'%'};  
+            console.log(vm.gradeWidth);
+
             getComments();
+
             vm.comments.push({CommentId:"123",ParentId:"123", Date:"2016-11-24T01:55:01+00:00", IsFromStudent:"0",
                               Comment:"Bla bla", Nested:[{ "CommentId":"algo",
                                                           "ParentId":"algo",
@@ -45,7 +48,6 @@
                                                            "Comment":"algo"}
                                                          ]});
             processComments();
-            console.log(vm);
         }
 
         function sendReply(commentId){
@@ -89,7 +91,7 @@
 
         function replyaMessage(commentId){
 
-            
+
             vm.writeReply=true;
         }
 
