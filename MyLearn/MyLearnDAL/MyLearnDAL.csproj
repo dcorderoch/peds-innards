@@ -89,10 +89,9 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="MyLearnContext.cs" />
     <Compile Include="MyLearnContextInitializer.cs" />
+    <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611250712431_Initial.resx">
       <DependentUpon>201611250712431_Initial.cs</DependentUpon>
