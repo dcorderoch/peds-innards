@@ -82,7 +82,12 @@ namespace MyLearn.BLL
             return result;
         }
 
-
+        public List<JobOfferBid> GetBidsById(string jobOfferId)
+        {
+            List<JobOfferBid> bids = new List<JobOfferBid>();
+            //get bids where jobOfferId matches
+            return bids;
+        }
 
     }
 }
