@@ -144,7 +144,9 @@
     <Compile Include="InputModels\Badge.cs" />
     <Compile Include="InputModels\CommentInfo.cs" />
     <Compile Include="InputModels\CourseIdentifier.cs" />
+    <Compile Include="InputModels\JobOfferIdentifier.cs" />
     <Compile Include="InputModels\LoginInfo.cs" />
+    <Compile Include="InputModels\NewBadge.cs" />
     <Compile Include="InputModels\NewComment.cs" />
     <Compile Include="InputModels\NewCourse.cs" />
     <Compile Include="InputModels\NewJobComment.cs" />

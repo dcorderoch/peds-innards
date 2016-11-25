@@ -2,6 +2,7 @@
 using System.Web.Http.Results;
 using MyLearn.Models;
 using MyLearn.InputModels;
+using MyLearn.BLL;
 namespace MyLearn.Controllers
 {
     public class LoginController : ApiController
@@ -9,40 +10,36 @@ namespace MyLearn.Controllers
         //[RequireHttps]
         [HttpPost]
         public JsonResult<UserCode> Login(LoginInfo userCredentials) {
-            var retVal = new UserCode();
-            retVal.UserTypeCode = 1; // Subject to Change
+            AccountManager LoginFromBLL = new AccountManager();
+            var retVal = LoginFromBLL.GetUserTypeCode(userCredentials.UserName,userCredentials.Password);
             return Json(retVal);
         }
         //[RequireHttps]
         [HttpPost]
-        public JsonResult<InfoEstudiante> LoginStudent(LoginInfo userCredentials)
-        {
-            var retVal = new InfoEstudiante();
-            // Subject to Change
+        public JsonResult<InfoEstudiante> LoginStudent(LoginInfo userCredentials) {
+            AccountManager LoginFromBLL = new AccountManager();
+            var retVal = LoginFromBLL.StudentLogin(userCredentials.UserName, userCredentials.Password);
             return Json(retVal);
         }
         //[RequireHttps]
         [HttpPost]
-        public JsonResult<InfoProfesor> LoginProfessor(LoginInfo userCredentials)
-        {
-            var retVal = new InfoProfesor();
-            // Subject to Change
+        public JsonResult<InfoProfesor> LoginProfessor(LoginInfo userCredentials) {
+            AccountManager LoginFromBLL = new AccountManager();
+            var retVal = LoginFromBLL.ProfessorLogin(userCredentials.UserName, userCredentials.Password);
             return Json(retVal);
         }
         //[RequireHttps]
         [HttpPost]
-        public JsonResult<InfoEmpleador> LoginEmployer(LoginInfo userCredentials)
-        {
-            var retVal = new InfoEmpleador();
-            // Subject to Change
+        public JsonResult<InfoEmpleador> LoginEmployer(LoginInfo userCredentials) {
+            AccountManager LoginFromBLL = new AccountManager();
+            var retVal = LoginFromBLL.EmployerLogin(userCredentials.UserName, userCredentials.Password);
             return Json(retVal);
         }
         //[RequireHttps]
         [HttpPost]
-        public JsonResult<InfoAdmin> LoginAdmin(LoginInfo userCredentials)
-        {
-            var retVal = new InfoAdmin();
-            // Subject to Change
+        public JsonResult<InfoAdmin> LoginAdmin(LoginInfo userCredentials) {
+            AccountManager LoginFromBLL = new AccountManager();
+            var retVal = LoginFromBLL.AdminLogin(userCredentials.UserName, userCredentials.Password);
             return Json(retVal);
         }
     }
