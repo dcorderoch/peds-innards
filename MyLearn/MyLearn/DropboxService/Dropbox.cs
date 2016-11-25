@@ -48,51 +48,6 @@ namespace MyLearn.DropboxService
             }
         }
 
-        private void CreateFolder(string folderName)
-        {
-            OAuthUtility.PostAsync
-                (
-                    "https://api.dropboxapi.com/2/files/create_folder",
-                    new HttpParameterCollection
-                    {
-                        new
-                        {
-                            path =
-                                (string.IsNullOrEmpty(CurrentPath) ? "/" : "") +
-                                Path.Combine(CurrentPath, folderName).Replace("\\", "/")
-                        }
-                    },
-                    contentType: "application/json",
-                    authorization: Authorization,
-                    callback: CreateFolder_Result
-                );
-        }
-
-        private void CreateFolder_Result(RequestResult result)
-        {
-            if (InvokeRequired)
-            {
-                Invoke(new Action<RequestResult>(CreateFolder_Result), result);
-                return;
-            }
-
-            if (result.StatusCode == 200)
-            {
-                GetFiles();
-            }
-            else
-            {
-                if (result["error"].HasValue)
-                {
-                    MessageBox.Show(result["error"].ToString());
-                }
-                else
-                {
-                    MessageBox.Show(result.ToString());
-                }
-            }
-        }
-
         
         private void UploadFile()
         {
