@@ -15,45 +15,50 @@
         <div class="border col-md-4" >
 
             <div class="left-panel">
-                <img class="img-circle" data-ng-src="{{vm.Foto}}">
+                <img class="img-circle" data-ng-src="{{vm.userData.Foto}}">
 
                 <div class="personalInformation"> 
-                    <p><strong>Nombre Contacto: </strong> {{vm.NombreContacto}}</p>
-                    <p><strong>Apellido Contacto: </strong> {{vm.ApellidoContacto}} </p>
-                    <p><strong>Ubicación: </strong> {{vm.Ubicacion}}</p>
-                    <p><strong>Correo electrónico: </strong> {{vm.Email}}</p>
-                    <p><strong>Teléfono:</strong> {{vm.Telefono}}</p>
-                    <p><strong>Tipo Repositorio Archivos: </strong> {{vm.TipoRepositorioArchivos}}</p>
-                    <p><strong>Fecha de registro: </strong> {{vm.Fecha_Registro}}</p>
-                    <p><strong>Carnet: </strong> {{vm.Carnet}}</p>
-                    <p><strong>Universidad: </strong> {{vm.Universidad}}</p>
-                    <p><strong>Enlace repositorio código: </strong> <a href="{{vm.EnlaceRepositorioCodigo}}">Link</a></p>
-                    <p><strong>Enlace curriculum: </strong> <a href="{{vm.EnlaceACurriculum}}">Link</a></p>
-                    <p><strong>Cursos aprobados: </strong> {{vm.CursosAprobados}} </p>
-                    <p><strong>Cursos reprobados: </strong> {{vm.CursosReprobados}} </p>
-                    <p><strong>Proyectos exitosos: </strong> {{vm.ProyectosExitisos}} </p>
-                    <p><strong>Proyectos fallidos: </strong> {{vm.ProyectosFallidos}} </p>
-                    <p><strong>Tecnologías: </strong> 
-                        <span ng-repeat="tecnologia in vm.Tecnologias">{{tecnologia}},  </span> </p>
-                    <p><strong>Idiomas: </strong> 
-                        <span ng-repeat="idioma in vm.Idiomas">{{idioma}},  </span> </p>
+                    <p><strong>Nombre Contacto: </strong> {{vm.userData.NombreContacto}}</p>
+                    <p><strong>Apellido Contacto: </strong> {{vm.userData.ApellidoContacto}} </p>
+                    <p><strong>Ubicación: </strong> {{vm.userData.Ubicacion}}</p>
+                    <p><strong>Correo electrónico: </strong> {{vm.userData.Email}}</p>
+                    <p><strong>Teléfono:</strong> {{vm.userData.Telefono}}</p>
+                    <p><strong>Tipo Repositorio Archivos: </strong> {{vm.userData.TipoRepositorioArchivos}}</p>
+                    <p><strong>Fecha de registro: </strong> {{vm.userData.Fecha_Registro}}</p>
+                    <p><strong>Carnet: </strong> {{vm.userData.Carnet}}</p>
+                    <p><strong>Universidad: </strong> {{vm.userData.Universidad}}</p>
+                    <p><strong>Enlace repositorio código: </strong> <a href="{{vm.userData.EnlaceRepositorioCodigo}}">Ir al repositorio</a></p>
+                    <p><strong>Enlace curriculum: </strong> <a href="{{vm.userData.EnlaceACurriculum}}">Ir al curriculum</a></p>
+                    <p><strong>Cursos aprobados: </strong> {{vm.userData.CursosAprobados}} </p>
+                    <p><strong>Cursos reprobados: </strong> {{vm.userData.CursosReprobados}} </p>
+                    <p><strong>Proyectos exitosos: </strong> {{vm.userData.ProyectosExitisos}} </p>
+                    <p><strong>Proyectos fallidos: </strong> {{vm.userData.ProyectosFallidos}} </p>
+                    <strong>Tecnologías: </strong>
+                    <ul ng-repeat="tecnologia in vm.userData.Tecnologias">
+                        <li>{{tecnologia}}</li>
+                    </ul>
+
+                    <strong>Idiomas: </strong>
+                    <ul ng-repeat="idioma in vm.userData.Idiomas">
+                        <li>{{idioma}}</li>
+                    </ul>                 
 
                     <strong>Nota promedio de cursos</strong>
                     <div class="progress">
                         <div class="progress-bar" ng-style="vm.courseAverageWidth" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" >
-                            {{vm.PromedioCursos}}%
+                            {{vm.userData.PromedioCursos}}%
                         </div>
                     </div>
 
                     <strong>Nota promedio de proyectos</strong>
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100" ng-style="vm.projectAverageWidth">
-                            {{vm.PromedioProyectos}}%
+                            {{vm.userData.PromedioProyectos}}%
                         </div>
                     </div>
 
                     <!-- Trigger the modal with a button -->
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
+                    <button type="button"  class="btn btn-default disableButton" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" role="dialog">
@@ -75,13 +80,12 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>  
             </div>
         </div>
         <div class="border col-md-8" >
 
-            <h2>Título</h2>
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#studentprofile"><h4> Mis cursos</h4></a></li>
                 <li><a href="#workprofile"><h4>Mis trabajos</h4></a></li>
