@@ -107,5 +107,12 @@ namespace MyLearn.BLL
             return listOfCourses;
         }
 
+        public ReturnCode Join(StudentJoinsCourse joiningStudent)
+        {
+            var retVal = new ReturnCode();
+            // SUBJECT TO CHANGE
+            return retVal;
+        }
+
     }
 }
