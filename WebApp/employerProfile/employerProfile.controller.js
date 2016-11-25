@@ -43,6 +43,7 @@
             currentworkData.JobOfferId ="123";
             currentworkData.status = true;
             ProfileCourseService.SetWorkData(currentworkData);      
+            $location.path('/sharedareaemployer');  
 
         }
 
