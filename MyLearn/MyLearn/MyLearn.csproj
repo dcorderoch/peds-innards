@@ -128,6 +128,7 @@
     <Compile Include="BLL\CourseManager.cs" />
     <Compile Include="BLL\JobCommentManager.cs" />
     <Compile Include="BLL\JobManager.cs" />
+    <Compile Include="BLL\LanguageManager.cs" />
     <Compile Include="BLL\NotificationManager.cs" />
     <Compile Include="BLL\RegisterManager.cs" />
     <Compile Include="BLL\SearchManager.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Models\JobOffer.cs" />
     <Compile Include="Models\JobOfferBid.cs" />
     <Compile Include="Models\JobOfferComment.cs" />
+    <Compile Include="Models\Language.cs" />
     <Compile Include="Models\ReturnCode.cs" />
     <Compile Include="Models\SpecificCourse.cs" />
     <Compile Include="Models\StudentInCourse.cs" />
