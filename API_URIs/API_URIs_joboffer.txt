@@ -199,7 +199,9 @@ and then Receives
 https://host/Api/JobOffer/Close
 Web Application sends
 {
-    "JobOfferId":"algo"
+    "JobOfferId":"algo",
+    "State":"NUMERO",
+    "StateDescription":"RazonEnTexto"
 }
 
 and then Receives
