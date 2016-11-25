@@ -1,0 +1,17 @@
+################################################# Assign a Badge to a Student
+https://host/Api/Badge/Give
+Web Application sends
+{
+    "StudentUserId":"algo",
+    "ProfUserId":"algo",
+    "Group":"algo",
+    "CourseId": "Id"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito

@@ -176,3 +176,18 @@ and then Receives
                        }
                    ]
 }
+
+################################################# Close Course
+https://host/Api/JobOffer/Close
+Web Application sends
+{
+    "JobOfferId":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito
