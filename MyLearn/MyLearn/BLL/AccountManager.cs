@@ -20,7 +20,7 @@ namespace MyLearn.BLL
 
             //code goes here
 
-
+            userTypeCode.UserTypeCode = code;
             return userTypeCode;
         }
         /// <summary>
@@ -57,22 +57,22 @@ namespace MyLearn.BLL
             student.ProyectosFallidos = 0;
             student.Tecnologias=new List<string>();
 
-            List<FinishedCoursesList> finishedCoursesList = new List<FinishedCoursesList>();
-            FinishedCoursesList finishedCourse = new FinishedCoursesList();
+            List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
+            FinishedCourse finishedCourse = new FinishedCourse();
             finishedCourse.CourseDescription = "";
             finishedCourse.CourseId = "";
             finishedCourse.course = "";
             student.FinishedCoursesList= finishedCoursesList;
             
-            List<ActiveCoursesList> activeCoursesList = new List<ActiveCoursesList>();
-            ActiveCoursesList activeCourses = new ActiveCoursesList();
+            List<ActiveCourse> activeCoursesList = new List<ActiveCourse>();
+            ActiveCourse activeCourses = new ActiveCourse();
             activeCourses.course = "";
             activeCourses.CourseId = "";
             activeCourses.CourseDescription ="";
             student.ActiveCoursesList = activeCoursesList;
 
-            List<FinishedJobOffersList> finishedJobOffersLists = new List<FinishedJobOffersList>();
-            FinishedJobOffersList finishedJobOffers = new FinishedJobOffersList();
+            List<FinishedJobOffer> finishedJobOffersLists = new List<FinishedJobOffer>();
+            FinishedJobOffer finishedJobOffers = new FinishedJobOffer();
             finishedJobOffers.JobOffer = "";
             finishedJobOffers.JobOfferId = "";
             student.FinishedJobOffersList = finishedJobOffersLists;
@@ -108,15 +108,15 @@ namespace MyLearn.BLL
             professor.UniversityId = "";
             professor.HorarioAtencion = "";
 
-            List<FinishedCoursesList> finishedCoursesList = new List<FinishedCoursesList>();
-            FinishedCoursesList finishedCourse = new FinishedCoursesList();
+            List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
+            FinishedCourse finishedCourse = new FinishedCourse();
             finishedCourse.CourseDescription = "";
             finishedCourse.CourseId = "";
             finishedCourse.course = "";
             professor.FinishedCoursesList = finishedCoursesList;
 
-            List<ActiveCoursesList> activeCoursesList = new List<ActiveCoursesList>();
-            ActiveCoursesList activeCourses = new ActiveCoursesList();
+            List<ActiveCourse> activeCoursesList = new List<ActiveCourse>();
+            ActiveCourse activeCourses = new ActiveCourse();
             activeCourses.course = "";
             activeCourses.CourseId = "";
             activeCourses.CourseDescription = "";
@@ -143,8 +143,8 @@ namespace MyLearn.BLL
             employer.NombreEmpresarial = "";
             employer.EnlaceSitioWeb = "";
 
-            List<FinishedJobOffersList> finishedJobOffersLists = new List<FinishedJobOffersList>();
-            FinishedJobOffersList finishedJobOffers = new FinishedJobOffersList();
+            List<FinishedJobOffer> finishedJobOffersLists = new List<FinishedJobOffer>();
+            FinishedJobOffer finishedJobOffers = new FinishedJobOffer();
             finishedJobOffers.JobOffer = "";
             finishedJobOffers.JobOfferId = "";
             employer.FinishedJobOffersList = finishedJobOffersLists;

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyLearn.Models
 {
-    public class ActiveCoursesList
+    public class ActiveCourse
     {
         public string course { get; set; }
         public string CourseId { get; set; }

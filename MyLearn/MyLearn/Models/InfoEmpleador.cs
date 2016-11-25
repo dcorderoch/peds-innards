@@ -17,7 +17,7 @@ namespace MyLearn.Models
         public string IdEmpleador { get; set; }
         public string NombreEmpresarial { get; set; }
         public string EnlaceSitioWeb { get; set; }
-        public List<FinishedJobOffersList> FinishedJobOffersList { get; set; }
+        public List<FinishedJobOffer> FinishedJobOffersList { get; set; }
         public List<ActiveJobOffersList> ActiveJobOffersList { get; set; }
     }
 }

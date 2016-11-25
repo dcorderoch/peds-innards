@@ -27,9 +27,9 @@ namespace MyLearn.Models
         public int ProyectosExitosos { get; set; }
         public int ProyectosFallidos { get; set; }
         public List<string> Tecnologias { get; set; }
-        public List<FinishedCoursesList> FinishedCoursesList { get; set; }
-        public List<ActiveCoursesList> ActiveCoursesList { get; set; }
-        public List<FinishedJobOffersList> FinishedJobOffersList { get; set; }
+        public List<FinishedCourse> FinishedCoursesList { get; set; }
+        public List<ActiveCourse> ActiveCoursesList { get; set; }
+        public List<FinishedJobOffer> FinishedJobOffersList { get; set; }
         public List<ActiveJobOffersList> ActiveJobOffersList { get; set; }
     }
 }

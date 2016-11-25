@@ -86,11 +86,12 @@ namespace MyLearn.BLL
         {
             AllProfessorsCourses allCourses = new AllProfessorsCourses();
             //get all professor's courses
-            ActiveCoursesList activeCourses = new ActiveCoursesList();
-            FinishedCoursesList finishedCourses = new FinishedCoursesList();
-            //get from db
-            activeCourses = new ActiveCoursesList();
-            finishedCourses = new FinishedCoursesList();
+            List<ActiveCourse> activeCourses = new List<ActiveCourse>();
+            List<FinishedCourse> finishedCourses = new List<FinishedCourse>();
+            //get from db and add them here, once the repositories are up and running
+
+            //activeCourses = ;
+            //finishedCourses = ;
 
             allCourses.ActiveCourses = activeCourses;
             allCourses.FInishedCourses = finishedCourses;

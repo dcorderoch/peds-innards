@@ -7,7 +7,7 @@ namespace MyLearn.Models
 {
     public class AllProfessorsCourses
     {
-        public ActiveCoursesList ActiveCourses { get; set; }
-        public FinishedCoursesList FInishedCourses { get; set; }
+        public List<ActiveCourse> ActiveCourses { get; set; }
+        public List<FinishedCourse> FInishedCourses { get; set; }
     }
 }

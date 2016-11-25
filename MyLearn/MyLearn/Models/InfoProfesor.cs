@@ -18,7 +18,7 @@ namespace MyLearn.Models
         public string Universidad { get; set; }
         public string UniversityId { get; set; }
         public string HorarioAtencion { get; set; }
-        public List<FinishedCoursesList> FinishedCoursesList { get; set; }
-        public List<ActiveCoursesList> ActiveCoursesList { get; set; }
+        public List<FinishedCourse> FinishedCoursesList { get; set; }
+        public List<ActiveCourse> ActiveCoursesList { get; set; }
     }
 }
