@@ -18,7 +18,6 @@
         function initController(){
 
             vm.writeReply=false;
-
             vm.courseData = {};
 
             vm.courseData =ProfileCourseService.GetCourseData();

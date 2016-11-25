@@ -5,12 +5,14 @@
         .module('app')
         .controller('CourseOverviewController', CourseOverviewController);
 
-    CourseOverviewController.$inject = ['$location',  'FlashService', '$rootScope'];
-    function CourseOverviewController($location,  FlashService, $rootScope) {
+    CourseOverviewController.$inject = ['$location',  'FlashService', '$rootScope', 'ProfileCourseService', 'CourseService'];
+    function CourseOverviewController($location,  FlashService, $rootScope, ProfileCourseService) {
 
         var vm = this;
         vm.goArea = goArea;
 
+        vm.studentList = [];
+        
         initController();
         function initController(){
 
@@ -20,8 +22,14 @@
 
         function goArea(carnet){
 
-            $location.path('/coursearea');  
+            $location.path('/sharedareaprofessor');  
 
+        }
+        
+        function getCourseData(){
+         
+            
+            
         }
     }
 

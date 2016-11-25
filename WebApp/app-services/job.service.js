@@ -15,7 +15,8 @@
         service.GetByTechnology = GetByTechnology;
         service.GetByName = GetByName;
         service.GetBidsById = GetBidsById;
-
+        service.GetAllComments = GetAllComments;
+        
         return service;
 
         function Create(createData) {
@@ -72,6 +73,15 @@
             });
             return response;
         }    
-    }
 
+        function GetAllComments (jobOfferId){
+            var response = $http({
+                method:"post",
+                url: $rootScope.url +"JobOfferComment/GetAll",
+                data: {JobOfferId: jobOfferId}
+            });
+            return response;
+        }
+    
+    }
 })();

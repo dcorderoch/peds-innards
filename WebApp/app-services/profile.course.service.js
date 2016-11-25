@@ -40,7 +40,7 @@
         function SetWorkData(data){
             
             workData = data;
-            $cookieStore.put('currentWorkData') || {}
+            $cookieStore.put('currentWorkData',workData) || {}
         }
     }
 

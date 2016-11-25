@@ -127,7 +127,7 @@
     run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
     function run($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
-        
+
         $rootScope.globals = $cookieStore.get('globals') || {};
         $rootScope.userData = $cookieStore.get('dataLogin') || {};
 
@@ -144,7 +144,7 @@
 
             var studentRestricted = $.inArray($location.path(), ['/auction', '/courseareaprofessor', '/courseoverview', 'employerprofile', '/newcourse', 'newproject', '/professorprofile', '/sharedareaprofessor', '/sharedareaemployer'] ) === -1;
 
-            var professorRestricted = $.inArray($location.path(), ['/workprofile', '/unicourses', '/studentprofile', '/sharedstudentemployer', '/sharedareaemployer', '/sharedarea', 'searcher', '/offering', '/notifications', '/newproject', '/employerprofile', '/coursearea'] ) === -1;
+            var professorRestricted = $.inArray($location.path(), ['/workprofile', '/unicourses', '/studentprofile', '/sharedstudentemployer', '/sharedareaemployer', '/sharedarea', 'searcher', '/offering', '/notifications', '/newproject','/auction', '/employerprofile', '/coursearea'] ) === -1;
 
             var employerRestricted = $.inArray($location.path(), ['/workprofile', '/unicourses', '/studentprofile', '/sharedstudentemployer', '/sharedareprofessor', '/sharedarea', 'searcher', '/offering', '/notifications', '/newcourse', '/profesorprofile', '/coursearea'] ) === -1;
 
@@ -157,6 +157,12 @@
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
             }
+
+            console.log(professorUser);
+            console.log(studentUser);
+            console.log(employerUser);
+
+            console.log(professorRestricted);
 
             if ( (!studentRestricted && studentUser) || (!professorRestricted && professorUser) || (!employerRestricted && employerUser) ) {
                 window.history.back();

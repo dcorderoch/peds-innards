@@ -2,7 +2,7 @@
 <div  class="upperBar" >
     <img  class="imageBar" src="assets/MyLearn-Logo.png" alt="Logo MyLearn" >
     <h1 class="header">MyLearn</h1>
-    
+
     <div class="elementsBar"><a href="#login"><span  class="spanIcons glyphicon glyphicon-log-out"></span> </a></div>
     <div class="elementsBar"><a  href="#notifications"><span class="spanIcons glyphicon glyphicon-bell"></span> </a></div>
     <div class="elementsBar"><a href="#studentprofile"><span class="spanIcons glyphicon glyphicon-home"></span></a></div>
@@ -18,8 +18,17 @@
             <div class="left-panel">
                 <div class="personalInformation"> 
 
-                    <p><strong>Descripción del proyecto: </strong>Iisque nostrum ad nec, eu eirmod veritus moderatius vim, eam tibique lobortis in. Mundi aperiam no ius, qui simul affert ad. In has dicam facete detraxit. Eum inani ignota suscipit no, principes gloriatur id has. An odio nostrum deterruisset mei.Usu et habemus mentitum definiebas, te duo dolores placerat. Et viderer principes adversarium mea, per fierent molestiae ne. No eam iracundia constituam, eu vidit efficiendi pro. Ea tale utamur pri, posse conclusionemque eos no. </p>
-
+                    <p><strong>Nombre del proyecto: </strong>{{vm.workData.JobOffer}}</p>
+                    <p><strong>Nombre del empleador: </strong>{{vm.workData.Employer}}</p>
+                    <p><strong>Descripción: </strong>{{vm.workData.Description}}</p>
+                    <p><strong>Ubicación: </strong>{{vm.workData.Location}}</p>
+                    <p><strong>Fecha de comienzo: </strong>{{vm.workData.StartDate | date}}</p>
+                    <p><strong>Fecha de finalización: </strong>{{vm.workData.EndDate | date}}</p>
+                    <p><strong>Presupuesto: </strong>{{vm.workData.Budget | currency:'¢'}}</p>
+                    <p><strong>Tecnologías:</strong></p>
+                    <ul ng-repeat="tech in vm.workData.Technologies">
+                        <li>{{tech}}</li>
+                    </ul>
                 </div>
 
             </div>
@@ -31,38 +40,67 @@
             <div class="panel panel-default" >
                 <div  class="panel-body">
 
-                    <div class="panel panel-default  leftComment">
-                        <div class="panel-body radiusComments" ><p class="comments">Comentario profesor</p>
-                            <button  class="rightSpan">Responder</button> 
-                        </div>
-                    </div>
+                    <div ng-repeat="comment in vm.comments">
 
-                    <div class="panel panel-default  nestedLeft">
-                        <div class="panel-body radiusComments" ><p class="comments">Comentario estudiante anidado</p>
-                        </div>
-                    </div> 
+                        <div ng-show="comment.IsFromStudent">
+                            <div class="panel panel-default  leftComment">
+                                <div class="panel-body radiusComments" ><p class="comments">Comentario:  {{comment.Comment}}, Fecha: {{comment.Date | date}}, Escrito por: {{comment.Author}} </p>
+                                    <!--|date-->
+                                    <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan">Responder</button> 
+                                </div>
+                            </div>
+                            <div ng-show="vm.writeReply">
+                                <input ng-model="vm.replyMessage" style="float:left" class="replyComment" type=text placeholder="Escribe una respuesta" name="reply">
+                                <button ng-click="vm.sendReply(comment.CommentId)" class="btn btn-success replyButton">Enviar</button>
+                                <br>
+                                <br>
+                                <hr class="hr4">
+                                <hr class="hr4">
+                                <br>
+                            </div>
+                            <div ng-repeat="nested in comment.Nested">
 
-                    <div class="panel panel-default  rightComment">
-                        <div class="panel-body radiusComments"><p class="comments">Comentario estudiante</p>
-                            <button  class="rightSpan">Responder</button> 
-                        </div>
-                    </div>
+                                <div class="panel panel-default  nestedLeft">
+                                    <div class="panel-body radiusComments" ><p class="comments">Comentario: {{nested.Comment}}, Fecha: {{nested.Date | date}}, Escrito por: {{nested.Author}}
+                                        </p>
+                                    </div>
+                                </div> 
+                            </div>
 
-                    <div class="panel panel-default  nestedRight">
-                        <div class="panel-body radiusComments" ><p class="comments">Comentario profesor anidado</p>
                         </div>
-                    </div> 
 
-                    <div class="panel panel-default  leftComment">
-                        <div class="panel-body radiusComments"><p class="comments">Comentario profesor</p> 
-                            <button  class="rightSpan">Responder</button> 
+                        <div ng-show="!comment.IsFromStudent">
+                            <div class="panel panel-default  rightComment">
+                                <div class="panel-body radiusComments" ><p class="comments">Comentario:  {{comment.Comment}}, Fecha: {{comment.Date | date}}, Escrito por: {{comment.Author}} </p>
+                                    <!--|date-->
+                                    <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan">Responder</button> 
+                                </div>
+                            </div>
+                            <div ng-show="vm.writeReply">
+                                <input ng-model="vm.replyMessage" style="float:left" class="replyComment" type=text placeholder="Escribe una respuesta" name="reply">
+                                <button ng-click="vm.sendReply(comment.CommentId)" class="btn btn-success replyButton">Enviar</button>
+                                <br>
+                                <br>
+                                <hr class="hr4">
+                                <hr class="hr4">
+                                <br>
+                            </div>
+                            <div ng-repeat="nested in comment.Nested">
+
+                                <div class="panel panel-default  nestedLeft">
+                                    <div class="panel-body radiusComments" ><p class="comments">Comentario: {{nested.Comment}}, Fecha: {{nested.Date | date}}, Escrito por: {{nested.Author}}
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
                         </div>
+
                     </div>
 
                     <hr class="hr3">
-                    <input  class="newComment" type=text placeholder="Escribe un comentario" name="search">
-                    <button class="sendIcon btn btn-primary glyphicon glyphicon-paperclip"></button> 
-                    <button  class="btn btn-success" >Enviar</button>
+                    <input ng-disabled="!vm.workData.status" class="newComment" type=text placeholder="Escribe un comentario" name="search">
+                    <button ng-disabled="!vm.workData.status" class="sendIcon btn btn-primary glyphicon glyphicon-paperclip"></button> 
+                    <button ng-disabled="!vm.workData.status" class="btn btn-success" >Enviar</button>
 
 
                 </div>

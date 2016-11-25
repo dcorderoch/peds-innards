@@ -5,14 +5,15 @@
         .module('app')
         .controller('UniCoursesController', UniCoursesController);
 
-    UniCoursesController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService'];
-    function UniCoursesController($location,  FlashService, $rootScope, CourseService) {
+    UniCoursesController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService'];
+    function UniCoursesController($location,  FlashService, $rootScope, CourseService, UserService) {
         var vm = this;
 
         initController();
 
         vm.courses=[];
         vm.joinCourse = joinCourse;
+        vm.disableAccount = disableAccount;
 
         function initController(){
 
@@ -66,13 +67,25 @@
                 if (response.ReturnStatus==1)
                     FlashService.Success("Te has unido exitosamente a este curso");
                 loadCourses();
-            
+
             }, function(response){
-                
+
                 FlashService.Error("No te has podido unir exitosamente a este curso");
                 console.log("No sirvió el unirse a curso"); 
             });
+        }
+        
+        function disableAccount(){
 
+            UserService.Disable(vm.UserId)
+                .then(function(response){
+
+                FlashService.Success("Cuenta deshabilitada");
+                $location.path("/login")
+
+            }, function(response){
+                console.log("no funcó");
+            })
         }
 
     }
