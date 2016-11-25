@@ -82,17 +82,28 @@ namespace MyLearn.BLL
                 
         }
 
-        public GetAllByProfessor(string professorId)
+        public AllProfessorsCourses GetAllByProfessor(string professorId)
         {
+            AllProfessorsCourses allCourses = new AllProfessorsCourses();
             //get all professor's courses
             ActiveCoursesList activeCourses = new ActiveCoursesList();
             FinishedCoursesList finishedCourses = new FinishedCoursesList();
-             
+            //get from db
+            activeCourses = new ActiveCoursesList();
+            finishedCourses = new FinishedCoursesList();
+
+            allCourses.ActiveCourses = activeCourses;
+            allCourses.FInishedCourses = finishedCourses;
+
+            return allCourses;
         }
 
-        public GetAllByUniversity(string universityId)
+        public List<CourseShort> GetAllByUniversity(string universityId)
         {
-            
+         List<CourseShort> listOfCourses = new List<CourseShort>();
+            //get courses by universityId
+            //listOfCourses= dbobject(universityId);
+            return listOfCourses;
         }
 
     }

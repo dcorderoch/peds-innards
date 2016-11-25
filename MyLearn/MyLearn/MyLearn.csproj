@@ -146,6 +146,7 @@
     <Compile Include="InputModels\UserIdentifier.cs" />
     <Compile Include="Models\ActiveCoursesList.cs" />
     <Compile Include="Models\ActiveJobOffersList.cs" />
+    <Compile Include="Models\AllProfessorsCourses.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseAsStudent.cs" />
