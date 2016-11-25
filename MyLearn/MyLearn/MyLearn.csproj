@@ -124,6 +124,8 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BLL\AccountManager.cs" />
+    <Compile Include="BLL\BadgeManager.cs" />
+    <Compile Include="BLL\BidManager.cs" />
     <Compile Include="BLL\CommentManager.cs" />
     <Compile Include="BLL\CountryManager.cs" />
     <Compile Include="BLL\CourseManager.cs" />
@@ -135,6 +137,12 @@
     <Compile Include="BLL\SearchManager.cs" />
     <Compile Include="BLL\TechnologyManager.cs" />
     <Compile Include="BLL\UniversityManager.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BadgeController.cs" />
+    <Compile Include="Controllers\BidController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -155,10 +163,13 @@
     <Compile Include="InputModels\NewJobOffer.cs" />
     <Compile Include="InputModels\NewTechnology.cs" />
     <Compile Include="InputModels\NumberOfTopStudents.cs" />
+    <Compile Include="InputModels\ProfessorIdentifier.cs" />
     <Compile Include="InputModels\RegisterEmployerInfo.cs" />
     <Compile Include="InputModels\RegisterEstudianteInfo.cs" />
     <Compile Include="InputModels\RegisterProfessorInfo.cs" />
     <Compile Include="InputModels\SharedAreaCredentials.cs" />
+    <Compile Include="InputModels\StudentJoinsCourse.cs" />
+    <Compile Include="InputModels\UniversityIdentifier.cs" />
     <Compile Include="InputModels\UserIdentifier.cs" />
     <Compile Include="Models\ActiveCourse.cs" />
     <Compile Include="Models\ActiveJobOffer.cs" />
