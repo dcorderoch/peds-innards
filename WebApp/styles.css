@@ -261,7 +261,7 @@ strong {
 }
 
 .panelProfile {
-    width:75%;
+    width:100%;
     border-width: 3px;
 }
 
@@ -479,9 +479,7 @@ strong {
 }
 
 .yellowButton {
-    background-color: #428bca;
-    color: white;
-    border-radius: 1px;
+
 }
 
 .centerBadgeText {
@@ -497,4 +495,22 @@ strong {
 .disableButton:hover{
     color:white;
     background: #d9534f;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);  
 }

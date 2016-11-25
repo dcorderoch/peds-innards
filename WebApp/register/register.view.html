@@ -2,7 +2,7 @@
     <img  class="imageBar" src="assets/MyLearn-Logo.png" alt="Logo MyLearn" >
     <h1 class="header">MyLearn</h1>
 
-    <div class="textBarRight" > Unete </div>
+    <div class="textBarRight" > Únete </div>
 </div>
 
 
@@ -59,7 +59,7 @@
                             <select value="Escoja repositorio de archivos"ng-model="vm.regData.TipoRepositorioArchivos" ng-options="x.id as x.tipo for x in vm.repositories" required>
                             </select> 
                         </div>
-                        
+
                         <label>Escoge tu foto de perfil</label>
                         <div class="form-group" ng-class="{ 'has-error': form.photo.$dirty && form.photo.$error.required }">           
                             <input name="photos" accept="image/*" class="btn btn-info" type="file" name="file"   ng-model="vm.regData.Photo" base-sixty-four-input required>
@@ -81,7 +81,7 @@
                             <input placeholder ="Enlace repositorio de código" type="text" name="link" class="form-control" ng-model="vm.regData.EnlaceRepositorioCodigo" required />
                             <span ng-show="form.link.$dirty && form.link.$error.required" class="help-block">El enlace del repositorio es requerido</span>
                         </div>
-                        
+
                         <label>Escoge los idiomas que conozcas</label>
                         <div class="form-group" ng-class="{ 'has-error': form.selectedLanguages.$dirty && form.selectedLanguages.$error.required }">
                             <div class="checkbox">
@@ -133,6 +133,7 @@
         </div>
         <a style="float:right; text-decoration: underline;" href="#/login" >Cancelar</a>
         <br>
+        <hr class="hr3">
     </div>
 </div>
 

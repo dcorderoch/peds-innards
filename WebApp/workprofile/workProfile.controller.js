@@ -13,7 +13,6 @@
         vm.goWorkFinished = goWorkFinished;
         vm.disableAccount =disableAccount;
 
-
         initController();
 
         function initController(){
@@ -26,11 +25,6 @@
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
 
-
-            vm.FinishedCoursesList = $rootScope.userData.FinishedCoursesList;
-            vm.ActiveCoursesList = $rootScope.userData.ActiveCoursesList;
-            vm.FinishedProjectsList = $rootScope.userData.FinishedProjectsList;
-            vm.ActiveProjectsList = $rootScope.userData.ActiveProjectsList;
 
             var currentworkData={
                 "JobOffer":"algo",

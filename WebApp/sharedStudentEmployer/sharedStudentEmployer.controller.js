@@ -11,8 +11,8 @@
 
         vm.comments = [];
         vm.sendReply = sendReply; 
-        vm.replyMessage ="";
         vm.replyaMessage = replyaMessage;
+        vm.sendComment = sendComment;
 
         initController();
         function initController(){
@@ -50,13 +50,18 @@
 
         }
 
-        function sendReply(commentId){
+        function sendReply(commentId, replyMessage, parentId){
+            
+            var send={Commenter:"0", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId}
+            JobService.CommentCreate(send)
+                .then(function(response){
 
-            //Write reply
-            vm.replyMessage="";
-            setTimeout( function(){ 
-                vm.writeReply=false}, 100);
-            //            vm.writeReply=false;
+                console.log(response);
+            }, function(response){
+//                console.log(response);
+                FlashService.Success("No se pudo crear el curso"); 
+            })
+            vm.writeReply=false;;
         }
 
         function processComments(){
@@ -99,6 +104,19 @@
 
             }, function(response){
                 console.log("no sirvió")
+            })
+        }
+
+        function sendComment( comment, dataUpload ){
+
+            var send={Commenter:"0", ParentId:"-1", JobOfferComment:comment, JobOfferId:vm.workData.JobOfferId}
+            JobService.CommentCreate(send)
+                .then(function(response){
+
+                console.log(response);
+            }, function(response){
+//                console.log(response);
+                FlashService.Success("No se pudo crear el curso"); 
             })
         }
 

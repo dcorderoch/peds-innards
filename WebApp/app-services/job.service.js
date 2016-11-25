@@ -16,6 +16,7 @@
         service.GetByName = GetByName;
         service.GetBidsById = GetBidsById;
         service.GetAllComments = GetAllComments;
+        service.CommentCreate = CommentCreate;
         
         return service;
 
@@ -79,6 +80,15 @@
                 method:"post",
                 url: $rootScope.url +"JobOfferComment/GetAll",
                 data: {JobOfferId: jobOfferId}
+            });
+            return response;
+        }
+        
+        function CommentCreate(dataCreate){
+            var response =$http({
+                method:"post",
+                url:$rootScope.url+"JobOfferComment/Create",
+                data:dataCreate
             });
             return response;
         }
