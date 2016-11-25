@@ -70,10 +70,11 @@
                 console.log(response.data);
                 FlashService.success("Trabajo creado");
             },function(response){
-                console.log("supongo3")
+                console.log("supongo3");
+                FlashService.Error("No se pudo crear el proyecto")
             });
         }
-        
+
         function disableAccount(){
 
             UserService.Disable(vm.UserId)

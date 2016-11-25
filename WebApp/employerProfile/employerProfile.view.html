@@ -66,56 +66,33 @@
                     <h3>Trabajos activos</h3>
                     <hr class="hr2">
 
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body">
-                            <strong>Empleador:</strong>
-                            <p> Descripción del trabajo<button type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p></div>
-                    </div>
-
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body">
-                            <strong>Empleador:</strong>
-                            <p>Descripción del trabajo<button type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p></div>
-                    </div>
-
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body">
-                            <strong>Empleador:</strong>
-                            <p>Descripción del trabajo<button type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p></div>
-                    </div>
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body">
-                            <strong>Empleador:</strong>
-                            <p>Descripción del trabajo<button type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p></div>
+                    <div ng-repeat="activeCourse in vm.ActiveCoursesList">
+                        <div class="panel panel-default panelProfile">
+                            <div class="panel-body">
+                                <strong>Empleador: </strong> {{activeWork.project}}
+                                <strong>Descripción del trabajo: </strong> {{activeWork.Description}}
+                                <span> 
+                                    <button ng-click="vm.goWorkActive(activeCourse.JobOfferId)" type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button>
+                                </span>
+                            </div>
+                        </div>
                     </div>
 
                     <br>     
                     <h3>Trabajos terminados</h3>
                     <hr class="hr2">
 
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body">
-                            <strong>Empleador:</strong>
-                            <p> Descripción del trabajo<button type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p></div>
-                    </div>
-
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body">
-                            <strong>Empleador:</strong>
-                            <p>Descripción del trabajo<button type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p></div>
-                    </div>
-
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body">
-                            <strong>Empleador:</strong>
-                            <p>Descripción del trabajo<button type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p></div>
-                    </div>
-                    <div class="panel panel-default panelProfile">
-                        <div class="panel-body">
-                            <strong>Empleador:</strong>
-                            <p>Descripción del trabajo<button type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button></p>
+                    <div ng-repeat="finishedWork in vm.FinishedProjectsList"> 
+                        <div class="panel panel-default panelProfile">
+                            <div class="panel-body">
+                                <strong>Nombre del trabajo: </strong> {{finishedWork.project}}
+                                <strong>Descripción del trabajo: </strong> {{finishedWork.CourseDescription}}
+                                <span>
+                                    <button ng-click="vm.goWorkFinished(finishedWork.JobOfferId)" type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button>
+                                </span>
+                            </div>
                         </div>
-                    </div>                   
+                    </div>
                 </div>
             </div>
         </div>

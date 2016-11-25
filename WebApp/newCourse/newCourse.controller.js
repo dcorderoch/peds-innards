@@ -41,6 +41,13 @@
 
         function createCourse(){
 
+            if ( !checkEvaluation(vm.evaluations)){
+                FlashService.Error("La evaluación debe sumar un 100%");
+                vm.evaluations={};
+
+                return;
+            }
+
             var enviar = {CourseName:vm.CourseName, CourseDescription: vm.CourseDescription,
                           Group: vm.Group, MinGrade: vm.MinGrade, ProfessorId: "id", UniversityId: "123", Evaluations: vm.evaluations}
 
@@ -54,7 +61,23 @@
                 console.log(enviar);
             })
         }
-        
+
+        function checkEvaluation(evaluations){
+
+            var suma=0;
+            var i;
+            for (i=0; i<evaluations.length; i++){
+
+                suma+= suma+evaluations[i].porcentaje;
+                if (suma>100)
+                    return false;
+            }
+            if (suma==100)
+                return true;
+            else
+                return false;
+        }
+
         function disableAccount(){
 
             UserService.Disable(vm.UserId)
