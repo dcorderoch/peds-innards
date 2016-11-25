@@ -80,28 +80,36 @@ and then Receives
                                    "EmployerName":"algo",
                                    "JobOffer":"algo",
                                    "Description":"algo",
-                                   "JobOfferId": "Id"
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
                                },
                                {
                                    "EmployerName":"algo",
                                    "JobOffer":"algo",
                                    "Description":"algo",
-                                   "JobOfferId": "Id"
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
                                }
                            ],
     "ActiveJobOffersList":[
-                             {
-                                   "EmployerName":"algo",
-                                   "JobOffer":"algo",
-                                   "Description":"algo",
-                                   "JobOfferId": "Id"
-                               },
-                               {
-                                   "EmployerName":"algo",
-                                   "JobOffer":"algo",
-                                   "Description":"algo",
-                                   "JobOfferId": "Id"
-                               }
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              },
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              }
                          ]
 }
 
@@ -183,28 +191,36 @@ and then Receives
                                    "EmployerName":"algo",
                                    "JobOffer":"algo",
                                    "Description":"algo",
-                                   "JobOfferId": "Id"
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
                                },
                                {
                                    "EmployerName":"algo",
                                    "JobOffer":"algo",
                                    "Description":"algo",
-                                   "JobOfferId": "Id"
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
                                }
                            ],
     "ActiveJobOffersList":[
-                             {
-                                   "EmployerName":"algo",
-                                   "JobOffer":"algo",
-                                   "Description":"algo",
-                                   "JobOfferId": "Id"
-                               },
-                               {
-                                   "EmployerName":"algo",
-                                   "JobOffer":"algo",
-                                   "Description":"algo",
-                                   "JobOfferId": "Id"
-                               }
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              },
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              }
                          ]
 }
 

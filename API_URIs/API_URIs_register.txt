@@ -63,26 +63,42 @@ and then Receives
                                 "Accepted":(0|1)
                             }
 		                ],
-    "FinishedProjectsList":[
+    "FinishedJobOffersList":[
+                               {
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
+                               },
+                               {
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
+                               }
+                           ],
+    "ActiveJobOffersList":[
                               {
-                                  "Project":"algo",
-		                          "ProjectId": "Id"
-		                      },
-		                      {
-                                  "Project":"algo",
-                                  "ProjectId": "Id"
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              },
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
                               }
-		                  ],
-    "ActiveProjectsList":[
-                             {
-                                 "Project":"algo",
-                                 "ProjectId": "Id"
-                             },
-		                     {
-                                 "Project":"algo",
-                                 "ProjectId": "Id"
-                             }
-		                 ]
+                         ]
 }
 
 ################################################# REGISTER PROFESSOR
@@ -167,24 +183,40 @@ and then Receives
     "EmployerUserId":"algo",
     "NombreEmpresarial":"algo",
     "EnlaceSitioWeb":"algo",
-    "FinishedProjectsList":[
+    "FinishedJobOffersList":[
                                {
-                                   "Project":"algo",
-                                   "ProjectId": "Id"
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
                                },
                                {
-                                   "Project":"algo",
-                                   "ProjectId": "Id"
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
                                }
                            ],
-    "ActiveProjectsList":[
-                             {
-                                 "Project":"algo",
-                                 "ProjectId": "Id"
-                             },
-                             {
-                                 "Project":"algo",
-                                 "ProjectId": "Id"
-                             }
+    "ActiveJobOffersList":[
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              },
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              }
                          ]
 }

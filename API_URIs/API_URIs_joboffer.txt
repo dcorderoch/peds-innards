@@ -33,28 +33,36 @@ and then Receives
                                    "EmployerName":"algo",
                                    "JobOffer":"algo",
                                    "Description":"algo",
-                                   "JobOfferId": "Id"
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
                                },
                                {
                                    "EmployerName":"algo",
                                    "JobOffer":"algo",
                                    "Description":"algo",
-                                   "JobOfferId": "Id"
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
                                }
                            ],
     "ActiveJobOffersList":[
-                             {
-                                   "EmployerName":"algo",
-                                   "JobOffer":"algo",
-                                   "Description":"algo",
-                                   "JobOfferId": "Id"
-                               },
-                               {
-                                   "EmployerName":"algo",
-                                   "JobOffer":"algo",
-                                   "Description":"algo",
-                                   "JobOfferId": "Id"
-                               }
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              },
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              }
                          ]
 }
 
@@ -73,7 +81,9 @@ and then Receives
     "StartDate":"fecha en ISO8601",
     "EndDate":"fecha en ISO8601",
     "Description":"algo",
-    "Budget":[0-9]+
+    "Budget":[0-9]+,
+    "State":"NUMERO",
+    "StateDescription":"RazonEnTexto"
 }
 
 ################################################# Get Job Offers
@@ -96,7 +106,9 @@ and then Receives
                         "StartDate":"fecha en ISO8601",
                         "EndDate":"fecha en ISO8601",
                         "Description":"algo",
-                        "Budget":[0-9]+
+                        "Budget":[0-9]+,
+                        "State":"NUMERO",
+                        "StateDescription":"RazonEnTexto"
                     },
                     {
                         "EmployerUserId":"algo",
@@ -108,7 +120,9 @@ and then Receives
                         "StartDate":"fecha en ISO8601",
                         "EndDate":"fecha en ISO8601",
                         "Description":"algo",
-                        "Budget":[0-9]+
+                        "Budget":[0-9]+,
+                        "State":"NUMERO",
+                        "StateDescription":"RazonEnTexto"
                     }
                 ]
 }
@@ -133,7 +147,9 @@ and then Receives
                         "StartDate":"fecha en ISO8601",
                         "EndDate":"fecha en ISO8601",
                         "Description":"algo",
-                        "Budget":[0-9]+
+                        "Budget":[0-9]+,
+                        "State":"NUMERO",
+                        "StateDescription":"RazonEnTexto"
                     },
                     {
                         "EmployerUserId":"algo",
@@ -145,7 +161,9 @@ and then Receives
                         "StartDate":"fecha en ISO8601",
                         "EndDate":"fecha en ISO8601",
                         "Description":"algo",
-                        "Budget":[0-9]+
+                        "Budget":[0-9]+,
+                        "State":"NUMERO",
+                        "StateDescription":"RazonEnTexto"
                     }
                 ]
 }
