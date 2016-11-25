@@ -59,8 +59,6 @@
                 .then( function(response){
 
                 getBidsById();
-                time=0;
-                money=0;
 
             }, function(response){
                 console.log("no se pudo crear la oferta");
