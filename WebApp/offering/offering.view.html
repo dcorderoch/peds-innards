@@ -25,10 +25,10 @@
                     <p><strong>Fecha comienzo:</strong> {{vm.offerData.StartDate | date}}</p>
                     <p><strong>Fecha finalización:</strong> {{vm.offerData.EndDate| date}}</p>
                     <p><strong>Tecnologías a usar:</strong> <span ng-repeat="tech in vm.offerData.Technologies">{{tech}}, </span></p>
-                    <p><strong>Presupuesto:</strong> {{vm.offerData.Budget |currency:"¢"}}</p>
+                    <p><strong>Presupuesto:</strong> {{vm.offerData.Budget |currency:"$"}}</p>
                     <p><strong>Otros estudiantes que han ofertado:</strong></p>
                     <ul ng-repeat="bid in vm.bids">
-                        <li><p>Nombre: {{bid.StudentName}}, Dinero: {{bid.Money| currency:'¢'}}, Días: {{bid.DurationInDays}}</p></li>
+                        <li><p>Nombre: {{bid.StudentName}}, Dinero: {{bid.Money| currency:'$'}}, Días: {{bid.DurationInDays}}</p></li>
                        
                     </ul>
                 </div>     
@@ -45,27 +45,27 @@
                     <div class="border row verticalSpace">
                         <div class="border col-md-5">
 
-                            <p class="formLabel">Tiempo:</p>
+                            <p class="formLabel">Tiempo en días:</p>
                         </div>
                         <div class="border col-md-5">
 
-                            <input style="float: left">
+                            <input ng-model="time" type=number style="float: left">
                         </div>
                     </div>
 
                     <div class="border row verticalSpace">
                         <div class="border col-md-5">
 
-                            <p class="formLabel">Dinero:</p>
+                            <p class="formLabel">Dinero en dólares:</p>
                         </div>
                         <div class="border col-md-6">
 
-                            <input style="float: left">
+                            <input ng-model="money" type=number style="float: left">
                         </div>
                     </div>
                     <div class="border row verticalSpace"> 
                         <div class="border col-md-6 col-md-offset-5">
-                            <button class="btn btn-primary">Ofertar</button>
+                            <button ng-class="vm.createBid(time,money)" class="btn btn-primary">Ofertar</button>
                         </div>
                     </div>
                 </div>

@@ -74,11 +74,14 @@
                     console.log("no sirvió");
                 });
             }
+            else{
+                console.log("No sirvió");
+                FlashService.Error("Escoge un parámetro por el cual buscar")
+            }
         }
 
         function goOffering( jobData){
 
-            //            jobData ={hola:123, fg:true};
 
             SearchOfferingService.SetSearchData(jobData);
             $location.path("/offering");

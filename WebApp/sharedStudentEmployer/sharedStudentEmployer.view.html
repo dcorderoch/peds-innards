@@ -46,7 +46,7 @@
                             <div class="panel panel-default  leftComment">
                                 <div class="panel-body radiusComments" ><p class="comments">Comentario:  {{comment.Comment}}, Fecha: {{comment.Date | date}}, Escrito por: {{comment.Author}} </p>
                                     <!--|date-->
-                                    <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan btn btn-default">Responder</button> 
+                                    <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan btn btn-primary">Responder</button> 
                                 </div>
                             </div>
                             <div ng-show="vm.writeReply">
@@ -73,7 +73,7 @@
                             <div class="panel panel-default  rightComment">
                                 <div class="panel-body radiusComments" ><p class="comments">Comentario:  {{comment.Comment}}, Fecha: {{comment.Date | date}}, Escrito por: {{comment.Author}} </p>
                                     <!--|date-->
-                                    <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan  btn btn-default">Responder</button> 
+                                    <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan  btn btn-primary">Responder</button> 
                                 </div>
                             </div>
                             <div ng-show="vm.writeReply">

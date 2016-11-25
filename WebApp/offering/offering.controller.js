@@ -5,16 +5,20 @@
         .module('app')
         .controller('OfferingController', OfferingController);
 
-    OfferingController.$inject = ['$location',  'FlashService', '$rootScope', 'SearchOfferingService', 'JobService'];
-    function OfferingController($location,  FlashService, $rootScope, SearchOfferingService, JobService) {
+    OfferingController.$inject = ['$location',  'FlashService', '$rootScope', 'SearchOfferingService', 'JobService' ];
+    function OfferingController($location,  FlashService, $rootScope, SearchOfferingService, JobService ) {
         var vm = this;
 
         initController();
+        vm.createBid = createBid;
 
         function initController(){
 
             vm.bids=[];
             console.log (SearchOfferingService.GetSearchData());
+            console.log($rootScope.userData);
+
+            vm.userData = $rootScope.userData;
             vm.offerData = SearchOfferingService.GetSearchData();
 
             getBidsById();
@@ -40,25 +44,28 @@
                 .then(function(response){
 
                 vm.bids = response.data;
-                vm.bids = [{
-                    "Money":"algo",
-                    "DurationInDays": [0-9],
-                    "StudentName":"algo",
-                    "StudentSurname":"algo",
-                    "StudentUserId":"Id"
-                },
-                           {
-                               "Money":"algo",
-                               "DurationInDays": [0-9],
-                               "StudentName":"algo",
-                               "StudentSurname":"algo",
-                               "StudentUserId":"Id"
-                           }];
-
 
             }, function(response){
 
                 console.log("no sirvió "+ response)
+            });
+        }
+
+        function createBid( time,money ){
+
+            var send={JobOfferId: vm.offerData.JobOfferId, Money:money, DurationDays: time, StudentSurname: vm.userData.NombreContacto, StudentUserId: vm.userData.StudentUserId }
+
+            JobService.BidCreate(send)
+                .then( function(response){
+
+                getBidsById();
+                time=0;
+                money=0;
+
+            }, function(response){
+                console.log("no se pudo crear la oferta");
+                FlashService.Error("No se pudo crear la oferta");
+                console.log(send);
             });
         }
 
