@@ -18,19 +18,18 @@
             <div class="left-panel">
                 <div class="personalInformation"> 
 
-                    <p><strong>Nombre de la compañía: </strong> CR Software</p>
+                    <p><strong>Nombre de la compañía: </strong> {{vm.offerData.EmployerName}}</p>
                     <p><strong>Ubicación: </strong> {{vm.offerData.Location}}</p>
                     <p><strong>Acerca del trabajo:</strong> {{vm.offerData.Description}}</p>
                     <p><strong>Nombre del proyecto:</strong> {{vm.offerData.JobOffer}}</p>
                     <p><strong>Fecha comienzo:</strong> {{vm.offerData.StartDate | date}}</p>
                     <p><strong>Fecha finalización:</strong> {{vm.offerData.EndDate| date}}</p>
-                    <p><strong>Tecnologías a usar:</strong> Develop a SpotiFacebook</p>
-
+                    <p><strong>Tecnologías a usar:</strong> <span ng-repeat="tech in vm.offerData.Technologies">{{tech}}, </span></p>
+                    <p><strong>Presupuesto:</strong> {{vm.offerData.Budget |currency:"¢"}}</p>
                     <p><strong>Otros estudiantes que han ofertado:</strong></p>
-                    <ul>
-                        <li><p> David Cordero, $200, 4 semanas</p></li>
-                        <li><p>Manuel Zumbado, $300, 6 meses</p></li>
-                        <li><p>Kevin Umaña, $15, 2 días</p></li>
+                    <ul ng-repeat="bid in vm.bids">
+                        <li><p>Nombre: {{bid.StudentName}}, Dinero: {{bid.Money| currency:'¢'}}, Días: {{bid.DurationInDays}}</p></li>
+                       
                     </ul>
                 </div>     
             </div>

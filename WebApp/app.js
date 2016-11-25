@@ -127,10 +127,9 @@
     run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
     function run($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
+        
         $rootScope.globals = $cookieStore.get('globals') || {};
         $rootScope.userData = $cookieStore.get('dataLogin') || {};
-
-        console.log("cookies es"+ $cookieStore.get('currentCourseData') );
         $rootScope.currentCourseData = $cookieStore.get('currentCourseData') || {}
 
         console.log($rootScope.globals);

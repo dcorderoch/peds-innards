@@ -48,7 +48,6 @@
                             <span ng-show="form.telephone.$dirty && form.telephone.$error.required" class="help-block">El teléfono es requerido</span>
                         </div>
 
-                        <p>{{vm.regData}}</p>
 
                         <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
                             <input placeholder ="Contraseña" type="password" name="password" class="form-control" ng-model="vm.regData.Password" required />
