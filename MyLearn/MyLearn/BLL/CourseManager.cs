@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MyLearn.InputModels;
 using MyLearn.Models;
+using Badge = MyLearn.Models.Badge;
 
 namespace MyLearn.BLL
 {
@@ -54,20 +55,39 @@ namespace MyLearn.BLL
         public SpecificCourse GetSpecificCourse(SharedAreaCredentials credentials)
         {
          SpecificCourse specificCourse = new SpecificCourse();
-            
-            
-            
+            specificCourse.NombreContacto = "";
+            specificCourse.ApellidoContacto = "";
+            specificCourse.Grade = 0;
+            specificCourse.Badges = new List<Badge>();
+
             return specificCourse;   
         }
 
-        public GetCourseAsStudent(string courseId)
+        public CourseAsStudent GetCourseAsStudent(string courseId)
         {
-            
+        CourseAsStudent courseAsStudent = new CourseAsStudent();
+            //Get course from database
+            courseAsStudent.CourseName = "";
+            courseAsStudent.StudentUserId = "";
+            courseAsStudent.ProfUserId = "";
+            courseAsStudent.ProfessorName = "";
+            courseAsStudent.UniversityId = "";
+            courseAsStudent.Grade = 10;
+            courseAsStudent.Badges = new List<Badge>();
+            courseAsStudent.CourseId = "";
+            courseAsStudent.CourseDescription = "";
+            courseAsStudent.Group = 1;
+            courseAsStudent.CourseState = 1;
+            return courseAsStudent;
+                
         }
 
         public GetAllByProfessor(string professorId)
         {
-            
+            //get all professor's courses
+            ActiveCoursesList activeCourses = new ActiveCoursesList();
+            FinishedCoursesList finishedCourses = new FinishedCoursesList();
+             
         }
 
         public GetAllByUniversity(string universityId)
