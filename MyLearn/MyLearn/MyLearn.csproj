@@ -123,6 +123,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BLL\AccountManager.cs" />
+    <Compile Include="BLL\CommentManager.cs" />
     <Compile Include="BLL\CourseManager.cs" />
     <Compile Include="BLL\JobManager.cs" />
     <Compile Include="BLL\NotificationManager.cs" />
@@ -135,8 +136,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InputModels\Badge.cs" />
+    <Compile Include="InputModels\CommentInfo.cs" />
     <Compile Include="InputModels\CourseIdentifier.cs" />
     <Compile Include="InputModels\LoginInfo.cs" />
+    <Compile Include="InputModels\NewComment.cs" />
     <Compile Include="InputModels\NewCourse.cs" />
     <Compile Include="InputModels\NewJobOffer.cs" />
     <Compile Include="InputModels\NumberOfTopStudents.cs" />
@@ -150,6 +153,7 @@
     <Compile Include="Models\AllJobOffersByEmployer.cs" />
     <Compile Include="Models\AllProfessorsCourses.cs" />
     <Compile Include="Models\Badge.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseAsStudent.cs" />
     <Compile Include="Models\CourseShort.cs" />
@@ -160,6 +164,7 @@
     <Compile Include="Models\InfoEstudiante.cs" />
     <Compile Include="Models\InfoProfesor.cs" />
     <Compile Include="Models\JobOffer.cs" />
+    <Compile Include="Models\JobOfferBid.cs" />
     <Compile Include="Models\ReturnCode.cs" />
     <Compile Include="Models\SpecificCourse.cs" />
     <Compile Include="Models\StudentInCourse.cs" />
