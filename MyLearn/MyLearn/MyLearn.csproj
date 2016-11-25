@@ -125,6 +125,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BLL\AccountManager.cs" />
     <Compile Include="BLL\CourseManager.cs" />
+    <Compile Include="BLL\JobManager.cs" />
     <Compile Include="BLL\NotificationManager.cs" />
     <Compile Include="BLL\RegisterManager.cs" />
     <Compile Include="BLL\SearchManager.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Models\ActiveCourse.cs" />
     <Compile Include="Models\ActiveJobOffersList.cs" />
     <Compile Include="Models\AllJobOffersByEmployer.cs" />
+    <Compile Include="Models\AllJobOffers.cs" />
     <Compile Include="Models\AllProfessorsCourses.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\Course.cs" />
