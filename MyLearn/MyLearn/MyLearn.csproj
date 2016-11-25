@@ -17,8 +17,7 @@
     <AssemblyName>MyLearn</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44371</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -124,6 +123,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BLL\AccountManager.cs" />
+    <Compile Include="BLL\CourseManager.cs" />
     <Compile Include="BLL\NotificationManager.cs" />
     <Compile Include="BLL\RegisterManager.cs" />
     <Compile Include="BLL\SearchManager.cs" />
@@ -133,7 +133,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="InputModels\CourseIdentifier.cs" />
     <Compile Include="InputModels\LoginInfo.cs" />
     <Compile Include="InputModels\RegisterEmployerInfo.cs" />
     <Compile Include="InputModels\RegisterEstudianteInfo.cs" />
@@ -153,7 +152,6 @@
     <Compile Include="Models\InfoEmpleador.cs" />
     <Compile Include="Models\InfoEstudiante.cs" />
     <Compile Include="Models\InfoProfesor.cs" />
-    <Compile Include="InputModels\NewCourse.cs" />
     <Compile Include="Models\ReturnCode.cs" />
     <Compile Include="Models\SpecificCourse.cs" />
     <Compile Include="Models\UniversitySharedAreaInfo.cs" />
@@ -171,6 +169,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\DakemaniMyLearn - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
