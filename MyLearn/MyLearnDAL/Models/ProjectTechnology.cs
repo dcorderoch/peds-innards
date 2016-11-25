@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MyLearnDAL.Models
 {
     [Table("ProjectTechnology")]
-    class ProjectTechnology
+    public class ProjectTechnology
     {
         [Key]
         [ForeignKey("Project")]
