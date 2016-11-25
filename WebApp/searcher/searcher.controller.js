@@ -5,15 +5,17 @@
         .module('app')
         .controller('SearcherController', SearcherController);
 
-    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService'];
-    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService) {
+    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService', 'UserService'];
+    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService, UserService) {
         var vm = this;
 
         initController();
 
         vm.goOffering = goOffering;
         vm.search = search;
-//        vm.results=[];
+        vm.disableAccount =disableAccount;
+
+        //        vm.results=[];
 
 
         function goOffering(){
@@ -100,7 +102,18 @@
 
         }
 
+        function disableAccount(){
 
+            UserService.Disable(vm.UserId)
+                .then(function(response){
+
+                FlashService.Success("Cuenta deshabilitada");
+                $location.path("/login")
+
+            }, function(response){
+                console.log("no funcó");
+            })
+        }
 
     }
 

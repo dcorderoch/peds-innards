@@ -52,8 +52,29 @@
                             {{vm.PromedioProyectos}}%
                         </div>
                     </div>
-                    <button class="btn btn-danger">Deshabilitar cuenta</button>
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">¿Estás seguro de deshabilitar de tu cuenta?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Mientras tu cuenta esté desactivada no podrás hacer uso de ningún servicio de MyLearn. Para activar tu cuenta de nuevo tendrás que iniciar sesión de nuevo.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" ng-click="vm.disableAccount()" data-dismiss="modal">Proceder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

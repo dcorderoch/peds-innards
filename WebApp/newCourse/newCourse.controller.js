@@ -5,13 +5,14 @@
         .module('app')
         .controller('NewCourseController', NewCourseController);
 
-    NewCourseController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService' ];
-    function NewCourseController($location,  FlashService, $rootScope, CourseService) {
+    NewCourseController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService' ];
+    function NewCourseController($location,  FlashService, $rootScope, CourseService, UserService) {
         var vm = this;
 
         initController();
         vm.newEvaluation = newEvaluation;
         vm.createCourse = createCourse;
+        vm.disableAccount =disableAccount;
 
         function initController(){
 
@@ -53,6 +54,20 @@
                 console.log(enviar);
             })
         }
-    }
+        
+        function disableAccount(){
 
+            UserService.Disable(vm.UserId)
+                .then(function(response){
+
+                FlashService.Success("Cuenta deshabilitada");
+                $location.path("/login")
+
+            }, function(response){
+                console.log("no funcó");
+            })
+        }   
+
+
+    }
 })();

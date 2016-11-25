@@ -5,13 +5,14 @@
         .module('app')
         .controller('NewProjectController', NewProjectController);
 
-    NewProjectController.$inject = ['$location',  'FlashService' ,'$rootScope', 'RegService', 'JobService'];
-    function NewProjectController($location,  FlashService, $rootScope, RegService, JobService) {
+    NewProjectController.$inject = ['$location',  'FlashService' ,'$rootScope', 'RegService', 'JobService', 'UserService'];
+    function NewProjectController($location,  FlashService, $rootScope, RegService, JobService, UserService) {
         var vm = this;
 
         initController();
         vm.job={};
         vm.createJob = createJob;
+        vm.disableAccount =disableAccount;
 
         vm.technologies=[{ Technology:"Java", TechnologyId: "0"}, { Technology:"C++",TechnologyId: "1"}];
         vm.job.Technologies = [];
@@ -71,6 +72,19 @@
             },function(response){
                 console.log("supongo3")
             });
+        }
+        
+        function disableAccount(){
+
+            UserService.Disable(vm.UserId)
+                .then(function(response){
+
+                FlashService.Success("Cuenta deshabilitada");
+                $location.path("/login")
+
+            }, function(response){
+                console.log("no funcó");
+            })
         }
 
     }

@@ -14,7 +14,7 @@
     <div class="border row"> 
         <div class="border col-md-4" >
 
-           <div class="left-panel">
+            <div class="left-panel">
                 <img class="img-circle" data-ng-src="{{vm.Foto}}">
 
                 <div class="personalInformation"> 
@@ -28,8 +28,28 @@
                     <p><strong>Nombre empresarial: </strong> {{vm.NombreEmpresarial}}</p>
                     <p><strong>Enlace sitio web: </strong>{{vm.EnlaceSitioWeb}}</p>
                 </div>
-                <button class="btn btn-danger">Deshabilitar cuenta</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
 
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">¿Estás seguro de deshabilitar de tu cuenta?</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Mientras tu cuenta esté desactivada no podrás hacer uso de ningún servicio de MyLearn. Para activar tu cuenta de nuevo tendrás que iniciar sesión de nuevo.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-danger" ng-click="vm.disableAccount()" data-dismiss="modal">Proceder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -81,7 +101,7 @@
 
                             <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">La fecha de inicio es requerida</span>
                         </div>
-                        
+
                         <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
                             <input placeholder="Fecha de finalización" class="form-control" type="text" onfocus="(this.type='date')"  ng-model="vm.job.EndDate" name="endDate" required /> 
                             <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">La fecha de finalización</span>

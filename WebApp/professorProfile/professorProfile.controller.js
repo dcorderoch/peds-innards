@@ -5,14 +5,16 @@
         .module('app')
         .controller('ProfessorProfileController', ProfessorProfileController);
 
-    ProfessorProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'ProfileCourseService'];
-    function ProfessorProfileController($location,  FlashService, $rootScope, CourseService, ProfileCourseService) {
+    ProfessorProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'ProfileCourseService', 'UserService'];
+    function ProfessorProfileController($location,  FlashService, $rootScope, CourseService, ProfileCourseService, UserService) {
         var vm = this;
 
         initController();
 
         vm.goCourseActive = goCourseActive;
         vm.goCourseFinished = goCourseFinished;
+        vm.disableAccount =disableAccount;
+
 
         function initController(){
 
@@ -78,6 +80,19 @@
             }, function(response){
                 console.log("no sirvio")
             });
+        }
+
+        function disableAccount(){
+
+            UserService.Disable(vm.UserId)
+                .then(function(response){
+
+                FlashService.Success("Cuenta deshabilitada");
+                $location.path("/login")
+
+            }, function(response){
+                console.log("no funcó");
+            })
         }
     }
 })();

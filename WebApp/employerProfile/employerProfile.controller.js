@@ -5,11 +5,12 @@
         .module('app')
         .controller('EmployerProfileController', EmployerProfileController);
 
-    EmployerProfileController.$inject = ['$location',  'FlashService', '$rootScope'];
-    function EmployerProfileController($location,  FlashService, $rootScope) {
+    EmployerProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'UserService'];
+    function EmployerProfileController($location,  FlashService, $rootScope, UserService) {
         var vm = this;
-        
+
         initController();
+        vm.disableAccount =disableAccount;
 
         function initController(){
 
@@ -29,6 +30,18 @@
 
         }
 
-    }
+        function disableAccount(){
 
+            UserService.Disable(vm.UserId)
+                .then(function(response){
+
+                FlashService.Success("Cuenta deshabilitada");
+                $location.path("/login")
+
+            }, function(response){
+                console.log("no funcó");
+            })
+        }
+
+    }
 })();

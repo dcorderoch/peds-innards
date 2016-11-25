@@ -33,9 +33,9 @@
                                   "Password":"crave",
                                   "TipoRepositorioArchivos":"Dropbox",
                                   "Foto":"bla ba",
-                                                                                IdProfesor:123123,
-//                                  "Carnet":"201258421",
-//                                  IdEmpleador:"123",
+                                  //IdProfesor:123123,
+                                  "Carnet":"201258421",
+                                  //IdEmpleador:"123",
                                   "Universidad":"Tecnológico de Costa Rica",
                                   "EnlaceRepositorioCodigo":"https://www.google.com/",
                                   "EnlaceACurriculum":"https://www.google.com/",
@@ -64,7 +64,7 @@
                 AuthenticationService.SetCredentials( $rootScope.userData.Email, $rootScope.userData.Password, 
                                                      $rootScope.userData);
 
-                $location.path('/professorprofile');
+                $location.path('/studentprofile');
                 return;
 
                 if (response.data.UserTypeCode=== "0" ){
