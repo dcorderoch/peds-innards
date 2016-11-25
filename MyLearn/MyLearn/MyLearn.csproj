@@ -145,6 +145,7 @@
     <Compile Include="InputModels\Badge.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseShort.cs" />
     <Compile Include="Models\FinishedCoursesList.cs" />
     <Compile Include="Models\FinishedJobOffersList.cs" />
     <Compile Include="Models\InfoAdmin.cs" />
@@ -153,7 +154,7 @@
     <Compile Include="Models\InfoProfesor.cs" />
     <Compile Include="InputModels\NewCourse.cs" />
     <Compile Include="Models\ReturnCode.cs" />
-    <Compile Include="Models\SharedAreaInfo.cs" />
+    <Compile Include="Models\UniversitySharedAreaInfo.cs" />
     <Compile Include="Models\StudentInCourse.cs" />
     <Compile Include="Models\TopStudent.cs" />
     <Compile Include="Models\UserCode.cs" />

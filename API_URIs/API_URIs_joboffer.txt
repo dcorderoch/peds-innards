@@ -31,20 +31,24 @@ and then Receives
     "FinishedJobOffersList":[
                                {
                                    "JobOffer":"algo",
+                                   "Description":"algo",
                                    "JobOfferId": "Id"
                                },
                                {
                                    "JobOffer":"algo",
+                                   "Description":"algo",
                                    "JobOfferId": "Id"
                                }
                            ],
     "ActiveJobOffersList":[
                              {
                                  "JobOffer":"algo",
+                                 "Description":"algo",
                                  "JobOfferId": "Id"
                              },
                              {
                                  "JobOffer":"algo",
+                                 "Description":"algo",
                                  "JobOfferId": "Id"
                              }
                          ]
