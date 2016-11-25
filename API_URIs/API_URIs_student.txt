@@ -1,0 +1,92 @@
+https://host/Api/Student/GetProfile
+Web Application sends
+{
+    "UserId":"algo"
+}
+
+and then Receives
+{
+    "UserId":"Id",
+    "NombreContacto":"algo",
+    "ApellidoContacto":"algo",
+    "Ubicacion":"algo",
+    "Email":"algo",
+    "Telefono":"algo",
+    "Fecha_Registro":"algo",
+    "TipoRepositorioArchivos":"algo",
+    "Foto":"algo",
+    "StudentUserId":"algo",
+    "Universidad":"algo",
+    "EnlaceRepositorioCodigo":"algo",
+    "EnlaceACurriculum":"algo",
+    "PromedioProyectos":[0-9],
+    "PromedioCursos":[0-9],
+    "Idiomas":["algo","algo"],
+    "CursosAprobados":[0-9],
+    "CursosReprobados":[0-9],
+    "ProyectosExitosos":[0-9],
+    "ProyectosFallidos":[0-9],
+    "Tecnologias":["algo","algo"],
+    "FinishedCoursesList":[
+                              {
+                                  "course":"algo",
+		                              "CourseId": "Id",
+                                  "CourseDescription":"algo"
+		                          },
+                              {
+                                  "course":"algo",
+                                  "CourseId": "Id",
+                                  "CourseDescription":"algo"
+                              }
+		                      ],
+    "ActiveCoursesList":[
+                            {
+                                "course":"algo",
+		                            "CourseId": "Id",
+                                "CourseDescription":"algo",
+		                            "accepted":(0|1)
+                            },
+                            {
+                                "course":"algo",
+                                "CourseId": "Id",
+                                "CourseDescription":"algo",
+                                "accepted":(0|1)
+                            }
+		                    ],
+    "FinishedJobOffersList":[
+                               {
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
+                               },
+                               {
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
+                               }
+                           ],
+    "ActiveJobOffersList":[
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              },
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              }
+                         ]
+}
