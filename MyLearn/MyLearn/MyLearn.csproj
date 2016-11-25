@@ -133,6 +133,7 @@
     <Compile Include="BLL\RegisterManager.cs" />
     <Compile Include="BLL\SearchManager.cs" />
     <Compile Include="BLL\TechnologyManager.cs" />
+    <Compile Include="BLL\UniversityManager.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Models\StudentInCourse.cs" />
     <Compile Include="Models\Technology.cs" />
     <Compile Include="Models\TopStudent.cs" />
+    <Compile Include="Models\University.cs" />
     <Compile Include="Models\UserCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterPoster\OAuthInfo.cs" />
