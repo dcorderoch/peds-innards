@@ -70,7 +70,7 @@ namespace MyLearn.BLL
             activeCourses.CourseId = "";
             activeCourses.CourseDescription ="";
             student.ActiveCoursesList = activeCoursesList;
-
+            // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
             List<FinishedJobOffer> finishedJobOffersLists = new List<FinishedJobOffer>();
             FinishedJobOffer finishedJobOffers = new FinishedJobOffer();
             finishedJobOffers.JobOffer = "";
@@ -107,7 +107,7 @@ namespace MyLearn.BLL
             professor.Universidad = "";
             professor.UniversityId = "";
             professor.HorarioAtencion = "";
-
+            // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
             List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
             FinishedCourse finishedCourse = new FinishedCourse();
             finishedCourse.CourseDescription = "";
@@ -142,7 +142,7 @@ namespace MyLearn.BLL
             employer.IdEmpleador = "";
             employer.NombreEmpresarial = "";
             employer.EnlaceSitioWeb = "";
-
+            // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
             List<FinishedJobOffer> finishedJobOffersList = new List<FinishedJobOffer>();
             //FinishedJobOffer finishedJobOffers = new FinishedJobOffer();
             //finishedJobOffers.JobOffer = "";
