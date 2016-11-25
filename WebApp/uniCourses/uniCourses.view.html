@@ -79,9 +79,9 @@
 
                         <div class="panel panel-default panelProfile">
                             <div class="panel-body">
-                                <strong>Nombre del curso:</strong> {{activeCourse.course}},
-                                <strong>  Descripción: </strong>{{activeCourse.CourseDescription}}
-                                <button  type="button" class="btn btn-default yellowButton uniCourse">Unirse a curso</button>
+                                <strong>Nombre del curso:</strong> {{course.Course}},
+                                <strong>  Descripción: </strong>{{course.CourseDescription}}
+                                <button ng-button="vm.joinCourse(course.UniversityId)" type="button" class="btn btn-default yellowButton uniCourse">Unirse a curso</button>
                             </div>
                         </div>                  
 

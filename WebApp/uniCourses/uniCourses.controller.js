@@ -12,6 +12,7 @@
         initController();
 
         vm.courses=[];
+        vm.joinCourse = joinCourse;
         
         function initController(){
 
@@ -56,6 +57,13 @@
                 console.log("No funcó")
             });
         }
+        
+        function joinCourse( universityId ){
+         
+            
+            
+        }
+        
     }
 
 })();

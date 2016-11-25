@@ -130,7 +130,6 @@
         
         $rootScope.globals = $cookieStore.get('globals') || {};
         $rootScope.userData = $cookieStore.get('dataLogin') || {};
-        $rootScope.currentCourseData = $cookieStore.get('currentCourseData') || {}
 
         console.log($rootScope.globals);
         if ($rootScope.globals.currentUser) {

@@ -11,6 +11,8 @@
 
         vm.goWorkActive = goWorkActive;
         vm.goWorkFinished = goWorkFinished;
+        vm.disableAccount =disableAccount;
+
 
         initController();
 

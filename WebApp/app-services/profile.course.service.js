@@ -10,9 +10,12 @@
         var service = {};
 
         var courseData;
+        var workData;
 
         service.GetCourseData = GetCourseData;
         service.SetCourseData = SetCourseData;
+        service.GetWorkData = GetWorkData;
+        service.SetWorkData = SetWorkData;
 
         return service;
 
@@ -26,6 +29,18 @@
 
             courseData = data;
             $cookieStore.put('currentCourseData', courseData);
+        }
+        
+        function GetWorkData(){
+            
+            workData = $cookieStore.get('currentWorkData') || {};
+            return workData;
+        }
+        
+        function SetWorkData(data){
+            
+            workData = data;
+            $cookieStore.put('currentWorkData') || {}
         }
     }
 
