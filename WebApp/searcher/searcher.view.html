@@ -98,8 +98,8 @@
                             <div ng-repeat="result in vm.results"> 
                                 <div class="panel panel-default searchPanel">
                                     <div class="panel-body">
-                                        <strong>Empleador:</strong>
-                                        <p> Descripción del trabajo<button type="button" ng-click="vm.goOffering()"class="btn btn-default yellowButton uniCourse">Ofertar</button></p></div>
+                                        <strong>Empleador:{{result.JobOffer}}</strong>
+                                        <p> Descripción del trabajo: {{result.Description}}<button type="button" ng-click="vm.goOffering(result)"class="btn btn-default yellowButton uniCourse">Ofertar</button></p></div>
                                 </div>
                             </div>
                         </div>

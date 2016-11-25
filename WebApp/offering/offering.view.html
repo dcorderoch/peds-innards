@@ -19,10 +19,12 @@
                 <div class="personalInformation"> 
 
                     <p><strong>Nombre de la compañía: </strong> CR Software</p>
-                    <p><strong>Ubicación: </strong> San José</p>
-                    <p><strong>Acerca del trabajo:</strong> Developer of databases</p>
-                    <p><strong>Nombre del proyecto:</strong> Odyssey</p>
-                    <p><strong>Objetivo del proyecto:</strong> Develop a SpotiFacebook</p>
+                    <p><strong>Ubicación: </strong> {{vm.offerData.Location}}</p>
+                    <p><strong>Acerca del trabajo:</strong> {{vm.offerData.Description}}</p>
+                    <p><strong>Nombre del proyecto:</strong> {{vm.offerData.JobOffer}}</p>
+                    <p><strong>Fecha comienzo:</strong> {{vm.offerData.StartDate | date}}</p>
+                    <p><strong>Fecha finalización:</strong> {{vm.offerData.EndDate| date}}</p>
+                    <p><strong>Tecnologías a usar:</strong> Develop a SpotiFacebook</p>
 
                     <p><strong>Otros estudiantes que han ofertado:</strong></p>
                     <ul>

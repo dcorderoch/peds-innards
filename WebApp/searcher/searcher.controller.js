@@ -5,15 +5,15 @@
         .module('app')
         .controller('SearcherController', SearcherController);
 
-    SearcherController.$inject = ['$location',  'FlashService', '$scope', '$rootScope', 'JobService'];
-    function SearcherController($location,  FlashService, $scope, $rootScope, JobService) {
+    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService'];
+    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService) {
         var vm = this;
 
         initController();
 
         vm.goOffering = goOffering;
         vm.search = search;
-        vm.results=[];
+//        vm.results=[];
 
 
         function goOffering(){
@@ -21,6 +21,8 @@
         }
 
         function initController(){
+
+            vm.results=[];
 
             vm.NombreContacto = $rootScope.userData.NombreContacto;
             vm.ApellidoContacto = $rootScope.userData.ApellidoContacto;
@@ -48,6 +50,15 @@
             vm.courseAverageWidth = {'width': vm.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.PromedioProyectos+'%'};  
             $rootScope.currentCourseData={};
+
+            vm.results.push ({ "JobOffer":"Bretecillo",
+                              "JobOfferId": "123",
+                              "Technologies":["Java","C++"],
+                              "Location":"San José",
+                              "StartDate":"2011-04-04",
+                              "EndDate":"2019-08-03",
+                              "Description":"interesante",
+                              "Budget":123});
         }
 
         function search(query,parameter){
@@ -79,6 +90,18 @@
                 });
             }
         }
+
+        function goOffering( jobData){
+
+            //            jobData ={hola:123, fg:true};
+
+            SearchOfferingService.SetSearchData(jobData);
+            $location.path("/offering");
+
+        }
+
+
+
     }
 
 })();
