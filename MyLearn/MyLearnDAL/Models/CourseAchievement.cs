@@ -10,9 +10,11 @@ namespace MyLearnDAL.Models
     public class CourseAchievement
     {
         [Key]
+        [Column(Order = 0)]
         [ForeignKey("Achievement")]
         public Guid AchievementId { get; set; }
         [Key]
+        [Column(Order = 1)]
         [ForeignKey("Course")]
         public Guid CourseId { get; set; }
 

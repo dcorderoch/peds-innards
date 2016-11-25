@@ -14,7 +14,7 @@ namespace MyLearnDAL.Models
         {
             Projects = new List<Project>();
             JobOffers = new List<JobOffer>();
-            StudentBids = new List<Bid>();
+            Bids = new List<Bid>();
             Languages = new List<Language>();
             Technologies = new List<Technology>();
             Courses = new List<Course>();
@@ -27,8 +27,6 @@ namespace MyLearnDAL.Models
         [Required]
         [MaxLength(30)]
         public string LastName { get; set; }
-        [Required]
-        public DateTime InDate { get; set; }
         [Required]
         public string CardId { get; set; }
         public string RepoLink { get; set; }

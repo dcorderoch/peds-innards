@@ -9,9 +9,11 @@ namespace MyLearnDAL.Models
     public class StudentTechnology
     {
         [Key]
+        [Column(Order = 0)]
         [ForeignKey("Technology")]
         public Guid TechnologyId { get; set; }
         [Key]
+        [Column(Order = 1)]
         [ForeignKey("Student")]
         public Guid UserId { get; set; }
 

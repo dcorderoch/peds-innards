@@ -23,8 +23,6 @@ namespace MyLearnDAL.Models
         [MaxLength(30)]
         public string Lastname { get; set; }
         [Required]
-        public int TRepo { get; set; }
-        [Required]
         public string Schedule { get; set; }
         [ForeignKey("University")]
         public Guid UniversityId { get; set; }

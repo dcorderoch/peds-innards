@@ -10,9 +10,11 @@ namespace MyLearnDAL.Models
     public class StudentLanguage
     {
         [Key]
+        [Column(Order = 0)]
         [ForeignKey("Student")]
         public Guid UserId { get; set; }
         [Key]
+        [Column(Order = 1)]
         [ForeignKey("Language")]
         public int LanguageId { get; set; }
 

@@ -8,10 +8,15 @@ namespace MyLearnDAL.Models
     public class StudentCourse
     {
         [Key]
+        [Column(Order = 0)]
         [ForeignKey("Student")]
         public Guid UserId { get; set; }
         [Key]
+        [Column(Order = 1)]
         [ForeignKey("Course")]
         public Guid CourseId { get; set; }
+
+        public Student Student { get; set; }
+        public Course Course { get; set; }
     }
 }

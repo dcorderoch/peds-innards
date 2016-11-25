@@ -9,9 +9,11 @@ namespace MyLearnDAL.Models
     {
         [Key]
         [ForeignKey("Technology")]
+        [Column(Order = 0)]
         public Guid TechnologyId { get; set; }
         [Key]
         [ForeignKey("Course")]
+        [Column(Order = 1)]
         public Guid CourseId { get; set; }
 
         public virtual Technology Technology { get; set; }

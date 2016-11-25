@@ -12,6 +12,7 @@ namespace MyLearnDAL
         public MyLearnContext()
             : base("name=MyLearnContext")
         {
+            Database.SetInitializer<MyLearnContext>(new MyLearnContextInitializer());
         }
 
         // DBsets
@@ -49,6 +50,4 @@ namespace MyLearnDAL
 
         }
     }
-
-
 }
