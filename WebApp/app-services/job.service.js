@@ -33,7 +33,7 @@
         function GetById( jobId){
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"host/Api/JobOffer/GetById",
+                url:$rootScope.url+"JobOffer/GetById",
                 data:{JobOfferId:jobId}
             });
             return response;

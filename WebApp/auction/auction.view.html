@@ -18,43 +18,43 @@
             <div class="left-panel">
                 <div class="personalInformation"> 
 
-                    <p><strong>Nombre de la compañía: </strong> CR Software</p>
-                    <p><strong>Ubicación: </strong> San José</p>
-                    <p><strong>Acerca del trabajo:</strong> Developer of databases</p>
-                    <p><strong>Nombre del proyecto:</strong> Odyssey</p>
-                    <p><strong>Descripción del proyecto:</strong> Develop a SpotiFacebook</p>
-                    <p><strong>Tecnologías a utilizar:</strong>
-                    <ul ng-repeat="tech in vm.">
+                    <p><strong>Oferta laboral: </strong>{{vm.workData.JobOffer}}</p>
+                    <p><strong>Ubicación: </strong> {{vm.workData.Location}}</p>
+                    <p><strong>Acerca del trabajo: </strong> {{vm.workData.Description}}</p>
+                    <p><strong>Fecha de inicio del proyecto: </strong> {{vm.workData.StartDate |date}}</p>
+                    <p><strong>Fecha de finalización del proyecto: </strong> {{vm.workData.EndDate |date}}</p>
+                    <p><strong>Presupuesto: </strong> {{vm.workData.Budget |currency}}</p>
+                    <p><strong>Tecnologías a utilizar: </strong>
+                    <ul ng-repeat="tech in vm.workData.Technologies">
+                        <li>{{tech}}</li>
                     </ul>
 
                 </div>     
             </div>
         </div>
 
-        <div class="border col-md-6 col-md-offset-1" >
+        <div class="border col-md-8" >
 
             <h1 class="sharedAreaTitle">Lista de aplicantes</h1>
             <br>
             <div class="panel panel-default" >
                 <div  class="panel-body">
 
-                    <div class="panel panel-default panelAuction">
-                        <div class="panel-body">
-                            <p>Nombre del estudiante, Tiempo, Dinero
-                                <button ng-click="vm.goArea()" style="margin:2px" type="button" class="btn btn-primary uniCourse"> Aprobar</button>
-                                <button ng-click="vm.goArea()" style="margin:2px" type="button" class="btn btn-primary uniCourse"> Ver perfil </button>
-                            </p> 
+                    <div ng-repeat="bid in vm.listOfBids"> 
+                        <div class="panel panel-default panelAuction">
+                            <div class="panel-body">
+                                <p><strong>Nombre del estudiante: </strong> {{bid.StudentName}}, <strong>Duración en días: </strong> {{bid.DurationInDays}} 
+                                    <strong>Dinero: </strong> {{bid.Money}}
+                                    <button ng-click="vm.goArea(bid)" style="margin:2px" type="button" class="btn btn-primary uniCourse"> Aprobar</button>
+                                    <button ng-click="vm.goArea()" style="margin:2px" type="button" class="btn btn-primary uniCourse"> Ver perfil </button>
+                                </p> 
+                            </div>
                         </div>
                     </div>
-
-
                     
-
-
                 </div>
             </div>
         </div>
-        
     </div>
 </div>
 

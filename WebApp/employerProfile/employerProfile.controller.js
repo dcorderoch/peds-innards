@@ -36,7 +36,7 @@
 
         function goWorkFinished(id){
 
-            $location.path('/sharedareaemployer');  
+            $location.path('/auction');  
             return;
 
             JobService.GetById(id)
@@ -48,7 +48,7 @@
 
                 ProfileCourseService.SetWorkData(currentWorkData);
 
-                $location.path('/sharedStudentEmployer');    
+                $location.path('/sharedareaemployer');    
 
             }, function(response){
                 console.log("no sirvio")
@@ -63,7 +63,11 @@
                 var currentworkData = response.data;
                 currentworkData.status = true;
                 ProfileCourseService.SetWorkData(currentWorkData);
-                $location.path('/sharedStudentEmployer'); 
+
+                if(currentworkData.State =="0") 
+                    $location.path('/auction'); 
+                else
+                    $location.path('/sharedareaemployer'); 
 
             }, function(response){
                 console.log("no sirvio")
