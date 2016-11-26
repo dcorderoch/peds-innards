@@ -19,9 +19,7 @@
         function initController(){
 
             vm.userData = $rootScope.userData;
-
-
-
+            
             var currentCourseData={
                 "CourseName":"algo",
                 "UniversityId":"algo",
