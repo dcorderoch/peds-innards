@@ -54,43 +54,40 @@
         </div>
         <div class="border col-md-8" >
 
-            <h2>Título</h2>
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#employerprofile"><h4> Trabajos</h4></a></li>
                 <li><a href="#newproject"><h4>Crear trabajo</h4></a></li>
             </ul>
 
             <div class="tab-content">
-                <div id="home" class="tab-pane fade in active container">
 
-                    <h3>Trabajos activos</h3>
-                    <hr class="hr2">
+                <h3>Trabajos activos</h3>
+                <hr class="hr3">
 
-                    <div ng-repeat="activeCourse in vm.ActiveCoursesList">
-                        <div class="panel panel-default panelProfile">
-                            <div class="panel-body">
-                                <strong>Empleador: </strong> {{activeWork.project}}
-                                <strong>Descripción del trabajo: </strong> {{activeWork.Description}}
-                                <span> 
-                                    <button ng-click="vm.goWorkActive(activeCourse.JobOfferId)" type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button>
-                                </span>
-                            </div>
+                <div ng-repeat="activeCourse in vm.ActiveCoursesList">
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body">
+                            <strong>Empleador: </strong> {{activeWork.project}}
+                            <strong>Descripción del trabajo: </strong> {{activeWork.Description}}
+                            <span> 
+                                <button ng-click="vm.goWorkActive(activeCourse.JobOfferId)" type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button>
+                            </span>
                         </div>
                     </div>
+                </div>
 
-                    <br>     
-                    <h3>Trabajos terminados</h3>
-                    <hr class="hr2">
+                <br>     
+                <h3>Trabajos terminados</h3>
+                <hr class="hr3">
 
-                    <div ng-repeat="finishedWork in vm.FinishedProjectsList"> 
-                        <div class="panel panel-default panelProfile">
-                            <div class="panel-body">
-                                <strong>Nombre del trabajo: </strong> {{finishedWork.project}}
-                                <strong>Descripción del trabajo: </strong> {{finishedWork.CourseDescription}}
-                                <span>
-                                    <button ng-click="vm.goWorkFinished(finishedWork.JobOfferId)" type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button>
-                                </span>
-                            </div>
+                <div ng-repeat="finishedWork in vm.FinishedProjectsList"> 
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body">
+                            <strong>Nombre del trabajo: </strong> {{finishedWork.project}}
+                            <strong>Descripción del trabajo: </strong> {{finishedWork.CourseDescription}}
+                            <span>
+                                <button ng-click="vm.goWorkFinished(finishedWork.JobOfferId)" type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button>
+                            </span>
                         </div>
                     </div>
                 </div>

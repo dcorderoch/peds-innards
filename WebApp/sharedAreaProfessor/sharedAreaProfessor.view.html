@@ -18,23 +18,26 @@
 
 
                     <p><strong>Nombre del curso: </strong>{{vm.courseData.CourseName}}</p>
+                    <p><strong>Nombre del estudiante: </strong>{{vm.courseData.NombreContacto}}</p>
+                    <p><strong>Apellido del estudiante: </strong>{{vm.courseData.ApellidoContacto}}</p>
                     <p><strong>Carnet del estudiante: </strong>{{vm.courseData.Carnet}}</p>
                     <p><strong>Descripción del curso: </strong>{{vm.courseData.CourseDescription}}</p>
                     <p><strong>Grupo del curso: </strong>{{vm.courseData.Group}}</p>
                     
-<!--
                     <p> <strong>Nota parcial: </strong></p>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
-                            10%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" ng-style="vm.gradeWidth">
+                            {{vm.courseData.Grade}}%
                         </div>
                     </div>
--->
 
+
+<!--
                     <div>
                         <input  class="updateScore" type=number placeholder="Actualizar nota" name="search">
                         <button class="updateIcon btn btn-primary glyphicon glyphicon-triangle-right"></button> 
                     </div>
+-->
 
                     <p> <strong>Dar badge:</strong></p>
 
@@ -50,40 +53,72 @@
             <div class="panel panel-default" >
                 <div  class="panel-body">
 
-                    <div class="panel panel-default  leftComment">
-                        <div class="panel-body radiusComments" ><p class="comments">Comentario profesor</p>
-                            <button  class="rightSpan">Responder</button> 
-                        </div>
-                    </div>
+                    <div ng-repeat="comment in vm.comments">
 
-                    <div class="panel panel-default  nestedLeft">
-                        <div class="panel-body radiusComments" ><p class="comments">Comentario estudiante anidado</p>
-                        </div>
-                    </div> 
+                        <div ng-show="comment.IsFromStudent">
+                            <div class="panel panel-default  leftComment">
+                                <div class="panel-body radiusComments" ><p class="comments">Comentario:  {{comment.Comment}}, Fecha: {{comment.Date | date}}, Escrito por: {{comment.Author}} </p>
+                                    <!--|date-->
+                                    <button ng-click="vm.replyMessage(comment.CommentId)" ng-disabled="!vm.courseData.status" class="rightSpan btn btn-primary">Responder</button> 
+                                </div>
+                            </div>
+                            <div ng-show="vm.writeReply">
+                                <input ng-model="replyMessage" style="float:left" class="replyComment" type=text placeholder="Escribe una respuesta" name="reply">
+                                <button ng-click="vm.sendReply(replyMessage, comment.ParentId)" class="btn btn-primary replyButton">Enviar</button>
+                                <br>
+                                <br>
+                                <hr class="hr4">
+                                <hr class="hr4">
+                                <br>
+                            </div>
+                            <div ng-repeat="nested in comment.Nested">
 
-                    <div class="panel panel-default  rightComment">
-                        <div class="panel-body radiusComments"><p class="comments">Comentario estudiante</p>
-                            <button  class="rightSpan">Responder</button> 
-                        </div>
-                    </div>
+                                <div class="panel panel-default  nestedLeft">
+                                    <div class="panel-body radiusComments" ><p class="comments">Comentario: {{nested.Comment}}, Fecha: {{nested.Date | date}}, Escrito por: {{nested.Author}}
+                                        </p>
+                                    </div>
+                                </div> 
+                            </div>
 
-                    <div class="panel panel-default  nestedRight">
-                        <div class="panel-body radiusComments" ><p class="comments">Comentario profesor anidado</p>
                         </div>
-                    </div> 
 
-                    <div class="panel panel-default  leftComment">
-                        <div class="panel-body radiusComments"><p class="comments">Comentario profesor</p> 
-                            <button  class="rightSpan">Responder</button> 
+                        <div ng-show="!comment.IsFromStudent">
+                            <div class="panel panel-default  rightComment">
+                                <div class="panel-body radiusComments" ><p class="comments">Comentario:  {{comment.Comment}}, Fecha: {{comment.Date | date}}, Escrito por: {{comment.Author}} </p>
+                                    <!--|date-->
+                                    <button ng-click="vm.replyMessage(comment.CommentId)" ng-disabled="!vm.courseData.status" class="rightSpan btn btn-primary">Responder</button> 
+                                </div>
+                            </div>
+                            <div ng-show="vm.writeReply">
+                                <input ng-model="replyMessage" style="float:left" class="replyComment" type=text placeholder="Escribe una respuesta" name="reply">
+                                <button ng-click="vm.sendReply( replyMessage, comment.ParentId)" class="btn btn-primary replyButton">Enviar</button>
+                                <br>
+                                <br>
+                                <hr class="hr4">
+                                <hr class="hr4">
+                                <br>
+                            </div>
+                            <div ng-repeat="nested in comment.Nested">
+
+                                <div class="panel panel-default  nestedLeft">
+                                    <div class="panel-body radiusComments" ><p class="comments">Comentario: {{nested.Comment}}, Fecha: {{nested.Date | date}}, Escrito por: {{nested.Author}}
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
                         </div>
+
                     </div>
 
                     <hr class="hr3">
-                    <input  class="newComment" type=text placeholder="Escribe un comentario" name="search">
-                    <button class="sendIcon btn btn-primary glyphicon glyphicon-paperclip"></button> 
-                    <button  class="btn btn-primary" >Enviar</button>
-
-
+                    
+                    <input  ng-disabled="!vm.courseData.status" ng-model="comment" class="newComment" type=text placeholder="Escribe un comentario" name="search"> 
+                    <div class="fileUpload btn btn-primary  sendIcon">
+                        <span class="glyphicon glyphicon-paperclip"></span>
+                        <input type="file" class="upload"  ng-disabled="!vm.courseData.status" ng-model="dataUpload" base-sixty-four-input />
+                    </div>
+                    <button ng-disabled="!vm.courseData.status" ng-click="vm.sendComment(comment, dataUpload)" class="btn btn-primary" >Enviar
+                    </button>
                 </div>
             </div>
         </div>

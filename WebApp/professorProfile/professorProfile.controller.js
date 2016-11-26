@@ -29,7 +29,11 @@
                 "CourseId":"algo",
                 "CourseDescription":"algo",
                 "Group":8,
-                "Students":[ { "Nombre":"algo", "StudentUserId":"123"}, {"Nombre":"algo","StudentUserId":"124"}]};
+                "Students":[ { "Nombre":"algo", "StudentUserId":"123"},
+                            {"Nombre":"algo","StudentUserId":"124"}],
+                status :true
+
+            };
 
 
             ProfileCourseService.SetCourseData(currentCourseData);
@@ -63,6 +67,8 @@
                 currentCourseData.status=true;
 
                 ProfileCourseService.SetCourseData(currentCourseData);
+                $location.path('/courseoverview');    
+
 
             }, function(response){
                 console.log("no sirvio")

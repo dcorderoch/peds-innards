@@ -119,7 +119,7 @@
 
         function sendComment( comment, dataUpload ){
 
-            var send={Commenter:"0", ParentId:"-1", Comment:comment, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
+            var send={Commenter:"1", ParentId:"-1", Comment:comment, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
             console.log(send)
             CourseService.CommentCreate(send)
                 .then(function(response){
