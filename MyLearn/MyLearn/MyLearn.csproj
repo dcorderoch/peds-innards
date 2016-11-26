@@ -145,6 +145,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\JobOfferCommentController.cs" />
     <Compile Include="Controllers\JobOfferController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
