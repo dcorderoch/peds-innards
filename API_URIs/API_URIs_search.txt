@@ -1,8 +1,8 @@
 ################################################# Get up to 1k Top Students
-https://host/Api/Studen/GetTop
+https://host/Api/Search/GetTop
 Web Application sends
 {
-    "NumberOfTopStudents":[0-9]+
+    "NumberOfStudents":[0-9]+
 }
 
 and then Receives
@@ -22,7 +22,7 @@ and then Receives
 }
 
 ################################################# Get up to 1k Top Students, selective
-https://host/Api/Studen/GetTopSelective
+https://host/Api/Search/GetTopSelective
 Web Application sends
 {
     "NumberOfTopStudents":[0-9]+,

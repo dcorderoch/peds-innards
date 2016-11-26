@@ -150,6 +150,7 @@
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -158,6 +159,7 @@
     <Compile Include="InputModels\CloseJobOffer.cs" />
     <Compile Include="InputModels\CommentInfo.cs" />
     <Compile Include="InputModels\CourseIdentifier.cs" />
+    <Compile Include="InputModels\CustomTopStudent.cs" />
     <Compile Include="InputModels\EmployerIdentifier.cs" />
     <Compile Include="InputModels\InputBid.cs" />
     <Compile Include="InputModels\JobOfferIdentifier.cs" />

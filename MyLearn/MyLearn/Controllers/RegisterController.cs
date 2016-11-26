@@ -16,22 +16,22 @@ namespace MyLearn.Controllers
         [HttpPost]
         public JsonResult<InfoEstudiante> RegisterStudent(RegisterEstudianteInfo userInformation)
         {
-            var retVal = new InfoEstudiante();
-            // Subject to Change
+            var regMngr = new RegisterManager();
+            var retVal = regMngr.StudentRegister(userInformation);
             return Json(retVal);
         }
         [HttpPost]
         public JsonResult<InfoProfesor> RegisterProfessor(RegisterProfessorInfo userInformation)
         {
-            var retVal = new InfoProfesor();
-            // Subject to Change
+            var regMngr = new RegisterManager();
+            var retVal = regMngr.ProfessorRegister(userInformation);
             return Json(retVal);
         }
         [HttpPost]
         public JsonResult<InfoEmpleador> RegisterEmployer(RegisterEmployerInfo userInformation)
         {
-            var retVal = new InfoEmpleador();
-            // Subject to Change
+            var regMngr = new RegisterManager();
+            var retVal = regMngr.EmployerRegister(userInformation);
             return Json(retVal);
         }
     }
