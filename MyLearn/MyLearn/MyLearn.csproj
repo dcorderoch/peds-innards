@@ -135,6 +135,7 @@
     <Compile Include="BLL\NotificationManager.cs" />
     <Compile Include="BLL\RegisterManager.cs" />
     <Compile Include="BLL\SearchManager.cs" />
+    <Compile Include="BLL\StudentManager.cs" />
     <Compile Include="BLL\TechnologyManager.cs" />
     <Compile Include="BLL\UniversityManager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -151,6 +152,8 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\TechnologyController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
