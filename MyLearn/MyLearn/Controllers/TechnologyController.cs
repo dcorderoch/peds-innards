@@ -13,7 +13,7 @@ namespace MyLearn.Controllers
 {
     public class TechnologyController : ApiController
     {
-        [HttpPost]
+        [HttpGet]
         public JsonResult<List<Technology>> GetAll()
         {
             var techMngr = new TechnologyManager();
