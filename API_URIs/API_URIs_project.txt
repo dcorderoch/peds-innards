@@ -1,0 +1,21 @@
+################################################# LOGIN
+https://host/Api/Project/Propose
+Web Application sends
+{
+    "ProjectName":"algo",
+    "Technologies":["algo","algo"],
+    "StartDate":"fecha en ISO8601",
+    "EndDate":"fecha en ISO8601",
+    "Description":"algo",
+    "OtherFiles":["link","link],
+    "StudentUserId":"algo",
+    "CourseId":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito
