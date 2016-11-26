@@ -11,9 +11,9 @@
 
         vm.register=register;
         vm.repositories=[{tipo:'Google Drive', id:1}, {tipo:'Dropbox',id:0}];
-        
+
         vm.countries=[ {"Country":"costa rica","CountryId": "1"}, {"Country":"nicaragua","CountryId": "2"}];
-        
+
         vm.regData={};
         initController();
 
@@ -33,7 +33,9 @@
         }
 
         function register() {
+            
             console.log("entro");
+            vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
             vm.regData.Telefono = vm.regData.Telefono.toString();
             vm.dataLoading = true;
             UserService.RegisterEmployer(vm.regData)

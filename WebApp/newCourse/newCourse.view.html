@@ -15,38 +15,38 @@
         <div class="border col-md-4" >
 
             <div class="left-panel">
-                <img class="img-circle" data-ng-src="{{vm.Foto}}">
+                <img class="img-circle" data-ng-src="{{vm.userData.Foto}}">
 
                 <div class="personalInformation"> 
-                    <p><strong>Nombre Contacto: </strong> {{vm.NombreContacto}}</p>
-                    <p><strong>Apellido Contacto: </strong> {{vm.ApellidoContacto}} </p>
-                    <p><strong>Ubicación: </strong> {{vm.Ubicacion}}</p>
-                    <p><strong>Correo electrónico: </strong> {{vm.Email}}</p>
-                    <p><strong>Teléfono:</strong> {{vm.Telefono}}</p>
-                    <p><strong>Tipo Repositorio Archivos: </strong> {{vm.TipoRepositorioArchivos}}</p>
-                    <p><strong>Fecha de registro: </strong> {{vm.Fecha_Registro}}</p>
-                    <p><strong>Universidad: </strong> {{vm.Universidad}}</p>
-                    <p><strong>Horario de atención: </strong>{{vm.HorarioAtencion}}</p>
-                </div>
-                <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
+                    <p><strong>Nombre Contacto: </strong> {{vm.userData.NombreContacto}}</p>
+                    <p><strong>Apellido Contacto: </strong> {{vm.userData.ApellidoContacto}} </p>
+                    <p><strong>Ubicación: </strong> {{vm.userData.Ubicacion}}</p>
+                    <p><strong>Correo electrónico: </strong> {{vm.userData.Email}}</p>
+                    <p><strong>Teléfono:</strong> {{vm.userData.Telefono}}</p>
+                    <p><strong>Tipo Repositorio Archivos: </strong> {{vm.userData.TipoRepositorioArchivos}}</p>
+                    <p><strong>Fecha de registro: </strong> {{vm.userData.Fecha_Registro}}</p>
+                    <p><strong>Universidad: </strong> {{vm.userData.Universidad}}</p>
+                    <p><strong>Horario de atención: </strong>{{vm.userData.HorarioAtencion}}</p>
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-default disableButton" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">¿Estás seguro de deshabilitar de tu cuenta?</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Mientras tu cuenta esté desactivada no podrás hacer uso de ningún servicio de MyLearn. Para activar tu cuenta de nuevo tendrás que iniciar sesión de nuevo.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-danger" ng-click="vm.disableAccount()" data-dismiss="modal">Proceder</button>
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">¿Estás seguro de deshabilitar de tu cuenta?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Mientras tu cuenta esté desactivada no podrás hacer uso de ningún servicio de MyLearn. Para activar tu cuenta de nuevo tendrás que iniciar sesión de nuevo.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" ng-click="vm.disableAccount()" data-dismiss="modal">Proceder</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -56,46 +56,55 @@
         </div>
         <div class="border col-md-8" >
 
-            <h2>Título</h2>
             <ul class="nav nav-tabs">
                 <li ><a href="#professorprofile"><h4> Mis cursos</h4></a></li>
                 <li class="active"><a href="#newcourse"><h4>Crear curso</h4></a></li>
             </ul>
 
             <div class="tab-content">
-                <div id="home" class="tab-pane fade in active container">
-                    <h3>Crear nuevo curso</h3>
-                    <hr class="hr2">
+                <h3>Crear nuevo curso</h3>
+                <hr class="hr3">
 
-                    <div >
-                        <input ng-model="vm.CourseName" class="newCourseSet" type=text placeholder=" Nombre curso" name="name">
-                        <input ng-model="vm.Group" class="newCourseSet" type=number placeholder=" Grupo" name="group">
-                        <input ng-model="vm.MinGrade" class="newCourseSet" type=number placeholder=" Nota mínima" name="minGrade">
-                        <input ng-model="vm.CourseDescription" class="newCourseSet" type=text placeholder=" Descripción" name="group">
-                    </div>
+                <div >
+                    <input ng-model="vm.CourseName" class="newCourseSet" type=text placeholder=" Nombre curso" name="name">
+                    <input ng-model="vm.Group" class="newCourseSet" type=number placeholder=" Grupo" name="group">
+                    <input ng-model="vm.MinGrade" class="newCourseSet" type=number placeholder=" Nota mínima" name="minGrade">
+                    <input ng-model="vm.CourseDescription" class="newCourseSet" type=text placeholder=" Descripción" name="group">
+                </div>
 
-                    <h3>Definir evaluación</h3>
-                    <hr class="hr2">
+                <h3>Definir evaluación</h3>
+                <hr class="hr3">
 
-                    <div ng-repeat="evaluation in vm.evaluations"> 
-                        <div class="panel panel-default panelProfile">
-                            <div class="panel-body"><strong>Evaluación: {{evaluation.nombreUniversidad}}, 
-                                Porcentaje: {{evaluation.porcentaje}}</strong>
-                            </div>
+                <div ng-repeat="evaluation in vm.evaluations"> 
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body">
+
+                            <p> <strong>Evaluación: {{evaluation.BadgeDescription}}, 
+                                Porcentaje: {{evaluation.Value}}
+                                </strong>
+
+                                <button ng-click="vm.removeEval(evaluation)" style="float:right" type="button" class="btn btn-danger btn-sm">
+                                    <span class="glyphicon glyphicon-remove"></span> Remover
+                                </button>
+                            </p>
                         </div>
                     </div>
+                </div>
 
-                    <hr class="hr2">
+                <hr class="hr3">
 
-                    <div >
-                        <input ng-model="nombreEval" class="newCourseAdd" type=text placeholder="Nueva evaluación" name="newCourse">
-                        <input ng-model="porcentaje" class="newCourseAdd2" type=number placeholder="Porcentaje"  name="percentaje">
-                        <button ng-click="vm.newEvaluation(nombreEval,porcentaje)" class="btn btn-primary" >Agregar</button>
-                    </div> 
+                <div >
+                    <form ng-submit="vm.newEvaluation()"> 
+                        <input ng-model="vm.nombreEval" class="newCourseAdd" type=text placeholder="Nueva evaluación" name="newCourse" required/>
+                        <input ng-model="vm.porcentaje" class="newCourseAdd2" type=number placeholder="Porcentaje"  name="percentaje" required/>
+                        <button  class="btn btn-primary" >Agregar</button>
+                    </form>
+                </div> 
 
-                    <hr class="hr2">
+                <hr class="hr3">
 
-                    <button ng-click="vm.createCourse()"  class="btn btn-primary" style="margin-left:400px; margin-bottom:20px" >Crear</button>
+                <div style="margin:0 auto; width:10px"> 
+                    <button ng-click="vm.createCourse()"  class="btn btn-primary"  >Crear</button>
                 </div>
             </div>
         </div>

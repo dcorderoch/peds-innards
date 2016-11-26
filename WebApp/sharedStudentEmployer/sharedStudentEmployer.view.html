@@ -50,8 +50,8 @@
                                 </div>
                             </div>
                             <div ng-show="vm.writeReply">
-                                <input ng-model="vm.replyMessage" style="float:left" class="replyComment" type=text placeholder="Escribe una respuesta" name="reply">
-                                <button ng-click="vm.sendReply(comment.CommentId)" class="btn btn-primary replyButton">Enviar</button>
+                                <input ng-model="replyMessage" style="float:left" class="replyComment" type=text placeholder="Escribe una respuesta" name="reply">
+                                <button ng-click="vm.sendReply(replyMessage, comment.ParentId)" class="btn btn-primary replyButton">Enviar</button>
                                 <br>
                                 <br>
                                 <hr class="hr4">
@@ -78,7 +78,7 @@
                             </div>
                             <div ng-show="vm.writeReply">
                                 <input ng-model="replyMessage" style="float:left" class="replyComment" type=text placeholder="Escribe una respuesta" name="reply">
-                                <button ng-click="vm.sendReply(comment.CommentId, replyMessage, comment.ParentId)" class="btn btn-primary replyButton">Enviar</button>
+                                <button ng-click="vm.sendReply( replyMessage, comment.ParentId)" class="btn btn-primary replyButton">Enviar</button>
                                 <br>
                                 <br>
                                 <hr class="hr4">

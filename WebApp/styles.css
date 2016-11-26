@@ -147,9 +147,11 @@ hr {
 }
 
 form{
+/*
     margin-left: 15%;
     margin-right:15%;
     width: 70%;
+*/
 }
 
 .verticalSpace{
@@ -266,7 +268,8 @@ strong {
 }
 
 .tab-content {
-    border: 2px solid #338DBC 
+    border: 2px solid #338DBC ;
+    padding:10px;
 }
 
 .rightSpan {
@@ -379,7 +382,7 @@ strong {
 .newCourseAdd {
     border-radius: 5px;
     border: 1px solid ;
-    width:60%;
+    width:84%;
     height:34px;
     margin-bottom: 10px;
 }
@@ -401,7 +404,7 @@ strong {
 .newCourseSet {
     border-radius: 5px;
     border: 1px solid ;
-    width:75%;
+    width:100%;
     height:34px;
     margin-bottom: 10px;
 }

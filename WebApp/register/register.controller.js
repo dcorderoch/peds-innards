@@ -11,15 +11,15 @@
 
         vm.register=register;
         vm.repositories=[{tipo:'Google Drive', id:1}, {tipo:'Dropbox',id:0}];
-        
+
         vm.technologies=[{ Technology:"Java", TechnologyId: "0"}, { Technology:"C++",TechnologyId: "1"}];
-        
+
         vm.universities=[{University:'Tecnológico de Costa Rica',UniversityId:0}, {University:'Oxford University' ,UniversityId:1}];
-        
+
         vm.countries=[ {"country":"costa rica","countryid": "1"}, {"country":"nicaragua","countryid": "2"}];
-        
+
         vm.languages = [{Language:"Español",LanguageId: "0"}, {Language:"Inglés",LanguageId: "1"}];
-        
+
         vm.regData={};
         // selected fruits
         vm.regData.Idiomas = [];
@@ -88,10 +88,10 @@
 
             // is newly selected
             else {
-                    vm.regData.Idiomas.push(language.LanguageId);
+                vm.regData.Idiomas.push(language.LanguageId);
             }
         };
-        
+
         vm.toggleSelectionTech = function toggleSelectionTech(technology) {
             var idx = vm.regData.Tecnologias.indexOf(technology.TechnologyId);
 
@@ -107,9 +107,10 @@
         };
 
 
-
         function register() {
+
             console.log("entro");
+            vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
             vm.regData.Carnet = vm.regData.Carnet.toString();
             vm.regData.Telefono = vm.regData.Telefono.toString();
             vm.dataLoading = true;

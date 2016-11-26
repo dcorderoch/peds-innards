@@ -47,7 +47,8 @@
         }
 
         function register() {
-            console.log("entro");
+            
+            vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
             vm.regData.Telefono = vm.regData.Telefono.toString();
             vm.dataLoading = true;
             UserService.RegisterProfessor(vm.regData)

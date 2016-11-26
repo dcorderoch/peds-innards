@@ -16,6 +16,8 @@
         service.GetAllByUniversity = GetAllByUniversity;
         service.JoinCourse = JoinCourse;
         service.GetSpecificCourse = GetSpecificCourse;
+        service.ProjectPropose = ProjectPropose;
+        service.CommentCreate = CommentCreate;
 
         return service;
 
@@ -80,6 +82,24 @@
                 data: getCourseData
             });
             return response;
+        }
+
+        function ProjectPropose(data){
+            var response = $http({
+                method: "post",
+                url: $rootScope.url+"Project/Propose",
+                data: data
+            });
+            return response;
+        }
+
+        function CommentCreate(data){
+            var response = $http({
+                method: "post",
+                url: $rootScope.url+"Comment/Create",
+                data: data
+            });
+            return response;            
         }
 
     }

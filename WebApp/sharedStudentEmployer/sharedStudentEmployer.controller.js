@@ -5,7 +5,7 @@
         .module('app')
         .controller('SharedStudentEmployerController', SharedStudentEmployerController);
 
-    SharedStudentEmployerController.$inject = ['$location', '$rootScope', 'FlashService', 'JobService', 'ProfileCourseService'];
+    SharedStudentEmployerController.$inject = ['$location','FlashService', '$rootScope',  'JobService', 'ProfileCourseService'];
     function SharedStudentEmployerController($location,  FlashService, $rootScope, JobService, ProfileCourseService) {
         var vm = this;
 
@@ -33,7 +33,7 @@
                                                           "IsFromStudent":"0",
                                                           "Comment":"algo"}]});
 
-            vm.comments.push({CommentId:"123",ParentId:"123", Date:"1994-11-24T01:55:01+00:00", IsFromStudent:"1",
+            vm.comments.push({CommentId:"123",ParentId:"125", Date:"1994-11-24T01:55:01+00:00", IsFromStudent:"1",
                               Comment:"na na na", Nested:[{ "CommentId":"algo",
                                                            "ParentId":"algo",
                                                            "Date":"fecha en ISO8601",
@@ -50,16 +50,20 @@
 
         }
 
-        function sendReply(commentId, replyMessage, parentId){
-            
+        function sendReply( replyMessage, parentId){
+
             var send={Commenter:"0", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId}
+            console.log(send);
             JobService.CommentCreate(send)
                 .then(function(response){
 
                 console.log(response);
+                getComments();
+                processComments();
+
             }, function(response){
-//                console.log(response);
-                FlashService.Success("No se pudo crear el curso"); 
+                //                console.log(response);
+                FlashService.Error("No se pudo enviar el comentario"); 
             })
             vm.writeReply=false;;
         }
@@ -109,14 +113,18 @@
 
         function sendComment( comment, dataUpload ){
 
-            var send={Commenter:"0", ParentId:"-1", JobOfferComment:comment, JobOfferId:vm.workData.JobOfferId}
+            var send={Commenter:"0", ParentId:"-1", JobOfferComment:comment, JobOfferId:vm.workData.JobOfferId};
+            console.log(send);
             JobService.CommentCreate(send)
                 .then(function(response){
 
                 console.log(response);
+                getComments();
+                processComments();
+
             }, function(response){
-//                console.log(response);
-                FlashService.Success("No se pudo crear el curso"); 
+                //                console.log(response);
+                FlashService.Error("No se pudo enviar el comentario"); 
             })
         }
 
