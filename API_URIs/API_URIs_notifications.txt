@@ -1,5 +1,5 @@
 ################################################# Get Notificaciones
-https://host/Api/Notifications/GetByStudent
+https://host/Api/Notification/GetByStudent
 Web Application sends
 {
     "StudentUserId":"algo"

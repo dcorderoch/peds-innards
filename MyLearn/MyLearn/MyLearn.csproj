@@ -147,6 +147,7 @@
     <Compile Include="Controllers\JobOfferController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="InputModels\RegisterEstudianteInfo.cs" />
     <Compile Include="InputModels\RegisterProfessorInfo.cs" />
     <Compile Include="InputModels\SharedAreaCredentials.cs" />
+    <Compile Include="InputModels\StudentIdentifier.cs" />
     <Compile Include="InputModels\StudentJoinsCourse.cs" />
     <Compile Include="InputModels\UniversityIdentifier.cs" />
     <Compile Include="InputModels\UserIdentifier.cs" />
