@@ -2,7 +2,7 @@
 <div  class="upperBar" >
     <img  class="imageBar" src="assets/MyLearn-Logo.png" alt="Logo MyLearn" >
     <h1 class="header">MyLearn</h1>
-    
+
     <div class="elementsBar"><a href="#login"><span  class="spanIcons glyphicon glyphicon-log-out"></span> </a></div>
     <div class="elementsBar"><a  href="#notifications"><span class="spanIcons glyphicon glyphicon-bell"></span> </a></div>
     <div class="elementsBar"><a href="#studentprofile"><span class="spanIcons glyphicon glyphicon-home"></span></a></div>
@@ -61,20 +61,32 @@
                         </div>
                         <div class="border col-md-6">
 
-                            <input style="float: left; width:75%">
+                            <input ng-model="name" style="float: left; width:75%">
                         </div>
                     </div>
 
                     <div class="border row verticalSpace">
                         <div class="border col-md-6">
 
-                            <p style="text-align: right; font-size:1.3em">Lista de tecnologías:</p>
+                            <p style="text-align: right ; font-size:1.3em">Escoge las tecnologías que conoces:</p>
+
                         </div>
                         <div class="border col-md-6">
+                            <div class="checkbox">
 
-                            <input style="float: left; width:75%">
+                                <label ng-repeat="technology in vm.technologies">
+                                    <input
+                                           type="checkbox"
+                                           name="technology"
+                                           value="{{technology}}"
+                                           ng-checked="vm.regData.Tecnologias.indexOf(technology) > -1"
+                                           ng-click="vm.toggleSelectionTech(technology)"
+                                           required/>  {{technology.Technology}}
+                                </label>
+                            </div>
                         </div>
                     </div>
+
 
                     <div class="border row verticalSpace">
                         <div class="border col-md-6">
@@ -83,7 +95,7 @@
                         </div>
                         <div class="border col-md-6">
 
-                            <input type="date" style="float: left; width:75%">
+                            <input ng-model="dateStart" type="date" style="float: left; width:75%">
                         </div>
                     </div>
 
@@ -94,7 +106,7 @@
                         </div>
                         <div class="border col-md-6">
 
-                            <input  type="date" style="float: left; width:75%">
+                            <input ng-model="dateEnd"  type="date" style="float: left; width:75%">
                         </div>
                     </div>
 
@@ -105,7 +117,7 @@
                         </div>
                         <div class="border col-md-6">
 
-                            <input style="float: left; width:75%">
+                            <input ng-model="description"  style="float: left; width:75%">
                         </div>
                     </div>
 
@@ -116,13 +128,13 @@
                         </div>
                         <div class="border col-md-6">
 
-                            <input style="float: left; width:75%">
+                            <input ng-model="additional"  style="float: left; width:75%">
                         </div>
                     </div>
 
                     <div class="border row verticalSpace"> 
                         <div class="border col-md-6 col-md-offset-5">
-                            <button class="btn btn-primary">Sugerir</button>
+                            <button  ng-click="vm.suggestProject(name,dateStart,dateEnd,description,additional)" class="btn btn-primary">Sugerir</button>
                         </div>
                     </div>
                 </div>
