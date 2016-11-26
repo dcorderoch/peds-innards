@@ -7,7 +7,7 @@ Web Application sends
     "StartDate":"fecha en ISO8601",
     "EndDate":"fecha en ISO8601",
     "Description":"algo",
-    "OtherFiles":["link","link],
+    "OtherFiles":["link","link"],
     "StudentUserId":"algo",
     "CourseId":"algo"
 }
