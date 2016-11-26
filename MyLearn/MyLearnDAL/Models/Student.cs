@@ -15,9 +15,9 @@ namespace MyLearnDAL.Models
             Projects = new List<Project>();
             JobOffers = new List<JobOffer>();
             Bids = new List<Bid>();
-            Languages = new List<Language>();
-            Technologies = new List<Technology>();
-            Courses = new List<Course>();
+            StudentLanguages = new List<StudentLanguage>();
+            StudentTechnologies = new List<StudentTechnology>();
+            StudentCourses = new List<StudentCourse>();
             Notifications = new List<Notification>();
         }
 
@@ -51,10 +51,9 @@ namespace MyLearnDAL.Models
         public virtual List<Project> Projects { get; set; }
         public virtual List<JobOffer> JobOffers { get; set; }
         public virtual List<Bid> Bids { get; set; }
-        public virtual List<Language> Languages { get; set; }
-        public virtual List<Technology> Technologies { get; set; }
-        public virtual List<Course> Courses { get; set; }
+        public virtual List<StudentLanguage> StudentLanguages { get; set; }
+        public virtual List<StudentTechnology> StudentTechnologies { get; set; }
+        public virtual List<StudentCourse> StudentCourses { get; set; }
         public virtual List<Notification> Notifications { get; set; }
-        
     }
 }

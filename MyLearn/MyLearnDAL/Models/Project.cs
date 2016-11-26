@@ -11,7 +11,7 @@ namespace MyLearnDAL.Models
     {
         public Project()
         {
-            Technologies = new List<Technology>();
+            ProjectTechnologies= new List<ProjectTechnology>();
             ProjectComments= new List<ProjectComment>();
             Badges =new List<Badge>();
         }
@@ -36,7 +36,7 @@ namespace MyLearnDAL.Models
 
         public virtual Course Course { get; set; }
         public virtual Student Student { get; set; }
-        public virtual List<Technology> Technologies { get; set; }
+        public virtual List<ProjectTechnology> ProjectTechnologies { get; set; }
         public virtual List<ProjectComment> ProjectComments { get; set; }
         public virtual List<Badge> Badges { get; set; }
     }

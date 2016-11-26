@@ -10,9 +10,10 @@ namespace MyLearnDAL.Models
     {
         public Course()
         {
-            Students = new List<Student>();
-            Technologies= new List<Technology>();
-            Achievements = new List<Achievement>();
+            StudentCourses = new List<StudentCourse>();
+            CourseTechnologies= new List<CourseTechnology>();
+            CourseAchievements= new List<CourseAchievement>();
+            
         }
 
         [Key]
@@ -36,8 +37,8 @@ namespace MyLearnDAL.Models
 
         public virtual Professor Professor { get; set; }
         public virtual University University { get; set; }
-        public virtual List<Student> Students { get; set; }
-        public virtual List<Technology> Technologies { get; set; }
-        public virtual List<Achievement> Achievements { get; set; }
+        public virtual List<StudentCourse> StudentCourses { get; set; }
+        public virtual List<CourseTechnology> CourseTechnologies { get; set; }
+        public virtual List<CourseAchievement> CourseAchievements { get; set; }
     }
 }
