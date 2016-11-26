@@ -143,6 +143,7 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\JobOfferCommentController.cs" />
     <Compile Include="Controllers\JobOfferController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
