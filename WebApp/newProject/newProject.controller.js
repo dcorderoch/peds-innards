@@ -14,7 +14,9 @@
         vm.createJob = createJob;
         vm.disableAccount =disableAccount;
 
+        vm.countries=[ {"country":"costa rica","countryid": "1"}, {"country":"nicaragua","countryid": "2"}];
         vm.technologies=[{ Technology:"Java", TechnologyId: "0"}, { Technology:"C++",TechnologyId: "1"}];
+
         vm.job.Technologies = [];
 
 
@@ -29,11 +31,23 @@
             });
         }
 
+        function loadCountries(){
+            RegService.GetCountries()
+                .then(function (response) {
+                if (response.success) {
+                    vm.countries = response.data.countries;
+                } 
+            },function(response){
+                console.log("supongo2")
+            });
+        }
+
         function initController(){
 
 
-            $rootScope.currentCourseData={};
+            vm.userData = $rootScope.userData;
             loadTechnologies();
+            loadCountries();
 
         }
 
@@ -53,12 +67,13 @@
 
         function createJob(){
 
+            vm.job.Budget = vm.job.Budget.toString();
             JobService.Create(vm.job)
                 .then(function(response){
                 console.log(response.data);
                 FlashService.success("Trabajo creado");
             },function(response){
-                console.log("supongo3");
+                console.log(vm.job);
                 FlashService.Error("No se pudo crear el proyecto")
             });
         }

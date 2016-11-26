@@ -61,7 +61,7 @@
                 .then(function(response){
 
                 var currentworkData = response.data;
-                currentworkData.status = false;
+                currentworkData.status = true;
                 ProfileCourseService.SetWorkData(currentWorkData);
                 $location.path('/sharedStudentEmployer'); 
 
