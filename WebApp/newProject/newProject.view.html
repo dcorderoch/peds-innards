@@ -15,37 +15,37 @@
         <div class="border col-md-4" >
 
             <div class="left-panel">
-                <img class="img-circle" data-ng-src="{{vm.Foto}}">
+                <img class="img-circle" data-ng-src="{{vm.userData.Foto}}">
 
                 <div class="personalInformation"> 
-                    <p><strong>Nombre contacto: </strong> {{vm.NombreContacto}}</p>
-                    <p><strong>Apellido contacto: </strong> {{vm.ApellidoContacto}} </p>
-                    <p><strong>Ubicación: </strong> {{vm.Ubicacion}}</p>
-                    <p><strong>Correo electrónico: </strong> {{vm.Email}}</p>
-                    <p><strong>Teléfono:</strong> {{vm.Telefono}}</p>
-                    <p><strong>Tipo Repositorio Archivos: </strong> {{vm.TipoRepositorioArchivos}}</p>
-                    <p><strong>Fecha de registro: </strong> {{vm.Fecha_Registro}}</p>
-                    <p><strong>Nombre empresarial: </strong> {{vm.NombreEmpresarial}}</p>
-                    <p><strong>Enlace sitio web: </strong>{{vm.EnlaceSitioWeb}}</p>
-                </div>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
+                    <p><strong>Nombre contacto: </strong> {{vm.userData.NombreContacto}}</p>
+                    <p><strong>Apellido contacto: </strong> {{vm.userData.ApellidoContacto}} </p>
+                    <p><strong>Ubicación: </strong> {{vm.userData.Ubicacion}}</p>
+                    <p><strong>Correo electrónico: </strong> {{vm.userData.Email}}</p>
+                    <p><strong>Teléfono:</strong> {{vm.userData.Telefono}}</p>
+                    <p><strong>Tipo Repositorio Archivos: </strong> {{vm.userData.TipoRepositorioArchivos}}</p>
+                    <p><strong>Fecha de registro: </strong> {{vm.userData.Fecha_Registro}}</p>
+                    <p><strong>Nombre empresarial: </strong> {{vm.userData.NombreEmpresarial}}</p>
+                    <p><strong>Enlace sitio web: </strong>{{vm.userData.EnlaceSitioWeb}}</p>
+                    <button type="button" class="btn btn-default disableButton" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">¿Estás seguro de deshabilitar de tu cuenta?</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Mientras tu cuenta esté desactivada no podrás hacer uso de ningún servicio de MyLearn. Para activar tu cuenta de nuevo tendrás que iniciar sesión de nuevo.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-danger" ng-click="vm.disableAccount()" data-dismiss="modal">Proceder</button>
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">¿Estás seguro de deshabilitar de tu cuenta?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Mientras tu cuenta esté desactivada no podrás hacer uso de ningún servicio de MyLearn. Para activar tu cuenta de nuevo tendrás que iniciar sesión de nuevo.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" ng-click="vm.disableAccount()" data-dismiss="modal">Proceder</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -55,79 +55,77 @@
         </div>
         <div class="border col-md-8" >
 
-            <h2>Título</h2>
             <ul class="nav nav-tabs">
                 <li  ><a href="#employerprofile"><h4> Trabajos</h4></a></li>
                 <li class="active"><a href="#newproject"><h4>Crear trabajo</h4></a></li>
             </ul>
 
             <div class="tab-content">
-                <div id="home" class="tab-pane fade in active container">
 
-                    <h3>Crear un nuevo proyecto</h3>
-                    <hr class="hr2">
+                <h3>Crear un nuevo proyecto</h3>
+                <hr class="hr2">
 
-                    <form class="newProject" name="form" ng-submit="vm.createJob()" role="form">
+                <form class="newProject" name="form" ng-submit="vm.createJob()" role="form">
 
-                        <div class="form-group" ng-class="{ 'has-error': form.name.$dirty && form.name.$error.required }">
-                            <input placeholder =" Nombre de proyecto" type="text" name="name"  class="form-control" ng-model="vm.job.JobOffer" required />
-                            <span ng-show="form.name.$dirty && form.name.$error.required" class="help-block">El nombre del proyecto es requerido</span>
+                    <div class="form-group" ng-class="{ 'has-error': form.name.$dirty && form.name.$error.required }">
+                        <input placeholder =" Nombre de proyecto" type="text" name="name"  class="form-control" ng-model="vm.job.JobOffer" required />
+                        <span ng-show="form.name.$dirty && form.name.$error.required" class="help-block">El nombre del proyecto es requerido</span>
+                    </div>
+
+                    <label>Escoge los lenguajes de programación que conozcas</label>
+                    <div class="form-group" ng-class="{ 'has-error': form.technology.$dirty && form.technology.$error.required }">
+                        <div class="checkbox">
+
+                            <label ng-repeat="technology in vm.technologies">
+                                <input
+                                       type="checkbox"
+                                       name="technology"
+                                       value="{{technology}}"
+                                       ng-checked="vm.job.Technologies.indexOf(technology) > -1"
+                                       ng-click="vm.toggleSelectionTech(technology)"
+                                       /> {{technology.Technology}}
+                            </label>
                         </div>
 
-                        <label>Escoge los lenguajes de programación que conozcas</label>
-                        <div class="form-group" ng-class="{ 'has-error': form.technology.$dirty && form.technology.$error.required }">
-                            <div class="checkbox">
+                    </div>
 
-                                <label ng-repeat="technology in vm.technologies">
-                                    <input
-                                           type="checkbox"
-                                           name="technology"
-                                           value="{{technology}}"
-                                           ng-checked="vm.job.Technologies.indexOf(technology) > -1"
-                                           ng-click="vm.toggleSelectionTech(technology)"
-                                           /> {{technology.Technology}}
-                                </label>
-                            </div>
+                    <div class="form-group" ng-class="{ 'has-error': form.location.$dirty && form.location.$error.required }">
+                        <input placeholder ="Ubicación" type="text" name="location" class="form-control" ng-model="vm.job.Location" required />
+                        <span ng-show="form.location.$dirty && form.location.$error.required" class="help-block">La ubicación es requerida</span>
+                    </div>
 
-                        </div>
+                    <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
+                        <input placeholder="Fecha de inicio" class="form-control" type="text" onfocus="(this.type='date')"  ng-model="vm.job.StartDate" name="startDate" required /> 
 
-                        <div class="form-group" ng-class="{ 'has-error': form.location.$dirty && form.location.$error.required }">
-                            <input placeholder ="Ubicación" type="text" name="location" class="form-control" ng-model="vm.job.Location" required />
-                            <span ng-show="form.location.$dirty && form.location.$error.required" class="help-block">La ubicación es requerida</span>
-                        </div>
+                        <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">La fecha de inicio es requerida</span>
+                    </div>
 
-                        <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
-                            <input placeholder="Fecha de inicio" class="form-control" type="text" onfocus="(this.type='date')"  ng-model="vm.job.StartDate" name="startDate" required /> 
+                    <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
+                        <input placeholder="Fecha de finalización" class="form-control" type="text" onfocus="(this.type='date')"  ng-model="vm.job.EndDate" name="endDate" required /> 
+                        <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">La fecha de finalización</span>
+                    </div>
 
-                            <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">La fecha de inicio es requerida</span>
-                        </div>
+                    <div class="form-group" ng-class="{ 'has-error': form.technologies.$dirty && form.technologies.$error.required }">
+                        <input placeholder ="Descripción" accept="image/*" name="technologies" type="text"class="form-control" ng-model="vm.job.Description" required />
+                        <span ng-show="form.technologies.$dirty && form.technologies.$error.required" class="help-block">La descripción es requerida</span>
+                    </div>
 
-                        <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
-                            <input placeholder="Fecha de finalización" class="form-control" type="text" onfocus="(this.type='date')"  ng-model="vm.job.EndDate" name="endDate" required /> 
-                            <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">La fecha de finalización</span>
-                        </div>
-
-                        <div class="form-group" ng-class="{ 'has-error': form.technologies.$dirty && form.technologies.$error.required }">
-                            <input placeholder ="Descripción" accept="image/*" name="technologies" type="text"class="form-control" ng-model="vm.job.Description" required />
-                            <span ng-show="form.technologies.$dirty && form.technologies.$error.required" class="help-block">La descripción es requerida</span>
-                        </div>
-
-                        <div class="form-group" ng-class="{ 'has-error': form.repository.$dirty && form.repository.$error.required }">
-                            <input placeholder ="Presupuesto" name="repository" type="number"  class="form-control" ng-model="vm.job.Budget" required />
-                            <span ng-show="form.repository.$dirty && form.repository.$error.required" class="help-block">El presupuesto es requerido</span>
-                        </div>
+                    <div class="form-group" ng-class="{ 'has-error': form.repository.$dirty && form.repository.$error.required }">
+                        <input placeholder ="Presupuesto" name="repository" type="number"  class="form-control" ng-model="vm.job.Budget" required />
+                        <span ng-show="form.repository.$dirty && form.repository.$error.required" class="help-block">El presupuesto es requerido</span>
+                    </div>
 
 
-                        <div class="form-actions">
-                            <button  type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Crear</button>
-                        </div>
-                        <br>
-                    </form>
+                    <div class="form-actions">
+                        <button  type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Crear</button>
+                    </div>
+                    <br>
+                </form>
 
-                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
