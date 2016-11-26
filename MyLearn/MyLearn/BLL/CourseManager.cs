@@ -114,5 +114,11 @@ namespace MyLearn.BLL
             return retVal;
         }
 
+        public ReturnCode Propose(ProjectProposal proposal)
+        {
+            var retVal = new ReturnCode();
+            // SUBJECT TO CHANGE
+            return retVal;
+        }
     }
 }
