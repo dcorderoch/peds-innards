@@ -14,44 +14,44 @@
         <div class="border col-md-4" >
 
             <div class="left-panel">
-                <img class="img-circle" data-ng-src="{{vm.Foto}}">
+                <img class="img-circle" data-ng-src="{{vm.userData.Foto}}">
 
                 <div class="personalInformation"> 
-                    <p><strong>Nombre contacto: </strong> {{vm.NombreContacto}}</p>
-                    <p><strong>Apellido contacto: </strong> {{vm.ApellidoContacto}} </p>
-                    <p><strong>Ubicación: </strong> {{vm.Ubicacion}}</p>
-                    <p><strong>Correo electrónico: </strong> {{vm.Email}}</p>
-                    <p><strong>Teléfono:</strong> {{vm.Telefono}}</p>
-                    <p><strong>Tipo Repositorio Archivos: </strong> {{vm.TipoRepositorioArchivos}}</p>
-                    <p><strong>Fecha de registro: </strong> {{vm.Fecha_Registro}}</p>
-                    <p><strong>Nombre empresarial: </strong> {{vm.NombreEmpresarial}}</p>
-                    <p><strong>Enlace sitio web: </strong>{{vm.EnlaceSitioWeb}}</p>
-                </div>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
+                    <p><strong>Nombre contacto: </strong> {{vm.userData.NombreContacto}}</p>
+                    <p><strong>Apellido contacto: </strong> {{vm.userData.ApellidoContacto}} </p>
+                    <p><strong>Ubicación: </strong> {{vm.userData.Ubicacion}}</p>
+                    <p><strong>Correo electrónico: </strong> {{vm.userData.Email}}</p>
+                    <p><strong>Teléfono:</strong> {{vm.userData.Telefono}}</p>
+                    <p><strong>Tipo Repositorio Archivos: </strong> {{vm.userData.TipoRepositorioArchivos}}</p>
+                    <p><strong>Fecha de registro: </strong> {{vm.userData.Fecha_Registro}}</p>
+                    <p><strong>Nombre empresarial: </strong> {{vm.userData.NombreEmpresarial}}</p>
+                    <p><strong>Enlace sitio web: </strong>{{vm.userData.EnlaceSitioWeb}}</p>
+                    <button type="button" class="btn btn-default disableButton" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">¿Estás seguro de deshabilitar de tu cuenta?</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Mientras tu cuenta esté desactivada no podrás hacer uso de ningún servicio de MyLearn. Para activar tu cuenta de nuevo tendrás que iniciar sesión de nuevo.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-danger" ng-click="vm.disableAccount()" data-dismiss="modal">Proceder</button>
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">¿Estás seguro de deshabilitar de tu cuenta?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Mientras tu cuenta esté desactivada no podrás hacer uso de ningún servicio de MyLearn. Para activar tu cuenta de nuevo tendrás que iniciar sesión de nuevo.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" ng-click="vm.disableAccount()" data-dismiss="modal">Proceder</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+        
         <div class="border col-md-8" >
 
             <ul class="nav nav-tabs">
@@ -64,13 +64,13 @@
                 <h3>Trabajos activos</h3>
                 <hr class="hr3">
 
-                <div ng-repeat="activeCourse in vm.ActiveCoursesList">
+                <div ng-repeat="activeCourse in vm.userData.ActiveCoursesList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
                             <strong>Empleador: </strong> {{activeWork.project}}
                             <strong>Descripción del trabajo: </strong> {{activeWork.Description}}
                             <span> 
-                                <button ng-click="vm.goWorkActive(activeCourse.JobOfferId)" type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button>
+                                <button ng-click="vm.goWorkActive(activeCourse.JobOfferId)" type="button" class="btn btn-primary yellowButton uniCourse">Abrir trabajo</button>
                             </span>
                         </div>
                     </div>
@@ -80,13 +80,13 @@
                 <h3>Trabajos terminados</h3>
                 <hr class="hr3">
 
-                <div ng-repeat="finishedWork in vm.FinishedProjectsList"> 
+                <div ng-repeat="finishedWork in vm.userData.FinishedProjectsList"> 
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
                             <strong>Nombre del trabajo: </strong> {{finishedWork.project}}
                             <strong>Descripción del trabajo: </strong> {{finishedWork.CourseDescription}}
                             <span>
-                                <button ng-click="vm.goWorkFinished(finishedWork.JobOfferId)" type="button" class="btn btn-default yellowButton uniCourse">Abrir trabajo</button>
+                                <button ng-click="vm.goWorkFinished(finishedWork.JobOfferId)" type="button" class="btn btn-primary yellowButton uniCourse">Abrir trabajo</button>
                             </span>
                         </div>
                     </div>
