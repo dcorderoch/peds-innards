@@ -89,6 +89,21 @@ namespace MyLearnDAL.Migrations
 
             universityRepo.SaveChanges();
             universityRepo.Dispose();
+
+
+            var newLenguage0 = new Language() {LenguageId = 0, Name = "Español"};
+            var newLenguage1 = new Language() { LenguageId = 1, Name = "English" };
+            var newLenguage2 = new Language() { LenguageId = 2, Name = "Português" };
+            var newLenguage3 = new Language() { LenguageId = 3, Name = "Français" };
+
+            var languageRepo = new LanguageRepository();
+            languageRepo.Add(newLenguage0);
+            languageRepo.Add(newLenguage1);
+            languageRepo.Add(newLenguage2);
+            languageRepo.Add(newLenguage3);
+
+            languageRepo.SaveChanges();
+            languageRepo.Dispose();
         }
     }
 }

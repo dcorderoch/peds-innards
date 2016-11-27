@@ -57,9 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="main.cs" />
-    <Compile Include="Migrations\201611272156388_Initial.cs" />
-    <Compile Include="Migrations\201611272156388_Initial.Designer.cs">
-      <DependentUpon>201611272156388_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201611272302419_Initial.cs" />
+    <Compile Include="Migrations\201611272302419_Initial.Designer.cs">
+      <DependentUpon>201611272302419_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Achievement.cs" />
@@ -94,10 +94,12 @@
     <Compile Include="Repositories\BidRepository.cs" />
     <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\CourseRepository.cs" />
+    <Compile Include="Repositories\EmployerRepository.cs" />
     <Compile Include="Repositories\JobOfferRepository.cs" />
     <Compile Include="Repositories\LanguageRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
-    <Compile Include="Repositories\ProjectCommentRepository.cs" />
+    <Compile Include="Repositories\ProfessorRepository.cs" />
+    <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\StudentCourseRepository.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
@@ -106,8 +108,8 @@
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611272156388_Initial.resx">
-      <DependentUpon>201611272156388_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611272302419_Initial.resx">
+      <DependentUpon>201611272302419_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
