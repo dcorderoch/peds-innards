@@ -29,6 +29,12 @@
                     <ul ng-repeat="tech in vm.workData.Technologies">
                         <li>{{tech}}</li>
                     </ul>
+                    <p><strong>Finalizar proyecto</strong></p>
+                    <p><input type=text  placeholder=" Motivo por el cual finalizar proyecto" class="finishProjectReason"  ng-model="finishProject" /></p>
+                    <p><strong>Dar estrellas</strong></p>
+                    <input type=text  placeholder=" Estrellas" class="stars"  ng-model="finishProject" />
+                    <button class="btn btn-primary">Proceder</button>
+
                 </div>
 
             </div>
