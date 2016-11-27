@@ -27,6 +27,13 @@ namespace MyLearn.BLL
             return success;
         }
 
+        public ReturnCode CloseJobOffer(CloseJobOffer openJobOffer)
+        {
+            var retVal = new ReturnCode();
+            // code goes here
+            return retVal;
+        }
+
         public AllJobOffersByEmployer GetJobOffersByEmployer(string employerId)
         {
             AllJobOffersByEmployer jobOffers = new AllJobOffersByEmployer();

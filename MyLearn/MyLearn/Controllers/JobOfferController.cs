@@ -21,6 +21,13 @@ namespace MyLearn.Controllers
             return Json(retVal);
         }
         [HttpPost]
+        public JsonResult<ReturnCode> Create(CloseJobOffer openJobOffer)
+        {
+            var JOMngr = new JobManager();
+            var retVal = JOMngr.CloseJobOffer(openJobOffer);
+            return Json(retVal);
+        }
+        [HttpPost]
         public JsonResult<AllJobOffersByEmployer> GetByEmployer(EmployerIdentifier employerID)
         {
             var JOMngr = new JobManager();
