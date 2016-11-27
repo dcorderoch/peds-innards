@@ -1,4 +1,4 @@
-﻿namespace MyLearn.Models
+﻿namespace MyLearn.InputModels
 {
     public class LoginInfo
     {

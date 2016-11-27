@@ -1,5 +1,4 @@
-﻿using System;
-using MyLearn.Models;
+﻿using MyLearn.Models;
 
 namespace MyLearn.BLL
 {
