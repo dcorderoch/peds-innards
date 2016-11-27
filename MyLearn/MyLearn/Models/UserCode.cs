@@ -2,6 +2,6 @@
 {
     public class UserCode
     {
-        public int UserTypeCode { get; set; }
+        public float UserTypeCode { get; set; }
     }
 }

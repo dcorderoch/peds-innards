@@ -1,4 +1,4 @@
-﻿namespace MyLearn.Models
+namespace MyLearn.Models
 {
     public class Country
     {

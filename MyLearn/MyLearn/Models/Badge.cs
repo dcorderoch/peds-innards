@@ -4,8 +4,8 @@
     {
         public string BadgeDescription { get; set; }
         public string BadgeId { get; set; }
-        public int Value { get; set; }
-        public int Awarded { get; set; }
-        public int Alardeado { get; set; }
+        public float Value { get; set; }
+        public float Awarded { get; set; }
+        public float Alardeado { get; set; }
     }
 }

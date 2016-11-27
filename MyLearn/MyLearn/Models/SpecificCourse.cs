@@ -6,7 +6,7 @@ namespace MyLearn.Models
     {
         public string NombreContacto { get; set; }
         public string ApellidoContacto { get; set; }
-        public int Grade { get; set; }
+        public float Grade { get; set; }
         public List<Badge> Badges { get; set; }
     }
 }

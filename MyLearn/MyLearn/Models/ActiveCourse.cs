@@ -5,6 +5,6 @@
         public string course { get; set; }
         public string CourseId { get; set; }
         public string CourseDescription { get; set; }
-        public int accepted { get; set; }
+        public float accepted { get; set; }
     }
 }

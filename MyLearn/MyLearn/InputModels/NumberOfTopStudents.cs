@@ -2,6 +2,6 @@
 {
     public class NumberOfTopStudents
     {
-        public int NumberOfStudents { get; set; }
+        public float NumberOfStudents { get; set; }
     }
 }
