@@ -23,9 +23,10 @@ Nota: - 0 error
 https://host/Api/JobOffer/Close
 Web Application sends
 {
-    "JobOffer":"algo",
+    "JobOfferId":"algo",
     "State":"STATUS",
-    "StateDescription":"algo"
+    "StateDescription":"algo",
+    "Stars":[0-5]
 }
 
 and then Receives
@@ -33,10 +34,10 @@ and then Receives
     "ReturnStatus":(0|1)
 }
 
-Nota: Status = 0 , abierto (por defecto)
-      Status = 1 , aceptada (un estudiante la está trabajando de ahora en adelante)
-      Status = 2 , exitosa (terminada, un estudiante la terminó)
-      Status = 3 , fallida (o un estudiante la terminó, pero mal, o el empleador no la asignó a nadie)
+Nota: State = 0 , abierto (por defecto)
+      State = 1 , aceptada (un estudiante la está trabajando de ahora en adelante)
+      State = 2 , exitosa (terminada, un estudiante la terminó)
+      State = 3 , fallida (o un estudiante la terminó, pero mal, o el empleador no la asignó a nadie)
 
 Nota: - 0 error
       - 1 exito
