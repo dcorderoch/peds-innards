@@ -19,6 +19,28 @@ and then Receives
 Nota: - 0 error
       - 1 exito
 
+################################################# Create new Job Offer
+https://host/Api/JobOffer/Close
+Web Application sends
+{
+    "JobOffer":"algo",
+    "State":"STATUS",
+    "StateDescription":"algo"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: Status = 0 , abierto (por defecto)
+      Status = 1 , aceptada (un estudiante la está trabajando de ahora en adelante)
+      Status = 2 , exitosa (terminada, un estudiante la terminó)
+      Status = 3 , fallida (o un estudiante la terminó, pero mal, o el empleador no la asignó a nadie)
+
+Nota: - 0 error
+      - 1 exito
+
 ################################################# Get JobOffersByEmployerId
 https://host/Api/JobOffer/GetByEmployer
 Web Application sends
