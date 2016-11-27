@@ -83,7 +83,7 @@
                 }
                 else{
                     vm.comments[i].IsFromStudent = false;
-                    vm.comments[i].Author = "Profesor"
+                    vm.comments[i].Author = "Empleador"
 
                 }
                 var j;
@@ -94,7 +94,7 @@
                     }
                     else{
                         vm.comments[i].Nested[j].IsFromStudent = false;
-                        vm.comments[i].Nested[j].Author = "Profesor"
+                        vm.comments[i].Nested[j].Author = "Empleador"
                     }                 
                 }
             }

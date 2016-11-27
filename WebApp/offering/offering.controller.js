@@ -52,8 +52,11 @@
         }
 
         function createBid( time,money ){
+            
+            var timeString = time.toString();
+            var moneyString = money.toString();
 
-            var send={JobOfferId: vm.offerData.JobOfferId, Money:money, DurationDays: time, StudentSurname: vm.userData.NombreContacto, StudentUserId: vm.userData.StudentUserId }
+            var send={JobOfferId: vm.offerData.JobOfferId, Money:moneyString, DurationDays: timeString, StudentSurname: vm.userData.NombreContacto, StudentUserId: vm.userData.StudentUserId }
 
             JobService.BidCreate(send)
                 .then( function(response){

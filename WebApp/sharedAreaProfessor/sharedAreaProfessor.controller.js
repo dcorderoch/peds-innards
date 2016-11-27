@@ -12,9 +12,9 @@
         initController();
 
         vm.sendReply = sendReply; 
-        vm.replyMessage =replyaMessage;
+        vm.replyMessage = replyaMessage;
         vm.sendComment = sendComment;
-
+        vm.assignBadge = assignBadge;
 
         function initController(){
 
@@ -119,10 +119,12 @@
             })
         }
 
-        function sendComment( comment, dataUpload ){
+        function sendComment(  dataUpload ){
 
-            var send={Commenter:"0", ParentId:"-1", Comment:comment, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
+            var send={Commenter:"0", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
             console.log(send)
+            vm.comment =""
+
             CourseService.CommentCreate(send)
                 .then(function(response){
 
@@ -134,6 +136,11 @@
                 //                console.log(response);
                 FlashService.Error("No se pudo enviar el comentario"); 
             })
+        }
+        
+        function assignBadge(badgeId){
+         
+            
         }
 
     }

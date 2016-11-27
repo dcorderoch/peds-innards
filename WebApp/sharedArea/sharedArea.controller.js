@@ -13,6 +13,7 @@
         vm.sendReply = sendReply; 
         vm.replyaMessage =replyaMessage;
         vm.sendComment = sendComment;
+        vm.brag = brag;
 
         initController();
         function initController(){
@@ -67,6 +68,26 @@
                 FlashService.Error("No se pudo enviar el comentario"); 
             })
             vm.writeReply=false;;
+        }
+
+        function brag(bragId){
+            console.log(bragId)
+            CourseService.Brag(bragId)
+                .then(function(response){
+
+                if (response.ReturnStatus =="0"){
+                    FlashService.Error("No se pudo alardear, intentalo más tarde")
+                }
+                else{
+                    FlashService.Success("Se ha alardeado en Twitter exitsamente!");
+                    getComments();
+                    processComments();
+
+                }
+
+            }, function(response){
+                FlashService.Error("No se pudo alardear, intentalo más tarde")
+            })
         }
 
 
@@ -137,15 +158,15 @@
         }
 
         function getCourseData(id){
-            
+
 
             CourseService.GetCourseAsStudent(id)
                 .then(function(response){
 
                 var currentCourseData = response.data;
-                
+
                 currentCourseData.status = true;
-                
+
                 ProfileCourseService.SetCourseData(currentCourseData);
                 initController();
 

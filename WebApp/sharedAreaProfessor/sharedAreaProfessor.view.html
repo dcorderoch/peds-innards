@@ -38,8 +38,8 @@
                         <div class="badges" > 
                             <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
 
-                            <span class="centerBadgeText" > {{badge.BadgeDescription}}, {{badge.Value}}
-                                <button ng-disabled="badge.Awarded" class="btn btn-primary">Asignar</button>
+                            <span class="centerBadgeText" > {{badge.BadgeDescription}}, {{badge.Value}}%
+                                <button ng-click="vm.assignBadge(badge.BadgeId)" ng-disabled="badge.Awarded" class="btn btn-primary">Asignar</button>
                             </span>
                         </div>
                     </div>
@@ -113,12 +113,13 @@
 
                     <hr class="hr3">
 
-                    <input  ng-disabled="!vm.courseData.status" ng-model="comment" class="newComment" type=text placeholder="Escribe un comentario" name="search"> 
+                    <input  ng-disabled="!vm.courseData.status" ng-model="vm.comment" class="newComment" type=text placeholder="Escribe un comentario" name="search"> 
                     <div class="fileUpload btn btn-primary  sendIcon">
                         <span class="glyphicon glyphicon-paperclip"></span>
+                        
                         <input type="file" class="upload"  ng-disabled="!vm.courseData.status" ng-model="dataUpload" base-sixty-four-input />
                     </div>
-                    <button ng-disabled="!vm.courseData.status" ng-click="vm.sendComment(comment, dataUpload)" class="btn btn-primary" >Enviar
+                    <button ng-disabled="!vm.courseData.status" ng-click="vm.sendComment( dataUpload)" class="btn btn-primary" >Enviar
                     </button>
                 </div>
             </div>

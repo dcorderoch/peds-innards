@@ -18,6 +18,8 @@
         service.GetSpecificCourse = GetSpecificCourse;
         service.ProjectPropose = ProjectPropose;
         service.CommentCreate = CommentCreate;
+        service.Brag = Brag;
+        service.GiveBrag = 
 
         return service;
 
@@ -100,6 +102,15 @@
                 data: data
             });
             return response;            
+        }
+
+        function Brag(badgeId){
+            var response = $http({
+                method: "post",
+                url: $rootScope.url+"Badge/Brag",
+                data: {BadgeId: badgeId}
+            });
+            return response;                 
         }
 
     }
