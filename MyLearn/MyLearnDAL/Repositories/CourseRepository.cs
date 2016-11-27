@@ -9,6 +9,12 @@ namespace MyLearnDAL.Repositories
 {
     class CourseRepository : Repository<Course>
     {
+
+        public Course GetCoursebyId(Guid courseId)
+        {
+            return DbSet.Find(courseId);
+        }
+
         public List<Course> GetUniversityCourses(Guid UniversityId)
         {
             return DbSet.Where(c => c.University.UniversityId.Equals(UniversityId)).ToList();

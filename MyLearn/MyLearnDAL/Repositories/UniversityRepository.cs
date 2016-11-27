@@ -8,5 +8,9 @@ namespace MyLearnDAL.Repositories
     public class UniversityRepository : Repository<University>
     {
 
+        public University GetUniversityById(Guid universityId)
+        {
+            return DbSet.Find(universityId);
+        }
     }
 }

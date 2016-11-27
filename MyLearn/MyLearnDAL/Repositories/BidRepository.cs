@@ -10,6 +10,11 @@ namespace MyLearnDAL.Repositories
     public class BidRepository : Repository<Bid>
     {
 
+        public Bid GetBidById(Guid bidId)
+        {
+            return DbSet.Find(bidId);
+        }
+
         public List<Bid> GetStudentBids(Guid UserId)
         {
             return DbSet.Where(b => b.Student.UserId.Equals(UserId)).ToList();
