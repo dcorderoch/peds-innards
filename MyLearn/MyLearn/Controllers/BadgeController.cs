@@ -15,5 +15,12 @@ namespace MyLearn.Controllers
             var retVal = status.GiveBadge(newBadge);
             return Json(retVal);
         }
+        [HttpPost]
+        public JsonResult<ReturnCode> Brag(BadgeIdentifier badgeId)
+        {
+            var status = new BadgeManager();
+            var retVal = status.Brag(badgeId);
+            return Json(retVal);
+        }
     }
 }

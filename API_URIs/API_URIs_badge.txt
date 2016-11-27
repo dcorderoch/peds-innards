@@ -15,3 +15,18 @@ and then Receives
 
 Nota: - 0 error
       - 1 exito
+
+################################################# Brag about a Badge
+https://host/Api/Badge/Brag
+Web Application sends
+{
+    "BadgeId":"Id"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito

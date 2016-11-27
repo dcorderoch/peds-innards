@@ -11,5 +11,11 @@ namespace MyLearn.BLL
             // SUBJECT TO CHANGE
             return retVal;
         }
+        public ReturnCode Brag(BadgeIdentifier badgeId)
+        {
+            var retVal = new ReturnCode();
+            // SUBJECT TO CHANGE
+            return retVal;
+        }
     }
 }
