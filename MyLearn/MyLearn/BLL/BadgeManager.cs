@@ -15,30 +15,15 @@ namespace MyLearn.BLL
         public ReturnCode Brag(BadgeIdentifier badgeId)
         {
             var retVal = new ReturnCode();
+            // se hace el tweet ANTES de hacer lo demás, si el método retorna FALSE
+            // se retorna que falló la vara
+            var tweeter = new Tweeter();
+            if(!tweeter.tweet("mensaje"))
+            {
+                retVal.ReturnStatus = 0;
+            }
             // SUBJECT TO CHANGE
             return retVal;
-        }
-        private static bool tweet(string tweetText)
-        {
-            bool retval = true;
-            var auth = new OAuthInfo()
-            { // hard coded twitter information of the OfficialMyLearn Twitter
-                ConsumerKey = "6mjsdenmJfW30AwA30JCFwG4y",
-                ConsumerSecret = "ecvASOVKNuwhVKTEI8j5skzH6bf3ZMgRBiPVuFvQ56DgNxq4XT",
-                AccessToken = "779106829108379648-i0Q7zca2NDDYWpTuLjosoSKtQO65oNP",
-                AccessSecret = "FCcl9Qg0QqUkwLCAHIz4Ufli5VdolfvIRZlxRIWAEZIkQ"
-            };
-            var tposter = new TwitterServce(auth);
-            try
-            {
-                tposter.UpdateStatus(tweetText);
-                retval = true;
-            }
-            catch (System.Net.WebException e)
-            {
-                retval = false;
-            }
-            return retval;
         }
     }
 }
