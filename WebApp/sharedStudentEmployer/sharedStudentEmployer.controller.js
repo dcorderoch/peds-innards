@@ -22,7 +22,6 @@
             vm.workData ={};
             vm.workData = ProfileCourseService.GetWorkData();
 
-            vm.workData =ProfileCourseService.GetCourseData();
             vm.workData.Carnet = $rootScope.userData.Carnet;            
 
             console.log(vm.workData);
