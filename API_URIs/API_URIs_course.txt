@@ -43,13 +43,15 @@ and then Receives
     "Grade":[0-9],
     "Badges":[
                 {
-                    "BadgeDescription":"algo",
+                    "BadgeDescription":"algo",,
+                    "BadgeId":"algo",
                     "Value":1?[0-9]{2},
                     "Awarded":(0|1),
                     "Alardeado":(0|1)
                 },
                 {
                     "BadgeDescription":"algo",
+                    "BadgeId":"algo",
                     "Value":1?[0-9]{2},
                     "Awarded":(0|1),
                     "Alardeado":(0|1)
