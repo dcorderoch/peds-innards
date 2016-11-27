@@ -22,6 +22,9 @@
             vm.workData ={};
             vm.workData = ProfileCourseService.GetWorkData();
 
+            vm.workData =ProfileCourseService.GetCourseData();
+            vm.workData.Carnet = $rootScope.userData.Carnet;            
+
             console.log(vm.workData);
 
             getComments();
@@ -79,7 +82,7 @@
                 }
                 else{
                     vm.comments[i].IsFromStudent = false;
-                    vm.comments[i].Author = "Profesor"
+                    vm.comments[i].Author = "Empleador"
 
                 }
                 var j;
@@ -90,7 +93,7 @@
                     }
                     else{
                         vm.comments[i].Nested[j].IsFromStudent = false;
-                        vm.comments[i].Nested[j].Author = "Profesor"
+                        vm.comments[i].Nested[j].Author = "Empleador"
                     }                 
                 }
             }
@@ -111,9 +114,9 @@
             })
         }
 
-        function sendComment( comment, dataUpload ){
+        function sendComment(  dataUpload ){
 
-            var send={Commenter:"0", ParentId:"-1", JobOfferComment:comment, JobOfferId:vm.workData.JobOfferId};
+            var send={Commenter:"0", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId};
             console.log(send);
             JobService.CommentCreate(send)
                 .then(function(response){

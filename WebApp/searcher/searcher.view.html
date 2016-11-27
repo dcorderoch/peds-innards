@@ -97,37 +97,35 @@
             </ul>
 
             <div class="tab-content">
-                <div id="home" class="tab-pane fade in active container">
 
-                    <h3>Buscador de trabajos</h3>
-                    <div class="border row"> 
-                        <div class="border col-md-2 " >
-                            <form >
-                                <div class="radio" style="margin-bottom:15px">
-                                    <label><input ng-model="searchParameter" value="0" type="radio"
-                                                  name="optradio">Nombre</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input ng-model="searchParameter" value="1" type="radio"
-                                                  name="optradio">Tecnología</label>
-                                </div>
-                            </form>
-                        </div>
+                <h3>Buscador de trabajos</h3>
+                <div class="border row"> 
+                    <div class="border col-md-2 " >
+                        <form >
+                            <div class="radio" style="margin-bottom:15px">
+                                <label><input ng-model="searchParameter" value="0" type="radio"
+                                              name="optradio">Nombre</label>
+                            </div>
+                            <div class="radio">
+                                <label><input ng-model="searchParameter" value="1" type="radio"
+                                              name="optradio">Tecnología</label>
+                            </div>
+                        </form>
+                    </div>
 
-                        <div class="border col-md-8 " >
+                    <div class="border col-md-8 " >
 
-                            <input class ="search" ng-model="query" type=text placeholder=" Buscar" name="search">
-                            <button  ng-click="vm.search(query,searchParameter)" type="button" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-search"></span> 
-                            </button>
+                        <input class ="search" ng-model="query" type=text placeholder=" Buscar" name="search">
+                        <button  ng-click="vm.search(query,searchParameter)" type="button" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-search"></span> 
+                        </button>
 
-                            <hr class="hr3">
-                            <div ng-repeat="result in vm.results"> 
-                                <div class="panel panel-default searchPanel">
-                                    <div class="panel-body">
-                                        <strong>Empleador:{{result.JobOffer}}</strong>
-                                        <p> Descripción del trabajo: {{result.Description}}<button type="button" ng-click="vm.goOffering(result)"class="btn btn-primary  uniCourse">Ofertar</button></p></div>
-                                </div>
+                        <hr class="hr3">
+                        <div ng-repeat="result in vm.results"> 
+                            <div class="panel panel-default searchPanel">
+                                <div class="panel-body">
+                                    <strong>Empleador:{{result.JobOffer}}</strong>
+                                    <p> Descripción del trabajo: {{result.Description}}<button type="button" ng-click="vm.goOffering(result)"class="btn btn-primary  uniCourse">Ofertar</button></p></div>
                             </div>
                         </div>
                     </div>

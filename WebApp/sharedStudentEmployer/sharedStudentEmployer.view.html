@@ -96,13 +96,15 @@
                         </div>
 
                     </div>
+                    
                     <hr class="hr3">
-                    <input ng-disabled="!vm.workData.status" ng-model="comment" class="newComment" type=text placeholder="Escribe un comentario" name="search">
+                    <input ng-disabled="!vm.workData.status" ng-model="vm.comment" class="newComment" type=text placeholder="Escribe un comentario" name="search">
+                    
                     <div class="fileUpload btn btn-primary  sendIcon">
                         <span class="glyphicon glyphicon-paperclip"></span>
                         <input type="file" class="upload"  ng-disabled="!vm.workData.status" ng-model="dataUpload" base-sixty-four-input />
                     </div>
-                    <button ng-disabled="!vm.workData.status" ng-click="vm.sendComment(comment, dataUpload)" class="btn btn-primary" >Enviar</button>
+                    <button ng-disabled="!vm.workData.status" ng-click="vm.sendComment( dataUpload)" class="btn btn-primary" >Enviar</button>
 
                 </div>
             </div>

@@ -98,48 +98,45 @@
             </ul>
 
             <div class="tab-content">
-                <div id="home" class="tab-pane fade in active container">
 
-                    <h3>Trabajos activos</h3>
-                    <hr class="hr3">
+                <h3>Trabajos activos</h3>
+                <hr class="hr3">
 
-                    <div ng-repeat="activeWork in vm.userData.ActiveProjectsList">
-                        <div class="panel panel-default panelProfile">
-                            <div class="panel-body">
-                                <strong>Nombre del trabajo:</strong> {{activeWork.project}},
-                                <strong>  Descripción: </strong>{{activeWork.Description}},
-                                <strong>  Nombre del empleador: </strong>{{activeWork.EmployerName}},
-                                <strong>  Estado: </strong>{{activeWork.State}},
-                                <strong>  Descripción de estado: </strong>{{activeWork.StateDescription}}
-                                
-                                <span>     
-                                    <button  ng-click="vm.goWorkActive(activeCourse.JobOfferId)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir trabajo
-                                    </button>
-                                </span>
-                            </div>
-                        </div>               
-                    </div>
+                <div ng-repeat="activeWork in vm.userData.ActiveProjectsList">
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body">
+                            <strong>Nombre del trabajo:</strong> {{activeWork.project}},
+                            <strong>  Descripción: </strong>{{activeWork.Description}},
+                            <strong>  Nombre del empleador: </strong>{{activeWork.EmployerName}},
+                            <strong>  Estado: </strong>{{activeWork.State}},
+                            <strong>  Descripción de estado: </strong>{{activeWork.StateDescription}}
 
-                    <br>     
-                    <h3>Trabajos terminados</h3>
-                    <hr class="hr3">
+                            <span>     
+                                <button  ng-click="vm.goWorkActive(activeCourse.JobOfferId)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir trabajo
+                                </button>
+                            </span>
+                        </div>
+                    </div>               
+                </div>
 
-                    <div ng-repeat="finishedWork in vm.userData.FinishedProjectsList">
-                        <div class="panel panel-default panelProfile">
-                            <div class="panel-body">
-                                <strong>Nombre del trabajo:</strong> {{finishedWork.project}},
-                                <strong>  Descripción: </strong>{{finishedWork.Description}},
-                                <strong>  Nombre del empleador: </strong>{{finishedWork.EmployerName}},
-                                <strong>  Estado: </strong>{{finishedWork.State}},
-                                <strong>  Descripción de estado: </strong>{{finishedWork.StateDescription}}
-                                
-                                <span>     
-                                    <button  ng-click="vm.goWorkFinished(finishedWork.JobOfferId)"  type="button" class="btn btn-primary  uniCourse yellowButton">Abrir trabajo</button>
-                                </span>
-                            </div>
-                        </div>               
-                    </div>
+                <br>     
+                <h3>Trabajos terminados</h3>
+                <hr class="hr3">
 
+                <div ng-repeat="finishedWork in vm.userData.FinishedProjectsList">
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body">
+                            <strong>Nombre del trabajo:</strong> {{finishedWork.project}},
+                            <strong>  Descripción: </strong>{{finishedWork.Description}},
+                            <strong>  Nombre del empleador: </strong>{{finishedWork.EmployerName}},
+                            <strong>  Estado: </strong>{{finishedWork.State}},
+                            <strong>  Descripción de estado: </strong>{{finishedWork.StateDescription}}
+
+                            <span>     
+                                <button  ng-click="vm.goWorkFinished(finishedWork.JobOfferId)"  type="button" class="btn btn-primary  uniCourse yellowButton">Abrir trabajo</button>
+                            </span>
+                        </div>
+                    </div>               
                 </div>
             </div>
         </div>

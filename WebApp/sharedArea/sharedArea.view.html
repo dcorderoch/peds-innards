@@ -53,7 +53,7 @@
             <div class="panel panel-default" >
                 <div  class="panel-body">
 
-                    <div ng-repeat="comment in vm.comments">
+                   <div ng-repeat="comment in vm.comments">
 
                         <div ng-show="comment.IsFromStudent">
                             <div class="panel panel-default  leftComment">
@@ -86,7 +86,7 @@
                             <div class="panel panel-default  rightComment">
                                 <div class="panel-body radiusComments" ><p class="comments">Comentario:  {{comment.Comment}}, Fecha: {{comment.Date | date}}, Escrito por: {{comment.Author}} </p>
                                     <!--|date-->
-                                    <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.courseData.status" class="rightSpan btn btn-primary">Responder</button> 
+                                    <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.courseData.status" class="rightSpan  btn btn-primary">Responder</button> 
                                 </div>
                             </div>
                             <div ng-show="vm.writeReply">
@@ -112,12 +112,13 @@
 
                     <hr class="hr3">
                     
-                    <input  ng-disabled="!vm.courseData.status" ng-model="comment" class="newComment" type=text placeholder="Escribe un comentario" name="search"> 
+                    <input  ng-disabled="!vm.courseData.status" ng-model="vm.comment" class="newComment" type=text placeholder="Escribe un comentario" name="search"> 
+                    
                     <div class="fileUpload btn btn-primary  sendIcon">
                         <span class="glyphicon glyphicon-paperclip"></span>
                         <input type="file" class="upload"  ng-disabled="!vm.courseData.status" ng-model="dataUpload" base-sixty-four-input />
                     </div>
-                    <button ng-disabled="!vm.courseData.status" ng-click="vm.sendComment(comment, dataUpload)" class="btn btn-primary" >Enviar
+                    <button ng-disabled="!vm.courseData.status" ng-click="vm.sendComment( dataUpload)" class="btn btn-primary" >Enviar
                     </button>
                 </div>
             </div>

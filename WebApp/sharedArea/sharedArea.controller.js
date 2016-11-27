@@ -11,7 +11,7 @@
 
         vm.comments = [];
         vm.sendReply = sendReply; 
-        vm.replyMessage =replyaMessage;
+        vm.replyaMessage =replyaMessage;
         vm.sendComment = sendComment;
 
         initController();
@@ -53,6 +53,7 @@
         function sendReply( replyMessage, parentId){
 
             var send={Commenter:"0", ParentId:parentId, Comment:replyMessage, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
+            
             console.log(send);
             CourseService.CommentCreate(send)
                 .then(function(response){
@@ -117,9 +118,9 @@
             })
         }
 
-        function sendComment( comment, dataUpload ){
+        function sendComment(  dataUpload ){
 
-            var send={Commenter:"1", ParentId:"-1", Comment:comment, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
+            var send={Commenter:"1", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
             console.log(send)
             CourseService.CommentCreate(send)
                 .then(function(response){
@@ -132,6 +133,7 @@
                 //                console.log(response);
                 FlashService.Error("No se pudo enviar el comentario"); 
             })
+            vm.comment="";
         }
 
 

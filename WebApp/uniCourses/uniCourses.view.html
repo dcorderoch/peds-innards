@@ -97,27 +97,22 @@
             </ul>
 
             <div class="tab-content">
-                <div id="home" class="tab-pane fade in active container">
 
-                    <h3>Cursos de mi universidad: {{nombreUniversidad}}</h3>
-                    <hr class="hr3">
+                <h3>Cursos de mi universidad: {{nombreUniversidad}}</h3>
+                <hr class="hr3">
 
-                    <div ng-repeat="course in vm.courses">
+                <div ng-repeat="course in vm.courses">
 
-                        <div class="panel panel-default panelProfile">
-                            <div class="panel-body">
-                                <strong>Nombre del curso:</strong> {{course.Course}},
-                                <strong>  Descripción: </strong>{{course.CourseDescription}}
-                                <button ng-button="vm.joinCourse(course.UniversityId)" type="button" class="btn btn-default yellowButton uniCourse">Unirse a curso</button>
-                            </div>
-                        </div>                  
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body">
+                            <strong>Nombre del curso:</strong> {{course.Course}},
+                            <strong>  Descripción: </strong>{{course.CourseDescription}}
+                            <button ng-button="vm.joinCourse(course.UniversityId)" type="button" class="btn btn-default yellowButton uniCourse">Unirse a curso</button>
+                        </div>
 
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-

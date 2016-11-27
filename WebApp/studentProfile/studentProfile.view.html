@@ -94,39 +94,36 @@
             </ul>
 
             <div class="tab-content">
-                <div id="home" class="tab-pane fade in active container">
 
-                    <h3>Cursos activos</h3>
-                    <hr class="hr3">
+                <h3>Cursos activos</h3>
+                <hr class="hr3">
 
-                    <div ng-repeat="activeCourse in vm.userData.ActiveCoursesList">
-                        <div class="panel panel-default panelProfile">
-                            <div class="panel-body">
-                                <strong>Nombre del curso:</strong> {{activeCourse.course}},
-                                <strong>  Descripción: </strong>{{activeCourse.CourseDescription}}
-                                <span> 
-                                    <button  ng-click="vm.goCourseActive(activeCourse.courseId,1)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button> 
-                                </span>
-                            </div>
-                        </div>               
-                    </div>
+                <div ng-repeat="activeCourse in vm.userData.ActiveCoursesList">
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body">
+                            <strong>Nombre del curso:</strong> {{activeCourse.course}},
+                            <strong>  Descripción: </strong>{{activeCourse.CourseDescription}}
+                            <span> 
+                                <button  ng-click="vm.goCourseActive(activeCourse.courseId,1)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button> 
+                            </span>
+                        </div>
+                    </div>               
+                </div>
 
-                    <br>     
-                    <h3>Cursos terminados</h3>
-                    <hr class="hr3">
+                <br>     
+                <h3>Cursos terminados</h3>
+                <hr class="hr3">
 
-                    <div ng-repeat="finishedCourse in vm.userData.FinishedCoursesList">
-                        <div class="panel panel-default panelProfile">
-                            <div class="panel-body">
-                                <strong>Nombre del curso:</strong> {{finishedCourse.course}},
-                                <strong>  Descripción:</strong>{{activeCourse.CourseDescription}}
-                                <span>
-                                    <button  ng-click="vm.goCourseFinished(finishedCourse.courseId)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button>
-                                </span> 
-                            </div>
+                <div ng-repeat="finishedCourse in vm.userData.FinishedCoursesList">
+                    <div class="panel panel-default panelProfile">
+                        <div class="panel-body">
+                            <strong>Nombre del curso:</strong> {{finishedCourse.course}},
+                            <strong>  Descripción:</strong>{{activeCourse.CourseDescription}}
+                            <span>
+                                <button  ng-click="vm.goCourseFinished(finishedCourse.courseId)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button>
+                            </span> 
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
