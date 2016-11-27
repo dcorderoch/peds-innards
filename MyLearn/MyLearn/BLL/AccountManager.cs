@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MyLearn.Models;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
@@ -25,6 +26,13 @@ namespace MyLearn.BLL
             
             return userTypeCode;
         }
+
+        private Guid GetUserId(string username)
+        {
+            UserRepository userRepo = new UserRepository();
+            User user = userRepo.GetUserByEmail(username);
+            return user.UserId;
+        }
         /// <summary>
         /// Method that returns to the REST API the corresponding user's information if and only if the parameters given match a user in the DB.
         /// </summary>
@@ -35,32 +43,33 @@ namespace MyLearn.BLL
         {
             InfoEstudiante student = new InfoEstudiante();
             StudentRepository studentRepo = new StudentRepository();
-            List<Student> dalStudent = studentRepo.GetAll();
-
-            if (dalStudent != null)
+            Guid studentId = GetUserId(username);
+            Student dalStudent = studentRepo.GetStudentById(studentId); 
+            
+            if (dalStudent != null && dalStudent.Password == password)
             {
-                student.UserId = "";
-                student.NombreContacto = "";
-                student.ApellidoContacto = "";
-                student.Ubicacion = "";
-                student.Email = "";
-                student.Telefono = "";
-                student.Fecha_Registro = "";
-                student.Password = "";
-                student.TipoRepositorioArchivos = "";
-                student.Foto = "";
-                student.Universidad = "";
-                student.UniversityId = "";
-                student.EnlaceRepositorioCodigo = "";
-                student.EnlaceACurriculum = "";
-                student.PromedioProyectos = 1;
+                student.UserId = studentId.ToString();
+                student.NombreContacto = dalStudent.Name;
+                student.ApellidoContacto = dalStudent.LastName;
+                student.Ubicacion = dalStudent.Country.ToString();
+                student.Email = dalStudent.Email;
+                student.Telefono = dalStudent.PhoneNum;
+                student.Fecha_Registro = dalStudent.InDate.ToString();
+                student.Password = dalStudent.Password;
+                student.TipoRepositorioArchivos = dalStudent.TRepo.ToString();
+                student.Foto = dalStudent.Photo.ToString();
+                student.Universidad = dalStudent.University.Name;
+                student.UniversityId = dalStudent.UniversityId.ToString();
+                student.EnlaceRepositorioCodigo = dalStudent.RepoLink.ToString();
+                student.EnlaceACurriculum = dalStudent.ResumeLink;
+                student.PromedioProyectos = dalStudent.AvgProjects;
                 student.PromedioCursos = 1;
-                student.Idiomas = new List<string>();
-                student.CursosAprobados = 0;
-                student.CursosReprobados = 0;
-                student.ProyectosExitosos = 0;
-                student.ProyectosFallidos = 0;
-                student.Tecnologias = new List<string>();
+                student.Idiomas = dalStudent.StudentLanguages;
+                student.CursosAprobados = dalStudent.NumSuceedCourses;
+                student.CursosReprobados = dalStudent.NumFailedCourses;
+                student.ProyectosExitosos = dalStudent.NumSuceedProjects;
+                student.ProyectosFallidos = dalStudent.NumFailedProjects;
+                student.Tecnologias = dalStudent.StudentTechnologies;
 
                 List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
                 FinishedCourse finishedCourse = new FinishedCourse();
@@ -88,16 +97,16 @@ namespace MyLearn.BLL
                 //activeJobOffers.JobOfferId = "";
                 student.ActiveJobOffersList = activeJobOffersLists;
             }
-            
-            
-
-
             return student;
         }
 
         public InfoProfesor ProfessorLogin(string username, string password)
         {
             InfoProfesor professor = new InfoProfesor();
+            ProfessorRepository studentRepo = new StudentRepository();
+            Guid professorId = GetUserId(username);
+            Professor dalProfessor = studentRepo.GetStudentById(studentId);
+
             //     DBUser dbUserInstance = new DBUser();
             //subject to change
 
