@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace MyLearn.TwitterPoster
+﻿namespace MyLearn.TwitterPoster
 {
-    public class TwitterPoster
+    public class TwitterServce
     {
         private readonly OAuthInfo oauth;
 
-        public TwitterPoster(OAuthInfo initializedCredentials)
+        public TwitterServce(OAuthInfo initializedCredentials)
         {
             oauth = initializedCredentials;
         }
