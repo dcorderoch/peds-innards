@@ -217,3 +217,18 @@ and then Receives
                        }
                    ]
 }
+
+https://host/Api/JobOffer/Assign
+Web Application sends
+{
+    "JobOfferId":"algo",
+    "StudentUserId":"Id"
+}
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito

@@ -23,6 +23,12 @@ namespace MyLearn.BLL
             success.ReturnStatus = 1;
             return success;
         }
+        public ReturnCode Assign(AssignJobOffer jobOffer)
+        {
+            ReturnCode success = new ReturnCode();
+            success.ReturnStatus = 1;
+            return success;
+        }
 
         public ReturnCode CloseJobOffer(CloseJobOffer openJobOffer)
         {

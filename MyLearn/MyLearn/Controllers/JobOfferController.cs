@@ -17,6 +17,13 @@ namespace MyLearn.Controllers
             return Json(retVal);
         }
         [HttpPost]
+        public JsonResult<ReturnCode> Assign(AssignJobOffer jobOffer)
+        {
+            var JOMngr = new JobManager();
+            var retVal = JOMngr.Assign(jobOffer);
+            return Json(retVal);
+        }
+        [HttpPost]
         public JsonResult<ReturnCode> Close(CloseJobOffer openJobOffer)
         {
             var JOMngr = new JobManager();
