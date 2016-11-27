@@ -57,10 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="main.cs" />
-    <Compile Include="Migrations\201611260347430_Initial.cs" />
-    <Compile Include="Migrations\201611260347430_Initial.Designer.cs">
-      <DependentUpon>201611260347430_Initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Achievement.cs" />
     <Compile Include="Models\Country.cs" />
@@ -89,19 +85,21 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="MyLearnContext.cs" />
     <Compile Include="MyLearnContextInitializer.cs" />
+    <Compile Include="Repositories\AchievementRepository.cs" />
     <Compile Include="Repositories\BadgeRepository.cs" />
     <Compile Include="Repositories\BidRepository.cs" />
+    <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\CourseRepository.cs" />
     <Compile Include="Repositories\JobOfferRepository.cs" />
+    <Compile Include="Repositories\LanguageRepository.cs" />
+    <Compile Include="Repositories\NotificationRepository.cs" />
+    <Compile Include="Repositories\ProjectCommentRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\StudentCourseRepository.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="Repositories\TechnologyRepository.cs" />
     <Compile Include="Repositories\UniversityRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611260347430_Initial.resx">
-      <DependentUpon>201611260347430_Initial.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
