@@ -53,15 +53,15 @@
         function sendReply( replyMessage, parentId){
 
             var send={Commenter:"0", ParentId:parentId, Comment:replyMessage, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
-            
+
             console.log(send);
             CourseService.CommentCreate(send)
                 .then(function(response){
-                
+
                 console.log(response);
                 getComments();
                 processComments();
-                
+
             }, function(response){
                 //                console.log(response);
                 FlashService.Error("No se pudo enviar el comentario"); 
@@ -124,16 +124,35 @@
             console.log(send)
             CourseService.CommentCreate(send)
                 .then(function(response){
-                
+
                 console.log(response);
                 getComments();
                 processComments();
-                
+
             }, function(response){
                 //                console.log(response);
                 FlashService.Error("No se pudo enviar el comentario"); 
             })
             vm.comment="";
+        }
+
+        function getCourseData(id){
+            
+
+            CourseService.GetCourseAsStudent(id)
+                .then(function(response){
+
+                var currentCourseData = response.data;
+                
+                currentCourseData.status = true;
+                
+                ProfileCourseService.SetCourseData(currentCourseData);
+                initController();
+
+
+            }, function(response){
+                console.log("no sirvio")
+            });
         }
 
 
