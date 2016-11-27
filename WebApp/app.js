@@ -142,6 +142,14 @@
 
             var restrictedPage = $.inArray($location.path(), ['/login', '/register','/register2', '/register3']) === -1;
 
+            var loggedIn = $rootScope.globals.currentUser;
+
+
+            if (restrictedPage && !loggedIn) {
+                $location.path('/login');
+            }
+
+
             var studentRestricted = $.inArray($location.path(), ['/auction', '/courseareaprofessor', '/courseoverview', 'employerprofile', '/newcourse', 'newproject', '/professorprofile', '/sharedareaprofessor', '/sharedareaemployer'] ) === -1;
 
             var professorRestricted = $.inArray($location.path(), ['/workprofile', '/unicourses', '/studentprofile', '/sharedstudentemployer', '/sharedareaemployer', '/sharedarea', 'searcher', '/offering', '/notifications', '/newproject','/auction', '/employerprofile', '/coursearea'] ) === -1;
@@ -151,18 +159,6 @@
             var studentUser = $cookieStore.get('dataLogin').Carnet;
             var professorUser = $cookieStore.get('dataLogin').IdProfesor;
             var employerUser = $cookieStore.get('dataLogin').IdEmpleador;
-
-            var loggedIn = $rootScope.globals.currentUser;
-
-            if (restrictedPage && !loggedIn) {
-                $location.path('/login');
-            }
-
-            console.log(professorUser);
-            console.log(studentUser);
-            console.log(employerUser);
-
-            console.log(professorRestricted);
 
             if ( (!studentRestricted && studentUser) || (!professorRestricted && professorUser) || (!employerRestricted && employerUser) ) {
                 window.history.back();

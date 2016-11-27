@@ -23,7 +23,7 @@
                     <p><strong>Carnet del estudiante: </strong>{{vm.courseData.Carnet}}</p>
                     <p><strong>Descripción del curso: </strong>{{vm.courseData.CourseDescription}}</p>
                     <p><strong>Grupo del curso: </strong>{{vm.courseData.Group}}</p>
-                    
+
                     <p> <strong>Nota parcial: </strong></p>
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" ng-style="vm.gradeWidth">
@@ -31,17 +31,18 @@
                         </div>
                     </div>
 
-
-<!--
-                    <div>
-                        <input  class="updateScore" type=number placeholder="Actualizar nota" name="search">
-                        <button class="updateIcon btn btn-primary glyphicon glyphicon-triangle-right"></button> 
-                    </div>
--->
-
                     <p> <strong>Dar badge:</strong></p>
 
+                    <div class="row" ng-repeat="badge in  vm.courseData.Badges" >
 
+                        <div class="badges" > 
+                            <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
+
+                            <span class="centerBadgeText" > {{badge.BadgeDescription}}, {{badge.Value}}
+                                <button ng-disabled="badge.Alardeado" class="btn btn-primary">Alardear</button>
+                            </span>
+                        </div>
+                    </div>.ß
 
                 </div>
             </div>
@@ -111,7 +112,7 @@
                     </div>
 
                     <hr class="hr3">
-                    
+
                     <input  ng-disabled="!vm.courseData.status" ng-model="comment" class="newComment" type=text placeholder="Escribe un comentario" name="search"> 
                     <div class="fileUpload btn btn-primary  sendIcon">
                         <span class="glyphicon glyphicon-paperclip"></span>
