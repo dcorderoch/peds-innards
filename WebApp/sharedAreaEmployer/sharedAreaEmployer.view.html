@@ -24,17 +24,27 @@
                     <p><strong>Ubicación: </strong>{{vm.workData.Location}}</p>
                     <p><strong>Fecha de comienzo: </strong>{{vm.workData.StartDate | date}}</p>
                     <p><strong>Fecha de finalización: </strong>{{vm.workData.EndDate | date}}</p>
-                    <p><strong>Presupuesto: </strong>{{vm.workData.Budget | currency:'¢'}}</p>
+                    <p><strong>Presupuesto: </strong>{{vm.workData.Budget | currency}}</p>
                     <p><strong>Tecnologías:</strong></p>
                     <ul ng-repeat="tech in vm.workData.Technologies">
                         <li>{{tech}}</li>
                     </ul>
                     <p><strong>Finalizar proyecto</strong></p>
-                    <p><input type=text  placeholder=" Motivo por el cual finalizar proyecto" class="finishProjectReason"  ng-model="finishProject" /></p>
-                    <p><strong>Dar estrellas</strong></p>
-                    <input type=text  placeholder=" Estrellas" class="stars"  ng-model="finishProject" />
-                    <button class="btn btn-primary">Proceder</button>
-
+                    
+                    <form name="form" ng-submit="vm.closeProject(finishProject,stars,status)" role="form"> 
+                        <p><input type=text  placeholder=" Motivo por el cual finalizar proyecto" class="finishProjectReason"  ng-model="finishProject" required/></p>
+                        
+                        <p><strong>Dar estrellas &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp¿Exitoso?</strong></p>
+                        
+                        <input type=number  placeholder=" Estrellas" class="stars"  ng-model="stars" required/>
+                        
+                        <select  class="stars" style="margin-right:0.8em; margin-left:0.8em" ng-model="status" required>
+                            <option>Exitoso</option>
+                            <option>Fallido</option>
+                        </select> 
+                        
+                        <button class="btn btn-primary">Proceder</button>
+                    </form>
                 </div>
 
             </div>

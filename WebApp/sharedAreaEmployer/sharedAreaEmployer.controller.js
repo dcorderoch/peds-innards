@@ -15,8 +15,10 @@
         vm.replyMessage ="";
         vm.replyaMessage = replyaMessage;
         vm.sendComment = sendComment;
+        vm.closeProject = closeProject;
 
         function initController(){
+
 
             vm.comments =[];
 
@@ -130,7 +132,25 @@
             })
         }
 
+        function closeProject(finishProject,stars,status){
+
+            var state = (status=="Exitoso") ? "2" : "3"; 
+
+            var send = {JobOffer:vm.workData.JobOfferId, State:state, 
+                        StateDescription: finishProject, Stars: stars.toString()};
+            console.log(send)
+            JobService.CloseJob(send)
+                .then(function(response){
+                FlashService.Error("El proyecto se ha cerrado");
+                $location.path("/employerprofile")
+                console.log(response);
+
+            }, function(response){
+                FlashService.Error("No se pudo cerrar el proyecto")
+                console.log(response);
+            })
+        }
+
 
     }
-
 })();

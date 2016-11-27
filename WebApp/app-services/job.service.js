@@ -18,7 +18,8 @@
         service.GetAllComments = GetAllComments;
         service.CommentCreate = CommentCreate;
         service.BidCreate = BidCreate;
-        
+        service.CloseJob = CloseJob;
+
         return service;
 
         function Create(createData) {
@@ -84,7 +85,7 @@
             });
             return response;
         }
-        
+
         function CommentCreate(dataCreate){
             var response =$http({
                 method:"post",
@@ -93,7 +94,7 @@
             });
             return response;
         }
-        
+
         function BidCreate( data){
             var response= $http({
                 method:"post",
@@ -102,6 +103,15 @@
             });
             return response;
         }
-    
+
+        function CloseJob(data){
+            var response= $http({
+                method:"post",
+                url:$rootScope.url+"JobOffer/Close",
+                data:data
+            });
+            return response;            
+        }
+
     }
 })();
