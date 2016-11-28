@@ -44,6 +44,7 @@
                         AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
                                                              response.data);
                         $rootScope.userData= response.data;
+                        console.log($rootScope.userData);
                         $location.path('/studentprofile');    
                     },function(response){
 
@@ -81,9 +82,9 @@
                     })
                 }
                 else{
-                    console.log("salio totalmente")
-                    FlashService.Error("Usuario no existe");//errores
-                    vm.dataLoading = false;
+//                    console.log("salio totalmente")
+//                    FlashService.Error("Usuario no existe");//errores
+//                    vm.dataLoading = false;
                 }
             },function(response){
                 console.log( vm.loginData);
