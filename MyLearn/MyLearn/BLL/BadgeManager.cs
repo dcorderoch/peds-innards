@@ -33,9 +33,10 @@ namespace MyLearn.BLL
             {
                 Badge newBadge = new Badge();
                 newBadge.BadgeId = badge.BadgeId.ToString();
-                newBadge.BadgeDescription = ba
+                newBadge.BadgeDescription = badge.Achievement.Description;
+                badges.Add(newBadge);
             }
-            return retval;
+            return badges;
         }
         public ReturnCode Brag(BadgeIdentifier badgeId)
         {
