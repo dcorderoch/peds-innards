@@ -16,6 +16,7 @@
         // selected fruits
         vm.regData.Idiomas = [];
         vm.regData.Tecnologias = [];
+        vm.countries=[];
 
         initController();
         function initController(){
@@ -54,7 +55,7 @@
                 .then(function (response) {
 
                 console.log(response)
-                vm.countries = response.data.Countries;
+                vm.countries = response.data;
 
             },function(response){
                 console.log("supongo2")
