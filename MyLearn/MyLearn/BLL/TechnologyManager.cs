@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MyLearn.Models;
+using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
 {
@@ -7,13 +8,15 @@ namespace MyLearn.BLL
     {
         public List<Technology> GetAllTechnologies()
         {
-            List<Technology> allTechnologies = new List<Technology>();
-
-            //code goes here 
-
-            return allTechnologies;
-
-
+            var bllTechList = new List<Technology>();
+            var technologyRepo = new TechnologyRepository();
+            var techList = technologyRepo.GetAll();
+            foreach (var tech in techList)
+            {
+                bllTechList.Add(new Technology() {TechnologyId = tech.TecnologyId.ToString(),TechnologyName = tech.Name});
+            }
+            technologyRepo.Dispose();
+            return bllTechList;
         }
 
 
