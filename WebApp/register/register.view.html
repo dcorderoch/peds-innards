@@ -70,7 +70,7 @@
                             <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">El carné es requerido</span>
                         </div>
 
-                        <p>{{vm.universities}}</p>
+<!--                        <p>{{vm.universities}}</p>-->
                         <label>Escoge tu universidad</label>
                         <div class="form-group" ng-class="{ 'has-error': form.university.$dirty && form.university.$error.required }">
                             <select name="university" ng-model="vm.regData.Universidad" ng-options="x.UniversityId as x.UniversityName for x in vm.universities" required>
@@ -83,7 +83,7 @@
 
                         </div>
 
-                        <p>{{vm.languages}}</p>
+<!--                        <p>{{vm.languages}}</p>-->
 
                         <label>Escoge los idiomas que conozcas</label>
                         <div class="form-group" ng-class="{ 'has-error': form.selectedLanguages.$dirty && form.selectedLanguages.$error.required }">
@@ -114,7 +114,7 @@
                                            value="{{technology}}"
                                            ng-checked="vm.regData.Tecnologias.indexOf(technology) > -1"
                                            ng-click="vm.toggleSelectionTech(technology)"
-                                           /> {{technology.Technology}}
+                                           /> {{technology.TechnologyName}}
                                 </label>
                             </div>
 
