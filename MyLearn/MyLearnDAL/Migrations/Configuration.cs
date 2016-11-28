@@ -17,13 +17,41 @@ namespace MyLearnDAL.Migrations
 
         protected override void Seed(MyLearnDAL.MyLearnContext context)
         {
-            var newTechnology0 = new Technology() { Name = "Verilog", TecnologyId = Guid.Parse("A1A1A1A1-A1A1-A1A1-A1A1-A1A1A1A1A1A1") };
-            var newTechnology1 = new Technology() { Name = "REST API", TecnologyId = Guid.Parse("B1B1B1B1-B1B1-B1B1-B1B1-B1B1B1B1B1B1") };
-            var newTechnology2 = new Technology() { Name = "OpenCV", TecnologyId = Guid.Parse("C1C1C1C1-C1C1-C1C1-C1C1-C1C1C1C1C1C1") };
-            var newTechnology3 = new Technology() { Name = "OpenCL", TecnologyId = Guid.Parse("D1D1D1D1-D1D1-D1D1-D1D1-D1D1D1D1D1D1") };
-            var newTechnology4 = new Technology() { Name = "CUDA", TecnologyId = Guid.Parse("E1E1E1E1-E1E1-E1E1-E1E1-E1E1E1E1E1E1") };
-            var newTechnology5 = new Technology() { Name = "MEAN Stack", TecnologyId = Guid.Parse("F1F1F1F1-F1F1-F1F1-F1F1-F1F1F1F1F1F1") };
-            var newTechnology6 = new Technology() { Name = "SQL", TecnologyId = Guid.Parse("A1B1A1B1-A1B1-A1B1-A1B1-A1B1A1B1A1B1") };
+            var newTechnology0 = new Technology()
+            {
+                Name = "Verilog",
+                TecnologyId = Guid.Parse("A1A1A1A1-A1A1-A1A1-A1A1-A1A1A1A1A1A1")
+            };
+            var newTechnology1 = new Technology()
+            {
+                Name = "REST API",
+                TecnologyId = Guid.Parse("B1B1B1B1-B1B1-B1B1-B1B1-B1B1B1B1B1B1")
+            };
+            var newTechnology2 = new Technology()
+            {
+                Name = "OpenCV",
+                TecnologyId = Guid.Parse("C1C1C1C1-C1C1-C1C1-C1C1-C1C1C1C1C1C1")
+            };
+            var newTechnology3 = new Technology()
+            {
+                Name = "OpenCL",
+                TecnologyId = Guid.Parse("D1D1D1D1-D1D1-D1D1-D1D1-D1D1D1D1D1D1")
+            };
+            var newTechnology4 = new Technology()
+            {
+                Name = "CUDA",
+                TecnologyId = Guid.Parse("E1E1E1E1-E1E1-E1E1-E1E1-E1E1E1E1E1E1")
+            };
+            var newTechnology5 = new Technology()
+            {
+                Name = "MEAN Stack",
+                TecnologyId = Guid.Parse("F1F1F1F1-F1F1-F1F1-F1F1-F1F1F1F1F1F1")
+            };
+            var newTechnology6 = new Technology()
+            {
+                Name = "SQL",
+                TecnologyId = Guid.Parse("A1B1A1B1-A1B1-A1B1-A1B1-A1B1A1B1A1B1")
+            };
 
             var techRepo = new TechnologyRepository();
             techRepo.Add(newTechnology0);
@@ -69,16 +97,36 @@ namespace MyLearnDAL.Migrations
             var countryRepo = new CountryRepository();
             foreach (var country in countries)
             {
-                countryRepo.Add(new Country() { CountryId = Guid.NewGuid(), Name = country });
+                countryRepo.Add(new Country() {CountryId = Guid.NewGuid(), Name = country});
             }
             countryRepo.SaveChanges();
             countryRepo.Dispose();
 
-            var newUniversity0 = new University() { Name = "ITCR", UniversityId = Guid.Parse("A2A2A2A2-A2A2-A2A2-A2A2-A2A2A2A2A2A2") };
-            var newUniversity1 = new University() { Name = "UCR", UniversityId = Guid.Parse("B2B2B2B2-B2B2-B2B2-B2B2-B2B2B2B2B2B2") };
-            var newUniversity2 = new University() { Name = "MIT", UniversityId = Guid.Parse("C2C2C2C2-C2C2-C2C2-C2C2-C2C2C2C2C2C2") };
-            var newUniversity3 = new University() { Name = "TU Munich", UniversityId = Guid.Parse("D2D2D2D2-D2D2-D2D2-D2D2-D2D2D2D2D2D2") };
-            var newUniversity4 = new University() { Name = "TU Delf", UniversityId = Guid.Parse("E2E2E2E2-E2E2-E2E2-E2E2-E2E2E2E2E2E2") };
+            var newUniversity0 = new University()
+            {
+                Name = "ITCR",
+                UniversityId = Guid.Parse("A2A2A2A2-A2A2-A2A2-A2A2-A2A2A2A2A2A2")
+            };
+            var newUniversity1 = new University()
+            {
+                Name = "UCR",
+                UniversityId = Guid.Parse("B2B2B2B2-B2B2-B2B2-B2B2-B2B2B2B2B2B2")
+            };
+            var newUniversity2 = new University()
+            {
+                Name = "MIT",
+                UniversityId = Guid.Parse("C2C2C2C2-C2C2-C2C2-C2C2-C2C2C2C2C2C2")
+            };
+            var newUniversity3 = new University()
+            {
+                Name = "TU Munich",
+                UniversityId = Guid.Parse("D2D2D2D2-D2D2-D2D2-D2D2-D2D2D2D2D2D2")
+            };
+            var newUniversity4 = new University()
+            {
+                Name = "TU Delf",
+                UniversityId = Guid.Parse("E2E2E2E2-E2E2-E2E2-E2E2-E2E2E2E2E2E2")
+            };
 
             var universityRepo = new UniversityRepository();
             universityRepo.Add(newUniversity0);
@@ -92,9 +140,9 @@ namespace MyLearnDAL.Migrations
 
 
             var newLenguage0 = new Language() {LenguageId = 0, Name = "Español"};
-            var newLenguage1 = new Language() { LenguageId = 1, Name = "English" };
-            var newLenguage2 = new Language() { LenguageId = 2, Name = "Português" };
-            var newLenguage3 = new Language() { LenguageId = 3, Name = "Français" };
+            var newLenguage1 = new Language() {LenguageId = 1, Name = "English"};
+            var newLenguage2 = new Language() {LenguageId = 2, Name = "Português"};
+            var newLenguage3 = new Language() {LenguageId = 3, Name = "Français"};
 
             var languageRepo = new LanguageRepository();
             languageRepo.Add(newLenguage0);
@@ -104,6 +152,19 @@ namespace MyLearnDAL.Migrations
 
             languageRepo.SaveChanges();
             languageRepo.Dispose();
+
+
+
+            var studentRole = new Role() {RoleId = 1, Description = "Estudiante"};
+            var professorRole = new Role() {RoleId = 2, Description = "Profesor"};
+            var employerRole = new Role() {RoleId = 3, Description = "Empleador"};
+
+            var roleRepo = new RoleRepository();
+            roleRepo.Add(studentRole);
+            roleRepo.Add(professorRole);
+            roleRepo.Add(employerRole);
+            roleRepo.SaveChanges();
+            roleRepo.Dispose();
         }
     }
 }
