@@ -164,7 +164,7 @@
             var professorUser = $cookieStore.get('dataLogin').IdProfesor;
             var employerUser = $cookieStore.get('dataLogin').IdEmpleador;
             console.log(studentUser);
-
+            console.log(studentRestricted);
 
             if ( (!studentRestricted && studentUser) || (!professorRestricted && professorUser) || (!employerRestricted && employerUser) ) {
                 window.history.back();
