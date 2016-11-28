@@ -25,6 +25,16 @@ namespace MyLearnDAL.Repositories
             return DbSet.Where(c => c.Professor.UserId.Equals(UserId)).ToList();
         }
 
+        public List<Course> GetProfessorActiveCourses(Guid UserId)
+        {
+            return DbSet.Where(c => c.Professor.UserId.Equals(UserId) && c.IsActive.Equals(1)).ToList();
+        }
+
+        public List<Course> GetProfessorInctiveCourses(Guid UserId)
+        {
+            return DbSet.Where(c => c.Professor.UserId.Equals(UserId) && c.IsActive.Equals(0)).ToList();
+        }
+
         public List<Course> GetStudentCourses(Guid UserId)
         {
             return DbSet.Where(c => c.Students.Any(s => s.UserId.Equals(UserId))).ToList();
