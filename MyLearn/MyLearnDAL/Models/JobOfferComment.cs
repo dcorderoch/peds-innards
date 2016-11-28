@@ -18,6 +18,8 @@ namespace MyLearnDAL.Models
         public Guid UserId { get; set; }
         [Required]
         public string Comment { get; set; }
+        [Required]
+        public DateTime Date { get; set; }
 
         public virtual JobOffer JobOffer { get; set; }
         public virtual User User { get; set; }
