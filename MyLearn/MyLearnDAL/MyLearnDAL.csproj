@@ -57,6 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="main.cs" />
+    <Compile Include="Migrations\201611280351381_Azure Initial.cs" />
+    <Compile Include="Migrations\201611280351381_Azure Initial.Designer.cs">
+      <DependentUpon>201611280351381_Azure Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Achievement.cs" />
     <Compile Include="Models\Country.cs" />
@@ -94,6 +98,11 @@
     <Compile Include="Repositories\TechnologyRepository.cs" />
     <Compile Include="Repositories\UniversityRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611280351381_Azure Initial.resx">
+      <DependentUpon>201611280351381_Azure Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
