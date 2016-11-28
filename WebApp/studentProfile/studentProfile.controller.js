@@ -22,6 +22,8 @@
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};  
 
+            console.log( vm.courseAverageWidth + ", , , " + vm.projectAverageWidth);
+            
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
