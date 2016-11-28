@@ -68,7 +68,7 @@
                 $location.path('studentprofile');
                 return;
 
-                if (response.data.UserTypeCode=== "0" ){
+                if (response.data.UserTypeCode=== "1" ){
                     FlashService.Success("Login exitoso");
 
                     AuthenticationService.loginStudent(vm.loginData)
@@ -80,7 +80,7 @@
 
                     })
                 }
-                if (response.data.UserTypeCode=== "1" ){
+                if (response.data.UserTypeCode=== "2" ){
                     FlashService.Success("Login exitoso");
 
                     AuthenticationService.loginProfessor(vm.loginData)
@@ -93,7 +93,7 @@
 
                     }) 
                 }
-                if (response.data.UserTypeCode=== "2" ){
+                if (response.data.UserTypeCode=== "3" ){
                     FlashService.Success("Login exitoso");
 
                     AuthenticationService.loginEmployer(vm.loginData)

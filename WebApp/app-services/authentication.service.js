@@ -12,6 +12,10 @@
         service.Login = Login;
         service.SetCredentials = SetCredentials; //funciones que este servicio presenta
         service.ClearCredentials = ClearCredentials; //para el usuario global
+        service.LoginStudent = LoginStudent;
+        service.LoginProfessor = LoginProfessor;
+        service.LoginEmployer = LoginEmployer;
+        
 
         return service;
 

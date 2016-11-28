@@ -28,7 +28,7 @@
             RegService.GetCountries()
                 .then(function (response) {
                 if (response.success) {
-                    vm.countries = response.data.countries;
+                    vm.countries = response.data.Countries;
                 } 
             },function(response){
                 console.log("supongo2")
@@ -39,7 +39,7 @@
             RegService.GetUniversities()
                 .then(function (response) {
                 if (response.success) {
-                    vm.universities = response.data.universities;
+                    vm.universities = response.data.Universities;
                 } 
             },function(response){
                 console.log("supongo3")

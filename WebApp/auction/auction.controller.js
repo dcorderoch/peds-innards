@@ -26,7 +26,7 @@
             
             JobService.GetBidsById(vm.workData.JobOfferId)
                 .then( function(response){
-                
+                    
                     vm.listOfBids = response.data;
                 
             }, function(response){
