@@ -17,7 +17,7 @@ namespace MyLearnDAL.Migrations
                         Score = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.AchievementId)
-                .ForeignKey("dbo.Course", t => t.CourseId, cascadeDelete: false)
+                .ForeignKey("dbo.Course", t => t.CourseId, cascadeDelete: true)
                 .Index(t => t.CourseId);
             
             CreateTable(
@@ -35,7 +35,7 @@ namespace MyLearnDAL.Migrations
                     })
                 .PrimaryKey(t => t.CourseId)
                 .ForeignKey("dbo.Professor", t => t.ProfessorId)
-                .ForeignKey("dbo.University", t => t.UniversityId, cascadeDelete: false)
+                .ForeignKey("dbo.University", t => t.UniversityId, cascadeDelete: true)
                 .Index(t => t.ProfessorId)
                 .Index(t => t.UniversityId);
             
@@ -55,8 +55,8 @@ namespace MyLearnDAL.Migrations
                         RoleId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.Country", t => t.CountryId, cascadeDelete: false)
-                .ForeignKey("dbo.Role", t => t.RoleId, cascadeDelete: false)
+                .ForeignKey("dbo.Country", t => t.CountryId, cascadeDelete: true)
+                .ForeignKey("dbo.Role", t => t.RoleId, cascadeDelete: true)
                 .Index(t => t.Email, unique: true)
                 .Index(t => t.CountryId)
                 .Index(t => t.RoleId);
@@ -99,7 +99,7 @@ namespace MyLearnDAL.Migrations
                         Duration = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BidId)
-                .ForeignKey("dbo.JobOffer", t => t.JobOfferId, cascadeDelete: false)
+                .ForeignKey("dbo.JobOffer", t => t.JobOfferId, cascadeDelete: true)
                 .ForeignKey("dbo.Student", t => t.UserId)
                 .Index(t => t.JobOfferId)
                 .Index(t => t.UserId);
@@ -133,10 +133,11 @@ namespace MyLearnDAL.Migrations
                         JobOfferId = c.Guid(nullable: false),
                         UserId = c.Guid(nullable: false),
                         Comment = c.String(nullable: false),
+                        Date = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.CommentId)
-                .ForeignKey("dbo.JobOffer", t => t.JobOfferId, cascadeDelete: false)
-                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: false)
+                .ForeignKey("dbo.JobOffer", t => t.JobOfferId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.JobOfferId)
                 .Index(t => t.UserId);
             
@@ -163,7 +164,7 @@ namespace MyLearnDAL.Migrations
                         Score = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.ProjectId)
-                .ForeignKey("dbo.Course", t => t.CourseId, cascadeDelete: false)
+                .ForeignKey("dbo.Course", t => t.CourseId, cascadeDelete: true)
                 .ForeignKey("dbo.Student", t => t.UserId)
                 .Index(t => t.UserId)
                 .Index(t => t.CourseId);
@@ -178,8 +179,8 @@ namespace MyLearnDAL.Migrations
                         Bragged = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BadgeId)
-                .ForeignKey("dbo.Achievement", t => t.AchievementId, cascadeDelete: false)
-                .ForeignKey("dbo.Project", t => t.ProjectId, cascadeDelete: false)
+                .ForeignKey("dbo.Achievement", t => t.AchievementId, cascadeDelete: true)
+                .ForeignKey("dbo.Project", t => t.ProjectId, cascadeDelete: true)
                 .Index(t => t.ProjectId)
                 .Index(t => t.AchievementId);
             
@@ -192,10 +193,11 @@ namespace MyLearnDAL.Migrations
                         ProjectId = c.Guid(nullable: false),
                         UserId = c.Guid(nullable: false),
                         Comment = c.String(nullable: false),
+                        Date = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.CommentId)
-                .ForeignKey("dbo.Project", t => t.ProjectId, cascadeDelete: false)
-                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: false)
+                .ForeignKey("dbo.Project", t => t.ProjectId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.ProjectId)
                 .Index(t => t.UserId);
             
@@ -229,8 +231,8 @@ namespace MyLearnDAL.Migrations
                         Course_CourseId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Technology_TecnologyId, t.Course_CourseId })
-                .ForeignKey("dbo.Tecnology", t => t.Technology_TecnologyId, cascadeDelete: false)
-                .ForeignKey("dbo.Course", t => t.Course_CourseId, cascadeDelete: false)
+                .ForeignKey("dbo.Tecnology", t => t.Technology_TecnologyId, cascadeDelete: true)
+                .ForeignKey("dbo.Course", t => t.Course_CourseId, cascadeDelete: true)
                 .Index(t => t.Technology_TecnologyId)
                 .Index(t => t.Course_CourseId);
             
@@ -242,8 +244,8 @@ namespace MyLearnDAL.Migrations
                         JobOffer_JobOfferId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Technology_TecnologyId, t.JobOffer_JobOfferId })
-                .ForeignKey("dbo.Tecnology", t => t.Technology_TecnologyId, cascadeDelete: false)
-                .ForeignKey("dbo.JobOffer", t => t.JobOffer_JobOfferId, cascadeDelete: false)
+                .ForeignKey("dbo.Tecnology", t => t.Technology_TecnologyId, cascadeDelete: true)
+                .ForeignKey("dbo.JobOffer", t => t.JobOffer_JobOfferId, cascadeDelete: true)
                 .Index(t => t.Technology_TecnologyId)
                 .Index(t => t.JobOffer_JobOfferId);
             
@@ -255,8 +257,8 @@ namespace MyLearnDAL.Migrations
                         Technology_TecnologyId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Project_ProjectId, t.Technology_TecnologyId })
-                .ForeignKey("dbo.Project", t => t.Project_ProjectId, cascadeDelete: false)
-                .ForeignKey("dbo.Tecnology", t => t.Technology_TecnologyId, cascadeDelete: false)
+                .ForeignKey("dbo.Project", t => t.Project_ProjectId, cascadeDelete: true)
+                .ForeignKey("dbo.Tecnology", t => t.Technology_TecnologyId, cascadeDelete: true)
                 .Index(t => t.Project_ProjectId)
                 .Index(t => t.Technology_TecnologyId);
             
@@ -268,8 +270,8 @@ namespace MyLearnDAL.Migrations
                         Student_UserId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Technology_TecnologyId, t.Student_UserId })
-                .ForeignKey("dbo.Tecnology", t => t.Technology_TecnologyId, cascadeDelete: false)
-                .ForeignKey("dbo.Student", t => t.Student_UserId, cascadeDelete: false)
+                .ForeignKey("dbo.Tecnology", t => t.Technology_TecnologyId, cascadeDelete: true)
+                .ForeignKey("dbo.Student", t => t.Student_UserId, cascadeDelete: true)
                 .Index(t => t.Technology_TecnologyId)
                 .Index(t => t.Student_UserId);
             
@@ -281,8 +283,8 @@ namespace MyLearnDAL.Migrations
                         Course_CourseId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Student_UserId, t.Course_CourseId })
-                .ForeignKey("dbo.Student", t => t.Student_UserId, cascadeDelete: false)
-                .ForeignKey("dbo.Course", t => t.Course_CourseId, cascadeDelete: false)
+                .ForeignKey("dbo.Student", t => t.Student_UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Course", t => t.Course_CourseId, cascadeDelete: true)
                 .Index(t => t.Student_UserId)
                 .Index(t => t.Course_CourseId);
             
@@ -294,8 +296,8 @@ namespace MyLearnDAL.Migrations
                         Student_UserId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Language_LenguageId, t.Student_UserId })
-                .ForeignKey("dbo.Language", t => t.Language_LenguageId, cascadeDelete: false)
-                .ForeignKey("dbo.Student", t => t.Student_UserId, cascadeDelete: false)
+                .ForeignKey("dbo.Language", t => t.Language_LenguageId, cascadeDelete: true)
+                .ForeignKey("dbo.Student", t => t.Student_UserId, cascadeDelete: true)
                 .Index(t => t.Language_LenguageId)
                 .Index(t => t.Student_UserId);
             
@@ -327,7 +329,7 @@ namespace MyLearnDAL.Migrations
                     })
                 .PrimaryKey(t => t.UserId)
                 .ForeignKey("dbo.User", t => t.UserId)
-                .ForeignKey("dbo.University", t => t.UniversityId, cascadeDelete: false)
+                .ForeignKey("dbo.University", t => t.UniversityId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.UniversityId);
             
@@ -351,7 +353,7 @@ namespace MyLearnDAL.Migrations
                     })
                 .PrimaryKey(t => t.UserId)
                 .ForeignKey("dbo.User", t => t.UserId)
-                .ForeignKey("dbo.University", t => t.UniversityId, cascadeDelete: false)
+                .ForeignKey("dbo.University", t => t.UniversityId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.UniversityId);
             
