@@ -57,11 +57,13 @@ namespace MyLearn.BLL
                 student.ApellidoContacto = dalStudent.LastName;
                 student.Ubicacion = dalStudent.Country.ToString();
                 student.Email = dalStudent.Email;
+                student.Carnet = dalStudent.CardId;
                 student.Telefono = dalStudent.PhoneNum;
                 student.Fecha_Registro = dalStudent.InDate.ToLongDateString();
                 student.Password = dalStudent.Password;
                 student.TipoRepositorioArchivos = dalStudent.TRepo.ToString();
-                student.Foto = dalStudent.Photo.ToString();
+                var studentPhoto =  dalStudent.Photo;
+                student.Foto = studentPhoto!=null ? Convert.ToBase64String(studentPhoto) : "";
                 student.Universidad = dalStudent.University.Name;
                 student.UniversityId = dalStudent.UniversityId.ToString();
                 student.EnlaceRepositorioCodigo = dalStudent.RepoLink;
