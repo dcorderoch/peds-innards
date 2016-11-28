@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using MyLearn.Models;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
+using Course = MyLearn.Models.Course;
+using JobOffer = MyLearnDAL.Models.JobOffer;
 using Language = MyLearnDAL.Models.Language;
 
 namespace MyLearn.BLL
@@ -45,7 +47,8 @@ namespace MyLearn.BLL
             InfoEstudiante student = new InfoEstudiante();
             StudentRepository studentRepo = new StudentRepository();
             Guid studentId = GetUserId(username);
-            Student dalStudent = studentRepo.GetStudentById(studentId); 
+            Student dalStudent = studentRepo.GetStudentById(studentId);
+            
             
             if (dalStudent != null && dalStudent.Password == password)
             {
@@ -84,31 +87,64 @@ namespace MyLearn.BLL
                 }
                 student.Tecnologias = technologyList;
 
+                CourseRepository courseRepo = new CourseRepository();
+                List<MyLearnDAL.Models.Course> finishedCourses = courseRepo.GetInactiveStudentCourses(studentId);
+
                 List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
-                FinishedCourse finishedCourse = new FinishedCourse();
-                finishedCourse.CourseDescription = "";
-                finishedCourse.CourseId = "";
-                finishedCourse.course = "";
+                foreach (MyLearnDAL.Models.Course course in finishedCourses)
+                {
+                    FinishedCourse finishedCourse = new FinishedCourse();
+                    finishedCourse.CourseDescription = course.Description;
+                    finishedCourse.CourseId = course.CourseId.ToString();
+                    finishedCourse.course = course.Name;
+                    finishedCoursesList.Add(finishedCourse);
+                }
+                
                 student.FinishedCoursesList = finishedCoursesList;
-
+                
                 List<ActiveCourse> activeCoursesList = new List<ActiveCourse>();
-                ActiveCourse activeCourses = new ActiveCourse();
-                activeCourses.course = "";
-                activeCourses.CourseId = "";
-                activeCourses.CourseDescription = "";
-                student.ActiveCoursesList = activeCoursesList;
-                // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
-                List<FinishedJobOffer> finishedJobOffersLists = new List<FinishedJobOffer>();
-                FinishedJobOffer finishedJobOffers = new FinishedJobOffer();
-                finishedJobOffers.JobOffer = "";
-                finishedJobOffers.JobOfferId = "";
-                student.FinishedJobOffersList = finishedJobOffersLists;
+                List<MyLearnDAL.Models.Course> activeCourses = courseRepo.GetActiveStudentCourses(studentId);
 
-                List<ActiveJobOffer> activeJobOffersLists = new List<ActiveJobOffer>();
+                foreach (MyLearnDAL.Models.Course course in activeCourses)
+                {
+                    ActiveCourse activeCourse = new ActiveCourse();
+                    activeCourse.CourseDescription = course.Description;
+                    activeCourse.CourseId = course.CourseId.ToString();
+                    activeCourse.course = course.Name;
+                    activeCourse.accepted = course.IsActive;
+                    activeCoursesList.Add(activeCourse);
+                }
+
+                student.ActiveCoursesList = activeCoursesList;
+
+                JobOfferRepository jobRepo = new JobOfferRepository();
+                List<JobOffer> finishedJobs = jobRepo.GetStudentInactiveJobOffers(studentId);
+                List<FinishedJobOffer> finishedJobOffers = new List<FinishedJobOffer>();
+                foreach (JobOffer jobOffer in finishedJobs)
+                {
+                    FinishedJobOffer finishedJobOffer = new FinishedJobOffer();
+                    finishedJobOffer.JobOffer = jobOffer.Name;
+                    finishedJobOffer.JobOfferId = jobOffer.JobOfferId.ToString();
+                    finishedJobOffer.Description = jobOffer.StateDescription;
+                    finishedJobOffer.EmployerName = jobOffer.Employer.CompanyName;
+                    finishedJobOffers.Add(finishedJobOffer);
+                }
+
+                student.FinishedJobOffersList = finishedJobOffers;
+
+                List<JobOffer> activeJobs = jobRepo.GetStudentActiveJobOffers(studentId);
                 List<ActiveJobOffer> activeJobOffers = new List<ActiveJobOffer>();
-                //activeJobOffers.JobOffer = "";
-                //activeJobOffers.JobOfferId = "";
-                student.ActiveJobOffersList = activeJobOffersLists;
+                foreach (JobOffer jobOffer in activeJobs)
+                {
+                    ActiveJobOffer activeJobOffer = new ActiveJobOffer();
+                    activeJobOffer.JobOffer = jobOffer.Name;
+                    activeJobOffer.JobOfferId = jobOffer.JobOfferId.ToString();
+                    activeJobOffer.Description = jobOffer.StateDescription;
+                    activeJobOffer.EmployerName = jobOffer.Employer.CompanyName;
+                    activeJobOffers.Add(activeJobOffer);
+                }
+
+                student.ActiveJobOffersList = activeJobOffers;
             }
             return student;
         }
@@ -136,19 +172,34 @@ namespace MyLearn.BLL
                 professor.Universidad = dalProfessor.University.Name;
                 professor.UniversityId = dalProfessor.UniversityId.ToString();
                 professor.HorarioAtencion = dalProfessor.Schedule;
-                // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
+   
+                CourseRepository courseRepo = new CourseRepository();
+                List<MyLearnDAL.Models.Course> finishedCourses = courseRepo.GetProfessorInctiveCourses(professorId);
+
                 List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
-                FinishedCourse finishedCourse = new FinishedCourse();
-                finishedCourse.CourseDescription = "";
-                finishedCourse.CourseId = "";
-                finishedCourse.course = "";
+                foreach (MyLearnDAL.Models.Course course in finishedCourses)
+                {
+                    FinishedCourse finishedCourse = new FinishedCourse();
+                    finishedCourse.CourseDescription = course.Description;
+                    finishedCourse.CourseId = course.CourseId.ToString();
+                    finishedCourse.course = course.Name;
+                    finishedCoursesList.Add(finishedCourse);
+                }
+
                 professor.FinishedCoursesList = finishedCoursesList;
 
+                List<MyLearnDAL.Models.Course> activeCourses = courseRepo.GetProfessorActiveCourses(professorId);
                 List<ActiveCourse> activeCoursesList = new List<ActiveCourse>();
-                ActiveCourse activeCourses = new ActiveCourse();
-                activeCourses.course = "";
-                activeCourses.CourseId = "";
-                activeCourses.CourseDescription = "";
+
+                foreach (MyLearnDAL.Models.Course course in activeCourses)
+                {
+                    ActiveCourse activeCourse = new ActiveCourse();
+                    activeCourse.CourseDescription = course.Description;
+                    activeCourse.CourseId = course.CourseId.ToString();
+                    activeCourse.course = course.Name;
+                    activeCourse.accepted = course.IsActive;
+                    activeCoursesList.Add(activeCourse);
+                }
                 professor.ActiveCoursesList = activeCoursesList;
             }
 
@@ -175,21 +226,38 @@ namespace MyLearn.BLL
                 employer.Password = dalEmployer.Password;
                 employer.TipoRepositorioArchivos = dalEmployer.TRepo.ToString();
                 employer.Foto = dalEmployer.Photo.ToString();
-                employer.IdEmpleador = dalEmployer.id;
+                employer.IdEmpleador = dalEmployer.EmployerId;
                 employer.NombreEmpresarial = dalEmployer.CompanyName;
                 employer.EnlaceSitioWeb = dalEmployer.Website;
-                // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
-                List<FinishedJobOffer> finishedJobOffersList = new List<FinishedJobOffer>();
-                //FinishedJobOffer finishedJobOffers = new FinishedJobOffer();
-                //finishedJobOffers.JobOffer = "";
-                //finishedJobOffers.JobOfferId = "";
-                employer.FinishedJobOffersList = finishedJobOffersList;
 
-                List<ActiveJobOffer> activeJobOffersList = new List<ActiveJobOffer>();
-                //ActiveJobOffersList activeJobOffers = new ActiveJobOffersList();
-                //activeJobOffers.JobOffer = "";
-                //activeJobOffers.JobOfferId = "";
-                employer.ActiveJobOffersList = activeJobOffersList;
+                JobOfferRepository jobRepo = new JobOfferRepository();
+                List<JobOffer> finishedJobs = jobRepo.GetStudentInactiveJobOffers(employerId);
+                List<FinishedJobOffer> finishedJobOffers = new List<FinishedJobOffer>();
+                foreach (JobOffer jobOffer in finishedJobs)
+                {
+                    FinishedJobOffer finishedJobOffer = new FinishedJobOffer();
+                    finishedJobOffer.JobOffer = jobOffer.Name;
+                    finishedJobOffer.JobOfferId = jobOffer.JobOfferId.ToString();
+                    finishedJobOffer.Description = jobOffer.StateDescription;
+                    finishedJobOffer.EmployerName = jobOffer.Employer.CompanyName;
+                    finishedJobOffers.Add(finishedJobOffer);
+                }
+
+                employer.FinishedJobOffersList = finishedJobOffers;
+
+                List<JobOffer> activeJobs = jobRepo.GetStudentActiveJobOffers(employerId);
+                List<ActiveJobOffer> activeJobOffers = new List<ActiveJobOffer>();
+                foreach (JobOffer jobOffer in activeJobs)
+                {
+                    ActiveJobOffer activeJobOffer = new ActiveJobOffer();
+                    activeJobOffer.JobOffer = jobOffer.Name;
+                    activeJobOffer.JobOfferId = jobOffer.JobOfferId.ToString();
+                    activeJobOffer.Description = jobOffer.StateDescription;
+                    activeJobOffer.EmployerName = jobOffer.Employer.CompanyName;
+                    activeJobOffers.Add(activeJobOffer);
+                }
+
+                employer.ActiveJobOffersList = activeJobOffers;
             }            
 
             return employer;      
@@ -208,17 +276,36 @@ namespace MyLearn.BLL
             return admin;
         }
 
-        public ReturnCode DisableAccount(string userId)
+        public ReturnCode ToggleAccount(string userId)
         {
             ReturnCode success = new ReturnCode();
             UserRepository userRepo = new UserRepository();
             User user = userRepo.GetUserById(new Guid(userId));
             if (user != null)
             {
-                user.IsActive = 0;
+                if (user.IsActive == 1)
+                {
+                    user.IsActive = 0;
+                }
+                else
+                {
+                    user.IsActive = 1;
+                }
                 success.ReturnStatus = 1;
             }
             return success;
+        }
+
+        public int IsActive(string userId)
+        {
+            UserRepository userRepo = new UserRepository();
+            User user = userRepo.GetUserById(new Guid(userId));
+            int active = 1;
+            if (user != null)
+            {
+                active = user.IsActive;
+            }
+            return active;
         }
     }
 }

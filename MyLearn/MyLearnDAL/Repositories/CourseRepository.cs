@@ -7,7 +7,7 @@ using MyLearnDAL.Models;
 
 namespace MyLearnDAL.Repositories
 {
-    class CourseRepository : Repository<Course>
+   public class CourseRepository : Repository<Course>
     {
 
         public Course GetCoursebyId(Guid courseId)
