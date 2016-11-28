@@ -28,9 +28,10 @@
         function loadLanguages(){
             RegService.GetLanguages()
                 .then(function (response) {
-                if (response.success) {
-                    vm.languages = response.data.Languages;
-                } 
+
+                console.log(response)
+                vm.languages = response.data.Languages;
+
             },function(response){
                 console.log("supongo4")
             });
@@ -39,9 +40,10 @@
         function loadTechnologies(){
             RegService.GetTechnologies()
                 .then(function (response) {
-                if (response.success) {
-                    vm.technologies = response.data.Technologies;
-                } 
+
+                console.log(response)
+                vm.technologies = response.data.Technologies;
+
             },function(response){
                 console.log("supongo1")
             });
@@ -50,9 +52,10 @@
         function loadCountries(){
             RegService.GetCountries()
                 .then(function (response) {
-                if (response.success) {
-                    vm.countries = response.data.Countries;
-                } 
+
+                console.log(response)
+                vm.countries = response.data.Countries;
+
             },function(response){
                 console.log("supongo2")
             });
@@ -61,9 +64,9 @@
         function loadUniversities(){
             RegService.GetUniversities()
                 .then(function (response) {
-                if (response.success) {
-                    vm.universities = response.data.Universities;
-                } 
+                vm.universities = response.data.Universities;
+                console.log(response)
+
             },function(response){
                 console.log("supongo3")
             });
