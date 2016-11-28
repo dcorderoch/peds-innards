@@ -8,7 +8,7 @@
     AuctionController.$inject = ['$location',  'FlashService', '$rootScope', 'JobService', 'UserService', 'ProfileCourseService'];
     function AuctionController($location,  FlashService, $rootScope, JobService, UserService, ProfileCourseService) {
         var vm = this;
-        
+
         initController();
         vm.goArea = goArea;
         vm.goProfile = goProfile;
@@ -22,20 +22,20 @@
             getBids();
             vm.listOfBids= [ {"Money":"algo","DurationInDays": "4","StudentName":"algo","StudentSurname":"algo","StudentUserId":"Id"}, {"Money":"algo","DurationInDays": "6","StudentName":"algo", "StudentSurname":"algo","StudentUserId":"Id" }]
         }
-        
+
         function getBids(){
-            
+
             JobService.GetBidsById(vm.workData.JobOfferId)
                 .then( function(response){
-                    
-                    vm.listOfBids = response.data;
-                
+
+                vm.listOfBids = response.data;
+
             }, function(response){
-               
+
                 FlashService.Error("No se pudieron cargar los ofertantes");
             });
         }
-        
+
         function goArea(bid){
             console.log(bid)
             vm.workData.studentInfo = bid;
@@ -43,6 +43,12 @@
             $location.path("sharedareaemployer");
         }
 
-    }
 
+        function goProfile(bid){
+            console.log(bid)
+            vm.workData.studentInfo = bid;
+            ProfileCourseService.SetWorkData(vm.workData);
+            $location.path("sharedareaemployer");
+        }
+    }
 })();
