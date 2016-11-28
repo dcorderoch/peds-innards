@@ -499,6 +499,10 @@ strong {
     color:white;
     background: #d9534f;
 }
+.enableButton:hover{
+    color:white;
+    background:#428bca;
+}
 
 .fileUpload {
     position: relative;
@@ -530,4 +534,9 @@ strong {
     border: 1px solid ;
     width:100%;
     height:34px;
+}
+
+.enableButton {
+    color: #428bca	;
+    font-size:0.9em
 }

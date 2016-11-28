@@ -20,8 +20,16 @@
             vm.userData = $rootScope.userData;
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
-            vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
-
+            vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};  
+            
+            vm.userData.Active = "0";
+            vm.toggleEnable;
+            if (vm.userData.Active == "0"){
+                vm.toggleEnable = false;
+            }
+            if(vm.userData.Active == "1"){
+                vm.toggleEnable = true;
+            }
 
             var currentCourseData={
                 "status":"true",

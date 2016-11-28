@@ -15,7 +15,7 @@
         service.LoginStudent = LoginStudent;
         service.LoginProfessor = LoginProfessor;
         service.LoginEmployer = LoginEmployer;
-        
+
 
         return service;
 
@@ -29,35 +29,30 @@
             }); 
             return request;
         }
-        
+
         function LoginStudent(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
-            console.log(loginData);
-            console.log($rootScope.url+"api/User/Login");
             var request = $http({
                 method:"post",
-                url:    $rootScope.url+"api/User/Login",
+                url:    $rootScope.url+"Login/LoginStudent",
                 data:loginData
             });
             return request;
         }
-        
+
         function LoginProfessor(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
-            console.log(loginData);
-            console.log($rootScope.url+"api/User/Login");
             var request = $http({
                 method:"post",
-                url:    $rootScope.url+"api/User/Login",
+                url:    $rootScope.url+"Login/LoginProfessor",
                 data:loginData
             });
             return request;
         }
-        
+
         function LoginEmployer(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
             console.log(loginData);
-            console.log($rootScope.url+"api/User/Login");
             var request = $http({
                 method:"post",
-                url:    $rootScope.url+"api/User/Login",
+                url:    $rootScope.url+"Login/LoginEmployer",
                 data:loginData
             });
             return request;
@@ -89,10 +84,10 @@
             $http.defaults.headers.common.Authorization = 'Basic';
         }
     }
-    
-    
-    
-    
+
+
+
+
     //Para no perder datos, no hay que cambiar nada aqui
     // Base64 encoding service used by AuthenticationService
     var Base64 = {
