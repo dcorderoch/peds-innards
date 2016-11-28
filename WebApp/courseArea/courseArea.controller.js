@@ -55,8 +55,8 @@
         };
 
         function suggestProject(name,dateStart,dateEnd,description,additional){
-            
-            
+
+
             var array = additional.split(',');
 
             var send = {Technologies: Tecnologias, EndDate:dateEnd, StartDate:dateStart, Description: description,  
@@ -66,8 +66,13 @@
             CourseService.ProjectPropose(send)
                 .then(function(response){
 
-                FlashService.Success("Proyecto sugerido exitosamente");
-                $location.path('/studentprofile')
+                if (response.data.ReturnStatus =="1"){
+                    FlashService.Success("Proyecto sugerido exitosamente");
+                    $location.path('/studentprofile')
+                }
+                else
+                    FlashService.Error("El proyecto no se ha podido sugerir");
+
             }, function(response){
 
                 FlashService.Error("El proyecto no se ha podido sugerir");

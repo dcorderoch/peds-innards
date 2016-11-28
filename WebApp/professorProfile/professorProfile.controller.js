@@ -78,12 +78,19 @@
             UserService.Disable(vm.UserId)
                 .then(function(response){
 
-                FlashService.Success("Cuenta deshabilitada");
-                $location.path("/login")
+                if (response.data.ReturnStatus == "1"){ 
 
+                    FlashService.Success("Cuenta deshabilitada");
+                    $location.path("/login")
+                }
+                else{
+                    FlashService.Error("No se pudo cerrar la cuenta");
+                }
+                
             }, function(response){
                 console.log("no funcó");
             })
         }
+        
     }
 })();

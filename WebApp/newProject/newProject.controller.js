@@ -70,8 +70,22 @@
             vm.job.Budget = vm.job.Budget.toString();
             JobService.Create(vm.job)
                 .then(function(response){
+
+                if (response.data.ReturnStatus == "2"){
+
+                    FlashService.success("Trabajo creado y twiteado");
+
+                }
+                if (response.data.ReturnStatus == "1"){
+
+                    FlashService.success("Trabajo creado pero no twiteado");
+
+                }
+                else{ 
+                    FlashService.Error("No se pudo crear el proyecto")
+                }
+
                 console.log(response.data);
-                FlashService.success("Trabajo creado");
             },function(response){
                 console.log(vm.job);
                 FlashService.Error("No se pudo crear el proyecto")
@@ -83,9 +97,15 @@
             UserService.Disable(vm.UserId)
                 .then(function(response){
 
-                FlashService.Success("Cuenta deshabilitada");
-                $location.path("/login")
+                if (response.data.ReturnStatus == "1"){ 
 
+                    FlashService.Success("Cuenta deshabilitada");
+                    $location.path("/login")
+                }
+                else{
+                    FlashService.Error("No se pudo cerrar la cuenta");
+                }
+                
             }, function(response){
                 console.log("no funcó");
             })

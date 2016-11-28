@@ -27,7 +27,8 @@
         function getNotifications(){
             NotificationsService.GetNotifications( Carnet )
                 .then( function(response){
-                if (response.suceess){
+                
+                if (response.data.ReturnStatus == "1"){
                     vm.notifications = response.data.Notifications;
                 }
             }, function(response){

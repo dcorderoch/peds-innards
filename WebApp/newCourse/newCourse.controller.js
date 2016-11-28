@@ -17,10 +17,8 @@
 
         function initController(){
 
-     
             vm.userData = $rootScope.userData;
             vm.evaluations=[];
-
         }
 
         function newEvaluation(){
@@ -39,10 +37,10 @@
 
                 return;
             }
-            
+
             var group = vm.Group.toString();
             var minGrade = vm.MinGrade.toString();
-            
+
 
             var enviar = {CourseName:vm.CourseName, CourseDescription: vm.CourseDescription,
                           Group: group, MinGrade: minGrade, ProfUserId: "id", 
@@ -51,8 +49,12 @@
             console.log(enviar);
             CourseService.CreateCourse(enviar)
                 .then( function(response){
-                if (reponse.sucess){
+
+                if (response.data.ReturnStatus == "1"){
                     FlashService.Success("Curso creado");
+                }
+                else{
+                    FlashService.Error("No se pudo crear el curso");
                 }
             }, function(response){
                 FlashService.Error("No se pudo crear el curso");
