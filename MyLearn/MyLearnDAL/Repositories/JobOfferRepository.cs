@@ -15,19 +15,34 @@ namespace MyLearnDAL.Repositories
             return DbSet.Find(jobOfferId);
         }
 
-        public List<JobOffer> GetStudentJobOffers(Guid UserId)
+        public List<JobOffer> GetEmployerJobOffers(Guid userId)
         {
-            return DbSet.Where(j => j.Student.UserId.Equals(UserId)).ToList();
+            return DbSet.Where(j => j.Employer.UserId.Equals(userId)).ToList();
         }
 
-        public List<JobOffer> GetStudentActiveJobOffers(Guid UserId)
+        public List<JobOffer> GetEmployerActiveJobOffers(Guid userId)
         {
-            return DbSet.Where(j => j.Student.UserId.Equals(UserId) && j.IsActive.Equals(1)).ToList();
+            return DbSet.Where(j => j.Employer.UserId.Equals(userId) && j.IsActive.Equals(1)).ToList();
         }
 
-        public List<JobOffer> GetStudentInactiveJobOffers(Guid UserId)
+        public List<JobOffer> GetEmployerInactiveJobOffers(Guid userId)
         {
-            return DbSet.Where(j => j.Student.UserId.Equals(UserId) && (j.IsActive.Equals(2) || j.IsActive.Equals(3))).ToList();
+            return DbSet.Where(j => j.Employer.UserId.Equals(userId) && (j.IsActive.Equals(2) || j.IsActive.Equals(3))).ToList();
+        }
+
+        public List<JobOffer> GetStudentJobOffers(Guid userId)
+        {
+            return DbSet.Where(j => j.Student.UserId.Equals(userId)).ToList();
+        }
+
+        public List<JobOffer> GetStudentActiveJobOffers(Guid userId)
+        {
+            return DbSet.Where(j => j.Student.UserId.Equals(userId) && j.IsActive.Equals(1)).ToList();
+        }
+
+        public List<JobOffer> GetStudentInactiveJobOffers(Guid userId)
+        {
+            return DbSet.Where(j => j.Student.UserId.Equals(userId) && (j.IsActive.Equals(2) || j.IsActive.Equals(3))).ToList();
         }
     }
 }
