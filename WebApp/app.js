@@ -119,6 +119,11 @@
             controller:'SharedStudentEmployerController',
             templateUrl: 'sharedStudentEmployer/sharedStudentEmployer.view.html',
             controllerAs: 'vm'
+        })             
+            .when('/viewprofile',{
+            controller:'ViewProfileController',
+            templateUrl: 'viewProfile/viewProfile.view.html',
+            controllerAs: 'vm'
         }) 
             .otherwise({ redirectTo: '/login' });
     }
@@ -138,7 +143,7 @@
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
 
-            $rootScope.url = "http://dakemanimylearn.azurewebsites.net/api/";
+            $rootScope.url = "http://192.168.0.125:20982/Api/";
 
             var restrictedPage = $.inArray($location.path(), ['/login', '/register','/register2', '/register3']) === -1;
 

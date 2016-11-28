@@ -21,10 +21,9 @@
 
         function Login(loginData) {
             console.log(loginData);
-            console.log($rootScope.url+"login/login");
             var request = $http({
-                method:"get",
-                url:    $rootScope.url+"login/login",
+                method:"post",
+                url:    $rootScope.url+"Login/Login",
                 data:loginData
             }); 
             return request;

@@ -17,7 +17,7 @@
         <div class="border col-md-4" >
 
             <div class="left-panel">
-                <img class="img-circle" data-ng-src="{{vm.userData.Foto}}">
+                <img alt="Foto de perfil" class="img-circle" data-ng-src="{{vm.userData.Foto}}">
 
                 <div class="personalInformation"> 
                     <p><strong>Nombre Contacto: </strong> {{vm.userData.NombreContacto}}</p>
@@ -122,21 +122,21 @@
 
             <div class="tab-content">
 
+                <br>     
                 <h3>Trabajos activos</h3>
                 <hr class="hr3">
 
-                <div ng-repeat="activeWork in vm.userData.ActiveProjectsList">
+                <div ng-repeat="finishedWork in vm.userData.FinishedProjectsList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del trabajo:</strong> {{activeWork.project}},
-                            <strong>  Descripción: </strong>{{activeWork.Description}},
-                            <strong>  Nombre del empleador: </strong>{{activeWork.EmployerName}},
-                            <strong>  Estado: </strong>{{activeWork.State}},
-                            <strong>  Descripción de estado: </strong>{{activeWork.StateDescription}}
+                            <strong>Nombre del trabajo:</strong> {{finishedWork.project}},
+                            <strong>  Descripción: </strong>{{finishedWork.Description}},
+                            <strong>  Nombre del empleador: </strong>{{finishedWork.EmployerName}},
+                            <strong>  Estado: </strong>{{finishedWork.State}},
+                            <strong>  Descripción de estado: </strong>{{finishedWork.StateDescription}}
 
                             <span>     
-                                <button ng-disabled="!vm.toggleEnable" ng-click="vm.goWorkActive(activeCourse.JobOfferId)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir trabajo
-                                </button>
+                                <button ng-disabled="!vm.toggleEnable" ng-click="vm.goWorkFinished(finishedWork.JobOfferId)"  type="button" class="btn btn-primary  uniCourse yellowButton">Abrir trabajo</button>
                             </span>
                         </div>
                     </div>               
@@ -161,6 +161,7 @@
                         </div>
                     </div>               
                 </div>
+                
             </div>
         </div>
     </div>

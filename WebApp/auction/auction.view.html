@@ -46,7 +46,7 @@
                                 <p><strong>Nombre del estudiante: </strong> {{bid.StudentName}}, <strong>Duración en días: </strong> {{bid.DurationInDays}} 
                                     <strong>Dinero: </strong> {{bid.Money | currency}} 
                                     <button ng-click="vm.goArea(bid)" style="margin:2px" type="button" class="btn btn-primary uniCourse"> Aprobar</button>
-                                    <button ng-click="vm.goArea()" style="margin:2px" type="button" class="btn btn-primary uniCourse"> Ver perfil </button>
+                                    <button ng-click="vm.goProfile(bid.StudentUserId)" style="margin:2px" type="button" class="btn btn-primary uniCourse"> Ver perfil </button>
                                 </p> 
                             </div>
                         </div>

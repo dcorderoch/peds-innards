@@ -11,6 +11,7 @@
         
         initController();
         vm.goArea = goArea;
+        vm.goProfile = goProfile;
 
         function initController(){
 

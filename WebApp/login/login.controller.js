@@ -20,16 +20,17 @@
             console.log($rootScope.globals);
             $rootScope.currentCourseData = {};
 
+            AuthenticationService.ClearCredentials();
         }
 
         function login(){
             console.log("entro")
-            $location.path('/employerprofile');    
-            AuthenticationService.SetCredentials(" response.data.userData.UserId", "response.data.userData.Password", 
-                                                 "response.data.userData");        
-            return;
+//            $location.path('/employerprofile');    
+//            AuthenticationService.SetCredentials(" response.data.userData.UserId", "response.data.userData.Password", 
+//                                                 "response.data.userData");        
+//            return;
             var loginData = {UserName :vm.loginData.UserName, Password:sha256(vm.loginData.Password) }
-            AuthenticationService.Login( loginData)
+            AuthenticationService.Login( vm.loginData)
                 .then(function(response){
 
                 if (response.data.UserTypeCode=== "1" ){
