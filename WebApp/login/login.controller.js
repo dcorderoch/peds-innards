@@ -25,21 +25,22 @@
 
         function login(){
             console.log("entro")
-//            $location.path('/employerprofile');    
-//            AuthenticationService.SetCredentials(" response.data.userData.UserId", "response.data.userData.Password", 
-//                                                 "response.data.userData");        
-//            return;
+            //            $location.path('/employerprofile');    
+            //            AuthenticationService.SetCredentials(" response.data.userData.UserId", "response.data.userData.Password", 
+            //                                                 "response.data.userData");        
+            //            return;
             var loginData = {UserName :vm.loginData.UserName, Password:sha256(vm.loginData.Password) }
             AuthenticationService.Login( vm.loginData)
                 .then(function(response){
 
                 console.log(response)
-                if (response.data.UserTypeCode=== "1" ){
+                if (response.data.UserTypeCode== "1" ){
                     FlashService.Success("Login exitoso");
+
 
                     AuthenticationService.loginStudent(vm.loginData)
                         .then(function(response){
-
+                        console.log(response);
                         AuthenticationService.SetCredentials( response.data.userData.UserId, response.data.userData.Password, 
                                                              response.data.userData);
 
@@ -49,7 +50,7 @@
 
                     })
                 }
-                if (response.data.UserTypeCode=== "2" ){
+                if (response.data.UserTypeCode== "2" ){
                     FlashService.Success("Login exitoso");
 
                     AuthenticationService.SetCredentials( response.data.userData.UserId, response.data.userData.Password, 
@@ -65,7 +66,7 @@
 
                     }) 
                 }
-                if (response.data.UserTypeCode=== "3" ){
+                if (response.data.UserTypeCode== "3" ){
                     FlashService.Success("Login exitoso");
 
                     AuthenticationService.loginEmployer(vm.loginData)
