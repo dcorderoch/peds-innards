@@ -7,7 +7,7 @@ using MyLearnDAL.Models;
 
 namespace MyLearnDAL.Repositories
 {
-    class LanguageRepository : Repository<Language>
+    public class LanguageRepository : Repository<Language>
     {
     }
 }

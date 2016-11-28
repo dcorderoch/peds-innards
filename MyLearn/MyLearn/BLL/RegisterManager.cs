@@ -1,4 +1,17 @@
-﻿using MyLearn.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.EnterpriseServices.Internal;
+using System.Web.UI;
+using MyLearn.InputModels;
+using MyLearn.Models;
+using MyLearnDAL.Models;
+using MyLearnDAL.Repositories;
+using Country = MyLearnDAL.Models.Country;
+using Course = MyLearnDAL.Models.Course;
+using JobOffer = MyLearnDAL.Models.JobOffer;
+using Language = MyLearnDAL.Models.Language;
+using Technology = MyLearnDAL.Models.Technology;
+using University = MyLearnDAL.Models.University;
 
 namespace MyLearn.BLL
 {
@@ -35,36 +48,117 @@ namespace MyLearn.BLL
 
         private void AddStudentToDB(RegisterEstudianteInfo newStudent)
         {
-            //Add new student to DB
-                /*dbobject.Add(newStudent.NombreContacto);
-                dbobject.Add(newStudent.ApellidoContacto);
-                dbobject.Add(newStudent.Ubicacion);
-                dbobject.Add(newStudent.Email);
-                dbobject.Add(newStudent.Telefono);
-                dbobject.Add(newStudent.Password);
-                dbobject.Add(newStudent.TipoRepositorioArchivos);
-                dbobject.Add(newStudent.Foto);
-                dbobject.Add(newStudent.Carnet);
-                dbobject.Add(newStudent.Universidad);
-                dbobject.Add(newStudent.EnlaceACurriculum);
-                dbobject.Add(newStudent.Idiomas);
-                dbobject.Add(newStudent.Tecnologias);*/
+            StudentRepository studentRepo = new StudentRepository();
+            CountryRepository countryRepo = new CountryRepository();
+            TechnologyRepository techRepo = new TechnologyRepository();
+            UniversityRepository universityRepo = new UniversityRepository();
+            LanguageRepository langRepo= new LanguageRepository();
+
+            Student student = new Student();
+            Country country = new Country();
+            University university = new University();
+            Role role = new Role();
+            student.UserId = Guid.NewGuid();
+            student.Name = newStudent.NombreContacto;
+            student.LastName = newStudent.ApellidoContacto;
+            student.Password = newStudent.Password;
+            student.CardId = newStudent.Carnet;
+            student.AvgProjects = 0;
+            student.AvgCourses = 0;
+            student.NumFailedCourses = 0;
+            student.NumSuceedCourses = 0;
+            student.NumFailedProjects = 0;
+            student.NumSuceedProjects = 0;
+            student.RepoLink = newStudent.EnlaceRepositorioCodigo;
+            student.ResumeLink = newStudent.EnlaceACurriculum;
+            student.Bids = new List<Bid>();
+            student.Notifications = new List<Notification>();
+            student.JobOffers = new List<JobOffer>();
+
+
+            country = countryRepo.Get(Convert.ToInt32(newStudent.Ubicacion));
+            student.Country = country;
+            student.Courses = new List<Course>();
+            student.Projects = new List<Project>();
+
+            university = universityRepo.Get(Convert.ToInt32(newStudent.Universidad));
+
+            student.University = university;
+            student.Photo = System.Text.Encoding.UTF8.GetBytes(newStudent.Foto);
+            student.UniversityId = student.University.UniversityId;
+            student.Email = newStudent.Email;
+            student.InDate = DateTime.Now;
+            student.IsActive = 1;
+
+            role.Description = "Estudiante";
+            role.RoleId = 1;
+  
+            student.Role = role;
+            student.TRepo = Convert.ToInt32(newStudent.TipoRepositorioArchivos);
+            student.PhoneNum = newStudent.Telefono;
+            
+            List<Technology> listOfTechnologies = new List<Technology>();
+            foreach (string tech in newStudent.Tecnologias)
+            {
+                Technology technology = techRepo.Get(Convert.ToInt32(tech));
+                listOfTechnologies.Add(technology);
+            }
+            student.Technologies = listOfTechnologies;
+
+            List<Language> languages = new List<Language>();
+            foreach (string lang in newStudent.Idiomas)
+            {
+                Language language = langRepo.Get(Convert.ToInt32(lang));
+                languages.Add(language);
+            }
+            student.Languages = languages;
+            studentRepo.Add(student);
+         
         }
 
         private void AddProfessorToDB(RegisterProfessorInfo newProfessor)
         {
-            //Add new professor to DB
-            /*dbobject.Add(newProfessor.NombreContacto);
-            dbobject.Add(newProfessor.ApellidoContacto);
-            dbobject.Add(newProfessor.Ubicacion);
-            dbobject.Add(newProfessor.Email);
-            dbobject.Add(newProfessor.Telefono);
-            dbobject.Add(newProfessor.Password);
-            dbobject.Add(newProfessor.TipoRepositorioArchivos);
-            dbobject.Add(newProfessor.Foto);
-            dbobject.Add(newProfessor.Universidad);
-            dbobject.Add(newProfessor.HorarioAtencion);*/        
-    }
+            ProfessorRepository professorRepo = new ProfessorRepository();
+            CountryRepository countryRepo = new CountryRepository();
+            UniversityRepository universityRepo = new UniversityRepository();
+     
+            Professor professor = new Professor();
+            Country country = new Country();
+            University university = new University();
+            Role role = new Role();
+
+            professor.UserId = Guid.NewGuid();
+            professor.Name = newProfessor.NombreContacto;
+            professor.Lastname = newProfessor.ApellidoContacto;
+            professor.Email = newProfessor.Email;
+            professor.PhoneNum = newProfessor.Telefono;
+            professor.Schedule = newProfessor.HorarioAtencion;
+            professor.ProfessorId = newProfessor.IdProfesor;
+            professor.Password = newProfessor.Password;
+            professor.TRepo = Convert.ToInt32(newProfessor.TipoRepositorioArchivos);
+            university = universityRepo.Get(Convert.ToInt32(newProfessor.Universidad));
+            professor.University = university;
+            professor.ProfessorId = newProfessor.IdProfesor;
+            professor.InDate = DateTime.Now;
+
+            role.Description = "Profesor";
+            role.RoleId = 2;
+
+            professor.Role = role;
+            country = countryRepo.Get(Convert.ToInt32(newProfessor.Ubicacion));
+            professor.Country = country;
+            professor.Courses = new List<Course>();
+
+            university = universityRepo.Get(Convert.ToInt32(newProfessor.Universidad));
+            professor.University = university;
+            professor.TRepo = Convert.ToInt32(newProfessor.TipoRepositorioArchivos);
+            professor.UniversityId = professor.University.UniversityId;
+            professor.IsActive = 1;
+            professor.Photo = System.Text.Encoding.UTF8.GetBytes(newProfessor.Foto);
+        
+            professorRepo.Add(professor);
+
+        }
 
         private void AddEmployerToDB(RegisterEmployerInfo newEmployer)
         {

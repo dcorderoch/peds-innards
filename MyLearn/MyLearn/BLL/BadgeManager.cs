@@ -19,14 +19,22 @@ namespace MyLearn.BLL
         }
         public List<Models.Badge> GetAll(SharedAreaCredentials credentials)
         {
+            ProjectRepository projectRepo = new ProjectRepository();
             BadgeRepository badgeRepo = new BadgeRepository();
-            StudentRepository studentRepo = new StudentRepository();
-            CourseRepository courseRepo = new CourseRepository();
-
-            Project project;
-
-            var retval =new List<Badge>() ;
-
+            Project project = projectRepo.GetProjectByStudentAndCourseId(new Guid(credentials.StudentUserId), new Guid(credentials.CourseId));
+            Guid projectId = new Guid();
+            if (project != null)
+            {
+                projectId = project.ProjectId;
+            }
+            List<MyLearnDAL.Models.Badge> retval = badgeRepo.GetProjectBadges(projectId);
+            List<Badge> badges = new List<Badge>();
+            foreach (MyLearnDAL.Models.Badge badge in retval)
+            {
+                Badge newBadge = new Badge();
+                newBadge.BadgeId = badge.BadgeId.ToString();
+                newBadge.BadgeDescription = ba
+            }
             return retval;
         }
         public ReturnCode Brag(BadgeIdentifier badgeId)

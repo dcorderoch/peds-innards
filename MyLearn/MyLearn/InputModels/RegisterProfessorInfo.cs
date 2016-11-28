@@ -12,5 +12,6 @@
         public string Foto { get; set; } // Opcional
         public string Universidad { get; set; }
         public string HorarioAtencion { get; set; }
+        public string IdProfesor { get; set; }
     }
 }
