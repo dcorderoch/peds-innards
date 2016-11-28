@@ -10,7 +10,7 @@ namespace MyLearnDAL
     {
 
         public MyLearnContext()
-            : base("name=MyLearnContext")
+            : base("name=MyLearnAzureContext")
         {
             Database.SetInitializer<MyLearnContext>(new MyLearnContextInitializer());
         }
