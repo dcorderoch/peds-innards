@@ -16,16 +16,19 @@ namespace MyLearn.BLL
             Project project = projectRepo.GetProjectByStudentAndCourseId(new Guid(commentInfo.StudentId), new Guid(commentInfo.CourseId));
             List<Comment> allComments = new List<Comment>();
             List<MyLearnDAL.Models.ProjectComment> projectComments = commentRepo.GetProjectCommentByProjectId(project.ProjectId);
+            List<List<Comment>> splitComments = ObtainNestedComments(projectComments);
+            List<Comment> parentComments = splitComments[0];
+            List<Comment> childComments = splitComments[1];
 
-            foreach (ProjectComment projectComment in projectComments)
+            foreach (Comment childComment in childComments)
             {
-                Comment comment = new Comment();
-                comment.CommentContent = projectComment.Comment;
-                comment.CommentId = projectComment.CommentId.ToString();
-                comment.ParentId = projectComment.ParentId.ToString();
-                comment.IsFromStudent = IsStudent(projectComment.UserId);
-                
+               Comment parentComment = parentComments.Find(x => x.CommentId == childComment.ParentId);
+               parentComment.NestedComments.Add(childComment);
+               allComments.Add(parentComment);
             }
+
+            commentRepo.Dispose();
+            projectRepo.Dispose();
             return allComments;
 
         }
@@ -57,6 +60,7 @@ namespace MyLearn.BLL
         {
             List<List<Comment>> resultComments = new List<List<Comment>>();
             List<Comment> parentComments = new List<Comment>();
+            List<Comment> childComments = new List<Comment>();
 
             foreach (ProjectComment projectComment in projectComments)
             {
@@ -65,11 +69,27 @@ namespace MyLearn.BLL
                 {
                     comment.CommentId = projectComment.CommentId.ToString();
                     comment.CommentContent = projectComment.Comment;
-                    
+                    comment.Date = projectComment.Date.ToString();
+                    comment.IsFromStudent = IsStudent(projectComment.UserId);
+                    comment.ParentId = projectComment.ParentId.ToString();
+                    comment.NestedComments = new List<Comment>();
+                    parentComments.Add(comment);
 
-                    //parentComments.Add();
                 }
-            }    
+                else
+                {
+                    comment.CommentId = projectComment.CommentId.ToString();
+                    comment.CommentContent = projectComment.Comment;
+                    comment.Date = projectComment.Date.ToString();
+                    comment.IsFromStudent = IsStudent(projectComment.UserId);
+                    comment.ParentId = projectComment.ParentId.ToString();
+                    comment.NestedComments = null;
+                    childComments.Add(comment);
+                }
+            }
+            resultComments.Add(parentComments);
+            resultComments.Add(childComments);
+            return resultComments;    
         }
     }
 }
