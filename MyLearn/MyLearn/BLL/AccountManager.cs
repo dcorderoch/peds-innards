@@ -101,8 +101,8 @@ namespace MyLearn.BLL
                     finishedCourse.course = course.Name;
                     finishedCoursesList.Add(finishedCourse);
                 }
-                
                 student.FinishedCoursesList = finishedCoursesList;
+                courseRepo.Dispose();
                 
                 List<ActiveCourse> activeCoursesList = new List<ActiveCourse>();
                 List<MyLearnDAL.Models.Course> activeCourses = courseRepo.GetActiveStudentCourses(studentId);
@@ -133,7 +133,7 @@ namespace MyLearn.BLL
                 }
 
                 student.FinishedJobOffersList = finishedJobOffers;
-
+                jobRepo.Dispose();
                 List<JobOffer> activeJobs = jobRepo.GetStudentActiveJobOffers(studentId);
                 List<ActiveJobOffer> activeJobOffers = new List<ActiveJobOffer>();
                 foreach (JobOffer jobOffer in activeJobs)
@@ -149,6 +149,8 @@ namespace MyLearn.BLL
                 student.ActiveJobOffersList = activeJobOffers;
                 student.Active = IsActive(studentId.ToString());
             }
+            studentRepo.Dispose();
+            
             return student;
         }
 
@@ -161,7 +163,6 @@ namespace MyLearn.BLL
 
             if (dalProfessor != null && dalProfessor.Password == password)
             {
-                
                 professor.UserId = dalProfessor.UserId.ToString();
                 professor.NombreContacto = dalProfessor.Name;
                 professor.ApellidoContacto = dalProfessor.Lastname;
@@ -204,10 +205,11 @@ namespace MyLearn.BLL
                     activeCoursesList.Add(activeCourse);
                 }
                 professor.ActiveCoursesList = activeCoursesList;
+                courseRepo.Dispose();
                 professor.Active = IsActive(professorId.ToString());
             }
 
-            
+            professorRepo.Dispose();
             return professor;
         }
 
@@ -262,9 +264,10 @@ namespace MyLearn.BLL
                 }
 
                 employer.ActiveJobOffersList = activeJobOffers;
+                jobRepo.Dispose();
                 employer.Active = IsActive(employerId.ToString());
             }            
-
+            employerRepo.Dispose();
             return employer;      
         }
 
@@ -298,6 +301,7 @@ namespace MyLearn.BLL
                 }
                 success.ReturnStatus = 1;
             }
+            userRepo.Dispose();
             return success;
         }
 
@@ -310,6 +314,7 @@ namespace MyLearn.BLL
             {
                 active = user.IsActive;
             }
+            userRepo.Dispose();
             return active;
         }
     }

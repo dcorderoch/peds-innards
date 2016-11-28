@@ -113,7 +113,8 @@ namespace MyLearn.BLL
             }
             student.Languages = languages;
             studentRepo.Add(student);
-         
+            studentRepo.SaveChanges();
+            studentRepo.Dispose();
         }
 
         private void AddProfessorToDB(RegisterProfessorInfo newProfessor)
@@ -147,6 +148,7 @@ namespace MyLearn.BLL
             professor.Role = role;
             country = countryRepo.Get(Convert.ToInt32(newProfessor.Ubicacion));
             professor.Country = country;
+            professor.CountryId = country.CountryId;
             professor.Courses = new List<Course>();
 
             university = universityRepo.Get(Convert.ToInt32(newProfessor.Universidad));
@@ -155,24 +157,45 @@ namespace MyLearn.BLL
             professor.UniversityId = professor.University.UniversityId;
             professor.IsActive = 1;
             professor.Photo = System.Text.Encoding.UTF8.GetBytes(newProfessor.Foto);
-        
+            
             professorRepo.Add(professor);
-
+            professorRepo.SaveChanges();
+            professorRepo.Dispose();
         }
 
         private void AddEmployerToDB(RegisterEmployerInfo newEmployer)
         {
-            //Add new employer to DB
-            /*dbobject.Add(newEmployer.NombreContacto);
-            dbobject.Add(newEmployer.ApellidoContacto);
-            dbobject.Add(newEmployer.Ubicacion);
-            dbobject.Add(newEmployer.Email);
-            dbobject.Add(newEmployer.Telefono);
-            dbobject.Add(newEmployer.Password);
-            dbobject.Add(newEmployer.TipoRepositorioArchivos);
-            dbobject.Add(newEmployer.Foto);
-            dbobject.Add(newEmployer.NombreEmpresarial);
-            dbobject.Add(newEmployer.EnlaceSitioWeb);*/
+            EmployerRepository employerRepo = new EmployerRepository();
+            Employer employer = new Employer();
+
+            CountryRepository countryRepo = new CountryRepository();
+            Country country = new Country();
+
+            Role role = new Role();
+
+            employer.UserId = Guid.NewGuid();
+            employer.ContactName = newEmployer.NombreContacto;
+            employer.ContactLastname = newEmployer.ApellidoContacto;
+            employer.CompanyName = newEmployer.NombreEmpresarial;
+            employer.EmployerId = newEmployer.IdEmpresa;
+            employer.Website = newEmployer.EnlaceSitioWeb;
+            employer.Photo = System.Text.Encoding.UTF8.GetBytes(newEmployer.Foto);
+            employer.TRepo = Convert.ToInt32(newEmployer.TipoRepositorioArchivos);
+            country = countryRepo.Get(Convert.ToInt32(newEmployer.Ubicacion));
+            employer.Country = country;
+            employer.CountryId = country.CountryId;
+            employer.Email = newEmployer.Email;
+            employer.Password = newEmployer.Password;
+            employer.PhoneNum = newEmployer.Telefono;
+            employer.InDate = DateTime.Now;
+            employer.IsActive = 1;
+            employer.JobOffers = new List<JobOffer>();
+            role.Description = "Empleador";
+            role.RoleId = 3;
+            employer.Role = role;
+            employerRepo.Add(employer);
+            employerRepo.SaveChanges();
+            employerRepo.Dispose();
         }
 
 

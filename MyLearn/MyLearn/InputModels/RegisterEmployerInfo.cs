@@ -12,5 +12,6 @@
         public string Foto { get; set; } // Opcional
         public string NombreEmpresarial { get; set; }
         public string EnlaceSitioWeb { get; set; } //Opcional
+        public string IdEmpresa { get; set; }
     }
 }
