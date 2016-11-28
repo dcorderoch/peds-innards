@@ -20,12 +20,48 @@ Nota: - 0 error
 https://host/Api/Badge/Brag
 Web Application sends
 {
-    "BadgeId":"Id"
+    "BadgeId":"Id",
+    "StudentName":"algo",
+    "StudentLastName":"algo"
 }
 
 and then Receives
 {
     "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito
+
+################################################# GetAll
+https://host/Api/Badge/GetAll
+Web Application sends
+{
+    "StudentUserId":"algo",
+    "ProfUserId":"algo",
+    "UniversityId":"algo",
+    "Group":"algo",
+    "CourseId": "Id"
+}
+
+and then Receives
+{
+    "Badges":[
+                {
+                    "BadgeDescription":"algo",,
+                    "BadgeId":"algo",
+                    "Value":1?[0-9]{2},
+                    "Awarded":(0|1),
+                    "Alardeado":(0|1)
+                },
+                {
+                    "BadgeDescription":"algo",
+                    "BadgeId":"algo",
+                    "Value":1?[0-9]{2},
+                    "Awarded":(0|1),
+                    "Alardeado":(0|1)
+                }
+            ]
 }
 
 Nota: - 0 error

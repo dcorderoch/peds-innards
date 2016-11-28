@@ -3,6 +3,7 @@ using System.Web.Http.Results;
 using MyLearn.Models;
 using MyLearn.InputModels;
 using MyLearn.BLL;
+using System.Collections.Generic;
 
 namespace MyLearn.Controllers
 {
@@ -20,6 +21,13 @@ namespace MyLearn.Controllers
         {
             var status = new BadgeManager();
             var retVal = status.Brag(badgeId);
+            return Json(retVal);
+        }
+        [HttpPost]
+        public JsonResult<List<Models.Badge>> GetAll(SharedAreaCredentials credentials)
+        {
+            var status = new BadgeManager();
+            var retVal = status.GetAll(credentials);
             return Json(retVal);
         }
     }
