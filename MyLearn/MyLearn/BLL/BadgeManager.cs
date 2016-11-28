@@ -76,6 +76,7 @@ namespace MyLearn.BLL
                 retVal.ReturnStatus += 1;
                 badge.Bragged = 1;
             }
+            badgeRepo.Dispose();
             return retVal;
         }
     }
