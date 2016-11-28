@@ -3,7 +3,7 @@ namespace MyLearnDAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AzureInitial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {

@@ -100,7 +100,7 @@ namespace MyLearnDAL.Migrations
                 countryRepo.Add(new Country() {CountryId = Guid.NewGuid(), Name = country});
             }
             countryRepo.SaveChanges();
-            countryRepo.Dispose();
+            //countryRepo.Dispose();
 
             var newUniversity0 = new University()
             {
@@ -164,7 +164,21 @@ namespace MyLearnDAL.Migrations
             roleRepo.Add(professorRole);
             roleRepo.Add(employerRole);
             roleRepo.SaveChanges();
+            //roleRepo.Dispose();
+
+            var myStudent = new Student() {UserId = Guid.NewGuid(),AvgCourses = 0, AvgProjects = 0, CardId = "201044569", Email = "pepito@gmail.com", InDate = DateTime.Today, IsActive = 1, LastName = "Gómez", Name = "Pepito", Password = "123456", NumFailedCourses = 0, NumFailedProjects = 0, NumSuceedCourses = 0,NumSuceedProjects = 0, TRepo = 1, RepoLink = "http://githum.com/pepito", PhoneNum = "22399043"};
+            myStudent.Languages.Add(newLenguage0);
+            myStudent.UniversityId = newUniversity0.UniversityId;
+            var countryList = countryRepo.GetAll();
+            myStudent.CountryId = countryList[43].CountryId;
+            countryRepo.Dispose();
+            myStudent.Role = roleRepo.Get(1);
             roleRepo.Dispose();
+            var studentRepo = new StudentRepository();
+            studentRepo.Add(myStudent);
+            studentRepo.SaveChanges();
+            studentRepo.Dispose();
+
         }
     }
 }

@@ -57,9 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="main.cs" />
-    <Compile Include="Migrations\201611280351381_Azure Initial.cs" />
-    <Compile Include="Migrations\201611280351381_Azure Initial.Designer.cs">
-      <DependentUpon>201611280351381_Azure Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201611280619505_initial.cs" />
+    <Compile Include="Migrations\201611280619505_initial.Designer.cs">
+      <DependentUpon>201611280619505_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Achievement.cs" />
@@ -94,14 +94,15 @@
     <Compile Include="Repositories\ProfessorRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="Repositories\TechnologyRepository.cs" />
     <Compile Include="Repositories\UniversityRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611280351381_Azure Initial.resx">
-      <DependentUpon>201611280351381_Azure Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611280619505_initial.resx">
+      <DependentUpon>201611280619505_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
