@@ -26,7 +26,6 @@
 
             vm.results=[];
 
-            $rootScope.userData ={};
             vm.userData = $rootScope.userData;
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  

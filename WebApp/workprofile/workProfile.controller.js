@@ -17,7 +17,6 @@
 
         function initController(){
 
-            $rootScope.userData ={};
             vm.userData = $rootScope.userData;
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
