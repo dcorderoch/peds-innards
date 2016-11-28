@@ -55,7 +55,7 @@ namespace MyLearn.BLL
                 student.UserId = studentId.ToString();
                 student.NombreContacto = dalStudent.Name;
                 student.ApellidoContacto = dalStudent.LastName;
-                student.Ubicacion = dalStudent.Country.ToString();
+                student.Ubicacion = dalStudent.Country.Name;
                 student.Email = dalStudent.Email;
                 student.Carnet = dalStudent.CardId;
                 student.Telefono = dalStudent.PhoneNum;
@@ -224,7 +224,7 @@ namespace MyLearn.BLL
                 employer.UserId = dalEmployer.UserId.ToString();
                 employer.NombreContacto = dalEmployer.ContactName;
                 employer.ApellidoContacto = dalEmployer.ContactLastname;
-                employer.Ubicacion = dalEmployer.Country.ToString();
+                employer.Ubicacion = dalEmployer.Country.Name;
                 employer.Email = dalEmployer.Email;
                 employer.Telefono = dalEmployer.PhoneNum;
                 employer.Fecha_Registro = dalEmployer.InDate.ToString();
