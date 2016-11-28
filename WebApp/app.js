@@ -143,7 +143,7 @@
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
 
-            $rootScope.url = "http://192.168.0.125:20982/Api/";
+            $rootScope.url = "http://localhost:20982/Api/";
 
             var restrictedPage = $.inArray($location.path(), ['/login', '/register','/register2', '/register3']) === -1;
 

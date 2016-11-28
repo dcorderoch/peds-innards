@@ -29,6 +29,7 @@
 //            AuthenticationService.SetCredentials(" response.data.userData.UserId", "response.data.userData.Password", 
 //                                                 "response.data.userData");        
 //            return;
+            console.log
             var loginData = {UserName :vm.loginData.UserName, Password:sha256(vm.loginData.Password) }
             AuthenticationService.Login( vm.loginData)
                 .then(function(response){
