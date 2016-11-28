@@ -104,12 +104,31 @@
 
         function register() {
 
-            console.log("entro");
-            vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
             vm.regData.Carnet = vm.regData.Carnet.toString();
             vm.regData.Telefono = vm.regData.Telefono.toString();
+            
+            vm.regData.TipoRepositorioArchivos = (vm.regData.TipoRepositorioArchivos == "Google Drive") ? "0" : "1"
+
+            if (vm.regData.hasOwnProperty("Foto")){
+                vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
+            }
+            
+            if (!vm.regData.hasOwnProperty("Foto")){
+                vm.regData.Foto =  "";
+            }
+            
+            if (!vm.regData.hasOwnProperty("EnlaceRepositorioCodigo")){
+                vm.regData.EnlaceRepositorioCodigo = "";
+            }
+            
+            if (!vm.regData.hasOwnProperty("EnlaceACurriculum")){
+                vm.regData.EnlaceACurriculum = "";
+            }
+
+
             var pass = vm.regData.Password ;
             vm.regData.Password = sha256(vm.regData.Password);
+            
             console.log(vm.regData);
             vm.dataLoading = true;
             UserService.RegisterStudent(vm.regData)

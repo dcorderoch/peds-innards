@@ -63,7 +63,7 @@
 
                         <label>Escoge tu foto de perfil</label>
                         <div class="form-group" ng-class="{ 'has-error': form.photo.$dirty && form.photo.$error.required }">           
-                            <input name="photos" accept="image/*" class="btn btn-info" type="file" name="file"   ng-model="vm.regData.Foto" base-sixty-four-input required>
+                            <input name="photos" accept="image/*" class="btn btn-info" type="file" name="file"   ng-model="vm.regData.Foto" base-sixty-four-input >
                         </div>
 
                         <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
@@ -78,9 +78,9 @@
                         </div>
 
 
-                        <div class="form-group" ng-class="{ 'has-error': form.link.$dirty && form.link.$error.required }">
-                            <input placeholder ="Enlace repositorio de código" type="text" name="link" class="form-control" ng-model="vm.regData.EnlaceRepositorioCodigo" required />
-                            <span ng-show="form.link.$dirty && form.link.$error.required" class="help-block">El enlace del repositorio es requerido</span>
+                        <div class="form-group" >
+                            <input placeholder ="Enlace repositorio de código" type="text" name="link" class="form-control" ng-model="vm.regData.EnlaceRepositorioCodigo"  />
+                            
                         </div>
 
                         <label>Escoge los idiomas que conozcas</label>
@@ -100,7 +100,7 @@
 
                         </div>
 
-                        <label>Escoge los lenguajes de programación que conozcas</label>
+                        <label>Escoge las tecnologías que conozcas</label>
                         <div class="form-group" ng-class="{ 'has-error': form.technology.$dirty && form.technology.$error.required }">
                             <div class="checkbox">
 
@@ -117,9 +117,9 @@
 
                         </div>
 
-                        <div class="form-group" ng-class="{ 'has-error': form.cv.$dirty && form.cv.$error.required }">
-                            <input placeholder ="Link de la hoja de vida" name="cv" type="text"  class="form-control" ng-model="vm.regData.EnlaceACurriculum" required />
-                            <span ng-show="form.cv.$dirty && form.cv.$error.required" class="help-block">El link del repositorio es requerido</span>
+                        <div class="form-group" >
+                            <input placeholder ="Link de la hoja de vida" name="cv" type="text"  class="form-control" ng-model="vm.regData.EnlaceACurriculum"  />
+
                         </div>                 
 
 
