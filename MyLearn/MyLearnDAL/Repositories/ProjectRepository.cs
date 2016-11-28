@@ -14,6 +14,12 @@ namespace MyLearnDAL.Repositories
             return DbSet.Find(projectId);
         }
 
+        public Project GetProjectByStudentAndCourse(Guid userId, Guid courseId)
+        {
+            return DbSet.Where(p => p.Course.CourseId.Equals(courseId) && p.Student.UserId.Equals(userId))
+                    .ToList().FirstOrDefault();
+        }
+
         public List<Project> GetStudentProjects(Guid userId)
         {
             return DbSet.Where(p => p.Student.UserId.Equals(userId)).ToList();
