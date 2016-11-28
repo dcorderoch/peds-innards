@@ -226,7 +226,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterPoster\OAuthInfo.cs" />
     <Compile Include="TwitterPoster\RequestBuilder.cs" />
-    <Compile Include="TwitterPoster\TwitterPoster.cs" />
+    <Compile Include="TwitterPoster\Tweeter.cs" />
+    <Compile Include="TwitterPoster\TwitterService.cs" />
     <Compile Include="TwitterPoster\WebRequestTextEncoder.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,7 +12,7 @@ namespace MyLearn.Controllers
         public JsonResult<ReturnCode> Disable(UserIdentifier userId)
         {
             var status = new AccountManager();
-            var retVal = status.DisableAccount(userId.UserId);
+            var retVal = status.ToggleAccount(userId.UserId);
             return Json(retVal);
         }
     }

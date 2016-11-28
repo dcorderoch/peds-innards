@@ -1,7 +1,11 @@
-﻿using MyLearn.InputModels;
+﻿using System;
+using MyLearn.InputModels;
 using MyLearn.Models;
 using MyLearn.TwitterPoster;
 using System.Collections.Generic;
+using MyLearnDAL.Models;
+using MyLearnDAL.Repositories;
+using Badge = MyLearn.Models.Badge;
 
 namespace MyLearn.BLL
 {
@@ -15,7 +19,13 @@ namespace MyLearn.BLL
         }
         public List<Models.Badge> GetAll(SharedAreaCredentials credentials)
         {
-            var retval = new List<Models.Badge>();
+            BadgeRepository badgeRepo = new BadgeRepository();
+            StudentRepository studentRepo = new StudentRepository();
+            CourseRepository courseRepo = new CourseRepository();
+
+            Project project;
+
+            var retval =new List<Badge>() ;
 
             return retval;
         }
