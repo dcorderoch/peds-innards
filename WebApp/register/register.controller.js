@@ -19,6 +19,7 @@
 
         initController();
         function initController(){
+            vm.countries;
             loadTechnologies();
             loadUniversities();
             loadCountries();
