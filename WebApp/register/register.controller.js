@@ -16,6 +16,7 @@
         // selected fruits
         vm.regData.Idiomas = [];
         vm.regData.Tecnologias = [];
+        
 
         initController();
         function initController(){

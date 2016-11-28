@@ -31,8 +31,6 @@
                             <input placeholder ="Apellido de contacto" type="text" name="lastName"  class="form-control" ng-model="vm.regData.ApellidoContacto" required />
                             <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">El apellido de contacto es requerido </span>
                         </div>
-                        
-                        <p>{{vm.countries}}</p>
 
                         <label>Escoge tu pais</label>
                         <div class="form-group" >
@@ -72,6 +70,7 @@
                             <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">El carné es requerido</span>
                         </div>
 
+                        <p>{{vm.universities}}</p>
                         <label>Escoge tu universidad</label>
                         <div class="form-group" ng-class="{ 'has-error': form.university.$dirty && form.university.$error.required }">
                             <select name="university" ng-model="vm.regData.Universidad" ng-options="x.UniversityId as x.UniversityName for x in vm.universities" required>
@@ -83,6 +82,8 @@
                             <input placeholder ="Enlace repositorio de código" type="text" name="link" class="form-control" ng-model="vm.regData.EnlaceRepositorioCodigo"  />
 
                         </div>
+
+                        <p>{{vm.languages}}</p>
 
                         <label>Escoge los idiomas que conozcas</label>
                         <div class="form-group" ng-class="{ 'has-error': form.selectedLanguages.$dirty && form.selectedLanguages.$error.required }">
@@ -100,6 +101,7 @@
                             </div>
 
                         </div>
+                        <p>{{vm.technologies}}</p>
 
                         <label>Escoge las tecnologías que conozcas</label>
                         <div class="form-group" ng-class="{ 'has-error': form.technology.$dirty && form.technology.$error.required }">
