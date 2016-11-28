@@ -166,7 +166,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InputModels\AssignJobOffer.cs" />
     <Compile Include="InputModels\Badge.cs" />
+    <Compile Include="InputModels\BadgeIdentifier.cs" />
     <Compile Include="InputModels\CloseJobOffer.cs" />
     <Compile Include="InputModels\CommentInfo.cs" />
     <Compile Include="InputModels\CourseIdentifier.cs" />

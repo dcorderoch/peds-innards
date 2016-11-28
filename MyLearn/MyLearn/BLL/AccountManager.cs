@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MyLearn.Models;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
+using Language = MyLearnDAL.Models.Language;
 
 namespace MyLearn.BLL
 {
@@ -54,22 +55,34 @@ namespace MyLearn.BLL
                 student.Ubicacion = dalStudent.Country.ToString();
                 student.Email = dalStudent.Email;
                 student.Telefono = dalStudent.PhoneNum;
-                student.Fecha_Registro = dalStudent.InDate.ToString();
+                student.Fecha_Registro = dalStudent.InDate.ToLongDateString();
                 student.Password = dalStudent.Password;
                 student.TipoRepositorioArchivos = dalStudent.TRepo.ToString();
                 student.Foto = dalStudent.Photo.ToString();
                 student.Universidad = dalStudent.University.Name;
                 student.UniversityId = dalStudent.UniversityId.ToString();
-                student.EnlaceRepositorioCodigo = dalStudent.RepoLink.ToString();
+                student.EnlaceRepositorioCodigo = dalStudent.RepoLink;
                 student.EnlaceACurriculum = dalStudent.ResumeLink;
-                student.PromedioProyectos = dalStudent.AvgProjects;
-                student.PromedioCursos = 1;
-                student.Idiomas = dalStudent.StudentLanguages;
+                student.PromedioProyectos = (float) dalStudent.AvgProjects;
+                student.PromedioCursos = (float) dalStudent.AvgCourses;
+                
+                List<string> languageList = new List<string>();
+                foreach (Language language in dalStudent.Languages)
+                {
+                    languageList.Add(language.Name);
+                }
+                student.Idiomas = languageList;
                 student.CursosAprobados = dalStudent.NumSuceedCourses;
                 student.CursosReprobados = dalStudent.NumFailedCourses;
                 student.ProyectosExitosos = dalStudent.NumSuceedProjects;
                 student.ProyectosFallidos = dalStudent.NumFailedProjects;
-                student.Tecnologias = dalStudent.StudentTechnologies;
+
+                List<string> technologyList = new List<string>();
+                foreach (MyLearnDAL.Models.Technology technology in dalStudent.Technologies)
+                {
+                    technologyList.Add(technology.Name);
+                }
+                student.Tecnologias = technologyList;
 
                 List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
                 FinishedCourse finishedCourse = new FinishedCourse();
@@ -162,7 +175,7 @@ namespace MyLearn.BLL
                 employer.Password = dalEmployer.Password;
                 employer.TipoRepositorioArchivos = dalEmployer.TRepo.ToString();
                 employer.Foto = dalEmployer.Photo.ToString();
-                employer.IdEmpleador = dalEmployer.EmployerId;
+                employer.IdEmpleador = dalEmployer.id;
                 employer.NombreEmpresarial = dalEmployer.CompanyName;
                 employer.EnlaceSitioWeb = dalEmployer.Website;
                 // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
@@ -198,10 +211,13 @@ namespace MyLearn.BLL
         public ReturnCode DisableAccount(string userId)
         {
             ReturnCode success = new ReturnCode();
-
             UserRepository userRepo = new UserRepository();
-            
-            success.ReturnStatus = 1;
+            User user = userRepo.GetUserById(new Guid(userId));
+            if (user != null)
+            {
+                user.IsActive = 0;
+                success.ReturnStatus = 1;
+            }
             return success;
         }
     }
