@@ -25,7 +25,7 @@
         function Create(createData) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"host/Api/JobOffer/Create",
+                url:$rootScope.url+"JobOffer/Create",
                 data:createData
             });
             return response;    
@@ -43,7 +43,7 @@
         function GetByEmployer( idEmployer){
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"host/Api/JobOffer/GetByEmployer",
+                url:$rootScope.url+"JobOffer/GetByEmployer",
                 data:{JobOfferId:jobId}
             });
             return response;
@@ -52,7 +52,7 @@
         function GetByTechnology( technology){
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"host/Api/JobOffer/GetByTechnology",
+                url:$rootScope.url+"JobOffer/GetByTechnology",
                 data: {Technology:technology}
             });
             return response;
@@ -62,7 +62,7 @@
         function GetByName(name){
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"host/Api/JobOffer/GetByName",
+                url:$rootScope.url+"JobOffer/GetByName",
                 data: {JobOffer:name}
             });
             return response;
@@ -71,7 +71,7 @@
         function GetBidsById(jobOfferId){
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"host/Api/JobOffer/GetBidsById",
+                url:$rootScope.url+"JobOffer/GetBidsById",
                 data: {JobOfferId:jobOfferId}
             });
             return response;

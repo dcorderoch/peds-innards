@@ -22,7 +22,7 @@
         function RegisterStudent(regData) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"api/medicalrecords/viewallbypatient",
+                url:$rootScope.url+"medicalrecords/viewallbypatient",
                 data:regData
             });
             return response;    
@@ -31,7 +31,7 @@
         function RegisterProfessor(regData) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"api/medicalrecords/viewallbypatient",
+                url:$rootScope.url+"medicalrecords/viewallbypatient",
                 data:regData
             });
             return response;    
@@ -40,7 +40,7 @@
         function RegisterEmployer(regData) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"api/medicalrecords/viewallbypatient",
+                url:$rootScope.url+"medicalrecords/viewallbypatient",
                 data:regData
             });
             return response;    
@@ -49,7 +49,7 @@
         function Disable(userId){
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"Api/Account/Disable",
+                url:$rootScope.url+"Account/ToggleAccount",
                 data: {UserId:userId}
             });
             return response;

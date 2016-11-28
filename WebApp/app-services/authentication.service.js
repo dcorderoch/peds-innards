@@ -19,7 +19,7 @@
 
         return service;
 
-        function Login(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
+        function Login(loginData) {
             console.log(loginData);
             console.log($rootScope.url+"login/login");
             var request = $http({
@@ -30,7 +30,7 @@
             return request;
         }
 
-        function LoginStudent(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
+        function LoginStudent(loginData) {
             var request = $http({
                 method:"post",
                 url:    $rootScope.url+"Login/LoginStudent",
@@ -39,7 +39,7 @@
             return request;
         }
 
-        function LoginProfessor(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
+        function LoginProfessor(loginData) { 
             var request = $http({
                 method:"post",
                 url:    $rootScope.url+"Login/LoginProfessor",
@@ -48,7 +48,7 @@
             return request;
         }
 
-        function LoginEmployer(loginData) {// Para hacer un logeo, pero no se usa aqui sino en el controlador directamente
+        function LoginEmployer(loginData) {
             console.log(loginData);
             var request = $http({
                 method:"post",
@@ -58,7 +58,7 @@
             return request;
         }
 
-        function SetCredentials(Id, Password, data) {   //Se  mantiene el usuario a pesar de refresh de pagina
+        function SetCredentials(Id, Password, data) {   
             console.log(Id);
             var authdata = Base64.encode(Id + ':' + Password);
             console.log(authdata);
@@ -69,7 +69,7 @@
                 }
             };
 
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; 
             $cookieStore.put('globals', $rootScope.globals);
             $cookieStore.put('dataLogin',data);
         }

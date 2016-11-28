@@ -23,7 +23,6 @@
 
         function login(){
 
-
             $rootScope.userData= {"NombreContacto":"Nicolas",
                                   "ApellidoContacto":"Jimenez",
                                   "Ubicacion":"Tres Ríos",

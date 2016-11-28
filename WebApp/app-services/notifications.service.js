@@ -16,7 +16,7 @@
         function GetNotifications(Carnet) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"Api/Notifications/GetByStudent",
+                url:$rootScope.url+"Notifications/GetByStudent",
                 data: {"Carnet":Carnet}
             });
             return response;    

@@ -22,7 +22,7 @@
         function GetTechnologies() {
             var response=$http({
                 method:"get",
-                url:$rootScope.url+"Api/Technology/GetAll"
+                url:$rootScope.url+"Technology/GetAll"
             });
             return response;    
         }
@@ -30,7 +30,7 @@
         function GetCountries() {
             var response=$http({
                 method:"get",
-                url:$rootScope.url+"Api/Country/GetAll"
+                url:$rootScope.url+"Country/GetAll"
             });
             return response;    
         }
@@ -38,7 +38,7 @@
         function GetUniversities() {
             var response=$http({
                 method:"get",
-                url:$rootScope.url+"Api/University/GetAll"
+                url:$rootScope.url+"University/GetAll"
             });
             return response;    
         }
@@ -46,7 +46,7 @@
         function GetLanguages() {
             var response=$http({
                 method:"get",
-                url:$rootScope.url+"Api/Language/GetAll"
+                url:$rootScope.url+"Language/GetAll"
             });
             return response;    
         }

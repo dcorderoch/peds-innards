@@ -59,11 +59,12 @@
 
                     <div ng-if="vm.toggleEnable"> 
                         <!-- Trigger the modal with a button -->
-                        <button type="button"  class="btn btn-default disableButton" data-toggle="modal" data-target="#myModal">Deshabilitar cuenta</button>
+                        <button type="button"  class="btn btn-default disableButton" data-toggle="modal" data-target="#myModal">
+                            Deshabilitar cuenta</button>
                     </div>
 
                     <div ng-if="!vm.toggleEnable">
-                        <button type="button"  class="btn btn-default enableButton"  data-toggle="modal" data-target="#myModal2">Habiliar cuenta</button>
+                        <button type="button"  class="btn btn-default enableButton"  data-toggle="modal" data-target="#myModal2">Habilitar cuenta</button>
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" role="dialog">
@@ -100,7 +101,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-primary" ng-click="vm.enableAccount()" data-dismiss="modal">Proceder</button>
+                                    <button type="button" class="btn btn-primary" ng-click="vm.disableAccount()" data-dismiss="modal">Proceder</button>
                                 </div>
                             </div>
                         </div>
