@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MyLearn.Models;
+using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
 {
@@ -7,9 +8,18 @@ namespace MyLearn.BLL
     {
         public List<Country> GetAllCountries()
         {
-            List<Country> countries = new List<Country>();
-
-            return countries;
+            CountryRepository countryRepo = new CountryRepository();
+            List <MyLearnDAL.Models.Country> listOfCountries= countryRepo.GetAll();
+            List<Country> retCountries = new List<Country>();
+            foreach (MyLearnDAL.Models.Country dalCountry in listOfCountries)
+            {
+                Country country = new Country();
+                country.CountryId = dalCountry.CountryId.ToString();
+                country.CountryName = dalCountry.Name;
+                retCountries.Add(country);    
+            }
+            countryRepo.Dispose();
+            return retCountries;
         }
     }
 }
