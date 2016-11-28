@@ -30,8 +30,8 @@
             RegService.GetLanguages()
                 .then(function (response) {
 
-                console.log(response)
-                vm.languages = response.data.Languages;
+                console.log(response.data)
+                vm.languages = response.data;
 
             },function(response){
                 console.log("supongo4")
@@ -42,8 +42,8 @@
             RegService.GetTechnologies()
                 .then(function (response) {
 
-                console.log(response)
-                vm.technologies = response.data.Technologies;
+                console.log(response.data)
+                vm.technologies = response.data;
 
             },function(response){
                 console.log("supongo1")
@@ -54,7 +54,7 @@
             RegService.GetCountries()
                 .then(function (response) {
 
-                console.log(response)
+                console.log(response.data)
                 vm.countries = response.data;
 
             },function(response){
@@ -65,8 +65,8 @@
         function loadUniversities(){
             RegService.GetUniversities()
                 .then(function (response) {
-                vm.universities = response.data.Universities;
-                console.log(response)
+                vm.universities = response.data;
+                console.log(response.data)
 
             },function(response){
                 console.log("supongo3")
