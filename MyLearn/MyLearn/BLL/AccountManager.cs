@@ -145,6 +145,7 @@ namespace MyLearn.BLL
                 }
 
                 student.ActiveJobOffersList = activeJobOffers;
+                student.Active = IsActive(studentId.ToString());
             }
             return student;
         }
@@ -201,6 +202,7 @@ namespace MyLearn.BLL
                     activeCoursesList.Add(activeCourse);
                 }
                 professor.ActiveCoursesList = activeCoursesList;
+                professor.Active = IsActive(professorId.ToString());
             }
 
             
@@ -258,6 +260,7 @@ namespace MyLearn.BLL
                 }
 
                 employer.ActiveJobOffersList = activeJobOffers;
+                employer.Active = IsActive(employerId.ToString());
             }            
 
             return employer;      
