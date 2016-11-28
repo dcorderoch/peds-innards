@@ -19,7 +19,7 @@
 
             $rootScope.userData ={};
             vm.userData = $rootScope.userData;
-
+            console.log(vm.userData);
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};  
 
