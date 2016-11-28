@@ -24,11 +24,11 @@
         }
 
         function login(){
-            console.log("entro")
-            //            $location.path('/employerprofile');    
-            //            AuthenticationService.SetCredentials(" response.data.userData.UserId", "response.data.userData.Password", 
-            //                                                 "response.data.userData");        
-            //            return;
+//            console.log("entro")
+//                        $location.path('/employerprofile');    
+//                        AuthenticationService.SetCredentials(" response.data.userData.UserId", "response.data.userData.Password", 
+//                                                             "response.data.userData");        
+                        return;
             var loginData = {UserName :vm.loginData.UserName, Password:sha256(vm.loginData.Password) }
             AuthenticationService.Login( vm.loginData)
                 .then(function(response){
@@ -41,8 +41,8 @@
                     AuthenticationService.LoginStudent(vm.loginData)
                         .then(function(response){
                         console.log(response);
-                        AuthenticationService.SetCredentials( response.data.userData.UserId, response.data.userData.Password, 
-                                                             response.data.userData);
+                        AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
+                                                             response.data);
 
                         $location.path('/studentprofile');    
                         $rootScope.userData= response.data;
@@ -53,8 +53,8 @@
                 if (response.data.UserTypeCode== "2" ){
                     FlashService.Success("Login exitoso");
 
-                    AuthenticationService.SetCredentials( response.data.userData.UserId, response.data.userData.Password, 
-                                                         response.data.userData);
+                    AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
+                                                         response.data);
 
                     AuthenticationService.LoginProfessor(vm.loginData)
                         .then(function(response){
@@ -72,8 +72,8 @@
                     AuthenticationService.LoginEmployer(vm.loginData)
                         .then(function(response){
 
-                        AuthenticationService.SetCredentials( response.data.userData.UserId, response.data.userData.Password, 
-                                                             response.data.userData);
+                        AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
+                                                             response.data);
 
                         $location.path('/employerprofile');    
                         $rootScope.userId= response.data.UserId;
