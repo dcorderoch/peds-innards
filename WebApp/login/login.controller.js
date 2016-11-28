@@ -83,6 +83,7 @@
                     })
                 }
                 else{
+                    console.log("salio totalmente")
                     FlashService.Error("Usuario no existe");//errores
                     vm.dataLoading = false;
                 }
