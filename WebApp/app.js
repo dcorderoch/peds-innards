@@ -136,7 +136,6 @@
         $rootScope.globals = $cookieStore.get('globals') || {};
         $rootScope.userData = $cookieStore.get('dataLogin') || {};
 
-        console.log($rootScope.globals);
         if ($rootScope.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; 
         }
@@ -164,6 +163,8 @@
             var studentUser = $cookieStore.get('dataLogin').Carnet;
             var professorUser = $cookieStore.get('dataLogin').IdProfesor;
             var employerUser = $cookieStore.get('dataLogin').IdEmpleador;
+            console.log(studentUser);
+
 
             if ( (!studentRestricted && studentUser) || (!professorRestricted && professorUser) || (!employerRestricted && employerUser) ) {
                 window.history.back();
