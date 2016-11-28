@@ -17,13 +17,11 @@
 
         function initController(){
 
-//            $rootScope.userData ={};
             vm.userData = $rootScope.userData;
             console.log(vm.userData);
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};  
 
-            vm.userData.Active = "0";
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
