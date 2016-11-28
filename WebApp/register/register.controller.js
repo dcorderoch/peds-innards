@@ -10,7 +10,7 @@
         var vm = this;
 
         vm.register=register;
-        vm.repositories=[{tipo:'Google Drive', id:1}, {tipo:'Dropbox',id:0}];
+        vm.repositories=[{tipo:'Google Drive', id:"0"}, {tipo:'Dropbox',id:"1"}];
 
         vm.regData={};
         // selected fruits
@@ -108,7 +108,7 @@
             vm.regData.Carnet = vm.regData.Carnet.toString();
             vm.regData.Telefono = vm.regData.Telefono.toString();
             
-            vm.regData.TipoRepositorioArchivos = (vm.regData.TipoRepositorioArchivos == "Google Drive") ? "0" : "1"
+//            vm.regData.TipoRepositorioArchivos = (vm.regData.TipoRepositorioArchivos == "Google Drive") ? "0" : "1"
 
             if (vm.regData.hasOwnProperty("Foto")){
                 vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
