@@ -36,11 +36,32 @@ namespace MyLearn.BLL
         public ReturnCode CreateComment(NewComment newComment)
         {
             ReturnCode success = new ReturnCode();
+            ProjectComment newProjectComment = new ProjectComment();
+            ProjectRepository projectRepository = new ProjectRepository();
+            ProjectCommentRepository projectCommentRepo = new ProjectCommentRepository();
+            Project project = projectRepository.GetProjectByStudentAndCourseId(new Guid(newComment.StudentId), new Guid(newComment.CourseId));
 
-            //create new comment in db
-
-
-            success.ReturnStatus = 1;
+            if (newComment.Comment != null)
+            {
+                newProjectComment.CommentId = Guid.NewGuid();
+                newProjectComment.Comment = newComment.Comment;
+                newProjectComment.Date = DateTime.Now;
+                newProjectComment.ParentId = new Guid(newComment.ParentId);
+                if (newComment.Commenter == 1)
+                {
+                    newProjectComment.UserId = new Guid(newComment.StudentId);
+                }
+                else
+                {
+                    newProjectComment.UserId = new Guid(newComment.ProfUserId);
+                }
+                newProjectComment.ProjectId = project.ProjectId;
+                projectCommentRepo.Add(newProjectComment);
+                success.ReturnStatus = 1;
+            }
+            projectCommentRepo.SaveChanges();
+            projectCommentRepo.Dispose();
+            projectRepository.Dispose();
             return success;
         }
 
