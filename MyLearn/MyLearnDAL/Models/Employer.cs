@@ -20,6 +20,9 @@ namespace MyLearnDAL.Models
         [Required]
         [MaxLength(30)]
         public string ContactName { get; set; }
+        [Required]
+        [MaxLength(30)]
+        public string ContactLastname { get; set; }
         [MaxLength(30)]
         public string Website { get; set; }
 

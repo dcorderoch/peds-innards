@@ -10,13 +10,13 @@ namespace MyLearnDAL.Models
     {
         public Language()
         {
-            StudentLanguages = new List<StudentLanguage>();
+            Students = new List<Student>();
         }
         [Key]
         public int LenguageId { get; set; }
         [Required]
         public string Name { get; set; }
 
-        public virtual List<StudentLanguage> StudentLanguages { get; set; }
+        public virtual List<Student> Students { get; set; }
     }
 }

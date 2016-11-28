@@ -13,7 +13,7 @@ namespace MyLearnDAL.Repositories
         }
         public List<Student> GetCourseStudents(Guid CourseId)
         {
-            return DbSet.Where(s => s.StudentCourses.Any(c => c.CourseId.Equals(CourseId))).ToList();
+            return DbSet.Where(s => s.Courses.Any(c => c.CourseId.Equals(CourseId))).ToList();
         }
     }
 }

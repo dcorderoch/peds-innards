@@ -10,8 +10,8 @@ namespace MyLearnDAL.Models
     {
         public JobOffer()
         {
-            JobOfferComments = new List<JobOfferComment>();
-            JobOfferTechnologies= new List<JobOfferTechnology>();
+            Comments = new List<JobOfferComment>();
+            Technologies= new List<Technology>();
             Bids = new List<Bid>();
         }
 
@@ -37,8 +37,8 @@ namespace MyLearnDAL.Models
 
         public virtual Employer Employer { get; set; }
         public virtual Student Student { get; set; }
-        public virtual List<JobOfferComment> JobOfferComments { get; set; }
-        public virtual List<JobOfferTechnology> JobOfferTechnologies { get; set; }
+        public virtual List<JobOfferComment> Comments { get; set; }
+        public virtual List<Technology> Technologies { get; set; }
         public virtual List<Bid> Bids { get; set; }
     }
 }

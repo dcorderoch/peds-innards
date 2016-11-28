@@ -10,22 +10,22 @@ namespace MyLearnDAL.Repositories
     {
         public List<Technology> GetStudentTechnologies(Guid UserId)
         {
-            return DbSet.Where(t => t.StudentTechnologies.Any(s => s.UserId.Equals(UserId))).ToList();
+            return DbSet.Where(t => t.Students.Any(s => s.UserId.Equals(UserId))).ToList();
         }
 
         public List<Technology> GetProjectTechnologies(Guid ProjectId)
         {
-            return DbSet.Where(t => t.ProjectTechnologies.Any(p => p.ProjectId.Equals(ProjectId))).ToList();
+            return DbSet.Where(t => t.Projects.Any(p => p.ProjectId.Equals(ProjectId))).ToList();
         }
 
         public List<Technology> GetJobOfferTechnologies(Guid JobOfferId)
         {
-            return DbSet.Where(t => t.JobOfferTechnologies.Any(j => j.JobOfferId.Equals(JobOfferId))).ToList();
+            return DbSet.Where(t => t.JobOffers.Any(j => j.JobOfferId.Equals(JobOfferId))).ToList();
         }
 
         public List<Technology> GetCourseYTechnologies(Guid CourseId)
         {
-            return DbSet.Where(t => t.CourseTechnologies.Any(c => c.CourseId.Equals(CourseId))).ToList();
+            return DbSet.Where(t => t.Courses.Any(c => c.CourseId.Equals(CourseId))).ToList();
         }
     }
 }

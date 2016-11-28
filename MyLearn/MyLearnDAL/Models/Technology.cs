@@ -10,19 +10,19 @@ namespace MyLearnDAL.Models
     {
         public Technology()
         {
-            StudentTechnologies =new List<StudentTechnology>();
-            CourseTechnologies= new List<CourseTechnology>();
-            JobOfferTechnologies= new List<JobOfferTechnology>();
-            ProjectTechnologies=new List<ProjectTechnology>();
+            Students =new List<Student>();
+            Courses =new List<Course>();
+            JobOffers= new List<JobOffer>();
+            Projects=new List<Project>();
         }
         [Key]
         public Guid TecnologyId { get; set; }
         [Required]
         public string Name { get; set; }
 
-        public virtual List<StudentTechnology> StudentTechnologies { get; set; }
-        public virtual List<CourseTechnology>  CourseTechnologies { get; set; }
-        public virtual List<JobOfferTechnology> JobOfferTechnologies { get; set; }
-        public virtual List<ProjectTechnology> ProjectTechnologies { get; set; }
+        public virtual List<Student> Students { get; set; }
+        public virtual List<Course>  Courses { get; set; }
+        public virtual List<JobOffer> JobOffers { get; set; }
+        public virtual List<Project> Projects { get; set; }
     }
 }

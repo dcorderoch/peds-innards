@@ -57,33 +57,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="main.cs" />
-    <Compile Include="Migrations\201611272302419_Initial.cs" />
-    <Compile Include="Migrations\201611272302419_Initial.Designer.cs">
-      <DependentUpon>201611272302419_Initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Achievement.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\CourseAchievement.cs" />
-    <Compile Include="Models\CourseTechnology.cs" />
     <Compile Include="Models\Employer.cs" />
     <Compile Include="Models\JobOffer.cs" />
     <Compile Include="Models\JobOfferComment.cs" />
-    <Compile Include="Models\JobOfferTechnology.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Professor.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\ProjectComment.cs" />
-    <Compile Include="Models\ProjectTechnology.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Bid.cs" />
-    <Compile Include="Models\StudentCourse.cs" />
-    <Compile Include="Models\StudentLanguage.cs" />
-    <Compile Include="Models\StudentTechnology.cs" />
     <Compile Include="Models\Technology.cs" />
     <Compile Include="Models\University.cs" />
     <Compile Include="Models\User.cs" />
@@ -101,16 +90,10 @@
     <Compile Include="Repositories\ProfessorRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
-    <Compile Include="Repositories\StudentCourseRepository.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="Repositories\TechnologyRepository.cs" />
     <Compile Include="Repositories\UniversityRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611272302419_Initial.resx">
-      <DependentUpon>201611272302419_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
