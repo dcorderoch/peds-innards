@@ -26,6 +26,7 @@ Web Application sends
 
 and then Receives
 {
+    "Active":(0|1),
     "UserId":"Id",
     "NombreContacto":"algo",
     "ApellidoContacto":"algo",
@@ -123,6 +124,7 @@ Web Application sends
 
 and then Receives
 {
+    "Active":(0|1),
     "UserId":"Id",
     "NombreContacto":"algo",
     "ApellidoContacto":"algo",
@@ -173,6 +175,7 @@ Web Application sends
 
 and then Receives
 {
+    "Active":(0|1),
     "UserId":"Id",
     "NombreContacto":"algo",
     "ApellidoContacto":"algo",

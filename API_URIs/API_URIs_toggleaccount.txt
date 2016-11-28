@@ -1,5 +1,5 @@
 ################################################# Disable Account
-https://host/Api/Account/Disable
+https://host/Api/Account/ToggleAccount
 Web Application sends
 {
     "UserId":"algo"
