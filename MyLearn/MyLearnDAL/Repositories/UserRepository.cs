@@ -10,6 +10,10 @@ namespace MyLearnDAL.Repositories
     public class UserRepository : Repository<User>
     {
 
+        public User GetUserById(Guid userId)
+        {
+            return DbSet.Find(userId);
+        }
         public User GetUserByEmail(string email)
         {
             return DbSet.First(u => u.Email.Equals(email));
