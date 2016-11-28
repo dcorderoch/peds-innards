@@ -102,7 +102,6 @@ namespace MyLearn.BLL
                     finishedCoursesList.Add(finishedCourse);
                 }
                 student.FinishedCoursesList = finishedCoursesList;
-                courseRepo.Dispose();
                 
                 List<ActiveCourse> activeCoursesList = new List<ActiveCourse>();
                 List<MyLearnDAL.Models.Course> activeCourses = courseRepo.GetActiveStudentCourses(studentId);
@@ -118,6 +117,7 @@ namespace MyLearn.BLL
                 }
 
                 student.ActiveCoursesList = activeCoursesList;
+                courseRepo.Dispose();
 
                 JobOfferRepository jobRepo = new JobOfferRepository();
                 List<JobOffer> finishedJobs = jobRepo.GetStudentInactiveJobOffers(studentId);
@@ -133,7 +133,6 @@ namespace MyLearn.BLL
                 }
 
                 student.FinishedJobOffersList = finishedJobOffers;
-                jobRepo.Dispose();
                 List<JobOffer> activeJobs = jobRepo.GetStudentActiveJobOffers(studentId);
                 List<ActiveJobOffer> activeJobOffers = new List<ActiveJobOffer>();
                 foreach (JobOffer jobOffer in activeJobs)
@@ -145,9 +144,9 @@ namespace MyLearn.BLL
                     activeJobOffer.EmployerName = jobOffer.Employer.CompanyName;
                     activeJobOffers.Add(activeJobOffer);
                 }
-
                 student.ActiveJobOffersList = activeJobOffers;
                 student.Active = IsActive(studentId.ToString());
+                jobRepo.Dispose();
             }
             studentRepo.Dispose();
             
