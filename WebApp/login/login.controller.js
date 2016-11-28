@@ -38,7 +38,7 @@
                     FlashService.Success("Login exitoso");
 
 
-                    AuthenticationService.loginStudent(vm.loginData)
+                    AuthenticationService.LoginStudent(vm.loginData)
                         .then(function(response){
                         console.log(response);
                         AuthenticationService.SetCredentials( response.data.userData.UserId, response.data.userData.Password, 
@@ -56,7 +56,7 @@
                     AuthenticationService.SetCredentials( response.data.userData.UserId, response.data.userData.Password, 
                                                          response.data.userData);
 
-                    AuthenticationService.loginProfessor(vm.loginData)
+                    AuthenticationService.LoginProfessor(vm.loginData)
                         .then(function(response){
 
                         $location.path('/professorprofile');    
@@ -69,7 +69,7 @@
                 if (response.data.UserTypeCode== "3" ){
                     FlashService.Success("Login exitoso");
 
-                    AuthenticationService.loginEmployer(vm.loginData)
+                    AuthenticationService.LoginEmployer(vm.loginData)
                         .then(function(response){
 
                         AuthenticationService.SetCredentials( response.data.userData.UserId, response.data.userData.Password, 
