@@ -19,7 +19,7 @@
         service.ProjectPropose = ProjectPropose;
         service.CommentCreate = CommentCreate;
         service.Brag = Brag;
-        service.GiveBrag = 
+        service.GiveBadge = GiveBadge
 
         return service;
 
@@ -107,10 +107,20 @@
         function Brag(badgeId){
             var response = $http({
                 method: "post",
-                url: $rootScope.url+"Badge/Brag",
+                url: $rootScope.url+"Bad-ge/Brag",
                 data: {BadgeId: badgeId}
             });
             return response;                 
+        }
+
+        function GiveBadge(data){
+            var response = $http({
+                method: "post",
+                url: $rootScope.url+"Badge/Give",
+                data: data
+            });
+            return response;                 
+
         }
 
     }

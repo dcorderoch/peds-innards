@@ -32,7 +32,9 @@
             vm.courseData.NombreContacto = "StudentMan";
             vm.courseData.ApellidoContacto = "Vergara";
             vm.courseData.Grade = "89";
+            vm.courseData.StudentUserId = studentId;
             vm.courseData.Badges = [{BadgeDescription:"algo",Value:56, Alardeado:0},{BadgeDescription:"algo",Value:34,Alardeado:1}];
+            
             ProfileCourseService.SetCourseData(vm.courseData);
             $location.path('/sharedareaprofessor');  
 
@@ -44,6 +46,7 @@
                 vm.courseData.ApellidoContacto = response.data.ApellidoContacto;
                 vm.courseData.Grade = response.data.Grade;
                 vm.courseData.Badges = response.data.Badges;
+                vm.courseData.StudentUserId = studentId;
                 ProfileCourseService.SetCourseData(vm.courseData);
                 $location.path('/sharedareaprofessor');  
 

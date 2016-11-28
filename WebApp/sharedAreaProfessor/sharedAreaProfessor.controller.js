@@ -28,6 +28,7 @@
             //            vm.courseData.status=true;
             vm.gradeWidth = {'width': vm.courseData.Grade+'%'};  
             console.log(vm.courseData);
+            console.log(vm.userData);
 
             getComments();
 
@@ -137,10 +138,47 @@
                 FlashService.Error("No se pudo enviar el comentario"); 
             })
         }
-        
+
         function assignBadge(badgeId){
-         
-            
+
+            var send={StudentUserId: vm.courseData.StudentUserId, 
+                      ProfUserId: vm.userData.IdProfesor,
+                      Group: vm.courseData.Group,
+                      CourseId: vm.courseData.CourseId}
+            console.log(send);
+            CourseService.GiveBadge(send)
+                .then(function(response){
+
+                if (response.data.ReturnStatus=="0"){
+                    FlashService.Error("No se pudo asignar el badge")
+                }
+                else{
+                    FlashService.Success("Se ha asignado el badge");
+
+                    var dataSend = {StudentUserId: studentId, ProfUserId: vm.userData.UserId, UniversityId: vm.courseData.UniversityId, 
+                                    Group: vm.courseData.Group, CourseId: vm.courseData.CourseId}
+
+                    CourseService.GetSpecificCourse(dataSend)
+                        .then(function(response){
+
+                        vm.courseData.NombreContacto = response.data.NombreContacto;
+                        vm.courseData.ApellidoContacto = response.data.ApellidoContacto;
+                        vm.courseData.Grade = response.data.Grade;
+                        vm.courseData.Badges = response.data.Badges;
+                        vm.courseData.StudentUserId = studentId;
+                        ProfileCourseService.SetCourseData(vm.courseData);
+                        initController();
+
+                    }, function(response){
+                        console.log("no sirvió")
+                    })
+
+                }
+
+            }, function(response){
+
+                FlashService.Error("No se pudo asignar el badge");
+            });
         }
 
     }
