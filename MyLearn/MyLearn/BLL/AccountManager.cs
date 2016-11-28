@@ -103,74 +103,81 @@ namespace MyLearn.BLL
         public InfoProfesor ProfessorLogin(string username, string password)
         {
             InfoProfesor professor = new InfoProfesor();
-            ProfessorRepository studentRepo = new StudentRepository();
+            ProfessorRepository professorRepo = new ProfessorRepository();
             Guid professorId = GetUserId(username);
-            Professor dalProfessor = studentRepo.GetStudentById(studentId);
+            Professor dalProfessor = professorRepo.GetProfessorById(professorId);
 
-            //     DBUser dbUserInstance = new DBUser();
-            //subject to change
+            if (dalProfessor != null && dalProfessor.Password == password)
+            {
+                
+                professor.UserId = dalProfessor.UserId.ToString();
+                professor.NombreContacto = dalProfessor.Name;
+                professor.ApellidoContacto = dalProfessor.Lastname;
+                professor.Ubicacion = dalProfessor.Country.Name;
+                professor.Email = dalProfessor.Email;
+                professor.Telefono = dalProfessor.PhoneNum;
+                professor.Fecha_Registro = dalProfessor.InDate.ToString();
+                professor.Password = dalProfessor.Password;
+                professor.TipoRepositorioArchivos = dalProfessor.TRepo.ToString();
+                professor.Foto = dalProfessor.Photo.ToString();
+                professor.Universidad = dalProfessor.University.Name;
+                professor.UniversityId = dalProfessor.UniversityId.ToString();
+                professor.HorarioAtencion = dalProfessor.Schedule;
+                // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
+                List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
+                FinishedCourse finishedCourse = new FinishedCourse();
+                finishedCourse.CourseDescription = "";
+                finishedCourse.CourseId = "";
+                finishedCourse.course = "";
+                professor.FinishedCoursesList = finishedCoursesList;
 
-            professor.UserId = "";
-            professor.NombreContacto = "";
-            professor.ApellidoContacto = "";
-            professor.Ubicacion = "";
-            professor.Email = "";
-            professor.Telefono = "";
-            professor.Fecha_Registro = "";
-            professor.Password = "";
-            professor.TipoRepositorioArchivos = "";
-            professor.Foto = "";
-            professor.IdProfesor = "";
-            professor.Universidad = "";
-            professor.UniversityId = "";
-            professor.HorarioAtencion = "";
-            // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
-            List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
-            FinishedCourse finishedCourse = new FinishedCourse();
-            finishedCourse.CourseDescription = "";
-            finishedCourse.CourseId = "";
-            finishedCourse.course = "";
-            professor.FinishedCoursesList = finishedCoursesList;
+                List<ActiveCourse> activeCoursesList = new List<ActiveCourse>();
+                ActiveCourse activeCourses = new ActiveCourse();
+                activeCourses.course = "";
+                activeCourses.CourseId = "";
+                activeCourses.CourseDescription = "";
+                professor.ActiveCoursesList = activeCoursesList;
+            }
 
-            List<ActiveCourse> activeCoursesList = new List<ActiveCourse>();
-            ActiveCourse activeCourses = new ActiveCourse();
-            activeCourses.course = "";
-            activeCourses.CourseId = "";
-            activeCourses.CourseDescription = "";
-            professor.ActiveCoursesList = activeCoursesList;
+            
             return professor;
         }
 
         public InfoEmpleador EmployerLogin(string username, string password)
         {
          InfoEmpleador employer = new InfoEmpleador();
-            //     DBUser dbUserInstance = new DBUser();
-            //subject to change
-            employer.UserId = "";
-            employer.NombreContacto = "";
-            employer.ApellidoContacto = "";
-            employer.Ubicacion = "";
-            employer.Email = "";
-            employer.Telefono = "";
-            employer.Fecha_Registro = "";
-            employer.Password = "";
-            employer.TipoRepositorioArchivos = "";
-            employer.Foto = "";
-            employer.IdEmpleador = "";
-            employer.NombreEmpresarial = "";
-            employer.EnlaceSitioWeb = "";
-            // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
-            List<FinishedJobOffer> finishedJobOffersList = new List<FinishedJobOffer>();
-            //FinishedJobOffer finishedJobOffers = new FinishedJobOffer();
-            //finishedJobOffers.JobOffer = "";
-            //finishedJobOffers.JobOfferId = "";
-            employer.FinishedJobOffersList = finishedJobOffersList;
+         EmployerRepository employerRepo = new EmployerRepository();
+         Guid employerId = GetUserId(username);
+         Employer dalEmployer = employerRepo.GetEmployerById(employerId);
 
-            List<ActiveJobOffer> activeJobOffersList = new List<ActiveJobOffer>();
-            //ActiveJobOffersList activeJobOffers = new ActiveJobOffersList();
-            //activeJobOffers.JobOffer = "";
-            //activeJobOffers.JobOfferId = "";
-            employer.ActiveJobOffersList = activeJobOffersList;
+            if (dalEmployer != null && dalEmployer.Password == password)
+            {
+                employer.UserId = dalEmployer.UserId.ToString();
+                employer.NombreContacto = dalEmployer.ContactName;
+                employer.ApellidoContacto = dalEmployer.ContactLastname;
+                employer.Ubicacion = dalEmployer.Country.ToString();
+                employer.Email = dalEmployer.Email;
+                employer.Telefono = dalEmployer.PhoneNum;
+                employer.Fecha_Registro = dalEmployer.InDate.ToString();
+                employer.Password = dalEmployer.Password;
+                employer.TipoRepositorioArchivos = dalEmployer.TRepo.ToString();
+                employer.Foto = dalEmployer.Photo.ToString();
+                employer.IdEmpleador = dalEmployer.EmployerId;
+                employer.NombreEmpresarial = dalEmployer.CompanyName;
+                employer.EnlaceSitioWeb = dalEmployer.Website;
+                // THERE ARE MISSING FIELDS FOR THESE MODELS, ALSO, IT'S A LIST
+                List<FinishedJobOffer> finishedJobOffersList = new List<FinishedJobOffer>();
+                //FinishedJobOffer finishedJobOffers = new FinishedJobOffer();
+                //finishedJobOffers.JobOffer = "";
+                //finishedJobOffers.JobOfferId = "";
+                employer.FinishedJobOffersList = finishedJobOffersList;
+
+                List<ActiveJobOffer> activeJobOffersList = new List<ActiveJobOffer>();
+                //ActiveJobOffersList activeJobOffers = new ActiveJobOffersList();
+                //activeJobOffers.JobOffer = "";
+                //activeJobOffers.JobOfferId = "";
+                employer.ActiveJobOffersList = activeJobOffersList;
+            }            
 
             return employer;      
         }
@@ -192,8 +199,8 @@ namespace MyLearn.BLL
         {
             ReturnCode success = new ReturnCode();
 
-            //code goes here
-
+            UserRepository userRepo = new UserRepository();
+            
             success.ReturnStatus = 1;
             return success;
         }
