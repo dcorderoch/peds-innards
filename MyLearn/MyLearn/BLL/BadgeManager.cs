@@ -33,7 +33,7 @@ namespace MyLearn.BLL
             projectRepo.Dispose();
             return retVal;
         }
-        public List<Badge> GetAll(SharedAreaCredentials credentials)
+        public List<Models.Badge> GetAll(SharedAreaCredentials credentials)
         {
             ProjectRepository projectRepo = new ProjectRepository();
             BadgeRepository badgeRepo = new BadgeRepository();
@@ -44,29 +44,38 @@ namespace MyLearn.BLL
                 projectId = project.ProjectId;
             }
             List<MyLearnDAL.Models.Badge> retval = badgeRepo.GetProjectBadges(projectId);
-            List<Badge> badges = new List<Badge>();
+            List<Models.Badge> badges = new List<Models.Badge>();
             foreach (MyLearnDAL.Models.Badge badge in retval)
             {
-                Badge newBadge = new Badge();
-                newBadge.BadgeId = badge.BadgeId.ToString();
+                Models.Badge newBadge = new Models.Badge();
+                newBadge.BadgeId = badge.AchievementId.ToString();
                 newBadge.BadgeDescription = badge.Achievement.Description;
+                newBadge.Value = badge.Achievement.Score;
+                newBadge.Alardeado = badge.Bragged;
+                newBadge.Awarded = 1;
                 badges.Add(newBadge);
             }
+            projectRepo.Dispose();
+            badgeRepo.Dispose();
             return badges;
         }
+
         public ReturnCode Brag(BadgeIdentifier badgeId)
         {
+            BadgeRepository badgeRepo = new BadgeRepository();
+            Badge badge = new Badge();
+            badge = badgeRepo.GetBadgeById(new Guid(badgeId.BadgeId));
             var retVal = new ReturnCode();
             retVal.ReturnStatus = 0;
+            
             // se hace el tweet ANTES de hacer lo demás, si el método retorna FALSE
             // se retorna que falló la vara
             var tweeter = new Tweeter();
-            if(tweeter.tweet("mensaje"))
+            if(tweeter.tweet(badgeId.StudentName + " " + badgeId.StudentLastName + " obtuvo una medalla."))
             {
                 retVal.ReturnStatus += 1;
-                // marcar la maire como que ya se hizo alarde
+                badge.Bragged = 1;
             }
-            // SUBJECT TO CHANGE
             return retVal;
         }
     }

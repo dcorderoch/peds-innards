@@ -13,5 +13,10 @@ namespace MyLearnDAL.Repositories
         {
             return DbSet.Where(b => b.Project.ProjectId.Equals(ProjectId)).ToList();
         }
+
+        public Badge GetBadgeById(Guid badgeId)
+        {
+            return DbSet.Find(badgeId);
+        }
     }
 }
