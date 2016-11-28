@@ -106,7 +106,6 @@
 
         function register() {
 
-            vm.regData.Carnet = vm.regData.Carnet.toString();
             vm.regData.Telefono = vm.regData.Telefono.toString();
 
             //            vm.regData.TipoRepositorioArchivos = (vm.regData.TipoRepositorioArchivos == "Google Drive") ? "0" : "1"
