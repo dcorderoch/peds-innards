@@ -5,7 +5,7 @@ using MyLearn.TwitterPoster;
 using System.Collections.Generic;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
-using Badge = MyLearn.Models.Badge;
+using Badge = MyLearnDAL.Models.Badge;
 
 namespace MyLearn.BLL
 {
@@ -13,11 +13,27 @@ namespace MyLearn.BLL
     {
         public ReturnCode GiveBadge(NewBadge newBadge)
         {
+            BadgeRepository badgeRepo = new BadgeRepository();
+            ProjectRepository projectRepo = new ProjectRepository();
+            Badge badge = new Badge();
+            Project project = new Project();
             var retVal = new ReturnCode();
-            // SUBJECT TO CHANGE
+
+            badge.BadgeId = Guid.NewGuid();
+            badge.Bragged = 0;
+            badge.AchievementId = new Guid(newBadge.AchievementId);
+            project = projectRepo.GetProjectByStudentAndCourseId(new Guid(newBadge.StudentUserId), new Guid(newBadge.CourseId));
+            badge.ProjectId = project.ProjectId;
+            if (badge.AchievementId != null && badge.ProjectId != null)
+            {
+                badgeRepo.Add(badge);
+                retVal.ReturnStatus = 1;
+            }
+            badgeRepo.Dispose();
+            projectRepo.Dispose();
             return retVal;
         }
-        public List<Models.Badge> GetAll(SharedAreaCredentials credentials)
+        public List<Badge> GetAll(SharedAreaCredentials credentials)
         {
             ProjectRepository projectRepo = new ProjectRepository();
             BadgeRepository badgeRepo = new BadgeRepository();
