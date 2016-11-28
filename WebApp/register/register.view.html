@@ -74,7 +74,7 @@
 
                         <label>Escoge tu universidad</label>
                         <div class="form-group" ng-class="{ 'has-error': form.university.$dirty && form.university.$error.required }">
-                            <select name="university" ng-model="vm.regData.Universidad" ng-options="x.UniversityId as x.University for x in vm.universities" required>
+                            <select name="university" ng-model="vm.regData.Universidad" ng-options="x.UniversityId as x.UniversityName for x in vm.universities" required>
                             </select > 
                         </div>
 
@@ -95,7 +95,7 @@
                                            value="{{language}}"
                                            ng-checked="vm.regData.Idiomas.indexOf(language) > -1"
                                            ng-click="vm.toggleSelectionLanguage(language)"
-                                           /> {{language.Language}}
+                                           /> {{language.LanguageName}}
                                 </label>
                             </div>
 
