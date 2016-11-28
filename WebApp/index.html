@@ -11,8 +11,8 @@
 
     </head>
     <body>
-
-        <div  style="width:45%;   margin: 0 auto; ">
+        <br>
+        <div  style="width:50%; text-align:center;  margin: 0 auto; ">
             <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
         </div>
 
@@ -20,7 +20,8 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+        <script src="lib/sha256.min.js"></script>
+        
 
         <!--Modulos de AngularJS-->
         <script src="lib/angular.min.js"></script>

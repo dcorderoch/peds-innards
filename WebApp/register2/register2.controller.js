@@ -63,7 +63,7 @@
                 }
             },function(response){
                 console.log( vm.regData);
-                FlashService.Error("Usuario no existe");//errores
+                FlashService.Error("Registro fallido");//errores
                 vm.dataLoading = false;
             });
         }

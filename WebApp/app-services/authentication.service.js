@@ -59,7 +59,7 @@
         }
 
         function SetCredentials(Id, Password, data) {   
-            console.log(Id);
+
             var authdata = Base64.encode(Id + ':' + Password);
             console.log(authdata);
             $rootScope.globals = {

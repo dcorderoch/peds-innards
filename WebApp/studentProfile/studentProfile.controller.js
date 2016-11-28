@@ -17,6 +17,7 @@
 
         function initController(){
 
+            $rootScope.userData ={};
             vm.userData = $rootScope.userData;
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
@@ -132,10 +133,16 @@
                     else{
                         FlashService.Error("No se pudo habilitar la cuenta");
                     }
-
                 }
 
             }, function(response){
+                if (vm.userData.Active == "0"){ 
+                    FlashService.Error("No se pudo habilitar la cuenta");
+                } 
+                if (vm.userData.Active == "1"){ 
+                    FlashService.Error("No se pudo deshabilitar la cuenta");
+                }
+
                 console.log("no funcó");
             })
         }

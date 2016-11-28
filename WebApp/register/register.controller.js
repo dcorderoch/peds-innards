@@ -113,6 +113,9 @@
             vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
             vm.regData.Carnet = vm.regData.Carnet.toString();
             vm.regData.Telefono = vm.regData.Telefono.toString();
+            var pass = vm.regData.Password ;
+            vm.regData.Password = sha256(vm.regData.Password);
+            console.log(vm.regData);
             vm.dataLoading = true;
             UserService.RegisterStudent(vm.regData)
                 .then(function (response) {
@@ -126,9 +129,12 @@
                 }
             },function(response){
                 console.log( vm.regData);
-                FlashService.Error("Usuario no existe");//errores
+                FlashService.Error("Registro fallido");//errores
                 vm.dataLoading = false;
             });
+            vm.regData.Password = pass;
+            console.log(vm.regData)
+
         }
 
 

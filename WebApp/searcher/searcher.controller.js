@@ -26,12 +26,22 @@
 
             vm.results=[];
 
+            $rootScope.userData ={};
             vm.userData = $rootScope.userData;
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
 
             $rootScope.currentCourseData={};
+
+            vm.userData.Active = "0";
+            vm.toggleEnable;
+            if (vm.userData.Active == "0"){
+                vm.toggleEnable = false;
+            }
+            if(vm.userData.Active == "1"){
+                vm.toggleEnable = true;
+            }
 
             vm.results.push ({ "JobOffer":"Bretecillo",
                               "JobOfferId": "123",
@@ -85,22 +95,46 @@
 
         }
 
-
         function disableAccount(){
 
-            UserService.Disable(vm.UserId)
+            console.log(vm.userData.userId);
+            console.log(vm.userData.Active);
+
+            UserService.Disable(vm.userData.UserId)
                 .then(function(response){
 
-                if (response.data.ReturnStatus == "1"){ 
+                if (vm.userData.Active == "1"){
+                    if (response.data.ReturnStatus == "1"){ 
 
-                    FlashService.Success("Cuenta deshabilitada");
-                    $location.path("/login")
+                        FlashService.Success("La cuenta ha sido deshabilitada");
+                        $location.path("/login")
+
+                    }
+                    else{
+                        FlashService.Error("No se pudo deshabilitar la cuenta");
+                    }
                 }
-                else{
-                    FlashService.Error("No se pudo cerrar la cuenta");
+                if (vm.userData.Active == "0"){
+
+                    if (response.data.ReturnStatus == "1"){ 
+
+                        FlashService.Success("Cuenta habilitada");
+                        vm.toggleEnable =true;
+                        vm.userData.Active = "1";
+                    }
+                    else{
+                        FlashService.Error("No se pudo habilitar la cuenta");
+                    }
                 }
 
             }, function(response){
+                if (vm.userData.Active == "0"){ 
+                    FlashService.Error("No se pudo habilitar la cuenta");
+                } 
+                if (vm.userData.Active == "1"){ 
+                    FlashService.Error("No se pudo deshabilitar la cuenta");
+                }
+
                 console.log("no funcó");
             })
         }
