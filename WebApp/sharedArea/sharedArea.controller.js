@@ -62,6 +62,24 @@
                 console.log(response);
                 getComments();
                 processComments();
+                var dataSend = {StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, UniversityId: vm.courseData.UniversityId, 
+                                Group: vm.courseData.Group, CourseId: vm.courseData.CourseId}
+
+                CourseService.GetSpecificCourse(dataSend)
+                    .then(function(response){
+
+                    vm.courseData.NombreContacto = response.data.NombreContacto;
+                    vm.courseData.ApellidoContacto = response.data.ApellidoContacto;
+                    vm.courseData.Grade = response.data.Grade;
+                    vm.courseData.Badges = response.data.Badges;
+                    vm.courseData.StudentUserId = vm.courseData.StudentUserId;
+                    ProfileCourseService.SetCourseData(vm.courseData);
+                    initController();
+
+                }, function(response){
+                    console.log("no sirvió")
+                })
+
 
             }, function(response){
                 //                console.log(response);

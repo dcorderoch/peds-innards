@@ -67,6 +67,7 @@
                 .then(function(response){
 
                 FlashService.Success("Proyecto sugerido exitosamente");
+                $location.path('/studentprofile')
             }, function(response){
 
                 FlashService.Error("El proyecto no se ha podido sugerir");

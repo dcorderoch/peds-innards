@@ -57,6 +57,8 @@
             var moneyString = money.toString();
 
             var send={JobOfferId: vm.offerData.JobOfferId, Money:moneyString, DurationDays: timeString, StudentSurname: vm.userData.NombreContacto, StudentUserId: vm.userData.StudentUserId }
+            
+            console.log(send)
 
             JobService.BidCreate(send)
                 .then( function(response){
