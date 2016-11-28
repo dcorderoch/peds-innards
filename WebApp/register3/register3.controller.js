@@ -10,11 +10,10 @@
         var vm = this;
 
         vm.register=register;
-        vm.repositories=[{tipo:'Google Drive', id:1}, {tipo:'Dropbox',id:0}];
-
-        vm.countries=[ {"Country":"costa rica","CountryId": "1"}, {"Country":"nicaragua","CountryId": "2"}];
+        vm.repositories=[{tipo:'Google Drive', id:"0"}, {tipo:'Dropbox',id:"1"}];
 
         vm.regData={};
+
         initController();
 
         function initController(){
@@ -24,30 +23,38 @@
         function loadCountries(){
             RegService.GetCountries()
                 .then(function (response) {
-                if (response.success) {
-                    vm.countries = response.data.Countries;
-                } 
+
+                console.log(response.data)
+                vm.countries = response.data;
+
             },function(response){
                 console.log("supongo2")
             });
         }
 
         function register() {
-            
-            console.log("entro");
-            vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
+
+
+            if (vm.regData.hasOwnProperty("Foto")){
+                vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
+            }
+
+            if (!vm.regData.hasOwnProperty("Foto")){
+                vm.regData.Foto =  "";
+            }
+
             vm.regData.Telefono = vm.regData.Telefono.toString();
             vm.dataLoading = true;
+            
+            console.log(vm.regData);
+
             UserService.RegisterEmployer(vm.regData)
                 .then(function (response) {
-                if (response.success) {
-                    FlashService.Success('Registration successful', true);
-                    $location.path('/professorprofile');    
-                    $rootScope.userData= response.data;
-                } else {
-                    FlashService.Error(response.message);
-                    vm.dataLoading = false;
-                }
+
+                FlashService.Success('Registro exitoso', true);
+                $location.path('/professorprofile');    
+                $rootScope.userData= response.data;
+
             },function(response){
                 console.log( vm.regData);
                 FlashService.Error("Registro fallido");//errores

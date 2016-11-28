@@ -16,7 +16,7 @@
         // selected fruits
         vm.regData.Idiomas = [];
         vm.regData.Tecnologias = [];
-        
+
 
         initController();
         function initController(){
@@ -108,48 +108,45 @@
 
             vm.regData.Carnet = vm.regData.Carnet.toString();
             vm.regData.Telefono = vm.regData.Telefono.toString();
-            
-//            vm.regData.TipoRepositorioArchivos = (vm.regData.TipoRepositorioArchivos == "Google Drive") ? "0" : "1"
+
+            //            vm.regData.TipoRepositorioArchivos = (vm.regData.TipoRepositorioArchivos == "Google Drive") ? "0" : "1"
 
             if (vm.regData.hasOwnProperty("Foto")){
                 vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
             }
-            
+
             if (!vm.regData.hasOwnProperty("Foto")){
                 vm.regData.Foto =  "";
             }
-            
+
             if (!vm.regData.hasOwnProperty("EnlaceRepositorioCodigo")){
                 vm.regData.EnlaceRepositorioCodigo = "";
             }
-            
+
             if (!vm.regData.hasOwnProperty("EnlaceACurriculum")){
                 vm.regData.EnlaceACurriculum = "";
             }
 
 
-            var pass = vm.regData.Password ;
-            vm.regData.Password = sha256(vm.regData.Password);
-            
+            //            var pass = vm.regData.Password ;
+            //            vm.regData.Password = sha256(vm.regData.Password);
+
             console.log(vm.regData);
             vm.dataLoading = true;
             UserService.RegisterStudent(vm.regData)
                 .then(function (response) {
-                if (response.success) {
-                    FlashService.Success('Registration successful', true);
-                    $location.path('/studentprofile');    
-                    $rootScope.userData= response.data;
-                } else {
-                    FlashService.Error(response.message);
-                    vm.dataLoading = false;
-                }
+                
+                console.log(response.data)
+                FlashService.Success('Registro exitoso', true);
+                $location.path('/studentprofile');    
+                $rootScope.userData= response.data;
+
             },function(response){
                 console.log( vm.regData);
                 FlashService.Error("Registro fallido");//errores
                 vm.dataLoading = false;
             });
             vm.regData.Password = pass;
-            console.log(vm.regData)
 
         }
 

@@ -22,7 +22,7 @@
         function RegisterStudent(regData) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"medicalrecords/viewallbypatient",
+                url:$rootScope.url+"Register/RegisterStudent",
                 data:regData
             });
             return response;    
@@ -31,7 +31,7 @@
         function RegisterProfessor(regData) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"medicalrecords/viewallbypatient",
+                url:$rootScope.url+"Register/RegisterProfessor",
                 data:regData
             });
             return response;    
@@ -40,7 +40,7 @@
         function RegisterEmployer(regData) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"medicalrecords/viewallbypatient",
+                url:$rootScope.url+"Register/RegisterEmployer",
                 data:regData
             });
             return response;    
