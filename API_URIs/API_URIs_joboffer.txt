@@ -17,7 +17,8 @@ and then Receives
 }
 
 Nota: - 0 error
-      - 1 exito
+      - 1 éxito, pero no se "twitteó"
+      - 2 éxito, y se twitteó
 
 ################################################# Create new Job Offer
 https://host/Api/JobOffer/Close

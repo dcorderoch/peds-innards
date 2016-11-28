@@ -18,9 +18,10 @@ namespace MyLearn.BLL
             // se hace el tweet ANTES de hacer lo demás, si el método retorna FALSE
             // se retorna que falló la vara
             var tweeter = new Tweeter();
-            if(!tweeter.tweet("mensaje"))
+            if(tweeter.tweet("mensaje")) //cambiar mensaje
             {
-                retVal.ReturnStatus = 0;
+                retVal.ReturnStatus += 1;
+                // marcar la maire como que ya se hizo alarde
             }
             // SUBJECT TO CHANGE
             return retVal;

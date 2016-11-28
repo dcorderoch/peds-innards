@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MyLearn.InputModels;
 using MyLearn.Models;
+using MyLearn.TwitterPoster;
 
 namespace MyLearn.BLL
 {
@@ -8,20 +9,17 @@ namespace MyLearn.BLL
     {
         public ReturnCode CreateJobOffer(NewJobOffer newOffer)
         {
-            ReturnCode success = new ReturnCode();
-
-            //Create new offer
-            //Add new course to DB
-            /*dbobject.Add(newOffer.JobOffer);
-            dbobject.Add(newOffer.Technologies);
-            dbobject.Add(newOffer.Location);
-            dbobject.Add(newOffer.StartDate);
-            dbobject.Add(newOffer.EndDate);
-            dbobject.Add(newOffer.Description);
-            dbobject.Add(newOffer.Budget);*/
-
-            success.ReturnStatus = 1;
-            return success;
+            var retVal = new ReturnCode();
+            // se hace el tweet ANTES de hacer lo demás, si el método retorna FALSE
+            // se retorna que falló la vara
+            var tweeter = new Tweeter();
+            if (tweeter.tweet("mensaje")) //cambiar mensaje
+            {
+                retVal.ReturnStatus += 1;
+                // marcar la maire como que ya se hizo alarde
+            }
+            retVal.ReturnStatus = 1;
+            return retVal;
         }
         public ReturnCode Assign(AssignJobOffer jobOffer)
         {
