@@ -19,5 +19,15 @@ namespace MyLearnDAL.Repositories
         {
             return DbSet.Where(j => j.Student.UserId.Equals(UserId)).ToList();
         }
+
+        public List<JobOffer> GetStudentActiveJobOffers(Guid UserId)
+        {
+            return DbSet.Where(j => j.Student.UserId.Equals(UserId) && j.IsActive.Equals(1)).ToList();
+        }
+
+        public List<JobOffer> GetStudentInactiveJobOffers(Guid UserId)
+        {
+            return DbSet.Where(j => j.Student.UserId.Equals(UserId) && (j.IsActive.Equals(2) || j.IsActive.Equals(3))).ToList();
+        }
     }
 }
