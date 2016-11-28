@@ -203,6 +203,7 @@ and then Receives
 {
     "JobOfferBids":[
                        {
+                           "BidId":"algo",
                            "Money":"algo",
                            "DurationInDays": [0-9],
                            "StudentName":"algo",
@@ -210,6 +211,7 @@ and then Receives
                            "StudentUserId":"Id"
                        },
                        {
+                           "BidId":"algo",
                            "Money":"algo",
                            "DurationInDays": [0-9],
                            "StudentName":"algo",
