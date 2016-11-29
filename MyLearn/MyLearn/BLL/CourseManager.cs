@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using MyLearn.InputModels;
 using MyLearn.Models;
+using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
 using Badge = MyLearn.Models.Badge;
+using Course = MyLearn.Models.Course;
 
 namespace MyLearn.BLL
 {
@@ -16,48 +18,49 @@ namespace MyLearn.BLL
             MyLearnDAL.Models.Course course = new MyLearnDAL.Models.Course();
             List<MyLearnDAL.Models.Course> currentCourses = courseRepo.GetUniversityCourses(new Guid(newCourse.UniversityId));
             MyLearnDAL.Models.Course verifyCourse = currentCourses.Find(x => x.Name == newCourse.CourseName && x.Group == Convert.ToInt32(newCourse.Group));
-            
-                  /*[Key]
-        public Guid CourseId { get; set; }
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Description { get; set; }
-        [Required]
-        public int Group { get; set; }
-        [Required]
-        [ForeignKey("Professor")]
-        public Guid ProfessorId { get; set; }
-        [Required]
-        [ForeignKey("University")]
-        public Guid UniversityId { get; set; }
-        [Required]
-        public decimal MinScore { get; set; }
-        [Required]
-        public int IsActive { get; set; }/*
+            if (verifyCourse == null)
+            {
+                course.CourseId = Guid.NewGuid();
+                course.Name = newCourse.CourseName;
+                course.Description = newCourse.CourseDescription;
+                course.Group = Convert.ToInt32(newCourse.Group);
+                course.ProfessorId = new Guid(newCourse.ProfUserId);
+                course.UniversityId = new Guid(newCourse.UniversityId);
+                course.MinScore = newCourse.MinGrade;
+                course.IsActive = 1;
+                course.Achievements = new List<Achievement>();
+                courseRepo.Add(course);
+                courseRepo.SaveChanges();
+                courseRepo.Dispose();
+                retVal.ReturnStatus = 1;
 
+                /*
+                List<Badge> listOfBadges = newCourse.Badges;
+                List<Achievement> listOfAchievements = new List<Achievement>();
+                foreach (Badge newBadge in listOfBadges)
+                {
+                    MyLearnDAL.Models.Achievement achievement = new MyLearnDAL.Models.Achievement();
+                    achievement.AchievementId = new Guid(newBadge.BadgeId);
+                    achievement.CourseId = course.CourseId;
+                    achievement.Description = newBadge.BadgeDescription;
+                    achievement.Score = newBadge.Value;
+                    listOfAchievements.Add(achievement);
+                }*/
 
-
-        //Add new course to DB
-        /*dbobject.Add(newCourse.CourseName);
-        dbobject.Add(newCourse.CourseDescription);
-        dbobject.Add(newCourse.ProfUserId);
-        dbobject.Add(newCourse.UniversityId);
-        dbobject.Add(newCourse.Group);
-        dbobject.Add(newCourse.MinGrade);
-        dbobject.Add(newCourse.Badges);*/
-        //hard-coded
-        retVal.ReturnStatus = 1;
+            }
             return retVal;
         }
 
         public ReturnCode CloseCourse(string courseId)
         {
             ReturnCode returnCode = new ReturnCode();
-            //Call function
-            int retVal = 0;
-            //retVal  = CloseCourseDB(courseId);
-            returnCode.ReturnStatus = retVal;
+            CourseRepository courseRepo = new CourseRepository();
+            var course = courseRepo.GetCoursebyId(new Guid(courseId));
+            if (course != null)
+            {
+                course.IsActive = 0;
+                returnCode.ReturnStatus = 1;
+            }
             return returnCode;
         }
 

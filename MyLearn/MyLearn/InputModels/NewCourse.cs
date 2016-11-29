@@ -9,7 +9,7 @@ namespace MyLearn.InputModels
         public string ProfUserId { get; set; }
         public string UniversityId { get; set; }
         public string Group { get; set; }
-        public float MinGrade { get; set; }
-        public List<Badge> Badges { get; set; }
+        public decimal MinGrade { get; set; }
+        public List<Models.Badge> Badges { get; set; }
     }
 }
