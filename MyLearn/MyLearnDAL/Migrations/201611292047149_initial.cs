@@ -32,12 +32,15 @@ namespace MyLearnDAL.Migrations
                         UniversityId = c.Guid(nullable: false),
                         MinScore = c.Decimal(nullable: false, precision: 18, scale: 2),
                         IsActive = c.Int(nullable: false),
+                        Technology_TecnologyId = c.Guid(),
                     })
                 .PrimaryKey(t => t.CourseId)
                 .ForeignKey("dbo.Professor", t => t.ProfessorId)
+                .ForeignKey("dbo.Tecnology", t => t.Technology_TecnologyId)
                 .ForeignKey("dbo.University", t => t.UniversityId, cascadeDelete: false)
                 .Index(t => t.ProfessorId)
-                .Index(t => t.UniversityId);
+                .Index(t => t.UniversityId)
+                .Index(t => t.Technology_TecnologyId);
             
             CreateTable(
                 "dbo.User",
@@ -224,19 +227,6 @@ namespace MyLearnDAL.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.TechnologyCourses",
-                c => new
-                    {
-                        Technology_TecnologyId = c.Guid(nullable: false),
-                        Course_CourseId = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Technology_TecnologyId, t.Course_CourseId })
-                .ForeignKey("dbo.Tecnology", t => t.Technology_TecnologyId, cascadeDelete: false)
-                .ForeignKey("dbo.Course", t => t.Course_CourseId, cascadeDelete: false)
-                .Index(t => t.Technology_TecnologyId)
-                .Index(t => t.Course_CourseId);
-            
-            CreateTable(
                 "dbo.TechnologyJobOffers",
                 c => new
                     {
@@ -387,8 +377,7 @@ namespace MyLearnDAL.Migrations
             DropForeignKey("dbo.Badge", "AchievementId", "dbo.Achievement");
             DropForeignKey("dbo.TechnologyJobOffers", "JobOffer_JobOfferId", "dbo.JobOffer");
             DropForeignKey("dbo.TechnologyJobOffers", "Technology_TecnologyId", "dbo.Tecnology");
-            DropForeignKey("dbo.TechnologyCourses", "Course_CourseId", "dbo.Course");
-            DropForeignKey("dbo.TechnologyCourses", "Technology_TecnologyId", "dbo.Tecnology");
+            DropForeignKey("dbo.Course", "Technology_TecnologyId", "dbo.Tecnology");
             DropForeignKey("dbo.JobOffer", "UserId", "dbo.Student");
             DropForeignKey("dbo.JobOffer", "EmployerId", "dbo.Employer");
             DropForeignKey("dbo.JobOfferComment", "UserId", "dbo.User");
@@ -411,8 +400,6 @@ namespace MyLearnDAL.Migrations
             DropIndex("dbo.ProjectTechnologies", new[] { "Project_ProjectId" });
             DropIndex("dbo.TechnologyJobOffers", new[] { "JobOffer_JobOfferId" });
             DropIndex("dbo.TechnologyJobOffers", new[] { "Technology_TecnologyId" });
-            DropIndex("dbo.TechnologyCourses", new[] { "Course_CourseId" });
-            DropIndex("dbo.TechnologyCourses", new[] { "Technology_TecnologyId" });
             DropIndex("dbo.Notification", new[] { "UserId" });
             DropIndex("dbo.ProjectComment", new[] { "UserId" });
             DropIndex("dbo.ProjectComment", new[] { "ProjectId" });
@@ -429,6 +416,7 @@ namespace MyLearnDAL.Migrations
             DropIndex("dbo.User", new[] { "RoleId" });
             DropIndex("dbo.User", new[] { "CountryId" });
             DropIndex("dbo.User", new[] { "Email" });
+            DropIndex("dbo.Course", new[] { "Technology_TecnologyId" });
             DropIndex("dbo.Course", new[] { "UniversityId" });
             DropIndex("dbo.Course", new[] { "ProfessorId" });
             DropIndex("dbo.Achievement", new[] { "CourseId" });
@@ -440,7 +428,6 @@ namespace MyLearnDAL.Migrations
             DropTable("dbo.TechnologyStudents");
             DropTable("dbo.ProjectTechnologies");
             DropTable("dbo.TechnologyJobOffers");
-            DropTable("dbo.TechnologyCourses");
             DropTable("dbo.Notification");
             DropTable("dbo.Language");
             DropTable("dbo.ProjectComment");
