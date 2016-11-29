@@ -8,6 +8,11 @@ namespace MyLearnDAL.Repositories
 {
     public class TechnologyRepository : Repository<Technology>
     {
+        public Technology GetTechnologybyId(Guid techId)
+        {
+            return DbSet.Find(techId);
+        }
+
         public List<Technology> GetStudentTechnologies(Guid UserId)
         {
             return DbSet.Where(t => t.Students.Any(s => s.UserId.Equals(UserId))).ToList();

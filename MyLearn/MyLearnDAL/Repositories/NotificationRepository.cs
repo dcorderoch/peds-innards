@@ -13,5 +13,10 @@ namespace MyLearnDAL.Repositories
         {
             return DbSet.Where(n => n.Student.UserId.Equals(userId)).ToList();
         }
+
+        public Notification GetNotificacionById(Guid notificationId)
+        {
+            return DbSet.Find(notificationId);
+        }
     }
 }

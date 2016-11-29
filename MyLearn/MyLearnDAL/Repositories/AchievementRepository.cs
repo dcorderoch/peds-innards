@@ -11,5 +11,10 @@ namespace MyLearnDAL.Repositories
         {
             return DbSet.Where(a => a.Course.CourseId.Equals(CourseId)).ToList();
         }
+
+        public Achievement GetAchievementById(Guid achievementId)
+        {
+            return DbSet.Find(achievementId);
+        }
     }
 }

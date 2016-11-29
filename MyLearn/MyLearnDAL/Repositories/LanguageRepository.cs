@@ -9,5 +9,9 @@ namespace MyLearnDAL.Repositories
 {
     public class LanguageRepository : Repository<Language>
     {
+        public Language GetLanguageById(Guid languageId)
+        {
+            return DbSet.Find(languageId);
+        }
     }
 }

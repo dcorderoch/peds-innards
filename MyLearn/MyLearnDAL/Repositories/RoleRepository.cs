@@ -7,7 +7,7 @@ using MyLearnDAL.Models;
 
 namespace MyLearnDAL.Repositories
 {
-    class RoleRepository : Repository<Role>
+    public class RoleRepository : Repository<Role>
     {
     }
 }
