@@ -16,23 +16,27 @@ namespace MyLearn.BLL
             BadgeRepository badgeRepo = new BadgeRepository();
             ProjectRepository projectRepo = new ProjectRepository();
             Badge badge = new Badge();
-            Project project = new Project();
+            Project project = projectRepo.GetProjectByStudentAndCourseId(new Guid(newBadge.StudentUserId), new Guid(newBadge.CourseId));
             var retVal = new ReturnCode();
 
             badge.BadgeId = Guid.NewGuid();
             badge.Bragged = 0;
             badge.AchievementId = new Guid(newBadge.AchievementId);
-            project = projectRepo.GetProjectByStudentAndCourseId(new Guid(newBadge.StudentUserId), new Guid(newBadge.CourseId));
             badge.ProjectId = project.ProjectId;
+         
             if (badge.AchievementId != null && badge.ProjectId != null)
             {
+                project.Badges.Add(badge);
                 badgeRepo.Add(badge);
+                projectRepo.SaveChanges();
+                badgeRepo.SaveChanges();
                 retVal.ReturnStatus = 1;
             }
             badgeRepo.Dispose();
             projectRepo.Dispose();
             return retVal;
         }
+
         public List<Models.Badge> GetAll(SharedAreaCredentials credentials)
         {
             ProjectRepository projectRepo = new ProjectRepository();
@@ -73,8 +77,9 @@ namespace MyLearn.BLL
             var tweeter = new Tweeter();
             if(tweeter.tweet(badgeId.StudentName + " " + badgeId.StudentLastName + " obtuvo una medalla."))
             {
-                retVal.ReturnStatus += 1;
                 badge.Bragged = 1;
+                badgeRepo.SaveChanges();
+                retVal.ReturnStatus += 1;
             }
             badgeRepo.Dispose();
             return retVal;

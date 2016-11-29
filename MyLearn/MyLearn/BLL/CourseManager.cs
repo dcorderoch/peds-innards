@@ -28,10 +28,22 @@ namespace MyLearn.BLL
                 course.UniversityId = new Guid(newCourse.UniversityId);
                 course.MinScore = newCourse.MinGrade;
                 course.IsActive = 1;
-                course.Achievements = new List<Achievement>();
+
+                List<Badge> badges = newCourse.Badges;
+                var achievements = new List<Achievement>();
+                foreach (var badge in badges)
+                {
+                    var achievement = new Achievement();
+                    achievement.AchievementId = new Guid(badge.BadgeId);
+                    achievement.CourseId = course.CourseId;
+                    achievement.Description = badge.BadgeDescription;
+                    achievement.Score = badge.Value;
+                    achievements.Add(achievement);
+                }
+                course.Achievements = achievements;
+                course.Students = new List<Student>();
                 courseRepo.Add(course);
                 courseRepo.SaveChanges();
-                courseRepo.Dispose();
                 retVal.ReturnStatus = 1;
 
                 /*
@@ -48,6 +60,7 @@ namespace MyLearn.BLL
                 }*/
 
             }
+            courseRepo.Dispose();
             return retVal;
         }
 
@@ -59,34 +72,66 @@ namespace MyLearn.BLL
             if (course != null)
             {
                 course.IsActive = 0;
+                courseRepo.SaveChanges();
                 returnCode.ReturnStatus = 1;
             }
+            courseRepo.Dispose();
             return returnCode;
         }
 
         public Course GetCourseAsProfessor(string courseId)
         {
-            Course course = new Course();
-            //Subject to change
-            course.CourseName = "";
-            course.UniversityId = "";
-            course.MinGrade = 0;
-            course.CourseId = "";
-            course.CourseDescription = "";
-            course.Group = 2;
-            course.Students = new List<StudentInCourse>();
-            return course;
-
+            CourseRepository courseRepo = new CourseRepository();
+            var course = courseRepo.GetCoursebyId(new Guid(courseId));
+            Course retCourse = new Course();
+            if (course != null)
+            {
+                retCourse.CourseId = course.CourseId.ToString();
+                retCourse.CourseName = course.Name;
+                retCourse.UniversityId = course.UniversityId.ToString();
+                retCourse.Group = course.Group;
+                retCourse.CourseDescription = course.Description;
+                retCourse.MinGrade = course.MinScore;
+                List<StudentInCourse> resultList = new List<StudentInCourse>();
+                List<Student> listOfStudents = course.Students;
+                foreach (var student in listOfStudents)
+                {
+                    var resStudent = new StudentInCourse();
+                    resStudent.StudentUserId = student.UserId.ToString();
+                    resStudent.Nombre = student.Name;
+                    resultList.Add(resStudent);
+                }
+            }
+            courseRepo.Dispose();
+            return retCourse;
         }
 
         public SpecificCourse GetSpecificCourse(SharedAreaCredentials credentials)
         {
-         SpecificCourse specificCourse = new SpecificCourse();
-            specificCourse.NombreContacto = "";
-            specificCourse.ApellidoContacto = "";
-            specificCourse.Grade = 0;
-            specificCourse.Badges = new List<Badge>();
-
+            ProjectRepository projectRepository = new ProjectRepository();
+            SpecificCourse specificCourse = new SpecificCourse();
+            var project = projectRepository.GetProjectByStudentAndCourseId(new Guid(credentials.StudentUserId),
+                new Guid(credentials.CourseId));
+            if (project != null)
+            {
+                specificCourse.NombreContacto = project.Student.Name;
+                specificCourse.ApellidoContacto = project.Student.LastName;
+                specificCourse.Grade = project.Score;
+                var listOfBadges = project.Badges;
+                List<Badge> resultBadge = new List<Badge>();
+                foreach (var badge in listOfBadges)
+                {
+                    var newbadge = new Badge();
+                    newbadge.BadgeId = badge.AchievementId.ToString();
+                    newbadge.BadgeDescription = badge.Achievement.Description;
+                    newbadge.Value = badge.Achievement.Score;
+                    newbadge.Alardeado = badge.Bragged;
+                    newbadge.Awarded = 1;
+                    resultBadge.Add(newbadge);
+                }
+                specificCourse.Badges = resultBadge;
+            }
+            projectRepository.Dispose();
             return specificCourse;   
         }
 
