@@ -17,7 +17,8 @@
     <AssemblyName>MyLearn</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>44371</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
@@ -176,6 +177,7 @@
     <Compile Include="InputModels\EmployerIdentifier.cs" />
     <Compile Include="InputModels\InputBid.cs" />
     <Compile Include="InputModels\JobOfferIdentifier.cs" />
+    <Compile Include="InputModels\NewBid.cs" />
     <Compile Include="InputModels\ProjectProposal.cs" />
     <Compile Include="InputModels\LoginInfo.cs" />
     <Compile Include="InputModels\NewBadge.cs" />
@@ -192,6 +194,7 @@
     <Compile Include="InputModels\SharedAreaCredentials.cs" />
     <Compile Include="InputModels\StudentIdentifier.cs" />
     <Compile Include="InputModels\StudentJoinsCourse.cs" />
+    <Compile Include="InputModels\UniProjectMembers.cs" />
     <Compile Include="InputModels\UniversityIdentifier.cs" />
     <Compile Include="InputModels\UserIdentifier.cs" />
     <Compile Include="Models\ActiveCourse.cs" />

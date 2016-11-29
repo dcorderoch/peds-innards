@@ -10,7 +10,7 @@ namespace MyLearn.Controllers
         /// This Method returns all information of all Products in the Database
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         public JsonResult<List<string>> GetAll()
         {
             List<string> retVal = new List<string>();
@@ -21,7 +21,7 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
-        [HttpPost]
+        [HttpGet]
         public JsonResult<List<string>> GetTHEM()
         {
             List<string> retVal = new List<string>();
