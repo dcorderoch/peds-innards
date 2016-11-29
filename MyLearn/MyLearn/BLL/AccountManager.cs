@@ -117,8 +117,7 @@ namespace MyLearn.BLL
                 }
 
                 student.ActiveCoursesList = activeCoursesList;
-                courseRepo.Dispose();
-
+             
                 JobOfferRepository jobRepo = new JobOfferRepository();
                 List<JobOffer> finishedJobs = jobRepo.GetStudentInactiveJobOffers(studentId);
                 List<FinishedJobOffer> finishedJobOffers = new List<FinishedJobOffer>();
@@ -147,6 +146,8 @@ namespace MyLearn.BLL
                 student.ActiveJobOffersList = activeJobOffers;
                 student.Active = IsActive(studentId.ToString());
                 jobRepo.Dispose();
+                courseRepo.Dispose();
+
             }
             studentRepo.Dispose();
             
@@ -171,7 +172,8 @@ namespace MyLearn.BLL
                 professor.Fecha_Registro = dalProfessor.InDate.ToString();
                 professor.Password = dalProfessor.Password;
                 professor.TipoRepositorioArchivos = dalProfessor.TRepo.ToString();
-                professor.Foto = dalProfessor.Photo.ToString();
+                var professorPhoto = dalProfessor.Photo;
+                professor.Foto = professorPhoto != null ? Convert.ToBase64String(professorPhoto) : "";
                 professor.Universidad = dalProfessor.University.Name;
                 professor.UniversityId = dalProfessor.UniversityId.ToString();
                 professor.HorarioAtencion = dalProfessor.Schedule;
@@ -230,6 +232,8 @@ namespace MyLearn.BLL
                 employer.Fecha_Registro = dalEmployer.InDate.ToString();
                 employer.Password = dalEmployer.Password;
                 employer.TipoRepositorioArchivos = dalEmployer.TRepo.ToString();
+                var employerPhoto = dalEmployer.Photo;
+                employer.Foto = employerPhoto != null ? Convert.ToBase64String(employerPhoto) : "";
                 employer.Foto = dalEmployer.Photo.ToString();
                 employer.IdEmpleador = dalEmployer.EmployerId;
                 employer.NombreEmpresarial = dalEmployer.CompanyName;
