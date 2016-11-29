@@ -115,6 +115,7 @@
             }
 
             if (!vm.regData.hasOwnProperty("Foto")){
+                console.log(vm.regData.hasOwnProperty("Foto"));
                 vm.regData.Foto =  "";
             }
 
