@@ -9,14 +9,14 @@ namespace MyLearn.Controllers
     public class BidController : ApiController
     {
         [HttpPost]
-        public JsonResult<ReturnCode> Create(NewBadge newBadge)
+        public JsonResult<ReturnCode> Create(NewBid newBadge)
         {
             var status = new BidManager();
             var retVal = status.Create(newBadge);
             return Json(retVal);
         }
         [HttpPost]
-        public JsonResult<ReturnCode> Update(NewBadge newBadge)
+        public JsonResult<ReturnCode> Update(NewBid newBadge)
         {
             var status = new BidManager();
             var retVal = status.Update(newBadge);
