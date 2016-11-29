@@ -90,7 +90,7 @@ namespace MyLearn.BLL
 
             foreach (var lang in newStudent.Idiomas)
             {
-                var language = langRepo.GetLanguageById(Guid.Parse(lang));
+                var language = langRepo.Get(Convert.ToInt32(lang));
                 student.Languages.Add(language);
             }
             studentRepo.Add(student);
