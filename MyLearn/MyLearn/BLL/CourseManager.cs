@@ -58,7 +58,6 @@ namespace MyLearn.BLL
                     achievement.Score = newBadge.Value;
                     listOfAchievements.Add(achievement);
                 }*/
-
             }
             courseRepo.Dispose();
             return retVal;
@@ -135,7 +134,7 @@ namespace MyLearn.BLL
             return specificCourse;   
         }
 
-        public CourseAsStudent GetCourseAsStudent(string courseId)
+        public CourseAsStudent GetCourseAsStudent(CourseAsStudentCredentials courseId)
         {
         CourseAsStudent courseAsStudent = new CourseAsStudent();
             //Get course from database

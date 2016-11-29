@@ -24,10 +24,10 @@ namespace MyLearn.Controllers
             return Json(retVal);
         }
         [HttpPost]
-        public JsonResult<CourseAsStudent> GetCourseAsStudent(CourseIdentifier courseId)
+        public JsonResult<CourseAsStudent> GetCourseAsStudent(CourseAsStudentCredentials courseId)
         {
             var courMngr = new CourseManager();
-            var retVal = courMngr.GetCourseAsStudent(courseId.CourseId);
+            var retVal = courMngr.GetCourseAsStudent(courseId);
             return Json(retVal);
         }
         [HttpPost]
