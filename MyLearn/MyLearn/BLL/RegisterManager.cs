@@ -72,7 +72,6 @@ namespace MyLearn.BLL
             student.CountryId = country.CountryId;
             var university =universityRepo.GetUniversityById(Guid.Parse(newStudent.Universidad));
 
-            student.University = university;
             student.Photo = newStudent.Foto.Equals("") ? null : Convert.FromBase64String(newStudent.Foto);
             student.UniversityId = student.University.UniversityId;
             student.Email = newStudent.Email;
