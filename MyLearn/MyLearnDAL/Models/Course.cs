@@ -38,7 +38,6 @@ namespace MyLearnDAL.Models
         public virtual Professor Professor { get; set; }
         public virtual University University { get; set; }
         public virtual List<Student> Students { get; set; }
-        public virtual List<Technology> Technologies { get; set; }
         public virtual List<Achievement> Achievements { get; set; }
     }
 }
