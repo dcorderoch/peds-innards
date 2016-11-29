@@ -7,6 +7,6 @@
         public string CourseId { get; set; }
         public string Comment { get; set; }
         public string ParentId { get; set; }
-        public float Commenter { get; set; }
+        public int Commenter { get; set; }
     }
 }

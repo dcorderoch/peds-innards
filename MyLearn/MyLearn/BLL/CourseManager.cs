@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MyLearn.InputModels;
 using MyLearn.Models;
+using MyLearnDAL.Repositories;
 using Badge = MyLearn.Models.Badge;
 
 namespace MyLearn.BLL
@@ -10,17 +12,45 @@ namespace MyLearn.BLL
         public ReturnCode CreateCourse(NewCourse newCourse)
         {
             ReturnCode retVal = new ReturnCode();
+            CourseRepository courseRepo = new CourseRepository();
+            MyLearnDAL.Models.Course course = new MyLearnDAL.Models.Course();
+            List<MyLearnDAL.Models.Course> currentCourses = courseRepo.GetUniversityCourses(new Guid(newCourse.UniversityId));
+            Course verifyCourse = currentCourses.Find(x => x.Name == newCourse.CourseName && x.Group == newCourse.Group);
+            if ()
+            {
+                
+            }
+                  /*[Key]
+        public Guid CourseId { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public string Description { get; set; }
+        [Required]
+        public int Group { get; set; }
+        [Required]
+        [ForeignKey("Professor")]
+        public Guid ProfessorId { get; set; }
+        [Required]
+        [ForeignKey("University")]
+        public Guid UniversityId { get; set; }
+        [Required]
+        public decimal MinScore { get; set; }
+        [Required]
+        public int IsActive { get; set; }/*
 
-            //Add new course to DB
-            /*dbobject.Add(newCourse.CourseName);
-            dbobject.Add(newCourse.CourseDescription);
-            dbobject.Add(newCourse.ProfUserId);
-            dbobject.Add(newCourse.UniversityId);
-            dbobject.Add(newCourse.Group);
-            dbobject.Add(newCourse.MinGrade);
-            dbobject.Add(newCourse.Badges);*/
-            //hard-coded
-            retVal.ReturnStatus = 1;
+
+
+        //Add new course to DB
+        /*dbobject.Add(newCourse.CourseName);
+        dbobject.Add(newCourse.CourseDescription);
+        dbobject.Add(newCourse.ProfUserId);
+        dbobject.Add(newCourse.UniversityId);
+        dbobject.Add(newCourse.Group);
+        dbobject.Add(newCourse.MinGrade);
+        dbobject.Add(newCourse.Badges);*/
+        //hard-coded
+        retVal.ReturnStatus = 1;
             return retVal;
         }
 
