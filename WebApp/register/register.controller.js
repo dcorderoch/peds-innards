@@ -145,8 +145,7 @@
                 FlashService.Error("Registro fallido");//errores
                 vm.dataLoading = false;
             });
-            vm.regData.Password = pass;
-
+            //vm.regData.Password = pass;
         }
 
 

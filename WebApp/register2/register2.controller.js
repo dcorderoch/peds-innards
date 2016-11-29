@@ -71,6 +71,6 @@
                 vm.dataLoading = false;
             });
         }
+        
     }
-
 })();
