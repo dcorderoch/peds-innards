@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.EnterpriseServices.Internal;
-using System.Web.UI;
-using MyLearn.InputModels;
 using MyLearn.Models;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
-using Country = MyLearnDAL.Models.Country;
-using Course = MyLearnDAL.Models.Course;
-using JobOffer = MyLearnDAL.Models.JobOffer;
-using Language = MyLearnDAL.Models.Language;
-using Technology = MyLearnDAL.Models.Technology;
-using University = MyLearnDAL.Models.University;
+
 
 namespace MyLearn.BLL
 {
@@ -68,12 +59,9 @@ namespace MyLearn.BLL
                 ResumeLink = newStudent.EnlaceACurriculum
             };
 
-            var country = countryRepo.GetCountryById(Guid.Parse(newStudent.Ubicacion));
-            student.CountryId = country.CountryId;
-            var university =universityRepo.GetUniversityById(Guid.Parse(newStudent.Universidad));
-
+            student.CountryId = Guid.Parse(newStudent.Ubicacion);
+            student.UniversityId = Guid.Parse(newStudent.Universidad);
             student.Photo = newStudent.Foto.Equals("") ? null : Convert.FromBase64String(newStudent.Foto);
-            student.UniversityId = student.University.UniversityId;
             student.Email = newStudent.Email;
             student.InDate = DateTime.Now;
             student.IsActive = 1;
