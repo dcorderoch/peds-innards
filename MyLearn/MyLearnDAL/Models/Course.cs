@@ -11,7 +11,6 @@ namespace MyLearnDAL.Models
         public Course()
         {
             Students = new List<Student>();
-            Technologies= new List<Technology>();
             Achievements= new List<Achievement>();
             
         }
