@@ -65,6 +65,7 @@ Nota: - 0 inactivo
 https://host/Api/Course/GetCourseAsStudent
 Web Application sends
 {
+    "StudentUserId":"Id",
     "CourseId": "Id"
 }
 
