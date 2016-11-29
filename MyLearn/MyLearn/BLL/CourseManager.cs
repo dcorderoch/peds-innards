@@ -136,19 +136,25 @@ namespace MyLearn.BLL
 
         public CourseAsStudent GetCourseAsStudent(CourseAsStudentCredentials courseId)
         {
-        CourseAsStudent courseAsStudent = new CourseAsStudent();
+            CourseAsStudent courseAsStudent = new CourseAsStudent();
+            CourseRepository courseRepo = new CourseRepository();
+            var course = courseRepo.GetCoursebyId(new Guid(courseId));
+            if (course != null)
+            {
+                courseAsStudent.CourseName = course.Name;
+                courseAsStudent.StudentUserId = "";
+                courseAsStudent.ProfUserId = "";
+                courseAsStudent.ProfessorName = "";
+                courseAsStudent.UniversityId = "";
+                courseAsStudent.Grade = 10;
+                courseAsStudent.Badges = new List<Badge>();
+                courseAsStudent.CourseId = "";
+                courseAsStudent.CourseDescription = "";
+                courseAsStudent.Group = 1;
+                courseAsStudent.CourseState = 1;
+            }
             //Get course from database
-            courseAsStudent.CourseName = "";
-            courseAsStudent.StudentUserId = "";
-            courseAsStudent.ProfUserId = "";
-            courseAsStudent.ProfessorName = "";
-            courseAsStudent.UniversityId = "";
-            courseAsStudent.Grade = 10;
-            courseAsStudent.Badges = new List<Badge>();
-            courseAsStudent.CourseId = "";
-            courseAsStudent.CourseDescription = "";
-            courseAsStudent.Group = 1;
-            courseAsStudent.CourseState = 1;
+            
             return courseAsStudent;
                 
         }

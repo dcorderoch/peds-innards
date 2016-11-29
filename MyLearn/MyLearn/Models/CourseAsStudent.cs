@@ -9,11 +9,11 @@ namespace MyLearn.Models
         public string ProfUserId { get; set; }
         public string ProfessorName { get; set; }
         public string UniversityId { get; set; }
-        public float Grade { get; set; }
+        public decimal Grade { get; set; }
         public List<Badge> Badges { get; set; }
         public string CourseId { get; set; }
         public string CourseDescription { get; set; }
-        public float Group { get; set; }
-        public float CourseState { get; set; }
+        public int Group { get; set; }
+        public int CourseState { get; set; }
     }
 }
