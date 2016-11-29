@@ -19,42 +19,39 @@ namespace MyLearn.BLL
     {
         public InfoEstudiante StudentRegister(RegisterEstudianteInfo newStudent)
         {
-            InfoEstudiante retStudent = new InfoEstudiante();
-            AccountManager accountSession = new AccountManager();
+            var accountSession = new AccountManager();
             AddStudentToDB(newStudent);
-            retStudent = accountSession.StudentLogin(newStudent.Email, newStudent.Password);
+            var retStudent = accountSession.StudentLogin(newStudent.Email, newStudent.Password);
             return retStudent;
          }
 
         public InfoProfesor ProfessorRegister(RegisterProfessorInfo newProfessor)
         {
-            InfoProfesor retProfessor = new InfoProfesor();
-            AccountManager accountSession = new AccountManager();
+            var accountSession = new AccountManager();
             AddProfessorToDB(newProfessor);
-            retProfessor = accountSession.ProfessorLogin(newProfessor.Email, newProfessor.Password);
+            var retProfessor = accountSession.ProfessorLogin(newProfessor.Email, newProfessor.Password);
             return retProfessor;
 
         }
 
         public InfoEmpleador EmployerRegister(RegisterEmployerInfo newEmployer)
         {
-            InfoEmpleador retEmployer = new InfoEmpleador();
-            AccountManager accountSession = new AccountManager();
+            var accountSession = new AccountManager();
             AddEmployerToDB(newEmployer);
-            retEmployer = accountSession.EmployerLogin(newEmployer.Email, newEmployer.Password);
+            var retEmployer= accountSession.EmployerLogin(newEmployer.Email, newEmployer.Password);
             return retEmployer;
 
         }
 
         private void AddStudentToDB(RegisterEstudianteInfo newStudent)
         {
-            StudentRepository studentRepo = new StudentRepository();
-            CountryRepository countryRepo = new CountryRepository();
-            TechnologyRepository techRepo = new TechnologyRepository();
-            UniversityRepository universityRepo = new UniversityRepository();
-            LanguageRepository langRepo= new LanguageRepository();
+            var studentRepo = new StudentRepository();
+            var countryRepo = new CountryRepository();
+            var techRepo = new TechnologyRepository();
+            var universityRepo = new UniversityRepository();
+            var langRepo= new LanguageRepository();
 
-            Student student = new Student
+            var student = new Student
             {
                 UserId = Guid.NewGuid(),
                 Name = newStudent.NombreContacto,
@@ -71,9 +68,9 @@ namespace MyLearn.BLL
                 ResumeLink = newStudent.EnlaceACurriculum
             };
 
-            var country = countryRepo.Get(Convert.ToInt32(newStudent.Ubicacion));
+            var country = countryRepo.GetCountryById(Guid.Parse(newStudent.Ubicacion));
             student.CountryId = country.CountryId;
-            var university =universityRepo.Get(Convert.ToInt32(newStudent.Universidad));
+            var university =universityRepo.GetUniversityById(Guid.Parse(newStudent.Universidad));
 
             student.University = university;
             student.Photo = newStudent.Foto.Equals("") ? null : Convert.FromBase64String(newStudent.Foto);
@@ -85,15 +82,15 @@ namespace MyLearn.BLL
             student.TRepo = Convert.ToInt32(newStudent.TipoRepositorioArchivos);
             student.PhoneNum = newStudent.Telefono;
             
-            foreach (string tech in newStudent.Tecnologias)
+            foreach (var tech in newStudent.Tecnologias)
             {
-                Technology technology = techRepo.Get(Convert.ToInt32(tech));
+                var technology = techRepo.GetTechnologybyId(Guid.Parse(tech));
                 student.Technologies.Add(technology);
             }
 
-            foreach (string lang in newStudent.Idiomas)
+            foreach (var lang in newStudent.Idiomas)
             {
-                Language language = langRepo.Get(Convert.ToInt32(lang));
+                var language = langRepo.GetLanguageById(Guid.Parse(lang));
                 student.Languages.Add(language);
             }
             studentRepo.Add(student);
@@ -107,11 +104,11 @@ namespace MyLearn.BLL
 
         private void AddProfessorToDB(RegisterProfessorInfo newProfessor)
         {
-            ProfessorRepository professorRepo = new ProfessorRepository();
-            CountryRepository countryRepo = new CountryRepository();
-            UniversityRepository universityRepo = new UniversityRepository();
+            var professorRepo = new ProfessorRepository();
+            var countryRepo = new CountryRepository();
+            var universityRepo = new UniversityRepository();
 
-            Professor professor = new Professor
+            var professor = new Professor
             {
                 UserId = Guid.NewGuid(),
                 Name = newProfessor.NombreContacto,
@@ -124,12 +121,12 @@ namespace MyLearn.BLL
                 TRepo = Convert.ToInt32(newProfessor.TipoRepositorioArchivos)
             };
 
-            var university = universityRepo.Get(Convert.ToInt32(newProfessor.Universidad));
+            var university = universityRepo.GetUniversityById(Guid.Parse(newProfessor.Universidad));
             professor.UniversityId = university.UniversityId;
             professor.ProfessorId = newProfessor.IdProfesor;
             professor.InDate = DateTime.Now;
             professor.RoleId = 2;
-            var country = countryRepo.Get(Convert.ToInt32(newProfessor.Ubicacion));
+            var country = countryRepo.GetCountryById(Guid.Parse(newProfessor.Ubicacion));
             professor.CountryId = country.CountryId;
 
             professor.TRepo = Convert.ToInt32(newProfessor.TipoRepositorioArchivos);
@@ -147,16 +144,18 @@ namespace MyLearn.BLL
         {
             var employerRepo = new EmployerRepository();
             var countryRepo = new CountryRepository();
-            Employer employer = new Employer();
-            employer.UserId = Guid.NewGuid();
-            employer.ContactName = newEmployer.NombreContacto;
-            employer.ContactLastname = newEmployer.ApellidoContacto;
-            employer.CompanyName = newEmployer.NombreEmpresarial;
-            employer.EmployerId = newEmployer.IdEmpresa;
-            employer.Website = newEmployer.EnlaceSitioWeb;
-            employer.Photo = newEmployer.Foto.Equals("") ? null : Convert.FromBase64String(newEmployer.Foto);
-            employer.TRepo = Convert.ToInt32(newEmployer.TipoRepositorioArchivos);
-            var country = countryRepo.Get(Convert.ToInt32(newEmployer.Ubicacion));
+            var employer = new Employer
+            {
+                UserId = Guid.NewGuid(),
+                ContactName = newEmployer.NombreContacto,
+                ContactLastname = newEmployer.ApellidoContacto,
+                CompanyName = newEmployer.NombreEmpresarial,
+                EmployerId = newEmployer.IdEmpresa,
+                Website = newEmployer.EnlaceSitioWeb,
+                Photo = newEmployer.Foto.Equals("") ? null : Convert.FromBase64String(newEmployer.Foto),
+                TRepo = Convert.ToInt32(newEmployer.TipoRepositorioArchivos)
+            };
+            var country = countryRepo.GetCountryById(Guid.Parse(newEmployer.Ubicacion));
             employer.CountryId = country.CountryId;
             employer.Email = newEmployer.Email;
             employer.Password = newEmployer.Password;
@@ -167,6 +166,7 @@ namespace MyLearn.BLL
             employerRepo.Add(employer);
             employerRepo.SaveChanges();
             employerRepo.Dispose();
+            countryRepo.Dispose();
         }
     }
 }
