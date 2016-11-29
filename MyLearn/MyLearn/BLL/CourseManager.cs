@@ -15,11 +15,8 @@ namespace MyLearn.BLL
             CourseRepository courseRepo = new CourseRepository();
             MyLearnDAL.Models.Course course = new MyLearnDAL.Models.Course();
             List<MyLearnDAL.Models.Course> currentCourses = courseRepo.GetUniversityCourses(new Guid(newCourse.UniversityId));
-            Course verifyCourse = currentCourses.Find(x => x.Name == newCourse.CourseName && x.Group == newCourse.Group);
-            if ()
-            {
-                
-            }
+            MyLearnDAL.Models.Course verifyCourse = currentCourses.Find(x => x.Name == newCourse.CourseName && x.Group == Convert.ToInt32(newCourse.Group));
+            
                   /*[Key]
         public Guid CourseId { get; set; }
         [Required]
