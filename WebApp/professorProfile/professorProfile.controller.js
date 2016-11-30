@@ -42,6 +42,22 @@
             if(vm.userData.Active == "1"){
                 vm.toggleEnable = true;
             }
+
+            loadCourses();
+        }
+
+        function loadCourses(){
+
+            CourseService.GetAllByProfessor(vm.userData.UserId)
+                .then(function(response){
+
+                vm.userData.FinishedCoursesList = response.data.FinishedCourses;
+                vm.userData.ActiveCoursesList = response.data.ActiveCourses;
+                console.log(response);
+
+            }, function(response){
+                FlashService.Error("Error al traer los cursos de profesor")
+            });
         }
 
         function goCourseFinished(id){
@@ -54,7 +70,7 @@
 
                 var currentCourseData = response.data;
                 currentCourseData.status = false;
-
+                console.log(currentCourseData )
                 ProfileCourseService.SetCourseData(currentCourseData);
                 $location.path('/courseoverview');    
 
@@ -69,7 +85,7 @@
 
                 var currentCourseData = response.data;
                 currentCourseData.status=true;
-
+                console.log(currentCourseData )
                 ProfileCourseService.SetCourseData(currentCourseData);
                 $location.path('/courseoverview');    
 

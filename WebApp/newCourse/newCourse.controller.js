@@ -75,19 +75,21 @@
 
                 if (response.data.ReturnStatus == "1"){
                     FlashService.Success("Curso creado");
+                    vm.nombreEval="";
+                    vm.porcentaje ="";
+                    vm.CourseName="";
+                    vm.CourseDescription="";
+                    vm.Group="";
+                    vm.MinGrade="";
+                    vm.evaluations=[];
+
                 }
                 else{
                     FlashService.Error("No se pudo crear el curso");
                 }
             }, function(response){
                 FlashService.Error("No se pudo crear el curso");
-                vm.nombreEval="";
-                vm.porcentaje ="";
-                vm.CourseName="";
-                vm.CourseDescription="";
-                vm.Group="";
-                vm.MinGrade="";
-                vm.evaluations=[];
+
             })
 
 

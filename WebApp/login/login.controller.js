@@ -64,7 +64,7 @@
 
                         var data = response.data;
                         delete data.Foto;
-                        
+
                         AuthenticationService.SetCredentials( data.UserId, data.Password, 
                                                              data);    
                         $rootScope.userData= data;
@@ -97,12 +97,11 @@
                     })
                 }
                 else{
-                    FlashService.Error("Usuario no existe");//errores
                     vm.dataLoading = false;
                 }
             },function(response){
                 console.log( vm.loginData);
-
+                FlashService.Error("Usuario no existe");//errores
                 vm.dataLoading = false;
             }); 
         }

@@ -12,8 +12,9 @@
     <div class="border row">
         <div class="border col-md-8 col-md-offset-2"> 
 
-            <h1 class="sharedAreaTitle">Resumen del curso {{vm.courseData.courseName}}</h1>
+            <h1 class="sharedAreaTitle">Resumen del curso: {{vm.courseData.CourseName}}</h1>
             <br>
+
             <div class="panel panel-default" >
                 <div  class="panel-body">
 
@@ -21,7 +22,7 @@
                         <div class="panel panel-default panelAuction">
                             <div class="panel-body">
                                 <p>Nombre estudiante: {{student.Nombre}}
-                                    
+
                                     <button ng-click="vm.goArea(student.StudentUserId)" style="margin:2px" type="button" class="btn btn-primary uniCourse"> Abrir área compartida </button>
                                 </p> 
                             </div>
@@ -31,6 +32,8 @@
                     </div>      
                 </div>
             </div>
+            <button style="float:right"  class="btn btn-danger" ng-click="vm.finishCourse()">Cerrar curso</button>
+
         </div>
     </div>
 </div>

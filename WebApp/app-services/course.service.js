@@ -19,7 +19,9 @@
         service.ProjectPropose = ProjectPropose;
         service.CommentCreate = CommentCreate;
         service.Brag = Brag;
-        service.GiveBadge = GiveBadge
+        service.GiveBadge = GiveBadge;
+        service.GetAllByProfessor = GetAllByProfessor;
+        service.CloseCourse = CloseCourse;
 
         return service;
 
@@ -57,6 +59,15 @@
                 data: sharedAreaData
             });
             return response 
+        }  
+        
+        function CloseCourse(courseId){
+            var response = $http({
+                method:"post",
+                url: $rootScope.url+"Course/Close",
+                data: {CourseId: courseId}
+            });
+            return response 
         }
 
         function GetAllByUniversity(universityId){
@@ -64,6 +75,15 @@
                 method:"post",
                 url:$rootScope.url+"Course/GetAllByUniversity",
                 data: {UniversityId: universityId}
+            });
+            return response;
+        }
+        
+        function GetAllByProfessor(profUserId){
+            var response  = $http({
+                method:"post",
+                url:$rootScope.url+"Course/GetAllByProfessor",
+                data: {ProfUserId: profUserId}
             });
             return response;
         }

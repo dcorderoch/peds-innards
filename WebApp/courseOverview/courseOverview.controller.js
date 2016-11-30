@@ -10,6 +10,7 @@
 
         var vm = this;
         vm.goArea = goArea;
+        vm.finishCourse= finishCourse;
 
         vm.studentList = [];
 
@@ -18,7 +19,7 @@
 
             vm.courseData =ProfileCourseService.GetCourseData();
             vm.userData = $rootScope.userData;
-
+            console.log(vm.courseData);
         }
 
         function goArea(studentId){
@@ -27,17 +28,6 @@
             var dataSend = {StudentUserId: studentId, ProfUserId: vm.userData.UserId, UniversityId: vm.courseData.UniversityId, 
                             Group: vm.courseData.Group, CourseId: vm.courseData.CourseId}
             console.log(dataSend);
-
-            //Borrar
-            vm.courseData.NombreContacto = "StudentMan";
-            vm.courseData.ApellidoContacto = "Vergara";
-            vm.courseData.Grade = "89";
-            vm.courseData.StudentUserId = studentId;
-            vm.courseData.Badges = [{BadgeDescription:"algo",Value:56, Alardeado:0},{BadgeDescription:"algo",Value:34,Alardeado:1}];
-            
-            ProfileCourseService.SetCourseData(vm.courseData);
-            $location.path('/sharedareaprofessor');  
-
 
             CourseService.GetSpecificCourse(dataSend)
                 .then(function(response){
@@ -50,11 +40,24 @@
                 ProfileCourseService.SetCourseData(vm.courseData);
                 $location.path('/sharedareaprofessor');  
 
-
             }, function(response){
                 console.log("no sirvió")
             })
-
+        }
+        
+        function finishCourse(){
+            
+            CourseService.CloseCourse(vm.courseData.CourseId)
+                .then( function(response){
+                
+                FlashService.Success("Curso cerrado exitosamente", true);
+                $location.path('/professorprofile')
+                
+            }, function(response){
+               
+                FlashService.Error("No se pudo cerrar el curso, intentalo más tarde")
+            });
+            
         }
 
 
