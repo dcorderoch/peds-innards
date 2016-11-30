@@ -36,12 +36,14 @@
 
 
             if (vm.regData.hasOwnProperty("Foto")){
-                vm.regData.Foto =  "data:image/jpg;base64,"+vm.regData.Foto.base64
+                vm.regData.Foto =  vm.regData.Foto.base64;
             }
 
             if (!vm.regData.hasOwnProperty("Foto")){
+                console.log(vm.regData.hasOwnProperty("Foto"));
                 vm.regData.Foto =  "";
             }
+
 
             vm.regData.Telefono = vm.regData.Telefono.toString();
             vm.dataLoading = true;

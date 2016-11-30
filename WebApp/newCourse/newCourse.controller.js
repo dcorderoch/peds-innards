@@ -21,7 +21,6 @@
             vm.userData = $rootScope.userData;
             vm.evaluations=[];
 
-            vm.userData.Active = "0";
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;

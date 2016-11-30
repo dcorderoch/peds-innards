@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngCookies', 'naif.base64', 'ui.bootstrap'])
+        .module('app', ['ngRoute', 'ngCookies', 'naif.base64', 'ui.bootstrap', 'angularUtils.directives.dirPagination'])
         .config(config)
         .run(run);
 
@@ -142,16 +142,16 @@
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
 
-            $rootScope.url = "http://192.168.0.115:20982/api/";
+            $rootScope.url = "http://192.168.0.125:20982/api/";
 
             var restrictedPage = $.inArray($location.path(), ['/login', '/register','/register2', '/register3']) === -1;
 
             var loggedIn = $rootScope.globals.currentUser;
 
 
-            if (restrictedPage && !loggedIn) {
-                $location.path('/login');
-            }
+//            if (restrictedPage && !loggedIn) {
+//                $location.path('/login');
+//            }
 
 
             var studentRestricted = $.inArray($location.path(), ['/auction', '/courseareaprofessor', '/courseoverview', 'employerprofile', '/newcourse', 'newproject', '/professorprofile', '/sharedareaprofessor', '/sharedareaemployer'] ) === -1;

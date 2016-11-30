@@ -5,17 +5,17 @@
         .module('app')
         .controller('SearcherController', SearcherController);
 
-    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService', 'UserService'];
-    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService, UserService) {
+    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService', 'UserService', 'PagerService'];
+    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService, UserService, PagerService) {
         var vm = this;
-
-        initController();
 
         vm.goOffering = goOffering;
         vm.search = search;
-        vm.disableAccount =disableAccount;
+        vm.results=[];
 
-        //        vm.results=[];
+        vm.disableAccount =disableAccount;
+        
+        initController();
 
 
         function goOffering(){
@@ -24,15 +24,11 @@
 
         function initController(){
 
-            vm.results=[];
 
             vm.userData = $rootScope.userData;
-            console.log(vm.userData);
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
-
-            $rootScope.currentCourseData={};
 
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
@@ -42,32 +38,14 @@
                 vm.toggleEnable = true;
             }
 
-            vm.inferiorLimit = 0;
-            vm.superiorLimit = 0;
 
-            $scope.listShow = [];
-            vm.currentPage = 1;
-            vm.numPerPage = 20;
-            vm.maxSize = 5;
+            setTimeout(function(){
+                vm.results.push("hola","dos","tres", 'angularUtils.directives.dirPagination');
+                console.log(vm.results);
+                $scope.$apply();
+            }, 10000);
+
         }
-
-        $scope.$watch('currentPage + numPerPage', function() {
-
-
-            vm.inferiorLimit = vm.currentPage + vm.superiorLimit
-            vm.superiorLimit = vm.currentPage + 19;
-            setTimeout(function(){ 
-
-                var begin = (( vm.currentPage - 1) * vm.numPerPage)
-                , end = begin + vm.numPerPage;
-                $scope.listShow = vm.results.slice(begin, end); 
-            }           , 
-                       10000
-                      );
-
-            console.log($scope.listShow);
-        });
-
 
         function search(query,parameter){
 
@@ -77,7 +55,6 @@
                     .then(function(response){
 
                     vm.results = response.data;
-                    //                    $scope.$apply(); 
 
                 },function(response){
 
@@ -91,7 +68,6 @@
                     .then(function(response){
 
                     vm.results = response.data;
-                    //                    $scope.$apply(); 
 
                 },function(response){
 

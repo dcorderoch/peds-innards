@@ -59,7 +59,7 @@
                     AuthenticationService.LoginProfessor(vm.loginData)
                         .then(function(response){
 
-                        $rootScope.userId= response.data.UserId;
+                        $rootScope.userId= response.data;
                         $location.path('/professorprofile');    
 
                     },function(response){
@@ -74,7 +74,7 @@
 
                         AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
                                                              response.data);
-                        $rootScope.userId= response.data.UserId;
+                        $rootScope.userId= response.data;
                         $location.path('/employerprofile');    
 
                     },function(response){

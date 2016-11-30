@@ -144,23 +144,25 @@
                             <span class="glyphicon glyphicon-search"></span> 
                         </button>
                         <hr class="hr3">
-                        <div ng-repeat="result in listShow"> 
+                        <div dir-paginate="result in vm.results | itemsPerPage: 20"> 
                             <div class="panel panel-default searchPanel">
                                 <div class="panel-body">
                                     <strong>Título de la oferta de trabajo:{{result.JobOfferTitle}}</strong>
-                                    <p> Descripción del trabajo: {{result.Description}}<button type="button" ng-disabled="!vm.toggleEnable"
-                                                                                               ng-click="vm.goOffering(result)"class="btn btn-primary uniCourse">Ofertar</button></p></div>
+                                    <p> Descripción del trabajo: {{result.Description}}
+                                        <button type="button" ng-disabled="!vm.toggleEnable" ng-click="vm.goOffering(result)" 
+                                                class="btn btn-primary uniCourse">Ofertar
+                                        </button>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <p>Página {{vm.inferiorLimit}} de {{vm.superiorLimit}}</p>
-                        <pagination ng-model="vm.currentPage" total-items="vm.results.length" max-size="vm.maxSize"  boundary-links="true">
-                        </pagination>
+                    
+                        <dir-pagination-controls boundary-links="true" direction-links="true" ></dir-pagination-controls>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 

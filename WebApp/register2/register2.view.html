@@ -31,6 +31,11 @@
                             <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">El apellido de contacto es requerido </span>
                         </div>
 
+                        <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
+                            <input placeholder ="Identificador de profesor" type=text name="id" class="form-control" ng-model="vm.regData.IdProfesor" required />
+                            <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">El identificador de profesor es requerido</span>
+                        </div>
+
 
                         <label>Escoge tu pais</label>
                         <div class="form-group" >
@@ -62,8 +67,6 @@
                         <div class="form-group" ng-class="{ 'has-error': form.photo.$dirty && form.photo.$error.required }">           
                             <input name="photos" accept="image/*" class="btn btn-info" type="file" name="file"   ng-model="vm.regData.Foto" base-sixty-four-input >
                         </div>
-
-
 
                         <label>Escoge tu universidad</label>
                         <div class="form-group" ng-class="{ 'has-error': form.university.$dirty && form.university.$error.required }">

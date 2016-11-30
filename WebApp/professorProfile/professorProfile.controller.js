@@ -18,10 +18,8 @@
 
         function initController(){
 
-            $rootScope.userData ={};
             vm.userData = $rootScope.userData;
-
-            vm.userData.Active = "0";
+            console.log(vm.userData)
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -29,23 +27,6 @@
             if(vm.userData.Active == "1"){
                 vm.toggleEnable = true;
             }
-
-            var currentCourseData={
-                "CourseName":"algo",
-                "UniversityId":"algo",
-                "MinGrade":70,
-                "CourseId":"algo",
-                "CourseDescription":"algo",
-                "Group":8,
-                "Students":[ { "Nombre":"algo", "StudentUserId":"123"},
-                            {"Nombre":"algo","StudentUserId":"124"}],
-                status :true
-
-            };
-
-
-            ProfileCourseService.SetCourseData(currentCourseData);
-
         }
 
         function goCourseFinished(id){
@@ -87,7 +68,7 @@
 
             console.log(vm.userData.userId);
             console.log(vm.userData.Active);
-            
+
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
 

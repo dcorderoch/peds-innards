@@ -49,6 +49,6 @@
                 keepAfterLocationChange: keepAfterLocationChange
             };
         }
-    }
 
+    }
 })();
