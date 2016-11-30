@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using MyLearn.InputModels;
 using MyLearn.Models;
 using MyLearn.TwitterPoster;
@@ -47,24 +48,27 @@ namespace MyLearn.BLL
                     returnCode.ReturnStatus += 1;
                 }
                 return returnCode;
-            }
-            
+            }    
         }
+
         public ReturnCode Assign(AssignJobOffer jobOffer)
         {
-            ReturnCode success = new ReturnCode();
-            var retVal = new ReturnCode();
-            // se hace el tweet ANTES de hacer lo demás, si el método retorna FALSE
-            // se retorna que falló la vara
-            var tweeter = new Tweeter();
-            if (tweeter.tweet("mensaje")) //cambiar mensaje
+            using (var context = new MyLearnContext())
             {
-                retVal.ReturnStatus += 1;
-                // marcar la maire como que ya se hizo alarde
+                var jobOfferRepo = new JobOfferRepository(context);
+                var studentRepo= new StudentRepository(context);
+                var student = studentRepo.GetStudentById(Guid.Parse(jobOffer.JobOfferId));
+                var currJobOffer = jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId));
+                var notificationManager = new NotificationManager();
+                student.JobOffers.Add(jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId)));
+                
+                student.Notifications.Add(notificationManager.CreateNotification(jobOffer.StudentId,currJobOffer.Name));
+                currJobOffer.IsActive = 1;
+                currJobOffer.UserId = Guid.Parse(jobOffer.StudentId);
+                ReturnCode success = new ReturnCode();
+
+                return success;
             }
-            retVal.ReturnStatus = 1;
-            return retVal;
-            
         }
 
         public ReturnCode CloseJobOffer(CloseJobOffer openJobOffer)

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using MyLearnDAL.Models;
 
 namespace MyLearn.BLL
 {
@@ -13,6 +15,16 @@ namespace MyLearn.BLL
 
             return notificationList;
 
+        }
+
+        public Notification CreateNotification(string studentId, string jobOfferName)
+        {
+            var newNotification = new Notification();
+            newNotification.NotificationId = Guid.NewGuid();
+            newNotification.State = 0;
+            newNotification.UserId = Guid.Parse(studentId);
+            newNotification.Message = "Has ganado la oferta de trabajo: " + jobOfferName + ".";
+            return newNotification;
         }
     
     }
