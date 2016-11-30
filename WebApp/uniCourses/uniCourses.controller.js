@@ -23,7 +23,6 @@
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
 
 
-            vm.userData.Active = "0";
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -37,19 +36,23 @@
 
         function loadCourses(){
 
-            CourseService.GetAllByUniversity(vm.UniversidadId)
+            console.log(vm.userData.UniversityId );
+            CourseService.GetAllByUniversity(vm.userData.UniversityId)
+
                 .then(function(response){
 
+                console.log( response );
                 vm.courses = response.data; 
 
             }, function(response){
+                FlashService.Error("No se pudieron traer los cursos de la universidad");
                 console.log("No funcó")
             });
         }
 
-        function joinCourse( universityId ){
-
-            var send = {StudentUserId: vm.StudentUserId, CourseId: vm.UniversityId}
+        function joinCourse( CourseId ){
+            
+            var send = {StudentUserId: vm.userData.StudentUserId, CourseId: CourseId}
             CourseService.JoinCourse( send)
                 .then( function(response){
 

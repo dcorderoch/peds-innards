@@ -428,7 +428,7 @@ strong {
 }
 
 .newProject {
-/*    margin-left: 100px;*/
+    /*    margin-left: 100px;*/
     width: 100%;
 }
 
@@ -539,4 +539,9 @@ strong {
 .enableButton {
     color: #428bca	;
     font-size:0.9em
+}
+
+.loginPanel {
+    border-width: 3px;
+
 }

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngCookies', 'naif.base64'])
+        .module('app', ['ngRoute', 'ngCookies', 'naif.base64', 'ui.bootstrap'])
         .config(config)
         .run(run);
 

@@ -32,7 +32,7 @@
                     <p><strong>Enlace curriculum: </strong> <a href="{{vm.userData.EnlaceACurriculum}}">Ir al curriculum</a></p>
                     <p><strong>Cursos aprobados: </strong> {{vm.userData.CursosAprobados}} </p>
                     <p><strong>Cursos reprobados: </strong> {{vm.userData.CursosReprobados}} </p>
-                    <p><strong>Proyectos exitosos: </strong> {{vm.userData.ProyectosExitisos}} </p>
+                    <p><strong>Proyectos exitosos: </strong> {{vm.userData.ProyectosExitosos}} </p>
                     <p><strong>Proyectos fallidos: </strong> {{vm.userData.ProyectosFallidos}} </p>
                     <strong>Tecnologías: </strong>
                     <ul ng-repeat="tecnologia in vm.userData.Tecnologias">
@@ -133,7 +133,7 @@
                         <div class="panel-body">
                             <strong>Nombre del curso:</strong> {{course.Course}},
                             <strong>  Descripción: </strong>{{course.CourseDescription}}
-                            <button  ng-button="vm.joinCourse(course.UniversityId)" type="button" class="btn btn-default yellowButton uniCourse">Unirse a curso</button>
+                            <button  ng-button="vm.joinCourse(course.CourseId)" type="button" class="btn btn-default yellowButton uniCourse">Unirse a curso</button>
                         </div>
 
                     </div>

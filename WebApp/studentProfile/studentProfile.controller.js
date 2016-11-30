@@ -18,16 +18,18 @@
         function initController(){
 
             vm.userData = $rootScope.userData;
+            
+            vm.courseAverageWidth = {"width": vm.userData.PromedioCursos+"%"};  
+            vm.projectAverageWidth = {"width": vm.userData.PromedioProyectos+"%"};  
+
             console.log(vm.userData);
-            
+
             vm.userData.Foto = "data:image/jpg;base64,"+vm.userData.Foto
-            
-            vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
-            vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};  
+
 
             console.log( vm.courseAverageWidth );
             console.log( vm.projectAverageWidth );
-            
+
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -35,34 +37,6 @@
             if(vm.userData.Active == "1"){
                 vm.toggleEnable = true;
             }
-
-            var currentCourseData={
-                "status":"true",
-                "CourseName":"algo",
-                "StudentUserId":"algo",
-                "ProfUserId":"algo",
-                "ProfessorName":"algo",
-                "UniversityId":"algo",
-                "Grade":13,
-                "Badges":[
-                    {
-                        "BadgeDescription":"algo",
-                        "Value":80,
-                        "Alardeado":0
-                    },
-                    {
-                        "BadgeDescription":"Aprendió a usar Java y Do",
-                        "Value":20,
-                        "Alardeado":1
-                    }
-                ],
-                "CourseId":"algo",
-                "CourseDescription":"algo",
-                "Group":5,
-                "CourseState":0
-            };
-
-            ProfileCourseService.SetCourseData(currentCourseData);
 
         }
 
@@ -111,7 +85,7 @@
 
             console.log(vm.userData.userId);
             console.log(vm.userData.Active);
-            
+
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
 

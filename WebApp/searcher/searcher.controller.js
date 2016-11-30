@@ -27,13 +27,13 @@
             vm.results=[];
 
             vm.userData = $rootScope.userData;
+            console.log(vm.userData);
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
 
             $rootScope.currentCourseData={};
 
-            vm.userData.Active = "0";
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -42,15 +42,32 @@
                 vm.toggleEnable = true;
             }
 
-            vm.results.push ({ "JobOffer":"Bretecillo",
-                              "JobOfferId": "123",
-                              "Technologies":["Java","C++"],
-                              "Location":"San José",
-                              "StartDate":"2011-04-04",
-                              "EndDate":"2019-08-03",
-                              "Description":"interesante",
-                              "Budget":123});
+            vm.inferiorLimit = 0;
+            vm.superiorLimit = 0;
+
+            $scope.listShow = [];
+            vm.currentPage = 1;
+            vm.numPerPage = 20;
+            vm.maxSize = 5;
         }
+
+        $scope.$watch('currentPage + numPerPage', function() {
+
+
+            vm.inferiorLimit = vm.currentPage + vm.superiorLimit
+            vm.superiorLimit = vm.currentPage + 19;
+            setTimeout(function(){ 
+
+                var begin = (( vm.currentPage - 1) * vm.numPerPage)
+                , end = begin + vm.numPerPage;
+                $scope.listShow = vm.results.slice(begin, end); 
+            }           , 
+                       10000
+                      );
+
+            console.log($scope.listShow);
+        });
+
 
         function search(query,parameter){
 
@@ -60,6 +77,7 @@
                     .then(function(response){
 
                     vm.results = response.data;
+                    //                    $scope.$apply(); 
 
                 },function(response){
 
@@ -73,6 +91,7 @@
                     .then(function(response){
 
                     vm.results = response.data;
+                    //                    $scope.$apply(); 
 
                 },function(response){
 

@@ -23,7 +23,6 @@
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
 
 
-            vm.userData.Active = "0";
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -32,19 +31,7 @@
                 vm.toggleEnable = true;
             }
 
-            var currentworkData={
-                "JobOffer":"algo",
-                "Technologies":["Python","CSS"],
-                "Location":"algo",
-                "StartDate":"1984-02-03",
-                "EndDate":"1990-09-02",
-                "Description":"algo",
-                "Budget":8
-            };
-            currentworkData.JobOfferId ="123";
-            currentworkData.status = true;
-            ProfileCourseService.SetWorkData(currentworkData);
-            console.log(currentworkData)
+
         }
 
 

@@ -32,13 +32,12 @@
                     <p><strong>Enlace curriculum: </strong> <a href="{{vm.userData.EnlaceACurriculum}}">Ir al curriculum</a></p>
                     <p><strong>Cursos aprobados: </strong> {{vm.userData.CursosAprobados}} </p>
                     <p><strong>Cursos reprobados: </strong> {{vm.userData.CursosReprobados}} </p>
-                    <p><strong>Proyectos exitosos: </strong> {{vm.userData.ProyectosExitisos}} </p>
+                    <p><strong>Proyectos exitosos: </strong> {{vm.userData.ProyectosExitosos}} </p>
                     <p><strong>Proyectos fallidos: </strong> {{vm.userData.ProyectosFallidos}} </p>
                     <strong>Tecnologías: </strong>
                     <ul ng-repeat="tecnologia in vm.userData.Tecnologias">
                         <li>{{tecnologia}}</li>
                     </ul>
-<br>
                     <strong>Idiomas: </strong>
                     <ul ng-repeat="idioma in vm.userData.Idiomas">
                         <li>{{idioma}}</li>
@@ -110,7 +109,7 @@
                 </div> 
             </div>
         </div>
-        
+
         <div class="border col-md-8" >
 
             <ul class="nav nav-tabs">
@@ -144,16 +143,18 @@
                         <button  ng-click="vm.search(query,searchParameter)" type="button" class="btn btn-primary">
                             <span class="glyphicon glyphicon-search"></span> 
                         </button>
-
                         <hr class="hr3">
-                        <div ng-repeat="result in vm.results"> 
+                        <div ng-repeat="result in listShow"> 
                             <div class="panel panel-default searchPanel">
                                 <div class="panel-body">
-                                    <strong>Empleador:{{result.JobOffer}}</strong>
+                                    <strong>Título de la oferta de trabajo:{{result.JobOfferTitle}}</strong>
                                     <p> Descripción del trabajo: {{result.Description}}<button type="button" ng-disabled="!vm.toggleEnable"
-                                    ng-click="vm.goOffering(result)"class="btn btn-primary uniCourse">Ofertar</button></p></div>
+                                                                                               ng-click="vm.goOffering(result)"class="btn btn-primary uniCourse">Ofertar</button></p></div>
                             </div>
                         </div>
+                        <p>Página {{vm.inferiorLimit}} de {{vm.superiorLimit}}</p>
+                        <pagination ng-model="vm.currentPage" total-items="vm.results.length" max-size="vm.maxSize"  boundary-links="true">
+                        </pagination>
                     </div>
                 </div>
             </div>
