@@ -190,6 +190,7 @@ namespace MyLearn.BLL
                     professor.Telefono = dalProfessor.PhoneNum;
                     professor.Fecha_Registro = dalProfessor.InDate.ToString();
                     professor.Password = dalProfessor.Password;
+                    professor.IdProfesor = dalProfessor.ProfessorId;
                     professor.TipoRepositorioArchivos = dalProfessor.TRepo.ToString();
                     var professorPhoto = dalProfessor.Photo;
                     professor.Foto = professorPhoto != null ? Convert.ToBase64String(professorPhoto) : "";
