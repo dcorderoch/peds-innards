@@ -22,6 +22,8 @@ namespace MyLearnDAL.Models
         [Required]
         public string Comment { get; set; }
         [Required]
+        public string File { get; set; }
+        [Required]
         public DateTime Date { get; set; }
 
         public virtual Project Project { get; set; }
