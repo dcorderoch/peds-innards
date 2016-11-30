@@ -164,83 +164,97 @@ namespace MyLearn.BLL
 
         public AllProfessorsCourses GetAllByProfessor(string professorId)
         {
-            CourseRepository courseRepo = new CourseRepository();
-            var allCourses = new AllProfessorsCourses();
-            var activeCourses = courseRepo.GetProfessorActiveCourses(new Guid(professorId));
-            var inactiveCourses = courseRepo.GetProfessorInctiveCourses(new Guid(professorId));
-            if (activeCourses != null && inactiveCourses != null)
+            using (var context = new MyLearnContext())
             {
-                List<ActiveCourse> activeCoursesList = mapper.ActiveCourseListMap(activeCourses);
-                List<FinishedCourse> finishedCoursesList = mapper.FinishedCourseListMap(inactiveCourses);
-                allCourses.ActiveCourses = activeCoursesList;
-                allCourses.FInishedCourses = finishedCoursesList;
+                CourseRepository courseRepo = new CourseRepository(context);
+                var allCourses = new AllProfessorsCourses();
+                var activeCourses = courseRepo.GetProfessorActiveCourses(new Guid(professorId));
+                var inactiveCourses = courseRepo.GetProfessorInctiveCourses(new Guid(professorId));
+                if (activeCourses != null && inactiveCourses != null)
+                {
+                    List<ActiveCourse> activeCoursesList = mapper.ActiveCourseListMap(activeCourses);
+                    List<FinishedCourse> finishedCoursesList = mapper.FinishedCourseListMap(inactiveCourses);
+                    allCourses.ActiveCourses = activeCoursesList;
+                    allCourses.FInishedCourses = finishedCoursesList;
+                }
+                courseRepo.Dispose();
+                return allCourses;
             }
-            courseRepo.Dispose();
-            return allCourses;
+            
         }
 
         public List<CourseShort> GetAllByUniversity(string universityId)
         {
-            CourseRepository courseRepo = new CourseRepository();
-           
-         List<CourseShort> listOfCourses = new List<CourseShort>();
-            var coursesByUniversity = courseRepo.GetUniversityCourses(new Guid(universityId));
-            if (coursesByUniversity != null)
+            using (var context = new MyLearnContext())
             {
-                listOfCourses = mapper.CourseShortListMap(coursesByUniversity);
+                CourseRepository courseRepo = new CourseRepository(context);
+
+                List<CourseShort> listOfCourses = new List<CourseShort>();
+                var coursesByUniversity = courseRepo.GetUniversityCourses(new Guid(universityId));
+                if (coursesByUniversity != null)
+                {
+                    listOfCourses = mapper.CourseShortListMap(coursesByUniversity);
+                }
+                courseRepo.Dispose();
+                return listOfCourses;
             }
-            courseRepo.Dispose();
-            return listOfCourses;
+
         }
 
         public ReturnCode Join(StudentJoinsCourse joiningStudent)
         {
-            var courseRepo = new CourseRepository();
-            var studentRepo = new StudentRepository();
-            var retVal = new ReturnCode();
-            var student = studentRepo.GetStudentById(new Guid(joiningStudent.StudentUserId));
-            var course = courseRepo.GetCoursebyId(new Guid(joiningStudent.CourseId));
-
-            if (course != null && student != null)
+            using (var context = new MyLearnContext())
             {
-                course.Students.Add(student);
-                courseRepo.SaveChanges();
-                retVal.ReturnStatus = 1;
-            }
+                var courseRepo = new CourseRepository(context);
+                var studentRepo = new StudentRepository(context);
+                var retVal = new ReturnCode();
+                var student = studentRepo.GetStudentById(new Guid(joiningStudent.StudentUserId));
+                var course = courseRepo.GetCoursebyId(new Guid(joiningStudent.CourseId));
 
-            courseRepo.Dispose();
-            studentRepo.Dispose();
-            return retVal;
+                if (course != null && student != null)
+                {
+                    course.Students.Add(student);
+                    courseRepo.SaveChanges();
+                    retVal.ReturnStatus = 1;
+                }
+
+                courseRepo.Dispose();
+                studentRepo.Dispose();
+                return retVal;
+            }
         }
 
         public ReturnCode Propose(ProjectProposal proposal)
         {
-            var courseRepo = new CourseRepository();
-            var studentRepo = new StudentRepository();
-            var projectRepo = new ProjectRepository();
-            var course = courseRepo.GetCoursebyId(new Guid(proposal.CourseId));
-            var student = studentRepo.GetStudentById(new Guid(proposal.StudentUserId));
-            var retVal = new ReturnCode();
-
-            if (course != null && student != null)
+            using (var context = new MyLearnContext())
             {
-                var project = new Project();
-                project.ProjectId = Guid.NewGuid();
-                project.CourseId = new Guid(proposal.CourseId);
-                project.UserId = new Guid(proposal.StudentUserId);
-                project.IsActive = 1;
-                project.Description = proposal.Description;
-                project.Score = 0;
-                project.Badges = new List<MyLearnDAL.Models.Badge>();
-                project.ProjectComments = new List<ProjectComment>();
-                projectRepo.Add(project);
-                projectRepo.SaveChanges();
-                retVal.ReturnStatus = 1;
+                var courseRepo = new CourseRepository(context);
+                var studentRepo = new StudentRepository(context);
+                var projectRepo = new ProjectRepository(context);
+                var course = courseRepo.GetCoursebyId(new Guid(proposal.CourseId));
+                var student = studentRepo.GetStudentById(new Guid(proposal.StudentUserId));
+                var retVal = new ReturnCode();
+
+                if (course != null && student != null)
+                {
+                    var project = new Project();
+                    project.ProjectId = Guid.NewGuid();
+                    project.CourseId = new Guid(proposal.CourseId);
+                    project.UserId = new Guid(proposal.StudentUserId);
+                    project.IsActive = 1;
+                    project.Description = proposal.Description;
+                    project.Score = 0;
+                    project.Badges = new List<MyLearnDAL.Models.Badge>();
+                    project.ProjectComments = new List<ProjectComment>();
+                    projectRepo.Add(project);
+                    projectRepo.SaveChanges();
+                    retVal.ReturnStatus = 1;
+                }
+                courseRepo.Dispose();
+                studentRepo.Dispose();
+                projectRepo.Dispose();
+                return retVal;
             }
-            courseRepo.Dispose();
-            studentRepo.Dispose();
-            projectRepo.Dispose();
-            return retVal;
         }
     }
 }
