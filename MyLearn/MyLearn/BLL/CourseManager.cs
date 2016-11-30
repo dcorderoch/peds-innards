@@ -13,7 +13,7 @@ namespace MyLearn.BLL
 {
     public class CourseManager
     {
-        private ModelMapper mapper;
+        private ModelMapper mapper = new ModelMapper();
 
         public CourseManager()
         {

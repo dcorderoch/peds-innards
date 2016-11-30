@@ -2,6 +2,7 @@
 https://host/Api/JobOffer/Create
 Web Application sends
 {
+    "EmployerId":"algo",
     "JobOffer":"algo",
     "Technologies":["algo","algo"],
     "Location":"algo",

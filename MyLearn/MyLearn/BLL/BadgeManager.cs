@@ -13,7 +13,7 @@ namespace MyLearn.BLL
 {
     public class BadgeManager
     {
-        private ModelMapper mapper;
+        private ModelMapper mapper = new ModelMapper();
         public ReturnCode GiveBadge(NewBadge newBadge)
         {
             using (var context = new MyLearnContext())

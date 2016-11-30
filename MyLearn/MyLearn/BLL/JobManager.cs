@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MyLearn.InputModels;
 using MyLearn.Models;
 using MyLearn.TwitterPoster;
+using MyLearnDAL;
+using MyLearnDAL.Models;
+using MyLearnDAL.Repositories;
+using JobOffer = MyLearn.Models.JobOffer;
 
 namespace MyLearn.BLL
 {
@@ -9,6 +14,39 @@ namespace MyLearn.BLL
     {
         public ReturnCode CreateJobOffer(NewJobOffer newOffer)
         {
+            using (var context = new MyLearnContext())
+            {
+                var jobOfferRepo = new JobOfferRepository(context);
+                var jobOffer = new MyLearnDAL.Models.JobOffer();
+                var returnCode = new ReturnCode();
+                returnCode.ReturnStatus = 0;
+
+                jobOffer.JobOfferId = Guid.NewGuid();
+                jobOffer.EmployerId = new Guid(newOffer.EmployerId);
+                jobOffer.Name = newOffer.JobOffer;
+                jobOffer.StartDate = DateTime.Parse(newOffer.StartDate);
+                jobOffer.EndDate = DateTime.Parse(newOffer.EndDate);
+                jobOffer.Budget = newOffer.Budget;
+                jobOffer.IsActive = 0;
+                jobOffer.StateDescription = "";
+                try
+                {
+                    jobOfferRepo.Add(jobOffer);
+                    jobOfferRepo.SaveChanges();
+                    returnCode.ReturnStatus += 1;
+                }
+                catch (Exception)
+                {
+                    returnCode.ReturnStatus = 0;
+                }
+                
+                return returnCode;
+            }
+            
+        }
+        public ReturnCode Assign(AssignJobOffer jobOffer)
+        {
+            ReturnCode success = new ReturnCode();
             var retVal = new ReturnCode();
             // se hace el tweet ANTES de hacer lo demás, si el método retorna FALSE
             // se retorna que falló la vara
@@ -20,12 +58,7 @@ namespace MyLearn.BLL
             }
             retVal.ReturnStatus = 1;
             return retVal;
-        }
-        public ReturnCode Assign(AssignJobOffer jobOffer)
-        {
-            ReturnCode success = new ReturnCode();
-            success.ReturnStatus = 1;
-            return success;
+            
         }
 
         public ReturnCode CloseJobOffer(CloseJobOffer openJobOffer)

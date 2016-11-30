@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MyLearn.InputModels;
 using MyLearn.Models;
 using MyLearnDAL.Models;
 using Badge = MyLearn.Models.Badge;
+using JobOffer = MyLearnDAL.Models.JobOffer;
 
 namespace MyLearn.Utils
 {
@@ -43,13 +45,16 @@ namespace MyLearn.Utils
         public List<CourseShort> CourseShortListMap(List<MyLearnDAL.Models.Course> courses)
         {
             List<CourseShort> resultList = new List<CourseShort>();
-            foreach (var course in courses)
+            if (courses.Any())
             {
-                var resCourse = new CourseShort();
-                resCourse.CourseId = course.CourseId.ToString();
-                resCourse.CourseDescription = course.Description;
-                resCourse.CourseName = course.Name;
-                resultList.Add(resCourse);
+                foreach (var course in courses)
+                {
+                    var resCourse = new CourseShort();
+                    resCourse.CourseId = course.CourseId.ToString();
+                    resCourse.CourseDescription = course.Description;
+                    resCourse.CourseName = course.Name;
+                    resultList.Add(resCourse);
+                }
             }
             return resultList;
         }
