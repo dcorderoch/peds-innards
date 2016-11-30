@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MyLearn.InputModels;
 using MyLearn.Models;
 using MyLearnDAL;
+using MyLearn.Utils;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
 using Badge = MyLearn.Models.Badge;
@@ -12,6 +13,13 @@ namespace MyLearn.BLL
 {
     public class CourseManager
     {
+        private ModelMapper mapper;
+
+        public CourseManager(ModelMapper mapper)
+        {
+            this.mapper = mapper;
+        }
+
         public ReturnCode CreateCourse(NewCourse newCourse)
         {
             using (var context = new MyLearnContext())
@@ -184,18 +192,17 @@ namespace MyLearn.BLL
 
         public AllProfessorsCourses GetAllByProfessor(string professorId)
         {
-            AllProfessorsCourses allCourses = new AllProfessorsCourses();
-            //get all professor's courses
-            List<ActiveCourse> activeCourses = new List<ActiveCourse>();
-            List<FinishedCourse> finishedCourses = new List<FinishedCourse>();
-            //get from db and add them here, once the repositories are up and running
-
-            //activeCourses = ;
-            //finishedCourses = ;
-
-            allCourses.ActiveCourses = activeCourses;
-            allCourses.FInishedCourses = finishedCourses;
-
+            CourseRepository courseRepo = new CourseRepository();
+            var allCourses = new AllProfessorsCourses();
+            var activeCourses = courseRepo.GetProfessorActiveCourses(new Guid(professorId));
+            var inactiveCourses = courseRepo.GetProfessorInctiveCourses(new Guid(professorId));
+            if (activeCourses != null && inactiveCourses != null)
+            {
+                List<ActiveCourse> activeCoursesList = mapper.ActiveCourseListMap(activeCourses);
+                List<FinishedCourse> finishedCoursesList = mapper.FinishedCourseListMap(inactiveCourses);
+                allCourses.ActiveCourses = activeCoursesList;
+                allCourses.FInishedCourses = finishedCoursesList;
+            }
             return allCourses;
         }
 
