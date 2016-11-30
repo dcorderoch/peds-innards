@@ -107,7 +107,7 @@ namespace MyLearn.BLL
                         {
                             CourseDescription = course.Description,
                             CourseId = course.CourseId.ToString(),
-                            course = course.Name
+                            CourseName = course.Name
                         };
                         finishedCoursesList.Add(finishedCourse);
                     }
@@ -122,8 +122,8 @@ namespace MyLearn.BLL
                         {
                             CourseDescription = course.Description,
                             CourseId = course.CourseId.ToString(),
-                            course = course.Name,
-                            accepted = course.IsActive
+                            CourseName = course.Name,
+                            Accepted = course.IsActive
                         };
                         activeCoursesList.Add(activeCourse);
                     }
@@ -207,7 +207,7 @@ namespace MyLearn.BLL
                         {
                             CourseDescription = course.Description,
                             CourseId = course.CourseId.ToString(),
-                            course = course.Name
+                            CourseName = course.Name
                         };
                         finishedCoursesList.Add(finishedCourse);
                     }
@@ -223,8 +223,8 @@ namespace MyLearn.BLL
                         {
                             CourseDescription = course.Description,
                             CourseId = course.CourseId.ToString(),
-                            course = course.Name,
-                            accepted = course.IsActive
+                            CourseName = course.Name,
+                            Accepted = course.IsActive
                         };
                         activeCoursesList.Add(activeCourse);
                     }
