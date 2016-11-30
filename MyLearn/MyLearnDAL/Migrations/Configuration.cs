@@ -68,32 +68,33 @@ namespace MyLearnDAL.Migrations
 
             var countries = new[]
             {
-            "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudíta",
-            "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés",
-            "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Bolivia", "Bosnia y Herzegovina",
-            "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya",
-            "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Colombia", "Comoras", "Congo",
-            "Costa de Marfil", "Costa Rica", "Croacia Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto",
-            "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España",
-            "Estados Unidos de América", "Estonia", "Etiopía", "Federación Rusa", "Filipinas", "Finlandia", "Fiyi",
-            "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guinea",
-            "Guinea-Bisáu", "Guinea Ecuatorial", "Guyana", "Haití", "Honduras", "Hungría", "India", "Indonesia",
-            "Irak", "Irán ", "Irlanda", "Islandia", "Marshall", "Salomón Islas Salomón", "Israel", "Italia",
-            "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Lesoto",
-            "Letonia", "Líbano", "Libia", "Liberia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia",
-            "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania",
-            "México", "Micronesia", "Mónaco", "Montenegro", "Mongolia", "Mozambique", "Myanmar", "Namibia", "Nauru",
-            "Nicaragua", "Níger", "Nigeria", "Noruega", "Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos",
-            "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Irlanda del Norte",
-            "República Árabe Siria", "República Centroafricana", "República Checa", "Corea del Sur",
-            "República de Moldavia", "República Democrática del Congo", "Lao", "República Dominicana", "Nepal",
-            "Corea del Norte", "Tanzania", "Ruanda", "Rumania", "Samoa", "Cristóbal y Nieves", "San Marino",
-            "Granadinas", "Lucía Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles",
-            "Sierra Leona", "Singapur", "Somalia", "Sri Lanka", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia",
-            "Suiza", "Surinam", "Suazilandia", "Tailandia", "Tayikistán", "Oriental", "Togo", "Tonga", "Tobago",
-            "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu",
-            "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue"
-        };
+
+                "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudíta",
+                "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés",
+                "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Bolivia", "Bosnia y Herzegovina",
+                "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya",
+                "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Colombia", "Comoras", "Congo",
+                "Costa de Marfil", "Costa Rica", "Croacia Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto",
+                "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España",
+                "Estados Unidos de América", "Estonia", "Etiopía", "Federación Rusa", "Filipinas", "Finlandia", "Fiyi",
+                "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guinea",
+                "Guinea-Bisáu", "Guinea Ecuatorial", "Guyana", "Haití", "Honduras", "Hungría", "India", "Indonesia",
+                "Irak", "Irán ", "Irlanda", "Islandia", "Marshall", "Salomón Islas Salomón", "Israel", "Italia",
+                "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Lesoto",
+                "Letonia", "Líbano", "Libia", "Liberia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia",
+                "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania",
+                "México", "Micronesia", "Mónaco", "Montenegro", "Mongolia", "Mozambique", "Myanmar", "Namibia", "Nauru",
+                "Nicaragua", "Níger", "Nigeria", "Noruega", "Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos",
+                "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Irlanda del Norte",
+                "República Árabe Siria", "República Centroafricana", "República Checa", "Corea del Sur",
+                "República de Moldavia", "República Democrática del Congo", "Lao", "República Dominicana", "Nepal",
+                "Corea del Norte", "Tanzania", "Ruanda", "Rumania", "Samoa", "Cristóbal y Nieves", "San Marino",
+                "Granadinas", "Lucía Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles",
+                "Sierra Leona", "Singapur", "Somalia", "Sri Lanka", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia",
+                "Suiza", "Surinam", "Suazilandia", "Tailandia", "Tayikistán", "Oriental", "Togo", "Tonga", "Tobago",
+                "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu",
+                "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue"
+            };
 
             var countryRepo = new CountryRepository(context);
             foreach (var country in countries)
@@ -173,7 +174,7 @@ namespace MyLearnDAL.Migrations
             var countryList = countryRepo.GetAll();
             myStudent.CountryId = countryList[43].CountryId;
             countryRepo.Dispose();
-            myStudent.Role = roleRepo.Get(1);
+            myStudent.RoleId = 1;
             roleRepo.Dispose();
             var studentRepo = new StudentRepository(context);
             studentRepo.Add(myStudent);
