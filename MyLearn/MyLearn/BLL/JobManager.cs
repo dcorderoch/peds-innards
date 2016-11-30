@@ -39,7 +39,13 @@ namespace MyLearn.BLL
                 {
                     returnCode.ReturnStatus = 0;
                 }
-                
+
+                if (returnCode.ReturnStatus != 1) return returnCode;
+                var tweeter = new Tweeter();
+                if (tweeter.tweet("Se ha creado la oferta de trabajo: " + jobOffer.Name + ".")) 
+                {
+                    returnCode.ReturnStatus += 1;
+                }
                 return returnCode;
             }
             
