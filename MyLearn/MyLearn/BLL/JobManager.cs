@@ -20,6 +20,7 @@ namespace MyLearn.BLL
                 var jobOfferRepo = new JobOfferRepository(context);
                 var employerRepo = new EmployerRepository(context);
                 var employer = employerRepo.GetEmployerById(Guid.Parse(newOffer.EmployerId));
+            
                 var jobOffer = new MyLearnDAL.Models.JobOffer();
                 var returnCode = new ReturnCode();
                 returnCode.ReturnStatus = 0;
@@ -35,7 +36,9 @@ namespace MyLearn.BLL
                 try
                 {
                     jobOfferRepo.Add(jobOffer);
+                    employer.JobOffers.Add(jobOffer);
                     jobOfferRepo.SaveChanges();
+                    employerRepo.SaveChanges();
                     returnCode.ReturnStatus += 1;
                 }
                 catch (Exception)
@@ -49,6 +52,8 @@ namespace MyLearn.BLL
                 {
                     returnCode.ReturnStatus += 1;
                 }
+                jobOfferRepo.Dispose();
+                employerRepo.Dispose();
                 return returnCode;
             }    
         }
@@ -57,17 +62,32 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
+                ReturnCode success = new ReturnCode();
+              
                 var jobOfferRepo = new JobOfferRepository(context);
                 var studentRepo= new StudentRepository(context);
                 var student = studentRepo.GetStudentById(Guid.Parse(jobOffer.JobOfferId));
                 var currJobOffer = jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId));
-                var notificationManager = new NotificationManager();
-                student.JobOffers.Add(jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId)));
-                student.Notifications.Add(notificationManager.CreateNotification(jobOffer.StudentId,currJobOffer.Name));
-                currJobOffer.IsActive = 1;
-                currJobOffer.UserId = Guid.Parse(jobOffer.StudentId);
-                ReturnCode success = new ReturnCode();
+                if (student != null && currJobOffer != null)
+                {
+                    var notificationManager = new NotificationManager();
 
+                    currJobOffer.IsActive = 1;
+                    currJobOffer.UserId = Guid.Parse(jobOffer.StudentId);
+                    jobOfferRepo.SaveChanges();
+
+                    student.JobOffers.Add(jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId)));
+                    student.Notifications.Add(notificationManager.CreateNotification(jobOffer.StudentId,
+                        currJobOffer.Name));
+                    studentRepo.SaveChanges();
+                    success.ReturnStatus = 1;
+                }
+                else
+                {
+                    success.ReturnStatus = 0;
+                }
+                jobOfferRepo.Dispose();
+                studentRepo.Dispose();
                 return success;
             }
         }
