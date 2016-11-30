@@ -5,8 +5,8 @@
         .module('app')
         .controller('RegisterController', RegisterController);
 
-    RegisterController.$inject = ['$location',  'FlashService', 'UserService','$rootScope', 'RegService'];
-    function RegisterController($location,  FlashService, UserService, $rootScope, RegService) {
+    RegisterController.$inject = ['$location',  'FlashService', 'UserService','$rootScope', 'RegService', 'AuthenticationService'];
+    function RegisterController($location,  FlashService, UserService, $rootScope, RegService,  AuthenticationService) {
         var vm = this;
 
         vm.register=register;
@@ -135,11 +135,14 @@
             vm.dataLoading = true;
             UserService.RegisterStudent(vm.regData)
                 .then(function (response) {
-                
-                console.log(response.data)
+
                 FlashService.Success('Registro exitoso', true);
-                $location.path('/studentprofile');    
+
+                AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
+                                                     response.data);    
                 $rootScope.userData= response.data;
+                
+                $location.path('/studentprofile');    
 
             },function(response){
                 console.log( vm.regData);

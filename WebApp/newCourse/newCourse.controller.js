@@ -17,9 +17,23 @@
 
         function initController(){
 
-            $rootScope.userData ={};
             vm.userData = $rootScope.userData;
             vm.evaluations=[];
+
+
+            if (vm.userData.TipoRepositorioArchivos == "0"){
+
+                vm.userData.TipoRepositorioArchivos = "Google Drive"
+            }
+            if (vm.userData.TipoRepositorioArchivos == "1"){
+
+                vm.userData.TipoRepositorioArchivos = "Dropbox"
+            }
+
+            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
+            console.log(vm.userData);
+
+
 
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
@@ -105,7 +119,7 @@
 
             console.log(vm.userData.userId);
             console.log(vm.userData.Active);
-            
+
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
 
@@ -145,7 +159,7 @@
             })
         }
 
-        
+
         function removeEval(evaluation){
 
             var index = vm.evaluations.indexOf(evaluation);

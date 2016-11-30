@@ -19,7 +19,6 @@
         function initController(){
 
             vm.userData = $rootScope.userData;
-            console.log(vm.userData);
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
@@ -30,6 +29,9 @@
                 vm.userData.TipoRepositorioArchivos = "Dropbox"
             }
 
+            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
+            console.log(vm.userData);
+            console.log($rootScope.userData)
 
             vm.toggleEnable;
             if (vm.userData.Active == "0"){

@@ -28,6 +28,8 @@
                 vm.userData.TipoRepositorioArchivos = "Dropbox"
             }
 
+            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
+
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   

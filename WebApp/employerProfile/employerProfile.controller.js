@@ -17,23 +17,20 @@
 
         function initController(){
 
-            $rootScope.userData ={};
             vm.userData = $rootScope.userData;
 
-            var currentworkData={
-                "JobOffer":"algo",
-                "Technologies":["Python","CSS"],
-                "Location":"algo",
-                "StartDate":"1984-02-03",
-                "EndDate":"1990-09-02",
-                "Description":"algo",
-                "Budget":8
-            };
-            currentworkData.JobOfferId ="123";
-            currentworkData.status = true;
-            ProfileCourseService.SetWorkData(currentworkData);   
 
-            vm.userData.Active = "1";
+            if (vm.userData.TipoRepositorioArchivos == "0"){
+
+                vm.userData.TipoRepositorioArchivos = "Google Drive"
+            }
+            if (vm.userData.TipoRepositorioArchivos == "1"){
+
+                vm.userData.TipoRepositorioArchivos = "Dropbox"
+            }
+
+            vm.photo = "data:image/jpg;base64," + vm.userData.Foto;
+
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;

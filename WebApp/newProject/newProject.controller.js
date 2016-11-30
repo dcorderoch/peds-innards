@@ -10,47 +10,33 @@
         var vm = this;
 
         initController();
+
         vm.job={};
         vm.createJob = createJob;
         vm.disableAccount =disableAccount;
 
-        vm.countries=[ {"country":"costa rica","countryid": "1"}, {"country":"nicaragua","countryid": "2"}];
-        vm.technologies=[{ Technology:"Java", TechnologyId: "0"}, { Technology:"C++",TechnologyId: "1"}];
-
         vm.job.Technologies = [];
 
 
-        function loadTechnologies(){
-            RegService.GetTechnologies()
-                .then(function (response) {
-                if (response.success) {
-                    vm.technologies = response.data.technologies;
-                } 
-            },function(response){
-                console.log("supongo1")
-            });
-        }
-
-        function loadCountries(){
-            RegService.GetCountries()
-                .then(function (response) {
-                if (response.success) {
-                    vm.countries = response.data.countries;
-                } 
-            },function(response){
-                console.log("supongo2")
-            });
-        }
-
         function initController(){
 
-            $rootScope.userData ={};
-
             vm.userData = $rootScope.userData;
+
+            if (vm.userData.TipoRepositorioArchivos == "0"){
+
+                vm.userData.TipoRepositorioArchivos = "Google Drive"
+            }
+            if (vm.userData.TipoRepositorioArchivos == "1"){
+
+                vm.userData.TipoRepositorioArchivos = "Dropbox"
+            }
+
             loadTechnologies();
             loadCountries();
-            
-            vm.userData.Active = "1";
+
+            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
+
+
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -60,6 +46,32 @@
             }
 
         }
+
+        function loadTechnologies(){
+            RegService.GetTechnologies()
+                .then(function (response) {
+
+                vm.technologies = response.data;
+                console.log( response.data)
+
+            },function(response){
+                console.log("supongo1")
+            });
+        }
+
+        function loadCountries(){
+            RegService.GetCountries()
+                .then(function (response) {
+
+                vm.countries = response.data;
+                console.log( response.data)
+
+            },function(response){
+                console.log("supongo2")
+            });
+        }
+
+
 
         vm.toggleSelectionTech = function toggleSelectionTech(technology) {
             var idx = vm.job.Technologies.indexOf(technology.TechnologyId);
@@ -106,7 +118,7 @@
 
             console.log(vm.userData.userId);
             console.log(vm.userData.Active);
-            
+
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
 
@@ -146,6 +158,6 @@
             })
         }
 
-        
+
     }
 })();

@@ -5,8 +5,8 @@
         .module('app')
         .controller('Register3Controller', Register3Controller);
 
-    Register3Controller.$inject = ['$location',  'FlashService', 'UserService', 'RegService'];
-    function Register3Controller($location,  FlashService, UserService, RegService) {
+    Register3Controller.$inject = ['$location',  'FlashService', 'UserService', 'RegService', '$rootScope', 'AuthenticationService'];
+    function Register3Controller($location,  FlashService, UserService, RegService, $rootScope, AuthenticationService) {
         var vm = this;
 
         vm.register=register;
@@ -47,15 +47,19 @@
 
             vm.regData.Telefono = vm.regData.Telefono.toString();
             vm.dataLoading = true;
-            
+
             console.log(vm.regData);
 
             UserService.RegisterEmployer(vm.regData)
                 .then(function (response) {
 
                 FlashService.Success('Registro exitoso', true);
-                $location.path('/professorprofile');    
+
+                AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
+                                                     response.data);    
                 $rootScope.userData= response.data;
+                
+                $location.path('/employerprofile');    
 
             },function(response){
                 console.log( vm.regData);

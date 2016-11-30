@@ -31,9 +31,8 @@
             vm.courseAverageWidth = {"width": vm.userData.PromedioCursos+"%"};  
             vm.projectAverageWidth = {"width": vm.userData.PromedioProyectos+"%"};  
 
-            console.log(vm.userData);
 
-            vm.userData.Foto = "data:image/jpg;base64,"+vm.userData.Foto
+            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
 
 
             console.log( vm.courseAverageWidth );

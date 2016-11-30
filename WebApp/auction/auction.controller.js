@@ -20,7 +20,7 @@
             vm.workData= ProfileCourseService.GetWorkData();
             console.log(vm.workData);
             getBids();
-            vm.listOfBids= [ {"Money":"algo","DurationInDays": "4","StudentName":"algo","StudentSurname":"algo","StudentUserId":"Id"}, {"Money":"algo","DurationInDays": "6","StudentName":"algo", "StudentSurname":"algo","StudentUserId":"Id" }]
+
         }
 
         function getBids(){

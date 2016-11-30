@@ -15,7 +15,7 @@
         <div class="border col-md-4" >
 
             <div class="left-panel">
-                <img  alt="Foto de perfil" class="img-circle" data-ng-src="{{vm.userData.Foto}}">
+                <img  alt="Foto de perfil" class="img-circle" data-ng-src="{{ vm.photo  }}">
 
                 <div class="personalInformation"> 
                     <p><strong>Nombre contacto: </strong> {{vm.userData.NombreContacto}}</p>
@@ -78,7 +78,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -102,7 +102,7 @@
                         <span ng-show="form.name.$dirty && form.name.$error.required" class="help-block">El nombre del proyecto es requerido</span>
                     </div>
 
-                    <label>Escoge los lenguajes de programación que conozcas</label>
+                    <label>Escoge las tecnologías que conozcas</label>
                     <div class="form-group" ng-class="{ 'has-error': form.technology.$dirty && form.technology.$error.required }">
                         <div class="checkbox">
 
@@ -111,19 +111,20 @@
                                        type="checkbox"
                                        name="technology"
                                        value="{{technology}}"
-                                       ng-checked="vm.job.Technologies.indexOf(technology) > -1"
+                                       ng-checked="vm.regData.Tecnologias.indexOf(technology) > -1"
                                        ng-click="vm.toggleSelectionTech(technology)"
-                                       /> {{technology.Technology}}
+                                       /> {{technology.TechnologyName}} &nbsp
                             </label>
                         </div>
 
                     </div>
 
-                        <label>Escoge tu pais</label>
-                        <div class="form-group" >
-                            <select ng-model="vm.job.Location" ng-options="x.countryid as x.country for x in vm.countries" required>
-                            </select> 
-                        </div>
+                    <label>Escoge tu pais</label>
+                    <div class="form-group" >
+                        <select ng-model="vm.regData.Ubicacion" ng-options="x.CountryId as x.CountryName for x in vm.countries 
+                                                                            | orderBy: 'CountryName'" required>
+                        </select> 
+                    </div>
 
                     <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
                         <input placeholder="Fecha de inicio" class="form-control" type="text" onfocus="(this.type='date')"  ng-model="vm.job.StartDate" name="startDate" required /> 

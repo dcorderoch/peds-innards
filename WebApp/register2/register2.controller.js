@@ -5,8 +5,8 @@
         .module('app')
         .controller('Register2Controller', Register2Controller);
 
-    Register2Controller.$inject = ['$location',  'FlashService', 'UserService','$rootScope', 'RegService'];
-    function Register2Controller($location,  FlashService, UserService, $rootScope,RegService) {
+    Register2Controller.$inject = ['$location',  'FlashService', 'UserService','$rootScope', 'RegService', 'AuthenticationService'];
+    function Register2Controller($location,  FlashService, UserService, $rootScope,RegService, AuthenticationService) {
         var vm = this;
 
         vm.register=register;
@@ -64,8 +64,12 @@
                 .then(function (response) {
 
                 FlashService.Success('Registro exitoso', true);
-                $location.path('/professorprofile');    
+
+                AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
+                                                     response.data);    
                 $rootScope.userData= response.data;
+                 
+                $location.path('/professorprofile');    
 
             },function(response){
                 console.log( vm.regData);
@@ -73,6 +77,6 @@
                 vm.dataLoading = false;
             });
         }
-        
+
     }
 })();

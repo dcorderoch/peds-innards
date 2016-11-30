@@ -20,7 +20,6 @@
         return service;
 
         function Login(loginData) {
-            console.log(loginData);
             var request = $http({
                 method:"post",
                 url:    $rootScope.url+"Login/Login",
