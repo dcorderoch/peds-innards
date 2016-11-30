@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MyLearn.Models;
+using MyLearnDAL.Models;
+using Badge = MyLearn.Models.Badge;
 
 namespace MyLearn.Utils
 {
@@ -51,5 +53,39 @@ namespace MyLearn.Utils
             }
             return resultList;
         }
+
+        public List<Badge> BadgeListMap(List<MyLearnDAL.Models.Badge> listOfBadges)
+        {
+            List<Badge> resultList = new List<Badge>();
+            foreach (var newBadge in listOfBadges)
+            {
+                var badge = new Badge();
+                badge.BadgeId = newBadge.AchievementId.ToString();
+                badge.BadgeDescription = newBadge.Achievement.Description;
+                badge.Alardeado = newBadge.Bragged;
+                badge.Awarded = 1;
+                badge.Value = newBadge.Achievement.Score;
+                resultList.Add(badge);
+            }
+            return resultList;
+        }
+
+        public List<Achievement> BadgeToAchievementListMap(List<Badge> badges, MyLearnDAL.Models.Course course)
+        {
+            var achievements = new List<Achievement>();
+            foreach (var badge in badges)
+            {
+                var achievement = new Achievement();
+                achievement.AchievementId = new Guid(badge.BadgeId);
+                achievement.CourseId = course.CourseId;
+                achievement.Description = badge.BadgeDescription;
+                achievement.Score = badge.Value;
+                achievements.Add(achievement);
+            }
+            return achievements;
+        } 
+            
+
+        
     }
 }

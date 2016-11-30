@@ -42,19 +42,7 @@ namespace MyLearn.BLL
                     course.UniversityId = new Guid(newCourse.UniversityId);
                     course.MinScore = newCourse.MinGrade;
                     course.IsActive = 1;
-
-                    List<Badge> badges = newCourse.Badges;
-                    var achievements = new List<Achievement>();
-                    foreach (var badge in badges)
-                    {
-                        var achievement = new Achievement();
-                        achievement.AchievementId = new Guid(badge.BadgeId);
-                        achievement.CourseId = course.CourseId;
-                        achievement.Description = badge.BadgeDescription;
-                        achievement.Score = badge.Value;
-                        achievements.Add(achievement);
-                    }
-                    course.Achievements = achievements;
+                    course.Achievements = mapper.BadgeToAchievementListMap(newCourse.Badges, course);
                     course.Students = new List<Student>();
                     courseRepo.Add(course);
                     courseRepo.SaveChanges();
@@ -123,22 +111,12 @@ namespace MyLearn.BLL
                     new Guid(credentials.CourseId));
                 if (project != null)
                 {
-                    specificCourse.NombreContacto = project.Student.Name;
-                    specificCourse.ApellidoContacto = project.Student.LastName;
-                    specificCourse.Grade = project.Score;
-                    var listOfBadges = project.Badges;
-                    List<Badge> resultBadge = new List<Badge>();
-                    foreach (var badge in listOfBadges)
-                    {
-                        var newbadge = new Badge();
-                        newbadge.BadgeId = badge.AchievementId.ToString();
-                        newbadge.BadgeDescription = badge.Achievement.Description;
-                        newbadge.Value = badge.Achievement.Score;
-                        newbadge.Alardeado = badge.Bragged;
-                        newbadge.Awarded = 1;
-                        resultBadge.Add(newbadge);
-                    }
-                    specificCourse.Badges = resultBadge;
+                specificCourse.NombreContacto = project.Student.Name;
+                specificCourse.ApellidoContacto = project.Student.LastName;
+                specificCourse.Grade = project.Score;
+                var listOfBadges = project.Badges;
+                List<Badge> resultBadge = mapper.BadgeListMap(listOfBadges);
+                specificCourse.Badges = resultBadge;
                 }
                 projectRepository.Dispose();
                 return specificCourse;
@@ -158,24 +136,14 @@ namespace MyLearn.BLL
                 if (course != null)
                 {
                     courseAsStudent.CourseName = course.Name;
-                    courseAsStudent.StudentUserId = credentials.StudentUserId;
+                    courseAsStudent.StudentUserId =credentials.StudentUserId;
                     courseAsStudent.ProfUserId = course.ProfessorId.ToString();
                     courseAsStudent.ProfessorName = course.Professor.Name + " " + course.Professor.Lastname;
                     courseAsStudent.UniversityId = course.UniversityId.ToString();
                     courseAsStudent.Grade = course.MinScore;
 
                     List<MyLearnDAL.Models.Badge> listOfBadges = project.Badges;
-                    List<Badge> resBadges = new List<Badge>();
-                    foreach (MyLearnDAL.Models.Badge newBadge in listOfBadges)
-                    {
-                        var badge = new Badge();
-                        badge.BadgeId = newBadge.AchievementId.ToString();
-                        badge.BadgeDescription = newBadge.Achievement.Description;
-                        badge.Alardeado = newBadge.Bragged;
-                        badge.Awarded = 1;
-                        badge.Value = newBadge.Achievement.Score;
-                        resBadges.Add(badge);
-                    }
+                    List<Badge> resBadges = mapper.BadgeListMap(listOfBadges);
 
                     courseAsStudent.Badges = resBadges;
                     courseAsStudent.CourseId = course.CourseId.ToString();
@@ -248,6 +216,8 @@ namespace MyLearn.BLL
             var projectRepo = new ProjectRepository();
             var course = courseRepo.GetCoursebyId(new Guid(proposal.CourseId));
             var student = studentRepo.GetStudentById(new Guid(proposal.StudentUserId));
+            var retVal = new ReturnCode();
+
             if (course != null && student != null)
             {
                 var project = new Project();
@@ -257,10 +227,15 @@ namespace MyLearn.BLL
                 project.IsActive = 1;
                 project.Description = proposal.Description;
                 project.Score = 0;
-                project.Badges = 
+                project.Badges = new List<MyLearnDAL.Models.Badge>();
+                project.ProjectComments = new List<ProjectComment>();
+                projectRepo.Add(project);
+                projectRepo.SaveChanges();
+                retVal.ReturnStatus = 1;
             }
-            var retVal = new ReturnCode();
-            // SUBJECT TO CHANGE
+            courseRepo.Dispose();
+            studentRepo.Dispose();
+            projectRepo.Dispose();
             return retVal;
         }
     }
