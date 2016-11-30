@@ -89,10 +89,10 @@ namespace MyLearn.Controllers
         public JsonResult<StudentCourses> GetAllByStudent(StudentIdentifier studentCredentials)
         {
             var courMngr = new CourseManager();
-            var retVal = courMngr.GetAllByStudent(studentCredentials.ProfUserId);
+            var retVal = courMngr.GetAllByStudent(studentCredentials.StudentUserId);
             if (retVal == null)
             {
-                retVal = new AllProfessorsCourses();
+                retVal = new StudentCourses();
             }
             return Json(retVal);
         }
