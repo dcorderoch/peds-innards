@@ -15,6 +15,11 @@ namespace MyLearn.BLL
     {
         private ModelMapper mapper;
 
+        public CourseManager()
+        {
+            
+        }
+
         public CourseManager(ModelMapper mapper)
         {
             this.mapper = mapper;
@@ -71,6 +76,13 @@ namespace MyLearn.BLL
             }
         }
 
+        /*private void EvaluateStudents(Course course, List<Student> students)
+        {
+            foreach (var student in students)
+            {
+                
+            }
+        }*/
         public Course GetCourseAsProfessor(string courseId)
         {
             using (var context = new MyLearnContext())
