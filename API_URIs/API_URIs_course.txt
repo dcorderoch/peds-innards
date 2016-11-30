@@ -180,15 +180,20 @@ and then Receives
                   {
                       "Course":"algo", 
                       "CourseId": "Id",
-                      "CourseDescription":"algo"
+                      "CourseDescription":"algo",
+                      "Active":(0|1)
                   },
                   {
                       "Course":"algo", 
                       "CourseId": "Id",
-                      "CourseDescription":"algo"
+                      "CourseDescription":"algo",
+                      "Active":(0|1)
                   }
               ]
 }
+
+Nota: - 0 inactivo
+      - 1 activo
 
 ################################################# Close Course
 https://host/Api/Course/Close
