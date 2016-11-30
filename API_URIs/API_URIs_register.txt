@@ -166,7 +166,8 @@ Web Application sends
     "TipoRepositorioArchivos":"algo",
     "Foto":"algo",
     "NombreEmpresarial":"algo",
-    "EnlaceSitioWeb":"algo"
+    "EnlaceSitioWeb":"algo",
+    "IdEmpresa":"algo"
 }
 
 and then Receives
