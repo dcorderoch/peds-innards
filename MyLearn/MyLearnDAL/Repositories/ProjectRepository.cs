@@ -9,6 +9,8 @@ namespace MyLearnDAL.Repositories
 {
     public class ProjectRepository : Repository<Project>
     {
+        public ProjectRepository(MyLearnContext context) : base(context) { }
+
         public Project GetProjectById(Guid projectId)
         {
             return DbSet.Find(projectId);

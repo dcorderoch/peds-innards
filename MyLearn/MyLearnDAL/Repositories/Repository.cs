@@ -25,6 +25,7 @@ namespace MyLearnDAL.Repositories
         public Repository(MyLearnContext context)
         {
             this.context = context;
+            DbSet = context.Set<T>();
         }
         public List<T> GetAll()
         {

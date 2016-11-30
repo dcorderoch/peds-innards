@@ -8,6 +8,8 @@ namespace MyLearnDAL.Repositories
 {
     public class TechnologyRepository : Repository<Technology>
     {
+        public TechnologyRepository(MyLearnContext context) : base(context) { }
+
         public Technology GetTechnologybyId(Guid techId)
         {
             return DbSet.Find(techId);

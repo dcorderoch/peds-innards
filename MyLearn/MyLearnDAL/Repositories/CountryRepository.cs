@@ -9,6 +9,7 @@ namespace MyLearnDAL.Repositories
 {
     public class CountryRepository : Repository<Country>
     {
+        public CountryRepository(MyLearnContext context) : base(context) { }
 
         public Country GetCountryById(Guid countryId)
         {

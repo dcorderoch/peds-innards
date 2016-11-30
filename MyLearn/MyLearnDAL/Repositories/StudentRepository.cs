@@ -7,6 +7,8 @@ namespace MyLearnDAL.Repositories
 {
     public class StudentRepository : Repository<Student>
     {
+        public StudentRepository(MyLearnContext context) : base(context) { }
+
         public Student GetStudentById(Guid userId)
         {
             return DbSet.Find(userId);

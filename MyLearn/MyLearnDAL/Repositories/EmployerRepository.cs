@@ -9,6 +9,7 @@ namespace MyLearnDAL.Repositories
 {
     public class EmployerRepository : Repository<Employer>
     {
+        public EmployerRepository(MyLearnContext context) : base(context) { }
 
         public Employer GetEmployerById(Guid userId)
         {

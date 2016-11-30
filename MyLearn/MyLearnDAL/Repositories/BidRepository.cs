@@ -9,6 +9,7 @@ namespace MyLearnDAL.Repositories
 {
     public class BidRepository : Repository<Bid>
     {
+        public BidRepository(MyLearnContext context) : base(context) { }
 
         public Bid GetBidById(Guid bidId)
         {

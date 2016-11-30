@@ -9,6 +9,7 @@ namespace MyLearnDAL.Repositories
 {
    public class CourseRepository : Repository<Course>
     {
+        public CourseRepository(MyLearnContext context) : base(context) { }
 
         public Course GetCoursebyId(Guid courseId)
         {

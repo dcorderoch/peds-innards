@@ -9,5 +9,6 @@ namespace MyLearnDAL.Repositories
 {
     public class LanguageRepository : Repository<Language>
     {
+        public LanguageRepository(MyLearnContext context) : base(context) { }
     }
 }

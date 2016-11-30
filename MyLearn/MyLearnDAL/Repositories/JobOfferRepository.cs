@@ -9,6 +9,7 @@ namespace MyLearnDAL.Repositories
 {
     public class JobOfferRepository : Repository<JobOffer>
     {
+        public JobOfferRepository(MyLearnContext context) : base(context) { }
 
         public JobOffer GetJobOfferById(Guid jobOfferId)
         {

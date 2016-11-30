@@ -9,6 +9,8 @@ namespace MyLearnDAL.Repositories
 {
     public class NotificationRepository : Repository<Notification>
     {
+        public NotificationRepository(MyLearnContext context) : base(context) { }
+
         public List<Notification> GetNotifications(Guid userId)
         {
             return DbSet.Where(n => n.Student.UserId.Equals(userId)).ToList();

@@ -9,6 +9,7 @@ namespace MyLearnDAL.Repositories
 {
     public class ProfessorRepository : Repository<Professor>
     {
+        public ProfessorRepository(MyLearnContext context) : base(context) { }
 
         public Professor GetProfessorById(Guid userId)
         {

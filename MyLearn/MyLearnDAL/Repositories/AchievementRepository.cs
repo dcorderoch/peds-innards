@@ -7,6 +7,8 @@ namespace MyLearnDAL.Repositories
 {
     public class AchievementRepository : Repository<Achievement>
     {
+        public AchievementRepository(MyLearnContext context) : base(context) { }
+
         public List<Achievement> GetCourseAchievements(Guid CourseId)
         {
             return DbSet.Where(a => a.Course.CourseId.Equals(CourseId)).ToList();

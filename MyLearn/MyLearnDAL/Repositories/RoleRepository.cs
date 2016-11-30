@@ -9,5 +9,6 @@ namespace MyLearnDAL.Repositories
 {
     public class RoleRepository : Repository<Role>
     {
+        public RoleRepository(MyLearnContext context) : base(context) { }
     }
 }

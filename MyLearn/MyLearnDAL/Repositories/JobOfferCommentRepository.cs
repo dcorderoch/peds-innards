@@ -9,6 +9,8 @@ namespace MyLearnDAL.Repositories
 {
     public class JobOfferCommentRepository: Repository<JobOfferComment>
     {
+        public JobOfferCommentRepository(MyLearnContext context) : base(context) { }
+
         public List<JobOfferComment> GetJobOfferCommentsByJobOfferId(Guid jobOfferId)
         {
             return DbSet.Where(joc => joc.JobOffer.JobOfferId.Equals(jobOfferId)).ToList();
