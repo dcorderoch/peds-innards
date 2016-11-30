@@ -14,6 +14,10 @@ namespace MyLearn.Controllers
         {
             var courMngr = new CourseManager();
             var retVal = courMngr.GetCourseAsProfessor(courseId.CourseId);
+            if (retVal == null)
+            {
+                retVal = new Course();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -21,6 +25,10 @@ namespace MyLearn.Controllers
         {
             var courMngr = new CourseManager();
             var retVal = courMngr.GetSpecificCourse(credentials);
+            if (retVal == null)
+            {
+                retVal = new SpecificCourse();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -28,6 +36,10 @@ namespace MyLearn.Controllers
         {
             var courMngr = new CourseManager();
             var retVal = courMngr.GetCourseAsStudent(courseId);
+            if (retVal == null)
+            {
+                retVal = new CourseAsStudent();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -42,6 +54,10 @@ namespace MyLearn.Controllers
         {
             var courMngr = new CourseManager();
             var retVal = courMngr.GetAllByProfessor(profCredentials.ProfUserId);
+            if (retVal == null)
+            {
+                retVal = new AllProfessorsCourses();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -49,13 +65,17 @@ namespace MyLearn.Controllers
         {
             var courMngr = new CourseManager();
             var retVal = courMngr.GetAllByUniversity(universityId.UniversityId);
+            if (retVal == null)
+            {
+                retVal = new List<CourseShort>();
+            }
             return Json(retVal);
         }
         [HttpPost]
-        public JsonResult<ReturnCode> Close(UniversityIdentifier universityId)
+        public JsonResult<ReturnCode> Close(CourseIdentifier universityId)
         {
             var courMngr = new CourseManager();
-            var retVal = courMngr.CloseCourse(universityId.UniversityId);
+            var retVal = courMngr.CloseCourse(universityId.CourseId);
             return Json(retVal);
         }
         [HttpPost]
