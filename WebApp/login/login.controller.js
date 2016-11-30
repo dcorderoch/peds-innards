@@ -5,8 +5,8 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$location',  'FlashService', 'AuthenticationService', '$rootScope' ];
-    function LoginController($location,  FlashService, AuthenticationService, $rootScope) {
+    LoginController.$inject = ['$location',  'FlashService', 'AuthenticationService', '$rootScope', '$localStorage' ];
+    function LoginController($location,  FlashService, AuthenticationService, $rootScope, $localStorage) {
         var vm = this;
 
         vm.login = login;
@@ -28,7 +28,6 @@
             AuthenticationService.Login( vm.loginData)
                 .then(function(response){
 
-                console.log(response)
                 if (response.data.UserTypeCode== "1" ){
 
                     FlashService.Success("Login exitoso");
@@ -37,9 +36,16 @@
                         .then(function(response){
                         console.log(response);
 
-                        AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
-                                                             response.data);    
-                        $rootScope.userData= response.data;
+                        var userFoto = $localStorage.$default({
+                            Foto : response.data.Foto
+                        });
+
+                        var data = response.data;
+                        delete data.Foto;
+
+                        AuthenticationService.SetCredentials( data.UserId, data.Password, 
+                                                             data);    
+                        $rootScope.userData= data;
                         $location.path('/studentprofile');    
 
                     },function(response){
@@ -52,7 +58,13 @@
                     AuthenticationService.LoginProfessor(vm.loginData)
                         .then(function(response){
 
+                        vm.userFoto = $localStorage.$default({
+                            Foto : response.data.Foto
+                        });
+
                         var data = response.data;
+                        delete data.Foto;
+                        
                         AuthenticationService.SetCredentials( data.UserId, data.Password, 
                                                              data);    
                         $rootScope.userData= data;
@@ -68,9 +80,16 @@
                     AuthenticationService.LoginEmployer(vm.loginData)
                         .then(function(response){
 
-                        AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
-                                                             response.data);    
-                        $rootScope.userData= response.data;
+                        vm.userFoto = $localStorage.$default({
+                            Foto : response.data.Foto
+                        });
+
+                        var data = response.data;
+                        delete data.Foto;
+
+                        AuthenticationService.SetCredentials( data.UserId, data.Password, 
+                                                             data);    
+                        $rootScope.userData= data;
                         $location.path('/employerprofile');    
 
                     },function(response){
@@ -83,7 +102,7 @@
                 }
             },function(response){
                 console.log( vm.loginData);
-                FlashService.Error("Usuario no existe");//errores
+
                 vm.dataLoading = false;
             }); 
         }

@@ -5,8 +5,8 @@
         .module('app')
         .controller('ProfessorProfileController', ProfessorProfileController);
 
-    ProfessorProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'ProfileCourseService', 'UserService'];
-    function ProfessorProfileController($location,  FlashService, $rootScope, CourseService, ProfileCourseService, UserService) {
+    ProfessorProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'ProfileCourseService', 'UserService', '$localStorage'];
+    function ProfessorProfileController($location,  FlashService, $rootScope, CourseService, ProfileCourseService, UserService, $localStorage) {
         var vm = this;
 
         initController();
@@ -29,9 +29,11 @@
                 vm.userData.TipoRepositorioArchivos = "Dropbox"
             }
 
-            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
+
+            vm.photo = "data:image/jpg;base64," + $localStorage.Foto
+            console.log($localStorage);
             console.log(vm.userData);
-            console.log($rootScope.userData)
+
 
             vm.toggleEnable;
             if (vm.userData.Active == "0"){

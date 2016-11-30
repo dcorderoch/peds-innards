@@ -5,8 +5,8 @@
         .module('app')
         .controller('WorkProfileController', WorkProfileController);
 
-    WorkProfileController.$inject = ['$location',  'FlashService', '$rootScope','JobService', 'UserService', 'ProfileCourseService'];
-    function WorkProfileController($location,  FlashService, $rootScope, JobService, UserService, ProfileCourseService) {
+    WorkProfileController.$inject = ['$location',  'FlashService', '$rootScope','JobService', 'UserService', 'ProfileCourseService', '$localStorage'];
+    function WorkProfileController($location,  FlashService, $rootScope, JobService, UserService, ProfileCourseService, $localStorage) {
         var vm = this;
 
         vm.goWorkActive = goWorkActive;
@@ -28,8 +28,8 @@
                 vm.userData.TipoRepositorioArchivos = "Dropbox"
             }
 
-            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
-
+            vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
+            console.log($localStorage);
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   

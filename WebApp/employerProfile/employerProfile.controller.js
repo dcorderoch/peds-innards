@@ -5,8 +5,8 @@
         .module('app')
         .controller('EmployerProfileController', EmployerProfileController);
 
-    EmployerProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'JobService', 'UserService', 'ProfileCourseService'];
-    function EmployerProfileController($location,  FlashService, $rootScope, JobService, UserService, ProfileCourseService) {
+    EmployerProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'JobService', 'UserService', 'ProfileCourseService', '$localStorage'];
+    function EmployerProfileController($location,  FlashService, $rootScope, JobService, UserService, ProfileCourseService, $localStorage) {
         var vm = this;
 
         initController();
@@ -29,8 +29,9 @@
                 vm.userData.TipoRepositorioArchivos = "Dropbox"
             }
 
-            vm.photo = "data:image/jpg;base64," + vm.userData.Foto;
-
+            vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
+            console.log($localStorage);
+            
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;

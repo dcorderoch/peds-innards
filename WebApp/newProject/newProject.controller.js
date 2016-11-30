@@ -5,8 +5,8 @@
         .module('app')
         .controller('NewProjectController', NewProjectController);
 
-    NewProjectController.$inject = ['$location',  'FlashService' ,'$rootScope', 'RegService', 'JobService', 'UserService'];
-    function NewProjectController($location,  FlashService, $rootScope, RegService, JobService, UserService) {
+    NewProjectController.$inject = ['$location',  'FlashService' ,'$rootScope', 'RegService', 'JobService', 'UserService', '$localStorage'];
+    function NewProjectController($location,  FlashService, $rootScope, RegService, JobService, UserService, $localStorage) {
         var vm = this;
 
         initController();
@@ -34,8 +34,8 @@
             loadTechnologies();
             loadCountries();
 
-            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
-
+            vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
+            console.log($localStorage);
 
             vm.toggleEnable;
             if (vm.userData.Active == "0"){

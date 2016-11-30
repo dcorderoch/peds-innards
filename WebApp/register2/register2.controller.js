@@ -5,8 +5,8 @@
         .module('app')
         .controller('Register2Controller', Register2Controller);
 
-    Register2Controller.$inject = ['$location',  'FlashService', 'UserService','$rootScope', 'RegService', 'AuthenticationService'];
-    function Register2Controller($location,  FlashService, UserService, $rootScope,RegService, AuthenticationService) {
+    Register2Controller.$inject = ['$location',  'FlashService', 'UserService','$rootScope', 'RegService', 'AuthenticationService', '$localStorage'];
+    function Register2Controller($location,  FlashService, UserService, $rootScope,RegService, AuthenticationService, $localStorage) {
         var vm = this;
 
         vm.register=register;
@@ -45,6 +45,14 @@
 
         function register() {
 
+            var oFile = document.getElementById("fileUpload").files[0]; // <input type="file" id="fileUpload" accept=".jpg,.png,.gif,.jpeg"/>
+
+            if (oFile.size > 2097152) // 2 mb for bytes.
+            {
+                alert("El tamaño de la foto excede el tamaño máximo de 2mb");
+                return;
+            }
+
             if (vm.regData.hasOwnProperty("Foto")){
                 vm.regData.Foto =  vm.regData.Foto.base64;
             }
@@ -65,10 +73,17 @@
 
                 FlashService.Success('Registro exitoso', true);
 
-                AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
-                                                     response.data);    
-                $rootScope.userData= response.data;
-                 
+                var userFoto = $localStorage.$default({
+                    Foto : response.data.Foto
+                });
+
+                var data = response.data;
+                delete data.Foto;
+
+                AuthenticationService.SetCredentials( data.UserId, data.Password, 
+                                                     data);    
+                $rootScope.userData= data;
+
                 $location.path('/professorprofile');    
 
             },function(response){

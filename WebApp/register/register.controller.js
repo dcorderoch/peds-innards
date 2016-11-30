@@ -5,8 +5,8 @@
         .module('app')
         .controller('RegisterController', RegisterController);
 
-    RegisterController.$inject = ['$location',  'FlashService', 'UserService','$rootScope', 'RegService', 'AuthenticationService'];
-    function RegisterController($location,  FlashService, UserService, $rootScope, RegService,  AuthenticationService) {
+    RegisterController.$inject = ['$location',  'FlashService', 'UserService','$rootScope', 'RegService', 'AuthenticationService', '$localStorage'];
+    function RegisterController($location,  FlashService, UserService, $rootScope, RegService,  AuthenticationService, $localStorage) {
         var vm = this;
 
         vm.register=register;
@@ -106,6 +106,14 @@
 
         function register() {
 
+            var oFile = document.getElementById("fileUpload").files[0]; // <input type="file" id="fileUpload" accept=".jpg,.png,.gif,.jpeg"/>
+
+            if (oFile.size > 2097152) // 2 mb for bytes.
+            {
+                alert("El tamaño de la foto excede el tamaño máximo de 2mb");
+                return;
+            }
+
             vm.regData.Telefono = vm.regData.Telefono.toString();
 
             //            vm.regData.TipoRepositorioArchivos = (vm.regData.TipoRepositorioArchivos == "Google Drive") ? "0" : "1"
@@ -127,7 +135,6 @@
                 vm.regData.EnlaceACurriculum = "";
             }
 
-
             //            var pass = vm.regData.Password ;
             //            vm.regData.Password = sha256(vm.regData.Password);
 
@@ -138,10 +145,17 @@
 
                 FlashService.Success('Registro exitoso', true);
 
-                AuthenticationService.SetCredentials( response.data.UserId, response.data.Password, 
-                                                     response.data);    
-                $rootScope.userData= response.data;
-                
+
+                var userFoto = $localStorage.$default({
+                    Foto : response.data.Foto
+                });
+
+                var data = response.data;
+                delete data.Foto;
+
+                AuthenticationService.SetCredentials( data.UserId, data.Password, 
+                                                     data);    
+                $rootScope.userData= data;
                 $location.path('/studentprofile');    
 
             },function(response){
@@ -151,7 +165,6 @@
             });
             //vm.regData.Password = pass;
         }
-
 
     }
 })();

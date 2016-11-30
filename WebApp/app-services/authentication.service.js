@@ -5,8 +5,8 @@
         .module('app')//El modulo es app, el cual hace referencia 
         .factory('AuthenticationService', AuthenticationService);
 
-    AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope'];
-    function AuthenticationService($http, $cookieStore, $rootScope) {
+    AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$localStorage'];
+    function AuthenticationService($http, $cookieStore, $rootScope, $localStorage) {
         var service = {};
 
         service.Login = Login;
@@ -73,13 +73,13 @@
         }
 
         function ClearCredentials() {   // cuando se deslogea el usuario
+
             $rootScope.globals = {};
             $rootScope.userId = "";
-            $rootScope.patientName = "";
-            $rootScope.doctorId = "";
-            $rootScope.doctorName = "";
             $cookieStore.remove('globals');
+            $localStorage.$reset();
             $http.defaults.headers.common.Authorization = 'Basic';
+
         }
     }
 

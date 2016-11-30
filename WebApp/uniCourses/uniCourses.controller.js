@@ -5,8 +5,8 @@
         .module('app')
         .controller('UniCoursesController', UniCoursesController);
 
-    UniCoursesController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService'];
-    function UniCoursesController($location,  FlashService, $rootScope, CourseService, UserService) {
+    UniCoursesController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService', '$localStorage'];
+    function UniCoursesController($location,  FlashService, $rootScope, CourseService, UserService, $localStorage) {
         var vm = this;
 
         initController();
@@ -32,8 +32,9 @@
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
 
 
-            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
-
+            vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
+            console.log($localStorage);
+            
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;

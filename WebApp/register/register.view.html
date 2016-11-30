@@ -63,7 +63,7 @@
 
                         <label>Escoge tu foto de perfil</label>
                         <div class="form-group" ng-class="{ 'has-error': form.photo.$dirty && form.photo.$error.required }">           
-                            <input name="photos" accept="image/*" class="btn btn-info" type="file" name="file"   ng-model="vm.regData.Foto" base-sixty-four-input >
+                            <input id="fileUpload"  accept="image/*" class="btn btn-info" type="file" name="file" ng-model="vm.regData.Foto" base-sixty-four-input >
                         </div>
 
                         <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">

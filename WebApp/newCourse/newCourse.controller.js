@@ -5,8 +5,8 @@
         .module('app')
         .controller('NewCourseController', NewCourseController);
 
-    NewCourseController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService' ];
-    function NewCourseController($location,  FlashService, $rootScope, CourseService, UserService) {
+    NewCourseController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService', '$localStorage' ];
+    function NewCourseController($location,  FlashService, $rootScope, CourseService, UserService, $localStorage) {
         var vm = this;
 
         initController();
@@ -30,9 +30,9 @@
                 vm.userData.TipoRepositorioArchivos = "Dropbox"
             }
 
-            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
+            vm.photo = "data:image/jpg;base64," + $localStorage.Foto
+            console.log($localStorage);
             console.log(vm.userData);
-
 
 
             vm.toggleEnable;
@@ -56,7 +56,7 @@
             if ( !checkEvaluation(vm.evaluations)){
 
                 FlashService.Error("La evaluación debe sumar un 100%");
-                vm.evaluations=[];
+                //vm.evaluations=[];
 
                 return;
             }
@@ -66,8 +66,8 @@
 
 
             var enviar = {CourseName:vm.CourseName, CourseDescription: vm.CourseDescription,
-                          Group: group, MinGrade: minGrade, ProfUserId: "id", 
-                          UniversityId: "123", Badges: vm.evaluations}
+                          Group: group, MinGrade: minGrade, ProfUserId: vm.userData.UserId, 
+                          UniversityId: vm.userData.UniversityId , Badges: vm.evaluations}
 
             console.log(enviar);
             CourseService.CreateCourse(enviar)
@@ -81,16 +81,16 @@
                 }
             }, function(response){
                 FlashService.Error("No se pudo crear el curso");
-                console.log(enviar);
+                vm.nombreEval="";
+                vm.porcentaje ="";
+                vm.CourseName="";
+                vm.CourseDescription="";
+                vm.Group="";
+                vm.MinGrade="";
+                vm.evaluations=[];
             })
 
-            vm.nombreEval="";
-            vm.porcentaje ="";
-            vm.CourseName="";
-            vm.CourseDescription="";
-            vm.Group="";
-            vm.MinGrade="";
-            vm.evaluations=[];
+
         }
 
         function checkEvaluation(evaluations){

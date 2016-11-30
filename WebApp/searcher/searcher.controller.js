@@ -5,8 +5,8 @@
         .module('app')
         .controller('SearcherController', SearcherController);
 
-    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService', 'UserService'];
-    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService, UserService) {
+    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService', 'UserService', '$localStorage'];
+    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService, UserService, $localStorage) {
         var vm = this;
 
         vm.goOffering = goOffering;
@@ -38,8 +38,9 @@
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
 
-            vm.photo = "data:image/jpg;base64," + vm.userData.Foto
-
+            vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
+            console.log($localStorage);
+            
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;

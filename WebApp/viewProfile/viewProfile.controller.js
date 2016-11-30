@@ -5,8 +5,8 @@
         .module('app')
         .controller('ViewProfileController', ViewProfileController);
 
-    ViewProfileController.$inject = ['$location', 'FlashService',  '$rootScope', 'CourseService', 'UserService', 'ProfileCourseService' ];
-    function ViewProfileController($location, FlashService, $rootScope, CourseService, UserService, ProfileCourseService) {
+    ViewProfileController.$inject = ['$location', 'FlashService',  '$rootScope', 'CourseService', 'UserService', 'ProfileCourseService', '$localStorage' ];
+    function ViewProfileController($location, FlashService, $rootScope, CourseService, UserService, ProfileCourseService, $localStorage) {
         var vm = this;
 
         vm.goCourseActive = goCourseActive;
@@ -31,6 +31,9 @@
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};  
 
+
+            vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
+            console.log($localStorage);
 
             ProfileCourseService.SetCourseData(currentCourseData);
 
