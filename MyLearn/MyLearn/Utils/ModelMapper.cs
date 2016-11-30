@@ -37,5 +37,19 @@ namespace MyLearn.Utils
             }
             return resultList;
         }
+
+        public List<CourseShort> CourseShortListMap(List<MyLearnDAL.Models.Course> courses)
+        {
+            List<CourseShort> resultList = new List<CourseShort>();
+            foreach (var course in courses)
+            {
+                var resCourse = new CourseShort();
+                resCourse.CourseId = course.CourseId.ToString();
+                resCourse.CourseDescription = course.Description;
+                resCourse.CourseName = course.Name;
+                resultList.Add(resCourse);
+            }
+            return resultList;
+        }
     }
 }

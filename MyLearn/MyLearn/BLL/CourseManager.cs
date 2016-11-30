@@ -203,14 +203,21 @@ namespace MyLearn.BLL
                 allCourses.ActiveCourses = activeCoursesList;
                 allCourses.FInishedCourses = finishedCoursesList;
             }
+            courseRepo.Dispose();
             return allCourses;
         }
 
         public List<CourseShort> GetAllByUniversity(string universityId)
         {
+            CourseRepository courseRepo = new CourseRepository();
+           
          List<CourseShort> listOfCourses = new List<CourseShort>();
-            //get courses by universityId
-            //listOfCourses= dbobject(universityId);
+            var coursesByUniversity = courseRepo.GetUniversityCourses(new Guid(universityId));
+            if (coursesByUniversity != null)
+            {
+                listOfCourses = mapper.CourseShortListMap(coursesByUniversity);
+            }
+            courseRepo.Dispose();
             return listOfCourses;
         }
 
