@@ -3,6 +3,7 @@ using MyLearn.InputModels;
 using MyLearn.Models;
 using MyLearn.TwitterPoster;
 using System.Collections.Generic;
+using MyLearn.Utils;
 using MyLearnDAL;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
@@ -12,6 +13,7 @@ namespace MyLearn.BLL
 {
     public class BadgeManager
     {
+        private ModelMapper mapper;
         public ReturnCode GiveBadge(NewBadge newBadge)
         {
             using (var context = new MyLearnContext())
@@ -19,17 +21,19 @@ namespace MyLearn.BLL
                 BadgeRepository badgeRepo = new BadgeRepository(context);
                 ProjectRepository projectRepo = new ProjectRepository(context);
                 Badge badge = new Badge();
-                Project project = new Project();
                 var retVal = new ReturnCode();
-
+                var project = projectRepo.GetProjectByStudentAndCourseId(new Guid(newBadge.StudentUserId), new Guid(newBadge.CourseId));
                 badge.BadgeId = Guid.NewGuid();
                 badge.Bragged = 0;
                 badge.AchievementId = new Guid(newBadge.AchievementId);
-                project = projectRepo.GetProjectByStudentAndCourseId(new Guid(newBadge.StudentUserId), new Guid(newBadge.CourseId));
                 badge.ProjectId = project.ProjectId;
                 if (badge.AchievementId != null && badge.ProjectId != null)
                 {
+                    project.Badges.Add(badge);
+                    project.Score += badge.Achievement.Score;
                     badgeRepo.Add(badge);
+                    badgeRepo.SaveChanges();
+                    projectRepo.SaveChanges();
                     retVal.ReturnStatus = 1;
                 }
                 badgeRepo.Dispose();
@@ -44,23 +48,12 @@ namespace MyLearn.BLL
             {
                 ProjectRepository projectRepo = new ProjectRepository(context);
                 BadgeRepository badgeRepo = new BadgeRepository(context);
-                Project project = projectRepo.GetProjectByStudentAndCourseId(new Guid(credentials.StudentUserId), new Guid(credentials.CourseId));
-                Guid projectId = new Guid();
-                if (project != null)
-                {
-                    projectId = project.ProjectId;
-                }
-                List<MyLearnDAL.Models.Badge> retval = badgeRepo.GetProjectBadges(projectId);
                 List<Models.Badge> badges = new List<Models.Badge>();
-                foreach (MyLearnDAL.Models.Badge badge in retval)
+                var project = projectRepo.GetProjectByStudentAndCourseId(new Guid(credentials.StudentUserId), new Guid(credentials.CourseId));
+                var retval = badgeRepo.GetProjectBadges(project.ProjectId);
+                if (retval!= null)
                 {
-                    Models.Badge newBadge = new Models.Badge();
-                    newBadge.BadgeId = badge.AchievementId.ToString();
-                    newBadge.BadgeDescription = badge.Achievement.Description;
-                    newBadge.Value = badge.Achievement.Score;
-                    newBadge.Alardeado = badge.Bragged;
-                    newBadge.Awarded = 1;
-                    badges.Add(newBadge);
+                    badges = mapper.BadgeListMap(retval);
                 }
                 projectRepo.Dispose();
                 badgeRepo.Dispose();
@@ -73,18 +66,16 @@ namespace MyLearn.BLL
             using (var context = new MyLearnContext())
             {
                 BadgeRepository badgeRepo = new BadgeRepository(context);
-                Badge badge = new Badge();
-                badge = badgeRepo.GetBadgeById(new Guid(badgeId.BadgeId));
+                var badge = badgeRepo.GetBadgeById(new Guid(badgeId.BadgeId));
                 var retVal = new ReturnCode();
                 retVal.ReturnStatus = 0;
-
-                // se hace el tweet ANTES de hacer lo demás, si el método retorna FALSE
-                // se retorna que falló la vara
+                
                 var tweeter = new Tweeter();
                 if (tweeter.tweet(badgeId.StudentName + " " + badgeId.StudentLastName + " obtuvo una medalla."))
                 {
                     retVal.ReturnStatus += 1;
                     badge.Bragged = 1;
+                    badgeRepo.SaveChanges();
                 }
                 badgeRepo.Dispose();
                 return retVal;

@@ -75,14 +75,7 @@ namespace MyLearn.BLL
                 return returnCode;
             }
         }
-
-        /*private void EvaluateStudents(Course course, List<Student> students)
-        {
-            foreach (var student in students)
-            {
-                
-            }
-        }*/
+        
         public Course GetCourseAsProfessor(string courseId)
         {
             using (var context = new MyLearnContext())
