@@ -65,7 +65,7 @@
         function joinCourse( CourseId ){
 
             console.log(CourseId)
-            var send = {StudentUserId: vm.userData.StudentUserId, CourseId: CourseId}
+            var send = {StudentUserId: vm.userData.UserId, CourseId: CourseId}
             CourseService.JoinCourse( send)
                 .then( function(response){
 

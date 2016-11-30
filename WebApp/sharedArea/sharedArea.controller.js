@@ -53,7 +53,7 @@
 
         function sendReply( replyMessage, parentId){
 
-            var send={Commenter:"0", ParentId:parentId, Comment:replyMessage, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
+            var send={Commenter:"0", ParentId:parentId, Comment:replyMessage, StudentUserId: vm.userData.UserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
 
             console.log(send);
             CourseService.CommentCreate(send)
@@ -62,7 +62,7 @@
                 console.log(response);
                 getComments();
                 processComments();
-                var dataSend = {StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, UniversityId: vm.courseData.UniversityId, 
+                var dataSend = {StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, UniversityId: vm.courseData.UniversityId, 
                                 Group: vm.courseData.Group, CourseId: vm.courseData.CourseId}
 
                 CourseService.GetSpecificCourse(dataSend)
