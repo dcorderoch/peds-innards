@@ -16,28 +16,29 @@ namespace MyLearn.BLL
     {
         public UserCode GetUserTypeCode(string username, string password)
         {
-            using (MyLearnContext context = new MyLearnContext())
+            using (var context = new MyLearnContext())
             {
                 //Admin:0 Student:1 Professor:2 Employer:3 Error: -1
-                UserCode userTypeCode = new UserCode();
-                UserRepository userRepo = new UserRepository(context);
-                User user = userRepo.GetUserByEmail(username);
+                var userTypeCode = new UserCode();
+                var userRepo = new UserRepository(context);
+                var user = userRepo.GetUserByEmail(username);
                 if (user != null && user.Password == password)
                 {
-                    int code = user.RoleId;
-                    userRepo.Dispose();
+                    var code = user.RoleId;
                     userTypeCode.UserTypeCode = code;
                 }
+                userRepo.Dispose();
                 return userTypeCode;
             }
         }
 
         private Guid GetUserId(string username)
         {
-            using (MyLearnContext context = new MyLearnContext())
+            using (var context = new MyLearnContext())
             {
-                UserRepository userRepo = new UserRepository(context);
-                User user = userRepo.GetUserByEmail(username);
+                var userRepo = new UserRepository(context);
+                var user = userRepo.GetUserByEmail(username);
+                userRepo.Dispose();
                 return user.UserId;
             }
         }
@@ -49,12 +50,12 @@ namespace MyLearn.BLL
         /// <returns>User information.</returns>
         public InfoEstudiante StudentLogin(string username, string password)
         {
-            using (MyLearnContext context = new MyLearnContext())
+            using (var context = new MyLearnContext())
             {
-                InfoEstudiante student = new InfoEstudiante();
-                StudentRepository studentRepo = new StudentRepository(context);
-                Guid studentId = GetUserId(username);
-                Student dalStudent = studentRepo.GetStudentById(studentId);
+                var student = new InfoEstudiante();
+                var studentRepo = new StudentRepository(context);
+                var studentId = GetUserId(username);
+                var dalStudent = studentRepo.GetStudentById(studentId);
 
 
                 if (dalStudent != null && dalStudent.Password == password)
@@ -78,8 +79,8 @@ namespace MyLearn.BLL
                     student.PromedioProyectos = (float)dalStudent.AvgProjects;
                     student.PromedioCursos = (float)dalStudent.AvgCourses;
 
-                    List<string> languageList = new List<string>();
-                    foreach (Language language in dalStudent.Languages)
+                    var languageList = new List<string>();
+                    foreach (var language in dalStudent.Languages)
                     {
                         languageList.Add(language.Name);
                     }
@@ -89,65 +90,73 @@ namespace MyLearn.BLL
                     student.ProyectosExitosos = dalStudent.NumSuceedProjects;
                     student.ProyectosFallidos = dalStudent.NumFailedProjects;
 
-                    List<string> technologyList = new List<string>();
-                    foreach (MyLearnDAL.Models.Technology technology in dalStudent.Technologies)
+                    var technologyList = new List<string>();
+                    foreach (var technology in dalStudent.Technologies)
                     {
                         technologyList.Add(technology.Name);
                     }
                     student.Tecnologias = technologyList;
 
-                    CourseRepository courseRepo = new CourseRepository(context);
-                    List<MyLearnDAL.Models.Course> finishedCourses = courseRepo.GetInactiveStudentCourses(studentId);
+                    var courseRepo = new CourseRepository(context);
+                    var finishedCourses = courseRepo.GetInactiveStudentCourses(studentId);
 
-                    List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
-                    foreach (MyLearnDAL.Models.Course course in finishedCourses)
+                    var finishedCoursesList = new List<FinishedCourse>();
+                    foreach (var course in finishedCourses)
                     {
-                        FinishedCourse finishedCourse = new FinishedCourse();
-                        finishedCourse.CourseDescription = course.Description;
-                        finishedCourse.CourseId = course.CourseId.ToString();
-                        finishedCourse.course = course.Name;
+                        var finishedCourse = new FinishedCourse
+                        {
+                            CourseDescription = course.Description,
+                            CourseId = course.CourseId.ToString(),
+                            course = course.Name
+                        };
                         finishedCoursesList.Add(finishedCourse);
                     }
                     student.FinishedCoursesList = finishedCoursesList;
 
-                    List<ActiveCourse> activeCoursesList = new List<ActiveCourse>();
-                    List<MyLearnDAL.Models.Course> activeCourses = courseRepo.GetActiveStudentCourses(studentId);
+                    var activeCoursesList = new List<ActiveCourse>();
+                    var activeCourses = courseRepo.GetActiveStudentCourses(studentId);
 
-                    foreach (MyLearnDAL.Models.Course course in activeCourses)
+                    foreach (var course in activeCourses)
                     {
-                        ActiveCourse activeCourse = new ActiveCourse();
-                        activeCourse.CourseDescription = course.Description;
-                        activeCourse.CourseId = course.CourseId.ToString();
-                        activeCourse.course = course.Name;
-                        activeCourse.accepted = course.IsActive;
+                        var activeCourse = new ActiveCourse
+                        {
+                            CourseDescription = course.Description,
+                            CourseId = course.CourseId.ToString(),
+                            course = course.Name,
+                            accepted = course.IsActive
+                        };
                         activeCoursesList.Add(activeCourse);
                     }
 
                     student.ActiveCoursesList = activeCoursesList;
 
-                    JobOfferRepository jobRepo = new JobOfferRepository(context);
-                    List<JobOffer> finishedJobs = jobRepo.GetStudentInactiveJobOffers(studentId);
-                    List<FinishedJobOffer> finishedJobOffers = new List<FinishedJobOffer>();
-                    foreach (JobOffer jobOffer in finishedJobs)
+                    var jobRepo = new JobOfferRepository(context);
+                    var finishedJobs = jobRepo.GetStudentInactiveJobOffers(studentId);
+                    var finishedJobOffers = new List<FinishedJobOffer>();
+                    foreach (var jobOffer in finishedJobs)
                     {
-                        FinishedJobOffer finishedJobOffer = new FinishedJobOffer();
-                        finishedJobOffer.JobOffer = jobOffer.Name;
-                        finishedJobOffer.JobOfferId = jobOffer.JobOfferId.ToString();
-                        finishedJobOffer.Description = jobOffer.StateDescription;
-                        finishedJobOffer.EmployerName = jobOffer.Employer.CompanyName;
+                        var finishedJobOffer = new FinishedJobOffer
+                        {
+                            JobOffer = jobOffer.Name,
+                            JobOfferId = jobOffer.JobOfferId.ToString(),
+                            Description = jobOffer.StateDescription,
+                            EmployerName = jobOffer.Employer.CompanyName
+                        };
                         finishedJobOffers.Add(finishedJobOffer);
                     }
 
                     student.FinishedJobOffersList = finishedJobOffers;
-                    List<JobOffer> activeJobs = jobRepo.GetStudentActiveJobOffers(studentId);
-                    List<ActiveJobOffer> activeJobOffers = new List<ActiveJobOffer>();
-                    foreach (JobOffer jobOffer in activeJobs)
+                    var activeJobs = jobRepo.GetStudentActiveJobOffers(studentId);
+                    var activeJobOffers = new List<ActiveJobOffer>();
+                    foreach (var jobOffer in activeJobs)
                     {
-                        ActiveJobOffer activeJobOffer = new ActiveJobOffer();
-                        activeJobOffer.JobOffer = jobOffer.Name;
-                        activeJobOffer.JobOfferId = jobOffer.JobOfferId.ToString();
-                        activeJobOffer.Description = jobOffer.StateDescription;
-                        activeJobOffer.EmployerName = jobOffer.Employer.CompanyName;
+                        var activeJobOffer = new ActiveJobOffer
+                        {
+                            JobOffer = jobOffer.Name,
+                            JobOfferId = jobOffer.JobOfferId.ToString(),
+                            Description = jobOffer.StateDescription,
+                            EmployerName = jobOffer.Employer.CompanyName
+                        };
                         activeJobOffers.Add(activeJobOffer);
                     }
                     student.ActiveJobOffersList = activeJobOffers;
@@ -164,12 +173,12 @@ namespace MyLearn.BLL
 
         public InfoProfesor ProfessorLogin(string username, string password)
         {
-            using (MyLearnContext context = new MyLearnContext())
+            using (var context = new MyLearnContext())
             {
-                InfoProfesor professor = new InfoProfesor();
-                ProfessorRepository professorRepo = new ProfessorRepository(context);
-                Guid professorId = GetUserId(username);
-                Professor dalProfessor = professorRepo.GetProfessorById(professorId);
+                var professor = new InfoProfesor();
+                var professorRepo = new ProfessorRepository(context);
+                var professorId = GetUserId(username);
+                var dalProfessor = professorRepo.GetProfessorById(professorId);
 
                 if (dalProfessor != null && dalProfessor.Password == password)
                 {
@@ -188,31 +197,35 @@ namespace MyLearn.BLL
                     professor.UniversityId = dalProfessor.UniversityId.ToString();
                     professor.HorarioAtencion = dalProfessor.Schedule;
 
-                    CourseRepository courseRepo = new CourseRepository(context);
-                    List<MyLearnDAL.Models.Course> finishedCourses = courseRepo.GetProfessorInctiveCourses(professorId);
+                    var courseRepo = new CourseRepository(context);
+                    var finishedCourses = courseRepo.GetProfessorInctiveCourses(professorId);
 
-                    List<FinishedCourse> finishedCoursesList = new List<FinishedCourse>();
-                    foreach (MyLearnDAL.Models.Course course in finishedCourses)
+                    var finishedCoursesList = new List<FinishedCourse>();
+                    foreach (var course in finishedCourses)
                     {
-                        FinishedCourse finishedCourse = new FinishedCourse();
-                        finishedCourse.CourseDescription = course.Description;
-                        finishedCourse.CourseId = course.CourseId.ToString();
-                        finishedCourse.course = course.Name;
+                        var finishedCourse = new FinishedCourse
+                        {
+                            CourseDescription = course.Description,
+                            CourseId = course.CourseId.ToString(),
+                            course = course.Name
+                        };
                         finishedCoursesList.Add(finishedCourse);
                     }
 
                     professor.FinishedCoursesList = finishedCoursesList;
 
-                    List<MyLearnDAL.Models.Course> activeCourses = courseRepo.GetProfessorActiveCourses(professorId);
-                    List<ActiveCourse> activeCoursesList = new List<ActiveCourse>();
+                    var activeCourses = courseRepo.GetProfessorActiveCourses(professorId);
+                    var activeCoursesList = new List<ActiveCourse>();
 
-                    foreach (MyLearnDAL.Models.Course course in activeCourses)
+                    foreach (var course in activeCourses)
                     {
-                        ActiveCourse activeCourse = new ActiveCourse();
-                        activeCourse.CourseDescription = course.Description;
-                        activeCourse.CourseId = course.CourseId.ToString();
-                        activeCourse.course = course.Name;
-                        activeCourse.accepted = course.IsActive;
+                        var activeCourse = new ActiveCourse
+                        {
+                            CourseDescription = course.Description,
+                            CourseId = course.CourseId.ToString(),
+                            course = course.Name,
+                            accepted = course.IsActive
+                        };
                         activeCoursesList.Add(activeCourse);
                     }
                     professor.ActiveCoursesList = activeCoursesList;
@@ -229,10 +242,10 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
-                InfoEmpleador employer = new InfoEmpleador();
-                EmployerRepository employerRepo = new EmployerRepository(context);
-                Guid employerId = GetUserId(username);
-                Employer dalEmployer = employerRepo.GetEmployerById(employerId);
+                var employer = new InfoEmpleador();
+                var employerRepo = new EmployerRepository(context);
+                var employerId = GetUserId(username);
+                var dalEmployer = employerRepo.GetEmployerById(employerId);
 
                 if (dalEmployer != null && dalEmployer.Password == password)
                 {
@@ -252,30 +265,34 @@ namespace MyLearn.BLL
                     employer.NombreEmpresarial = dalEmployer.CompanyName;
                     employer.EnlaceSitioWeb = dalEmployer.Website;
 
-                    JobOfferRepository jobRepo = new JobOfferRepository(context);
-                    List<JobOffer> finishedJobs = jobRepo.GetStudentInactiveJobOffers(employerId);
-                    List<FinishedJobOffer> finishedJobOffers = new List<FinishedJobOffer>();
-                    foreach (JobOffer jobOffer in finishedJobs)
+                    var jobRepo = new JobOfferRepository(context);
+                    var finishedJobs = jobRepo.GetStudentInactiveJobOffers(employerId);
+                    var finishedJobOffers = new List<FinishedJobOffer>();
+                    foreach (var jobOffer in finishedJobs)
                     {
-                        FinishedJobOffer finishedJobOffer = new FinishedJobOffer();
-                        finishedJobOffer.JobOffer = jobOffer.Name;
-                        finishedJobOffer.JobOfferId = jobOffer.JobOfferId.ToString();
-                        finishedJobOffer.Description = jobOffer.StateDescription;
-                        finishedJobOffer.EmployerName = jobOffer.Employer.CompanyName;
+                        var finishedJobOffer = new FinishedJobOffer
+                        {
+                            JobOffer = jobOffer.Name,
+                            JobOfferId = jobOffer.JobOfferId.ToString(),
+                            Description = jobOffer.StateDescription,
+                            EmployerName = jobOffer.Employer.CompanyName
+                        };
                         finishedJobOffers.Add(finishedJobOffer);
                     }
 
                     employer.FinishedJobOffersList = finishedJobOffers;
 
-                    List<JobOffer> activeJobs = jobRepo.GetStudentActiveJobOffers(employerId);
-                    List<ActiveJobOffer> activeJobOffers = new List<ActiveJobOffer>();
-                    foreach (JobOffer jobOffer in activeJobs)
+                    var activeJobs = jobRepo.GetStudentActiveJobOffers(employerId);
+                    var activeJobOffers = new List<ActiveJobOffer>();
+                    foreach (var jobOffer in activeJobs)
                     {
-                        ActiveJobOffer activeJobOffer = new ActiveJobOffer();
-                        activeJobOffer.JobOffer = jobOffer.Name;
-                        activeJobOffer.JobOfferId = jobOffer.JobOfferId.ToString();
-                        activeJobOffer.Description = jobOffer.StateDescription;
-                        activeJobOffer.EmployerName = jobOffer.Employer.CompanyName;
+                        var activeJobOffer = new ActiveJobOffer
+                        {
+                            JobOffer = jobOffer.Name,
+                            JobOfferId = jobOffer.JobOfferId.ToString(),
+                            Description = jobOffer.StateDescription,
+                            EmployerName = jobOffer.Employer.CompanyName
+                        };
                         activeJobOffers.Add(activeJobOffer);
                     }
 
@@ -291,13 +308,15 @@ namespace MyLearn.BLL
 
         public InfoAdmin AdminLogin(string username, string password)
         {
-            InfoAdmin admin = new InfoAdmin();
+            var admin = new InfoAdmin
+            {
+                UserId = "",
+                UserName = "",
+                Tecnologias = new List<string>(),
+                Universidades = new List<string>()
+            };
             //subject to change
 
-            admin.UserId = "";
-            admin.UserName="";
-            admin.Tecnologias = new List<string>();
-            admin.Universidades = new List<string>();
 
             return admin;
         }
@@ -306,9 +325,9 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
-                ReturnCode success = new ReturnCode();
-                UserRepository userRepo = new UserRepository(context);
-                User user = userRepo.GetUserById(new Guid(userId));
+                var success = new ReturnCode();
+                var userRepo = new UserRepository(context);
+                var user = userRepo.GetUserById(new Guid(userId));
                 if (user != null)
                 {
                     user.IsActive = user.IsActive == 1 ? 0 : 1;
@@ -323,9 +342,9 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
-                UserRepository userRepo = new UserRepository(context);
-                User user = userRepo.GetUserById(new Guid(userId));
-                int active = 1;
+                var userRepo = new UserRepository(context);
+                var user = userRepo.GetUserById(new Guid(userId));
+                var active = 1;
                 if (user != null)
                 {
                     active = user.IsActive;
