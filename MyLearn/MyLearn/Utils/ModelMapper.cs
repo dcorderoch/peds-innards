@@ -58,7 +58,8 @@ namespace MyLearn.Utils
                 {
                     CourseId = course.CourseId.ToString(),
                     CourseDescription = course.Description,
-                    CourseName = course.Name
+                    CourseName = course.Name,
+                    Active = course.IsActive
                 };
                 resultList.Add(resCourse);
             }
