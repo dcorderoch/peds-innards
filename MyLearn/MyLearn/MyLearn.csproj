@@ -232,6 +232,7 @@
     <Compile Include="TwitterPoster\Tweeter.cs" />
     <Compile Include="TwitterPoster\TwitterService.cs" />
     <Compile Include="TwitterPoster\WebRequestTextEncoder.cs" />
+    <Compile Include="Utils\ModelMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

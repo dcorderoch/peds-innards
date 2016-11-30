@@ -223,13 +223,42 @@ namespace MyLearn.BLL
 
         public ReturnCode Join(StudentJoinsCourse joiningStudent)
         {
+            var courseRepo = new CourseRepository();
+            var studentRepo = new StudentRepository();
             var retVal = new ReturnCode();
-            // SUBJECT TO CHANGE
+            var student = studentRepo.GetStudentById(new Guid(joiningStudent.StudentUserId));
+            var course = courseRepo.GetCoursebyId(new Guid(joiningStudent.CourseId));
+
+            if (course != null && student != null)
+            {
+                course.Students.Add(student);
+                courseRepo.SaveChanges();
+                retVal.ReturnStatus = 1;
+            }
+
+            courseRepo.Dispose();
+            studentRepo.Dispose();
             return retVal;
         }
 
         public ReturnCode Propose(ProjectProposal proposal)
         {
+            var courseRepo = new CourseRepository();
+            var studentRepo = new StudentRepository();
+            var projectRepo = new ProjectRepository();
+            var course = courseRepo.GetCoursebyId(new Guid(proposal.CourseId));
+            var student = studentRepo.GetStudentById(new Guid(proposal.StudentUserId));
+            if (course != null && student != null)
+            {
+                var project = new Project();
+                project.ProjectId = Guid.NewGuid();
+                project.CourseId = new Guid(proposal.CourseId);
+                project.UserId = new Guid(proposal.StudentUserId);
+                project.IsActive = 1;
+                project.Description = proposal.Description;
+                project.Score = 0;
+                project.Badges = 
+            }
             var retVal = new ReturnCode();
             // SUBJECT TO CHANGE
             return retVal;

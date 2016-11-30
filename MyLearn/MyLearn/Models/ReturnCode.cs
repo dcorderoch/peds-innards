@@ -2,6 +2,6 @@
 {
     public class ReturnCode
     {
-        public float ReturnStatus { get; set; }
+        public int ReturnStatus { get; set; }
     }
 }
