@@ -92,7 +92,7 @@ namespace MyLearn.Utils
             {
                 var achievement = new Achievement
                 {
-                    AchievementId = new Guid(badge.BadgeId),
+                    AchievementId = Guid.NewGuid(),
                     CourseId = course.CourseId,
                     Description = badge.BadgeDescription,
                     Score = badge.Value
