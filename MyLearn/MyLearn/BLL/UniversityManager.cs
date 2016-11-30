@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MyLearn.Models;
+using MyLearnDAL;
 using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
@@ -8,17 +9,20 @@ namespace MyLearn.BLL
     {
         public List<University> GetAllUniversities()
         {
-            List<University> bllUniversities = new List<University>();
-
-            var universityRepo = new UniversityRepository();
-            var uniList = universityRepo.GetAll();
-            foreach (var uni in uniList)
+            using (var context = new MyLearnContext())
             {
-                bllUniversities.Add(new University() { UniversityId = uni.UniversityId.ToString(), UniversityName = uni.Name });
-            }
-            universityRepo.Dispose();
+                List<University> bllUniversities = new List<University>();
 
-            return bllUniversities;
+                var universityRepo = new UniversityRepository(context);
+                var uniList = universityRepo.GetAll();
+                foreach (var uni in uniList)
+                {
+                    bllUniversities.Add(new University() { UniversityId = uni.UniversityId.ToString(), UniversityName = uni.Name });
+                }
+                universityRepo.Dispose();
+
+                return bllUniversities;
+            }
         }
     }
 }

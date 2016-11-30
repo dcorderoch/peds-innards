@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MyLearn.Models;
+using MyLearnDAL;
 using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
@@ -8,17 +9,20 @@ namespace MyLearn.BLL
     {
         public List<Language> GetAllLanguages()
         {
-            List<Language> bllLanguages = new List<Language>();
-
-            var languageRepo = new LanguageRepository();
-            var langList = languageRepo.GetAll();
-            foreach (var lang in langList)
+            using (var context = new MyLearnContext())
             {
-                bllLanguages.Add(new Language() { LanguageId = lang.LenguageId.ToString(), LanguageName = lang.Name });
-            }
-            languageRepo.Dispose();
+                List<Language> bllLanguages = new List<Language>();
 
-            return bllLanguages;
+                var languageRepo = new LanguageRepository(context);
+                var langList = languageRepo.GetAll();
+                foreach (var lang in langList)
+                {
+                    bllLanguages.Add(new Language() { LanguageId = lang.LenguageId.ToString(), LanguageName = lang.Name });
+                }
+                languageRepo.Dispose();
+
+                return bllLanguages;
+            }
         }
     }
 }

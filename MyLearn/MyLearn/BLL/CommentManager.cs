@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MyLearn.InputModels;
 using MyLearn.Models;
+using MyLearnDAL;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
 
@@ -10,71 +11,80 @@ namespace MyLearn.BLL
     public class CommentManager
     {
         public List<Comment> GetAllComments(CommentInfo commentInfo)
-        {   
-            ProjectCommentRepository commentRepo = new ProjectCommentRepository();
-            ProjectRepository projectRepo = new ProjectRepository();
-            Project project = projectRepo.GetProjectByStudentAndCourseId(new Guid(commentInfo.StudentId), new Guid(commentInfo.CourseId));
-            List<Comment> allComments = new List<Comment>();
-            List<MyLearnDAL.Models.ProjectComment> projectComments = commentRepo.GetProjectCommentByProjectId(project.ProjectId);
-            List<List<Comment>> splitComments = ObtainNestedComments(projectComments);
-            List<Comment> parentComments = splitComments[0];
-            List<Comment> childComments = splitComments[1];
-
-            foreach (Comment childComment in childComments)
+        {
+            using (var context = new MyLearnContext())
             {
-               Comment parentComment = parentComments.Find(x => x.CommentId == childComment.ParentId);
-               parentComment.NestedComments.Add(childComment);
-               allComments.Add(parentComment);
-            }
+                ProjectCommentRepository commentRepo = new ProjectCommentRepository(context);
+                ProjectRepository projectRepo = new ProjectRepository(context);
+                Project project = projectRepo.GetProjectByStudentAndCourseId(new Guid(commentInfo.StudentId), new Guid(commentInfo.CourseId));
+                List<Comment> allComments = new List<Comment>();
+                List<MyLearnDAL.Models.ProjectComment> projectComments = commentRepo.GetProjectCommentByProjectId(project.ProjectId);
+                List<List<Comment>> splitComments = ObtainNestedComments(projectComments);
+                List<Comment> parentComments = splitComments[0];
+                List<Comment> childComments = splitComments[1];
 
-            commentRepo.Dispose();
-            projectRepo.Dispose();
-            return allComments;
+                foreach (Comment childComment in childComments)
+                {
+                    Comment parentComment = parentComments.Find(x => x.CommentId == childComment.ParentId);
+                    parentComment.NestedComments.Add(childComment);
+                    allComments.Add(parentComment);
+                }
+
+                commentRepo.Dispose();
+                projectRepo.Dispose();
+                return allComments;
+            }
 
         }
 
         public ReturnCode CreateComment(NewComment newComment)
         {
-            ReturnCode success = new ReturnCode();
-            ProjectComment newProjectComment = new ProjectComment();
-            ProjectRepository projectRepository = new ProjectRepository();
-            ProjectCommentRepository projectCommentRepo = new ProjectCommentRepository();
-            Project project = projectRepository.GetProjectByStudentAndCourseId(new Guid(newComment.StudentId), new Guid(newComment.CourseId));
-
-            if (newComment.Comment != null)
+            using (var context = new MyLearnContext())
             {
-                newProjectComment.CommentId = Guid.NewGuid();
-                newProjectComment.Comment = newComment.Comment;
-                newProjectComment.Date = DateTime.Now;
-                newProjectComment.ParentId = new Guid(newComment.ParentId);
-                if (newComment.Commenter == 1)
+                ReturnCode success = new ReturnCode();
+                ProjectComment newProjectComment = new ProjectComment();
+                ProjectRepository projectRepository = new ProjectRepository(context);
+                ProjectCommentRepository projectCommentRepo = new ProjectCommentRepository(context);
+                Project project = projectRepository.GetProjectByStudentAndCourseId(new Guid(newComment.StudentId), new Guid(newComment.CourseId));
+
+                if (newComment.Comment != null)
                 {
-                    newProjectComment.UserId = new Guid(newComment.StudentId);
+                    newProjectComment.CommentId = Guid.NewGuid();
+                    newProjectComment.Comment = newComment.Comment;
+                    newProjectComment.Date = DateTime.Now;
+                    newProjectComment.ParentId = new Guid(newComment.ParentId);
+                    if (newComment.Commenter == 1)
+                    {
+                        newProjectComment.UserId = new Guid(newComment.StudentId);
+                    }
+                    else
+                    {
+                        newProjectComment.UserId = new Guid(newComment.ProfUserId);
+                    }
+                    newProjectComment.ProjectId = project.ProjectId;
+                    projectCommentRepo.Add(newProjectComment);
+                    success.ReturnStatus = 1;
                 }
-                else
-                {
-                    newProjectComment.UserId = new Guid(newComment.ProfUserId);
-                }
-                newProjectComment.ProjectId = project.ProjectId;
-                projectCommentRepo.Add(newProjectComment);
-                success.ReturnStatus = 1;
+                projectCommentRepo.SaveChanges();
+                projectCommentRepo.Dispose();
+                projectRepository.Dispose();
+                return success;
             }
-            projectCommentRepo.SaveChanges();
-            projectCommentRepo.Dispose();
-            projectRepository.Dispose();
-            return success;
         }
 
         private int IsStudent(Guid userId)
         {
-         UserRepository userRepo = new UserRepository();
-            int retVal =0;
-            User user = userRepo.GetUserById(userId);
-            if (user.RoleId == 1)
+            using (var context = new MyLearnContext())
             {
-                retVal = 1;
+                UserRepository userRepo = new UserRepository(context);
+                int retVal = 0;
+                User user = userRepo.GetUserById(userId);
+                if (user.RoleId == 1)
+                {
+                    retVal = 1;
+                }
+                return retVal;
             }
-            return retVal;
         }
 
         private List<List<Comment>> ObtainNestedComments(List<MyLearnDAL.Models.ProjectComment> projectComments)

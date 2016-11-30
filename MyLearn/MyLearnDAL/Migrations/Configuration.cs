@@ -17,6 +17,7 @@ namespace MyLearnDAL.Migrations
 
         protected override void Seed(MyLearnDAL.MyLearnContext context)
         {
+
             var newTechnology0 = new Technology()
             {
                 Name = "Verilog",
@@ -53,7 +54,7 @@ namespace MyLearnDAL.Migrations
                 TecnologyId = Guid.Parse("A1B1A1B1-A1B1-A1B1-A1B1-A1B1A1B1A1B1")
             };
 
-            var techRepo = new TechnologyRepository();
+            var techRepo = new TechnologyRepository(context);
             techRepo.Add(newTechnology0);
             techRepo.Add(newTechnology1);
             techRepo.Add(newTechnology2);
@@ -67,37 +68,37 @@ namespace MyLearnDAL.Migrations
 
             var countries = new[]
             {
-                "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudíta",
-                "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés",
-                "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Bolivia", "Bosnia y Herzegovina",
-                "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya",
-                "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Colombia", "Comoras", "Congo",
-                "Costa de Marfil", "Costa Rica", "Croacia Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto",
-                "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España",
-                "Estados Unidos de América", "Estonia", "Etiopía", "Federación Rusa", "Filipinas", "Finlandia", "Fiyi",
-                "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guinea",
-                "Guinea-Bisáu", "Guinea Ecuatorial", "Guyana", "Haití", "Honduras", "Hungría", "India", "Indonesia",
-                "Irak", "Irán ", "Irlanda", "Islandia", "Marshall", "Salomón Islas Salomón", "Israel", "Italia",
-                "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Lesoto",
-                "Letonia", "Líbano", "Libia", "Liberia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia",
-                "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania",
-                "México", "Micronesia", "Mónaco", "Montenegro", "Mongolia", "Mozambique", "Myanmar", "Namibia", "Nauru",
-                "Nicaragua", "Níger", "Nigeria", "Noruega", "Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos",
-                "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Irlanda del Norte",
-                "República Árabe Siria", "República Centroafricana", "República Checa", "Corea del Sur",
-                "República de Moldavia", "República Democrática del Congo", "Lao", "República Dominicana", "Nepal",
-                "Corea del Norte", "Tanzania", "Ruanda", "Rumania", "Samoa", "Cristóbal y Nieves", "San Marino",
-                "Granadinas", "Lucía Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles",
-                "Sierra Leona", "Singapur", "Somalia", "Sri Lanka", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia",
-                "Suiza", "Surinam", "Suazilandia", "Tailandia", "Tayikistán", "Oriental", "Togo", "Tonga", "Tobago",
-                "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu",
-                "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue"
-            };
+            "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudíta",
+            "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés",
+            "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Bolivia", "Bosnia y Herzegovina",
+            "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya",
+            "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Colombia", "Comoras", "Congo",
+            "Costa de Marfil", "Costa Rica", "Croacia Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto",
+            "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España",
+            "Estados Unidos de América", "Estonia", "Etiopía", "Federación Rusa", "Filipinas", "Finlandia", "Fiyi",
+            "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guinea",
+            "Guinea-Bisáu", "Guinea Ecuatorial", "Guyana", "Haití", "Honduras", "Hungría", "India", "Indonesia",
+            "Irak", "Irán ", "Irlanda", "Islandia", "Marshall", "Salomón Islas Salomón", "Israel", "Italia",
+            "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Lesoto",
+            "Letonia", "Líbano", "Libia", "Liberia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia",
+            "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania",
+            "México", "Micronesia", "Mónaco", "Montenegro", "Mongolia", "Mozambique", "Myanmar", "Namibia", "Nauru",
+            "Nicaragua", "Níger", "Nigeria", "Noruega", "Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos",
+            "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Irlanda del Norte",
+            "República Árabe Siria", "República Centroafricana", "República Checa", "Corea del Sur",
+            "República de Moldavia", "República Democrática del Congo", "Lao", "República Dominicana", "Nepal",
+            "Corea del Norte", "Tanzania", "Ruanda", "Rumania", "Samoa", "Cristóbal y Nieves", "San Marino",
+            "Granadinas", "Lucía Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles",
+            "Sierra Leona", "Singapur", "Somalia", "Sri Lanka", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia",
+            "Suiza", "Surinam", "Suazilandia", "Tailandia", "Tayikistán", "Oriental", "Togo", "Tonga", "Tobago",
+            "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu",
+            "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue"
+        };
 
-            var countryRepo = new CountryRepository();
+            var countryRepo = new CountryRepository(context);
             foreach (var country in countries)
             {
-                countryRepo.Add(new Country() {CountryId = Guid.NewGuid(), Name = country});
+                countryRepo.Add(new Country() { CountryId = Guid.NewGuid(), Name = country });
             }
             countryRepo.SaveChanges();
             //countryRepo.Dispose();
@@ -128,7 +129,7 @@ namespace MyLearnDAL.Migrations
                 UniversityId = Guid.Parse("E2E2E2E2-E2E2-E2E2-E2E2-E2E2E2E2E2E2")
             };
 
-            var universityRepo = new UniversityRepository();
+            var universityRepo = new UniversityRepository(context);
             universityRepo.Add(newUniversity0);
             universityRepo.Add(newUniversity1);
             universityRepo.Add(newUniversity2);
@@ -139,12 +140,12 @@ namespace MyLearnDAL.Migrations
             universityRepo.Dispose();
 
 
-            var newLenguage0 = new Language() {LenguageId = 0, Name = "Español"};
-            var newLenguage1 = new Language() {LenguageId = 1, Name = "English"};
-            var newLenguage2 = new Language() {LenguageId = 2, Name = "Português"};
-            var newLenguage3 = new Language() {LenguageId = 3, Name = "Français"};
+            var newLenguage0 = new Language() { LenguageId = 0, Name = "Español" };
+            var newLenguage1 = new Language() { LenguageId = 1, Name = "English" };
+            var newLenguage2 = new Language() { LenguageId = 2, Name = "Português" };
+            var newLenguage3 = new Language() { LenguageId = 3, Name = "Français" };
 
-            var languageRepo = new LanguageRepository();
+            var languageRepo = new LanguageRepository(context);
             languageRepo.Add(newLenguage0);
             languageRepo.Add(newLenguage1);
             languageRepo.Add(newLenguage2);
@@ -155,18 +156,18 @@ namespace MyLearnDAL.Migrations
 
 
 
-            var studentRole = new Role() {RoleId = 1, Description = "Estudiante"};
-            var professorRole = new Role() {RoleId = 2, Description = "Profesor"};
-            var employerRole = new Role() {RoleId = 3, Description = "Empleador"};
+            var studentRole = new Role() { RoleId = 1, Description = "Estudiante" };
+            var professorRole = new Role() { RoleId = 2, Description = "Profesor" };
+            var employerRole = new Role() { RoleId = 3, Description = "Empleador" };
 
-            var roleRepo = new RoleRepository();
+            var roleRepo = new RoleRepository(context);
             roleRepo.Add(studentRole);
             roleRepo.Add(professorRole);
             roleRepo.Add(employerRole);
             roleRepo.SaveChanges();
             //roleRepo.Dispose();
 
-            var myStudent = new Student() {UserId = Guid.NewGuid(),AvgCourses = 0, AvgProjects = 0, CardId = "201044569", Email = "pepito@gmail.com", InDate = DateTime.Today, IsActive = 1, LastName = "Gómez", Name = "Pepito", Password = "123456", NumFailedCourses = 0, NumFailedProjects = 0, NumSuceedCourses = 0,NumSuceedProjects = 0, TRepo = 1, RepoLink = "http://githum.com/pepito", PhoneNum = "22399043"};
+            var myStudent = new Student() { UserId = Guid.NewGuid(), AvgCourses = 0, AvgProjects = 0, CardId = "201044569", Email = "pepito@gmail.com", InDate = DateTime.Today, IsActive = 1, LastName = "Gómez", Name = "Pepito", Password = "123456", NumFailedCourses = 0, NumFailedProjects = 0, NumSuceedCourses = 0, NumSuceedProjects = 0, TRepo = 1, RepoLink = "http://githum.com/pepito", PhoneNum = "22399043" };
             myStudent.Languages.Add(newLenguage0);
             myStudent.UniversityId = newUniversity0.UniversityId;
             var countryList = countryRepo.GetAll();
@@ -174,10 +175,11 @@ namespace MyLearnDAL.Migrations
             countryRepo.Dispose();
             myStudent.Role = roleRepo.Get(1);
             roleRepo.Dispose();
-            var studentRepo = new StudentRepository();
+            var studentRepo = new StudentRepository(context);
             studentRepo.Add(myStudent);
             studentRepo.SaveChanges();
             studentRepo.Dispose();
+            
 
         }
     }
