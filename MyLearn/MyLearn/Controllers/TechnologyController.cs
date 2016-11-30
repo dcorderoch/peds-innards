@@ -14,6 +14,10 @@ namespace MyLearn.Controllers
         {
             var techMngr = new TechnologyManager();
             var retVal = techMngr.GetAllTechnologies();
+            if (retVal == null)
+            {
+                retVal = new List<Technology>();
+            }
             return Json(retVal);
         }
         [HttpPost]

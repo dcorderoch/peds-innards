@@ -35,6 +35,10 @@ namespace MyLearn.Controllers
         {
             var JOMngr = new JobManager();
             var retVal = JOMngr.GetJobOffersByEmployer(employerID.EmployerUserId);
+            if (retVal == null)
+            {
+                retVal = new AllJobOffersByEmployer();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -42,6 +46,10 @@ namespace MyLearn.Controllers
         {
             var JOMngr = new JobManager();
             var retVal = JOMngr.GetJobOffer(jobId.JobOfferId);
+            if (retVal == null)
+            {
+                retVal = new JobOffer();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -49,6 +57,10 @@ namespace MyLearn.Controllers
         {
             var JOMngr = new JobManager();
             var retVal = JOMngr.GetJobOffersByTechnology(technology.TechnologyId);
+            if (retVal == null)
+            {
+                retVal = new List<JobOffer>();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -56,6 +68,10 @@ namespace MyLearn.Controllers
         {
             var JOMngr = new JobManager();
             var retVal = JOMngr.GetJobOffersByName(technology.TechnologyId);
+            if (retVal == null)
+            {
+                retVal = new List<JobOffer>();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -63,6 +79,10 @@ namespace MyLearn.Controllers
         {
             var JOMngr = new JobManager();
             var retVal = JOMngr.GetBidsById(jobId.JobOfferId);
+            if (retVal == null)
+            {
+                retVal = new List<JobOfferBid>();
+            }
             return Json(retVal);
         }
     }

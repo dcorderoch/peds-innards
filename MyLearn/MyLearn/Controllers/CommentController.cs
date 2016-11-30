@@ -14,6 +14,10 @@ namespace MyLearn.Controllers
         {
             var cmtMngr = new CommentManager();
             var retVal = cmtMngr.GetAllComments(commentInfo);
+            if(retVal == null)
+            {
+                retVal = new List<Comment>();
+            }
             return Json(retVal);
         }
         [HttpPost]

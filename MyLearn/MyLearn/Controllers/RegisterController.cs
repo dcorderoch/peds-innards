@@ -12,6 +12,10 @@ namespace MyLearn.Controllers
         {
             var regMngr = new RegisterManager();
             var retVal = regMngr.StudentRegister(userInformation);
+            if (retVal == null)
+            {
+                retVal = new InfoEstudiante();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -19,6 +23,10 @@ namespace MyLearn.Controllers
         {
             var regMngr = new RegisterManager();
             var retVal = regMngr.ProfessorRegister(userInformation);
+            if (retVal == null)
+            {
+                retVal = new InfoProfesor();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -26,6 +34,10 @@ namespace MyLearn.Controllers
         {
             var regMngr = new RegisterManager();
             var retVal = regMngr.EmployerRegister(userInformation);
+            if (retVal == null)
+            {
+                retVal = new InfoEmpleador();
+            }
             return Json(retVal);
         }
     }

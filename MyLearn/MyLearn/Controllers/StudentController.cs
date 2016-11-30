@@ -13,6 +13,10 @@ namespace MyLearn.Controllers
         {
             var studentMngr = new StudentManager();
             var retVal = studentMngr.GetProfile(studentId);
+            if (retVal == null)
+            {
+                retVal = new StudentProfileAsEmployer();
+            }
             return Json(retVal);
         }
     }

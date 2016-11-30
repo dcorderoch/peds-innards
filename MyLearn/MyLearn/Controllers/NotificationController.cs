@@ -13,6 +13,10 @@ namespace MyLearn.Controllers
         {
             var notifMngr = new NotificationManager();
             var retVal = notifMngr.GetStudentNotifications(studentID.StudentUserId);
+            if (retVal == null)
+            {
+                retVal = new List<string>();
+            }
             return Json(retVal);
         }
     }

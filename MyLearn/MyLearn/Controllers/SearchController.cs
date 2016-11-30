@@ -14,6 +14,10 @@ namespace MyLearn.Controllers
         {
             var searchMngr = new SearchManager();
             var retVal = searchMngr.GetTopStudents(numberOfStudents.NumberOfStudents);
+            if (retVal == null)
+            {
+                retVal = new List<TopStudent>();
+            }
             return Json(retVal);
         }
         [HttpPost]
@@ -24,6 +28,10 @@ namespace MyLearn.Controllers
                 GetTopStudentsByCriteria(customStudents.NumberOfTopStudents,
                 customStudents.CourseAvgWeight, customStudents.CourseSuccessRateWeight,
                 customStudents.ProjectAvgWeight, customStudents.ProjectSuccessRateWeight);
+            if (retVal == null)
+            {
+                retVal = new List<TopStudent>();
+            }
             return Json(retVal);
         }
     }

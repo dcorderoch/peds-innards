@@ -13,6 +13,10 @@ namespace MyLearn.Controllers
         {
             var cntrMngr = new CountryManager();
             var retVal = cntrMngr.GetAllCountries();
+            if(retVal == null)
+            {
+                retVal = new List<Country>();
+            }
             return Json(retVal);
         }
     }

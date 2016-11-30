@@ -12,6 +12,11 @@ namespace MyLearn.Controllers
         public JsonResult<UserCode> Login(LoginInfo userCredentials) {
             AccountManager LoginFromBLL = new AccountManager();
             var retVal = LoginFromBLL.GetUserTypeCode(userCredentials.UserName,userCredentials.Password);
+            if (retVal == null)
+            {
+                retVal = new UserCode();
+                retVal.UserTypeCode = -1;
+            }
             return Json(retVal);
         }
         
@@ -19,6 +24,10 @@ namespace MyLearn.Controllers
         public JsonResult<InfoEstudiante> LoginStudent(LoginInfo userCredentials) {
             AccountManager LoginFromBLL = new AccountManager();
             var retVal = LoginFromBLL.StudentLogin(userCredentials.UserName, userCredentials.Password);
+            if (retVal == null)
+            {
+                retVal = new InfoEstudiante();
+            }
             return Json(retVal);
         }
         
@@ -26,6 +35,10 @@ namespace MyLearn.Controllers
         public JsonResult<InfoProfesor> LoginProfessor(LoginInfo userCredentials) {
             AccountManager LoginFromBLL = new AccountManager();
             var retVal = LoginFromBLL.ProfessorLogin(userCredentials.UserName, userCredentials.Password);
+            if (retVal == null)
+            {
+                retVal = new InfoProfesor();
+            }
             return Json(retVal);
         }
         
@@ -33,6 +46,10 @@ namespace MyLearn.Controllers
         public JsonResult<InfoEmpleador> LoginEmployer(LoginInfo userCredentials) {
             AccountManager LoginFromBLL = new AccountManager();
             var retVal = LoginFromBLL.EmployerLogin(userCredentials.UserName, userCredentials.Password);
+            if (retVal == null)
+            {
+                retVal = new InfoEmpleador();
+            }
             return Json(retVal);
         }
         
@@ -40,6 +57,10 @@ namespace MyLearn.Controllers
         public JsonResult<InfoAdmin> LoginAdmin(LoginInfo userCredentials) {
             AccountManager LoginFromBLL = new AccountManager();
             var retVal = LoginFromBLL.AdminLogin(userCredentials.UserName, userCredentials.Password);
+            if (retVal == null)
+            {
+                retVal = new InfoAdmin();
+            }
             return Json(retVal);
         }
     }

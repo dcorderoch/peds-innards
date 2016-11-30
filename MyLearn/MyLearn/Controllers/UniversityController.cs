@@ -13,6 +13,10 @@ namespace MyLearn.Controllers
         {
             var uniMngr = new UniversityManager();
             var retVal = uniMngr.GetAllUniversities();
+            if (retVal == null)
+            {
+                retVal = new List<University>();
+            }
             return Json(retVal);
         }
 

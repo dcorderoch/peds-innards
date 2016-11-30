@@ -28,6 +28,10 @@ namespace MyLearn.Controllers
         {
             var status = new BadgeManager();
             var retVal = status.GetAll(credentials);
+            if(retVal == null)
+            {
+                retVal = new List<Models.Badge>();
+            }
             return Json(retVal);
         }
     }

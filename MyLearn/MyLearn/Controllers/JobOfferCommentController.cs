@@ -21,6 +21,10 @@ namespace MyLearn.Controllers
         {
             var jobCmntMngr = new JobCommentManager();
             var retVal = jobCmntMngr.GetAllComments(jobOfferId.JobOfferId);
+            if (retVal == null)
+            {
+                retVal = new List<JobOfferComment>();
+            }
             return Json(retVal);
         }
     }

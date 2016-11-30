@@ -13,6 +13,10 @@ namespace MyLearn.Controllers
         {
             var langMngr = new LanguageManager();
             var retVal = langMngr.GetAllLanguages();
+            if (retVal == null)
+            {
+                retVal = new List<Language>();
+            }
             return Json(retVal);
         }
     }
