@@ -86,15 +86,7 @@ namespace MyLearn.BLL
                     retCourse.Group = course.Group;
                     retCourse.CourseDescription = course.Description;
                     retCourse.MinGrade = course.MinScore;
-                    List<StudentInCourse> resultList = new List<StudentInCourse>();
-                    List<Student> listOfStudents = course.Students;
-                    foreach (var student in listOfStudents)
-                    {
-                        var resStudent = new StudentInCourse();
-                        resStudent.StudentUserId = student.UserId.ToString();
-                        resStudent.Nombre = student.Name;
-                        resultList.Add(resStudent);
-                    }
+                    retCourse.Students = mapper.StudentInCourseMap(course.Students);
                 }
                 courseRepo.Dispose();
                 return retCourse;

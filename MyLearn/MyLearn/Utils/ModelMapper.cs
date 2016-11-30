@@ -83,9 +83,24 @@ namespace MyLearn.Utils
                 achievements.Add(achievement);
             }
             return achievements;
-        } 
-            
+        }
 
+        public List<StudentInCourse> StudentInCourseMap(List<Student> listOfStudents)
+        {
+            List<StudentInCourse> resultList = new List<StudentInCourse>();
+            foreach (var student in listOfStudents)
+            {
+                var resStudent = new StudentInCourse();
+                resStudent.StudentUserId = student.UserId.ToString();
+                resStudent.Nombre = student.Name;
+                resultList.Add(resStudent);
+            }
+            return resultList;
+        }
         
-    }
+ 
+
+
+
+}
 }
