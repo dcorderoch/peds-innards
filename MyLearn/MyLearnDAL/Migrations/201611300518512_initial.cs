@@ -136,6 +136,7 @@ namespace MyLearnDAL.Migrations
                         JobOfferId = c.Guid(nullable: false),
                         UserId = c.Guid(nullable: false),
                         Comment = c.String(nullable: false),
+                        File = c.String(nullable: false),
                         Date = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.CommentId)
