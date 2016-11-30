@@ -17,7 +17,7 @@ namespace MyLearnDAL.Repositories
         }
         public User GetUserByEmail(string email)
         {
-            return DbSet.First(u => u.Email.Equals(email));
+            return DbSet.SingleOrDefault(u => u.Email.Equals(email));
         }
     }
 }
