@@ -5,8 +5,8 @@
         .module('app')
         .controller('SearcherController', SearcherController);
 
-    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService', 'UserService', 'PagerService'];
-    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService, UserService, PagerService) {
+    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService', 'UserService'];
+    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService, UserService) {
         var vm = this;
 
         vm.goOffering = goOffering;
@@ -14,7 +14,7 @@
         vm.results=[];
 
         vm.disableAccount =disableAccount;
-        
+
         initController();
 
 
@@ -24,8 +24,16 @@
 
         function initController(){
 
-
             vm.userData = $rootScope.userData;
+
+            if (vm.userData.TipoRepositorioArchivos == "0"){
+
+                vm.userData.TipoRepositorioArchivos = "Google Drive"
+            }
+            if (vm.userData.TipoRepositorioArchivos == "1"){
+
+                vm.userData.TipoRepositorioArchivos = "Dropbox"
+            }
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   

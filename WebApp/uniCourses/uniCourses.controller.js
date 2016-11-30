@@ -19,6 +19,15 @@
 
             vm.userData = $rootScope.userData;
 
+            if (vm.userData.TipoRepositorioArchivos == "0"){
+
+                vm.userData.TipoRepositorioArchivos = "Google Drive"
+            }
+            if (vm.userData.TipoRepositorioArchivos == "1"){
+
+                vm.userData.TipoRepositorioArchivos = "Dropbox"
+            }
+
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
 
@@ -51,7 +60,7 @@
         }
 
         function joinCourse( CourseId ){
-            
+
             var send = {StudentUserId: vm.userData.StudentUserId, CourseId: CourseId}
             CourseService.JoinCourse( send)
                 .then( function(response){

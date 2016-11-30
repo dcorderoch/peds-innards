@@ -17,8 +17,16 @@
 
         function initController(){
 
-            $rootScope.userData ={};
             vm.userData = $rootScope.userData;
+
+            if (vm.userData.TipoRepositorioArchivos == "0"){
+
+                vm.userData.TipoRepositorioArchivos = "Google Drive"
+            }
+            if (vm.userData.TipoRepositorioArchivos == "1"){
+
+                vm.userData.TipoRepositorioArchivos = "Dropbox"
+            }            
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};  

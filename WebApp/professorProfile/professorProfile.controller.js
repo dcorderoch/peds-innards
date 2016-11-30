@@ -19,7 +19,18 @@
         function initController(){
 
             vm.userData = $rootScope.userData;
-            console.log(vm.userData)
+            console.log(vm.userData);
+
+            if (vm.userData.TipoRepositorioArchivos == "0"){
+
+                vm.userData.TipoRepositorioArchivos = "Google Drive"
+            }
+            if (vm.userData.TipoRepositorioArchivos == "1"){
+
+                vm.userData.TipoRepositorioArchivos = "Dropbox"
+            }
+
+
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
