@@ -45,19 +45,6 @@ namespace MyLearn.BLL
                 courseRepo.Add(course);
                 courseRepo.SaveChanges();
                 retVal.ReturnStatus = 1;
-
-                /*
-                List<Badge> listOfBadges = newCourse.Badges;
-                List<Achievement> listOfAchievements = new List<Achievement>();
-                foreach (Badge newBadge in listOfBadges)
-                {
-                    MyLearnDAL.Models.Achievement achievement = new MyLearnDAL.Models.Achievement();
-                    achievement.AchievementId = new Guid(newBadge.BadgeId);
-                    achievement.CourseId = course.CourseId;
-                    achievement.Description = newBadge.BadgeDescription;
-                    achievement.Score = newBadge.Value;
-                    listOfAchievements.Add(achievement);
-                }*/
             }
             courseRepo.Dispose();
             return retVal;
@@ -134,27 +121,44 @@ namespace MyLearn.BLL
             return specificCourse;   
         }
 
-        public CourseAsStudent GetCourseAsStudent(CourseAsStudentCredentials courseId)
+        public CourseAsStudent GetCourseAsStudent(CourseAsStudentCredentials credentials)
         {
             CourseAsStudent courseAsStudent = new CourseAsStudent();
             CourseRepository courseRepo = new CourseRepository();
-            var course = courseRepo.GetCoursebyId(new Guid(courseId));
+            var projectRepo = new ProjectRepository();
+            var project = projectRepo.GetProjectByStudentAndCourseId(new Guid(credentials.StudentUserId), new Guid(credentials.CourseId));
+            var studentCourses = courseRepo.GetStudentCourses(new Guid(credentials.StudentUserId));
+            var course = studentCourses.Find(x => x.CourseId == new Guid(credentials.CourseId));
             if (course != null)
             {
                 courseAsStudent.CourseName = course.Name;
-                courseAsStudent.StudentUserId = "";
-                courseAsStudent.ProfUserId = "";
-                courseAsStudent.ProfessorName = "";
-                courseAsStudent.UniversityId = "";
-                courseAsStudent.Grade = 10;
-                courseAsStudent.Badges = new List<Badge>();
-                courseAsStudent.CourseId = "";
-                courseAsStudent.CourseDescription = "";
-                courseAsStudent.Group = 1;
-                courseAsStudent.CourseState = 1;
+                courseAsStudent.StudentUserId =credentials.StudentUserId;
+                courseAsStudent.ProfUserId = course.ProfessorId.ToString();
+                courseAsStudent.ProfessorName = course.Professor.Name + " " + course.Professor.Lastname;
+                courseAsStudent.UniversityId = course.UniversityId.ToString();
+                courseAsStudent.Grade = course.MinScore;
+
+                List<MyLearnDAL.Models.Badge> listOfBadges = project.Badges;
+                List<Badge> resBadges = new List<Badge>();
+                foreach (MyLearnDAL.Models.Badge newBadge in listOfBadges)
+                {
+                    var badge = new Badge();
+                    badge.BadgeId = newBadge.AchievementId.ToString();
+                    badge.BadgeDescription = newBadge.Achievement.Description;
+                    badge.Alardeado = newBadge.Bragged;
+                    badge.Awarded = 1;
+                    badge.Value = newBadge.Achievement.Score;
+                    resBadges.Add(badge);
+                }
+
+                courseAsStudent.Badges = resBadges;
+                courseAsStudent.CourseId = course.CourseId.ToString();
+                courseAsStudent.CourseDescription = course.Description;
+                courseAsStudent.Group = course.Group;
+                courseAsStudent.CourseState = course.IsActive;
             }
-            //Get course from database
-            
+            courseRepo.Dispose();
+            projectRepo.Dispose();
             return courseAsStudent;
                 
         }
