@@ -26,9 +26,7 @@ namespace MyLearnDAL.Models
         [Required]
         public int IsActive { get; set; }
         [Required]
-        public DateTime StartDate { get; set; }
-        [Required]
-        public DateTime EndDate { get; set; }
+        public string Name { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]
