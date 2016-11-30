@@ -71,7 +71,7 @@ namespace MyLearn.BLL
                     student.Password = dalStudent.Password;
                     student.TipoRepositorioArchivos = dalStudent.TRepo.ToString();
                     var studentPhoto = dalStudent.Photo;
-                    student.Foto = studentPhoto != null ? Convert.ToBase64String(studentPhoto) : "";
+                    student.Foto = studentPhoto != null ? Convert.ToBase64String(dalStudent.Photo) : "";
                     student.Universidad = dalStudent.University.Name;
                     student.UniversityId = dalStudent.UniversityId.ToString();
                     student.EnlaceRepositorioCodigo = dalStudent.RepoLink;
@@ -261,7 +261,6 @@ namespace MyLearn.BLL
                     employer.TipoRepositorioArchivos = dalEmployer.TRepo.ToString();
                     var employerPhoto = dalEmployer.Photo;
                     employer.Foto = employerPhoto != null ? Convert.ToBase64String(employerPhoto) : "";
-                    employer.Foto = dalEmployer.Photo.ToString();
                     employer.IdEmpleador = dalEmployer.EmployerId;
                     employer.NombreEmpresarial = dalEmployer.CompanyName;
                     employer.EnlaceSitioWeb = dalEmployer.Website;
