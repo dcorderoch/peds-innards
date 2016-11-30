@@ -18,6 +18,8 @@ namespace MyLearn.BLL
             using (var context = new MyLearnContext())
             {
                 var jobOfferRepo = new JobOfferRepository(context);
+                var employerRepo = new EmployerRepository(context);
+                var employer = employerRepo.GetEmployerById(Guid.Parse(newOffer.EmployerId));
                 var jobOffer = new MyLearnDAL.Models.JobOffer();
                 var returnCode = new ReturnCode();
                 returnCode.ReturnStatus = 0;
@@ -61,7 +63,6 @@ namespace MyLearn.BLL
                 var currJobOffer = jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId));
                 var notificationManager = new NotificationManager();
                 student.JobOffers.Add(jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId)));
-                
                 student.Notifications.Add(notificationManager.CreateNotification(jobOffer.StudentId,currJobOffer.Name));
                 currJobOffer.IsActive = 1;
                 currJobOffer.UserId = Guid.Parse(jobOffer.StudentId);
