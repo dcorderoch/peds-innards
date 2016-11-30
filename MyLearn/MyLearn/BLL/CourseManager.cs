@@ -169,14 +169,14 @@ namespace MyLearn.BLL
                 
         }
 
-        public AllProfessorsCourses GetAllByProfessor(string professorId)
+        public AllProfessorsCourses GetAllByProfessor(string profUserId)
         {
             using (var context = new MyLearnContext())
             {
                 var courseRepo = new CourseRepository(context);
                 AllProfessorsCourses allCourses = null;
-                var activeCourses = courseRepo.GetProfessorActiveCourses(new Guid(professorId));
-                var inactiveCourses = courseRepo.GetProfessorInctiveCourses(new Guid(professorId));
+                var activeCourses = courseRepo.GetProfessorActiveCourses(new Guid(profUserId));
+                var inactiveCourses = courseRepo.GetProfessorInctiveCourses(new Guid(profUserId));
                 if (activeCourses != null && inactiveCourses != null)
                 {
                     var activeCoursesList = mapper.ActiveCourseListMap(activeCourses);
@@ -191,6 +191,28 @@ namespace MyLearn.BLL
                 return allCourses;
             }
             
+        }
+        public StudentCourses GetAllByStudent(string studentUserId)
+        {
+            using (var context = new MyLearnContext())
+            {
+                var courseRepo = new CourseRepository(context);
+                StudentCourses allCourses = null;
+                var activeCourses = courseRepo.GetActiveStudentCourses(new Guid(studentUserId));
+                var inactiveCourses = courseRepo.GetInactiveStudentCourses(new Guid(studentUserId));
+                if(activeCourses != null && inactiveCourses != null)
+                {
+                    var theCoursesThatAreActive = mapper.ActiveCourseListMap(activeCourses);
+                    var theCoursesThatAreInactive = mapper.FinishedCourseListMap(inactiveCourses);
+                    allCourses = new StudentCourses
+                    {
+                        ActiveCourses = theCoursesThatAreActive,
+                        FinishedCourses = theCoursesThatAreInactive
+                    };
+                }
+                courseRepo.Dispose();
+                return allCourses;
+            }
         }
 
         public List<CourseShort> GetAllByUniversity(string universityId)

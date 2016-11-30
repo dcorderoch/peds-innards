@@ -259,6 +259,7 @@
     <Compile Include="Models\ReturnCode.cs" />
     <Compile Include="Models\SoughtAfterJobOffer.cs" />
     <Compile Include="Models\SpecificCourse.cs" />
+    <Compile Include="Models\StudentCourses.cs" />
     <Compile Include="Models\StudentInCourse.cs" />
     <Compile Include="Models\StudentProfileAsEmployer.cs" />
     <Compile Include="Models\Technology.cs" />

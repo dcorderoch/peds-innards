@@ -220,3 +220,38 @@ and then Receives
 
 Nota: - 0 error
       - 1 exito
+
+################################################# Get all Student's Courses
+https://host/Api/Course/GetAllByStudent
+Web Application sends
+{
+    "StudentUserId": "Id"
+}
+
+and then Receives
+{
+    "FinishedCoursesList":[
+                              {
+                                  "Course":"algo", 
+                                  "CourseId": "Id",
+                                  "CourseDescription":"algo"
+                              },
+                              {
+                                  "Course":"algo", 
+                                  "CourseId": "Id",
+                                  "CourseDescription":"algo"
+                              }
+                          ],
+    "ActiveCoursesList":[
+                            {
+                                "Course":"algo", 
+                                "CourseId": "Id",
+                                "CourseDescription":"algo"
+                            },
+                            {
+                                "Course":"algo", 
+                                "CourseId": "Id",
+                                "CourseDescription":"algo"
+                            }
+                        ]
+}

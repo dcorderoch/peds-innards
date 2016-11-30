@@ -85,5 +85,16 @@ namespace MyLearn.Controllers
             var retVal = courMngr.Join(joiningStudentInfo);
             return Json(retVal);
         }
+        [HttpPost]
+        public JsonResult<StudentCourses> GetAllByStudent(StudentIdentifier studentCredentials)
+        {
+            var courMngr = new CourseManager();
+            var retVal = courMngr.GetAllByStudent(studentCredentials.ProfUserId);
+            if (retVal == null)
+            {
+                retVal = new AllProfessorsCourses();
+            }
+            return Json(retVal);
+        }
     }
 }
