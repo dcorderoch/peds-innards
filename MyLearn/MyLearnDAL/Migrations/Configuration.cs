@@ -64,7 +64,6 @@ namespace MyLearnDAL.Migrations
             techRepo.Add(newTechnology6);
 
             techRepo.SaveChanges();
-            techRepo.Dispose();
 
             var countries = new[]
             {
@@ -138,7 +137,7 @@ namespace MyLearnDAL.Migrations
             universityRepo.Add(newUniversity4);
 
             universityRepo.SaveChanges();
-            universityRepo.Dispose();
+            
 
 
             var newLenguage0 = new Language() { LenguageId = 0, Name = "Español" };
@@ -153,7 +152,6 @@ namespace MyLearnDAL.Migrations
             languageRepo.Add(newLenguage3);
 
             languageRepo.SaveChanges();
-            languageRepo.Dispose();
 
 
 
@@ -173,14 +171,17 @@ namespace MyLearnDAL.Migrations
             myStudent.UniversityId = newUniversity0.UniversityId;
             var countryList = countryRepo.GetAll();
             myStudent.CountryId = countryList[43].CountryId;
-            countryRepo.Dispose();
             myStudent.RoleId = 1;
-            roleRepo.Dispose();
             var studentRepo = new StudentRepository(context);
             studentRepo.Add(myStudent);
             studentRepo.SaveChanges();
+            /*countryRepo.Dispose();
             studentRepo.Dispose();
-            
+            techRepo.Dispose();
+            universityRepo.Dispose();
+            roleRepo.Dispose();
+            languageRepo.Dispose();*/
+
 
         }
     }
