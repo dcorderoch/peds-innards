@@ -76,7 +76,7 @@ namespace MyLearn.BLL
                     newProjectComment.Comment = newComment.Comment;
                     newProjectComment.File = (Link.Equals("")?null:Link);
                     newProjectComment.Date = DateTime.Now;
-                    newProjectComment.ParentId = newComment.ParentId == "-1" ? Guid.Empty : new Guid(newComment.ParentId);
+                    newProjectComment.ParentId = (newComment.ParentId == "-1") ? Guid.Empty : new Guid(newComment.ParentId);
                     newProjectComment.UserId = newComment.Commenter == 1 ? new Guid(newComment.StudentUserId) : new Guid(newComment.ProfUserId);
                     newProjectComment.ProjectId = project.ProjectId;
                     projectCommentRepo.Add(newProjectComment);
