@@ -15,11 +15,13 @@ Web Application sends
     "EnlaceRepositorioCodigo":"algo",
     "EnlaceACurriculum":"algo",
     "Idiomas":["algo","algo"],
-    "Tecnologias":["algo","algo"]
+    "Tecnologias":["algo","algo"],
+    "AuthToken":"algo"
 }
 
 and then Receives
 {
+    "AuthToken":"algo",
     "NombreContacto":"algo",
     "ApellidoContacto":"algo",
     "Ubicacion":"algo",
@@ -114,11 +116,13 @@ Web Application sends
     "TipoRepositorioArchivos":"algo",
     "Foto":"algo",
     "Universidad":"algo",
-    "HorarioAtencion":"algo"
+    "HorarioAtencion":"algo",
+    "AuthToken":"algo"
 }
 
 and then Receives
 {
+    "AuthToken":"algo",
     "NombreContacto":"algo",
     "ApellidoContacto":"algo",
     "Ubicacion":"algo",
@@ -167,11 +171,13 @@ Web Application sends
     "Foto":"algo",
     "NombreEmpresarial":"algo",
     "EnlaceSitioWeb":"algo",
-    "IdEmpresa":"algo"
+    "IdEmpresa":"algo",
+    "AuthToken":"algo"
 }
 
 and then Receives
 {
+    "AuthToken":"algo",
     "NombreContacto":"algo",
     "ApellidoContacto":"algo",
     "Ubicacion":"algo",
