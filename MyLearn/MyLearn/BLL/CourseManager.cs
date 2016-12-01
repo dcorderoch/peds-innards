@@ -321,6 +321,7 @@ namespace MyLearn.BLL
                 {
                     var project = new Project
                     {
+                        Name = proposal.ProjectName,
                         ProjectId = Guid.NewGuid(),
                         CourseId = new Guid(proposal.CourseId),
                         UserId = new Guid(proposal.StudentUserId),
