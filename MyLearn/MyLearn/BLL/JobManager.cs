@@ -227,7 +227,7 @@ namespace MyLearn.BLL
                 var technologyManager = new TechnologyManager();
                 var jobOfferRepo = new JobOfferRepository(context);
                 var tech = technologyManager.GetTechnologyByName(technology);
-                var jobOffersByTechnology = jobOfferRepo.GetJobOfferByTechnology(tech.TecnologyId);
+                var jobOffersByTechnology = jobOfferRepo.GetJobOfferByTechnology(tech.TechnologyId);
                 
                 jobOfferRepo.Dispose();
                 return mapper.JobOfferMap(jobOffersByTechnology);

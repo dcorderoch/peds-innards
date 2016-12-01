@@ -17,7 +17,7 @@ namespace MyLearn.BLL
                 var techList = technologyRepo.GetAll();
                 foreach (var tech in techList)
                 {
-                    bllTechList.Add(new Technology() { TechnologyId = tech.TecnologyId.ToString(), TechnologyName = tech.Name });
+                    bllTechList.Add(new Technology() { TechnologyId = tech.TechnologyId.ToString(), TechnologyName = tech.Name });
                 }
                 technologyRepo.Dispose();
                 return bllTechList;
@@ -35,7 +35,7 @@ namespace MyLearn.BLL
                 {
                     var newTechnology = new MyLearnDAL.Models.Technology();
 
-                    newTechnology.TecnologyId = Guid.NewGuid();
+                    newTechnology.TechnologyId = Guid.NewGuid();
                     newTechnology.Name = technologyName;
 
                     technologyRepo.Add(newTechnology);
