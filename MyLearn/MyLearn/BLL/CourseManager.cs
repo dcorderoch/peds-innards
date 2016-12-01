@@ -190,19 +190,31 @@ namespace MyLearn.BLL
             using (var context = new MyLearnContext())
             {
                 var courseRepo = new CourseRepository(context);
+                var projecRepo = new ProjectRepository(context);
+                var allProjects = projecRepo.GetAll();
                 AllProfessorsCourses allCourses = null;
                 var activeCourses = courseRepo.GetProfessorActiveCourses(new Guid(profUserId));
                 var inactiveCourses = courseRepo.GetProfessorInctiveCourses(new Guid(profUserId));
                 if (activeCourses != null && inactiveCourses != null)
                 {
                     var activeCoursesList = mapper.ActiveCourseListMap(activeCourses);
+                    for(int i = 0;i<activeCoursesList.Count;i++)
+                    {
+                        activeCoursesList[i].Accepted = (allProjects.Find(p => p.CourseId.Equals(activeCoursesList[i].CourseId)) != null) ? 1 : 0;
+                    }
+
                     var finishedCoursesList = mapper.FinishedCourseListMap(inactiveCourses);
+                    for (int i = 0; i < finishedCoursesList.Count; i++)
+                    {
+                        finishedCoursesList[i].Accepted = (allProjects.Find(p => p.CourseId.Equals(finishedCoursesList[i].CourseId)) != null) ? 1 : 0;
+                    }
                     allCourses = new AllProfessorsCourses
                     {
                         ActiveCourses = activeCoursesList,
                         FInishedCourses = finishedCoursesList
                     };
                 }
+                projecRepo.Dispose();
                 courseRepo.Dispose();
                 return allCourses;
             }
@@ -213,19 +225,29 @@ namespace MyLearn.BLL
             using (var context = new MyLearnContext())
             {
                 var courseRepo = new CourseRepository(context);
+                var projRepo = new ProjectRepository(context);
                 StudentCourses allCourses = null;
                 var activeCourses = courseRepo.GetActiveStudentCourses(new Guid(studentUserId));
                 var inactiveCourses = courseRepo.GetInactiveStudentCourses(new Guid(studentUserId));
                 if(activeCourses != null && inactiveCourses != null)
                 {
                     var theCoursesThatAreActive = mapper.ActiveCourseListMap(activeCourses);
+                    foreach(ActiveCourse course in theCoursesThatAreActive)
+                    {
+                        course.Accepted = projRepo.GetProjectByStudentAndCourseId(new Guid(studentUserId), new Guid(course.CourseId)).IsActive;
+                    }
                     var theCoursesThatAreInactive = mapper.FinishedCourseListMap(inactiveCourses);
+                    foreach (FinishedCourse course in theCoursesThatAreInactive)
+                    {
+                        course.Accepted = projRepo.GetProjectByStudentAndCourseId(new Guid(studentUserId), new Guid(course.CourseId)).IsActive;
+                    }
                     allCourses = new StudentCourses
                     {
                         ActiveCourses = theCoursesThatAreActive,
                         FinishedCourses = theCoursesThatAreInactive
                     };
                 }
+                projRepo.Dispose();
                 courseRepo.Dispose();
                 return allCourses;
             }

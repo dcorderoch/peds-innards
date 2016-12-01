@@ -9,7 +9,7 @@ namespace MyLearn.Controllers
     public class AccountController : ApiController
     {
         [HttpPost]
-        public JsonResult<ReturnCode> Disable(UserIdentifier userId)
+        public JsonResult<ReturnCode> ToggleAccount(UserIdentifier userId)
         {
             var status = new AccountManager();
             var retVal = status.ToggleAccount(userId.UserId);

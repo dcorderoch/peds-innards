@@ -24,7 +24,7 @@ namespace MyLearn.Utils
                     CourseId = course.CourseId.ToString(),
                     CourseDescription = course.Description,
                     CourseName = course.Name,
-                    Accepted = course.IsActive
+                    Accepted = 0
                 };
                 resultList.Add(resCourse);
             }
@@ -42,7 +42,8 @@ namespace MyLearn.Utils
                 {
                     CourseId = course.CourseId.ToString(),
                     CourseDescription = course.Description,
-                    CourseName = course.Name
+                    CourseName = course.Name,
+                    Accepted = 0
                 };
                 resultList.Add(resCourse);
             }

@@ -58,9 +58,10 @@ namespace MyLearn.BLL
             {
                 var student = new InfoEstudiante();
                 var studentRepo = new StudentRepository(context);
+                var projRepo = new ProjectRepository(context);
                 var studentId = GetUserId(username);
                 var dalStudent = studentRepo.GetStudentById(studentId);
-
+                var allprojects = projRepo.GetAll();
 
                 if (dalStudent != null && dalStudent.Password == password)
                 {
@@ -112,7 +113,8 @@ namespace MyLearn.BLL
                         {
                             CourseDescription = course.Description,
                             CourseId = course.CourseId.ToString(),
-                            CourseName = course.Name
+                            CourseName = course.Name,
+                            Accepted = (allprojects.Find(p => p.CourseId.ToString().Equals(course.CourseId.ToString())) != null) ? 1 : 0
                         };
                         finishedCoursesList.Add(finishedCourse);
                     }
@@ -128,7 +130,7 @@ namespace MyLearn.BLL
                             CourseDescription = course.Description,
                             CourseId = course.CourseId.ToString(),
                             CourseName = course.Name,
-                            Accepted = course.IsActive
+                            Accepted = (allprojects.Find(p => p.CourseId.ToString().Equals(course.CourseId.ToString())) != null) ? 1 : 0
                         };
                         activeCoursesList.Add(activeCourse);
                     }
@@ -182,8 +184,10 @@ namespace MyLearn.BLL
             {
                 var professor = new InfoProfesor();
                 var professorRepo = new ProfessorRepository(context);
+                var projecRepo = new ProjectRepository(context);
                 var professorId = GetUserId(username);
                 var dalProfessor = professorRepo.GetProfessorById(professorId);
+                var allprojects = projecRepo.GetAll();
 
                 if (dalProfessor != null && dalProfessor.Password == password)
                 {
@@ -214,7 +218,8 @@ namespace MyLearn.BLL
                         {
                             CourseDescription = course.Description,
                             CourseId = course.CourseId.ToString(),
-                            CourseName = course.Name
+                            CourseName = course.Name,
+                            Accepted = (allprojects.Find(p => p.CourseId.ToString().Equals(course.CourseId.ToString())) != null) ? 1 : 0
                         };
                         finishedCoursesList.Add(finishedCourse);
                     }
@@ -231,16 +236,16 @@ namespace MyLearn.BLL
                             CourseDescription = course.Description,
                             CourseId = course.CourseId.ToString(),
                             CourseName = course.Name,
-                            Accepted = course.IsActive
+                            Accepted = (allprojects.Find(p => p.CourseId.ToString().Equals(course.CourseId.ToString())) != null) ? 1 : 0
                         };
                         activeCoursesList.Add(activeCourse);
                     }
                     professor.ActiveCoursesList = activeCoursesList;
-                    courseRepo.Dispose();
                     professor.Active = IsActive(professorId.ToString());
+                    projecRepo.Dispose();
+                    courseRepo.Dispose();
+                    professorRepo.Dispose();
                 }
-
-                professorRepo.Dispose();
                 return professor;
             }
         }
@@ -273,7 +278,7 @@ namespace MyLearn.BLL
                     employer.EnlaceSitioWeb = dalEmployer.Website;
 
                     var jobRepo = new JobOfferRepository(context);
-                    var finishedJobs = jobRepo.GetStudentInactiveJobOffers(employerId);
+                    var finishedJobs = jobRepo.GetEmployerInactiveJobOffers(employerId);
                     var finishedJobOffers = new List<FinishedJobOffer>();
                     foreach (var jobOffer in finishedJobs)
                     {
@@ -289,7 +294,7 @@ namespace MyLearn.BLL
 
                     employer.FinishedJobOffersList = finishedJobOffers;
 
-                    var activeJobs = jobRepo.GetStudentActiveJobOffers(employerId);
+                    var activeJobs = jobRepo.GetEmployerActiveJobOffers(employerId);
                     var activeJobOffers = new List<ActiveJobOffer>();
                     foreach (var jobOffer in activeJobs)
                     {
