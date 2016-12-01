@@ -12,7 +12,6 @@ namespace MyLearnDAL
         public MyLearnContext()
             : base("name=MyLearnLocalContext")
         {
-            Database.SetInitializer<MyLearnContext>(new MyLearnContextInitializer());
         }
 
         // DBsets
