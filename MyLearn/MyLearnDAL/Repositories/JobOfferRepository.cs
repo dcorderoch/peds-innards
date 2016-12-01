@@ -48,7 +48,7 @@ namespace MyLearnDAL.Repositories
 
         public List<JobOffer> GetJobOfferByTechnology(Guid techId)
         {
-            return DbSet.Where(j => j.Technologies.Any(t => t.TecnologyId.Equals(techId))).ToList();
+            return DbSet.Where(j => j.Technologies.Any(t => t.TechnologyId.Equals(techId))).ToList();
         }
 
         public List<JobOffer> GetJobOfferByName(string name)
