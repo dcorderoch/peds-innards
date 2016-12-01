@@ -118,7 +118,7 @@ namespace MyLearnDAL.Migrations
                         EndDate = c.DateTime(nullable: false),
                         Budget = c.Decimal(nullable: false, precision: 18, scale: 2),
                         IsActive = c.Int(nullable: false),
-                        Description = c.Int(nullable: false),
+                        Description = c.String(nullable: false),
                         StateDescription = c.String(),
                     })
                 .PrimaryKey(t => t.JobOfferId)
