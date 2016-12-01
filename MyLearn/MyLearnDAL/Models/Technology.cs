@@ -10,9 +10,8 @@ namespace MyLearnDAL.Models
     {
         public Technology()
         {
-            Students =new List<Student>();
-            Courses =new List<Course>();
-            JobOffers= new List<JobOffer>();
+            Students = new List<Student>();
+            JobOffers = new List<JobOffer>();
             Projects=new List<Project>();
         }
         [Key]
@@ -21,7 +20,6 @@ namespace MyLearnDAL.Models
         public string Name { get; set; }
 
         public virtual List<Student> Students { get; set; }
-        public virtual List<Course>  Courses { get; set; }
         public virtual List<JobOffer> JobOffers { get; set; }
         public virtual List<Project> Projects { get; set; }
     }
