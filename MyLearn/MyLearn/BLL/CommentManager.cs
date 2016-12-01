@@ -18,7 +18,7 @@ namespace MyLearn.BLL
                 ProjectRepository projectRepo = new ProjectRepository(context);
                 Project project = projectRepo.GetProjectByStudentAndCourseId(new Guid(commentInfo.StudentUserId), new Guid(commentInfo.CourseId));
                 List<Comment> allComments = new List<Comment>();
-                List<MyLearnDAL.Models.ProjectComment> projectComments = commentRepo.GetProjectCommentByProjectId(project.ProjectId);
+                List<MyLearnDAL.Models.ProjectComment> projectComments = (project == null)? new List<MyLearnDAL.Models.ProjectComment>(): commentRepo.GetProjectCommentByProjectId(project.ProjectId);
                 List<List<Comment>> splitComments = ObtainNestedComments(projectComments);
                 List<Comment> parentComments = splitComments[0];
                 List<Comment> childComments = splitComments[1];
