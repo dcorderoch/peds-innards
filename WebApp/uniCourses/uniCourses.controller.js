@@ -69,15 +69,22 @@
             CourseService.JoinCourse( send)
                 .then( function(response){
 
+                if (response.data.ReturnStatus =="-1"){
+
+                    FlashService.Success("Ya estás unido a este curso")
+                }
                 if (response.data.ReturnStatus=="1"){ 
                     FlashService.Success("Te has unido exitosamente a este curso");
+                }
+                if (response.data.ReturnStatus =="0"){
+
+                    FlashService.Error("Ha habido un error, y no se pudo unirte a este curso");
                 }
                 loadCourses();
 
             }, function(response){
 
-                FlashService.Error("No te has podido unir exitosamente a este curso");
-                console.log("No sirvió el unirse a curso"); 
+                FlashService.Error("Ha habido un error, y no se pudo unirte a este curso");
             });
         }
 

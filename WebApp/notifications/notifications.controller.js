@@ -27,11 +27,10 @@
             NotificationsService.GetNotifications( id )
                 .then( function(response){
 
-                if (response.data.ReturnStatus == "1"){
-                    vm.notifications = response.data.Notifications;
-                }
+                vm.notifications = response.data;
+
             }, function(response){
-                console.log("no se pudo obtener")
+                console.log("no se pudieron obtener las notificaciones")
             });       
         }
 
