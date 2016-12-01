@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MyLearn.GoogleService;
 using MyLearn.InputModels;
 using MyLearn.Models;
 using MyLearnDAL;
@@ -19,7 +20,9 @@ namespace MyLearn.BLL
                 var jobOfferRepo = new JobOfferRepository(context);
                 var jobOffer = jobOfferRepo.GetJobOfferById(new Guid(jobOfferId));
                 List<JobOfferComment> allComments = new List<JobOfferComment>();
-                List<MyLearnDAL.Models.JobOfferComment> jobOfferComments = (jobOffer == null) ? new List<MyLearnDAL.Models.JobOfferComment>() : commentRepo.GetJobOfferCommentsByJobOfferId(Guid.Parse(jobOfferId));
+                List<MyLearnDAL.Models.JobOfferComment> jobOfferComments = (jobOffer == null)
+                    ? new List<MyLearnDAL.Models.JobOfferComment>()
+                    : commentRepo.GetJobOfferCommentsByJobOfferId(Guid.Parse(jobOfferId));
                 List<List<JobOfferComment>> splitComments = ObtainNestedComments(jobOfferComments);
                 List<JobOfferComment> parentComments = splitComments[0];
                 List<JobOfferComment> childComments = splitComments[1];
@@ -34,8 +37,33 @@ namespace MyLearn.BLL
                 jobOfferRepo.Dispose();
                 return allComments;
             }
+        }
+
+        public ReturnCode CreateCommentWithFile(NewJobCommentWithFile newComment)
+        {
+            var link = "";
+            GoogleUploader uploader = new GoogleUploader(newComment.RefreshToken);
+            try
+            {
+                System.IO.Stream theFile = new System.IO.MemoryStream(Convert.FromBase64String(newComment.File));
+                link = uploader.UploadAndReturnDownloadLink(theFile, newComment.FileName);
             }
-        
+            catch (Exception e)
+            {
+                link = "<UPLOAD FAIL>";
+            }
+            ReturnCode returncode = CreateComment(
+                new NewJobComment
+                {
+                    StudentUserId = newComment.StudentUserId,
+                    EmployerUserId = newComment.EmployerUserId,
+                    JobOfferId = newComment.JobOfferId,
+                    JobOfferComment = newComment.JobOfferComment,
+                    ParentId = newComment.ParentId,
+                    Commenter = newComment.Commenter
+                }, link);
+            return returncode;
+        }
 
         public ReturnCode CreateComment(NewJobComment newJobComment, string link)
         {
@@ -46,20 +74,24 @@ namespace MyLearn.BLL
                 var jobOfferRepo = new JobOfferRepository(context);
                 var jobCommentRepo = new JobOfferCommentRepository(context);
                 var jobOffer = jobOfferRepo.GetJobOfferById(Guid.Parse(newJobComment.JobOfferId));
-                
+
                 if (newJobComment.JobOfferComment != null)
                 {
                     newJobOfferComment.CommentId = Guid.NewGuid();
                     newJobOfferComment.Comment = newJobComment.JobOfferComment;
                     newJobOfferComment.Date = DateTime.Now;
-                    newJobOfferComment.ParentId = newJobComment.ParentId == "-1" ? Guid.Empty : new Guid(newJobComment.ParentId);
-                    newJobOfferComment.UserId = newJobComment.Commenter == 1 ? new Guid(newJobComment.StudentUserId) : new Guid(newJobComment.EmployerUserId);
+                    newJobOfferComment.ParentId = newJobComment.ParentId == "-1"
+                        ? Guid.Empty
+                        : new Guid(newJobComment.ParentId);
+                    newJobOfferComment.UserId = newJobComment.Commenter == 1
+                        ? new Guid(newJobComment.StudentUserId)
+                        : new Guid(newJobComment.EmployerUserId);
                     newJobOfferComment.JobOfferId = jobOffer.JobOfferId;
                     newJobOfferComment.File = link;
                     jobCommentRepo.Add(newJobOfferComment);
                     jobCommentRepo.SaveChanges();
                     success.ReturnStatus = 1;
-                    
+
                 }
                 jobCommentRepo.Dispose();
                 jobOfferRepo.Dispose();
@@ -118,16 +150,6 @@ namespace MyLearn.BLL
             resultComments.Add(parentComments);
             resultComments.Add(childComments);
             return resultComments;
-        }
-        public ReturnCode CreateCommentWithFile(NewJobCommentWithFile newJobComment)
-        {
-            ReturnCode success = new ReturnCode();
-
-            //create new comment in db
-
-
-            success.ReturnStatus = 1;
-            return success;
         }
     }
 }

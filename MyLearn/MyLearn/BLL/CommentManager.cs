@@ -39,17 +39,16 @@ namespace MyLearn.BLL
 
         public ReturnCode CreateCommentWithFile(NewCommentWithFile newComment)
         {
-            var Link = "";
-            ReturnCode success = new ReturnCode();
+            var link = "";
             GoogleUploader uploader = new GoogleUploader(newComment.RefreshToken);
             try
             {
                 System.IO.Stream theFile = new System.IO.MemoryStream(Convert.FromBase64String(newComment.File));
-                Link = uploader.UploadAndReturnDownloadLink(theFile,newComment.FileName);
+                link = uploader.UploadAndReturnDownloadLink(theFile,newComment.FileName);
             }
             catch(Exception e)
             {
-                Link = "<UPLOAD FAIL>";
+                link = "<UPLOAD FAIL>";
             }
             ReturnCode returncode = CreateComment(
                 new NewComment { StudentUserId = newComment.StudentUserId,
@@ -58,8 +57,8 @@ namespace MyLearn.BLL
                     Comment = newComment.Comment,
                     ParentId = newComment.ParentId,
                     Commenter = newComment.Commenter
-                },Link);
-            return success;
+                },link);
+            return returncode;
         }
         public ReturnCode CreateComment(NewComment newComment, string Link)
         {
