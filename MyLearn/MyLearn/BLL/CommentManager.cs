@@ -27,9 +27,8 @@ namespace MyLearn.BLL
                 {
                     Comment parentComment = parentComments.Find(x => x.CommentId == childComment.ParentId);
                     parentComment.NestedComments.Add(childComment);
-                    allComments.Add(parentComment);
                 }
-
+                allComments.AddRange(parentComments);
                 commentRepo.Dispose();
                 projectRepo.Dispose();
                 return allComments;
