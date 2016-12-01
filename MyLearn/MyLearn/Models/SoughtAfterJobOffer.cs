@@ -13,7 +13,7 @@ namespace MyLearn.Models
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string Description { get; set; }
-        public float Budget { get; set; }
+        public decimal Budget { get; set; }
         public string State { get; set; }
         public string StateDescription { get; set; }
     }

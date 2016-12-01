@@ -17,13 +17,13 @@ namespace MyLearn.Models
         public string Universidad { get; set; }
         public string EnlaceRepositorioCodigo { get; set; }
         public string EnlaceACurriculum { get; set; }
-        public float PromedioProyectos { get; set; }
-        public float PromedioCursos { get; set; }
+        public decimal PromedioProyectos { get; set; }
+        public decimal PromedioCursos { get; set; }
         public List<string> Idiomas { get; set; }
-        public float CursosAprobados { get; set; }
-        public float CursosReprobados { get; set; }
-        public float ProyectosExitosos { get; set; }
-        public float ProyectosFallidos { get; set; }
+        public int CursosAprobados { get; set; }
+        public int CursosReprobados { get; set; }
+        public int ProyectosExitosos { get; set; }
+        public int ProyectosFallidos { get; set; }
         public List<string> Tecnologias { get; set; }
         public List<FinishedCourse> FinishedCoursesList { get; set; }
         public List<ActiveCourse> ActiveCoursesList { get; set; }
