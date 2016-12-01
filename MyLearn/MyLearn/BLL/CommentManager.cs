@@ -51,9 +51,21 @@ namespace MyLearn.BLL
             {
                 Link = "<UPLOAD FAIL>";
             }
-
+            ReturnCode returncode = CreateComment(
+                new NewComment { StudentUserId = newComment.StudentUserId,
+                    ProfUserId = newComment.ProfUserId,
+                    CourseId = newComment.CourseId,
+                    Comment = newComment.Comment,
+                    ParentId = newComment.ParentId,
+                    Commenter = newComment.Commenter
+                },Link);
+            return success;
+        }
+        public static ReturnCode CreateComment(NewComment newComment, string Link)
+        {
             using (var context = new MyLearnContext())
             {
+                ReturnCode success = new ReturnCode();
                 ProjectComment newProjectComment = new ProjectComment();
                 ProjectRepository projectRepository = new ProjectRepository(context);
                 ProjectCommentRepository projectCommentRepo = new ProjectCommentRepository(context);
@@ -70,35 +82,8 @@ namespace MyLearn.BLL
                     newProjectComment.ProjectId = project.ProjectId;
                     projectCommentRepo.Add(newProjectComment);
                     success.ReturnStatus = 1;
+                    projectCommentRepo.SaveChanges();
                 }
-                projectCommentRepo.SaveChanges();
-                projectCommentRepo.Dispose();
-                projectRepository.Dispose();
-                return success;
-            }
-        }
-        public ReturnCode CreateComment(NewComment newComment)
-        {
-            using (var context = new MyLearnContext())
-            {
-                ReturnCode success = new ReturnCode();
-                ProjectComment newProjectComment = new ProjectComment();
-                ProjectRepository projectRepository = new ProjectRepository(context);
-                ProjectCommentRepository projectCommentRepo = new ProjectCommentRepository(context);
-                Project project = projectRepository.GetProjectByStudentAndCourseId(new Guid(newComment.StudentUserId), new Guid(newComment.CourseId));
-
-                if (newComment.Comment != null)
-                {
-                    newProjectComment.CommentId = Guid.NewGuid();
-                    newProjectComment.Comment = newComment.Comment;
-                    newProjectComment.Date = DateTime.Now;
-                    newProjectComment.ParentId = newComment.ParentId == "-1" ? Guid.Empty : new Guid(newComment.ParentId);
-                    newProjectComment.UserId = newComment.Commenter == 1 ? new Guid(newComment.StudentUserId) : new Guid(newComment.ProfUserId);
-                    newProjectComment.ProjectId = project.ProjectId;
-                    projectCommentRepo.Add(newProjectComment);
-                    success.ReturnStatus = 1;
-                }
-                projectCommentRepo.SaveChanges();
                 projectCommentRepo.Dispose();
                 projectRepository.Dispose();
                 return success;
