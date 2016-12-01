@@ -21,7 +21,6 @@ namespace MyLearnDAL.Models
         public Guid UserId { get; set; }
         [Required]
         public string Comment { get; set; }
-        [Required]
         public string File { get; set; }
         [Required]
         public DateTime Date { get; set; }

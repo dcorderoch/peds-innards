@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyLearnDAL.Models
 {
-    [Table("Tecnology")]
+    [Table("Technology")]
     public class Technology
     {
         public Technology()
@@ -15,7 +15,7 @@ namespace MyLearnDAL.Models
             Projects=new List<Project>();
         }
         [Key]
-        public Guid TecnologyId { get; set; }
+        public Guid TechnologyId { get; set; }
         [Required]
         public string Name { get; set; }
 
