@@ -13,7 +13,7 @@ namespace MyLearnDAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201612010202342_initial"; }
+            get { return "201612010317174_initial"; }
         }
         
         string IMigrationMetadata.Source
