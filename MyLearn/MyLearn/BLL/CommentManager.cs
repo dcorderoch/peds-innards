@@ -61,7 +61,7 @@ namespace MyLearn.BLL
                 },Link);
             return success;
         }
-        public static ReturnCode CreateComment(NewComment newComment, string Link)
+        public ReturnCode CreateComment(NewComment newComment, string Link)
         {
             using (var context = new MyLearnContext())
             {
@@ -75,7 +75,7 @@ namespace MyLearn.BLL
                 {
                     newProjectComment.CommentId = Guid.NewGuid();
                     newProjectComment.Comment = newComment.Comment;
-                    newProjectComment.File = Link;
+                    newProjectComment.File = (Link.Equals("")?null:Link);
                     newProjectComment.Date = DateTime.Now;
                     newProjectComment.ParentId = newComment.ParentId == "-1" ? Guid.Empty : new Guid(newComment.ParentId);
                     newProjectComment.UserId = newComment.Commenter == 1 ? new Guid(newComment.StudentUserId) : new Guid(newComment.ProfUserId);

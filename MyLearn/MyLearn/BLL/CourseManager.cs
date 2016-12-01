@@ -211,7 +211,7 @@ namespace MyLearn.BLL
                     allCourses = new AllProfessorsCourses
                     {
                         ActiveCourses = activeCoursesList,
-                        FInishedCourses = finishedCoursesList
+                        FinishedCourses = finishedCoursesList
                     };
                 }
                 projecRepo.Dispose();

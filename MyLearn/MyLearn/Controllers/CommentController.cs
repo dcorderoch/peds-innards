@@ -24,7 +24,7 @@ namespace MyLearn.Controllers
         public JsonResult<ReturnCode> Create(NewComment newComment)
         {
             var cmtMngr = new CommentManager();
-            var retVal = cmtMngr.CreateComment(newComment);
+            var retVal = cmtMngr.CreateComment(newComment,"");
             return Json(retVal);
         }
         [HttpPost]
