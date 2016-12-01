@@ -44,7 +44,7 @@
             var response=$http({
                 method:"post",
                 url:$rootScope.url+"JobOffer/GetByEmployer",
-                data:{JobOfferId:jobId}
+                data:{EmployerUserId:jobId}
             });
             return response;
         }    

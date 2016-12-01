@@ -30,8 +30,9 @@
             }
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
-            console.log($localStorage);
-
+            console.log(vm.userData.UserId);
+            var userId = vm.userData.UserId;
+            
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -39,12 +40,12 @@
             if(vm.userData.Active == "1"){
                 vm.toggleEnable = true;
             }
-            loadWork();
+            loadWork(userId);
         }
 
-        function loadWork(){
+        function loadWork(userId){
 
-            JobService.GetByEmployer(vm.userData.UserId)
+            JobService.GetByEmployer(userId)
                 .then(function(response){
 
                 console.log(response);
