@@ -2,7 +2,7 @@
 {
     public class NewComment
     {
-        public string StudentId { get; set; }
+        public string StudentUserId { get; set; }
         public string ProfUserId { get; set; }
         public string CourseId { get; set; }
         public string Comment { get; set; }
