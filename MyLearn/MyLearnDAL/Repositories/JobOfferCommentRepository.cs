@@ -13,7 +13,7 @@ namespace MyLearnDAL.Repositories
 
         public List<JobOfferComment> GetJobOfferCommentsByJobOfferId(Guid jobOfferId)
         {
-            return DbSet.Where(joc => joc.JobOffer.JobOfferId.Equals(jobOfferId)).ToList();
+            return DbSet.Where(joc => joc.JobOffer.JobOfferId.Equals(jobOfferId)).OrderBy(pc => pc.Date).ToList();
         }
     }
 }

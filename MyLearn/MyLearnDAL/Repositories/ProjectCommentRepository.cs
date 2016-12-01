@@ -13,7 +13,7 @@ namespace MyLearnDAL.Repositories
 
         public List<ProjectComment> GetProjectCommentByProjectId(Guid projectId)
         {
-            return DbSet.Where(pc => pc.ProjectId.Equals(projectId)).ToList();
+            return DbSet.Where(pc => pc.ProjectId.Equals(projectId)).OrderBy(pc => pc.Date).ToList();
         }
     }
 }
