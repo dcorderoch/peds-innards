@@ -24,5 +24,15 @@ namespace MyLearn.BLL
             success.ReturnStatus = 1;
             return success;
         }
+        public ReturnCode CreateCommentWithFile(NewJobCommentWithFile newJobComment)
+        {
+            ReturnCode success = new ReturnCode();
+
+            //create new comment in db
+
+
+            success.ReturnStatus = 1;
+            return success;
+        }
     }
 }

@@ -27,5 +27,12 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        [HttpPost]
+        public JsonResult<ReturnCode> CreateWithFile(NewJobCommentWithFile jobComment)
+        {
+            var jobCmntMngr = new JobCommentManager();
+            var retVal = jobCmntMngr.CreateCommentWithFile(jobComment);
+            return Json(retVal);
+        }
     }
 }
