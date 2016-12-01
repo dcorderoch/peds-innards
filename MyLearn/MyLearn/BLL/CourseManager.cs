@@ -261,9 +261,17 @@ namespace MyLearn.BLL
 
                 if (course != null && student != null)
                 {
-                    course.Students.Add(student);
-                    courseRepo.SaveChanges();
-                    retVal.ReturnStatus = 1;
+                    if (student.Courses.Contains(course))
+                    {
+                        //The user is already taking this course
+                        retVal.ReturnStatus = -1;
+                    }
+                    else
+                    {
+                        course.Students.Add(student);
+                        courseRepo.SaveChanges();
+                        retVal.ReturnStatus = 1;
+                    }
                 }
                 else
                 {
