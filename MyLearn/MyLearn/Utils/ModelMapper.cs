@@ -59,12 +59,10 @@ namespace MyLearn.Utils
                     JobOffer = jobOffer.Name,
                     JobOfferId = jobOffer.JobOfferId.ToString(),
                     EmployerName = jobOffer.Employer.CompanyName,
-                    //Description = jobOffer.Description
-                    
+                    Description = jobOffer.Description
                 };
                 resultList.Add(resJob);
             }
-
             return resultList;
         }
 
@@ -79,11 +77,10 @@ namespace MyLearn.Utils
                     JobOffer = jobOffer.Name,
                     JobOfferId = jobOffer.JobOfferId.ToString(),
                     EmployerName = jobOffer.Employer.CompanyName,
-                    //Description = jobOffer.Description
+                    Description = jobOffer.Description
                 };
                 resultList.Add(resJob);
             }
-
             return resultList;
         }
         public List<CourseShort> CourseShortListMap(List<MyLearnDAL.Models.Course> courses)

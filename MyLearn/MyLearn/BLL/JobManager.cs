@@ -182,13 +182,13 @@ namespace MyLearn.BLL
                 var inactivejobOffers = jobOfferRepo.GetEmployerInactiveJobOffers(new Guid(employerId));
                 if (activejobOffers != null && inactivejobOffers != null)
                 {
-                   //var activejobOffersList = mapper.ActiveCourseListMap(activejobOffers);
-                    //var finishedjobOffersList = mapper.FinishedCourseListMap(inactivejobOffers);
-                    //jobOffers = new AllJobOffersByEmployer
-                    //{
-                     //   ActiveJobOffers = activejobOffersList,
-                     //   FinishedJobOffers = finishedjobOffersList
-                   // };
+                   var activejobOffersList = mapper.ActiveJobListMap(activejobOffers);
+                   var finishedjobOffersList = mapper.FinishedJobListMap(inactivejobOffers);
+                    jobOffers = new AllJobOffersByEmployer
+                    {
+                        ActiveJobOffers = activejobOffersList,
+                        FinishedJobOffers = finishedjobOffersList
+                    };
                 }
                 jobOfferRepo.Dispose();
                 return jobOffers;
