@@ -145,7 +145,15 @@ namespace MyLearn.BLL
                 var course = studentCourses.Find(x => x.CourseId == new Guid(credentials.CourseId));
                 if (course != null)
                 {
-                    var listOfBadges = project.Badges;
+                    List<MyLearnDAL.Models.Badge> listOfBadges = null;
+                    if (project != null)
+                    {
+                        listOfBadges = project.Badges;
+                    }
+                    else
+                    {
+                        listOfBadges = new List<MyLearnDAL.Models.Badge>();
+                    }
                     var resBadges = mapper.BadgeListMap(listOfBadges);
                     courseAsStudent = new CourseAsStudent
                     {
