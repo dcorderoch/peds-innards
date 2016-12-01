@@ -234,12 +234,12 @@ namespace MyLearn.BLL
                     var theCoursesThatAreActive = mapper.ActiveCourseListMap(activeCourses);
                     foreach(ActiveCourse course in theCoursesThatAreActive)
                     {
-                        course.Accepted = projRepo.GetProjectByStudentAndCourseId(new Guid(studentUserId), new Guid(course.CourseId)).IsActive;
+                        course.Accepted = (projRepo.GetProjectByStudentAndCourseId(new Guid(studentUserId), new Guid(course.CourseId)) == null)?0:1;
                     }
                     var theCoursesThatAreInactive = mapper.FinishedCourseListMap(inactiveCourses);
                     foreach (FinishedCourse course in theCoursesThatAreInactive)
                     {
-                        course.Accepted = projRepo.GetProjectByStudentAndCourseId(new Guid(studentUserId), new Guid(course.CourseId)).IsActive;
+                        course.Accepted = (projRepo.GetProjectByStudentAndCourseId(new Guid(studentUserId), new Guid(course.CourseId)) == null)?0:1;
                     }
                     allCourses = new StudentCourses
                     {
