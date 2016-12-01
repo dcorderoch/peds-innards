@@ -29,10 +29,5 @@ namespace MyLearnDAL.Repositories
         {
             return DbSet.Where(t => t.JobOffers.Any(j => j.JobOfferId.Equals(JobOfferId))).ToList();
         }
-
-        public List<Technology> GetCourseYTechnologies(Guid CourseId)
-        {
-            return DbSet.Where(t => t.Courses.Any(c => c.CourseId.Equals(CourseId))).ToList();
-        }
     }
 }
