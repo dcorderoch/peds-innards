@@ -82,8 +82,8 @@ namespace MyLearn.BLL
                     student.UniversityId = dalStudent.UniversityId.ToString();
                     student.EnlaceRepositorioCodigo = dalStudent.RepoLink;
                     student.EnlaceACurriculum = dalStudent.ResumeLink;
-                    student.PromedioProyectos = (float)dalStudent.AvgProjects;
-                    student.PromedioCursos = (float)dalStudent.AvgCourses;
+                    student.PromedioProyectos = dalStudent.AvgProjects;
+                    student.PromedioCursos = dalStudent.AvgCourses;
 
                     var languageList = new List<string>();
                     foreach (var language in dalStudent.Languages)

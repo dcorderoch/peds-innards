@@ -13,7 +13,7 @@ namespace MyLearn.Controllers
         public JsonResult<ReturnCode> Create(NewJobComment jobComment)
         {
             var jobCmntMngr = new JobCommentManager();
-            var retVal = jobCmntMngr.CreateComment(jobComment);
+            var retVal = jobCmntMngr.CreateComment(jobComment,"");
             return Json(retVal);
         }
         [HttpPost]
