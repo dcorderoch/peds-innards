@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyLearnDAL.Models
 {
+    /// <summary>
+    /// Represents an achivement in the database
+    /// </summary>
     [Table("Achievement")]
     public class Achievement
     {
