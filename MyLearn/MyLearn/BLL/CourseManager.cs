@@ -200,13 +200,13 @@ namespace MyLearn.BLL
                     var activeCoursesList = mapper.ActiveCourseListMap(activeCourses);
                     for(int i = 0;i<activeCoursesList.Count;i++)
                     {
-                        activeCoursesList[i].Accepted = (allProjects.Find(p => p.CourseId.Equals(activeCoursesList[i].CourseId)) != null) ? 1 : 0;
+                        activeCoursesList[i].Accepted = (allProjects.Find(p => p.CourseId.ToString().Equals(activeCoursesList[i].CourseId)) != null) ? 1 : 0;
                     }
 
                     var finishedCoursesList = mapper.FinishedCourseListMap(inactiveCourses);
                     for (int i = 0; i < finishedCoursesList.Count; i++)
                     {
-                        finishedCoursesList[i].Accepted = (allProjects.Find(p => p.CourseId.Equals(finishedCoursesList[i].CourseId)) != null) ? 1 : 0;
+                        finishedCoursesList[i].Accepted = (allProjects.Find(p => p.CourseId.ToString().Equals(finishedCoursesList[i].CourseId)) != null) ? 1 : 0;
                     }
                     allCourses = new AllProfessorsCourses
                     {
