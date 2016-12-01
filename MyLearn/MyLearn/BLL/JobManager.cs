@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.Core.Metadata.Edm;
 using MyLearn.InputModels;
 using MyLearn.Models;
@@ -17,6 +18,7 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
+                var technologyManager = new TechnologyManager();
                 var jobOfferRepo = new JobOfferRepository(context);
                 var employerRepo = new EmployerRepository(context);
                 var employer = employerRepo.GetEmployerById(Guid.Parse(newOffer.EmployerId));
@@ -33,6 +35,7 @@ namespace MyLearn.BLL
                 jobOffer.Budget = newOffer.Budget;
                 jobOffer.IsActive = 0;
                 jobOffer.StateDescription = "";
+                jobOffer.Technologies = technologyManager.GetTechnologies(newOffer.Technologies);
                 try
                 {
                     jobOfferRepo.Add(jobOffer);
@@ -66,9 +69,13 @@ namespace MyLearn.BLL
               
                 var jobOfferRepo = new JobOfferRepository(context);
                 var studentRepo= new StudentRepository(context);
+                var bidRepo = new BidRepository(context);
+
                 var student = studentRepo.GetStudentById(Guid.Parse(jobOffer.JobOfferId));
                 var currJobOffer = jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId));
-                if (student != null && currJobOffer != null)
+                var bids = bidRepo.GetJobOfferBids(Guid.Parse(jobOffer.JobOfferId));
+
+                if (student != null && currJobOffer != null && bids != null)
                 {
                     var notificationManager = new NotificationManager();
 
@@ -80,6 +87,9 @@ namespace MyLearn.BLL
                     student.Notifications.Add(notificationManager.CreateNotification(jobOffer.StudentId,
                         currJobOffer.Name));
                     studentRepo.SaveChanges();
+
+                    bids.Clear();
+                    bidRepo.SaveChanges();
                     success.ReturnStatus = 1;
                 }
                 else
@@ -88,14 +98,72 @@ namespace MyLearn.BLL
                 }
                 jobOfferRepo.Dispose();
                 studentRepo.Dispose();
+                bidRepo.Dispose();
                 return success;
             }
         }
 
-        public ReturnCode CloseJobOffer(CloseJobOffer openJobOffer)
+        public ReturnCode CloseJobOffer(CloseJobOffer closeJobOffer)
         {
-            var retVal = new ReturnCode();
-            // code goes here
+            using (var context = new MyLearnContext())
+            {
+                var retVal = new ReturnCode();
+                try
+                {
+                    var jobOfferRepo = new JobOfferRepository(context);
+                    var currentJobOffer = jobOfferRepo.GetJobOfferById(Guid.Parse(closeJobOffer.JobOfferId));
+                    var student = currentJobOffer.Student;
+                    var isActive = currentJobOffer.IsActive;
+                    if (isActive == 1) //Fue asignada al estudiante
+                    {
+                        if (closeJobOffer.State == 2) //Finalizada exitosamente
+                        {
+                            currentJobOffer.IsActive = closeJobOffer.State;
+                            currentJobOffer.StateDescription = closeJobOffer.StateDescription;
+                            //currentJobOffer.Score = closeJobOffer.Stars; //asignar nota del trabajo
+
+                            student.AvgProjects = CalculateAverage(ObtainGrade(closeJobOffer.Stars),
+                                    student.NumSuceedProjects + student.NumFailedProjects, student.AvgProjects); //actualizar promedio de estudiante
+                            student.NumSuceedProjects += 1; //aumentar numero de proyectos exitosos 
+
+                        }
+                        else //Fracasó
+                        {
+                            currentJobOffer.IsActive = closeJobOffer.State;
+                            currentJobOffer.StateDescription = closeJobOffer.StateDescription;
+                            //currentJobOffer.Score = closeJobOffer.Stars; //asignar nota del trabajo
+
+                            student.AvgProjects = CalculateAverage(ObtainGrade(closeJobOffer.Stars),
+                                    student.NumSuceedProjects + student.NumFailedProjects, student.AvgProjects); //actualizar promedio de estudiante
+                            student.NumFailedProjects += 1; //aumentar numero de proyectos fracasados
+                        }
+                    }
+                    else //No fue asignada al estudiante
+                    {
+                        currentJobOffer.IsActive = closeJobOffer.State;
+                        currentJobOffer.StateDescription = closeJobOffer.StateDescription;
+                        //currentJobOffer.Score = 0;
+                    }
+                    retVal.ReturnStatus = 1;
+                }
+                catch (Exception)
+                {
+
+                    retVal.ReturnStatus = 0; ;
+                }
+                return retVal;
+            }
+        }
+
+        private int ObtainGrade(int stars)
+        {
+            return 20*stars;
+        }
+
+        private decimal CalculateAverage(int grade, int totalProjects, decimal currentAverage)
+        {
+            var val = currentAverage*totalProjects + grade;
+            var retVal = val/(totalProjects + 1); 
             return retVal;
         }
 
