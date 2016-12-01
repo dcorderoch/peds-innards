@@ -32,24 +32,7 @@
 
             getComments();
 
-            vm.comments.push({CommentId:"123",ParentId:"123", Date:"2016-11-24T01:55:01+00:00", IsFromStudent:"0",
-                              Comment:"Bla bla", Nested:[{ "CommentId":"algo",
-                                                          "ParentId":"algo",
-                                                          "Date":"fecha en ISO8601",
-                                                          "IsFromStudent":"0",
-                                                          "Comment":"algo"}]});
-            vm.comments.push({CommentId:"123",ParentId:"125", Date:"1994-11-24T01:55:01+00:00", IsFromStudent:"1",
-                              Comment:"na na na", Nested:[{ "CommentId":"algo",
-                                                           "ParentId":"algo",
-                                                           "Date":"fecha en ISO8601",
-                                                           "IsFromStudent":"1",
-                                                           "Comment":"algo"},
-                                                          { "CommentId":"algo",
-                                                           "ParentId":"algo",
-                                                           "Date":"fecha en ISO8601",
-                                                           "IsFromStudent":"1",
-                                                           "Comment":"algo"}
-                                                         ]});
+
             processComments();
         }
 

@@ -22,22 +22,23 @@
             console.log(vm.courseData);
         }
 
-        function goArea(studentId){
+        function goArea(student){
 
 
-            var dataSend = {StudentUserId: studentId, ProfUserId: vm.userData.UserId, UniversityId: vm.courseData.UniversityId, 
+            var dataSend = {StudentUserId: student.StudentUserId, ProfUserId: vm.userData.UserId, UniversityId: vm.courseData.UniversityId, 
                             Group: vm.courseData.Group, CourseId: vm.courseData.CourseId}
             console.log(dataSend);
 
             CourseService.GetSpecificCourse(dataSend)
                 .then(function(response){
 
-                vm.courseData.NombreContacto = response.data.NombreContacto;
-                vm.courseData.ApellidoContacto = response.data.ApellidoContacto;
+                vm.courseData.NombreContacto = student.Nombre;
                 vm.courseData.Grade = response.data.Grade;
                 vm.courseData.Badges = response.data.Badges;
-                vm.courseData.StudentUserId = studentId;
+                vm.courseData.StudentUserId = student.StudentUserId;
+                
                 ProfileCourseService.SetCourseData(vm.courseData);
+                console.log(vm.courseData)
                 $location.path('/sharedareaprofessor');  
 
             }, function(response){
