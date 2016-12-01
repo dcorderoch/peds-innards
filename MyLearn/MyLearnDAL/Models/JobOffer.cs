@@ -34,6 +34,8 @@ namespace MyLearnDAL.Models
         public decimal Budget { get; set; }
         [Required]
         public int IsActive { get; set; }
+        [Required]
+        public int Description { get; set; }
         public string StateDescription { get; set; }
 
         public virtual Employer Employer { get; set; }
