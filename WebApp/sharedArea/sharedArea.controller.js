@@ -128,7 +128,7 @@
 
         function getComments (){
 
-            var send= {StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
+            var send= {StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
             CourseService.GetComments(send)
                 .then( function(response){
 
@@ -141,7 +141,7 @@
 
         function sendComment(  dataUpload ){
 
-            var send={Commenter:"1", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
+            var send={Commenter:"1", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
             console.log(send)
             CourseService.CommentCreate(send)
                 .then(function(response){
