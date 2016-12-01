@@ -56,9 +56,10 @@ namespace MyLearn.Utils
             {
                 var resJob = new ActiveJobOffer
                 {
+                    JobOffer = jobOffer.Name,
                     JobOfferId = jobOffer.JobOfferId.ToString(),
-                    Description = jobOffer.Name,
                     EmployerName = jobOffer.Employer.CompanyName,
+                    //Description = jobOffer.Description
                     
                 };
                 resultList.Add(resJob);
@@ -75,10 +76,10 @@ namespace MyLearn.Utils
             {
                 var resJob = new FinishedJobOffer
                 {
+                    JobOffer = jobOffer.Name,
                     JobOfferId = jobOffer.JobOfferId.ToString(),
-                    Description = jobOffer.Name,
                     EmployerName = jobOffer.Employer.CompanyName,
-
+                    //Description = jobOffer.Description
                 };
                 resultList.Add(resJob);
             }
