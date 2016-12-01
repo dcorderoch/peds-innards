@@ -53,7 +53,7 @@ namespace MyLearnDAL.Migrations
                         IsActive = c.Int(nullable: false),
                         CountryId = c.Guid(nullable: false),
                         RoleId = c.Int(nullable: false),
-                        RefreshToken = c.Int(nullable: false),
+                        RefreshToken = c.String(),
                     })
                 .PrimaryKey(t => t.UserId)
                 .ForeignKey("dbo.Country", t => t.CountryId, cascadeDelete: false)
