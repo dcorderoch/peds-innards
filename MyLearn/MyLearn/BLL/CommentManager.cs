@@ -45,7 +45,7 @@ namespace MyLearn.BLL
                 ProjectComment newProjectComment = new ProjectComment();
                 ProjectRepository projectRepository = new ProjectRepository(context);
                 ProjectCommentRepository projectCommentRepo = new ProjectCommentRepository(context);
-                Project project = projectRepository.GetProjectByStudentAndCourseId(new Guid(newComment.StudentId), new Guid(newComment.CourseId));
+                Project project = projectRepository.GetProjectByStudentAndCourseId(new Guid(newComment.StudentUserId), new Guid(newComment.CourseId));
 
                 if (newComment.Comment != null)
                 {
@@ -55,7 +55,7 @@ namespace MyLearn.BLL
                     newProjectComment.ParentId = new Guid(newComment.ParentId);
                     if (newComment.Commenter == 1)
                     {
-                        newProjectComment.UserId = new Guid(newComment.StudentId);
+                        newProjectComment.UserId = new Guid(newComment.StudentUserId);
                     }
                     else
                     {
