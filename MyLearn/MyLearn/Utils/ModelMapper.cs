@@ -48,6 +48,43 @@ namespace MyLearn.Utils
             return resultList;
         }
 
+        public List<ActiveJobOffer> ActiveJobListMap(List<MyLearnDAL.Models.JobOffer> activeJobOffers)
+        {
+            List<ActiveJobOffer> resultList = new List<ActiveJobOffer>();
+            if (!activeJobOffers.Any()) return resultList;
+            foreach (var jobOffer in activeJobOffers)
+            {
+                var resJob = new ActiveJobOffer
+                {
+                    JobOfferId = jobOffer.JobOfferId.ToString(),
+                    Description = jobOffer.Name,
+                    EmployerName = jobOffer.Employer.CompanyName,
+                    
+                };
+                resultList.Add(resJob);
+            }
+
+            return resultList;
+        }
+
+        public List<FinishedJobOffer> FinishedJobListMap(List<MyLearnDAL.Models.JobOffer> finishedJobOffers)
+        {
+            List<FinishedJobOffer> resultList = new List<FinishedJobOffer>();
+            if (!finishedJobOffers.Any()) return resultList;
+            foreach (var jobOffer in finishedJobOffers)
+            {
+                var resJob = new FinishedJobOffer
+                {
+                    JobOfferId = jobOffer.JobOfferId.ToString(),
+                    Description = jobOffer.Name,
+                    EmployerName = jobOffer.Employer.CompanyName,
+
+                };
+                resultList.Add(resJob);
+            }
+
+            return resultList;
+        }
         public List<CourseShort> CourseShortListMap(List<MyLearnDAL.Models.Course> courses)
         {
             List<CourseShort> resultList = new List<CourseShort>();

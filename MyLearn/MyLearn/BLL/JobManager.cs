@@ -5,6 +5,7 @@ using System.Data.Entity.Core.Metadata.Edm;
 using MyLearn.InputModels;
 using MyLearn.Models;
 using MyLearn.TwitterPoster;
+using MyLearn.Utils;
 using MyLearnDAL;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
@@ -14,6 +15,13 @@ namespace MyLearn.BLL
 {
     public class JobManager
     {
+        private ModelMapper mapper;
+
+        public JobManager()
+        {
+        mapper= new ModelMapper();    
+        }
+
         public ReturnCode CreateJobOffer(NewJobOffer newOffer)
         {
             using (var context = new MyLearnContext())
@@ -36,6 +44,7 @@ namespace MyLearn.BLL
                 jobOffer.IsActive = 0;
                 jobOffer.StateDescription = "";
                 jobOffer.Technologies = technologyManager.GetTechnologies(newOffer.Technologies);
+                //jobOffer.Description = newOffer.Description;
                 try
                 {
                     jobOfferRepo.Add(jobOffer);
@@ -165,19 +174,25 @@ namespace MyLearn.BLL
 
         public AllJobOffersByEmployer GetJobOffersByEmployer(string employerId)
         {
-            AllJobOffersByEmployer jobOffers = new AllJobOffersByEmployer();
-            //get all professor's courses
-            List<ActiveJobOffer> activeJobOffers = new List<ActiveJobOffer>();
-            List<FinishedJobOffer> finishedJobOffers = new List<FinishedJobOffer>();
-            //get from db and add them here, once the repositories are up and running
-
-            //activeCourses = ;
-            //finishedCourses = ;
-
-            jobOffers.ActiveJobOffers = activeJobOffers;
-            jobOffers.FinishedJobOffers = finishedJobOffers;
-
-            return jobOffers;
+            using (var context = new MyLearnContext())
+            {
+                var jobOfferRepo = new JobOfferRepository(context);
+                AllJobOffersByEmployer jobOffers = null;
+                var activejobOffers = jobOfferRepo.GetEmployerActiveJobOffers(new Guid(employerId));
+                var inactivejobOffers = jobOfferRepo.GetEmployerInactiveJobOffers(new Guid(employerId));
+                if (activejobOffers != null && inactivejobOffers != null)
+                {
+                   // var activejobOffersList = mapper.ActiveCourseListMap(activejobOffers);
+                    //var finishedjobOffersList = mapper.FinishedCourseListMap(inactivejobOffers);
+                    //jobOffers = new AllJobOffersByEmployer
+                    //{
+                     //   ActiveJobOffers = activejobOffersList,
+                     //   FinishedJobOffers = finishedjobOffersList
+                   // };
+                }
+                jobOfferRepo.Dispose();
+                return jobOffers;
+            }
         }
 
         public JobOffer GetJobOffer(string jobOfferId)
