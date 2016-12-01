@@ -16,7 +16,7 @@
         function GetNotifications(id) {
             var response=$http({
                 method:"post",
-                url:$rootScope.url+"Notifications/GetByStudent",
+                url:$rootScope.url+"notification/getbystudent",
                 data: {"StudentUserId":id}
             });
             return response;    

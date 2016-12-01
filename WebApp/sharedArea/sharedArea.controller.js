@@ -132,7 +132,7 @@
             CourseService.GetComments(send)
                 .then( function(response){
 
-                comments = response.data;
+                vm.comments = response.data;
 
             }, function(response){
                 console.log("no sirvió")

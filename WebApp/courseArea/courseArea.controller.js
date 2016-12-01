@@ -15,7 +15,7 @@
         initController();
 
         function initController(){
-             vm.technologies=[];
+
 
             vm.courseData =ProfileCourseService.GetCourseData();
             vm.courseData.Carnet = $rootScope.userData.Carnet;
@@ -32,9 +32,10 @@
         function loadTechnologies(){
             RegService.GetTechnologies()
                 .then(function (response) {
-                if (response.success) {
-                    vm.technologies = response.data;
-                } 
+
+                console.log(response.data)
+                vm.technologies = response.data;
+
             },function(response){
                 console.log("supongo1")
             });
@@ -59,7 +60,7 @@
 
             var array = additional.split(',');
 
-            var send = {Technologies: Tecnologias, EndDate:dateEnd, StartDate:dateStart, Description: description,  
+            var send = {ProjectName: name, Technologies: Tecnologias, EndDate:dateEnd, StartDate:dateStart, Description: description,  
                         CourseId: vm.courseData.CourseId, StudentUserId: vm.courseData.StudentUserId, OtherFiles:array }
             console.log(send);
 
@@ -67,7 +68,7 @@
                 .then(function(response){
 
                 if (response.data.ReturnStatus =="1"){
-                    FlashService.Success("Proyecto sugerido exitosamente");
+                    FlashService.Success("Proyecto sugerido exitosamente", true);
                     $location.path('/studentprofile')
                 }
                 else

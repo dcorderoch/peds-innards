@@ -16,11 +16,13 @@
             <div class="panel panel-default" >
                 <div  class="panel-heading"><h1>Notificaciones</h1></div>
                 <div  class="panel-body">
-                    <div ng-repeat="notification in vm.notifications">
+                    <div dir-paginate="notification in vm.notifications | itemsPerPage: 3">
                         <div class="panel panel-default insidePanel">
                             <div class="panel-body"><p style="text-align:center"><strong>{{notification}}</strong> </p> </div>
                         </div>
                     </div>
+                    <dir-pagination-controls boundary-links="true" direction-links="true" ></dir-pagination-controls>
+
                 </div>
             </div>
         </div>
