@@ -21,37 +21,37 @@ namespace MyLearnDAL.Migrations
             var newTechnology0 = new Technology()
             {
                 Name = "Verilog",
-                TecnologyId = Guid.Parse("A1A1A1A1-A1A1-A1A1-A1A1-A1A1A1A1A1A1")
+                TechnologyId = Guid.Parse("A1A1A1A1-A1A1-A1A1-A1A1-A1A1A1A1A1A1")
             };
             var newTechnology1 = new Technology()
             {
                 Name = "REST API",
-                TecnologyId = Guid.Parse("B1B1B1B1-B1B1-B1B1-B1B1-B1B1B1B1B1B1")
+                TechnologyId = Guid.Parse("B1B1B1B1-B1B1-B1B1-B1B1-B1B1B1B1B1B1")
             };
             var newTechnology2 = new Technology()
             {
                 Name = "OpenCV",
-                TecnologyId = Guid.Parse("C1C1C1C1-C1C1-C1C1-C1C1-C1C1C1C1C1C1")
+                TechnologyId = Guid.Parse("C1C1C1C1-C1C1-C1C1-C1C1-C1C1C1C1C1C1")
             };
             var newTechnology3 = new Technology()
             {
                 Name = "OpenCL",
-                TecnologyId = Guid.Parse("D1D1D1D1-D1D1-D1D1-D1D1-D1D1D1D1D1D1")
+                TechnologyId = Guid.Parse("D1D1D1D1-D1D1-D1D1-D1D1-D1D1D1D1D1D1")
             };
             var newTechnology4 = new Technology()
             {
                 Name = "CUDA",
-                TecnologyId = Guid.Parse("E1E1E1E1-E1E1-E1E1-E1E1-E1E1E1E1E1E1")
+                TechnologyId = Guid.Parse("E1E1E1E1-E1E1-E1E1-E1E1-E1E1E1E1E1E1")
             };
             var newTechnology5 = new Technology()
             {
                 Name = "MEAN Stack",
-                TecnologyId = Guid.Parse("F1F1F1F1-F1F1-F1F1-F1F1-F1F1F1F1F1F1")
+                TechnologyId = Guid.Parse("F1F1F1F1-F1F1-F1F1-F1F1-F1F1F1F1F1F1")
             };
             var newTechnology6 = new Technology()
             {
                 Name = "SQL",
-                TecnologyId = Guid.Parse("A1B1A1B1-A1B1-A1B1-A1B1-A1B1A1B1A1B1")
+                TechnologyId = Guid.Parse("A1B1A1B1-A1B1-A1B1-A1B1-A1B1A1B1A1B1")
             };
 
             var techRepo = new TechnologyRepository(context);
