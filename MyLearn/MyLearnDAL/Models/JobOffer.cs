@@ -25,6 +25,8 @@ namespace MyLearnDAL.Models
         [Required]
         public string Name { get; set; }
         [Required]
+        public int Score { get; set; }
+        [Required]
         public DateTime StartDate { get; set; }
         [Required]
         public DateTime EndDate { get; set; }
@@ -32,7 +34,6 @@ namespace MyLearnDAL.Models
         public decimal Budget { get; set; }
         [Required]
         public int IsActive { get; set; }
-        [Required]
         public string StateDescription { get; set; }
 
         public virtual Employer Employer { get; set; }
