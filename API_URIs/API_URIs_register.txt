@@ -221,3 +221,12 @@ and then Receives
                               }
                          ]
 }
+
+################################################# Get All Countries
+Web Application "queries"
+https://host/Api/Register/GetGoogleAuthURI
+
+and then Receives
+{
+    "URI":algo
+}
