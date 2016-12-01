@@ -35,7 +35,7 @@ namespace MyLearnDAL.Models
         [ForeignKey("Role")]
         [Required]
         public int RoleId { get; set; }
-        public int RefreshToken { get; set; }
+        public string RefreshToken { get; set; }
 
         public virtual Role Role { get; set; }
         public virtual Country Country { get; set; }
