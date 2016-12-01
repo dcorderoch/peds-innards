@@ -83,6 +83,7 @@ namespace MyLearn.Utils
             }
             return resultList;
         }
+
         public List<CourseShort> CourseShortListMap(List<MyLearnDAL.Models.Course> courses)
         {
             List<CourseShort> resultList = new List<CourseShort>();
@@ -153,10 +154,16 @@ namespace MyLearn.Utils
             }
             return resultList;
         }
-        
- 
 
-
-
-}
+        public List<string> TechnologiesToString(List<MyLearnDAL.Models.Technology> technologies)
+        {
+            var resultList = new List<string>();
+            foreach (var tech in technologies)
+            {
+                var strTech = tech.Name;
+                resultList.Add(strTech);
+            }
+            return resultList;
+        }
+    }
 }

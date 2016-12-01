@@ -197,16 +197,22 @@ namespace MyLearn.BLL
 
         public JobOffer GetJobOffer(string jobOfferId)
         {
-            JobOffer jobOffer = new JobOffer();
-            jobOffer.JobOfferTitle = "";
-            jobOffer.Technologies = new List<string>();
-            jobOffer.Location = "";
-            jobOffer.StartDate = "";
-            jobOffer.EndDate= "";
-            jobOffer.Description= "";
-            jobOffer.Budget = 1;
-            return jobOffer;
-            
+            using (var context = new MyLearnContext())
+            {
+                var jobOfferRepo = new JobOfferRepository(context);
+                var joboffer = jobOfferRepo.GetJobOfferById(Guid.Parse(jobOfferId));
+                var resultOffer = new JobOffer();
+                if (joboffer != null)
+                {
+                    resultOffer.JobOfferTitle = joboffer.Name;
+                    resultOffer.Technologies = mapper.TechnologiesToString(joboffer.Technologies);
+                    resultOffer.StartDate = joboffer.StartDate.ToString();
+                    resultOffer.EndDate = joboffer.EndDate.ToString();
+                    resultOffer.Description = joboffer.Description;
+                    resultOffer.Budget = joboffer.Budget;
+                }
+                return resultOffer;
+            }
         }
 
         public List<JobOffer> GetJobOffersByTechnology(string technology)
