@@ -96,6 +96,10 @@
 
                     })
                 }
+                if (response.data.UserTypeCode =="-1"){
+                    vm.dataLoading = false;
+                    FlashService.Error("Usuario no existe");//errores
+                }
                 else{
                     vm.dataLoading = false;
                 }

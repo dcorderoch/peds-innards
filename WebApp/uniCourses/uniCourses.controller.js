@@ -34,7 +34,7 @@
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
             console.log($localStorage);
-            
+
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -69,8 +69,9 @@
             CourseService.JoinCourse( send)
                 .then( function(response){
 
-                if (response.ReturnStatus==1)
+                if (response.data.ReturnStatus=="1"){ 
                     FlashService.Success("Te has unido exitosamente a este curso");
+                }
                 loadCourses();
 
             }, function(response){

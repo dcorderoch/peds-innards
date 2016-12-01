@@ -11,11 +11,11 @@
 
         vm.suggestProject = suggestProject;
 
-        vm.technologies=[{ Technology:"Java", TechnologyId: "0"}, { Technology:"C++",TechnologyId: "1"}];
         var Tecnologias = [];
         initController();
 
         function initController(){
+             vm.technologies=[];
 
             vm.courseData =ProfileCourseService.GetCourseData();
             vm.courseData.Carnet = $rootScope.userData.Carnet;
@@ -33,7 +33,7 @@
             RegService.GetTechnologies()
                 .then(function (response) {
                 if (response.success) {
-                    vm.technologies = response.data.technologies;
+                    vm.technologies = response.data;
                 } 
             },function(response){
                 console.log("supongo1")

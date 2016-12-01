@@ -37,7 +37,6 @@
                     <ul ng-repeat="tecnologia in vm.userData.Tecnologias">
                         <li>{{tecnologia}}</li>
                     </ul>
-                    <br>
                     <strong>Idiomas: </strong>
                     <ul ng-repeat="idioma in vm.userData.Idiomas">
                         <li>{{idioma}}</li>
@@ -130,10 +129,10 @@
                 <div ng-repeat="activeCourse in vm.userData.ActiveCoursesList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del curso:</strong> {{activeCourse.course}},
-                            <strong>  Descripción: </strong>{{activeCourse.CourseDescription}}
+                            <strong>Nombre del curso:</strong> {{activeCourse.CourseName}},
+                            <strong>  Descripción: </strong>{{activeCourse.CourseDescription}} 
                             <span> 
-                                <button ng-disabled="!vm.toggleEnable" ng-click="vm.goCourseActive(activeCourse.courseId,1)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button> 
+                                <button ng-disabled="!vm.toggleEnable" ng-click="vm.goCourseActive(activeCourse.CourseId,1)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button> 
                             </span>
                         </div>
                     </div>               
@@ -146,10 +145,10 @@
                 <div ng-repeat="finishedCourse in vm.userData.FinishedCoursesList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del curso:</strong> {{finishedCourse.course}},
-                            <strong>  Descripción:</strong>{{activeCourse.CourseDescription}}
+                            <strong>Nombre del curso:</strong> {{finishedCourse.CourseName}},
+                            <strong>  Descripción:</strong>{{finishedCourse.CourseDescription}}
                             <span>
-                                <button ng-disabled="!vm.toggleEnable" ng-click="vm.goCourseFinished(finishedCourse.courseId)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button>
+                                <button ng-disabled="!vm.toggleEnable" ng-click="vm.goCourseFinished(finishedCourse.CourseId)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button>
                             </span> 
                         </div>
                     </div>

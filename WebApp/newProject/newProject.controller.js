@@ -90,22 +90,35 @@
         function createJob(){
 
             vm.job.Budget = vm.job.Budget.toString();
+            vm.job.EmployerId = vm.userData.UserId; 
             JobService.Create(vm.job)
                 .then(function(response){
 
-                if (response.data.ReturnStatus == "2"){
+                setTimeout( function(){console.log(response.data)},1000);
 
-                    FlashService.success("Trabajo creado y twiteado");
+                var result = response.data.ReturnStatus;
+                console.log(result);
+                
+                if (result === 2){
+
+                    FlashService.Success("Trabajo creado y twiteado");
+                    vm.job={};
 
                 }
-                if (response.data.ReturnStatus == "1"){
+                if (result === 1){
 
-                    FlashService.success("Trabajo creado pero no twiteado");
+                    FlashService.Success("Trabajo creado pero no twiteado");
+                    vm.job={};
+                }
+                if (result === 2){
+
+                    FlashService.Success("Trabajo creado y twiteado");
+                    vm.job={};
 
                 }
-                else{ 
-                    FlashService.Error("No se pudo crear el proyecto")
-                }
+                //                else{ 
+                //                    FlashService.Error("No se pudo crear el proyecto")
+                //                }
 
                 console.log(response.data);
             },function(response){

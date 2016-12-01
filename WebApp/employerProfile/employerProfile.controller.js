@@ -31,7 +31,7 @@
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
             console.log($localStorage);
-            
+
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -39,7 +39,22 @@
             if(vm.userData.Active == "1"){
                 vm.toggleEnable = true;
             }
+            loadWork();
+        }
 
+        function loadWork(){
+
+            JobService.GetByEmployer(vm.userData.UserId)
+                .then(function(response){
+
+                console.log(response);
+                vm.userData.FinishedJobOffersList = response.data.FinishedJobOffersList;
+                vm.userData.ActiveJobOffersList = response.data.ActiveJobOffersList;
+
+            }, function(response){
+
+                FlashService.Error("Error al traer los trabajos del empleador")
+            });
         }
 
         function goWorkFinished(id){

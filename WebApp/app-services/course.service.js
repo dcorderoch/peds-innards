@@ -22,18 +22,27 @@
         service.GiveBadge = GiveBadge;
         service.GetAllByProfessor = GetAllByProfessor;
         service.CloseCourse = CloseCourse;
+        service.GetAllByStudent = GetAllByStudent;
 
         return service;
 
-        function GetCourseAsStudent(id) {
+        /**
+        *   Metodo para obtener un curso con toda su información excepto comentarios
+        *
+        */
+        function GetCourseAsStudent(data) {
             var response=$http({
                 method:"post",
                 url:$rootScope.url+"Course/GetCourseAsStudent",
-                data: {"CourseId":id}
+                data:data
             });
             return response;    
         }
 
+        /**
+        *   Metodo para obtener la lista de estudiantes 
+        *
+        */
         function GetCourseAsProfessor(id) {
             var response=$http({
                 method:"post",
@@ -43,6 +52,10 @@
             return response;    
         }
 
+        /**
+        *   
+        *
+        */
         function CreateCourse(data) {
             var response=$http({
                 method:"post",
@@ -52,6 +65,10 @@
             return response;    
         }
 
+        /**
+        *   
+        *
+        */
         function GetComments(sharedAreaData){
             var response = $http({
                 method:"post",
@@ -60,7 +77,11 @@
             });
             return response 
         }  
-        
+
+        /**
+        *   
+        *
+        */
         function CloseCourse(courseId){
             var response = $http({
                 method:"post",
@@ -70,6 +91,10 @@
             return response 
         }
 
+        /**
+        *   
+        *
+        */
         function GetAllByUniversity(universityId){
             var response  = $http({
                 method:"post",
@@ -78,7 +103,11 @@
             });
             return response;
         }
-        
+
+        /**
+        *   
+        *
+        */
         function GetAllByProfessor(profUserId){
             var response  = $http({
                 method:"post",
@@ -88,6 +117,23 @@
             return response;
         }
 
+        /**
+        *   
+        *
+        */
+        function GetAllByStudent(studentUserId){
+            var response  = $http({
+                method:"post",
+                url:$rootScope.url+"Course/GetAllByStudent",
+                data: {StudentUserId: studentUserId}
+            });
+            return response;
+        }
+
+        /**
+        *   
+        *
+        */
         function JoinCourse(dataJoin){
             var response = $http({
                 method: "post",
@@ -97,6 +143,10 @@
             return response;
         }
 
+        /**
+        *   
+        *
+        */
         function GetSpecificCourse( getCourseData){
             var response = $http({
                 method: "post",
@@ -106,6 +156,10 @@
             return response;
         }
 
+        /**
+        *   
+        *
+        */
         function ProjectPropose(data){
             var response = $http({
                 method: "post",
@@ -115,6 +169,10 @@
             return response;
         }
 
+        /**
+        *   
+        *
+        */
         function CommentCreate(data){
             var response = $http({
                 method: "post",
@@ -124,6 +182,10 @@
             return response;            
         }
 
+        /**
+        *   
+        *
+        */
         function Brag(badgeId){
             var response = $http({
                 method: "post",
@@ -133,6 +195,10 @@
             return response;                 
         }
 
+        /**
+        *   
+        *
+        */
         function GiveBadge(data){
             var response = $http({
                 method: "post",

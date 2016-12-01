@@ -40,7 +40,7 @@
             return response;
         }
 
-        function GetByEmployer( idEmployer){
+        function GetByEmployer( jobId){
             var response=$http({
                 method:"post",
                 url:$rootScope.url+"JobOffer/GetByEmployer",

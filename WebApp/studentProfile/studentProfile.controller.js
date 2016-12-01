@@ -46,12 +46,30 @@
                 vm.toggleEnable = true;
             }
 
+            loadCourses();
+        }
+
+
+        function loadCourses(){
+
+            CourseService.GetAllByStudent(vm.userData.UserId)
+                .then(function(response){
+
+                vm.userData.FinishedCoursesList = response.data.FinishedCourses;
+                vm.userData.ActiveCoursesList = response.data.ActiveCourses;
+                console.log(response);
+
+            }, function(response){
+                FlashService.Error("Error al traer los cursos del estudiante")
+            });
         }
 
         function goCourseFinished(id){
-            $location.path('/sharedarea');    
-            return;
-            CourseService.GetCourseAsStudent(id)
+
+
+            var send= {StudentUserId: vm.userData.UserId, CourseId: id}
+
+            CourseService.GetCourseAsStudent(send)
                 .then(function(response){
 
                 var currentCourseData = response.data;
@@ -67,11 +85,13 @@
         }
 
         function goCourseActive(id, status){
-            $location.path('/coursearea');    
-            return;
-            CourseService.GetCourseAsStudent(id)
-                .then(function(response){
 
+            var send= {StudentUserId: vm.userData.UserId, CourseId: id}
+
+            CourseService.GetCourseAsStudent(send)
+                .then(function(response){
+                console.log("aqui abajo")
+                console.log(response)
                 var currentCourseData = response.data;
                 currentCourseData.status=true;
 
@@ -91,7 +111,7 @@
 
         function disableAccount(){
 
-            console.log(vm.userData.userId);
+            console.log(vm.userData.UserId);
             console.log(vm.userData.Active);
 
             UserService.Disable(vm.userData.UserId)
