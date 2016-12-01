@@ -19,13 +19,17 @@ namespace MyLearn.BLL
             using (var context = new MyLearnContext())
             {
                 //Admin:0 Student:1 Professor:2 Employer:3 Error: -1
-                var userTypeCode = new UserCode();
+                UserCode userTypeCode = null;
                 var userRepo = new UserRepository(context);
                 var user = userRepo.GetUserByEmail(username);
                 if (user != null && user.Password == password)
                 {
                     var code = user.RoleId;
-                    userTypeCode.UserTypeCode = code;
+                    userTypeCode = new UserCode {UserTypeCode = code};
+                }
+                else
+                {
+                    
                 }
                 userRepo.Dispose();
                 return userTypeCode;
