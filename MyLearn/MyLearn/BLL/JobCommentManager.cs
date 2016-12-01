@@ -36,7 +36,8 @@ namespace MyLearn.BLL
             }
             }
         
-        public ReturnCode CreateComment(NewJobComment newJobComment)
+
+        public ReturnCode CreateComment(NewJobComment newJobComment, string link)
         {
             using (var context = new MyLearnContext())
             {
@@ -54,6 +55,7 @@ namespace MyLearn.BLL
                     newJobOfferComment.ParentId = newJobComment.ParentId == "-1" ? Guid.Empty : new Guid(newJobComment.ParentId);
                     newJobOfferComment.UserId = newJobComment.Commenter == 1 ? new Guid(newJobComment.StudentUserId) : new Guid(newJobComment.EmployerUserId);
                     newJobOfferComment.JobOfferId = jobOffer.JobOfferId;
+                    newJobOfferComment.File = link;
                     jobCommentRepo.Add(newJobOfferComment);
                     jobCommentRepo.SaveChanges();
                     success.ReturnStatus = 1;
