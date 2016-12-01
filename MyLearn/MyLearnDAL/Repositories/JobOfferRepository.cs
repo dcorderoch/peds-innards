@@ -23,7 +23,7 @@ namespace MyLearnDAL.Repositories
 
         public List<JobOffer> GetEmployerActiveJobOffers(Guid userId)
         {
-            return DbSet.Where(j => j.Employer.UserId.Equals(userId) && j.IsActive.Equals(1)).ToList();
+            return DbSet.Where(j => j.Employer.UserId.Equals(userId) && (j.IsActive.Equals(0) || j.IsActive.Equals(1))).ToList();
         }
 
         public List<JobOffer> GetEmployerInactiveJobOffers(Guid userId)
