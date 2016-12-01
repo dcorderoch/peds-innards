@@ -26,26 +26,22 @@
             vm.courseData.Carnet = $rootScope.userData.Carnet;
             vm.userData = $rootScope.userData;
             //            vm.courseData.status=true;
-            vm.gradeWidth = {'width': vm.courseData.Grade+'%'};  
             console.log(vm.courseData);
             console.log(vm.userData);
 
             getComments();
-
-
             processComments();
         }
 
-        function sendReply( replyMessage, parentId){
+        function sendReply( replyMessage,  commentId){
 
-            var send={Commenter:"1", ParentId:parentId, Comment:replyMessage, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
-            console.log(send);
+            var send={Commenter:"0", ParentId:commentId, Comment:replyMessage, StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
+
             CourseService.CommentCreate(send)
                 .then(function(response){
 
                 console.log(response);
                 getComments();
-                processComments();
 
             }, function(response){
                 //                console.log(response);
@@ -54,14 +50,30 @@
             vm.writeReply=false;;
         }
 
+        function sendComment(  dataUpload ){
 
+            var send={Commenter:"0", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
+            vm.comment =""
+
+            CourseService.CommentCreate(send)
+                .then(function(response){
+
+                console.log(response);
+                getComments();
+
+            }, function(response){
+                //                console.log(response);
+                FlashService.Error("No se pudo enviar el comentario"); 
+            })
+        }
 
         function processComments(){
 
             var i;
+            console.log(vm.comments);
             for (i=0; i<vm.comments.length; i++){
 
-                if (vm.comments[i].IsFromStudent==="0"){
+                if (vm.comments[i].IsFromStudent =="1"){
                     vm.comments[i].IsFromStudent = true;
                     vm.comments[i].Author = "Estudiante"
                 }
@@ -71,18 +83,18 @@
 
                 }
                 var j;
-                for (j=0; j<vm.comments[i].Nested.length; j++){
-                    if (vm.comments[i].Nested[j].IsFromStudent==="0"){
-                        vm.comments[i].Nested[j].IsFromStudent = true;
-                        vm.comments[i].Nested[j].Author = "Estudiante"
+                for (j=0; j<vm.comments[i].NestedComments.length; j++){
+                    if (vm.comments[i].NestedComments[j].IsFromStudent=="1"){
+                        vm.comments[i].NestedComments[j].IsFromStudent = true;
+                        vm.comments[i].NestedComments[j].Author = "Estudiante"
                     }
                     else{
-                        vm.comments[i].Nested[j].IsFromStudent = false;
-                        vm.comments[i].Nested[j].Author = "Profesor"
+                        vm.comments[i].NestedComments[j].IsFromStudent = false;
+                        vm.comments[i].NestedComments[j].Author = "Profesor"
                     }                 
                 }
             }
-        }        
+        }       
 
         function replyaMessage(commentId){
 
@@ -92,35 +104,18 @@
 
         function getComments (){
 
-            var send= {StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
+            var send= {StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, CourseId: vm.courseData.CourseId};
             CourseService.GetComments(send)
                 .then( function(response){
 
-                comments = response.data;
+                vm.comments = response.data;
+                processComments();
 
             }, function(response){
                 console.log("no sirvió")
             })
         }
 
-        function sendComment(  dataUpload ){
-
-            var send={Commenter:"0", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.StudentUserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
-            console.log(send)
-            vm.comment =""
-
-            CourseService.CommentCreate(send)
-                .then(function(response){
-
-                console.log(response);
-                getComments();
-                processComments();
-
-            }, function(response){
-                //                console.log(response);
-                FlashService.Error("No se pudo enviar el comentario"); 
-            })
-        }
 
         function assignBadge(badgeId){
 
@@ -128,7 +123,7 @@
                       ProfUserId: vm.userData.IdProfesor,
                       Group: vm.courseData.Group,
                       CourseId: vm.courseData.CourseId}
-            
+
             console.log(send);
             CourseService.GiveBadge(send)
                 .then(function(response){

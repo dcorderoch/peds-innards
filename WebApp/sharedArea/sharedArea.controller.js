@@ -35,15 +35,15 @@
 
         function sendReply( replyMessage, parentId){
 
-            var send={Commenter:"0", ParentId:parentId, Comment:replyMessage, StudentUserId: vm.userData.UserId, ProfUserId: vm.userData.ProfUserId, CourseId: vm.courseData.CourseId};
-
+            var send={Commenter:"1", ParentId:parentId, Comment:replyMessage, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
+            
             console.log(send);
             CourseService.CommentCreate(send)
                 .then(function(response){
 
                 console.log(response);
                 getComments();
-                processComments();
+
                 var dataSend = {StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, UniversityId: vm.courseData.UniversityId, 
                                 Group: vm.courseData.Group, CourseId: vm.courseData.CourseId}
 
@@ -81,7 +81,6 @@
                 else{
                     FlashService.Success("Se ha alardeado en Twitter exitsamente!");
                     getComments();
-                    processComments();
 
                 }
 
@@ -95,9 +94,10 @@
         function processComments(){
 
             var i;
+            console.log(vm.comments);
             for (i=0; i<vm.comments.length; i++){
 
-                if (vm.comments[i].IsFromStudent==="0"){
+                if (vm.comments[i].IsFromStudent =="1"){
                     vm.comments[i].IsFromStudent = true;
                     vm.comments[i].Author = "Estudiante"
                 }
@@ -107,14 +107,14 @@
 
                 }
                 var j;
-                for (j=0; j<vm.comments[i].Nested.length; j++){
-                    if (vm.comments[i].Nested[j].IsFromStudent==="0"){
-                        vm.comments[i].Nested[j].IsFromStudent = true;
-                        vm.comments[i].Nested[j].Author = "Estudiante"
+                for (j=0; j<vm.comments[i].NestedComments.length; j++){
+                    if (vm.comments[i].NestedComments[j].IsFromStudent=="1"){
+                        vm.comments[i].NestedComments[j].IsFromStudent = true;
+                        vm.comments[i].NestedComments[j].Author = "Estudiante"
                     }
                     else{
-                        vm.comments[i].Nested[j].IsFromStudent = false;
-                        vm.comments[i].Nested[j].Author = "Profesor"
+                        vm.comments[i].NestedComments[j].IsFromStudent = false;
+                        vm.comments[i].NestedComments[j].Author = "Profesor"
                     }                 
                 }
             }
@@ -133,6 +133,8 @@
                 .then( function(response){
 
                 vm.comments = response.data;
+                console.log(vm.comments)
+                processComments();
 
             }, function(response){
                 console.log("no sirvió")
@@ -148,7 +150,6 @@
 
                 console.log(response);
                 getComments();
-                processComments();
 
             }, function(response){
                 //                console.log(response);

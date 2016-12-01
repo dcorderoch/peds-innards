@@ -133,7 +133,7 @@
                         <div class="panel-body">
                             <strong>Nombre del curso:</strong> {{course.Course}},
                             <strong>  Descripción: </strong>{{course.CourseDescription}}
-                            <button  ng-click="vm.joinCourse(course.CourseId)" type="button" class="btn btn-primary yellowButton uniCourse">Unirse a curso</button>
+                            <button ng-disabled="!course.Active" ng-click="vm.joinCourse(course.CourseId)" type="button" class="btn btn-primary yellowButton uniCourse">Unirse a curso</button>
                         </div>
 
                     </div>

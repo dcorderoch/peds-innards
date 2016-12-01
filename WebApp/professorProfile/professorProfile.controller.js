@@ -60,27 +60,28 @@
             });
         }
 
-        function goCourseFinished(id){
+        function goCourseFinished(course){
 
-            $location.path('/courseoverview');    
-            return;
 
-            CourseService.GetCourseAsProfessor(id)
+            CourseService.GetCourseAsProfessor(course.CourseId)
                 .then(function(response){
 
                 var currentCourseData = response.data;
                 currentCourseData.status = false;
+                currentCourseData.Accepted = course.Accepted;
                 console.log(currentCourseData )
                 ProfileCourseService.SetCourseData(currentCourseData);
+
+
                 $location.path('/courseoverview');    
 
             }, function(response){
                 console.log("no sirvio")
             });
         }
-        function goCourseActive(id, status){
+        function goCourseActive(course){
 
-            CourseService.GetCourseAsProfessor(id)
+            CourseService.GetCourseAsProfessor(course.CourseId)
                 .then(function(response){
 
                 var currentCourseData = response.data;
@@ -106,7 +107,7 @@
                 if (vm.userData.Active == "1"){
                     if (response.data.ReturnStatus == "1"){ 
 
-                        FlashService.Success("La cuenta ha sido deshabilitada");
+                        FlashService.Success("La cuenta ha sido deshabilitada",true);
                         $location.path("/login")
 
                     }

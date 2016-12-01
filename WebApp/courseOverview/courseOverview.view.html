@@ -32,7 +32,7 @@
                     </div>      
                 </div>
             </div>
-            <button style="float:right"  class="btn btn-danger" ng-click="vm.finishCourse()">Cerrar curso</button>
+            <button style="float:right" ng-disabled="!vm.courseData.status" class="btn btn-danger" ng-click="vm.finishCourse()">Cerrar curso</button>
 
         </div>
     </div>

@@ -49,8 +49,8 @@
                 .then(function(response){
 
                 console.log(response);
-                vm.userData.FinishedJobOffersList = response.data.FinishedJobOffersList;
-                vm.userData.ActiveJobOffersList = response.data.ActiveJobOffersList;
+                vm.userData.FinishedJobOffersList = response.data.FinishedJobOffers;
+                vm.userData.ActiveJobOffersList = response.data.ActiveJobOffers;
 
             }, function(response){
 
@@ -100,16 +100,16 @@
 
         function disableAccount(){
 
-            console.log(vm.userData.userId);
+            console.log(vm.userData.UserId);
             console.log(vm.userData.Active);
 
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
-
+                console.log(response)
                 if (vm.userData.Active == "1"){
                     if (response.data.ReturnStatus == "1"){ 
 
-                        FlashService.Success("La cuenta ha sido deshabilitada");
+                        FlashService.Success("La cuenta ha sido deshabilitada",true);
                         $location.path("/login")
 
                     }
@@ -124,6 +124,7 @@
                         FlashService.Success("Cuenta habilitada");
                         vm.toggleEnable =true;
                         vm.userData.Active = "1";
+                        
                     }
                     else{
                         FlashService.Error("No se pudo habilitar la cuenta");

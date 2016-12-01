@@ -93,7 +93,7 @@
                 if (vm.userData.Active == "1"){
                     if (response.data.ReturnStatus == "1"){ 
 
-                        FlashService.Success("La cuenta ha sido deshabilitada");
+                        FlashService.Success("La cuenta ha sido deshabilitada",true);
                         $location.path("/login")
 
                     }
