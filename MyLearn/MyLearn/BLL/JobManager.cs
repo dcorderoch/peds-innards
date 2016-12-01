@@ -120,19 +120,16 @@ namespace MyLearn.BLL
                         {
                             currentJobOffer.IsActive = closeJobOffer.State;
                             currentJobOffer.StateDescription = closeJobOffer.StateDescription;
-                            //currentJobOffer.Score = closeJobOffer.Stars; //asignar nota del trabajo
-
+                            currentJobOffer.Score = closeJobOffer.Stars; //asignar nota del trabajo
                             student.AvgProjects = CalculateAverage(ObtainGrade(closeJobOffer.Stars),
                                     student.NumSuceedProjects + student.NumFailedProjects, student.AvgProjects); //actualizar promedio de estudiante
                             student.NumSuceedProjects += 1; //aumentar numero de proyectos exitosos 
-
                         }
                         else //Fracasó
                         {
                             currentJobOffer.IsActive = closeJobOffer.State;
                             currentJobOffer.StateDescription = closeJobOffer.StateDescription;
-                            //currentJobOffer.Score = closeJobOffer.Stars; //asignar nota del trabajo
-
+                            currentJobOffer.Score = closeJobOffer.Stars; //asignar nota del trabajo
                             student.AvgProjects = CalculateAverage(ObtainGrade(closeJobOffer.Stars),
                                     student.NumSuceedProjects + student.NumFailedProjects, student.AvgProjects); //actualizar promedio de estudiante
                             student.NumFailedProjects += 1; //aumentar numero de proyectos fracasados
@@ -142,13 +139,12 @@ namespace MyLearn.BLL
                     {
                         currentJobOffer.IsActive = closeJobOffer.State;
                         currentJobOffer.StateDescription = closeJobOffer.StateDescription;
-                        //currentJobOffer.Score = 0;
+                        currentJobOffer.Score = 0;
                     }
                     retVal.ReturnStatus = 1;
                 }
                 catch (Exception)
                 {
-
                     retVal.ReturnStatus = 0; ;
                 }
                 return retVal;
