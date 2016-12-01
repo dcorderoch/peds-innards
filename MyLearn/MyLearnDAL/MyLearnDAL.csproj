@@ -81,7 +81,6 @@
     <Compile Include="Models\University.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="MyLearnContext.cs" />
-    <Compile Include="MyLearnContextInitializer.cs" />
     <Compile Include="Repositories\AchievementRepository.cs" />
     <Compile Include="Repositories\BadgeRepository.cs" />
     <Compile Include="Repositories\BidRepository.cs" />
