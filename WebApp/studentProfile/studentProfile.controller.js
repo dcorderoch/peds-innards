@@ -64,7 +64,7 @@
             });
         }
 
-        function goCourseFinished(id){
+        function goCourseFinished(id, status){
 
 
             var send= {StudentUserId: vm.userData.UserId, CourseId: id}
@@ -77,7 +77,12 @@
 
                 ProfileCourseService.SetCourseData(currentCourseData);
 
-                $location.path('/sharedarea');    
+                if(status===0){
+                    FlashService.Error("Este curso finalizó sin propuesta de proyecto");  
+                }
+                else{
+                    $location.path('/sharedarea');    
+                }
 
             }, function(response){
                 console.log("no sirvio")

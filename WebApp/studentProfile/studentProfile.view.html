@@ -132,7 +132,7 @@
                             <strong>Nombre del curso:</strong> {{activeCourse.CourseName}},
                             <strong>  Descripción: </strong>{{activeCourse.CourseDescription}} 
                             <span> 
-                                <button ng-disabled="!vm.toggleEnable" ng-click="vm.goCourseActive(activeCourse.CourseId,1)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button> 
+                                <button ng-disabled="!vm.toggleEnable" ng-click="vm.goCourseActive(activeCourse.CourseId, activeCourse.Accepted)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button> 
                             </span>
                         </div>
                     </div>               
