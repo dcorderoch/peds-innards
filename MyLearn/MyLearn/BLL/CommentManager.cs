@@ -52,15 +52,8 @@ namespace MyLearn.BLL
                     newProjectComment.CommentId = Guid.NewGuid();
                     newProjectComment.Comment = newComment.Comment;
                     newProjectComment.Date = DateTime.Now;
-                    newProjectComment.ParentId = new Guid(newComment.ParentId);
-                    if (newComment.Commenter == 1)
-                    {
-                        newProjectComment.UserId = new Guid(newComment.StudentUserId);
-                    }
-                    else
-                    {
-                        newProjectComment.UserId = new Guid(newComment.ProfUserId);
-                    }
+                    newProjectComment.ParentId = newComment.ParentId == "-1" ? Guid.Empty : new Guid(newComment.ParentId);
+                    newProjectComment.UserId = newComment.Commenter == 1 ? new Guid(newComment.StudentUserId) : new Guid(newComment.ProfUserId);
                     newProjectComment.ProjectId = project.ProjectId;
                     projectCommentRepo.Add(newProjectComment);
                     success.ReturnStatus = 1;
