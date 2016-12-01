@@ -13,11 +13,11 @@
 
         return service;
   
-        function GetNotifications(Carnet) {
+        function GetNotifications(id) {
             var response=$http({
                 method:"post",
                 url:$rootScope.url+"Notifications/GetByStudent",
-                data: {"Carnet":Carnet}
+                data: {"StudentUserId":id}
             });
             return response;    
         }

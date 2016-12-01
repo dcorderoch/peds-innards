@@ -19,12 +19,14 @@
             $rootScope.currentCourseData={};
         }
 
-        var Carnet = $rootScope.userData.Carnet;
 
         function getNotifications(){
-            NotificationsService.GetNotifications( Carnet )
+
+            var id = $rootScope.userData.UserId;
+
+            NotificationsService.GetNotifications( id )
                 .then( function(response){
-                
+
                 if (response.data.ReturnStatus == "1"){
                     vm.notifications = response.data.Notifications;
                 }
