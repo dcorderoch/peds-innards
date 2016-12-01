@@ -88,21 +88,33 @@ namespace MyLearn.BLL
             using (var context = new MyLearnContext())
             {
                 var courseRepo = new CourseRepository(context);
+                var projectRepo = new ProjectRepository(context);
+                List<bool> hasproject = new List<bool>();
                 var course = courseRepo.GetCoursebyId(new Guid(courseId));
+                foreach(Student student in course.Students) {
+                    if(projectRepo.GetProjectByStudentAndCourseId(student.UserId, new Guid(courseId)) == null) {
+                        hasproject.Add(false);
+                    } else {
+                        hasproject.Add(true);
+                    }
+                }
+                var simplestudents = mapper.StudentInCourseMap(course.Students);
+                for(int i = 0; i < simplestudents.Count;i++) {
+                    simplestudents[i].ProposedProject = (hasproject[i] == true) ?1:0;
+                }
                 Course retCourse = null;
-                if (course != null)
-                {
-                    retCourse = new Course
-                    {
+                if (course != null) {
+                    retCourse = new Course {
                         CourseId = course.CourseId.ToString(),
                         CourseName = course.Name,
                         UniversityId = course.UniversityId.ToString(),
                         Group = course.Group,
                         CourseDescription = course.Description,
                         MinGrade = course.MinScore,
-                        Students = mapper.StudentInCourseMap(course.Students)
+                        Students = simplestudents
                     };
                 }
+                projectRepo.Dispose();
                 courseRepo.Dispose();
                 return retCourse;
             }
@@ -146,12 +158,9 @@ namespace MyLearn.BLL
                 if (course != null)
                 {
                     List<MyLearnDAL.Models.Badge> listOfBadges = null;
-                    if (project != null)
-                    {
+                    if (project != null) {
                         listOfBadges = project.Badges;
-                    }
-                    else
-                    {
+                    } else {
                         listOfBadges = new List<MyLearnDAL.Models.Badge>();
                     }
                     var resBadges = mapper.BadgeListMap(listOfBadges);
@@ -173,8 +182,7 @@ namespace MyLearn.BLL
                 courseRepo.Dispose();
                 projectRepo.Dispose();
                 return courseAsStudent;
-            }
-                
+            }  
         }
 
         public AllProfessorsCourses GetAllByProfessor(string profUserId)
