@@ -163,8 +163,18 @@ namespace MyLearn.Utils
             if (!technologies.Any()) return resultList;
             foreach (var tech in technologies)
             {
-                var strTech = tech.Name;
-                resultList.Add(strTech);
+                resultList.Add(tech.Name);
+            }
+            return resultList;
+        }
+
+        public List<string> LanguagesToString(List<MyLearnDAL.Models.Language> languages)
+        {
+            var resultList = new List<string>();
+            if (!languages.Any()) return resultList;
+            foreach (var lang in languages)
+            {
+                resultList.Add(lang.Name);
             }
             return resultList;
         }
