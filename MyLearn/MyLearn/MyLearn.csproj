@@ -220,6 +220,7 @@
     <Compile Include="InputModels\InputBid.cs" />
     <Compile Include="InputModels\JobOfferIdentifier.cs" />
     <Compile Include="InputModels\NewBid.cs" />
+    <Compile Include="InputModels\NewCommentWithFile.cs" />
     <Compile Include="InputModels\ProjectProposal.cs" />
     <Compile Include="InputModels\LoginInfo.cs" />
     <Compile Include="InputModels\NewBadge.cs" />

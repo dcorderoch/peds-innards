@@ -18,21 +18,21 @@ namespace MyLearn.GoogleService
         private DriveService _GDriveService;
         private string ApplicationName = "MyLearn";
 
-        public GoogleUploader(string clientId, string clientSecret, string accessToken, string refreshToken)
+        public GoogleUploader(string refreshToken)
         {
             this._Flow = new GoogleAuthorizationCodeFlow(new GoogleAuthorizationCodeFlow.Initializer
             {
                 ClientSecrets = new ClientSecrets
                 {
-                    ClientId = clientId,
-                    ClientSecret = clientSecret
+                    ClientId = Constants._MyLearnClientId,
+                    ClientSecret = Constants._MyLearnClientSecret
                 },
                 Scopes = _GoogleDriveScopes,
                 DataStore = new FileDataStore("Store")
             });
             this._TokenResponse = new TokenResponse
             {
-                AccessToken = accessToken,
+                AccessToken = "",
                 RefreshToken = refreshToken
             };
             this._Credential = new UserCredential(this._Flow, Environment.UserName, this._TokenResponse);
@@ -43,11 +43,12 @@ namespace MyLearn.GoogleService
             });
         }
 
-        public string UploadAndReturnDownloadLink(Stream File)
+        public string UploadAndReturnDownloadLink(Stream File, string FileName)
         {
             string retVal = "";
             Google.Apis.Drive.v3.Data.File NewFile = null;
             Google.Apis.Drive.v3.Data.File fbody = new Google.Apis.Drive.v3.Data.File();
+            fbody.Name = FileName;
             try
             {
                 var request = this._GDriveService.Files.Create(fbody, File, "");

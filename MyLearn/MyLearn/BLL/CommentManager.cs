@@ -5,6 +5,7 @@ using MyLearn.Models;
 using MyLearnDAL;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
+using MyLearn.GoogleService;
 
 namespace MyLearn.BLL
 {
@@ -36,6 +37,46 @@ namespace MyLearn.BLL
 
         }
 
+        public ReturnCode CreateCommentWithFile(NewCommentWithFile newComment)
+        {
+            var Link = "";
+            ReturnCode success = new ReturnCode();
+            GoogleUploader uploader = new GoogleUploader(newComment.RefreshToken);
+            try
+            {
+                System.IO.Stream theFile = new System.IO.MemoryStream(Convert.FromBase64String(newComment.File));
+                Link = uploader.UploadAndReturnDownloadLink(theFile,newComment.FileName);
+            }
+            catch(Exception e)
+            {
+                Link = "<UPLOAD FAIL>";
+            }
+
+            using (var context = new MyLearnContext())
+            {
+                ProjectComment newProjectComment = new ProjectComment();
+                ProjectRepository projectRepository = new ProjectRepository(context);
+                ProjectCommentRepository projectCommentRepo = new ProjectCommentRepository(context);
+                Project project = projectRepository.GetProjectByStudentAndCourseId(new Guid(newComment.StudentUserId), new Guid(newComment.CourseId));
+
+                if (newComment.Comment != null)
+                {
+                    newProjectComment.CommentId = Guid.NewGuid();
+                    newProjectComment.Comment = newComment.Comment;
+                    newProjectComment.File = Link;
+                    newProjectComment.Date = DateTime.Now;
+                    newProjectComment.ParentId = newComment.ParentId == "-1" ? Guid.Empty : new Guid(newComment.ParentId);
+                    newProjectComment.UserId = newComment.Commenter == 1 ? new Guid(newComment.StudentUserId) : new Guid(newComment.ProfUserId);
+                    newProjectComment.ProjectId = project.ProjectId;
+                    projectCommentRepo.Add(newProjectComment);
+                    success.ReturnStatus = 1;
+                }
+                projectCommentRepo.SaveChanges();
+                projectCommentRepo.Dispose();
+                projectRepository.Dispose();
+                return success;
+            }
+        }
         public ReturnCode CreateComment(NewComment newComment)
         {
             using (var context = new MyLearnContext())
@@ -79,17 +120,14 @@ namespace MyLearn.BLL
             }
         }
 
-        private List<List<Comment>> ObtainNestedComments(List<MyLearnDAL.Models.ProjectComment> projectComments)
-        {
+        private List<List<Comment>> ObtainNestedComments(List<MyLearnDAL.Models.ProjectComment> projectComments) {
             List<List<Comment>> resultComments = new List<List<Comment>>();
             List<Comment> parentComments = new List<Comment>();
             List<Comment> childComments = new List<Comment>();
 
-            foreach (ProjectComment projectComment in projectComments)
-            {
+            foreach (ProjectComment projectComment in projectComments) {
                 Comment comment = new Comment();
-                if (projectComment.ParentId == Guid.Empty)
-                {
+                if (projectComment.ParentId == Guid.Empty) {
                     comment.CommentId = projectComment.CommentId.ToString();
                     comment.CommentContent = projectComment.Comment;
                     comment.Date = projectComment.Date.ToString();
@@ -98,9 +136,7 @@ namespace MyLearn.BLL
                     comment.NestedComments = new List<Comment>();
                     parentComments.Add(comment);
 
-                }
-                else
-                {
+                } else {
                     comment.CommentId = projectComment.CommentId.ToString();
                     comment.CommentContent = projectComment.Comment;
                     comment.Date = projectComment.Date.ToString();

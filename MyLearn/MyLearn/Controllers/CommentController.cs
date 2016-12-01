@@ -27,5 +27,12 @@ namespace MyLearn.Controllers
             var retVal = cmtMngr.CreateComment(newComment);
             return Json(retVal);
         }
+        [HttpPost]
+        public JsonResult<ReturnCode> CreateWithFile(NewCommentWithFile newComment)
+        {
+            var cmtMngr = new CommentManager();
+            var retVal = cmtMngr.CreateCommentWithFile(newComment);
+            return Json(retVal);
+        }
     }
 }
