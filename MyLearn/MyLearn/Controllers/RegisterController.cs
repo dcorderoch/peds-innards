@@ -2,11 +2,13 @@
 using System.Web.Http.Results;
 using MyLearn.BLL;
 using MyLearn.Models;
+using MyLearn.InputModels;
 
 namespace MyLearn.Controllers
 {
     public class RegisterController : ApiController
     {
+        private string GoogleAuthURI = GoogleService.Constants._MyLearnAuthURL;
         [HttpPost]
         public JsonResult<InfoEstudiante> RegisterStudent(RegisterEstudianteInfo userInformation)
         {
@@ -38,6 +40,15 @@ namespace MyLearn.Controllers
             {
                 retVal = new InfoEmpleador();
             }
+            return Json(retVal);
+        }
+        [HttpGet]
+        public JsonResult<AuthURI> GetGoogleAuthURI()
+        {
+            var retVal = new AuthURI
+            {
+                URI = this.GoogleAuthURI
+            };
             return Json(retVal);
         }
     }

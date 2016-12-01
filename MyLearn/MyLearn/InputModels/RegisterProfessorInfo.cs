@@ -13,5 +13,6 @@
         public string Universidad { get; set; }
         public string HorarioAtencion { get; set; }
         public string IdProfesor { get; set; }
+        public string AuthToken { get; set; }
     }
 }

@@ -13,5 +13,6 @@
         public string NombreEmpresarial { get; set; }
         public string EnlaceSitioWeb { get; set; } //Opcional
         public string IdEmpresa { get; set; }
+        public string AuthToken { get; set; }
     }
 }

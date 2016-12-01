@@ -204,8 +204,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GoogleService\AuthResponse.cs" />
+    <Compile Include="GoogleService\Constants.cs" />
+    <Compile Include="GoogleService\GoogleAuthenticator.cs" />
     <Compile Include="GoogleService\GoogleUploader.cs" />
     <Compile Include="InputModels\AssignJobOffer.cs" />
+    <Compile Include="InputModels\AuthURI.cs" />
     <Compile Include="InputModels\Badge.cs" />
     <Compile Include="InputModels\BadgeIdentifier.cs" />
     <Compile Include="InputModels\CloseJobOffer.cs" />

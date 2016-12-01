@@ -64,6 +64,7 @@ namespace MyLearn.BLL
 
                 if (dalStudent != null && dalStudent.Password == password)
                 {
+                    student.RefreshToken = dalStudent.RefreshToken;
                     student.UserId = studentId.ToString();
                     student.NombreContacto = dalStudent.Name;
                     student.ApellidoContacto = dalStudent.LastName;
@@ -186,6 +187,7 @@ namespace MyLearn.BLL
 
                 if (dalProfessor != null && dalProfessor.Password == password)
                 {
+                    professor.RefreshToken = dalProfessor.RefreshToken;
                     professor.UserId = dalProfessor.UserId.ToString();
                     professor.NombreContacto = dalProfessor.Name;
                     professor.ApellidoContacto = dalProfessor.Lastname;
@@ -254,6 +256,7 @@ namespace MyLearn.BLL
 
                 if (dalEmployer != null && dalEmployer.Password == password)
                 {
+                    employer.RefreshToken = dalEmployer.RefreshToken;
                     employer.UserId = dalEmployer.UserId.ToString();
                     employer.NombreContacto = dalEmployer.ContactName;
                     employer.ApellidoContacto = dalEmployer.ContactLastname;

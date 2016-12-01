@@ -1,20 +1,9 @@
 ﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
-using Google.Apis.Drive.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-using System;
-using System.IO;
-using System.Net;
-using System.Text;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
 
@@ -54,10 +43,9 @@ namespace MyLearn.GoogleService
             });
         }
 
-        public bool Upload(Stream File)
+        public string UploadAndReturnDownloadLink(Stream File)
         {
-            bool retVal = true;
-
+            string retVal = "";
             Google.Apis.Drive.v3.Data.File NewFile = null;
             Google.Apis.Drive.v3.Data.File fbody = new Google.Apis.Drive.v3.Data.File();
             try
@@ -65,11 +53,11 @@ namespace MyLearn.GoogleService
                 var request = this._GDriveService.Files.Create(fbody, File, "");
                 request.Upload();
                 NewFile = request.ResponseBody;
-                Console.WriteLine("File id: " + NewFile.Id);
+                retVal += "https://docs.google.com/uc?id=" + NewFile.Id + "&export=download";
             }
             catch (Exception e)
             {
-                Console.WriteLine("An error occurred in the file part!!!!: " + e.Message);
+                retVal += "FAIL";
             }
             return retVal;
         }

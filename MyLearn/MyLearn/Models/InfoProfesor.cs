@@ -4,6 +4,7 @@ namespace MyLearn.Models
 {
     public class InfoProfesor
     {
+        public string RefreshToken { get; set; }
         public int Active { get; set; }
         public string UserId { get; set; }
         public string NombreContacto { get; set; }

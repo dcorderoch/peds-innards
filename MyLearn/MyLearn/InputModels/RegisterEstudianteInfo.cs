@@ -18,5 +18,6 @@ namespace MyLearn.Models
         public string EnlaceACurriculum { get; set; }
         public List<string> Idiomas { get; set; }
         public List<string> Tecnologias { get; set; }
+        public string AuthToken { get; set; }
     }
 }

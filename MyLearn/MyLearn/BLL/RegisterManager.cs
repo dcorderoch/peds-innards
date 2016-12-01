@@ -3,7 +3,7 @@ using MyLearn.Models;
 using MyLearnDAL;
 using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
-
+using MyLearn.GoogleService;
 
 namespace MyLearn.BLL
 {
@@ -42,7 +42,8 @@ namespace MyLearn.BLL
                 var studentRepo = new StudentRepository(context);
                 var techRepo = new TechnologyRepository(context);
                 var langRepo = new LanguageRepository(context);
-
+                var gauthenticator = new GoogleAuthenticator();
+                string refreshtoken = gauthenticator.GetRefreshToken(newStudent.AuthToken, Constants._MyLearnClientId, Constants._MyLearnClientSecret, Constants._MyLearnRedirectURI);
                 var student = new Student
                 {
                     UserId = Guid.NewGuid(),
@@ -66,7 +67,8 @@ namespace MyLearn.BLL
                     IsActive = 1,
                     RoleId = 1,
                     TRepo = Convert.ToInt32(newStudent.TipoRepositorioArchivos),
-                    PhoneNum = newStudent.Telefono
+                    PhoneNum = newStudent.Telefono,
+                    RefreshToken = refreshtoken
                 };
 
 
@@ -96,7 +98,8 @@ namespace MyLearn.BLL
                 var professorRepo = new ProfessorRepository(context);
                 var countryRepo = new CountryRepository(context);
                 var universityRepo = new UniversityRepository(context);
-
+                var gauthenticator = new GoogleAuthenticator();
+                string refreshtoken = gauthenticator.GetRefreshToken(newProfessor.AuthToken, Constants._MyLearnClientId, Constants._MyLearnClientSecret, Constants._MyLearnRedirectURI);
                 var professor = new Professor
                 {
                     UserId = Guid.NewGuid(),
@@ -107,7 +110,8 @@ namespace MyLearn.BLL
                     Schedule = newProfessor.HorarioAtencion,
                     ProfessorId = newProfessor.IdProfesor,
                     Password = newProfessor.Password,
-                    TRepo = Convert.ToInt32(newProfessor.TipoRepositorioArchivos)
+                    TRepo = Convert.ToInt32(newProfessor.TipoRepositorioArchivos),
+                    RefreshToken = refreshtoken
                 };
 
                 var university = universityRepo.GetUniversityById(Guid.Parse(newProfessor.Universidad));
@@ -136,6 +140,8 @@ namespace MyLearn.BLL
             {
                 var employerRepo = new EmployerRepository(context);
                 var countryRepo = new CountryRepository(context);
+                var gauthenticator = new GoogleAuthenticator();
+                string refreshtoken = gauthenticator.GetRefreshToken(newEmployer.AuthToken, Constants._MyLearnClientId, Constants._MyLearnClientSecret, Constants._MyLearnRedirectURI);
                 var employer = new Employer
                 {
                     UserId = Guid.NewGuid(),
@@ -145,7 +151,8 @@ namespace MyLearn.BLL
                     EmployerId = newEmployer.IdEmpresa,
                     Website = newEmployer.EnlaceSitioWeb,
                     Photo = newEmployer.Foto.Equals("") ? null : Convert.FromBase64String(newEmployer.Foto),
-                    TRepo = Convert.ToInt32(newEmployer.TipoRepositorioArchivos)
+                    TRepo = Convert.ToInt32(newEmployer.TipoRepositorioArchivos),
+                    RefreshToken = refreshtoken
                 };
                 var country = countryRepo.GetCountryById(Guid.Parse(newEmployer.Ubicacion));
                 employer.CountryId = country.CountryId;
