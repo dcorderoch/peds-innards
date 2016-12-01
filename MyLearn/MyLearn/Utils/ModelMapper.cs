@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MyLearn.BLL;
 using MyLearn.InputModels;
 using MyLearn.Models;
 using MyLearnDAL.Models;
@@ -182,6 +183,26 @@ namespace MyLearn.Utils
                     resBid.StudentUserId = bid.Student.UserId.ToString();
                     result.Add(resBid);
                 }
+            }
+            return result;
+        }
+
+        public List<Models.JobOffer> JobOfferMap(List<JobOffer> jobOffers)
+        {
+            var result = new List<Models.JobOffer>();
+            var modelMapper = new ModelMapper();
+            if (!jobOffers.Any()) return result;
+            foreach (var jobOffer in jobOffers)
+            {
+                Models.JobOffer resJobOffer = new Models.JobOffer();
+                resJobOffer.Budget = jobOffer.Budget;
+                resJobOffer.Description = jobOffer.Description;
+                resJobOffer.StartDate = jobOffer.StartDate.ToString();
+                resJobOffer.EndDate = jobOffer.EndDate.ToString();
+                resJobOffer.Technologies = modelMapper.TechnologiesToString(jobOffer.Technologies);
+                resJobOffer.State = jobOffer.IsActive;
+                resJobOffer.StateDescription = jobOffer.StateDescription;
+                result.Add(resJobOffer);
             }
             return result;
         }

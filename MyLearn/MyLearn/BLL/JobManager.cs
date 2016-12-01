@@ -44,7 +44,7 @@ namespace MyLearn.BLL
                 jobOffer.IsActive = 0;
                 jobOffer.StateDescription = "";
                 jobOffer.Technologies = technologyManager.GetTechnologies(newOffer.Technologies);
-                //jobOffer.Description = newOffer.Description;
+                jobOffer.Description = newOffer.Description;
                 try
                 {
                     jobOfferRepo.Add(jobOffer);
@@ -132,7 +132,8 @@ namespace MyLearn.BLL
                             currentJobOffer.Score = closeJobOffer.Stars; //asignar nota del trabajo
                             student.AvgProjects = CalculateAverage(ObtainGrade(closeJobOffer.Stars),
                                     student.NumSuceedProjects + student.NumFailedProjects, student.AvgProjects); //actualizar promedio de estudiante
-                            student.NumSuceedProjects += 1; //aumentar numero de proyectos exitosos 
+                            student.NumSuceedProjects += 1; //aumentar numero de proyectos exitosos
+                            jobOfferRepo.SaveChanges(); 
                         }
                         else //Fracasó
                         {
@@ -142,6 +143,7 @@ namespace MyLearn.BLL
                             student.AvgProjects = CalculateAverage(ObtainGrade(closeJobOffer.Stars),
                                     student.NumSuceedProjects + student.NumFailedProjects, student.AvgProjects); //actualizar promedio de estudiante
                             student.NumFailedProjects += 1; //aumentar numero de proyectos fracasados
+                            jobOfferRepo.SaveChanges();
                         }
                     }
                     else //No fue asignada al estudiante
@@ -149,8 +151,10 @@ namespace MyLearn.BLL
                         currentJobOffer.IsActive = closeJobOffer.State;
                         currentJobOffer.StateDescription = closeJobOffer.StateDescription;
                         currentJobOffer.Score = 0;
+                        jobOfferRepo.SaveChanges();
                     }
                     retVal.ReturnStatus = 1;
+                    jobOfferRepo.Dispose();
                 }
                 catch (Exception)
                 {
@@ -211,6 +215,7 @@ namespace MyLearn.BLL
                     resultOffer.Description = joboffer.Description;
                     resultOffer.Budget = joboffer.Budget;
                 }
+                jobOfferRepo.Dispose();
                 return resultOffer;
             }
         }
@@ -219,16 +224,13 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
-                List<JobOffer> result = new List<JobOffer>();
+                var technologyManager = new TechnologyManager();
                 var jobOfferRepo = new JobOfferRepository(context);
-                //var jobOfferList = jobOfferRepo.
-                int n = 100;
-                for (int i = 0; i < n; i++)
-                {
-                    JobOffer jobOffer = new JobOffer();
-                    result.Add(jobOffer);
-                }
-                return result;
+                var tech = technologyManager.GetTechnologyByName(technology);
+                var jobOffersByTechnology = jobOfferRepo.GetJobOfferByTechnology(tech.TecnologyId);
+                
+                jobOfferRepo.Dispose();
+                return mapper.JobOfferMap(jobOffersByTechnology);
             }
         }
 
@@ -236,14 +238,11 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
-                List<JobOffer> result = new List<JobOffer>();
-                int n = 100;
-                for (int i = 0; i < n; i++)
-                {
-                    JobOffer jobOffer = new JobOffer();
-                    result.Add(jobOffer);
-                }
-                return result;
+                var jobOfferRepo = new JobOfferRepository(context);
+                var jobOffersByName = jobOfferRepo.GetJobOfferByName(jobOfferTitle);
+        
+                jobOfferRepo.Dispose();
+                return mapper.JobOfferMap(jobOffersByName);
             }
         }
 
@@ -253,10 +252,10 @@ namespace MyLearn.BLL
             {
                 var bidRepo = new BidRepository(context);
                 var bidList = bidRepo.GetJobOfferBids(Guid.Parse(jobOfferId));
-                List<JobOfferBid> bids = mapper.JobOfferBidMap(bidList);
-                return bids;
+                
+                bidRepo.Dispose();
+                return mapper.JobOfferBidMap(bidList);
             }
         }
-
     }
 }
