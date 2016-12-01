@@ -45,5 +45,15 @@ namespace MyLearnDAL.Repositories
         {
             return DbSet.Where(j => j.Student.UserId.Equals(userId) && (j.IsActive.Equals(2) || j.IsActive.Equals(3))).ToList();
         }
+
+        public List<JobOffer> GetJobOfferByTechnology(Guid techId)
+        {
+            return DbSet.Where(j => j.Technologies.Any(t => t.TecnologyId.Equals(techId))).ToList();
+        }
+
+        public List<JobOffer> GetJobOfferByName(string name)
+        {
+            return DbSet.Where(j => j.Name.Contains(name)).ToList();
+        }
     }
 }
