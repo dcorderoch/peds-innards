@@ -158,12 +158,32 @@ namespace MyLearn.Utils
         public List<string> TechnologiesToString(List<MyLearnDAL.Models.Technology> technologies)
         {
             var resultList = new List<string>();
+            if (!technologies.Any()) return resultList;
             foreach (var tech in technologies)
             {
                 var strTech = tech.Name;
                 resultList.Add(strTech);
             }
             return resultList;
+        }
+
+        public List<JobOfferBid> JobOfferBidMap(List<MyLearnDAL.Models.Bid> bidList)
+        {
+            List<JobOfferBid> result = new List<JobOfferBid>();
+            if (bidList.Any())
+            {
+                foreach (var bid in bidList)
+                {
+                    JobOfferBid resBid = new JobOfferBid();
+                    resBid.Money = bid.Money;
+                    resBid.DurationInDays = bid.Duration;
+                    resBid.StudentName = bid.Student.Name;
+                    resBid.StudentSurname = bid.Student.LastName;
+                    resBid.StudentUserId = bid.Student.UserId.ToString();
+                    result.Add(resBid);
+                }
+            }
+            return result;
         }
     }
 }

@@ -217,33 +217,45 @@ namespace MyLearn.BLL
 
         public List<JobOffer> GetJobOffersByTechnology(string technology)
         {
-            List<JobOffer> result = new List<JobOffer>();
-            int n = 100;
-            for (int i = 0; i < n; i++)
+            using (var context = new MyLearnContext())
             {
-                JobOffer jobOffer = new JobOffer();
-                result.Add(jobOffer);
+                List<JobOffer> result = new List<JobOffer>();
+                var jobOfferRepo = new JobOfferRepository(context);
+                //var jobOfferList = jobOfferRepo.
+                int n = 100;
+                for (int i = 0; i < n; i++)
+                {
+                    JobOffer jobOffer = new JobOffer();
+                    result.Add(jobOffer);
+                }
+                return result;
             }
-            return result;
         }
 
         public List<JobOffer> GetJobOffersByName(string jobOfferTitle)
         {
-            List<JobOffer> result = new List<JobOffer>();
-            int n = 100;
-            for (int i = 0; i < n; i++)
+            using (var context = new MyLearnContext())
             {
-                JobOffer jobOffer = new JobOffer();
-                result.Add(jobOffer);
+                List<JobOffer> result = new List<JobOffer>();
+                int n = 100;
+                for (int i = 0; i < n; i++)
+                {
+                    JobOffer jobOffer = new JobOffer();
+                    result.Add(jobOffer);
+                }
+                return result;
             }
-            return result;
         }
 
         public List<JobOfferBid> GetBidsById(string jobOfferId)
         {
-            List<JobOfferBid> bids = new List<JobOfferBid>();
-            //get bids where jobOfferId matches
-            return bids;
+            using (var context = new MyLearnContext())
+            {
+                var bidRepo = new BidRepository(context);
+                var bidList = bidRepo.GetJobOfferBids(Guid.Parse(jobOfferId));
+                List<JobOfferBid> bids = mapper.JobOfferBidMap(bidList);
+                return bids;
+            }
         }
 
     }
