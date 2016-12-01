@@ -345,6 +345,8 @@ namespace MyLearn.BLL
                     user.IsActive = user.IsActive == 1 ? 0 : 1;
                     success.ReturnStatus = 1;
                 }
+                userRepo.Update(user);
+                userRepo.SaveChanges();
                 userRepo.Dispose();
                 return success;
             }
