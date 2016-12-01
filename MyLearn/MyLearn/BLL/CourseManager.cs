@@ -171,7 +171,7 @@ namespace MyLearn.BLL
                         ProfUserId = course.ProfessorId.ToString(),
                         ProfessorName = course.Professor.Name + " " + course.Professor.Lastname,
                         UniversityId = course.UniversityId.ToString(),
-                        Grade = course.MinScore,
+                        Grade = (project == null)?0:project.Score,
                         Badges = resBadges,
                         CourseId = course.CourseId.ToString(),
                         CourseDescription = course.Description,
