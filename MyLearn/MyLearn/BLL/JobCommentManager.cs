@@ -133,6 +133,7 @@ namespace MyLearn.BLL
                     comment.Date = projectComment.Date.ToString();
                     comment.IsFromStudent = IsStudent(projectComment.UserId);
                     comment.ParentId = projectComment.ParentId.ToString();
+                    comment.File = (projectComment.File != null) ? projectComment.File.ToString() : "0";
                     comment.NestedComments = new List<JobOfferComment>();
                     parentComments.Add(comment);
                 }

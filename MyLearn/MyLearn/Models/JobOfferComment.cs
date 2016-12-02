@@ -10,5 +10,6 @@ namespace MyLearn.Models
         public int IsFromStudent { get; set; }
         public string CommentContent { get; set; }
         public List<JobOfferComment> NestedComments { get; set; }
+        public string File { get; set; }
     }
 }
