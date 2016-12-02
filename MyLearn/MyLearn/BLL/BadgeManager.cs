@@ -30,14 +30,17 @@ namespace MyLearn.BLL
                 badge.ProjectId = project.ProjectId;
                 if (badge.AchievementId != null && badge.ProjectId != null)
                 {
-                    project.Badges.Add(badge);
-                    project.Score += badge.Achievement.Score;
+                    if (project.Score + badge.Achievement.Score < 100)
+                    {
+                        project.Badges.Add(badge);
+                        project.Score += badge.Achievement.Score;
                         //project.Course.Achievements.Find(a => a.AchievementId.Equals(badge.AchievementId))
-                          //  .Score;
-                    badgeRepo.Add(badge);
-                    badgeRepo.SaveChanges();
-                    projectRepo.SaveChanges();
-                    retVal.ReturnStatus = 1;
+                        //  .Score;
+                        badgeRepo.Add(badge);
+                        badgeRepo.SaveChanges();
+                        projectRepo.SaveChanges();
+                        retVal.ReturnStatus = 1;
+                    }
                 }
                 badgeRepo.Dispose();
                 projectRepo.Dispose();
