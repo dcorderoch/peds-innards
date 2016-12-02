@@ -21,7 +21,7 @@
 
             vm.workData ={};
             vm.workData = ProfileCourseService.GetWorkData();
-
+            vm.userData = $rootScope.userData;
             vm.workData.Carnet = $rootScope.userData.Carnet;            
 
             console.log(vm.workData);
@@ -97,7 +97,8 @@
 
         function sendComment(  dataUpload ){
 
-            var send={Commenter:"0", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId};
+            var send={Commenter:"0", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId, 
+                      StudentUserId: vm.userData.UserId};
             console.log(send);
             JobService.CommentCreate(send)
                 .then(function(response){
