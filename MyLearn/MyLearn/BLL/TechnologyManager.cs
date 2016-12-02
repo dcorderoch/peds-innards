@@ -62,12 +62,13 @@ namespace MyLearn.BLL
                 var technologyList = technologyRepo.GetAll();
                 foreach (var strTechnology in technologies)
                 {
-                    var technology = technologyList.Find(x => x.Name == strTechnology);
+                    var technology = technologyList.Find(x => x.TechnologyId == new Guid(strTechnology));
                     if (technology != null)
                     {
                         resultList.Add(technology);
                     }
                }
+                technologyRepo.Dispose();
                 return resultList;
             }
             
