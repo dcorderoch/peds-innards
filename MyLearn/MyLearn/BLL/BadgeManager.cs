@@ -36,8 +36,6 @@ namespace MyLearn.BLL
                     {
                         project.Badges.Add(badge);
                         project.Score += achievement.Score;
-                        //project.Course.Achievements.Find(a => a.AchievementId.Equals(badge.AchievementId))
-                        //  .Score;
                         badgeRepo.Add(badge);
                         badgeRepo.SaveChanges();
                         projectRepo.SaveChanges();
@@ -50,6 +48,7 @@ namespace MyLearn.BLL
                 }
                 badgeRepo.Dispose();
                 projectRepo.Dispose();
+                achievementRepo.Dispose();
                 return retVal;
             }
         }
