@@ -202,13 +202,21 @@ namespace MyLearn.BLL
                 var course = studentCourses.Find(x => x.CourseId == new Guid(credentials.CourseId));
                 if (course != null)
                 {
-                    List<MyLearnDAL.Models.Badge> listOfBadges;
-                    if (project != null) {
-                        listOfBadges = project.Badges;
-                    } else {
-                        listOfBadges = new List<MyLearnDAL.Models.Badge>();
+                    var achievements = course.Achievements;
+                    var listOfBadges = project.Badges;
+                    List<Badge> resultList = new List<Badge>();
+                    foreach (var newBadge in achievements)
+                    {
+                        var badge = new Badge
+                        {
+                            BadgeId = newBadge.AchievementId.ToString(),
+                            BadgeDescription = newBadge.Description,
+                            Alardeado = (listOfBadges.Find(b => b.AchievementId.Equals(newBadge.AchievementId)) != null) ? listOfBadges.Find(b => b.AchievementId.Equals(newBadge.AchievementId)).Bragged : 0,
+                            Awarded = (listOfBadges.Count > 0 && listOfBadges.Find(b => b.AchievementId.Equals(newBadge.AchievementId)) != null) ? 1 : 0,
+                            Value = newBadge.Score
+                        };
+                        resultList.Add(badge);
                     }
-                    List<Badge> resBadges = (project != null)?mapper.BadgeListMap(listOfBadges):new List<Badge>();
                     courseAsStudent = new CourseAsStudent
                     {
                         CourseName = course.Name,
@@ -217,7 +225,7 @@ namespace MyLearn.BLL
                         ProfessorName = course.Professor.Name + " " + course.Professor.Lastname,
                         UniversityId = course.UniversityId.ToString(),
                         Grade = (project == null)?0:project.Score,
-                        Badges = resBadges,
+                        Badges = resultList,
                         CourseId = course.CourseId.ToString(),
                         CourseDescription = course.Description,
                         Group = course.Group,
