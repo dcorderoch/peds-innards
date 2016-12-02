@@ -21,6 +21,8 @@ namespace MyLearn.BLL
             {
                 BadgeRepository badgeRepo = new BadgeRepository(context);
                 ProjectRepository projectRepo = new ProjectRepository(context);
+                var achievementRepo = new AchievementRepository(context);
+                var achievement = achievementRepo.GetAchievementById(Guid.Parse(newBadge.AchievementId));
                 Badge badge = new Badge();
                 var retVal = new ReturnCode();
                 var project = projectRepo.GetProjectByStudentAndCourseId(new Guid(newBadge.StudentUserId), new Guid(newBadge.CourseId));
@@ -30,10 +32,10 @@ namespace MyLearn.BLL
                 badge.ProjectId = project.ProjectId;
                 if (badge.AchievementId != null && badge.ProjectId != null)
                 {
-                    if (project.Score + badge.Achievement.Score < 100)
+                    if (project.Score + achievement.Score <= 100)
                     {
                         project.Badges.Add(badge);
-                        project.Score += badge.Achievement.Score;
+                        project.Score += achievement.Score;
                         //project.Course.Achievements.Find(a => a.AchievementId.Equals(badge.AchievementId))
                         //  .Score;
                         badgeRepo.Add(badge);
