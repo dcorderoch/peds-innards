@@ -224,7 +224,7 @@ namespace MyLearn.BLL
             {
                 var technologyRepo = new TechnologyRepository(context);
                 var jobOfferRepo = new JobOfferRepository(context);
-                var tech = technologyRepo.GetTechnologybyId(Guid.Parse(technology)));
+                var tech = technologyRepo.GetTechnologybyId(Guid.Parse(technology));
                 var jobOffersByTechnology = jobOfferRepo.GetJobOfferByTechnology(tech.TechnologyId);
                 
                 jobOfferRepo.Dispose();
