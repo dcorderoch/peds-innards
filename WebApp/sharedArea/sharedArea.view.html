@@ -40,7 +40,7 @@
                             <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
 
                             <span class="centerBadgeText" > {{badge.BadgeDescription}}, {{badge.Value}}
-                                <button ng-click="vm.brag(badge.BadgeId)" ng-disabled="badge.Alardeado" class="btn btn-primary">Alardear</button>
+                                <button ng-click="vm.brag(badge.BadgeId)" ng-disabled="badge.Alardeado || !vm.courseData.status" class="btn btn-primary">Alardear</button>
                             </span>
                         </div>
                     </div>

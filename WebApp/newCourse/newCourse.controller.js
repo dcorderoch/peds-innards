@@ -119,7 +119,7 @@
 
         function disableAccount(){
 
-            console.log(vm.userData.userId);
+            console.log(vm.userData.UserId);
             console.log(vm.userData.Active);
 
             UserService.Disable(vm.userData.UserId)

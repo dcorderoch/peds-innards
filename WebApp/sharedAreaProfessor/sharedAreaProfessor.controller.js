@@ -30,8 +30,12 @@
             console.log(vm.courseData);
             console.log(vm.userData);
 
+
+            vm.gradeWidth = {'width': vm.courseData.Grade+'%'};
+
             getComments();
             processComments();
+            getAllBadges();
         }
 
         function getAllBadges(){

@@ -35,7 +35,6 @@
             console.log(vm.userData);
 
 
-            vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
             }
@@ -98,7 +97,7 @@
 
         function disableAccount(){
 
-            console.log(vm.userData.userId);
+            console.log(vm.userData.UserId);
             console.log(vm.userData.Active);
 
             UserService.Disable(vm.userData.UserId)
@@ -108,7 +107,7 @@
                     if (response.data.ReturnStatus == "1"){ 
 
                         FlashService.Success("La cuenta ha sido deshabilitada",true);
-                        $location.path("/login")
+                        $location.path('/login');
 
                     }
                     else{

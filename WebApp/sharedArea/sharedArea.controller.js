@@ -36,6 +36,7 @@
 
             getComments();
             processComments();
+            getAllBadges();
         }
 
         function getAllBadges(){
@@ -79,11 +80,11 @@
             CourseService.Brag(send)
                 .then(function(response){
 
-                if (response.ReturnStatus ==0){
+                if (response.data.ReturnStatus ===0){
                     FlashService.Error("No se pudo alardear, intentalo más tarde")
                     getAllBadges();
                 }
-                if (response.ReturnStatus ==1){
+                if (response.data.ReturnStatus ===1){
                     FlashService.Success("Se ha alardeado en Twitter exitosamente!");
                     getAllBadges();
                 }

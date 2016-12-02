@@ -136,6 +136,7 @@
         $rootScope.globals = $cookieStore.get('globals') || {};
         $rootScope.userData = $cookieStore.get('dataLogin') || {};
 
+        
         if ($rootScope.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; 
         }
@@ -148,7 +149,7 @@
 
             var loggedIn = $rootScope.globals.currentUser;
 
-
+            console.log(loggedIn);
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
             }
@@ -164,9 +165,9 @@
             var employerUser = $cookieStore.get('dataLogin').IdEmpleador;
 
 
-            if ( (!studentRestricted && studentUser) || (!professorRestricted && professorUser) || (!employerRestricted && employerUser) ) {
-                window.history.back();
-            }
+//            if ( (!studentRestricted && studentUser) || (!professorRestricted && professorUser) || (!employerRestricted && employerUser) ) {
+//                window.history.back();
+//            }
 
 
         });

@@ -98,7 +98,7 @@
                 <div ng-repeat="activeCourse in vm.userData.ActiveCoursesList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del curso:</strong> {{activeCourse.Course}}
+                            <strong>Nombre del curso:</strong> {{activeCourse.CourseName}}
                             <strong> Descripción: </strong> {{activeCourse.CourseDescription}}
                             <button ng-disabled="!vm.toggleEnable" ng-click="vm.goCourseActive(activeCourse)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button> 
                         </div>
@@ -112,7 +112,7 @@
                 <div ng-repeat="finishedCourse in vm.userData.FinishedCoursesList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del curso:</strong> {{finishedCourse.Course}}
+                            <strong>Nombre del curso:</strong> {{finishedCourse.CourseName}}
                             <strong> Descripción:</strong> {{finishedCourse.CourseDescription}}
                             <button ng-disabled="!vm.toggleEnable" ng-click="vm.goCourseFinished(finishedCourse)"  type="button" class="btn btn-primary yellowButton uniCourse">Abrir curso</button> 
                         </div>

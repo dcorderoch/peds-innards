@@ -102,7 +102,7 @@
         function sendComment( dataUpload ){
 
             var send={Commenter:"0", ParentId:"-1", JobOfferComment:comment, JobOfferId:vm.workData.JobOfferId,
-                      StudentUserId: vm.workData.StudentUserId, EmployerUserId: vm.userData.UserId};};
+                      StudentUserId: vm.workData.StudentUserId, EmployerUserId: vm.userData.UserId};
         console.log(send);
         JobService.CommentCreate(send)
             .then(function(response){
@@ -115,6 +115,7 @@
             FlashService.Error("No se pudo enviar el comentario"); 
         })
     }
+    
 
     function closeProject(finishProject,stars,status){
 
@@ -142,5 +143,5 @@
     }
 
 
-}
+    }
  })();

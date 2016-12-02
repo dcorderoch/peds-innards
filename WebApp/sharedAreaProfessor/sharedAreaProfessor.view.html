@@ -37,7 +37,7 @@
                             <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
 
                             <span class="centerBadgeText" > {{badge.BadgeDescription}}, {{badge.Value}}%
-                                <button ng-click="vm.assignBadge(badge.BadgeId)" ng-disabled="badge.Awarded" class="btn btn-primary">Asignar</button>
+                                <button ng-click="vm.assignBadge(badge.BadgeId)" ng-disabled="badge.Awarded || !vm.courseData.status" class="btn btn-primary">Asignar</button>
                             </span>
                         </div>
                     </div>
