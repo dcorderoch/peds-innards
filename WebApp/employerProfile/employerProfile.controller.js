@@ -32,7 +32,7 @@
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
             console.log(vm.userData.UserId);
             var userId = vm.userData.UserId;
-            
+
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -60,13 +60,11 @@
 
         function goWorkFinished(id){
 
-            $location.path('/auction');  
-            return;
-
             JobService.GetById(id)
                 .then(function(response){
 
                 var currentworkData = response.data;
+                currentworkData.JobOfferId = id;
                 currentworkData.status = false;
                 currentworkData.JobOfferId =id;
 
@@ -81,12 +79,14 @@
 
         function goWorkActive(id){
 
+            console.log(id)
             JobService.GetById(id)
                 .then(function(response){
 
                 var currentworkData = response.data;
+                currentworkData.JobOfferId = id;
                 currentworkData.status = true;
-                ProfileCourseService.SetWorkData(currentWorkData);
+                ProfileCourseService.SetWorkData(currentworkData);
 
                 if(currentworkData.State =="0") 
                     $location.path('/auction'); 
@@ -124,7 +124,7 @@
                         FlashService.Success("Cuenta habilitada");
                         vm.toggleEnable =true;
                         vm.userData.Active = "1";
-                        
+
                     }
                     else{
                         FlashService.Error("No se pudo habilitar la cuenta");

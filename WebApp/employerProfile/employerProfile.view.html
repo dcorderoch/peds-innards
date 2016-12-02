@@ -93,13 +93,13 @@
                 <h3>Trabajos activos</h3>
                 <hr class="hr3">
 
-                <div ng-repeat="activeCourse in vm.userData.ActiveJobOffersList">
+                <div ng-repeat="activeWork in vm.userData.ActiveJobOffersList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Empleador: </strong> {{activeWork.project}}
+                            <strong>Empleador: </strong> {{activeWork.JobOffer}}
                             <strong>Descripción del trabajo: </strong> {{activeWork.Description}}
                             <span> 
-                                <button ng-disabled="!vm.toggleEnable" ng-click="vm.goWorkActive(activeCourse.JobOfferId)" type="button" class="btn btn-primary yellowButton uniCourse">Abrir trabajo</button>
+                                <button ng-disabled="!vm.toggleEnable" ng-click="vm.goWorkActive(activeWork.JobOfferId)" type="button" class="btn btn-primary yellowButton uniCourse">Abrir trabajo</button>
                             </span>
                         </div>
                     </div>
@@ -112,8 +112,8 @@
                 <div ng-repeat="finishedWork in vm.userData.FinishedJobOffersList"> 
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del trabajo: </strong> {{finishedWork.project}}
-                            <strong>Descripción del trabajo: </strong> {{finishedWork.CourseDescription}}
+                            <strong>Nombre del trabajo: </strong> {{finishedWork.JobOffer}}
+                            <strong>Descripción del trabajo: </strong> {{finishedWork.Description}}
                             <span>
                                 <button ng-disabled="!vm.toggleEnable" ng-click="vm.goWorkFinished(finishedWork.JobOfferId)" type="button" class="btn btn-primary yellowButton uniCourse">Abrir trabajo</button>
                             </span>

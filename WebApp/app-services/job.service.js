@@ -31,11 +31,11 @@
             return response;    
         }
 
-        function GetById( jobId){
+        function GetById( jobId ){
             var response=$http({
                 method:"post",
                 url:$rootScope.url+"JobOffer/GetById",
-                data:{JobOfferId:jobId}
+                data: {JobOfferId:jobId}
             });
             return response;
         }

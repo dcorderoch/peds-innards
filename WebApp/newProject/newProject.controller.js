@@ -32,7 +32,6 @@
             }
 
             loadTechnologies();
-            loadCountries();
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
             console.log($localStorage);
@@ -58,20 +57,6 @@
                 console.log("supongo1")
             });
         }
-
-        function loadCountries(){
-            RegService.GetCountries()
-                .then(function (response) {
-
-                vm.countries = response.data;
-                console.log( response.data)
-
-            },function(response){
-                console.log("supongo2")
-            });
-        }
-
-
 
         vm.toggleSelectionTech = function toggleSelectionTech(technology) {
             var idx = vm.job.Technologies.indexOf(technology.TechnologyId);
@@ -110,20 +95,17 @@
                     FlashService.Success("Trabajo creado pero no twiteado");
                     vm.job={};
                 }
-                if (result === 2){
+                if (result === 0){
 
-                    FlashService.Success("Trabajo creado y twiteado");
+                    FlashService.Error("No se pudo crear el trabajo");
                     vm.job={};
 
                 }
-                //                else{ 
-                //                    FlashService.Error("No se pudo crear el proyecto")
-                //                }
 
                 console.log(response.data);
             },function(response){
                 console.log(vm.job);
-                FlashService.Error("No se pudo crear el proyecto")
+                FlashService.Error("No se pudo crear el trabajo")
             });
         }
 

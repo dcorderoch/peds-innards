@@ -546,3 +546,8 @@ strong {
     border-width: 3px;
 
 }
+
+.offerButton {
+    margin: 0 auto;
+    width: 100px; 
+}

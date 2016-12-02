@@ -39,7 +39,6 @@
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
-            console.log($localStorage);
             
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
@@ -50,17 +49,12 @@
             }
 
 
-            setTimeout(function(){
-                vm.results.push("hola","dos","tres", 'angularUtils.directives.dirPagination');
-                console.log(vm.results);
-                $scope.$apply();
-            }, 10000);
-
         }
 
         function search(query,parameter){
 
-            if (parameter == 0) {
+            console.log(query +" " +parameter)
+            if (parameter === "0" ) {
 
                 JobService.GetByName(query)
                     .then(function(response){
@@ -74,7 +68,7 @@
                 });                
             }
 
-            if (parameter ==1){ 
+            if (parameter === "1"){ 
                 JobService.GetByTechnology(query)
                     .then(function(response){
 

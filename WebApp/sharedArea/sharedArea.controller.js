@@ -27,41 +27,40 @@
             //            vm.courseData.status=true;
             vm.gradeWidth = {'width': vm.courseData.Grade+'%'};  
             console.log(vm.gradeWidth);
+            
+            console.log(vm.courseData);
 
             getComments();
 
             processComments();
         }
 
+        function getAllBadges(){
+
+            var send ={ StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, UniversityId:vm.courseData.UniversityId, 
+                       Group:vm.courseData.Group, CourseId: vm.courseData.CourseId};
+            CourseService.GetAllBadges(send)
+                .then(function(response){
+
+                vm.courseData.Badges = response.data;
+                console.log(vm.courseData.Badges)
+            }, function(response){
+
+                FlashService.Error("No se pudieron traer los badges");
+            });
+        }
+
+
         function sendReply( replyMessage, parentId){
 
             var send={Commenter:"1", ParentId:parentId, Comment:replyMessage, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
-            
+
             console.log(send);
             CourseService.CommentCreate(send)
                 .then(function(response){
 
                 console.log(response);
                 getComments();
-
-                var dataSend = {StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, UniversityId: vm.courseData.UniversityId, 
-                                Group: vm.courseData.Group, CourseId: vm.courseData.CourseId}
-
-                CourseService.GetSpecificCourse(dataSend)
-                    .then(function(response){
-
-                    vm.courseData.NombreContacto = response.data.NombreContacto;
-                    vm.courseData.ApellidoContacto = response.data.ApellidoContacto;
-                    vm.courseData.Grade = response.data.Grade;
-                    vm.courseData.Badges = response.data.Badges;
-                    vm.courseData.StudentUserId = vm.courseData.StudentUserId;
-                    ProfileCourseService.SetCourseData(vm.courseData);
-                    initController();
-
-                }, function(response){
-                    console.log("no sirvió")
-                })
-
 
             }, function(response){
                 //                console.log(response);
@@ -80,9 +79,8 @@
                 }
                 else{
                     FlashService.Success("Se ha alardeado en Twitter exitsamente!");
-                    getComments();
-
                 }
+                getAllBadges();
 
             }, function(response){
                 FlashService.Error("No se pudo alardear, intentalo más tarde")
@@ -122,9 +120,9 @@
 
         function replyaMessage(commentId){
 
-
             vm.writeReply=true;
         }
+
 
         function getComments (){
 
@@ -141,6 +139,7 @@
             })
         }
 
+
         function sendComment(  dataUpload ){
 
             var send={Commenter:"1", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
@@ -156,25 +155,6 @@
                 FlashService.Error("No se pudo enviar el comentario"); 
             })
             vm.comment="";
-        }
-
-        function getCourseData(id){
-
-
-            CourseService.GetCourseAsStudent(id)
-                .then(function(response){
-
-                var currentCourseData = response.data;
-
-                currentCourseData.status = true;
-
-                ProfileCourseService.SetCourseData(currentCourseData);
-                initController();
-
-
-            }, function(response){
-                console.log("no sirvio")
-            });
         }
 
 

@@ -36,7 +36,7 @@
 
                     <div class="row" ng-repeat="badge in  vm.courseData.Badges" >
 
-                        <div class="badges" > 
+                        <div class="badges"  ng-if ="badge.Awarded"> 
                             <span style="font-size: 2.5em;" class="glyphicon glyphicon-star"></span>
 
                             <span class="centerBadgeText" > {{badge.BadgeDescription}}, {{badge.Value}}

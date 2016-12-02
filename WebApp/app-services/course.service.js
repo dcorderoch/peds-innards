@@ -23,6 +23,7 @@
         service.GetAllByProfessor = GetAllByProfessor;
         service.CloseCourse = CloseCourse;
         service.GetAllByStudent = GetAllByStudent;
+        service.GetAllBadges = GetAllBadges;
 
         return service;
 
@@ -207,6 +208,15 @@
             });
             return response;                 
 
+        }
+        
+        function GetAllBadges(data){
+            var response = $http({
+                method: "post",
+                url: $rootScope.url+"Badge/GetAll",
+                data: data
+            });
+            return response
         }
 
     }
