@@ -126,21 +126,39 @@ namespace MyLearn.BLL
             using (var context = new MyLearnContext())
             {
                 var projectRepository = new ProjectRepository(context);
+                var courseRepo = new CourseRepository(context);
+                
                 SpecificCourse specificCourse = null;
                 var project = projectRepository.GetProjectByStudentAndCourseId(new Guid(credentials.StudentUserId),
                     new Guid(credentials.CourseId));
                 if (project != null)
                 {
+                    var course = courseRepo.GetCoursebyId(project.CourseId);
+                    var achievements = course.Achievements;
                     var listOfBadges = project.Badges;
-                    var resultBadge = mapper.BadgeListMap(listOfBadges);
+
+                    List<Badge> resultList = new List<Badge>();
+                    foreach (var newBadge in achievements)
+                    {
+                        var badge = new Badge
+                        {
+                            BadgeId = newBadge.AchievementId.ToString(),
+                            BadgeDescription = newBadge.Description,
+                            Alardeado = (listOfBadges.Find(b => b.AchievementId.Equals(newBadge.AchievementId)) != null)?listOfBadges.Find(b => b.AchievementId.Equals(newBadge.AchievementId)).Bragged:0,
+                            Awarded = (listOfBadges.Count > 0 && listOfBadges.Find(b => b.AchievementId.Equals(newBadge.AchievementId)) != null) ? 1 : 0,
+                            Value = newBadge.Score
+                        };
+                        resultList.Add(badge);
+                    }
                     specificCourse = new SpecificCourse
                     {
                         NombreContacto = project.Student.Name,
                         ApellidoContacto = project.Student.LastName,
                         Grade = project.Score,
-                        Badges = resultBadge
+                        Badges = resultList
                     };
                 }
+                courseRepo.Dispose();
                 projectRepository.Dispose();
                 return specificCourse;
             }
