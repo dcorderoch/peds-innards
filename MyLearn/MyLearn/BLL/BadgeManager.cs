@@ -41,6 +41,10 @@ namespace MyLearn.BLL
                         projectRepo.SaveChanges();
                         retVal.ReturnStatus = 1;
                     }
+                    else
+                    {
+                        retVal.ReturnStatus = 0;
+                    }
                 }
                 badgeRepo.Dispose();
                 projectRepo.Dispose();
