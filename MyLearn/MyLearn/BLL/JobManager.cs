@@ -87,11 +87,11 @@ namespace MyLearn.BLL
                     var notificationManager = new NotificationManager();
 
                     currJobOffer.IsActive = 1;
-                    currJobOffer.UserId = Guid.Parse(jobOffer.StudentId);
+                    currJobOffer.UserId = Guid.Parse(jobOffer.StudentUserId);
                     jobOfferRepo.SaveChanges();
 
                     student.JobOffers.Add(jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId)));
-                    student.Notifications.Add(notificationManager.CreateNotification(jobOffer.StudentId,
+                    student.Notifications.Add(notificationManager.CreateNotification(jobOffer.StudentUserId,
                         currJobOffer.Name));
                     studentRepo.SaveChanges();
 

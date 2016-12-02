@@ -8,6 +8,6 @@ namespace MyLearn.InputModels
     public class AssignJobOffer
     {
         public string JobOfferId { get; set; }
-        public string StudentId { get; set; }
+        public string StudentUserId { get; set; }
     }
 }
