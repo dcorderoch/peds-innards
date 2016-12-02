@@ -76,26 +76,21 @@ namespace MyLearn.BLL
               
                 var jobOfferRepo = new JobOfferRepository(context);
                 var studentRepo= new StudentRepository(context);
+                var notificationRepo= new NotificationRepository(context);
                 var bidRepo = new BidRepository(context);
 
                 var student = studentRepo.GetStudentById(Guid.Parse(jobOffer.StudentUserId));
                 var currJobOffer = jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId));
-                var bids = bidRepo.GetJobOfferBids(Guid.Parse(jobOffer.JobOfferId));
 
-                if (student != null && currJobOffer != null && bids != null)
+                if (student != null && currJobOffer != null)
                 {
                     var notificationManager = new NotificationManager();
-
                     currJobOffer.IsActive = 1;
                     currJobOffer.UserId = Guid.Parse(jobOffer.StudentUserId);
-                    jobOfferRepo.SaveChanges();
-
-                    student.JobOffers.Add(jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId)));
-                    student.Notifications.Add(notificationManager.CreateNotification(jobOffer.StudentUserId,
+                    notificationRepo.Add(notificationManager.CreateNotification(jobOffer.StudentUserId,
                         currJobOffer.Name));
-                    studentRepo.SaveChanges();
-
-                    bids.Clear();
+                    bidRepo.RemoveAllBidsByJobOfferId(Guid.Parse(jobOffer.JobOfferId));
+                    notificationRepo.SaveChanges();
                     bidRepo.SaveChanges();
                     success.ReturnStatus = 1;
                 }
@@ -106,6 +101,7 @@ namespace MyLearn.BLL
                 jobOfferRepo.Dispose();
                 studentRepo.Dispose();
                 bidRepo.Dispose();
+                notificationRepo.Dispose();
                 return success;
             }
         }
@@ -258,9 +254,9 @@ namespace MyLearn.BLL
             {
                 var bidRepo = new BidRepository(context);
                 var bidList = bidRepo.GetJobOfferBids(Guid.Parse(jobOfferId));
-                
+                var resultBids = mapper.JobOfferBidMap(bidList);
                 bidRepo.Dispose();
-                return mapper.JobOfferBidMap(bidList);
+                return resultBids;
             }
         }
     }
