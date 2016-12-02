@@ -78,7 +78,7 @@ namespace MyLearn.BLL
                 var studentRepo= new StudentRepository(context);
                 var bidRepo = new BidRepository(context);
 
-                var student = studentRepo.GetStudentById(Guid.Parse(jobOffer.JobOfferId));
+                var student = studentRepo.GetStudentById(Guid.Parse(jobOffer.StudentUserId));
                 var currJobOffer = jobOfferRepo.GetJobOfferById(Guid.Parse(jobOffer.JobOfferId));
                 var bids = bidRepo.GetJobOfferBids(Guid.Parse(jobOffer.JobOfferId));
 
