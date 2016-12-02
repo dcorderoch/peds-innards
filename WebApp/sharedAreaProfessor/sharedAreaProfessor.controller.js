@@ -135,7 +135,7 @@
         function assignBadge(badgeId){
 
             var send={StudentUserId: vm.courseData.StudentUserId, 
-                      ProfUserId: vm.userData.IdProfesor,
+                      ProfUserId: vm.userData.UserId,
                       Group: vm.courseData.Group,
                       CourseId: vm.courseData.CourseId}
 
