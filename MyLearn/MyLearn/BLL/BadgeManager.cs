@@ -67,21 +67,21 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
-                BadgeRepository badgeRepo = new BadgeRepository(context);
-                //Temporal workarround to brag badge... is necessary to receive an badge id instead of the achievement id.
-                AchievementRepository achievementRepo = new AchievementRepository(context);
+                var badgeRepo = new BadgeRepository(context);
+                var achievementRepo = new AchievementRepository(context);
                 var achievement = achievementRepo.GetAchievementById(new Guid(badgeId.BadgeId));
                 var badge = badgeRepo.GetBadgeByAchievementId(achievement.AchievementId);
                 var retVal = new ReturnCode();
                 retVal.ReturnStatus = 0;
                 
                 var tweeter = new Tweeter();
-                if (tweeter.tweet(badgeId.StudentName + " " + badgeId.StudentLastName + " obtuvo una medalla."))
+                if (tweeter.tweet(badgeId.StudentName + " " + badgeId.StudentLastName + " obtuvo una medalla!!"))
                 {
                     retVal.ReturnStatus += 1;
                     badge.Bragged = 1;
                     badgeRepo.SaveChanges();
                 }
+                achievementRepo.Dispose();
                 badgeRepo.Dispose();
                 return retVal;
             }
