@@ -56,7 +56,7 @@ namespace MyLearn.BLL
                 
                 var project = projectRepo.GetProjectByStudentAndCourseId(new Guid(credentials.StudentUserId), new Guid(credentials.CourseId));
 
-                var badges = badgeRepo.GetProjectBadges(project.ProjectId);
+                var badges = (project != null)?badgeRepo.GetProjectBadges(project.ProjectId):new List<Badge>();
                 var achievements = achievementRepo.GetCourseAchievements(Guid.Parse(credentials.CourseId));
                 var projectbadges = project.Badges;
 
