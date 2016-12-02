@@ -20,5 +20,10 @@ namespace MyLearnDAL.Repositories
         {
             return DbSet.Find(badgeId);
         }
+
+        public Badge GetBadgeByAchievementId(Guid achievementId)
+        {
+            return DbSet.FirstOrDefault(b => b.AchievementId.Equals(achievementId));
+        }
     }
 }
