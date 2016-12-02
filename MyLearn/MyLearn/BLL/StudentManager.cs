@@ -111,6 +111,7 @@ namespace MyLearn.BLL
                     };
                     activeJobOffers.Add(activeJobOffer);
                 }
+                result.ActiveJobOffersList = activeJobOffers;
                 return result;
             }
         }
