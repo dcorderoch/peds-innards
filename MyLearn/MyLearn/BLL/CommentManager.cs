@@ -113,7 +113,7 @@ namespace MyLearn.BLL
                 Comment comment = new Comment();
                 if (projectComment.ParentId == Guid.Empty) {
                     comment.CommentId = projectComment.CommentId.ToString();
-                    comment.CommentContent = projectComment.Comment;
+                    comment.CommentContent = projectComment.Comment + " FileLink:" + projectComment.File;
                     comment.Date = projectComment.Date.ToString();
                     comment.IsFromStudent = IsStudent(projectComment.UserId);
                     comment.ParentId = projectComment.ParentId.ToString();
