@@ -62,14 +62,16 @@
                             </select> 
                         </div>
 
+
+                        <div class="form-group" > 
+                            <a href="#" class="btn btn-primary" onClick="MyWindow=window.open('https://accounts.google.com/o/oauth2/auth?client_id=530714208118-8n2relpdv57rtt08c359hbiq3ej4jt1r.apps.googleusercontent.com&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive.file&response_type=code','Google Drive Authorization','width=600,height=480'); return false;">Autorizar Google Drive</a>
+                        </div>
+
                         <div class="form-group" ng-class="{ 'has-error': form.token.$dirty && form.token.$error.required }">
                             <input placeholder ="Insertar token de autorización" type=text name="token" class="form-control" ng-model="vm.regData.AuthToken" required />
                             <span ng-show="form.token.$dirty && form.token.$error.required" class="help-block">El token de autorización es requerido</span>
                         </div>
 
-                        <div class="form-group" > 
-                            <a href="#" class="btn btn-primary" onClick="MyWindow=window.open('https://accounts.google.com/o/oauth2/auth?client_id=530714208118-8n2relpdv57rtt08c359hbiq3ej4jt1r.apps.googleusercontent.com&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive.file&response_type=code','Google Drive Authorization','width=600,height=480'); return false;">Autorizar Google Drive</a>
-                        </div>
 
                         <label>Escoge tu foto de perfil</label>
                         <div class="form-group" ng-class="{ 'has-error': form.photo.$dirty && form.photo.$error.required }">           
