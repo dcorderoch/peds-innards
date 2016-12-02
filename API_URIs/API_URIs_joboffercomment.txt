@@ -64,7 +64,8 @@ Web Application sends
     "JobOfferId":"algo",
     "JobOfferComment":"algo",
     "ParentId":"algo",
-    "Commenter":(0|1)
+    "Commenter":(0|1),
+    "StudentUserId":"algo"
 }
 Nota: - 0
       - 1 de Estudiante
