@@ -17,7 +17,7 @@ namespace MyLearn.BLL
                 var retVal = new ReturnCode();
                 BidRepository bidRepo = new BidRepository(context);
                 Bid bid = new Bid();
-                if (bid.Money <= 0)
+                if (newBid.Money <= 0)
                 {
                     retVal.ReturnStatus = 0;
                 }
