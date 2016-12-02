@@ -27,41 +27,20 @@
             console.log(vm.workData);
 
             getComments();
-
-            vm.comments.push({CommentId:"123",ParentId:"123", Date:"2016-11-24T01:55:01+00:00", IsFromStudent:"0",
-                              Comment:"Bla bla", Nested:[{ "CommentId":"algo",
-                                                          "ParentId":"algo",
-                                                          "Date":"fecha en ISO8601",
-                                                          "IsFromStudent":"0",
-                                                          "Comment":"algo"}]});
-
-            vm.comments.push({CommentId:"123",ParentId:"125", Date:"1994-11-24T01:55:01+00:00", IsFromStudent:"1",
-                              Comment:"na na na", Nested:[{ "CommentId":"algo",
-                                                           "ParentId":"algo",
-                                                           "Date":"fecha en ISO8601",
-                                                           "IsFromStudent":"1",
-                                                           "Comment":"algo"},
-                                                          { "CommentId":"algo",
-                                                           "ParentId":"algo",
-                                                           "Date":"fecha en ISO8601",
-                                                           "IsFromStudent":"1",
-                                                           "Comment":"algo"}
-                                                         ]});
-
             processComments();
 
         }
 
         function sendReply( replyMessage, parentId){
 
-            var send={Commenter:"0", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId}
+            var send={Commenter:"1", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId,
+                     }
             console.log(send);
             JobService.CommentCreate(send)
                 .then(function(response){
 
                 console.log(response);
                 getComments();
-                processComments();
 
             }, function(response){
                 //                console.log(response);
@@ -73,9 +52,10 @@
         function processComments(){
 
             var i;
+            console.log(vm.comments);
             for (i=0; i<vm.comments.length; i++){
 
-                if (vm.comments[i].IsFromStudent==="0"){
+                if (vm.comments[i].IsFromStudent =="1"){
                     vm.comments[i].IsFromStudent = true;
                     vm.comments[i].Author = "Estudiante"
                 }
@@ -85,14 +65,14 @@
 
                 }
                 var j;
-                for (j=0; j<vm.comments[i].Nested.length; j++){
-                    if (vm.comments[i].Nested[j].IsFromStudent==="0"){
-                        vm.comments[i].Nested[j].IsFromStudent = true;
-                        vm.comments[i].Nested[j].Author = "Estudiante"
+                for (j=0; j<vm.comments[i].NestedComments.length; j++){
+                    if (vm.comments[i].NestedComments[j].IsFromStudent=="1"){
+                        vm.comments[i].NestedComments[j].IsFromStudent = true;
+                        vm.comments[i].NestedComments[j].Author = "Estudiante"
                     }
                     else{
-                        vm.comments[i].Nested[j].IsFromStudent = false;
-                        vm.comments[i].Nested[j].Author = "Empleador"
+                        vm.comments[i].NestedComments[j].IsFromStudent = false;
+                        vm.comments[i].NestedComments[j].Author = "Empleador"
                     }                 
                 }
             }
@@ -107,6 +87,8 @@
                 .then( function(response){
 
                 comments = response.data;
+                console.log(vm.comments)
+                processComments();
 
             }, function(response){
                 console.log("no sirvió")
@@ -122,7 +104,6 @@
 
                 console.log(response);
                 getComments();
-                processComments();
 
             }, function(response){
                 //                console.log(response);

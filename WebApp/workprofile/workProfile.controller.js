@@ -29,7 +29,7 @@
             }
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
-            console.log($localStorage);
+            console.log(vm.userData);
 
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   

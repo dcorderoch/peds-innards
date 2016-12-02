@@ -79,10 +79,10 @@
 
         function goWorkActive(id){
 
-            console.log(id)
             JobService.GetById(id)
                 .then(function(response){
 
+                console.log(response)
                 var currentworkData = response.data;
                 currentworkData.JobOfferId = id;
                 currentworkData.status = true;

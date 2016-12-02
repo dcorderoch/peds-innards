@@ -39,8 +39,7 @@
 
         function goArea(bid){
             console.log(bid)
-            vm.workData.studentInfo = bid;
-            ProfileCourseService.SetWorkData(vm.workData);
+
         }
 
 
@@ -58,7 +57,7 @@
 
                 var data = response.data;
                 delete data.Foto;
-                
+
                 $rootScope.userData= data;
                 $location.path('/viewprofile'); 
 
@@ -76,7 +75,10 @@
                 .then(function(response){
 
                 if (response.data.ReturnStatus == "1"){ 
-                    FlashService.Success("Subasta ganada por "+ bid.StudentName)
+                    
+                    vm.workData.studentInfo = bid;
+                    ProfileCourseService.SetWorkData(vm.workData);
+                    FlashService.Success("Subasta ganada por "+ bid.StudentName, true);
                     $location.path("sharedareaemployer");
                 }
                 else{

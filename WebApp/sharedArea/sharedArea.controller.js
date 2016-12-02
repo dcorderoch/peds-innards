@@ -22,10 +22,13 @@
             vm.courseData = {};
 
             vm.courseData =ProfileCourseService.GetCourseData();
+            
             vm.courseData.Carnet = $rootScope.userData.Carnet;
+            
             vm.userData = $rootScope.userData;
             //            vm.courseData.status=true;
-            vm.gradeWidth = {'width': vm.courseData.Grade+'%'};  
+            vm.gradeWidth = {'width': vm.courseData.Grade+'%'};
+            
             console.log(vm.gradeWidth);
             
             console.log(vm.courseData);

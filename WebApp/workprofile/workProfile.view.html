@@ -126,7 +126,7 @@
                 <h3>Trabajos activos</h3>
                 <hr class="hr3">
 
-                <div ng-repeat="finishedWork in vm.userData.FinishedProjectsList">
+                <div ng-repeat="finishedWork in vm.userData.ActiveJobOffersList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
                             <strong>Nombre del trabajo:</strong> {{finishedWork.project}},
@@ -146,7 +146,7 @@
                 <h3>Trabajos terminados</h3>
                 <hr class="hr3">
 
-                <div ng-repeat="finishedWork in vm.userData.FinishedProjectsList">
+                <div ng-repeat="finishedWork in vm.userData.FinishedJobOffersList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
                             <strong>Nombre del trabajo:</strong> {{finishedWork.project}},
