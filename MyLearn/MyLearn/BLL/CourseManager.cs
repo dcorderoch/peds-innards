@@ -77,10 +77,11 @@ namespace MyLearn.BLL
                     foreach (var student in studentsInCourse)
                     {
                         var project = projectRepo.GetProjectByStudentAndCourseId(student.UserId, Guid.Parse(courseId));
+                        if (project == null) continue; //workarround when student doesnt have a project in course
                         if (project.Score >= course.MinScore)
                         {
 
-                            student.AvgCourses = CalculateAverage(project.Score, student.NumSuceedCourses+student.NumFailedCourses, student.AvgCourses);
+                            student.AvgCourses = CalculateAverage(project.Score, student.NumSuceedCourses + student.NumFailedCourses, student.AvgCourses);
                             student.NumSuceedCourses += 1;
                         }
                         else
