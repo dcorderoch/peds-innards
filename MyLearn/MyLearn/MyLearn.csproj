@@ -219,6 +219,7 @@
     <Compile Include="InputModels\EmployerIdentifier.cs" />
     <Compile Include="InputModels\InputBid.cs" />
     <Compile Include="InputModels\JobOfferByName.cs" />
+    <Compile Include="InputModels\JobOfferByTechnology.cs" />
     <Compile Include="InputModels\JobOfferIdentifier.cs" />
     <Compile Include="InputModels\NewBid.cs" />
     <Compile Include="InputModels\NewCommentWithFile.cs" />

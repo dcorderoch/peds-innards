@@ -53,10 +53,10 @@ namespace MyLearn.Controllers
             return Json(retVal);
         }
         [HttpPost]
-        public JsonResult<List<JobOffer>> GetByTechnology(Technology technology)
+        public JsonResult<List<JobOffer>> GetByTechnology(JobOfferByTechnology technology)
         {
             var JOMngr = new JobManager();
-            var retVal = JOMngr.GetJobOffersByTechnology(technology.TechnologyId);
+            var retVal = JOMngr.GetJobOffersByTechnology(technology.Technology);
             if (retVal == null)
             {
                 retVal = new List<JobOffer>();
