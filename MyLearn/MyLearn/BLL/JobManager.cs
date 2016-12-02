@@ -227,9 +227,10 @@ namespace MyLearn.BLL
                 var tech = technologyRepo.GetTechnologybyId(Guid.Parse(technology));
                 var jobOffersByTechnology = jobOfferRepo.GetJobOfferByTechnology(tech.TechnologyId);
                 
-                jobOfferRepo.Dispose();
+                var resJob = mapper.JobOfferMap(jobOffersByTechnology);
                 technologyRepo.Dispose();
-                return mapper.JobOfferMap(jobOffersByTechnology);
+                jobOfferRepo.Dispose();
+                return resJob;
             }
         }
 
@@ -240,8 +241,10 @@ namespace MyLearn.BLL
                 var jobOfferRepo = new JobOfferRepository(context);
                 var jobOffersByName = jobOfferRepo.GetJobOfferByName(jobOfferTitle);
         
+                
+                var resJob = mapper.JobOfferMap(jobOffersByName);
                 jobOfferRepo.Dispose();
-                return mapper.JobOfferMap(jobOffersByName);
+                return resJob;
             }
         }
 
