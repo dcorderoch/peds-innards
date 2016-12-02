@@ -203,6 +203,7 @@ namespace MyLearn.BLL
                 if (joboffer != null)
                 {
                     resultOffer.JobOfferTitle = joboffer.Name;
+                    resultOffer.JobOfferId = joboffer.JobOfferId.ToString();
                     resultOffer.Technologies = mapper.TechnologiesToString(joboffer.Technologies);
                     resultOffer.StartDate = joboffer.StartDate.ToString();
                     resultOffer.EndDate = joboffer.EndDate.ToString();
@@ -211,6 +212,7 @@ namespace MyLearn.BLL
                     resultOffer.State = joboffer.IsActive;
                     resultOffer.EmployerName = joboffer.Employer.CompanyName;
                     resultOffer.EmployerUserId = joboffer.EmployerId.ToString();
+                    resultOffer.StateDescription = joboffer.StateDescription;
                 }
                 jobOfferRepo.Dispose();
                 return resultOffer;
