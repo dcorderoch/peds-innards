@@ -68,6 +68,7 @@ namespace MyLearn.BLL
                 var returnCode = new ReturnCode();
                 var courseRepo = new CourseRepository(context);
                 var projectRepo = new ProjectRepository(context);
+                var studentRepo = new StudentRepository(context);
                 var course = courseRepo.GetCoursebyId(new Guid(courseId));
                 
 
@@ -77,22 +78,21 @@ namespace MyLearn.BLL
                     foreach (var student in studentsInCourse)
                     {
                         var project = projectRepo.GetProjectByStudentAndCourseId(student.UserId, Guid.Parse(courseId));
-                        if (project == null) continue; //workarround when student doesnt have a project in course
-                        if (project.Score >= course.MinScore)
-                        {
-
+                        if (project == null) {
+                            continue;
+                        }
+                        if (project.Score >= course.MinScore) {
                             student.AvgCourses = CalculateAverage(project.Score, student.NumSuceedCourses + student.NumFailedCourses, student.AvgCourses);
                             student.NumSuceedCourses += 1;
-                        }
-                        else
-                        {
+                        } else {
                             student.AvgCourses = CalculateAverage(project.Score, student.NumSuceedCourses + student.NumFailedCourses, student.AvgCourses);
                             student.NumFailedCourses += 1;
-
                         }
+                        studentRepo.Update(student);
                     }
                     course.IsActive = 0;
                     courseRepo.SaveChanges();
+                    
                     returnCode.ReturnStatus = 1;
                 }
                 else
