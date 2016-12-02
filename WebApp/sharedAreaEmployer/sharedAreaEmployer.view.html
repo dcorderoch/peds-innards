@@ -60,14 +60,12 @@
                         <div ng-show="comment.IsFromStudent">
                             <div class="panel panel-default  leftComment">
                                 <div class="panel-body radiusComments" >
-
                                     <p class="comments"><strong>Comentario: </strong> {{comment.CommentContent}},<strong> 
                                         <span ng-if="vm.checkFile(comment.File)" >
                                             <strong>Link archivo: </strong> <a href="{{comment.File}}">link</a>
                                         </span>
                                         Fecha: </strong>{{comment.Date | date}}, <strong>Escrito por: </strong> {{comment.Author}} 
                                     </p>
-
                                     <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan btn btn-primary">Responder</button> 
                                 </div>
                             </div>
@@ -80,11 +78,10 @@
                                 <hr class="hr4">
                                 <br>
                             </div>
-                            <div ng-repeat="nested in comment.Nested">
+                            <div ng-repeat="nested in comment.NestedComments">
 
                                 <div class="panel panel-default  nestedLeft">
-                                    <div class="panel-body radiusComments" ><p class="comments">Comentario: {{nested.Comment}}, Fecha: {{nested.Date | date}}, Escrito por: {{nested.Author}}
-                                        </p>
+                                    <div class="panel-body radiusComments" ><p class="comments"><strong>Comentario: </strong> {{nested.CommentContent}},<strong> Fecha: </strong>{{nested.Date | date}}, <strong>Escrito por: </strong> {{nested.Author}} </p>
                                     </div>
                                 </div> 
                             </div>
@@ -93,8 +90,13 @@
 
                         <div ng-show="!comment.IsFromStudent">
                             <div class="panel panel-default  rightComment">
-                                <div class="panel-body radiusComments" ><p class="comments">Comentario:  {{comment.Comment}}, Fecha: {{comment.Date | date}}, Escrito por: {{comment.Author}} </p>
-                                    <!--|date-->
+                                <div class="panel-body radiusComments" >
+                                    <p class="comments"><strong>Comentario: </strong> {{comment.CommentContent}},<strong> 
+                                        <span ng-if="vm.checkFile(comment.File)" >
+                                            <strong>Link archivo: </strong> <a href="{{comment.File}}">link</a>
+                                        </span>
+                                        Fecha: </strong>{{comment.Date | date}}, <strong>Escrito por: </strong> {{comment.Author}} 
+                                    </p>
                                     <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan  btn btn-primary">Responder</button> 
                                 </div>
                             </div>
@@ -107,24 +109,25 @@
                                 <hr class="hr4">
                                 <br>
                             </div>
-                            <div ng-repeat="nested in comment.Nested">
+                            <div ng-repeat="nested in comment.NestedComments">
 
                                 <div class="panel panel-default  nestedLeft">
-                                    <div class="panel-body radiusComments" ><p class="comments">Comentario: {{nested.Comment}}, Fecha: {{nested.Date | date}}, Escrito por: {{nested.Author}}
-                                        </p>
+                                    <div class="panel-body radiusComments"> <p class="comments"><strong>Comentario: </strong> {{nested.CommentContent}},<strong> Fecha: </strong>{{nested.Date | date}}, <strong>Escrito por: </strong> {{nested.Author}} </p>
                                     </div>
                                 </div>  
                             </div>
                         </div>
 
                     </div>
+
                     <hr class="hr3">
-                    <input ng-disabled="!vm.workData.status" ng-model="comment" class="newComment" type=text placeholder="Escribe un comentario" name="search">
+                    <input ng-disabled="!vm.workData.status" ng-model="vm.comment" class="newComment" type=text placeholder="Escribe un comentario" name="search">
+
                     <div class="fileUpload btn btn-primary  sendIcon">
                         <span class="glyphicon glyphicon-paperclip"></span>
                         <input type="file" class="upload"  ng-disabled="!vm.workData.status" ng-model="dataUpload" base-sixty-four-input />
                     </div>
-                    <button ng-disabled="!vm.workData.status" ng-click="vm.sendComment(comment, dataUpload)" class="btn btn-primary" >Enviar</button>
+                    <button ng-disabled="!vm.workData.status" ng-click="vm.sendComment( dataUpload)" class="btn btn-primary" >Enviar</button>
 
                 </div>
             </div>

@@ -43,7 +43,13 @@
 
                         <div ng-show="comment.IsFromStudent">
                             <div class="panel panel-default  leftComment">
-                                <div class="panel-body radiusComments" ><p class="comments"><strong>Comentario: </strong> {{comment.CommentContent}},<strong> Fecha: </strong>{{comment.Date | date}}, <strong>Escrito por: </strong> {{comment.Author}} </p>
+                                <div class="panel-body radiusComments" >
+                                    <p class="comments"><strong>Comentario: </strong> {{comment.CommentContent}},<strong> 
+                                        <span ng-if="vm.checkFile(comment.File)" >
+                                            <strong>Link archivo: </strong> <a href="{{comment.File}}">link</a>
+                                        </span>
+                                        Fecha: </strong>{{comment.Date | date}}, <strong>Escrito por: </strong> {{comment.Author}} 
+                                    </p>
                                     <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan btn btn-primary">Responder</button> 
                                 </div>
                             </div>
@@ -68,8 +74,13 @@
 
                         <div ng-show="!comment.IsFromStudent">
                             <div class="panel panel-default  rightComment">
-                                <div class="panel-body radiusComments" ><p class="comments"><strong>Comentario: </strong> {{comment.CommentContent}},<strong> Fecha: </strong>{{comment.Date | date}}, <strong>Escrito por: </strong> {{comment.Author}} </p>
-                                    <!--|date-->
+                                <div class="panel-body radiusComments" >
+                                    <p class="comments"><strong>Comentario: </strong> {{comment.CommentContent}},<strong> 
+                                        <span ng-if="vm.checkFile(comment.File)" >
+                                            <strong>Link archivo: </strong> <a href="{{comment.File}}">link</a>
+                                        </span>
+                                        Fecha: </strong>{{comment.Date | date}}, <strong>Escrito por: </strong> {{comment.Author}} 
+                                    </p>
                                     <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan  btn btn-primary">Responder</button> 
                                 </div>
                             </div>
@@ -92,10 +103,10 @@
                         </div>
 
                     </div>
-                    
+
                     <hr class="hr3">
                     <input ng-disabled="!vm.workData.status" ng-model="vm.comment" class="newComment" type=text placeholder="Escribe un comentario" name="search">
-                    
+
                     <div class="fileUpload btn btn-primary  sendIcon">
                         <span class="glyphicon glyphicon-paperclip"></span>
                         <input type="file" class="upload"  ng-disabled="!vm.workData.status" ng-model="dataUpload" base-sixty-four-input />

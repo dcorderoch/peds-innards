@@ -9,8 +9,12 @@
     function SharedStudentEmployerController($location,  FlashService, $rootScope, JobService, ProfileCourseService) {
         var vm = this;
 
-        vm.comments = [];
-        vm.sendReply = sendReply; 
+        initController();
+
+        vm.sendReply = sendReply;
+        vm.replyMessage ="";
+        vm.comments =[];
+
         vm.replyaMessage = replyaMessage;
         vm.sendComment = sendComment;
 
@@ -52,6 +56,9 @@
         function processComments(){
 
             var i;
+            if (vm.comments == null){
+                return;
+            }
             console.log(vm.comments);
             for (i=0; i<vm.comments.length; i++){
 
@@ -112,9 +119,9 @@
             })
             vm.comment="";
         }
-        
-        
-        
+
+
+
 
     }
 })();

@@ -21,31 +21,28 @@
 
         function initController(){
 
-
-
-
             vm.writeReply= false;
 
             vm.workData ={};
             vm.workData = ProfileCourseService.GetWorkData();
+            vm.userData = $rootScope.userData;
 
             console.log(vm.workData);
 
             getComments();
-
             processComments();
         }
 
         function sendReply( replyMessage, parentId){
 
-            var send={Commenter:"0", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId}
+            var send={Commenter:"0", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId, 
+                      StudentUserId: vm.workData.StudentUserId, EmployerUserId: vm.userData.UserId};
             console.log(send);
             JobService.CommentCreate(send)
                 .then(function(response){
 
                 console.log(response);
                 getComments();
-                processComments();
 
             }, function(response){
                 //                console.log(response);
@@ -62,7 +59,7 @@
             }
             for (i=0; i<vm.comments.length; i++){
 
-                if (vm.comments[i].IsFromStudent==="0"){
+                if (vm.comments[i].IsFromStudent==="1"){
                     vm.comments[i].IsFromStudent = true;
                     vm.comments[i].Author = "Estudiante"
                 }
@@ -73,7 +70,7 @@
                 }
                 var j;
                 for (j=0; j<vm.comments[i].Nested.length; j++){
-                    if (vm.comments[i].Nested[j].IsFromStudent==="0"){
+                    if (vm.comments[i].Nested[j].IsFromStudent==="1"){
                         vm.comments[i].Nested[j].IsFromStudent = true;
                         vm.comments[i].Nested[j].Author = "Estudiante"
                     }
@@ -94,54 +91,56 @@
                 .then( function(response){
 
                 vm.comments = response.data;
+                console.log(vm.comments)
+                processComments();
 
             }, function(response){
                 console.log("no sirvió")
             })
         }
 
-        function sendComment( comment, dataUpload ){
+        function sendComment( dataUpload ){
 
-            var send={Commenter:"0", ParentId:"-1", JobOfferComment:comment, JobOfferId:vm.workData.JobOfferId};
-            console.log(send);
-            JobService.CommentCreate(send)
-                .then(function(response){
+            var send={Commenter:"0", ParentId:"-1", JobOfferComment:comment, JobOfferId:vm.workData.JobOfferId,
+                      StudentUserId: vm.workData.StudentUserId, EmployerUserId: vm.userData.UserId};};
+        console.log(send);
+        JobService.CommentCreate(send)
+            .then(function(response){
 
+            console.log(response);
+            getComments();
+
+        }, function(response){
+            //                console.log(response);
+            FlashService.Error("No se pudo enviar el comentario"); 
+        })
+    }
+
+    function closeProject(finishProject,stars,status){
+
+        var state = (status=="Exitoso") ? "2" : "3"; 
+
+        var send = {JobOfferId:vm.workData.JobOfferId, State:state, 
+                    StateDescription: finishProject, Stars: stars.toString()};
+        console.log(send)
+        JobService.CloseJob(send)
+            .then(function(response){
+
+            if (response.data.ReturnStatus ===1){ 
+                FlashService.Success("El proyecto se ha cerrado");
+                $location.path("/employerprofile")
                 console.log(response);
-                getComments();
-                processComments();
-
-            }, function(response){
-                //                console.log(response);
-                FlashService.Error("No se pudo enviar el comentario"); 
-            })
-        }
-
-        function closeProject(finishProject,stars,status){
-
-            var state = (status=="Exitoso") ? "2" : "3"; 
-
-            var send = {JobOfferId:vm.workData.JobOfferId, State:state, 
-                        StateDescription: finishProject, Stars: stars.toString()};
-            console.log(send)
-            JobService.CloseJob(send)
-                .then(function(response){
-
-                if (response.data.ReturnStatus ===1){ 
-                    FlashService.Success("El proyecto se ha cerrado");
-                    $location.path("/employerprofile")
-                    console.log(response);
-                }
-                else{
-                    FlashService.Error("No se pudo cerrar el proyecto")
-                    console.log(response);
-                }
-            }, function(response){
+            }
+            else{
                 FlashService.Error("No se pudo cerrar el proyecto")
                 console.log(response);
-            })
-        }
-
-
+            }
+        }, function(response){
+            FlashService.Error("No se pudo cerrar el proyecto")
+            console.log(response);
+        })
     }
-})();
+
+
+}
+ })();
