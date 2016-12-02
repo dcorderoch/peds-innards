@@ -25,5 +25,10 @@ namespace MyLearnDAL.Repositories
         {
             return DbSet.Where(b => b.JobOffer.JobOfferId.Equals(JobOfferId)).ToList();
         }
+
+        public void RemoveAllBidsByJobOfferId(Guid JobOfferId)
+        {
+            DbSet.RemoveRange(GetJobOfferBids(JobOfferId));
+        }
     }
 }
