@@ -48,18 +48,36 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
+                var retVal = new List<Models.Badge>();
+
                 ProjectRepository projectRepo = new ProjectRepository(context);
                 BadgeRepository badgeRepo = new BadgeRepository(context);
-                List<Models.Badge> badges = new List<Models.Badge>();
+                AchievementRepository achievementRepo = new AchievementRepository(context);
+                
                 var project = projectRepo.GetProjectByStudentAndCourseId(new Guid(credentials.StudentUserId), new Guid(credentials.CourseId));
-                var retval = badgeRepo.GetProjectBadges(project.ProjectId);
-                if (retval!= null)
+
+                var badges = badgeRepo.GetProjectBadges(project.ProjectId);
+                var achievements = achievementRepo.GetCourseAchievements(Guid.Parse(credentials.CourseId));
+                var projectbadges = project.Badges;
+
+                foreach(var achievement in achievements)
                 {
-                    badges = mapper.BadgeListMap(retval);
+                    var achId = achievement.AchievementId.ToString();
+                    retVal.Add(new Models.Badge
+                    {
+                        BadgeDescription = achievement.Description,
+                        BadgeId = achievement.AchievementId.ToString(),
+                        Value = achievement.Score,
+                        Awarded = (badges.Find(b => b.AchievementId.ToString().Equals(achId)) != null)?1:0,
+                        Alardeado = (badges.Find(b => b.AchievementId.ToString().Equals(achId)) != null)? badges.Find(b => b.AchievementId.ToString().Equals(achId)).Bragged : 0
+                    });
                 }
+
+                achievementRepo.Dispose();
                 projectRepo.Dispose();
                 badgeRepo.Dispose();
-                return badges;
+
+                return retVal;
             }
         }
 
