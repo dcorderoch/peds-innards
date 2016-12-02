@@ -177,6 +177,7 @@
                 }
                 else{
                     FlashService.Success("Se ha asignado el badge");
+                    getAllBadges();
 
                 }
 
@@ -184,6 +185,8 @@
 
                 FlashService.Error("No se pudo asignar el badge");
             });
+            getAllBadges();
+
         }
 
         function checkFile( file){
