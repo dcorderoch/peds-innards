@@ -15,6 +15,11 @@ namespace MyLearnDAL.Repositories
             return DbSet.Find(techId);
         }
 
+        public List<Technology>  GetTechnologiesByName(string name)
+        {
+            return DbSet.Where(t => t.Name.Contains(name)).ToList();
+        }
+
         public List<Technology> GetStudentTechnologies(Guid UserId)
         {
             return DbSet.Where(t => t.Students.Any(s => s.UserId.Equals(UserId))).ToList();
