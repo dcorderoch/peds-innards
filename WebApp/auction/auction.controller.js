@@ -18,6 +18,7 @@
             vm.listOfBids=[];
             vm.userData = $rootScope.userData;
             vm.workData= ProfileCourseService.GetWorkData();
+            vm.approve = approve;
             console.log(vm.workData);
             getBids();
 
@@ -40,15 +41,55 @@
             console.log(bid)
             vm.workData.studentInfo = bid;
             ProfileCourseService.SetWorkData(vm.workData);
-            $location.path("sharedareaemployer");
         }
 
 
         function goProfile(bid){
-            console.log(bid)
-            vm.workData.studentInfo = bid;
-            ProfileCourseService.SetWorkData(vm.workData);
-            $location.path("sharedareaemployer");
+
+            var send;
+            JobService.GetProfile(send)
+                .then(function(response){
+
+                console.log(response);
+
+                var userFoto = $localStorage.$default({
+                    Foto : response.data.Foto
+                });
+
+                var data = response.data;
+                delete data.Foto;
+                
+                $rootScope.userData= data;
+                $location.path('/viewprofile'); 
+
+            }, function(response){
+
+                FlashService.Error("Error en la carga del perfil de estudiante" )
+            });
         }
+
+        function approve(bid){
+
+            var send = {JobOfferId:vm.workData.JobOfferId, StudentUserId:bid.StudentUserId}
+            console.log(send)
+            JobService.Assign(send)
+                .then(function(response){
+
+                if (response.data.ReturnStatus == "1"){ 
+                    FlashService.Success("Subasta ganada por "+ bid.StudentName)
+                    $location.path("sharedareaemployer");
+                }
+                else{
+                    FlashService.Error("Error en la subasta");
+                }
+
+            }, function(response){
+
+                FlashService.Error("Error en la subasta")
+            });
+        }
+
+
+
     }
 })();

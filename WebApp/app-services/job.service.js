@@ -19,6 +19,8 @@
         service.CommentCreate = CommentCreate;
         service.BidCreate = BidCreate;
         service.CloseJob = CloseJob;
+        service.Assign = Assign;
+        service.GetProfile = GetProfile;
 
         return service;
 
@@ -108,6 +110,24 @@
             var response= $http({
                 method:"post",
                 url:$rootScope.url+"JobOffer/Close",
+                data:data
+            });
+            return response;            
+        }  
+        
+        function Assign(data){
+            var response= $http({
+                method:"post",
+                url:$rootScope.url+"JobOffer/Assign",
+                data:data
+            });
+            return response;            
+        }
+        
+        function GetProfile(data){
+            var response= $http({
+                method:"post",
+                url:$rootScope.url+"Student/GetProfile",
                 data:data
             });
             return response;            
