@@ -69,8 +69,27 @@ namespace MyLearn.BLL
                 var courseRepo = new CourseRepository(context);
                 var projectRepo = new ProjectRepository(context);
                 var course = courseRepo.GetCoursebyId(new Guid(courseId));
+                
+
                 if (course != null)
                 {
+                    var studentsInCourse = course.Students;
+                    foreach (var student in studentsInCourse)
+                    {
+                        var project = projectRepo.GetProjectByStudentAndCourseId(student.UserId, Guid.Parse(courseId));
+                        if (project.Score >= course.MinScore)
+                        {
+
+                            student.AvgCourses = CalculateAverage(project.Score, student.NumSuceedCourses+student.NumFailedCourses, student.AvgCourses);
+                            student.NumSuceedCourses += 1;
+                        }
+                        else
+                        {
+                            student.AvgCourses = CalculateAverage(project.Score, student.NumSuceedCourses + student.NumFailedCourses, student.AvgCourses);
+                            student.NumFailedCourses += 1;
+
+                        }
+                    }
                     course.IsActive = 0;
                     courseRepo.SaveChanges();
                     returnCode.ReturnStatus = 1;
@@ -83,7 +102,14 @@ namespace MyLearn.BLL
                 return returnCode;
             }
         }
-        
+
+        private decimal CalculateAverage(decimal grade, int totalProjects, decimal currentAverage)
+        {
+            var val = currentAverage * totalProjects + grade;
+            var retVal = val / (totalProjects + 1);
+            return retVal;
+        }
+
         public Course GetCourseAsProfessor(string courseId)
         {
             using (var context = new MyLearnContext())
