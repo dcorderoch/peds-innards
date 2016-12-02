@@ -15,5 +15,6 @@ namespace MyLearn.Models
         public decimal Budget { get; set; }
         public int State { get; set; }
         public string StateDescription { get; set; }
+        public string Location { get; set; }
     }
 }

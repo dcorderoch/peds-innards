@@ -100,9 +100,11 @@ Web Application sends
 
 and then Receives
 {
-    "JobOffer":"algo",
+    "JobOfferTitle":"algo",
+    "JobOfferId":"algo",
+    "EmployerUserId":"",
+    "EmployerName":"algo",    
     "Technologies":["algo","algo"],
-    "Location":"algo",
     "StartDate":"fecha en ISO8601",
     "EndDate":"fecha en ISO8601",
     "Description":"algo",

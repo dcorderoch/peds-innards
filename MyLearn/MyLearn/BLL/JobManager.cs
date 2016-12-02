@@ -209,6 +209,8 @@ namespace MyLearn.BLL
                     resultOffer.Description = joboffer.Description;
                     resultOffer.Budget = joboffer.Budget;
                     resultOffer.State = joboffer.IsActive;
+                    resultOffer.EmployerName = joboffer.Employer.CompanyName;
+                    resultOffer.EmployerUserId = joboffer.EmployerId.ToString();
                 }
                 jobOfferRepo.Dispose();
                 return resultOffer;
