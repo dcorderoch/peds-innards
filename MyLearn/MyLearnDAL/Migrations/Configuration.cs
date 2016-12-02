@@ -197,35 +197,6 @@ namespace MyLearnDAL.Migrations
             roleRepo.SaveChanges();
             //roleRepo.Dispose();
 
-            var myStudent = new Student() { UserId = Guid.NewGuid(), AvgCourses = 0, AvgProjects = 0, CardId = "201044569", Email = "pepito@gmail.com", InDate = DateTime.Today, IsActive = 1, LastName = "Gómez", Name = "Pepito", Password = "123456", NumFailedCourses = 0, NumFailedProjects = 0, NumSuceedCourses = 0, NumSuceedProjects = 0, TRepo = 1, RepoLink = "http://githum.com/pepito", PhoneNum = "22399043"};
-            myStudent.Languages.Add(newLenguage0);
-            myStudent.UniversityId = newUniversity0.UniversityId;
-            var countryList = countryRepo.GetAll();
-            myStudent.CountryId = countryList[43].CountryId;
-            myStudent.RoleId = 1;
-
-            var myStudent2 = new Student() { UserId = Guid.NewGuid(), AvgCourses = 0, AvgProjects = 0, CardId = "ABC123", Email = "fulana@gmail.com", InDate = DateTime.Today, IsActive = 1, LastName = "Gonzalez", Name = "Fulana", Password = "654321", NumFailedCourses = 0, NumFailedProjects = 0, NumSuceedCourses = 0, NumSuceedProjects = 0, TRepo = 1, RepoLink = "http://githum.com/fulana", PhoneNum = "22113344" };
-            myStudent2.Languages.Add(newLenguage1);
-            myStudent2.UniversityId = newUniversity0.UniversityId;
-            myStudent2.CountryId = countryList[25].CountryId;
-            myStudent2.RoleId = 1;
-            var studentRepo = new StudentRepository(context);
-            studentRepo.Add(myStudent);
-            studentRepo.Add(myStudent2);
-            studentRepo.SaveChanges();
-
-            var myProfesor = new Professor() {CountryId = countryList[32].CountryId, UserId = Guid.NewGuid(), Email = "srmadriz@gmail.com", InDate = DateTime.Today, Lastname = "Madriz", Name = "Daniel", IsActive = 1, Password = "ajaaaa", PhoneNum = "25565644",Photo = null, ProfessorId = "PROF123", RefreshToken = "", RoleId = 2,Schedule = "todos los dias :7am-9pm",TRepo = 0,UniversityId = newUniversity0.UniversityId};
-
-            var professorRepo = new ProfessorRepository(context);
-            professorRepo.Add(myProfesor);
-            professorRepo.SaveChanges();
-
-            var myEmployer = new Employer() {UserId = Guid.NewGuid(),CompanyName = "Pischel S.A", ContactLastname = "Rivera", Email = "marquitorivera@gmail.com", ContactName = "Marco", CountryId = countryList[50].CountryId, EmployerId = "EMP123", InDate = DateTime.Today, IsActive = 1, Password = "pischel", PhoneNum = "22345677",Photo = null, RoleId = 3,TRepo = 0,Website = "dualfarma.com",RefreshToken = ""};
-            var emploRepo = new EmployerRepository(context);
-            emploRepo.Add(myEmployer);
-            emploRepo.SaveChanges();
-
-
-        }
+         }
     }
 }
