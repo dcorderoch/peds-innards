@@ -6,6 +6,8 @@ namespace MyLearn.Models
     {
         public string JobOfferTitle { get; set; }
         public string JobOfferId { get; set; }
+        public string EmployerUserId { get; set; }
+        public string EmployerName { get; set; }
         public List<string> Technologies { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }

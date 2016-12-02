@@ -215,6 +215,8 @@ namespace MyLearn.Utils
                 resJobOffer.JobOfferTitle = jobOffer.Name;
                 resJobOffer.JobOfferId = jobOffer.JobOfferId.ToString();
                 resJobOffer.StateDescription = jobOffer.StateDescription;
+                resJobOffer.EmployerUserId = jobOffer.EmployerId.ToString();
+                resJobOffer.EmployerName = jobOffer.Employer.CompanyName;
                 result.Add(resJobOffer);
             }
             return result;
