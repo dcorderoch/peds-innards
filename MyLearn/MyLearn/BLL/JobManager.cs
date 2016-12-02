@@ -224,10 +224,14 @@ namespace MyLearn.BLL
             {
                 var technologyRepo = new TechnologyRepository(context);
                 var jobOfferRepo = new JobOfferRepository(context);
-                var tech = technologyRepo.GetTechnologybyId(Guid.Parse(technology));
-                var jobOffersByTechnology = jobOfferRepo.GetJobOfferByTechnology(tech.TechnologyId);
-                
-                var resJob = mapper.JobOfferMap(jobOffersByTechnology);
+                var techList = technologyRepo.GetTechnologiesByName(technology);
+                var resJob = new List<Models.JobOffer>();
+                foreach (var tech in techList)
+                {
+                    var jobOffersByTechnology = jobOfferRepo.GetJobOfferByTechnology(tech.TechnologyId);
+                    resJob.AddRange(mapper.JobOfferMap(jobOffersByTechnology));
+                    
+                }
                 technologyRepo.Dispose();
                 jobOfferRepo.Dispose();
                 return resJob;
