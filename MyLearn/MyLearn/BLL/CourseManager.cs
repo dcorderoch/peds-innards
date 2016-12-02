@@ -203,7 +203,7 @@ namespace MyLearn.BLL
                 if (course != null)
                 {
                     var achievements = course.Achievements;
-                    var listOfBadges = project.Badges;
+                    var listOfBadges = (project == null) ? new List<MyLearnDAL.Models.Badge>() : project.Badges;
                     List<Badge> resultList = new List<Badge>();
                     foreach (var newBadge in achievements)
                     {
