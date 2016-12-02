@@ -31,12 +31,16 @@
 
             getComments();
             processComments();
+            getAllBadges();
         }
 
         function getAllBadges(){
 
+            console.log("entro")
             var send ={ StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, UniversityId:vm.courseData.UniversityId, 
                        Group:vm.courseData.Group, CourseId: vm.courseData.CourseId};
+            
+            console.log(send);
             CourseService.GetAllBadges(send)
                 .then(function(response){
 
@@ -132,6 +136,7 @@
         }
 
 
+
         function assignBadge(badgeId){
 
             var send={StudentUserId: vm.courseData.StudentUserId, 
@@ -145,7 +150,8 @@
                 .then(function(response){
 
                 if (response.data.ReturnStatus=="0"){
-                    FlashService.Error("No se pudo asignar el badge")
+                    FlashService.Error("No se pudo asignar el badge");
+                    getAllBadges();
                 }
                 else{
                     FlashService.Success("Se ha asignado el badge");

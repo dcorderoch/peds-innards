@@ -33,10 +33,7 @@
 
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
-            console.log($localStorage);
 
-            console.log( vm.courseAverageWidth );
-            console.log( vm.projectAverageWidth );
 
             vm.toggleEnable;
             if (vm.userData.Active == "0"){

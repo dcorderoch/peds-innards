@@ -5,7 +5,7 @@
 
     <div class="elementsBar"><a href="#login"><span  class="spanIcons glyphicon glyphicon-log-out"></span> </a></div>
     <div class="elementsBar"><a href="#employerprofile"><span class="spanIcons glyphicon glyphicon-home"></span></a></div>
-    <div class="textBarRight" >Mi Perfil </div>
+    <div class="textBarRight" > Perfil de {{vm.userData.NombreContacto}}</div>
 
 </div>
 
@@ -74,7 +74,7 @@
                 <div ng-repeat="activeCourse in vm.userData.ActiveCoursesList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del curso:</strong> {{activeCourse.course}},
+                            <strong>Nombre del curso:</strong> {{activeCourse.CourseName}},
                             <strong>  Descripción: </strong>{{activeCourse.CourseDescription}}
 
                         </div>
@@ -88,7 +88,7 @@
                 <div ng-repeat="finishedCourse in vm.userData.FinishedCoursesList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del curso:</strong> {{finishedCourse.course}},
+                            <strong>Nombre del curso:</strong> {{finishedCourse.CourseName}},
                             <strong>  Descripción:</strong>{{activeCourse.CourseDescription}}
 
                         </div>
@@ -99,15 +99,12 @@
                 <h3>Trabajos activos</h3>
                 <hr class="hr3">
 
-                <div ng-repeat="finishedWork in vm.userData.FinishedProjectsList">
+                <div ng-repeat="finishedWork in vm.userData.ActiveJobOffersList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del trabajo:</strong> {{finishedWork.project}},
+                            <strong>Nombre del trabajo:</strong> {{finishedWork.JobOffer}},
                             <strong>  Descripción: </strong>{{finishedWork.Description}},
-                            <strong>  Nombre del empleador: </strong>{{finishedWork.EmployerName}},
-                            <strong>  Estado: </strong>{{finishedWork.State}},
-                            <strong>  Descripción de estado: </strong>{{finishedWork.StateDescription}}
-
+                            <strong>  Nombre del empleador: </strong>{{finishedWork.EmployerName}}
                         </div>
                     </div>               
                 </div>
@@ -116,14 +113,13 @@
                 <h3>Trabajos terminados</h3>
                 <hr class="hr3">
 
-                <div ng-repeat="finishedWork in vm.userData.FinishedProjectsList">
+                <div ng-repeat="finishedWork in vm.userData.FinishedJobOffersList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del trabajo:</strong> {{finishedWork.project}},
+                            <strong>Nombre del trabajo:</strong> {{finishedWork.JobOffer}},
                             <strong>  Descripción: </strong>{{finishedWork.Description}},
-                            <strong>  Nombre del empleador: </strong>{{finishedWork.EmployerName}},
-                            <strong>  Estado: </strong>{{finishedWork.State}},
-                            <strong>  Descripción de estado: </strong>{{finishedWork.StateDescription}}
+                            <strong>  Nombre del empleador: </strong>{{finishedWork.EmployerName}}
+
                         </div>
                     </div>               
                 </div>

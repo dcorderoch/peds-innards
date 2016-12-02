@@ -9,15 +9,14 @@
     function ViewProfileController($location, FlashService, $rootScope, CourseService, UserService, ProfileCourseService, $localStorage) {
         var vm = this;
 
-        vm.goCourseActive = goCourseActive;
-        vm.goCourseFinished = goCourseFinished;
-        vm.disableAccount =disableAccount;
+
 
         initController();
 
         function initController(){
 
             vm.userData = $rootScope.userData;
+            console.log(vm.userData)
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
@@ -35,7 +34,6 @@
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
             console.log($localStorage);
 
-            ProfileCourseService.SetCourseData(currentCourseData);
 
         }
 

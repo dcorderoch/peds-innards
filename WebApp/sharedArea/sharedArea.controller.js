@@ -125,7 +125,7 @@
 
             vm.writeReply=true;
         }
-
+ 
 
         function getComments (){
 

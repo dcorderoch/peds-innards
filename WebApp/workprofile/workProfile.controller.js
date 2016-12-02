@@ -49,9 +49,7 @@
 
         function goWorkFinished(id){
 
-            $location.path('/sharedstudentemployer');  
-            return;
-
+            console.log("entro")
             JobService.GetById(id)
                 .then(function(response){
 
@@ -59,9 +57,9 @@
                 currentworkData.status = false;
                 currentworkData.JobOfferId =id;
 
-                ProfileCourseService.SetWorkData(currentWorkData);
+                ProfileCourseService.SetWorkData(currentworkData);
 
-                $location.path('/sharedStudentEmployer');    
+                $location.path('/sharedstudentemployer');    
 
             }, function(response){
                 console.log("no sirvio")
@@ -71,11 +69,11 @@
 
             JobService.GetById(id)
                 .then(function(response){
-
+                console.log(response)
                 var currentworkData = response.data;
-                currentworkData.status = false;
-                ProfileCourseService.SetWorkData(currentWorkData);
-                $location.path('/sharedStudentEmployer'); 
+                currentworkData.status = true;
+                ProfileCourseService.SetWorkData(currentworkData);
+                $location.path('/sharedstudentemployer');    
 
             }, function(response){
                 console.log("no sirvio")

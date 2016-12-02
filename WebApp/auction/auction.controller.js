@@ -5,8 +5,8 @@
         .module('app')
         .controller('AuctionController', AuctionController);
 
-    AuctionController.$inject = ['$location',  'FlashService', '$rootScope', 'JobService', 'UserService', 'ProfileCourseService'];
-    function AuctionController($location,  FlashService, $rootScope, JobService, UserService, ProfileCourseService) {
+    AuctionController.$inject = ['$location',  'FlashService', '$rootScope', 'JobService', 'UserService', 'ProfileCourseService', '$localStorage'];
+    function AuctionController($location,  FlashService, $rootScope, JobService, UserService, ProfileCourseService, $localStorage) {
         var vm = this;
 
         initController();
@@ -43,9 +43,9 @@
         }
 
 
-        function goProfile(bid){
+        function goProfile(id){
 
-            var send;
+            var send= { StudentUserId: id};
             JobService.GetProfile(send)
                 .then(function(response){
 

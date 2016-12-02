@@ -86,19 +86,17 @@
                 
                 if (result === 2){
 
-                    FlashService.Success("Trabajo creado y twiteado");
-                    vm.job={};
-
+                    FlashService.Success("Trabajo creado y twiteado", true);
+                    $location.path('/employerprofile')
                 }
                 if (result === 1){
 
-                    FlashService.Success("Trabajo creado pero no twiteado");
-                    vm.job={};
+                    FlashService.Success("Trabajo creado pero no twiteado", true);
+                    $location.path('/employerprofile')
                 }
                 if (result === 0){
 
                     FlashService.Error("No se pudo crear el trabajo");
-                    vm.job={};
 
                 }
 

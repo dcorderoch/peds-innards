@@ -68,7 +68,7 @@
                 currentworkData.status = false;
                 currentworkData.JobOfferId =id;
 
-                ProfileCourseService.SetWorkData(currentWorkData);
+                ProfileCourseService.SetWorkData(currentworkData);
 
                 $location.path('/sharedareaemployer');    
 

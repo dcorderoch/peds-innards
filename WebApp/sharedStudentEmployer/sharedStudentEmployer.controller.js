@@ -33,8 +33,8 @@
 
         function sendReply( replyMessage, parentId){
 
-            var send={Commenter:"1", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId,
-                     }
+            var send={Commenter:"1", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId, 
+                      StudentUserId: vm.userData.UserId, EmployerUserId: vm.workData.EmployerUserId};
             console.log(send);
             JobService.CommentCreate(send)
                 .then(function(response){
@@ -86,7 +86,7 @@
             JobService.GetAllComments( vm.workData.JobOfferId)
                 .then( function(response){
 
-                comments = response.data;
+                vm.comments = response.data;
                 console.log(vm.comments)
                 processComments();
 
@@ -97,8 +97,8 @@
 
         function sendComment(  dataUpload ){
 
-            var send={Commenter:"0", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId, 
-                      StudentUserId: vm.userData.UserId};
+            var send={Commenter:"1", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId, 
+                      StudentUserId: vm.userData.UserId, EmployerUserId: vm.workData.EmployerUserId};
             console.log(send);
             JobService.CommentCreate(send)
                 .then(function(response){
@@ -110,6 +110,7 @@
                 //                console.log(response);
                 FlashService.Error("No se pudo enviar el comentario"); 
             })
+            vm.comment="";
         }
 
     }
