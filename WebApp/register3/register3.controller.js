@@ -20,6 +20,8 @@
             loadCountries();
         }
 
+
+
         function loadCountries(){
             RegService.GetCountries()
                 .then(function (response) {

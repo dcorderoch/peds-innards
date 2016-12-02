@@ -13,6 +13,7 @@
         vm.sendReply = sendReply; 
         vm.replyaMessage =replyaMessage;
         vm.sendComment = sendComment;
+        vm.checkFile = checkFile;
         vm.brag = brag;
 
         initController();
@@ -22,19 +23,18 @@
             vm.courseData = {};
 
             vm.courseData =ProfileCourseService.GetCourseData();
-            
+
             vm.courseData.Carnet = $rootScope.userData.Carnet;
-            
+
             vm.userData = $rootScope.userData;
             //            vm.courseData.status=true;
             vm.gradeWidth = {'width': vm.courseData.Grade+'%'};
-            
-            console.log(vm.gradeWidth);
-            
+
+            console.log(vm.userData);
+
             console.log(vm.courseData);
 
             getComments();
-
             processComments();
         }
 
@@ -74,14 +74,18 @@
 
         function brag(bragId){
             console.log(bragId)
-            CourseService.Brag(bragId)
+            var send = {  BadgeId:bragId, StudentName:vm.userData.NombreContacto, StudentLastName:vm.userData.ApellidoContacto };
+
+            CourseService.Brag(send)
                 .then(function(response){
 
-                if (response.ReturnStatus =="0"){
+                if (response.ReturnStatus ==0){
                     FlashService.Error("No se pudo alardear, intentalo más tarde")
+                    getAllBadges();
                 }
-                else{
-                    FlashService.Success("Se ha alardeado en Twitter exitsamente!");
+                if (response.ReturnStatus ==1){
+                    FlashService.Success("Se ha alardeado en Twitter exitosamente!");
+                    getAllBadges();
                 }
                 getAllBadges();
 
@@ -125,7 +129,7 @@
 
             vm.writeReply=true;
         }
- 
+
 
         function getComments (){
 
@@ -144,22 +148,49 @@
 
 
         function sendComment(  dataUpload ){
+                
+            if ( typeof dataUpload === "undefined" ){
+                var send={Commenter:"1", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
+                console.log(send)
+                CourseService.CommentCreate(send)
+                    .then(function(response){
 
-            var send={Commenter:"1", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
-            console.log(send)
-            CourseService.CommentCreate(send)
-                .then(function(response){
+                    console.log(response);
+                    getComments();
 
-                console.log(response);
-                getComments();
+                }, function(response){
+                    //                console.log(response);
+                    FlashService.Error("No se pudo enviar el comentario"); 
+                })
+                vm.comment="";                
+            }
+            else{
+                console.log(dataUpload)
+                var send={Commenter:"1", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId, FileName: dataUpload.filename, File: dataUpload.base64, RefreshToken: vm.userData.RefreshToken};
+                console.log(send)
+                CourseService.CreateWithFile(send)
+                    .then(function(response){
 
-            }, function(response){
-                //                console.log(response);
-                FlashService.Error("No se pudo enviar el comentario"); 
-            })
-            vm.comment="";
+                    console.log(response);
+                    getComments();
+
+                }, function(response){
+                    //                console.log(response);
+                    FlashService.Error("No se pudo enviar el comentario"); 
+                })
+                vm.comment="";
+            }
         }
 
+
+        function checkFile( file){
+            
+            if (file == "0"){
+                
+                return false;
+            }
+            return true;
+        }
 
     }
 })();

@@ -24,6 +24,7 @@
         service.CloseCourse = CloseCourse;
         service.GetAllByStudent = GetAllByStudent;
         service.GetAllBadges = GetAllBadges;
+        service.CreateWithFile = CreateWithFile;
 
         return service;
 
@@ -187,11 +188,11 @@
         *   
         *
         */
-        function Brag(badgeId){
+        function Brag(data){
             var response = $http({
                 method: "post",
-                url: $rootScope.url+"Bad-ge/Brag",
-                data: {BadgeId: badgeId}
+                url: $rootScope.url+"Badge/Brag",
+                data: data
             });
             return response;                 
         }
@@ -209,7 +210,7 @@
             return response;                 
 
         }
-        
+
         function GetAllBadges(data){
             var response = $http({
                 method: "post",
@@ -217,6 +218,15 @@
                 data: data
             });
             return response
+        }
+
+        function CreateWithFile(data) {
+            var response = $http({
+                method: "post",
+                url: $rootScope.url+"Comment/CreateWithFile",
+                data: data
+            });
+            return response    
         }
 
     }

@@ -13,6 +13,7 @@
         service.GetUniversities = GetUniversities;
         service.GetCountries = GetCountries;
         service.GetLanguages= GetLanguages;
+        service.GetGoogleAuthURI = GetGoogleAuthURI;
 
         return service;
         /**
@@ -42,7 +43,7 @@
             });
             return response;    
         }
-        
+
         function GetLanguages() {
             var response=$http({
                 method:"get",
@@ -50,17 +51,16 @@
             });
             return response;    
         }
-        // private functions
-
-        function handleSuccess(res) {
-            return res.data;
+        
+        function GetGoogleAuthURI( ) {
+            var response=$http({
+                method:"get",
+                url:$rootScope.url+"Register/GetGoogleAuthURI"
+            });
+            return response;    
         }
 
-        function handleError(error) {
-            return function () {
-                return { success: false, message: error };
-            };
-        }
+
+
     }
-
 })();

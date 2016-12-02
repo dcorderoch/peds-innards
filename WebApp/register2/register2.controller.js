@@ -11,7 +11,6 @@
 
         vm.register=register;
         vm.repositories=[{tipo:'Google Drive', id:"0"}, {tipo:'Dropbox',id:"1"}];
-
         vm.regData={};
 
         initController();
@@ -19,6 +18,8 @@
             loadUniversities();
             loadCountries();
         }
+
+
 
         function loadCountries(){
             RegService.GetCountries()

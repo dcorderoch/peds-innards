@@ -92,7 +92,7 @@
 
             CourseService.GetCourseAsStudent(send)
                 .then(function(response){
-                console.log("aqui abajo")
+
                 console.log(response)
                 var currentCourseData = response.data;
                 currentCourseData.status=true;

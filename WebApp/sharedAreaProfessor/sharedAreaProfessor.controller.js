@@ -15,6 +15,7 @@
         vm.replyaMessage = replyaMessage;
         vm.sendComment = sendComment;
         vm.assignBadge = assignBadge;
+        vm.checkFile = checkFile;
 
         function initController(){
 
@@ -31,7 +32,6 @@
 
             getComments();
             processComments();
-            getAllBadges();
         }
 
         function getAllBadges(){
@@ -39,7 +39,7 @@
             console.log("entro")
             var send ={ StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, UniversityId:vm.courseData.UniversityId, 
                        Group:vm.courseData.Group, CourseId: vm.courseData.CourseId};
-            
+
             console.log(send);
             CourseService.GetAllBadges(send)
                 .then(function(response){
@@ -71,19 +71,37 @@
 
         function sendComment(  dataUpload ){
 
-            var send={Commenter:"0", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, CourseId: vm.courseData.CourseId};
-            vm.comment =""
+            if ( typeof dataUpload === "undefined" ){
+                var send={Commenter:"0", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, CourseId: vm.courseData.CourseId};
+                vm.comment =""
 
-            CourseService.CommentCreate(send)
-                .then(function(response){
+                CourseService.CommentCreate(send)
+                    .then(function(response){
 
-                console.log(response);
-                getComments();
+                    console.log(response);
+                    getComments();
 
-            }, function(response){
-                //                console.log(response);
-                FlashService.Error("No se pudo enviar el comentario"); 
-            })
+                }, function(response){
+                    //                console.log(response);
+                    FlashService.Error("No se pudo enviar el comentario"); 
+                })
+            }
+            else{
+
+                var send={Commenter:"0", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, CourseId: vm.courseData.CourseId, FileName: dataUpload.filename, File: dataUpload.base64, RefreshToken: vm.userData.RefreshToken};
+                console.log(send)
+                CourseService.CreateWithFile(send)
+                    .then(function(response){
+
+                    console.log(response);
+                    getComments();
+
+                }, function(response){
+                    //                console.log(response);
+                    FlashService.Error("No se pudo enviar el comentario"); 
+                })
+                vm.comment="";
+            }
         }
 
         function processComments(){
@@ -162,6 +180,15 @@
 
                 FlashService.Error("No se pudo asignar el badge");
             });
+        }
+
+        function checkFile( file){
+
+            if (file == "0"){
+
+                return false;
+            }
+            return true;
         }
 
     }

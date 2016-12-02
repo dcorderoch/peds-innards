@@ -29,19 +29,19 @@
                         <li>{{tech}}</li>
                     </ul>
                     <p><strong>Finalizar proyecto</strong></p>
-                    
+
                     <form name="form" ng-submit="vm.closeProject(finishProject,stars,status)" role="form"> 
                         <p><input type=text  placeholder=" Motivo por el cual finalizar proyecto" class="finishProjectReason"  ng-model="finishProject" required/></p>
-                        
+
                         <p><strong>Dar estrellas &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp¿Exitoso?</strong></p>
-                        
+
                         <input type=number  placeholder=" Estrellas" class="stars"  ng-model="stars" required/>
-                        
+
                         <select  class="stars" style="margin-right:0.8em; margin-left:0.8em" ng-model="status" required>
                             <option>Exitoso</option>
                             <option>Fallido</option>
                         </select> 
-                        
+
                         <button class="btn btn-primary">Proceder</button>
                     </form>
                 </div>
@@ -59,8 +59,15 @@
 
                         <div ng-show="comment.IsFromStudent">
                             <div class="panel panel-default  leftComment">
-                                <div class="panel-body radiusComments" ><p class="comments">Comentario:  {{comment.Comment}}, Fecha: {{comment.Date | date}}, Escrito por: {{comment.Author}} </p>
-                                    <!--|date-->
+                                <div class="panel-body radiusComments" >
+
+                                    <p class="comments"><strong>Comentario: </strong> {{comment.CommentContent}},<strong> 
+                                        <span ng-if="vm.checkFile(comment.File)" >
+                                            <strong>Link archivo: </strong> <a href="{{comment.File}}">link</a>
+                                        </span>
+                                        Fecha: </strong>{{comment.Date | date}}, <strong>Escrito por: </strong> {{comment.Author}} 
+                                    </p>
+
                                     <button ng-click="vm.replyaMessage(comment.CommentId)" ng-disabled="!vm.workData.status" class="rightSpan btn btn-primary">Responder</button> 
                                 </div>
                             </div>
