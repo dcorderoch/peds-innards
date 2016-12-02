@@ -64,10 +64,16 @@ namespace MyLearn.BLL
                 AchievementRepository achievementRepo = new AchievementRepository(context);
                 
                 var project = projectRepo.GetProjectByStudentAndCourseId(new Guid(credentials.StudentUserId), new Guid(credentials.CourseId));
+                List<Badge> badges = null;
 
-                var badges = (project != null)?badgeRepo.GetProjectBadges(project.ProjectId):new List<Badge>();
+                if(project != null) {
+                    var projectbadges = project.Badges;
+                    badges = badgeRepo.GetProjectBadges(project.ProjectId);
+                } else {
+                    badges = new List<Badge>();
+                }
+
                 var achievements = achievementRepo.GetCourseAchievements(Guid.Parse(credentials.CourseId));
-                var projectbadges = project.Badges;
 
                 foreach(var achievement in achievements)
                 {
