@@ -67,6 +67,7 @@ namespace MyLearn.BLL
             {
                 var returnCode = new ReturnCode();
                 var courseRepo = new CourseRepository(context);
+                var projectRepo = new ProjectRepository(context);
                 var course = courseRepo.GetCoursebyId(new Guid(courseId));
                 if (course != null)
                 {

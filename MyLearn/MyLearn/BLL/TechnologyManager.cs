@@ -79,6 +79,7 @@ namespace MyLearn.BLL
             {
                 var technologyRepo = new TechnologyRepository(context);
                 var techList = technologyRepo.GetAll();
+                technologyRepo.Dispose();
                 return techList.Find(x => x.Name == technology);
             }
         }
