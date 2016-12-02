@@ -208,6 +208,7 @@ namespace MyLearn.BLL
                     resultOffer.EndDate = joboffer.EndDate.ToString();
                     resultOffer.Description = joboffer.Description;
                     resultOffer.Budget = joboffer.Budget;
+                    resultOffer.State = joboffer.IsActive;
                 }
                 jobOfferRepo.Dispose();
                 return resultOffer;

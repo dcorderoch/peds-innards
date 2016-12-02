@@ -122,10 +122,10 @@ and then Receives
 {
     "JobOffers":[
                     {
+                        "JobOfferTitle":"algo",
+                        "JobOfferId": "Id",
                         "EmployerUserId":"algo",
                         "EmployerName":"algo",
-                        "JobOffer":"algo",
-                        "JobOfferId": "Id",
                         "Technologies":["algo","algo"],
                         "Location":"algo",
                         "StartDate":"fecha en ISO8601",
@@ -138,7 +138,7 @@ and then Receives
                     {
                         "EmployerUserId":"algo",
                         "EmployerName":"algo",
-                        "JobOffer":"algo",
+                        "JobOfferTitle":"algo",
                         "JobOfferId": "Id",
                         "Technologies":["algo","algo"],
                         "Location":"algo",
@@ -222,6 +222,7 @@ and then Receives
                    ]
 }
 
+################################################# Assign a Job Offer
 https://host/Api/JobOffer/Assign
 Web Application sends
 {
