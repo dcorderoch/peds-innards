@@ -137,7 +137,8 @@
             var send={StudentUserId: vm.courseData.StudentUserId, 
                       ProfUserId: vm.userData.UserId,
                       Group: vm.courseData.Group,
-                      CourseId: vm.courseData.CourseId}
+                      CourseId: vm.courseData.CourseId,
+                      AchievementId: badgeId}
 
             console.log(send);
             CourseService.GiveBadge(send)

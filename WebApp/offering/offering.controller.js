@@ -20,22 +20,9 @@
 
             vm.userData = $rootScope.userData;
             vm.offerData = SearchOfferingService.GetSearchData();
-
+            console.log(vm.offerData);
             getBidsById();
-            vm.bids = [{
-                "Money":"345",
-                "DurationInDays": "9" ,
-                "StudentName":"Daniel Madriz",
-                "StudentSurname":"algo",
-                "StudentUserId":"Id"
-            },
-                       {
-                           "Money":"123",
-                           "DurationInDays": "23",
-                           "StudentName":"Kevin Moraga",
-                           "StudentSurname":"algo",
-                           "StudentUserId":"Id"
-                       }];
+
         }
 
         function getBidsById(){
@@ -57,13 +44,14 @@
             var timeString = time.toString();
             var moneyString = money.toString();
 
-            var send={JobOfferId: vm.offerData.JobOfferId, Money:moneyString, DurationDays: timeString, StudentSurname: vm.userData.NombreContacto, StudentUserId: vm.userData.StudentUserId }
+            var send={JobOfferId: vm.offerData.JobOfferId, Money:moneyString, DurationDays: timeString, StudentSurname: vm.userData.NombreContacto, StudentUserId: vm.userData.UserId };
 
             console.log(send)
 
             JobService.BidCreate(send)
                 .then( function(response){
 
+                FlashService.Success("Oferta laboral creada");
                 getBidsById();
 
             }, function(response){

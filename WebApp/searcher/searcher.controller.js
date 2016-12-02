@@ -18,10 +18,6 @@
         initController();
 
 
-        function goOffering(){
-            $location.path('/offering');
-        }
-
         function initController(){
 
             vm.userData = $rootScope.userData;
@@ -73,7 +69,7 @@
                     .then(function(response){
 
                     vm.results = response.data;
-
+                    console.log(vm.results)
                 },function(response){
 
                     FlashService.Error("Fallo en traer resultados para búsqueda por tecnología");
@@ -88,7 +84,7 @@
 
         function goOffering( jobData){
 
-
+            console.log(jobData);
             SearchOfferingService.SetSearchData(jobData);
             $location.path("/offering");
 
@@ -96,7 +92,7 @@
 
         function disableAccount(){
 
-            console.log(vm.userData.userId);
+            console.log(vm.userData.UserId);
             console.log(vm.userData.Active);
 
             UserService.Disable(vm.userData.UserId)
