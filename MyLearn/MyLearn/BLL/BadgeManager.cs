@@ -68,7 +68,10 @@ namespace MyLearn.BLL
             using (var context = new MyLearnContext())
             {
                 BadgeRepository badgeRepo = new BadgeRepository(context);
-                var badge = badgeRepo.GetBadgeById(new Guid(badgeId.BadgeId));
+                //Temporal workarround to brag badge... is necessary to receive an badge id instead of the achievement id.
+                AchievementRepository achievementRepo = new AchievementRepository(context);
+                var achievement = achievementRepo.GetAchievementById(new Guid(badgeId.BadgeId));
+                var badge = badgeRepo.GetBadgeByAchievementId(achievement.AchievementId);
                 var retVal = new ReturnCode();
                 retVal.ReturnStatus = 0;
                 
