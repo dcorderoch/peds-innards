@@ -213,6 +213,7 @@ namespace MyLearn.Utils
                 resJobOffer.Technologies = modelMapper.TechnologiesToString(jobOffer.Technologies);
                 resJobOffer.State = jobOffer.IsActive;
                 resJobOffer.JobOfferTitle = jobOffer.Name;
+                resJobOffer.JobOfferId = jobOffer.JobOfferId.ToString();
                 resJobOffer.StateDescription = jobOffer.StateDescription;
                 result.Add(resJobOffer);
             }
