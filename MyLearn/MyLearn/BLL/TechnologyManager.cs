@@ -52,32 +52,5 @@ namespace MyLearn.BLL
                 return success;
             }
         }
-
-        public List<MyLearnDAL.Models.Technology> GetTechnologies(List<string> technologies)
-        {
-            using (var context = new MyLearnContext())
-            {
-                List<MyLearnDAL.Models.Technology> resultList = new List<MyLearnDAL.Models.Technology>();
-                var technologyRepo = new TechnologyRepository(context);
-                foreach (var strTechnology in technologies)
-                {
-                    var technology = technologyRepo.GetTechnologybyId(Guid.Parse(strTechnology));
-                    resultList.Add(technology);
-                }
-                technologyRepo.Dispose();
-                return resultList;
-            }
-            
-        }
-        public MyLearnDAL.Models.Technology GetTechnologyByName(string technology)
-        {
-            using (var context = new MyLearnContext())
-            {
-                var technologyRepo = new TechnologyRepository(context);
-                var techList = technologyRepo.GetAll();
-                technologyRepo.Dispose();
-                return techList.Find(x => x.Name == technology);
-            }
-        }
     }
 }

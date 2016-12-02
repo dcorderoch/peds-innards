@@ -26,11 +26,8 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
-                var technologyManager = new TechnologyManager();
+                var techRepo = new TechnologyRepository(context);
                 var jobOfferRepo = new JobOfferRepository(context);
-                var employerRepo = new EmployerRepository(context);
-                var employer = employerRepo.GetEmployerById(Guid.Parse(newOffer.EmployerId));
-            
                 var jobOffer = new MyLearnDAL.Models.JobOffer();
                 var returnCode = new ReturnCode();
                 returnCode.ReturnStatus = 0;
@@ -43,14 +40,15 @@ namespace MyLearn.BLL
                 jobOffer.Budget = newOffer.Budget;
                 jobOffer.IsActive = 0;
                 jobOffer.StateDescription = "";
-                jobOffer.Technologies = technologyManager.GetTechnologies(newOffer.Technologies);
                 jobOffer.Description = newOffer.Description;
+                foreach (var tech in newOffer.Technologies)
+                {
+                    jobOffer.Technologies.Add(techRepo.GetTechnologybyId(Guid.Parse(tech)));
+                }
                 try
                 {
                     jobOfferRepo.Add(jobOffer);
-                    employer.JobOffers.Add(jobOffer);
                     jobOfferRepo.SaveChanges();
-                    employerRepo.SaveChanges();
                     returnCode.ReturnStatus += 1;
                 }
                 catch (Exception)
@@ -65,7 +63,7 @@ namespace MyLearn.BLL
                     returnCode.ReturnStatus += 1;
                 }
                 jobOfferRepo.Dispose();
-                employerRepo.Dispose();
+                techRepo.Dispose();
                 return returnCode;
             }    
         }
@@ -224,12 +222,13 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
-                var technologyManager = new TechnologyManager();
+                var technologyRepo = new TechnologyRepository(context);
                 var jobOfferRepo = new JobOfferRepository(context);
-                var tech = technologyManager.GetTechnologyByName(technology);
+                var tech = technologyRepo.GetTechnologybyId(Guid.Parse(technology)));
                 var jobOffersByTechnology = jobOfferRepo.GetJobOfferByTechnology(tech.TechnologyId);
                 
                 jobOfferRepo.Dispose();
+                technologyRepo.Dispose();
                 return mapper.JobOfferMap(jobOffersByTechnology);
             }
         }
