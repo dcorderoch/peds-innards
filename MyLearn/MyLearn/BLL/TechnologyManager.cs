@@ -59,15 +59,11 @@ namespace MyLearn.BLL
             {
                 List<MyLearnDAL.Models.Technology> resultList = new List<MyLearnDAL.Models.Technology>();
                 var technologyRepo = new TechnologyRepository(context);
-                var technologyList = technologyRepo.GetAll();
                 foreach (var strTechnology in technologies)
                 {
-                    var technology = technologyList.Find(x => x.TechnologyId == new Guid(strTechnology));
-                    if (technology != null)
-                    {
-                        resultList.Add(technology);
-                    }
-               }
+                    var technology = technologyRepo.GetTechnologybyId(Guid.Parse(strTechnology));
+                    resultList.Add(technology);
+                }
                 technologyRepo.Dispose();
                 return resultList;
             }
