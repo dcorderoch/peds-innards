@@ -111,22 +111,17 @@ namespace MyLearn.BLL
 
             foreach (ProjectComment projectComment in projectComments) {
                 Comment comment = new Comment();
+                comment.CommentId = projectComment.CommentId.ToString();
+                comment.CommentContent = projectComment.Comment;
+                comment.File = (projectComment.File != null) ? projectComment.File.ToString() : "0";
+                comment.Date = projectComment.Date.ToString();
+                comment.IsFromStudent = IsStudent(projectComment.UserId);
+                comment.ParentId = projectComment.ParentId.ToString();
                 if (projectComment.ParentId == Guid.Empty) {
-                    comment.CommentId = projectComment.CommentId.ToString();
-                    comment.CommentContent = projectComment.Comment;
-                    comment.File = (projectComment.File != null)? projectComment.File.ToString() :"0" ;
-                    comment.Date = projectComment.Date.ToString();
-                    comment.IsFromStudent = IsStudent(projectComment.UserId);
-                    comment.ParentId = projectComment.ParentId.ToString();
                     comment.NestedComments = new List<Comment>();
                     parentComments.Add(comment);
 
                 } else {
-                    comment.CommentId = projectComment.CommentId.ToString();
-                    comment.CommentContent = projectComment.Comment;
-                    comment.Date = projectComment.Date.ToString();
-                    comment.IsFromStudent = IsStudent(projectComment.UserId);
-                    comment.ParentId = projectComment.ParentId.ToString();
                     comment.NestedComments = null;
                     childComments.Add(comment);
                 }

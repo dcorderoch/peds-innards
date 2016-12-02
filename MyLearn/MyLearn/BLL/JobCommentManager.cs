@@ -123,27 +123,18 @@ namespace MyLearn.BLL
             List<JobOfferComment> parentComments = new List<JobOfferComment>();
             List<JobOfferComment> childComments = new List<JobOfferComment>();
 
-            foreach (var projectComment in projectComments)
-            {
+            foreach (var projectComment in projectComments) {
                 var comment = new JobOfferComment();
-                if (projectComment.ParentId == Guid.Empty)
-                {
-                    comment.CommentId = projectComment.CommentId.ToString();
-                    comment.CommentContent = projectComment.Comment;
-                    comment.Date = projectComment.Date.ToString();
-                    comment.IsFromStudent = IsStudent(projectComment.UserId);
-                    comment.ParentId = projectComment.ParentId.ToString();
-                    comment.File = (projectComment.File != null) ? projectComment.File.ToString() : "0";
+                comment.CommentId = projectComment.CommentId.ToString();
+                comment.CommentContent = projectComment.Comment;
+                comment.File = (projectComment.File != null) ? projectComment.File.ToString() : "0";
+                comment.Date = projectComment.Date.ToString();
+                comment.IsFromStudent = IsStudent(projectComment.UserId);
+                comment.ParentId = projectComment.ParentId.ToString();
+                if (projectComment.ParentId == Guid.Empty) {
                     comment.NestedComments = new List<JobOfferComment>();
                     parentComments.Add(comment);
-                }
-                else
-                {
-                    comment.CommentId = projectComment.CommentId.ToString();
-                    comment.CommentContent = projectComment.Comment;
-                    comment.Date = projectComment.Date.ToString();
-                    comment.IsFromStudent = IsStudent(projectComment.UserId);
-                    comment.ParentId = projectComment.ParentId.ToString();
+                } else {
                     comment.NestedComments = null;
                     childComments.Add(comment);
                 }
