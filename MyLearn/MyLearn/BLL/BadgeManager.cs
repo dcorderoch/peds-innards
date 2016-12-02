@@ -14,6 +14,7 @@ namespace MyLearn.BLL
     public class BadgeManager
     {
         private ModelMapper mapper = new ModelMapper();
+
         public ReturnCode GiveBadge(NewBadge newBadge)
         {
             using (var context = new MyLearnContext())
@@ -30,9 +31,9 @@ namespace MyLearn.BLL
                 if (badge.AchievementId != null && badge.ProjectId != null)
                 {
                     project.Badges.Add(badge);
-                    project.Score +=
-                        project.Course.Achievements.Find(a => a.AchievementId.Equals(badge.AchievementId))
-                            .Score;
+                    project.Score += badge.Achievement.Score;
+                        //project.Course.Achievements.Find(a => a.AchievementId.Equals(badge.AchievementId))
+                          //  .Score;
                     badgeRepo.Add(badge);
                     badgeRepo.SaveChanges();
                     projectRepo.SaveChanges();
