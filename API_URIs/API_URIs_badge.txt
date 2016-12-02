@@ -5,7 +5,8 @@ Web Application sends
     "StudentUserId":"algo",
     "ProfUserId":"algo",
     "Group":"algo",
-    "CourseId": "Id"
+    "CourseId": "Id",
+    "AchievementId":"algo"
 }
 
 and then Receives
