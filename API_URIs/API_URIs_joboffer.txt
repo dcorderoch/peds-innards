@@ -241,7 +241,7 @@ Nota: - 0 error
       - 1 exito
 
 ################################################# Get JobOffersByStudentId
-https://host/Api/JobOffer/GetByEmployer
+https://host/Api/JobOffer/GetByStudent
 Web Application sends
 {
     "StudentUserId":"algo"
