@@ -53,7 +53,7 @@ namespace MyLearnDAL.Repositories
 
         public List<JobOffer> GetJobOfferByName(string name)
         {
-            return DbSet.Where(j => j.Name.Contains(name)).ToList();
+            return DbSet.Where(j => j.Name.ToLower().Contains(name.ToLower())).ToList();
         }
     }
 }

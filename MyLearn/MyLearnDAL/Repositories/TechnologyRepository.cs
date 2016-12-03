@@ -34,7 +34,7 @@ namespace MyLearnDAL.Repositories
         /// <returns>A list of technologies</returns>
         public List<Technology>  GetTechnologiesByName(string name)
         {
-            return DbSet.Where(t => t.Name.Contains(name)).ToList();
+            return DbSet.Where(t => t.Name.ToLower().Contains(name.ToLower())).ToList();
         }
 
         /// <summary>
