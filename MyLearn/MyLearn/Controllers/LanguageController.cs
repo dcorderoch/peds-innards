@@ -8,6 +8,10 @@ namespace MyLearn.Controllers
 {
     public class LanguageController : ApiController
     {
+        /// <summary>
+        /// API Method to return all languages in the MyLearn Database
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public JsonResult<List<Language>> GetAll()
         {

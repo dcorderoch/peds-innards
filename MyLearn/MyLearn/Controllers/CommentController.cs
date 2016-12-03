@@ -9,6 +9,11 @@ namespace MyLearn.Controllers
 {
     public class CommentController : ApiController
     {
+        /// <summary>
+        /// API Method to get all comments in a course project
+        /// </summary>
+        /// <param name="commentInfo"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<List<Comment>> GetAll(CommentInfo commentInfo)
         {
@@ -20,6 +25,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// /// API Method to add a comment to a university project
+        /// </summary>
+        /// <param name="newComment"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> Create(NewComment newComment)
         {
@@ -27,6 +37,11 @@ namespace MyLearn.Controllers
             var retVal = cmtMngr.CreateComment(newComment,"");
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to add a comment to a university project (uploading a file to the user's user file repository's service through MyLearn)
+        /// </summary>
+        /// <param name="newComment"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> CreateWithFile(NewCommentWithFile newComment)
         {

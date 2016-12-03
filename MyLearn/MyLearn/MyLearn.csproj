@@ -198,7 +198,6 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TechnologyController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UniversityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -246,6 +245,7 @@
     <Compile Include="Models\ActiveCourse.cs" />
     <Compile Include="Models\ActiveJobOffer.cs" />
     <Compile Include="Models\AllJobOffersByEmployer.cs" />
+    <Compile Include="Models\AllStudentJobOffer.cs" />
     <Compile Include="Models\AllProfessorsCourses.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\Comment.cs" />

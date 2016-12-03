@@ -9,6 +9,11 @@ namespace MyLearn.Controllers
 {
     public class CourseController : ApiController
     {
+        /// <summary>
+        /// API Method to get all information of a course as a Professor
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<Course> GetCourseAsProfessor(CourseIdentifier courseId)
         {
@@ -20,6 +25,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to get all information of a course project (by a student) as a Professor, sans comments
+        /// </summary>
+        /// <param name="credentials"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<SpecificCourse> GetSpecificCourse(SharedAreaCredentials credentials)
         {
@@ -31,6 +41,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to get all information of a course as a Student, sans comments
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<CourseAsStudent> GetCourseAsStudent(CourseAsStudentCredentials courseId)
         {
@@ -42,6 +57,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to add a new course to the MyLearn Database as a Professor
+        /// </summary>
+        /// <param name="newCourse"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> Create(NewCourse newCourse)
         {
@@ -49,6 +69,11 @@ namespace MyLearn.Controllers
             var retVal = courMngr.CreateCourse(newCourse);
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to get all courses taught by a Professor, as a Professor
+        /// </summary>
+        /// <param name="profCredentials"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<AllProfessorsCourses> GetAllByProfessor(ProfessorIdentifier profCredentials)
         {
@@ -60,6 +85,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to get all courses taught at a particular University
+        /// </summary>
+        /// <param name="universityId"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<List<CourseShort>> GetAllByUniversity(UniversityIdentifier universityId)
         {
@@ -71,6 +101,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// /// API Method to close a course taught by a Professor, and finalize all its student projects
+        /// </summary>
+        /// <param name="universityId"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> Close(CourseIdentifier universityId)
         {
@@ -78,6 +113,11 @@ namespace MyLearn.Controllers
             var retVal = courMngr.CloseCourse(universityId.CourseId);
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to Join a Course as a Student
+        /// </summary>
+        /// <param name="joiningStudentInfo"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> Join(StudentJoinsCourse joiningStudentInfo)
         {
@@ -85,6 +125,11 @@ namespace MyLearn.Controllers
             var retVal = courMngr.Join(joiningStudentInfo);
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to get all courses of a particular student, both active and finished
+        /// </summary>
+        /// <param name="studentCredentials"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<StudentCourses> GetAllByStudent(StudentIdentifier studentCredentials)
         {

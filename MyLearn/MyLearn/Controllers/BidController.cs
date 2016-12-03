@@ -8,6 +8,11 @@ namespace MyLearn.Controllers
 {
     public class BidController : ApiController
     {
+        /// <summary>
+        /// API Method to add a bid to a job offer auction
+        /// </summary>
+        /// <param name="newBadge"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> Create(NewBid newBadge)
         {
@@ -15,6 +20,11 @@ namespace MyLearn.Controllers
             var retVal = status.Create(newBadge);
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to update a bid to a job offer auction
+        /// </summary>
+        /// <param name="newBadge"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> Update(NewBid newBadge)
         {

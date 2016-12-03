@@ -9,6 +9,11 @@ namespace MyLearn.Controllers
 {
     public class JobOfferCommentController : ApiController
     {
+        /// <summary>
+        /// API Method to add a comment to a Job Offer
+        /// </summary>
+        /// <param name="jobComment"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> Create(NewJobComment jobComment)
         {
@@ -16,6 +21,11 @@ namespace MyLearn.Controllers
             var retVal = jobCmntMngr.CreateComment(jobComment,"");
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to get all comments of a Job Offer
+        /// </summary>
+        /// <param name="jobOfferId"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<List<JobOfferComment>> GetAll(JobOfferIdentifier jobOfferId)
         {
@@ -27,6 +37,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to add a comment to a Job Offer, and upload a file through MyLearn
+        /// </summary>
+        /// <param name="jobComment"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> CreateWithFile(NewJobCommentWithFile jobComment)
         {

@@ -8,6 +8,10 @@ namespace MyLearn.Controllers
 {
     public class CountryController : ApiController
     {
+        /// <summary>
+        /// API Method to get all countries in the MyLearn Database
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public JsonResult<List<Country>> GetAll()
         {

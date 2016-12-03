@@ -8,6 +8,11 @@ namespace MyLearn.Controllers
 {
     public class AccountController : ApiController
     {
+        /// <summary>
+        /// API Method to disable or enable a user account
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> ToggleAccount(UserIdentifier userId)
         {

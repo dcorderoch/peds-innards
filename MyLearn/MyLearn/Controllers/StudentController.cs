@@ -8,6 +8,11 @@ namespace MyLearn.Controllers
 {
     public class StudentController : ApiController
     {
+        /// <summary>
+        /// API Method that returns all information in the profile of a Student, used by an Employer
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<StudentProfileAsEmployer> GetProfile(StudentIdentifier studentId)
         {

@@ -8,6 +8,10 @@ namespace MyLearn.Controllers
 {
     public class UniversityController : ApiController
     {
+        /// <summary>
+        /// API Method that returns all universities in the MyLearn Database
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public JsonResult<List<University>> GetAll()
         {

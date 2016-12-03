@@ -8,6 +8,11 @@ namespace MyLearn.Controllers
 {
     public class ProjectController : ApiController
     {
+        /// <summary>
+        /// API Method to register a new student to de the MyLearn Database
+        /// </summary>
+        /// <param name="proposal"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> Propose(ProjectProposal proposal)
         {

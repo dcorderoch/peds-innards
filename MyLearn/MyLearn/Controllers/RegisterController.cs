@@ -9,6 +9,11 @@ namespace MyLearn.Controllers
     public class RegisterController : ApiController
     {
         private string GoogleAuthURI = GoogleService.Constants._MyLearnAuthURL;
+        /// <summary>
+        /// API Method to register a new Student to de the MyLearn Database
+        /// </summary>
+        /// <param name="userInformation"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<InfoEstudiante> RegisterStudent(RegisterEstudianteInfo userInformation)
         {
@@ -20,6 +25,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to register a new Professor to de the MyLearn Database
+        /// </summary>
+        /// <param name="userInformation"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<InfoProfesor> RegisterProfessor(RegisterProfessorInfo userInformation)
         {
@@ -31,6 +41,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// /// API Method to register a new Employer to de the MyLearn Database
+        /// </summary>
+        /// <param name="userInformation"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<InfoEmpleador> RegisterEmployer(RegisterEmployerInfo userInformation)
         {
@@ -40,15 +55,6 @@ namespace MyLearn.Controllers
             {
                 retVal = new InfoEmpleador();
             }
-            return Json(retVal);
-        }
-        [HttpGet]
-        public JsonResult<AuthURI> GetGoogleAuthURI()
-        {
-            var retVal = new AuthURI
-            {
-                URI = this.GoogleAuthURI
-            };
             return Json(retVal);
         }
     }

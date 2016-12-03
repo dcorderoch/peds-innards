@@ -8,6 +8,11 @@ namespace MyLearn.Controllers
     public class LoginController : ApiController
     {
         
+        /// <summary>
+        /// API Method to start login, returns a user type code to signal the API consumer what method to call next
+        /// </summary>
+        /// <param name="userCredentials"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<UserCode> Login(LoginInfo userCredentials) {
             AccountManager LoginFromBLL = new AccountManager();
@@ -19,7 +24,12 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
-        
+
+        /// <summary>
+        /// API Method to return all profile information to a Student when logging in
+        /// </summary>
+        /// <param name="userCredentials"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<InfoEstudiante> LoginStudent(LoginInfo userCredentials) {
             AccountManager LoginFromBLL = new AccountManager();
@@ -30,7 +40,12 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
-        
+
+        /// <summary>
+        /// API Method to return all profile information to a Professor when logging in
+        /// </summary>
+        /// <param name="userCredentials"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<InfoProfesor> LoginProfessor(LoginInfo userCredentials) {
             AccountManager LoginFromBLL = new AccountManager();
@@ -41,7 +56,12 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
-        
+
+        /// <summary>
+        /// API Method to return all profile information to a Employer when logging in
+        /// </summary>
+        /// <param name="userCredentials"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<InfoEmpleador> LoginEmployer(LoginInfo userCredentials) {
             AccountManager LoginFromBLL = new AccountManager();
@@ -52,7 +72,12 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
-        
+
+        /// <summary>
+        /// API Method to return all profile information to a Administrator when logging in
+        /// </summary>
+        /// <param name="userCredentials"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<InfoAdmin> LoginAdmin(LoginInfo userCredentials) {
             AccountManager LoginFromBLL = new AccountManager();

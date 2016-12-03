@@ -8,6 +8,11 @@ namespace MyLearn.Controllers
 {
     public class NotificationController : ApiController
     {
+        /// <summary>
+        /// API Method that returns a list of notifications to a Student
+        /// </summary>
+        /// <param name="studentID"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<List<string>> GetByStudent(StudentIdentifier studentID)
         {

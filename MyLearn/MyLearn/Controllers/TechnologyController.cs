@@ -9,6 +9,10 @@ namespace MyLearn.Controllers
 {
     public class TechnologyController : ApiController
     {
+        /// <summary>
+        /// API Method that returns all Technologies in the MyLearn Database
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public JsonResult<List<Technology>> GetAll()
         {
@@ -20,6 +24,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to Add a new Technology to the MyLearn Database
+        /// </summary>
+        /// <param name="newTech"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<ReturnCode> Create(NewTechnology newTech)
         {

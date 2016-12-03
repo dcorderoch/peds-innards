@@ -9,6 +9,11 @@ namespace MyLearn.Controllers
 {
     public class SearchController : ApiController
     {
+        /// <summary>
+        /// API Method that returns a number of top students in a Search call to the MyLearn REST API, according to a pre-defined formula provided by X-MP
+        /// </summary>
+        /// <param name="numberOfStudents"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<List<TopStudent>> GetTop(NumberOfTopStudents numberOfStudents)
         {
@@ -20,6 +25,11 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method that returns a number of top students in a Search call to the MyLearn REST API, with custom criteria for the selection of top students
+        /// </summary>
+        /// <param name="customStudents"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult<List<TopStudent>> GetTopSelective(CustomTopStudent customStudents)
         {

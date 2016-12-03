@@ -264,5 +264,28 @@ namespace MyLearn.BLL
                 return resultBids;
             }
         }
+        public AllStudentJobOffer GetJobOffersByStudent(string studentId)
+        {
+            using (var context = new MyLearnContext())
+            {
+                var jobOfferRepo = new JobOfferRepository(context);
+
+                AllStudentJobOffer jobOffers = null;
+                var activejobOffers = jobOfferRepo.GetStudentActiveJobOffers(new Guid(studentId));
+                var inactivejobOffers = jobOfferRepo.GetStudentInactiveJobOffers(new Guid(studentId));
+                if (activejobOffers != null && inactivejobOffers != null)
+                {
+                    var activejobOffersList = mapper.ActiveJobListMap(activejobOffers);
+                    var finishedjobOffersList = mapper.FinishedJobListMap(inactivejobOffers);
+                    jobOffers = new AllStudentJobOffer
+                    {
+                        ActiveJobOffers = activejobOffersList,
+                        FinishedJobOffers = finishedjobOffersList
+                    };
+                }
+                jobOfferRepo.Dispose();
+                return jobOffers;
+            }
+        }
     }
 }
