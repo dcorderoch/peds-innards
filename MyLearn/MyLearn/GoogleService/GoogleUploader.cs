@@ -9,6 +9,7 @@ using Google.Apis.Auth.OAuth2.Responses;
 
 namespace MyLearn.GoogleService
 {
+    // Class that uploads user files to Google Drive.
     public class GoogleUploader
     {
         private string[] _GoogleDriveScopes = { DriveService.Scope.DriveFile };
