@@ -5,8 +5,15 @@ using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
 {
+    /// <summary>
+    /// Class in charge of handling languages within the application.
+    /// </summary>
     public class LanguageManager
     {
+        /// <summary>
+        /// Method that obtains all languages present in MyLearn.
+        /// </summary>
+        /// <returns>List of languages.</returns>
         public List<Language> GetAllLanguages()
         {
             using (var context = new MyLearnContext())
