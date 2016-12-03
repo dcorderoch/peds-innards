@@ -5,8 +5,8 @@
         .module('app')
         .controller('UniCoursesController', UniCoursesController);
 
-    UniCoursesController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService', '$localStorage'];
-    function UniCoursesController($location,  FlashService, $rootScope, CourseService, UserService, $localStorage) {
+    UniCoursesController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService', '$localStorage', 'ProfileCourseService'];
+    function UniCoursesController($location,  FlashService, $rootScope, CourseService, UserService, $localStorage, ProfileCourseService) {
         var vm = this;
 
         initController();
@@ -17,7 +17,7 @@
 
         function initController(){
 
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData();
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
@@ -33,7 +33,7 @@
 
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
-            console.log($localStorage);
+            console.log(ProfileCourseService.GetProfileData());
 
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
@@ -48,23 +48,19 @@
 
         function loadCourses(){
 
-            console.log(vm.userData.UniversityId );
             CourseService.GetAllByUniversity(vm.userData.UniversityId)
 
                 .then(function(response){
 
-                console.log( response );
                 vm.courses = response.data; 
 
             }, function(response){
                 FlashService.Error("No se pudieron traer los cursos de la universidad");
-                console.log("No funcó")
             });
         }
 
         function joinCourse( CourseId ){
 
-            console.log(CourseId)
             var send = {StudentUserId: vm.userData.UserId, CourseId: CourseId}
             CourseService.JoinCourse( send)
                 .then( function(response){
@@ -90,8 +86,6 @@
 
         function disableAccount(){
 
-            console.log(vm.userData.userId);
-            console.log(vm.userData.Active);
 
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
@@ -114,6 +108,8 @@
                         FlashService.Success("Cuenta habilitada");
                         vm.toggleEnable =true;
                         vm.userData.Active = "1";
+                        ProfileCourseService.SetProfileData(vm.userData);
+
                     }
                     else{
                         FlashService.Error("No se pudo habilitar la cuenta");
@@ -128,7 +124,6 @@
                     FlashService.Error("No se pudo deshabilitar la cuenta");
                 }
 
-                console.log("no funcó");
             })
         }
 

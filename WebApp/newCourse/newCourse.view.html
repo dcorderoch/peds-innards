@@ -108,9 +108,9 @@
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
 
-                            <p> <strong>Evaluación: {{evaluation.BadgeDescription}}, 
-                                Porcentaje: {{evaluation.Value}}
-                                </strong>
+                            <p> <strong>Evaluación: </strong>{{evaluation.BadgeDescription}}, 
+                                <strong>Porcentaje: </strong>{{evaluation.Value}}
+                                
 
                                 <button ng-click="vm.removeEval(evaluation)" style="float:right" type="button" class="btn btn-danger btn-sm">
                                     <span class="glyphicon glyphicon-remove"></span> Remover
@@ -124,8 +124,8 @@
 
                 <div >
                     <form ng-submit="vm.newEvaluation()"> 
-                        <input ng-model="vm.nombreEval" class="newCourseAdd" type=text placeholder="Nueva evaluación" name="newCourse" required/>
-                        <input ng-model="vm.porcentaje" class="newCourseAdd2" type=number placeholder="Porcentaje"  name="percentaje" required/>
+                        <input ng-disabled="!vm.toggleEnable" ng-model="vm.nombreEval" class="newCourseAdd" type=text placeholder="Nueva evaluación" name="newCourse" required/>
+                        <input ng-disabled="!vm.toggleEnable" ng-model="vm.porcentaje" class="newCourseAdd2" type=number placeholder="Porcentaje"  name="percentaje" required/>
                         <button ng-disabled="!vm.toggleEnable"  class="btn btn-primary" >Agregar</button>
                     </form>
                 </div> 

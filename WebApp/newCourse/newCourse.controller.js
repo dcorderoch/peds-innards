@@ -5,8 +5,8 @@
         .module('app')
         .controller('NewCourseController', NewCourseController);
 
-    NewCourseController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService', '$localStorage' ];
-    function NewCourseController($location,  FlashService, $rootScope, CourseService, UserService, $localStorage) {
+    NewCourseController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService', '$localStorage', 'ProfileCourseService' ];
+    function NewCourseController($location,  FlashService, $rootScope, CourseService, UserService, $localStorage, ProfileCourseService) {
         var vm = this;
 
         initController();
@@ -17,7 +17,7 @@
 
         function initController(){
 
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData();
             vm.evaluations=[];
 
 
@@ -31,7 +31,7 @@
             }
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto
-            console.log($localStorage);
+
             console.log(vm.userData);
 
 
@@ -69,7 +69,6 @@
                           Group: group, MinGrade: minGrade, ProfUserId: vm.userData.UserId, 
                           UniversityId: vm.userData.UniversityId , Badges: vm.evaluations}
 
-            console.log(enviar);
             CourseService.CreateCourse(enviar)
                 .then( function(response){
 
@@ -103,24 +102,20 @@
 
                 suma+= parseInt(evaluations[i].Value);
                 if (suma>100){ 
-                    console.log(suma);
                     return false;
                 }
             }
             if (suma==100){ 
-                console.log(suma);
                 return true;
             }
             else{
-                console.log(suma);
                 return false;
             }
         }
 
         function disableAccount(){
 
-            console.log(vm.userData.UserId);
-            console.log(vm.userData.Active);
+
 
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
@@ -143,6 +138,8 @@
                         FlashService.Success("Cuenta habilitada");
                         vm.toggleEnable =true;
                         vm.userData.Active = "1";
+                        ProfileCourseService.SetProfileData(vm.userData);
+
                     }
                     else{
                         FlashService.Error("No se pudo habilitar la cuenta");

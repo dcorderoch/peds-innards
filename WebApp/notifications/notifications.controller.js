@@ -16,7 +16,6 @@
 
             getNotifications();
             console.log(vm.notifications);
-            $rootScope.currentCourseData={};
         }
 
 

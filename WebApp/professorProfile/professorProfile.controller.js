@@ -18,7 +18,7 @@
 
         function initController(){
 
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData();
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
@@ -31,7 +31,7 @@
 
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto
-            console.log($localStorage);
+
             console.log(vm.userData);
 
 
@@ -52,7 +52,6 @@
 
                 vm.userData.FinishedCoursesList = response.data.FinishedCourses;
                 vm.userData.ActiveCoursesList = response.data.ActiveCourses;
-                console.log(response);
 
             }, function(response){
                 FlashService.Error("Error al traer los cursos de profesor")
@@ -68,7 +67,6 @@
                 var currentCourseData = response.data;
                 currentCourseData.status = false;
                 currentCourseData.Accepted = course.Accepted;
-                console.log(currentCourseData )
                 ProfileCourseService.SetCourseData(currentCourseData);
 
 
@@ -85,20 +83,17 @@
 
                 var currentCourseData = response.data;
                 currentCourseData.status=true;
-                console.log(currentCourseData )
                 ProfileCourseService.SetCourseData(currentCourseData);
                 $location.path('/courseoverview');    
 
 
             }, function(response){
-                console.log("no sirvio")
             });
         }
 
         function disableAccount(){
 
-            console.log(vm.userData.UserId);
-            console.log(vm.userData.Active);
+
 
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
@@ -121,6 +116,7 @@
                         FlashService.Success("Cuenta habilitada");
                         vm.toggleEnable =true;
                         vm.userData.Active = "1";
+                        ProfileCourseService.SetProfileData(vm.userData);
                     }
                     else{
                         FlashService.Error("No se pudo habilitar la cuenta");
@@ -135,7 +131,6 @@
                     FlashService.Error("No se pudo deshabilitar la cuenta");
                 }
 
-                console.log("no funcó");
             })
         }
 

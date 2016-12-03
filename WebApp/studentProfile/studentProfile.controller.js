@@ -17,7 +17,7 @@
 
         function initController(){
 
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData();
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
@@ -34,7 +34,7 @@
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
 
-
+            console.log(vm.userData);
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -132,6 +132,8 @@
                         FlashService.Success("Cuenta habilitada");
                         vm.toggleEnable =true;
                         vm.userData.Active = "1";
+                        ProfileCourseService.SetProfileData(vm.userData);
+
                     }
                     else{
                         FlashService.Error("No se pudo habilitar la cuenta");

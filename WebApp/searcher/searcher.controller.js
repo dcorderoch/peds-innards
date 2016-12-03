@@ -5,8 +5,8 @@
         .module('app')
         .controller('SearcherController', SearcherController);
 
-    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService', 'UserService', '$localStorage'];
-    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService, UserService, $localStorage) {
+    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService', 'UserService', '$localStorage', 'ProfileCourseService'];
+    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService, UserService, $localStorage, ProfileCourseService) {
         var vm = this;
 
         vm.goOffering = goOffering;
@@ -20,7 +20,10 @@
 
         function initController(){
 
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData();
+
+            console.log(vm.userData);
+
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
@@ -35,7 +38,7 @@
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};   
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
-            
+
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -49,7 +52,6 @@
 
         function search(query,parameter){
 
-            console.log(query +" " +parameter)
             if (parameter === "0" ) {
 
                 JobService.GetByName(query)
@@ -60,7 +62,6 @@
                 },function(response){
 
                     FlashService.Error("Fallo en traer resultados para búsqueda por nombre");
-                    console.log( "no sirvió");
                 });                
             }
 
@@ -69,22 +70,17 @@
                     .then(function(response){
 
                     vm.results = response.data;
-                    console.log(vm.results)
                 },function(response){
 
                     FlashService.Error("Fallo en traer resultados para búsqueda por tecnología");
-                    console.log("no sirvió");
                 });
             }
             else{
-                console.log("No sirvió");
                 FlashService.Error("Escoge un parámetro por el cual buscar")
             }
         }
 
         function goOffering( jobData){
-
-            console.log(jobData);
             SearchOfferingService.SetSearchData(jobData);
             $location.path("/offering");
 
@@ -92,8 +88,7 @@
 
         function disableAccount(){
 
-            console.log(vm.userData.UserId);
-            console.log(vm.userData.Active);
+
 
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
@@ -116,6 +111,8 @@
                         FlashService.Success("Cuenta habilitada");
                         vm.toggleEnable =true;
                         vm.userData.Active = "1";
+                        ProfileCourseService.SetProfileData(vm.userData);
+
                     }
                     else{
                         FlashService.Error("No se pudo habilitar la cuenta");
@@ -130,7 +127,6 @@
                     FlashService.Error("No se pudo deshabilitar la cuenta");
                 }
 
-                console.log("no funcó");
             })
         }
 

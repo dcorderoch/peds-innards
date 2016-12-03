@@ -5,8 +5,8 @@
         .module('app')//El modulo es app, el cual hace referencia 
         .factory('AuthenticationService', AuthenticationService);
 
-    AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$localStorage'];
-    function AuthenticationService($http, $cookieStore, $rootScope, $localStorage) {
+    AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$localStorage',  'ProfileCourseService'];
+    function AuthenticationService($http, $cookieStore, $rootScope, $localStorage, ProfileCourseService) {
         var service = {};
 
         service.Login = Login;
@@ -79,7 +79,7 @@
             $cookieStore.remove('globals');
             $localStorage.$reset();
             $http.defaults.headers.common.Authorization = 'Basic';
-
+            ProfileCourseService.SetProfileData({});   
         }
     }
 

@@ -31,11 +31,9 @@
             RegService.GetLanguages()
                 .then(function (response) {
 
-                console.log(response.data)
                 vm.languages = response.data;
 
             },function(response){
-                console.log("supongo4")
             });
         }       
 
@@ -43,11 +41,9 @@
             RegService.GetTechnologies()
                 .then(function (response) {
 
-                console.log(response.data)
                 vm.technologies = response.data;
 
             },function(response){
-                console.log("supongo1")
             });
         }
 
@@ -55,11 +51,9 @@
             RegService.GetCountries()
                 .then(function (response) {
 
-                console.log(response.data)
                 vm.countries = response.data;
 
             },function(response){
-                console.log("supongo2")
             });
         }
 
@@ -67,10 +61,8 @@
             RegService.GetUniversities()
                 .then(function (response) {
                 vm.universities = response.data;
-                console.log(response.data)
 
             },function(response){
-                console.log("supongo3")
             });
         }
 
@@ -123,7 +115,6 @@
             }
 
             if (!vm.regData.hasOwnProperty("Foto")){
-                console.log(vm.regData.hasOwnProperty("Foto"));
                 vm.regData.Foto =  "";
             }
 
@@ -138,7 +129,6 @@
             //            var pass = vm.regData.Password ;
             //            vm.regData.Password = sha256(vm.regData.Password);
 
-            console.log(vm.regData);
             vm.dataLoading = true;
             UserService.RegisterStudent(vm.regData)
                 .then(function (response) {
@@ -155,11 +145,10 @@
 
                 AuthenticationService.SetCredentials( data.UserId, data.Password, 
                                                      data);    
-                $rootScope.userData= data;
+                ProfileCourseService.SetProfileData(data);
                 $location.path('/studentprofile');    
 
             },function(response){
-                console.log( vm.regData);
                 FlashService.Error("Registro fallido");//errores
                 vm.dataLoading = false;
             });

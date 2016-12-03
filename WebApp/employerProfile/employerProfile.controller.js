@@ -17,7 +17,7 @@
 
         function initController(){
 
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData();
 
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
@@ -124,6 +124,7 @@
                         FlashService.Success("Cuenta habilitada");
                         vm.toggleEnable =true;
                         vm.userData.Active = "1";
+                        ProfileCourseService.SetProfileData(vm.userData)
 
                     }
                     else{

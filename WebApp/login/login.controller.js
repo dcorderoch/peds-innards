@@ -5,8 +5,8 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$location',  'FlashService', 'AuthenticationService', '$rootScope', '$localStorage' ];
-    function LoginController($location,  FlashService, AuthenticationService, $rootScope, $localStorage) {
+    LoginController.$inject = ['$location',  'FlashService', 'AuthenticationService', '$rootScope', '$localStorage', 'ProfileCourseService' ];
+    function LoginController($location,  FlashService, AuthenticationService, $rootScope, $localStorage, ProfileCourseService) {
         var vm = this;
 
         vm.login = login;
@@ -43,9 +43,9 @@
                         var data = response.data;
                         delete data.Foto;
 
-                        AuthenticationService.SetCredentials( data.UserId, data.Password, 
-                                                             data);    
-                        $rootScope.userData= data;
+                        AuthenticationService.SetCredentials( data.UserId, data.Password, data);
+                        
+                        ProfileCourseService.SetProfileData(data);
                         $location.path('/studentprofile');    
 
                     },function(response){
@@ -67,7 +67,7 @@
 
                         AuthenticationService.SetCredentials( data.UserId, data.Password, 
                                                              data);    
-                        $rootScope.userData= data;
+                        ProfileCourseService.SetProfileData(data);
                         $location.path('/professorprofile');    
 
                     },function(response){
@@ -89,7 +89,7 @@
 
                         AuthenticationService.SetCredentials( data.UserId, data.Password, 
                                                              data);    
-                        $rootScope.userData= data;
+                        ProfileCourseService.SetProfileData(data);
                         $location.path('/employerprofile');    
 
                     },function(response){

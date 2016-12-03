@@ -5,8 +5,8 @@
         .module('app')
         .controller('NewProjectController', NewProjectController);
 
-    NewProjectController.$inject = ['$location',  'FlashService' ,'$rootScope', 'RegService', 'JobService', 'UserService', '$localStorage'];
-    function NewProjectController($location,  FlashService, $rootScope, RegService, JobService, UserService, $localStorage) {
+    NewProjectController.$inject = ['$location',  'FlashService' ,'$rootScope', 'RegService', 'JobService', 'UserService', '$localStorage', 'ProfileCourseService'];
+    function NewProjectController($location,  FlashService, $rootScope, RegService, JobService, UserService, $localStorage, ProfileCourseService) {
         var vm = this;
 
         initController();
@@ -20,7 +20,8 @@
 
         function initController(){
 
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData()
+
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
@@ -34,7 +35,6 @@
             loadTechnologies();
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
-            console.log($localStorage);
 
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
@@ -83,7 +83,7 @@
 
                 var result = response.data.ReturnStatus;
                 console.log(result);
-                
+
                 if (result === 2){
 
                     FlashService.Success("Trabajo creado y twiteado", true);
@@ -133,6 +133,8 @@
                         FlashService.Success("Cuenta habilitada");
                         vm.toggleEnable =true;
                         vm.userData.Active = "1";
+                        ProfileCourseService.SeProfileData(vm.userData)
+
                     }
                     else{
                         FlashService.Error("No se pudo habilitar la cuenta");

@@ -26,11 +26,9 @@
             RegService.GetCountries()
                 .then(function (response) {
 
-                console.log(response.data)
                 vm.countries = response.data;
 
             },function(response){
-                console.log("supongo2")
             });
         }
 
@@ -51,7 +49,6 @@
             }
 
             if (!vm.regData.hasOwnProperty("Foto")){
-                console.log(vm.regData.hasOwnProperty("Foto"));
                 vm.regData.Foto =  "";
             }
 
@@ -59,7 +56,6 @@
             vm.regData.Telefono = vm.regData.Telefono.toString();
             vm.dataLoading = true;
 
-            console.log(vm.regData);
 
             UserService.RegisterEmployer(vm.regData)
                 .then(function (response) {
@@ -75,12 +71,12 @@
 
                 AuthenticationService.SetCredentials( data.UserId, data.Password, 
                                                      data);    
-                $rootScope.userData= data;
+                ProfileCourseService.SetProfileData(data);
 
                 $location.path('/employerprofile');    
 
             },function(response){
-                console.log( vm.regData);
+
                 FlashService.Error("Registro fallido");//errores
                 vm.dataLoading = false;
             });
