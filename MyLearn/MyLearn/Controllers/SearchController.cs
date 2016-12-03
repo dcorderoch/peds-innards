@@ -20,9 +20,12 @@ namespace MyLearn.Controllers
             var searchMngr = new SearchManager();
             var preliminar = searchMngr.GetTopStudentsByCountry(numberOfStudents.CountryId, numberOfStudents.NumberOfStudents);
             var retVal = new List<TopStudentResult>();
-            foreach(var student in preliminar)
+            if(preliminar.Count > 0)
             {
-                retVal.Add(new TopStudentResult { Name = student.Name, PhoneNum = student.PhoneNum, Email = student.Email });
+                foreach(var student in preliminar)
+                {
+                    retVal.Add(new TopStudentResult { Name = student.Name, PhoneNum = student.PhoneNum, Email = student.Email });
+                }
             }
             if (retVal == null)
             {
