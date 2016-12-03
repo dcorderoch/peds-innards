@@ -36,6 +36,7 @@
             getAllBadges();
         }
 
+        //gets all the badges of the shared area 
         function getAllBadges(){
 
             var send ={ StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, UniversityId:vm.courseData.UniversityId, 
@@ -153,7 +154,7 @@
         }
 
 
-
+        //assigns a badge to a student, only can do it once for each
         function assignBadge(badgeId){
 
             var send={StudentUserId: vm.courseData.StudentUserId, 
