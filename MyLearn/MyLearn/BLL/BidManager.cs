@@ -7,9 +7,17 @@ using MyLearnDAL.Models;
 using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
-{
+{   
+    /// <summary>
+    /// Class built in order to manage bids within MyLearn Application.
+    /// </summary>
     public class BidManager
     {
+        /// <summary>
+        /// Method in charge of creating a new bid in a working environment.
+        /// </summary>
+        /// <param name="newBid"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode Create(NewBid newBid)
         {
             using (
@@ -39,6 +47,12 @@ namespace MyLearn.BLL
                 return retVal;
             }
         }
+
+        /// <summary>
+        /// Method in charge of updating an existing job offer.
+        /// </summary>
+        /// <param name="newBid"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode Update(NewBid newBid)
         {
             using (var context = new MyLearnContext())
