@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Drive.v3.Data;
 
 namespace MyLearn.GoogleService
 {
@@ -55,6 +56,13 @@ namespace MyLearn.GoogleService
                 var request = this._GDriveService.Files.Create(fbody, File, "");
                 request.Upload();
                 NewFile = request.ResponseBody;
+                {
+                    Permission p = new Permission();
+                    p.Role = "reader";
+                    p.Type = "anyone";
+                    PermissionsResource.CreateRequest cc = new PermissionsResource.CreateRequest(this._GDriveService, p, NewFile.Id);
+                    cc.Execute();
+                }
                 retVal += "https://drive.google.com/file/d/" + NewFile.Id + "/edit?usp=sharing";
             }
             catch (Exception e)
