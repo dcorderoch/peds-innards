@@ -52,13 +52,13 @@
                 console.log(response);
 
                 var userFoto = $localStorage.$default({
-                    Foto : response.data.Foto
+                    Foto2 : response.data.Foto
                 });
 
                 var data = response.data;
                 delete data.Foto;
 
-                ProfileCourseService.SetProfileData(data);
+                ProfileCourseService.SetProfileData2(data);
                 $location.path('/viewprofile'); 
 
             }, function(response){

@@ -5,8 +5,8 @@
         .module('app')
         .controller('SharedAreaController', SharedAreaController);
 
-    SharedAreaController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'ProfileCourseService'];
-    function SharedAreaController($location,  FlashService, $rootScope, CourseService, ProfileCourseService) {
+    SharedAreaController.$inject = ['$location',  'FlashService',  'CourseService', 'ProfileCourseService'];
+    function SharedAreaController($location,  FlashService,  CourseService, ProfileCourseService) {
         var vm = this;
 
         vm.comments = [];

@@ -5,8 +5,8 @@
         .module('app')
         .controller('UniCoursesController', UniCoursesController);
 
-    UniCoursesController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'UserService', '$localStorage', 'ProfileCourseService'];
-    function UniCoursesController($location,  FlashService, $rootScope, CourseService, UserService, $localStorage, ProfileCourseService) {
+    UniCoursesController.$inject = ['$location',  'FlashService', 'CourseService', 'UserService', '$localStorage', 'ProfileCourseService'];
+    function UniCoursesController($location,  FlashService,  CourseService, UserService, $localStorage, ProfileCourseService) {
         var vm = this;
 
         initController();

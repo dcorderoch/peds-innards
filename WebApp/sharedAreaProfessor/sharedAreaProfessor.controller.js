@@ -5,8 +5,8 @@
         .module('app')
         .controller('SharedAreaProfessorController', SharedAreaProfessorController);
 
-    SharedAreaProfessorController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'ProfileCourseService'];
-    function SharedAreaProfessorController( $location,  FlashService, $rootScope, CourseService, ProfileCourseService) {
+    SharedAreaProfessorController.$inject = ['$location',  'FlashService',  'CourseService', 'ProfileCourseService'];
+    function SharedAreaProfessorController( $location,  FlashService,  CourseService, ProfileCourseService) {
         var vm = this;
 
         initController();

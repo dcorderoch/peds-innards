@@ -80,6 +80,7 @@
             $localStorage.$reset();
             $http.defaults.headers.common.Authorization = 'Basic';
             ProfileCourseService.SetProfileData({});   
+            ProfileCourseService.SetProfileData2({});   
         }
     }
 

@@ -5,8 +5,8 @@
         .module('app')
         .controller('ViewProfileController', ViewProfileController);
 
-    ViewProfileController.$inject = ['$location', 'FlashService',  '$rootScope', 'CourseService', 'UserService', 'ProfileCourseService', '$localStorage' ];
-    function ViewProfileController($location, FlashService, $rootScope, CourseService, UserService, ProfileCourseService, $localStorage) {
+    ViewProfileController.$inject = ['$location', 'FlashService',   'CourseService', 'UserService', 'ProfileCourseService', '$localStorage' ];
+    function ViewProfileController($location, FlashService, CourseService, UserService, ProfileCourseService, $localStorage) {
         var vm = this;
 
 
@@ -15,7 +15,7 @@
 
         function initController(){
 
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData2();
             console.log(vm.userData)
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
@@ -31,7 +31,7 @@
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};  
 
 
-            vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
+            vm.photo = "data:image/jpg;base64," + $localStorage.Foto2;
             console.log($localStorage);
 
 

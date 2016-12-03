@@ -5,8 +5,8 @@
         .module('app')
         .controller('WorkProfileController', WorkProfileController);
 
-    WorkProfileController.$inject = ['$location',  'FlashService', '$rootScope','JobService', 'UserService', 'ProfileCourseService', '$localStorage'];
-    function WorkProfileController($location,  FlashService, $rootScope, JobService, UserService, ProfileCourseService, $localStorage) {
+    WorkProfileController.$inject = ['$location',  'FlashService', 'JobService', 'UserService', 'ProfileCourseService', '$localStorage'];
+    function WorkProfileController($location,  FlashService, JobService, UserService, ProfileCourseService, $localStorage) {
         var vm = this;
 
         vm.goWorkActive = goWorkActive;

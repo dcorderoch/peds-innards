@@ -12,6 +12,7 @@
         var courseData;
         var workData;
         var userData;
+        var userData2; 
 
         service.GetCourseData = GetCourseData;
         service.SetCourseData = SetCourseData;
@@ -19,6 +20,8 @@
         service.SetWorkData = SetWorkData;
         service.GetProfileData = GetProfileData;
         service.SetProfileData = SetProfileData;
+        service.SetProfileData2 = SetProfileData2
+        service.GetProfileData2 = GetProfileData2
 
         return service;
 
@@ -34,6 +37,8 @@
             $cookieStore.put('currentCourseData', courseData);
         }
 
+        
+        
         function GetWorkData(){
 
             workData = $cookieStore.get('currentWorkData') || {};
@@ -46,6 +51,8 @@
             $cookieStore.put('currentWorkData',workData) || {}
         }
 
+        
+        
         function SetProfileData(data){
 
             userData = data;
@@ -56,6 +63,21 @@
 
             userData = $cookieStore.get('userData') || {};
             return userData;
+        }
+
+        
+        
+        
+        function SetProfileData2(data){
+
+            userData2 = data;
+            $cookieStore.put('userData2', data);
+        }
+
+        function GetProfileData2(){
+
+            userData2 = $cookieStore.get('userData2') || {};
+            return userData2;
         }
     }
 

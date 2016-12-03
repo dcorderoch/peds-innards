@@ -5,8 +5,8 @@
         .module('app')
         .controller('SharedStudentEmployerController', SharedStudentEmployerController);
 
-    SharedStudentEmployerController.$inject = ['$location','FlashService', '$rootScope',  'JobService', 'ProfileCourseService'];
-    function SharedStudentEmployerController($location,  FlashService, $rootScope, JobService, ProfileCourseService) {
+    SharedStudentEmployerController.$inject = ['$location','FlashService',   'JobService', 'ProfileCourseService'];
+    function SharedStudentEmployerController($location,  FlashService,  JobService, ProfileCourseService) {
         var vm = this;
 
         initController();
