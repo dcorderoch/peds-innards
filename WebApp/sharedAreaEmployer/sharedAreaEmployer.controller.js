@@ -20,7 +20,8 @@
         vm.closeProject = closeProject;
         vm.checkFile = checkFile;
 
-
+        //Gets data from cookies
+        //Gets all comments and precess them
         function initController(){
 
             vm.writeReply= false;
@@ -35,6 +36,7 @@
             processComments();
         }
 
+        //Sends a nested message, specifies a parent, a message and won't have a file
         function sendReply( replyMessage, parentId){
 
             var send={Commenter:"0", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId, 
@@ -51,6 +53,7 @@
             vm.writeReply=false;;
         }
 
+        //tags the comments with their authors
         function processComments(){
 
             var i;
@@ -82,10 +85,12 @@
             }
         }
 
+        //Toggles an input box for reply messages (nested)
         function replyaMessage(commentId){
             vm.writeReply=true;
         }  
 
+        //gets all comments from server
         function getComments (){
             JobService.GetAllComments( vm.workData.JobOfferId)
                 .then( function(response){
@@ -98,6 +103,8 @@
             })
         }
 
+        // sends a comment (not nested) with a file or without a file.
+        // Set the comment input empty if works
         function sendComment( dataUpload ){
 
             if ( typeof dataUpload === "undefined" ){
@@ -133,7 +140,7 @@
         }
 
 
-
+        //closes a project with a reason and qualification
         function closeProject(finishProject,stars,status){
 
             var state = (status=="Exitoso") ? "2" : "3"; 
@@ -155,6 +162,8 @@
                 FlashService.Error("No se pudo cerrar el proyecto")
             })
         }
+
+        //Checks if file is empty
         function checkFile( file){
 
             if (file == ""){

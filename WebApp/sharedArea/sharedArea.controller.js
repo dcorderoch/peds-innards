@@ -17,6 +17,8 @@
         vm.brag = brag;
 
         initController();
+        //Gets data from cookies
+        //Gets all comments and precess them
         function initController(){
 
             vm.writeReply=false;
@@ -39,6 +41,7 @@
             getAllBadges();
         }
 
+        //gets all the badges of the shared area 
         function getAllBadges(){
 
             var send ={ StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, UniversityId:vm.courseData.UniversityId, 
@@ -143,8 +146,10 @@
         }
 
 
+        // sends a comment (not nested) with a file or without a file.
+        // Set the comment input empty if works
         function sendComment(  dataUpload ){
-                
+
             if ( typeof dataUpload === "undefined" ){
                 var send={Commenter:"1", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
                 console.log(send)
@@ -161,7 +166,7 @@
             }
             else{
                 var send={Commenter:"1", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId, FileName: dataUpload.filename, File: dataUpload.base64, RefreshToken: vm.userData.RefreshToken};
-                
+
                 CourseService.CreateWithFile(send)
                     .then(function(response){
 
@@ -175,11 +180,11 @@
             }
         }
 
-
+        //Checks if file is empty
         function checkFile( file){
-            
+
             if (file == "0"){
-                
+
                 return false;
             }
             return true;

@@ -17,6 +17,8 @@
         vm.assignBadge = assignBadge;
         vm.checkFile = checkFile;
 
+        //Gets data from cookies
+        //Gets all comments and precess them
         function initController(){
 
             vm.comments = [];
@@ -50,6 +52,7 @@
         }
 
 
+        //Sends a nested message, specifies a parent, a message and won't have a file
         function sendReply( replyMessage,  commentId){
 
             var send={Commenter:"0", ParentId:commentId, Comment:replyMessage, StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, CourseId: vm.courseData.CourseId};
@@ -66,6 +69,8 @@
             vm.writeReply=false;;
         }
 
+        // sends a comment (not nested) with a file or without a file.
+        // Set the comment input empty if works
         function sendComment(  dataUpload ){
 
             if ( typeof dataUpload === "undefined" ){
@@ -98,6 +103,7 @@
             }
         }
 
+        //tags the comments with their authors
         function processComments(){
 
             var i;
@@ -126,12 +132,13 @@
             }
         }       
 
+        //Toggles an input box for reply messages (nested)
         function replyaMessage(commentId){
-
 
             vm.writeReply=true;
         }
 
+        //loads all the shared area comments from server (nested and not)
         function getComments (){
 
             var send= {StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, CourseId: vm.courseData.CourseId};
@@ -176,6 +183,7 @@
 
         }
 
+        //Checks if file is empty
         function checkFile( file){
 
             if (file == "0"){

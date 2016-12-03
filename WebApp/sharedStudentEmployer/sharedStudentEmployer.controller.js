@@ -20,6 +20,8 @@
         vm.checkFile = checkFile;
 
         initController();
+        //Gets data from cookies
+        //Gets all comments and precess them
         function initController(){
 
             vm.writeReply= false;
@@ -35,11 +37,11 @@
 
         }
 
+        //Sends a nested message, specifies a parent, a message and won't have a file
         function sendReply( replyMessage, parentId){
 
             var send={Commenter:"1", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId, 
                       StudentUserId: vm.userData.UserId, EmployerUserId: vm.workData.EmployerUserId};
-            console.log(send);
             JobService.CommentCreate(send)
                 .then(function(response){
 
@@ -52,6 +54,7 @@
             vm.writeReply=false;;
         }
 
+        //tags the comments with their authors
         function processComments(){
 
             var i;
@@ -83,10 +86,12 @@
             }
         }
 
+        //Toggles an input box for reply messages (nested)
         function replyaMessage(commentId){
             vm.writeReply=true;
         }  
 
+        //loads all the shared area comments from server (nested and not)
         function getComments (){
             JobService.GetAllComments( vm.workData.JobOfferId)
                 .then( function(response){
@@ -99,6 +104,8 @@
             })
         }
 
+        // sends a comment (not nested) with a file or without a file.
+        // Set the comment input empty if works
         function sendComment(  dataUpload ){
 
             if ( typeof dataUpload === "undefined" ){
@@ -133,7 +140,7 @@
             }
         }
 
-
+        //Checks if file is empty
         function checkFile( file){
             console.log(file)
             if (file == ""){

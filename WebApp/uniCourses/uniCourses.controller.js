@@ -63,7 +63,8 @@
             });
         }
 
-        //
+        // Joins a course, only works if it is not finished
+        //does noting else.
         function joinCourse( CourseId ){
 
             var send = {StudentUserId: vm.userData.UserId, CourseId: CourseId}
