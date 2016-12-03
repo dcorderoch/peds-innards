@@ -14,6 +14,12 @@ namespace MyLearn.BLL
     /// </summary>
     public class AccountManager
     {
+        /// <summary>
+        /// Method whose intention is to obtain the user role id.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns>Int value that represents the user's role.</returns>
         public UserCode GetUserTypeCode(string username, string password)
         {
             using (var context = new MyLearnContext())
@@ -36,6 +42,11 @@ namespace MyLearn.BLL
             }
         }
 
+        /// <summary>
+        /// Auxiliary function that obtains a user's id with the username (e-mail) as parameter.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>Guid with user's id.</returns>
         private Guid GetUserId(string username)
         {
             using (var context = new MyLearnContext())
@@ -178,6 +189,12 @@ namespace MyLearn.BLL
             }
         }
 
+        /// <summary>
+        /// Method that signs in a professor in MyLearn. Verifies that user exists and if successful returns to profile page. 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns>Professor information.</returns>
         public InfoProfesor ProfessorLogin(string username, string password)
         {
             using (var context = new MyLearnContext())
@@ -250,6 +267,12 @@ namespace MyLearn.BLL
             }
         }
 
+        /// <summary>
+        /// Method in charge of signing in an employer into MyLearn.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns>Employer information.</returns>
         public InfoEmpleador EmployerLogin(string username, string password)
         {
             using (var context = new MyLearnContext())
@@ -317,7 +340,12 @@ namespace MyLearn.BLL
             }
          
         }
-
+        /// <summary>
+        /// Method intended to log in an administrator into the system.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns>Administrator information.</returns>
         public InfoAdmin AdminLogin(string username, string password)
         {
             var admin = new InfoAdmin
@@ -333,6 +361,11 @@ namespace MyLearn.BLL
             return admin;
         }
 
+        /// <summary>
+        /// Method in charge of disabling or enabling an account.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>Return code whether the operation completed successfully or not.</returns>
         public ReturnCode ToggleAccount(string userId)
         {
             using (var context = new MyLearnContext())
@@ -352,6 +385,11 @@ namespace MyLearn.BLL
             }
         }
 
+        /// <summary>
+        /// Asks if the given student is active. 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>1 if the user is active, 0 if not.</returns>
         public int IsActive(string userId)
         {
             using (var context = new MyLearnContext())
