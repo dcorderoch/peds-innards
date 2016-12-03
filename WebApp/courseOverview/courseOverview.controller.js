@@ -5,8 +5,8 @@
         .module('app')
         .controller('CourseOverviewController', CourseOverviewController);
 
-    CourseOverviewController.$inject = ['$location',  'FlashService', '$rootScope', 'ProfileCourseService', 'CourseService'];
-    function CourseOverviewController($location,  FlashService, $rootScope, ProfileCourseService, CourseService) {
+    CourseOverviewController.$inject = ['$location',  'FlashService', 'ProfileCourseService', 'CourseService'];
+    function CourseOverviewController($location,  FlashService,  ProfileCourseService, CourseService) {
 
         var vm = this;
         vm.goArea = goArea;

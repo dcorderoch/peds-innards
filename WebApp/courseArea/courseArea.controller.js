@@ -5,8 +5,8 @@
         .module('app')
         .controller('CourseAreaController', CourseAreaController);
 
-    CourseAreaController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'ProfileCourseService', 'RegService'];
-    function CourseAreaController($location,  FlashService, $rootScope, CourseService, ProfileCourseService, RegService) {
+    CourseAreaController.$inject = ['$location',  'FlashService', 'CourseService', 'ProfileCourseService', 'RegService'];
+    function CourseAreaController($location,  FlashService,  CourseService, ProfileCourseService, RegService) {
         var vm = this;
 
         vm.suggestProject = suggestProject;

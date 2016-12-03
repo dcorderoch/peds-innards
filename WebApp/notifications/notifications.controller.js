@@ -5,8 +5,8 @@
         .module('app')
         .controller('NotificationsController', NotificationsController);
 
-    NotificationsController.$inject = ['$location',  'FlashService', '$rootScope', 'NotificationsService'];
-    function NotificationsController($location,  FlashService, $rootScope, NotificationsService) {
+    NotificationsController.$inject = ['$location',  'FlashService',  'NotificationsService', 'ProfileCourseService' ];
+    function NotificationsController($location,  FlashService,  NotificationsService, ProfileCourseService ) {
         var vm = this;
 
         vm.notifications=[];
@@ -21,7 +21,7 @@
 
         function getNotifications(){
 
-            var id = $rootScope.userData.UserId;
+            var id = ProfileCourseService.GetProfileData().UserId;
 
             NotificationsService.GetNotifications( id )
                 .then( function(response){

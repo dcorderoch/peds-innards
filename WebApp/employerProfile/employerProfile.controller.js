@@ -5,8 +5,8 @@
         .module('app')
         .controller('EmployerProfileController', EmployerProfileController);
 
-    EmployerProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'JobService', 'UserService', 'ProfileCourseService', '$localStorage'];
-    function EmployerProfileController($location,  FlashService, $rootScope, JobService, UserService, ProfileCourseService, $localStorage) {
+    EmployerProfileController.$inject = ['$location',  'FlashService', 'JobService', 'UserService', 'ProfileCourseService', '$localStorage'];
+    function EmployerProfileController($location,  FlashService, JobService, UserService, ProfileCourseService, $localStorage) {
         var vm = this;
 
         initController();

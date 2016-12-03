@@ -5,8 +5,8 @@
         .module('app')
         .controller('NewProjectController', NewProjectController);
 
-    NewProjectController.$inject = ['$location',  'FlashService' ,'$rootScope', 'RegService', 'JobService', 'UserService', '$localStorage', 'ProfileCourseService'];
-    function NewProjectController($location,  FlashService, $rootScope, RegService, JobService, UserService, $localStorage, ProfileCourseService) {
+    NewProjectController.$inject = ['$location',  'FlashService', 'RegService', 'JobService', 'UserService', '$localStorage', 'ProfileCourseService'];
+    function NewProjectController($location,  FlashService, RegService, JobService, UserService, $localStorage, ProfileCourseService) {
         var vm = this;
 
         initController();
