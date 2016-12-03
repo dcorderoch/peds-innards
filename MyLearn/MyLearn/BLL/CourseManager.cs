@@ -11,6 +11,9 @@ using Course = MyLearn.Models.Course;
 
 namespace MyLearn.BLL
 {
+    /// <summary>
+    /// Class built to manage everything related to courses and academic projects.
+    /// </summary>
     public class CourseManager
     {
         private ModelMapper mapper;
@@ -25,6 +28,11 @@ namespace MyLearn.BLL
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Method in charge of creating a new course.
+        /// </summary>
+        /// <param name="newCourse"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode CreateCourse(NewCourse newCourse)
         {
             using (var context = new MyLearnContext())
@@ -60,7 +68,11 @@ namespace MyLearn.BLL
                 return retVal;
             }
         }
-
+        /// <summary>
+        /// Method that closes the given course.
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode CloseCourse(string courseId)
         {
             using (var context = new MyLearnContext())
@@ -103,7 +115,13 @@ namespace MyLearn.BLL
                 return returnCode;
             }
         }
-
+        /// <summary>
+        /// Auxiliary method that calculates the average grade for a student.
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <param name="totalProjects"></param>
+        /// <param name="currentAverage"></param>
+        /// <returns>Average grade.</returns>
         private decimal CalculateAverage(decimal grade, int totalProjects, decimal currentAverage)
         {
             var val = currentAverage * totalProjects + grade;
@@ -111,6 +129,11 @@ namespace MyLearn.BLL
             return retVal;
         }
 
+        /// <summary>
+        /// Gets a given course for a professor.
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns>Specific course.</returns>
         public Course GetCourseAsProfessor(string courseId)
         {
             using (var context = new MyLearnContext())
@@ -147,7 +170,11 @@ namespace MyLearn.BLL
                 return retCourse;
             }
         }
-
+        /// <summary>
+        /// Obtains specific course according to the credentials given.
+        /// </summary>
+        /// <param name="credentials"></param>
+        /// <returns>Specific course.</returns>
         public SpecificCourse GetSpecificCourse(SharedAreaCredentials credentials)
         {
             using (var context = new MyLearnContext())
@@ -191,6 +218,11 @@ namespace MyLearn.BLL
             }
         }
 
+        /// <summary>
+        /// Obtain a course for a given student.
+        /// </summary>
+        /// <param name="credentials"></param>
+        /// <returns>Course as student.</returns>
         public CourseAsStudent GetCourseAsStudent(CourseAsStudentCredentials credentials)
         {
             using (var context = new MyLearnContext())
@@ -239,6 +271,11 @@ namespace MyLearn.BLL
             }  
         }
 
+        /// <summary>
+        /// Obtains all courses for a given professor.
+        /// </summary>
+        /// <param name="profUserId"></param>
+        /// <returns>All professor's courses.</returns>
         public AllProfessorsCourses GetAllByProfessor(string profUserId)
         {
             using (var context = new MyLearnContext())
@@ -274,6 +311,11 @@ namespace MyLearn.BLL
             }
             
         }
+        /// <summary>
+        /// Obtains all courses for a certain student.
+        /// </summary>
+        /// <param name="studentUserId"></param>
+        /// <returns>All student's courses.</returns>
         public StudentCourses GetAllByStudent(string studentUserId)
         {
             using (var context = new MyLearnContext())
@@ -306,7 +348,11 @@ namespace MyLearn.BLL
                 return allCourses;
             }
         }
-
+        /// <summary>
+        /// Gets all courses offered by a University.
+        /// </summary>
+        /// <param name="universityId"></param>
+        /// <returns>All courses offered by given university.</returns>
         public List<CourseShort> GetAllByUniversity(string universityId)
         {
             using (var context = new MyLearnContext())
@@ -325,6 +371,11 @@ namespace MyLearn.BLL
 
         }
 
+        /// <summary>
+        /// Method in charge of joining a student into a specific course.
+        /// </summary>
+        /// <param name="joiningStudent"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode Join(StudentJoinsCourse joiningStudent)
         {
             using (var context = new MyLearnContext())
@@ -360,6 +411,11 @@ namespace MyLearn.BLL
             }
         }
 
+        /// <summary>
+        /// Method in charge of proposing a new academic project for a specific course.
+        /// </summary>
+        /// <param name="proposal"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode Propose(ProjectProposal proposal)
         {
             using (var context = new MyLearnContext())
