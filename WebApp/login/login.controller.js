@@ -14,6 +14,9 @@
 
         initController();
 
+        // Starts with the controller
+        // Sets rootscope variables to empty
+        // Clears credentials
         function initController(){
             $rootScope.userData = {};
             $rootScope.globals= {};
@@ -22,6 +25,10 @@
             AuthenticationService.ClearCredentials();
         }
 
+        //Login, has 2 checks
+        //first stage verifies if user exist
+        //Second stage gets user specific info depending on his role.
+        //Stores data on cookies and local storage
         function login(){
 
             var loginData = {UserName :vm.loginData.UserName, Password:sha256(vm.loginData.Password) }

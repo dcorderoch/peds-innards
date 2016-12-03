@@ -15,15 +15,18 @@
         vm.studentList = [];
 
         initController();
+
+        // Starts the controller, called at start and refresh
+        // Gets profile and course data 
+        // the course data includes the list of students and details but it's not for a particular student
         function initController(){
 
             vm.courseData =ProfileCourseService.GetCourseData();
             vm.userData = ProfileCourseService.GetProfileData();
-            console.log(vm.courseData);
         }
 
+        // Function to go to a shared area. Gets details from a student like personal info, comments and badges
         function goArea(student){
-
 
             var dataSend = {StudentUserId: student.StudentUserId, ProfUserId: vm.userData.UserId, UniversityId: vm.courseData.UniversityId, 
                             Group: vm.courseData.Group, CourseId: vm.courseData.CourseId}
@@ -45,13 +48,14 @@
                 else{
                     FlashService.Error("Este estudiante no tiene área compartida")
                 }
-                
-                
+
+
             }, function(response){
                 console.log("no sirvió")
             })
         }
 
+        // Function to finiish a course, all projects will be closed and the users will get an updated grade
         function finishCourse(){
 
             CourseService.CloseCourse(vm.courseData.CourseId)

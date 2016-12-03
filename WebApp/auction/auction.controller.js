@@ -10,20 +10,23 @@
         var vm = this;
 
         initController();
-        vm.goArea = goArea;
         vm.goProfile = goProfile;
+        vm.approve = approve;
 
+
+        // Inicializa el controlador, llamado al comienzo y en refresh
+        // Obtiene datos del perfil y del trabajo
         function initController(){
 
             vm.listOfBids=[];
             vm.userData = ProfileCourseService.GetProfileData();
             vm.workData= ProfileCourseService.GetWorkData();
-            vm.approve = approve;
-            console.log(vm.workData);
             getBids();
 
         }
 
+        // Gets all the bids from students
+        // Saves them in vm.listOfBids
         function getBids(){
 
             JobService.GetBidsById(vm.workData.JobOfferId)
@@ -37,12 +40,9 @@
             });
         }
 
-        function goArea(bid){
-            console.log(bid)
-
-        }
-
-
+        // Visits a student profile to know about his projects and work.
+        // Gets his personal data, photo and list of active && inactiva work && projects
+        // That info is stored in differnt cookies and localstorage
         function goProfile(id){
 
             var send= { StudentUserId: id};
@@ -51,7 +51,7 @@
 
                 console.log(response);
 
-                 $localStorage.Foto2 = response.data.Foto
+                $localStorage.Foto2 = response.data.Foto
 
                 var data = response.data;
                 delete data.Foto;
@@ -65,6 +65,8 @@
             });
         }
 
+        // Approves a bid of a particular student.
+        // Assigns the work to that student and redirects to their shared area
         function approve(bid){
 
             var send = {JobOfferId:vm.workData.JobOfferId, StudentUserId:bid.StudentUserId}
@@ -73,7 +75,7 @@
                 .then(function(response){
 
                 if (response.data.ReturnStatus == "1"){ 
-                    
+
                     vm.workData.studentInfo = bid;
                     ProfileCourseService.SetWorkData(vm.workData);
                     FlashService.Success("Subasta ganada por "+ bid.StudentName, true);

@@ -61,10 +61,7 @@
             return response;    
         }
 
-        /**
-        *   
-        *
-        */
+        
         function CreateCourse(data) {
             var response=$http({
                 method:"post",
@@ -74,10 +71,7 @@
             return response;    
         }
 
-        /**
-        *   
-        *
-        */
+        
         function GetComments(sharedAreaData){
             var response = $http({
                 method:"post",

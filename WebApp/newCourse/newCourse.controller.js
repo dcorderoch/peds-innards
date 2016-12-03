@@ -15,11 +15,12 @@
         vm.disableAccount =disableAccount;
         vm.removeEval = removeEval;
 
+        // Called on start, gets data from cookies and localstorage
+        // sets account enabled or disabled with a toggle
         function initController(){
 
             vm.userData = ProfileCourseService.GetProfileData();
             vm.evaluations=[];
-
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
@@ -31,10 +32,7 @@
             }
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto
-
-            console.log(vm.userData);
-
-
+            
             vm.toggleEnable;
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -44,6 +42,7 @@
             }
         }
 
+        // Creates a new evaluation which can be deleted
         function newEvaluation(){
             var value = vm.porcentaje.toString();
             vm.evaluations.push({BadgeDescription:vm.nombreEval,Value: value});
@@ -51,6 +50,8 @@
             vm.porcentaje="";
         }
 
+        
+        //Creates a new course 
         function createCourse(){
 
             if ( !checkEvaluation(vm.evaluations)){
@@ -94,6 +95,7 @@
 
         }
 
+        //Verifies that the evaluation sums exactly 100.
         function checkEvaluation(evaluations){
 
             var suma=0;
@@ -113,9 +115,8 @@
             }
         }
 
+        //Toggles the account, saves changes in cookies
         function disableAccount(){
-
-
 
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
@@ -157,7 +158,8 @@
             })
         }
 
-
+        
+        //deletes an evaluation, from the list of evaluations
         function removeEval(evaluation){
 
             var index = vm.evaluations.indexOf(evaluation);

@@ -15,10 +15,13 @@
         vm.goWorkFinished = goWorkFinished;
         vm.disableAccount =disableAccount;
 
+
+        // Starts the controller, called at start and refresh
+        // Gets profile data from cookies
+        // toggle enables is for enabling/disabling an account
         function initController(){
 
             vm.userData = ProfileCourseService.GetProfileData();
-
 
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
@@ -30,7 +33,6 @@
             }
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto;
-            console.log(vm.userData.UserId);
             var userId = vm.userData.UserId;
 
             vm.toggleEnable;
@@ -43,12 +45,12 @@
             loadWork(userId);
         }
 
+        //Loads all the  user's active and finished work projects.
         function loadWork(userId){
 
             JobService.GetByEmployer(userId)
                 .then(function(response){
 
-                console.log(response);
                 vm.userData.FinishedJobOffersList = response.data.FinishedJobOffers;
                 vm.userData.ActiveJobOffersList = response.data.ActiveJobOffers;
 
@@ -58,6 +60,8 @@
             });
         }
 
+        // Go to a finished shared area (if it has a shared area), otherwise 
+        // will stay in the same place
         function goWorkFinished(id){
 
             JobService.GetById(id)
@@ -73,16 +77,16 @@
                 $location.path('/sharedareaemployer');    
 
             }, function(response){
-                console.log("no sirvio")
             });
         }
 
+        // Go to an active courses, if there is a proposed project, the user
+        //  will go to the shared area, otherwise to the course area. 
         function goWorkActive(id){
 
             JobService.GetById(id)
                 .then(function(response){
 
-                console.log(response)
                 var currentworkData = response.data;
                 currentworkData.JobOfferId = id;
                 currentworkData.status = true;
@@ -94,18 +98,16 @@
                     $location.path('/sharedareaemployer'); 
 
             }, function(response){
-                console.log("no sirvio")
             });
         }
 
+        //  Disables or enables an account, depending on the user state
+        //  stores the state on cookies;
         function disableAccount(){
-
-            console.log(vm.userData.UserId);
-            console.log(vm.userData.Active);
 
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
-                console.log(response)
+
                 if (vm.userData.Active == "1"){
                     if (response.data.ReturnStatus == "1"){ 
 
@@ -140,7 +142,6 @@
                     FlashService.Error("No se pudo deshabilitar la cuenta");
                 }
 
-                console.log("no funcó");
             })
         }
 

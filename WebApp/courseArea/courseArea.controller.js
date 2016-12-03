@@ -14,12 +14,13 @@
         var Tecnologias = [];
         initController();
 
+        // Starts the controller, called at start and refresh
+        // Load the technologies from server
         function initController(){
-
 
             vm.courseData =ProfileCourseService.GetCourseData();
             vm.courseData.Carnet = ProfileCourseService.GetProfileData().Carnet
-            //            vm.courseData.status=true;
+
             vm.gradeWidth = {'width': vm.courseData.Grade+'%'};  
 
             console.log( vm.courseData);
@@ -27,6 +28,7 @@
             loadTechnologies();
         }
 
+        // Loads all the technologies available from the server
         function loadTechnologies(){
             RegService.GetTechnologies()
                 .then(function (response) {
@@ -37,6 +39,8 @@
             });
         }
 
+        // Function to control the technologies checkbox
+        // puts the result in the Tecnologias list
         vm.toggleSelectionTech = function toggleSelectionTech(technology) {
             var idx = Tecnologias.indexOf(technology.TechnologyId);
 
@@ -51,8 +55,9 @@
             }
         };
 
+        // Function to suggest a project, if succcessful, the student will be
+        // redirected to the student profile
         function suggestProject(name,dateStart,dateEnd,description,additional){
-
 
             if (additional !=="" ){
                 var array = additional.split(',');
