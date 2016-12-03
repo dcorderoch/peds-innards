@@ -6,8 +6,16 @@ using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
 {
+    /// <summary>
+    /// Class built in order to handle a student's notifications.
+    /// </summary>
     public class NotificationManager
     {
+        /// <summary>
+        /// Gets all notifications for the given student.
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns>List of notifications for given students.</returns>
         public List<string> GetStudentNotifications(string studentId)
         {
             List<string> notificationList = new List<string>();
@@ -31,7 +39,12 @@ namespace MyLearn.BLL
             return notificationList;
 
         }
-
+        /// <summary>
+        /// Creates a new notification for a student and given job offer.
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <param name="jobOfferName"></param>
+        /// <returns>Notification indicating that a student won a job offer.</returns>
         public Notification CreateNotification(string studentId, string jobOfferName)
         {
             var newNotification = new Notification
