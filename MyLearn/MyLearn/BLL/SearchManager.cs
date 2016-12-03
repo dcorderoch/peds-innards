@@ -22,7 +22,7 @@ namespace MyLearn.BLL
                 var studentRepo = new StudentRepository(context);
                 var retStudents = studentRepo.getStudentsByCountryId(Guid.Parse(countryId));
                 var topStudents = retStudents.Select(student => new TopStudent() {Name = student.Name, Email = student.Email, PhoneNum = student.PhoneNum,
-                    PlaceInSearch = getStudentIndexByCountry(0.3, 0.3, 0.3, 0.1, student)}).OrderBy(s => s.PlaceInSearch).Take(numberOfStudents).ToList();
+                    PlaceInSearch = getStudentIndexByCountry(0.3, 0.3, 0.3, 0.1, student)}).OrderByDescending(s => s.PlaceInSearch).Take(numberOfStudents).ToList();
                 return topStudents;
             }
         }
@@ -50,7 +50,7 @@ namespace MyLearn.BLL
                     Email = student.Email,
                     PhoneNum = student.PhoneNum,
                     PlaceInSearch = getStudentIndexByCountry(projectAvgWeight,courseAvgWeight,projectSuccessRateWeight,courseSuccessRateWeight, student)
-                }).OrderBy(s => s.PlaceInSearch).Take(numberOfStudents).ToList();
+                }).OrderByDescending(s => s.PlaceInSearch).Take(numberOfStudents).ToList();
                 return topStudents;
             }
         }
