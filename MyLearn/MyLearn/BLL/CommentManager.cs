@@ -9,8 +9,16 @@ using MyLearn.GoogleService;
 
 namespace MyLearn.BLL
 {
+    /// <summary>
+    /// Class built in order to manage all comments in an academic environment.
+    /// </summary>
     public class CommentManager
     {
+        /// <summary>
+        /// Method that obtains all comments associated with a specific academic project.
+        /// </summary>
+        /// <param name="commentInfo"></param>
+        /// <returns>List of comments.</returns>
         public List<Comment> GetAllComments(CommentInfo commentInfo)
         {
             using (var context = new MyLearnContext())
@@ -37,6 +45,11 @@ namespace MyLearn.BLL
 
         }
 
+        /// <summary>
+        /// Method that creates a comment with a file associated.
+        /// </summary>
+        /// <param name="newComment"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode CreateCommentWithFile(NewCommentWithFile newComment)
         {
             var link = "";
@@ -60,6 +73,13 @@ namespace MyLearn.BLL
                 },link);
             return returncode;
         }
+
+        /// <summary>
+        /// Method in charge of sharing a comment in the academic working area.
+        /// </summary>
+        /// <param name="newComment"></param>
+        /// <param name="Link"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode CreateComment(NewComment newComment, string Link)
         {
             using (var context = new MyLearnContext())
@@ -88,7 +108,11 @@ namespace MyLearn.BLL
                 return success;
             }
         }
-
+        /// <summary>
+        /// Auxiliary method that determines if the given user is a student.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>1 if user is a student, 0 if not.</returns>
         private int IsStudent(Guid userId)
         {
             using (var context = new MyLearnContext())
@@ -104,6 +128,11 @@ namespace MyLearn.BLL
             }
         }
 
+        /// <summary>
+        /// Method that obtains nested comments from a list of project comments.
+        /// </summary>
+        /// <param name="projectComments"></param>
+        /// <returns>List of nested comments.</returns>
         private List<List<Comment>> ObtainNestedComments(List<MyLearnDAL.Models.ProjectComment> projectComments) {
             List<List<Comment>> resultComments = new List<List<Comment>>();
             List<Comment> parentComments = new List<Comment>();
