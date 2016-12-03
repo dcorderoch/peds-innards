@@ -8,11 +8,9 @@ using System.Security.Cryptography;
 
 namespace MyLearn.TwitterPoster
 {
+    // Class that builds the requests to the Twitter API
     public class RequestBuilder
     {
-        private const string VERSION = "1.0";
-        private const string SIGNATURE_METHOD = "HMAC-SHA1";
-
         private readonly OAuthInfo oauth;
         private readonly string method;
         private readonly IDictionary<string, string> customParameters;
@@ -125,10 +123,10 @@ namespace MyLearn.TwitterPoster
 
         private void AddOAuthParameters(IDictionary<string, string> parameters, string timestamp, string nonce)
         {
-            parameters.Add("oauth_version", VERSION);
+            parameters.Add("oauth_version", Constants.VERSION);
             parameters.Add("oauth_consumer_key", oauth.ConsumerKey);
             parameters.Add("oauth_nonce", nonce);
-            parameters.Add("oauth_signature_method", SIGNATURE_METHOD);
+            parameters.Add("oauth_signature_method", Constants.SIGNATURE_METHOD);
             parameters.Add("oauth_timestamp", timestamp);
             parameters.Add("oauth_token", oauth.AccessToken);
         }

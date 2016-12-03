@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace MyLearn.TwitterPoster
 {
+    // Helper class to encode URLs and other text used in Web communication protocols.
     public static class WebRequestTextEncoder
     {
         public static string EncodeRFC3986(this string value)

@@ -1,5 +1,6 @@
 ﻿namespace MyLearn.TwitterPoster
 {
+    // Class/Model that contains Oauth2 authentication information for Twitter Requests
     public class OAuthInfo
     {
         public string ConsumerKey { get; set; }
