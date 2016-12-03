@@ -141,5 +141,21 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        /// <summary>
+        /// API Method to get a student's partial grade of a course
+        /// </summary>
+        /// <param name="studentCredentials"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult<PartialGrade> GetGrade(StudentAndCourse stAndCourse)
+        {
+            var courMngr = new CourseManager();
+            var retVal = courMngr.GetStudentGrade(stAndCourse);
+            if (retVal == null)
+            {
+                retVal = new StudentCourses();
+            }
+            return Json(retVal);
+        }
     }
 }

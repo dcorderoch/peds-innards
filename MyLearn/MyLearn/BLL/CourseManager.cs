@@ -370,6 +370,24 @@ namespace MyLearn.BLL
             }
 
         }
+        /// <summary>
+        /// Gets all courses offered by a University.
+        /// </summary>
+        /// <param name="universityId"></param>
+        /// <returns>All courses offered by given university.</returns>
+        public PartialGrade GetStudentGrade(StudentAndCourse stAndCOurse)
+        {
+            using (var context = new MyLearnContext())
+            {
+                var courseRepo = new CourseRepository(context);
+                var projRepo = new ProjectRepository(context);
+                var project = projRepo.GetProjectByStudentAndCourseId(Guid.Parse(stAndCOurse.StudentUserId), Guid.Parse(stAndCOurse.CourseId));
+
+                var retVal = new PartialGrade() { Grade = project.Score.ToString() };
+                return retVal;
+            }
+
+        }
 
         /// <summary>
         /// Method in charge of joining a student into a specific course.
