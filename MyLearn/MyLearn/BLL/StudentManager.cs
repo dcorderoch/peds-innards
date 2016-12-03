@@ -8,6 +8,9 @@ using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
 {
+    /// <summary>
+    /// Class built in order to manage the student profile.
+    /// </summary>
     public class StudentManager
     {
         private ModelMapper mapper;
@@ -17,6 +20,11 @@ namespace MyLearn.BLL
             mapper = new ModelMapper();
         }
 
+        /// <summary>
+        /// Obtains a student's id for an employer's point of view.
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
         public StudentProfileAsEmployer GetProfile(StudentIdentifier studentId)
         {
             using (var context = new MyLearnContext())
