@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="form-group" ng-class="{ 'has-error': form.telephone.$dirty && form.telephone.$error.required }">
-                            <input placeholder ="Teléfono" type="number" name="telephone" class="form-control" ng-model="vm.regData.Telefono" required />
+                            <input placeholder ="Teléfono" type=number name="telephone" class="form-control" ng-model="vm.regData.Telefono" required />
                             <span ng-show="form.telephone.$dirty && form.telephone.$error.required" class="help-block">El teléfono es requerido</span>
                         </div>
 
