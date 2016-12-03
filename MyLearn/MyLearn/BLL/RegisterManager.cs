@@ -7,8 +7,16 @@ using MyLearn.GoogleService;
 
 namespace MyLearn.BLL
 {
+    /// <summary>
+    /// Class built in order to register students, professors and employers.
+    /// </summary>
     public class RegisterManager
     {
+        /// <summary>
+        /// Method in charge of registering a new student in MyLearn.
+        /// </summary>
+        /// <param name="newStudent"></param>
+        /// <returns>Student information if registered successfully.</returns>
         public InfoEstudiante StudentRegister(RegisterEstudianteInfo newStudent)
         {
             var accountSession = new AccountManager();
@@ -16,7 +24,11 @@ namespace MyLearn.BLL
             var retStudent = accountSession.StudentLogin(newStudent.Email, newStudent.Password);
             return retStudent;
          }
-
+        /// <summary>
+        /// Handles the professor register in MyLearn.
+        /// </summary>
+        /// <param name="newProfessor"></param>
+        /// <returns>Professor's information.</returns>
         public InfoProfesor ProfessorRegister(RegisterProfessorInfo newProfessor)
         {
             var accountSession = new AccountManager();
@@ -25,7 +37,11 @@ namespace MyLearn.BLL
             return retProfessor;
 
         }
-
+        /// <summary>
+        /// Registers given employer in MyLearn.
+        /// </summary>
+        /// <param name="newEmployer"></param>
+        /// <returns>Employer's information.</returns>
         public InfoEmpleador EmployerRegister(RegisterEmployerInfo newEmployer)
         {
             var accountSession = new AccountManager();
@@ -34,7 +50,10 @@ namespace MyLearn.BLL
             return retEmployer;
 
         }
-
+        /// <summary>
+        /// Auxiliary method that adds new student to database.
+        /// </summary>
+        /// <param name="newStudent"></param>
         private void AddStudentToDB(RegisterEstudianteInfo newStudent)
         {
             using (MyLearnContext context = new MyLearnContext())
@@ -90,7 +109,10 @@ namespace MyLearn.BLL
                 langRepo.Dispose();
             }
         }
-
+        /// <summary>
+        /// Adds a new professor to database.
+        /// </summary>
+        /// <param name="newProfessor"></param>
         private void AddProfessorToDB(RegisterProfessorInfo newProfessor)
         {
             using (var context = new MyLearnContext())
@@ -133,7 +155,10 @@ namespace MyLearn.BLL
                 universityRepo.Dispose();
             }
         }
-
+        /// <summary>
+        /// Adds a new employer to database.
+        /// </summary>
+        /// <param name="newEmployer"></param>
         private void AddEmployerToDB(RegisterEmployerInfo newEmployer)
         {
             using (var context = new MyLearnContext())
@@ -170,13 +195,3 @@ namespace MyLearn.BLL
         }
     }
 }
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
