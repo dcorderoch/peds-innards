@@ -13,8 +13,16 @@ namespace MyLearn.BLL
 {
     public class BadgeManager
     {
+        /// <summary>
+        /// Class created with the intention of handling the use of badges in MyLearn platform.
+        /// </summary>
         private ModelMapper mapper = new ModelMapper();
 
+        /// <summary>
+        /// Gives a badge according to the input information to a certain project.
+        /// </summary>
+        /// <param name="newBadge"></param>
+        /// <returns>Return code indicating whether it was successful or not.</returns>
         public ReturnCode GiveBadge(NewBadge newBadge)
         {
             using (var context = new MyLearnContext())
@@ -53,6 +61,11 @@ namespace MyLearn.BLL
             }
         }
 
+        /// <summary>
+        /// Obtains a list of all badges awarded to a student in a specific course.
+        /// </summary>
+        /// <param name="credentials"></param>
+        /// <returns>List of badges.</returns>
         public List<Models.Badge> GetAll(SharedAreaCredentials credentials)
         {
             using (var context = new MyLearnContext())
@@ -96,6 +109,11 @@ namespace MyLearn.BLL
             }
         }
 
+        /// <summary>
+        /// Method in charge of posting a twit in Twitter after a badge has been awarded.
+        /// </summary>
+        /// <param name="badgeId"></param>
+        /// <returns>Return code indicating if operation was successful.</returns>
         public ReturnCode Brag(BadgeIdentifier badgeId)
         {
             using (var context = new MyLearnContext())
