@@ -10,8 +10,16 @@ using JobOfferComment = MyLearn.Models.JobOfferComment;
 
 namespace MyLearn.BLL
 {
+    /// <summary>
+    /// Class built in order to handle job shared area comments.
+    /// </summary>
     public class JobCommentManager
     {
+        /// <summary>
+        /// Method that gets all comments for a job offer.
+        /// </summary>
+        /// <param name="jobOfferId"></param>
+        /// <returns>List of comments.</returns>
         public List<JobOfferComment> GetAllComments(string jobOfferId)
         {
             using (var context = new MyLearnContext())
@@ -39,6 +47,11 @@ namespace MyLearn.BLL
             }
         }
 
+        /// <summary>
+        /// Method in charge of publishing a comment with an associated file.
+        /// </summary>
+        /// <param name="newComment"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode CreateCommentWithFile(NewJobCommentWithFile newComment)
         {
             var link = "";
@@ -65,6 +78,12 @@ namespace MyLearn.BLL
             return returncode;
         }
 
+        /// <summary>
+        /// Method that creates a new comment in the job offer shared area.
+        /// </summary>
+        /// <param name="newJobComment"></param>
+        /// <param name="link"></param>
+        /// <returns></returns>
         public ReturnCode CreateComment(NewJobComment newJobComment, string link)
         {
             using (var context = new MyLearnContext())
@@ -101,7 +120,11 @@ namespace MyLearn.BLL
                 return success;
             }
         }
-
+        /// <summary>
+        /// Auxiliary method that indicates whether or not the user given is a student.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>1 if student, 0 if not.</returns>
         private int IsStudent(Guid userId)
         {
             using (var context = new MyLearnContext())
@@ -116,7 +139,11 @@ namespace MyLearn.BLL
                 return retVal;
             }
         }
-
+        /// <summary>
+        /// Obtains nested comments for a specific project.
+        /// </summary>
+        /// <param name="projectComments"></param>
+        /// <returns></returns>
         private List<List<JobOfferComment>> ObtainNestedComments(List<MyLearnDAL.Models.JobOfferComment> projectComments)
         {
             List<List<JobOfferComment>> resultComments = new List<List<JobOfferComment>>();
