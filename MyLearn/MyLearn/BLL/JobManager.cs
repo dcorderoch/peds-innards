@@ -13,6 +13,9 @@ using JobOffer = MyLearn.Models.JobOffer;
 
 namespace MyLearn.BLL
 {
+    /// <summary>
+    /// Class in charge of managing the job offers in MyLearn.
+    /// </summary>
     public class JobManager
     {
         private ModelMapper mapper;
@@ -22,6 +25,11 @@ namespace MyLearn.BLL
         mapper= new ModelMapper();    
         }
 
+        /// <summary>
+        /// Method that creates a new job offer by an employer.
+        /// </summary>
+        /// <param name="newOffer"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode CreateJobOffer(NewJobOffer newOffer)
         {
             using (var context = new MyLearnContext())
@@ -68,6 +76,11 @@ namespace MyLearn.BLL
             }    
         }
 
+        /// <summary>
+        /// Assigns a job offer to a winner student.
+        /// </summary>
+        /// <param name="jobOffer"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode Assign(AssignJobOffer jobOffer)
         {
             using (var context = new MyLearnContext())
@@ -105,7 +118,11 @@ namespace MyLearn.BLL
                 return success;
             }
         }
-
+        /// <summary>
+        /// Closes job offer.
+        /// </summary>
+        /// <param name="closeJobOffer"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode CloseJobOffer(CloseJobOffer closeJobOffer)
         {
             using (var context = new MyLearnContext())
@@ -157,19 +174,33 @@ namespace MyLearn.BLL
                 return retVal;
             }
         }
-
+        /// <summary>
+        /// Auxiliary function that computes the grade given from stars to percent.
+        /// </summary>
+        /// <param name="stars"></param>
+        /// <returns></returns>
         private int ObtainGrade(int stars)
         {
             return 20*stars;
         }
-
+        /// <summary>
+        /// Auxiliary method that calculates the average of projects for a student.
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <param name="totalProjects"></param>
+        /// <param name="currentAverage"></param>
+        /// <returns>Average grade for a student.</returns>
         private decimal CalculateAverage(int grade, int totalProjects, decimal currentAverage)
         {
             var val = currentAverage*totalProjects + grade;
             var retVal = val/(totalProjects + 1); 
             return retVal;
         }
-
+        /// <summary>
+        /// Obtains all job offers for the given employer.
+        /// </summary>
+        /// <param name="employerId"></param>
+        /// <returns>List of job offers.</returns>
         public AllJobOffersByEmployer GetJobOffersByEmployer(string employerId)
         {
             using (var context = new MyLearnContext())
@@ -192,7 +223,11 @@ namespace MyLearn.BLL
                 return jobOffers;
             }
         }
-
+        /// <summary>
+        /// Get specific job offer from given id.
+        /// </summary>
+        /// <param name="jobOfferId"></param>
+        /// <returns>Specific job offer.</returns>
         public JobOffer GetJobOffer(string jobOfferId)
         {
             using (var context = new MyLearnContext())
@@ -218,7 +253,11 @@ namespace MyLearn.BLL
                 return resultOffer;
             }
         }
-
+        /// <summary>
+        /// Obtains a list of job offers by a given technology.
+        /// </summary>
+        /// <param name="technology"></param>
+        /// <returns></returns>
         public List<JobOffer> GetJobOffersByTechnology(string technology)
         {
             using (var context = new MyLearnContext())
@@ -238,7 +277,11 @@ namespace MyLearn.BLL
                 return resJob;
             }
         }
-
+        /// <summary>
+        /// Obtains all job offers by title.
+        /// </summary>
+        /// <param name="jobOfferTitle"></param>
+        /// <returns>List of job offers that match with given title.</returns>
         public List<JobOffer> GetJobOffersByName(string jobOfferTitle)
         {
             using (var context = new MyLearnContext())
@@ -252,7 +295,11 @@ namespace MyLearn.BLL
                 return resJob;
             }
         }
-
+        /// <summary>
+        /// Obtains bids by job offer.
+        /// </summary>
+        /// <param name="jobOfferId"></param>
+        /// <returns></returns>
         public List<JobOfferBid> GetBidsById(string jobOfferId)
         {
             using (var context = new MyLearnContext())
@@ -264,6 +311,11 @@ namespace MyLearn.BLL
                 return resultBids;
             }
         }
+        /// <summary>
+        /// Gets all job offers a student has or has had. 
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns>All student's job offers.</returns>
         public AllStudentJobOffer GetJobOffersByStudent(string studentId)
         {
             using (var context = new MyLearnContext())
