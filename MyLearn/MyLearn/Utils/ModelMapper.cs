@@ -11,8 +11,16 @@ using JobOffer = MyLearnDAL.Models.JobOffer;
 
 namespace MyLearn.Utils
 {
+    /// <summary>
+    /// Class built in order to map Models in the API to the DAL Models or vice versa. 
+    /// </summary>
     public class ModelMapper
     {
+        /// <summary>
+        /// Maps a list of dal's active courses to api's active courses.
+        /// </summary>
+        /// <param name="activeCourses"></param>
+        /// <returns></returns>
         public List<ActiveCourse> ActiveCourseListMap(List<MyLearnDAL.Models.Course> activeCourses)
         {
             List<ActiveCourse> resultList = new List<ActiveCourse>();
@@ -31,7 +39,11 @@ namespace MyLearn.Utils
 
             return resultList;
         }
-
+        /// <summary>
+        /// Maps dal's finished courses to api's finished courses.
+        /// </summary>
+        /// <param name="finishedCourses"></param>
+        /// <returns></returns>
         public List<FinishedCourse> FinishedCourseListMap(List<MyLearnDAL.Models.Course> finishedCourses)
         {
             List<FinishedCourse> resultList = new List<FinishedCourse>();
@@ -50,6 +62,11 @@ namespace MyLearn.Utils
             return resultList;
         }
 
+        /// <summary>
+        /// Maps active job offers from dal's to api's model.
+        /// </summary>
+        /// <param name="activeJobOffers"></param>
+        /// <returns></returns>
         public List<ActiveJobOffer> ActiveJobListMap(List<MyLearnDAL.Models.JobOffer> activeJobOffers)
         {
             List<ActiveJobOffer> resultList = new List<ActiveJobOffer>();
@@ -68,6 +85,11 @@ namespace MyLearn.Utils
             return resultList;
         }
 
+        /// <summary>
+        /// Maps finished jobs from dal's to api's model.
+        /// </summary>
+        /// <param name="finishedJobOffers"></param>
+        /// <returns></returns>
         public List<FinishedJobOffer> FinishedJobListMap(List<MyLearnDAL.Models.JobOffer> finishedJobOffers)
         {
             List<FinishedJobOffer> resultList = new List<FinishedJobOffer>();
@@ -85,7 +107,11 @@ namespace MyLearn.Utils
             }
             return resultList;
         }
-
+        /// <summary>
+        /// Maps dal's courses to course short model in api.
+        /// </summary>
+        /// <param name="courses"></param>
+        /// <returns></returns>
         public List<CourseShort> CourseShortListMap(List<MyLearnDAL.Models.Course> courses)
         {
             List<CourseShort> resultList = new List<CourseShort>();
@@ -103,7 +129,11 @@ namespace MyLearn.Utils
             }
             return resultList;
         }
-
+        /// <summary>
+        /// Maps badges from dal's to api's model.
+        /// </summary>
+        /// <param name="listOfBadges"></param>
+        /// <returns></returns>
         public List<Badge> BadgeListMap(List<MyLearnDAL.Models.Badge> listOfBadges)
         {
             List<Badge> resultList = new List<Badge>();
@@ -122,7 +152,12 @@ namespace MyLearn.Utils
             }
             return resultList;
         }
-
+        /// <summary>
+        /// Maps a badge to achievement.
+        /// </summary>
+        /// <param name="badges"></param>
+        /// <param name="course"></param>
+        /// <returns>List of achievements.</returns>
         public List<Achievement> BadgeToAchievementListMap(List<Badge> badges, MyLearnDAL.Models.Course course)
         {
             var achievements = new List<Achievement>();
@@ -141,6 +176,11 @@ namespace MyLearn.Utils
             return achievements;
         }
 
+        /// <summary>
+        /// Maps a list of students to a list of students in course.
+        /// </summary>
+        /// <param name="listOfStudents"></param>
+        /// <returns></returns>
         public List<StudentInCourse> StudentInCourseMap(List<Student> listOfStudents)
         {
             List<StudentInCourse> resultList = new List<StudentInCourse>();
@@ -157,6 +197,11 @@ namespace MyLearn.Utils
             return resultList;
         }
 
+        /// <summary>
+        /// Maps technology object to string.
+        /// </summary>
+        /// <param name="technologies"></param>
+        /// <returns></returns>
         public List<string> TechnologiesToString(List<MyLearnDAL.Models.Technology> technologies)
         {
             var resultList = new List<string>();
@@ -168,6 +213,11 @@ namespace MyLearn.Utils
             return resultList;
         }
 
+        /// <summary>
+        /// Maps language object to string.
+        /// </summary>
+        /// <param name="languages"></param>
+        /// <returns></returns>
         public List<string> LanguagesToString(List<MyLearnDAL.Models.Language> languages)
         {
             var resultList = new List<string>();
@@ -179,6 +229,11 @@ namespace MyLearn.Utils
             return resultList;
         }
 
+        /// <summary>
+        ///Maps bid list to job offer bid list.
+        /// </summary>
+        /// <param name="bidList"></param>
+        /// <returns></returns>
         public List<JobOfferBid> JobOfferBidMap(List<MyLearnDAL.Models.Bid> bidList)
         {
             List<JobOfferBid> result = new List<JobOfferBid>();
@@ -197,7 +252,11 @@ namespace MyLearn.Utils
             }
             return result;
         }
-
+        /// <summary>
+        /// Maps a job offer from dal's model to api's.
+        /// </summary>
+        /// <param name="jobOffers"></param>
+        /// <returns></returns>
         public List<Models.JobOffer> JobOfferMap(List<JobOffer> jobOffers)
         {
             var result = new List<Models.JobOffer>();
