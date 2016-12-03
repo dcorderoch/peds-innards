@@ -48,6 +48,8 @@
             loadCourses();
         }
 
+        //loads all the university courses
+        // marks the finished courses as unable to join.
         function loadCourses(){
 
             CourseService.GetAllByUniversity(vm.userData.UniversityId)
@@ -61,6 +63,7 @@
             });
         }
 
+        //
         function joinCourse( CourseId ){
 
             var send = {StudentUserId: vm.userData.UserId, CourseId: CourseId}

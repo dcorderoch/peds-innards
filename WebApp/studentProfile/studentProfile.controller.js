@@ -49,6 +49,8 @@
         }
 
 
+        //loads all the students courses from server
+        //activa and finished
         function loadCourses(){
 
             CourseService.GetAllByStudent(vm.userData.UserId)
@@ -62,6 +64,8 @@
             });
         }
 
+        // Goes to a finished course, sets data in cookies
+        // verifies the status (having or not a project)
         function goCourseFinished(id, status){
 
 
@@ -86,6 +90,8 @@
             });
         }
 
+        // Goes to a finished course, sets data in cookies
+        // verifies the status (having or not a project)
         function goCourseActive(id, status){
 
             var send= {StudentUserId: vm.userData.UserId, CourseId: id}
