@@ -12,7 +12,8 @@ namespace MyLearn.BLL
     {
         public ReturnCode Create(NewBid newBid)
         {
-            using (var context = new MyLearnContext())
+            using (
+                var context = new MyLearnContext())
             {
                 var retVal = new ReturnCode();
                 var bidRepo = new BidRepository(context);
