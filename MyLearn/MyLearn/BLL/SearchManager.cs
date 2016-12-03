@@ -1,42 +1,86 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using MyLearn.Models;
+using MyLearnDAL;
+using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
 {
     public class SearchManager
     {
-        public List<TopStudent> GetTopStudents(int numberOfStudents)
+        /// <summary>
+        /// Get top list of students for the default criteria
+        /// </summary>
+        /// <param name="countryId"></param>
+        /// <param name="numberOfStudents"></param>
+        /// <returns></returns>
+        public List<TopStudent> GetTopStudentsByCountry(string countryId, int numberOfStudents)
         {
-            List<TopStudent> topStudents = new List<TopStudent>();
-            for (int i = 0; i < numberOfStudents; i++)
+            using (var context = new MyLearnContext())
             {
-               TopStudent topStudent = new TopStudent();
-                /*topStudent.Name = student.Name;
-                topStudent.Email = student.Email;
-                topStudent.PhoneNum = student.PhoneNum;*/
-                topStudents.Add(topStudent);
+                var studentRepo = new StudentRepository(context);
+                var retStudents = studentRepo.getStudentsByCountryId(Guid.Parse(countryId));
+                var topStudents = retStudents.Select(student => new TopStudent() {Name = student.Name, Email = student.Email, PhoneNum = student.PhoneNum,
+                    index = getStudentIndexByCountry(0.3, 0.3, 0.3, 0.1, student)}).OrderBy(s => s.index).Take(numberOfStudents).ToList();
+                return topStudents;
             }
-            return topStudents;
         }
         
-        public List<TopStudent> GetTopStudentsByCriteria(int numberOfStudents, int courseAvgWeight, 
+        /// <summary>
+        /// Get top list of students for the given criteria
+        /// </summary>
+        /// <param name="countryId"></param>
+        /// <param name="numberOfStudents"></param>
+        /// <param name="courseAvgWeight"></param>
+        /// <param name="courseSuccessRateWeight"></param>
+        /// <param name="projectAvgWeight"></param>
+        /// <param name="projectSuccessRateWeight"></param>
+        /// <returns></returns>
+        public List<TopStudent> GetCustomTopStudentsByCountry(string countryId,int numberOfStudents, int courseAvgWeight, 
             int courseSuccessRateWeight, int projectAvgWeight, int projectSuccessRateWeight)
         {
-            List<TopStudent> topStudents = new List<TopStudent>();
-            for (int i = 0; i < numberOfStudents; i++)
+            using (var context = new MyLearnContext())
             {
-                /*if(student.courseSuccessRateWeight >= courseSuccessRateWeight && 
-                    student.projectAvgWeight >= projectAvgWeight && 
-                    student.projectSuccessRateWeight >= projectSuccessRateWeight) { */
-                TopStudent topStudent = new TopStudent();
-                    /*topStudent.Name = student.Name;
-                    topStudent.Email = student.Email;
-                    topStudent.PhoneNum = student.PhoneNum;*/
-                    topStudents.Add(topStudent);
-                //}
-                
+                var studentRepo = new StudentRepository(context);
+                var retStudents = studentRepo.getStudentsByCountryId(Guid.Parse(countryId));
+                var topStudents = retStudents.Select(student => new TopStudent()
+                {
+                    Name = student.Name,
+                    Email = student.Email,
+                    PhoneNum = student.PhoneNum,
+                    index = getStudentIndexByCountry(projectAvgWeight,courseAvgWeight,projectSuccessRateWeight,courseSuccessRateWeight, student)
+                }).OrderBy(s => s.index).Take(numberOfStudents).ToList();
+                return topStudents;
             }
-            return topStudents;
+        }
+
+        /// <summary>
+        /// Calculate the student index by the given atributes weight
+        /// </summary>
+        /// <param name="avgProjectW"></param>
+        /// <param name="avgCourseW"></param>
+        /// <param name="suceedCourseW"></param>
+        /// <param name="suceedProjectW"></param>
+        /// <param name="student"></param>
+        /// <returns></returns>
+        private int getStudentIndexByCountry(double avgProjectW, double avgCourseW, double suceedProjectW, double suceedCourseW,
+             MyLearnDAL.Models.Student student)
+        {
+            double totalProjects = student.NumFailedProjects + student.NumSuceedProjects;
+            double totalCourses = student.NumFailedCourses + student.NumSuceedCourses;
+            double totalProjectRate = 0.0, totalCourseRate = 0.0;
+            if (!totalProjects.Equals(0.0))
+            {
+                totalProjectRate = student.NumSuceedProjects/totalProjects;
+            }
+            if (!totalCourses.Equals(0.0))
+            {
+                totalCourseRate = student.NumSuceedCourses/totalCourses;
+            }
+            var index = (int) (avgCourseW* (double)student.AvgCourses + avgProjectW* (double)student.AvgProjects + totalCourseRate*suceedCourseW +
+                        totalProjectRate*suceedProjectW);
+            return index;
         }
     }
 }

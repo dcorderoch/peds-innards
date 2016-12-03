@@ -35,5 +35,25 @@ namespace MyLearnDAL.Repositories
         {
             return DbSet.Where(s => s.Courses.Any(c => c.CourseId.Equals(CourseId))).ToList();
         }
+
+        /// <summary>
+        /// Get students by the country id
+        /// </summary>
+        /// <param name="countryId"></param>
+        /// <returns>A list of Student</returns>
+        public List<Student> getStudentsByCountryId(Guid countryId)
+        {
+            return DbSet.Where(s => s.CountryId.Equals(countryId)).ToList();
+        }
+
+        /// <summary>
+        /// Get students by the technology id
+        /// </summary>
+        /// <param name="techId"></param>
+        /// <returns></returns>
+        public List<Student> getStudentsByTechnologyId(Guid techId)
+        {
+            return DbSet.Where(s => s.Technologies.Any(t => t.TechnologyId.Equals(techId))).ToList();
+        }
     }
 }
