@@ -7,8 +7,8 @@
 
         public GoogleAuthenticator() { }
 
-        public string GetRefreshToken(string codeFromUser, string clientId, string clientSecret, string redirectURI) {
-            this._Authenticator = AuthResponse.Exchange(codeFromUser, clientId, clientSecret, redirectURI);
+        public string GetRefreshToken(string codeFromUser) {
+            this._Authenticator = AuthResponse.Exchange(codeFromUser, Constants._MyLearnClientId, Constants._MyLearnClientSecret, Constants._MyLearnRedirectURI);
             if(this._Authenticator == null) {
                 return "FAIL";
             } else {

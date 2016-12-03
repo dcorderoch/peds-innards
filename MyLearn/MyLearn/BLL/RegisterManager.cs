@@ -43,7 +43,7 @@ namespace MyLearn.BLL
                 var techRepo = new TechnologyRepository(context);
                 var langRepo = new LanguageRepository(context);
                 var gauthenticator = new GoogleAuthenticator();
-                string refreshtoken = gauthenticator.GetRefreshToken(newStudent.AuthToken, Constants._MyLearnClientId, Constants._MyLearnClientSecret, Constants._MyLearnRedirectURI);
+                string refreshtoken = gauthenticator.GetRefreshToken(newStudent.AuthToken);
                 var student = new Student
                 {
                     UserId = Guid.NewGuid(),
@@ -99,7 +99,7 @@ namespace MyLearn.BLL
                 var countryRepo = new CountryRepository(context);
                 var universityRepo = new UniversityRepository(context);
                 var gauthenticator = new GoogleAuthenticator();
-                string refreshtoken = gauthenticator.GetRefreshToken(newProfessor.AuthToken, Constants._MyLearnClientId, Constants._MyLearnClientSecret, Constants._MyLearnRedirectURI);
+                string refreshtoken = gauthenticator.GetRefreshToken(newProfessor.AuthToken);
                 var professor = new Professor
                 {
                     UserId = Guid.NewGuid(),
@@ -141,7 +141,7 @@ namespace MyLearn.BLL
                 var employerRepo = new EmployerRepository(context);
                 var countryRepo = new CountryRepository(context);
                 var gauthenticator = new GoogleAuthenticator();
-                string refreshtoken = gauthenticator.GetRefreshToken(newEmployer.AuthToken, Constants._MyLearnClientId, Constants._MyLearnClientSecret, Constants._MyLearnRedirectURI);
+                string refreshtoken = gauthenticator.GetRefreshToken(newEmployer.AuthToken);
                 var employer = new Employer
                 {
                     UserId = Guid.NewGuid(),
