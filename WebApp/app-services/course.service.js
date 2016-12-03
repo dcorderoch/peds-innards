@@ -25,6 +25,7 @@
         service.GetAllByStudent = GetAllByStudent;
         service.GetAllBadges = GetAllBadges;
         service.CreateWithFile = CreateWithFile;
+        service.GetStudentStats = GetStudentStats 
 
         return service;
 
@@ -40,6 +41,15 @@
                 method:"post",
                 url:$rootScope.url+"Course/GetCourseAsStudent",
                 data:data
+            });
+            return response;    
+        }
+
+        function GetStudentStats(studentId) {
+            var response=$http({
+                method:"post",
+                url:$rootScope.url+"Student/GetStudentStats",
+                data: {StudentUserId : studentId}
             });
             return response;    
         }
@@ -61,7 +71,7 @@
             return response;    
         }
 
-        
+
         function CreateCourse(data) {
             var response=$http({
                 method:"post",
@@ -71,7 +81,7 @@
             return response;    
         }
 
-        
+
         function GetComments(sharedAreaData){
             var response = $http({
                 method:"post",

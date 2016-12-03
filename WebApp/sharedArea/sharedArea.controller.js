@@ -41,6 +41,8 @@
             getAllBadges();
         }
 
+
+
         //gets all the badges of the shared area 
         function getAllBadges(){
 

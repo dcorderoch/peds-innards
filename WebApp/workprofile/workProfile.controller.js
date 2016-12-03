@@ -5,8 +5,8 @@
         .module('app')
         .controller('WorkProfileController', WorkProfileController);
 
-    WorkProfileController.$inject = ['$location',  'FlashService', 'JobService', 'UserService', 'ProfileCourseService', '$localStorage'];
-    function WorkProfileController($location,  FlashService, JobService, UserService, ProfileCourseService, $localStorage) {
+    WorkProfileController.$inject = ['$location',  'FlashService', 'JobService', 'UserService', 'ProfileCourseService', '$localStorage', 'CourseService'];
+    function WorkProfileController($location,  FlashService, JobService, UserService, ProfileCourseService, $localStorage, CourseService) {
         var vm = this;
 
         vm.goWorkActive = goWorkActive;
@@ -46,6 +46,7 @@
             }
 
             jobOfferGetByStudent();
+            loadStats();
         }
 
 
@@ -69,7 +70,7 @@
 
         }
 
-        
+
         //goes to the shared area of finished work, without being able to make changes
         function goWorkFinished(id){
 
@@ -89,7 +90,32 @@
                 console.log("no sirvio")
             });    
         }
-        
+
+
+        function loadStats(){
+
+            CourseService.GetStudentStats( vm.userData.UserId)
+                .then(function(response){
+
+                vm.userData.PromedioCursos = response.data.PromedioCursos;
+                vm.userData.PromedioProyectos = response.data.PromedioProyectos;
+                vm.userData.CursosAprobados = response.data.CursosAprobados;
+                vm.userData.CursosReprobados = response.data.CursosReprobados;
+                vm.userData.ProyectosExitosos = response.data.ProyectosExitosos;
+                vm.userData.ProyectosFallidos = response.data.ProyectosFallidos;
+                ProfileCourseService.SetProfileData(vm.userData);
+                vm.userData = ProfileCourseService.GetProfileData();
+
+                vm.courseAverageWidth = {"width": response.data.PromedioCursos+"%"};  
+                vm.projectAverageWidth = {"width": response.data.PromedioProyectos+"%"}; 
+
+
+            }, function(response){
+
+                FlashService.Error("Error obteniendo las estadísticas del estudiante");
+            });
+        }
+
         //goes to a shared area of an active course, being able to interact.
         function goWorkActive(id){
 

@@ -5,8 +5,8 @@
         .module('app')
         .controller('SearcherController', SearcherController);
 
-    SearcherController.$inject = ['$location', 'FlashService', '$scope', 'JobService', 'SearchOfferingService', 'UserService', '$localStorage', 'ProfileCourseService'];
-    function SearcherController($location, FlashService, $scope, JobService, SearchOfferingService, UserService, $localStorage, ProfileCourseService) {
+    SearcherController.$inject = ['$location', 'FlashService', '$scope', 'JobService', 'SearchOfferingService', 'UserService', '$localStorage', 'ProfileCourseService', 'CourseService'];
+    function SearcherController($location, FlashService, $scope, JobService, SearchOfferingService, UserService, $localStorage, ProfileCourseService, CourseService) {
         var vm = this;
 
         vm.goOffering = goOffering;
@@ -48,8 +48,32 @@
             if(vm.userData.Active == "1"){
                 vm.toggleEnable = true;
             }
+            loadStats();
         }
 
+
+        function loadStats(){
+
+            CourseService.GetStudentStats( vm.userData.UserId)
+                .then(function(response){
+
+                vm.userData.PromedioCursos = response.data.PromedioCursos;
+                vm.userData.PromedioProyectos = response.data.PromedioProyectos;
+                vm.userData.CursosAprobados = response.data.CursosAprobados;
+                vm.userData.CursosReprobados = response.data.CursosReprobados;
+                vm.userData.ProyectosExitosos = response.data.ProyectosExitosos;
+                vm.userData.ProyectosFallidos = response.data.ProyectosFallidos;
+                ProfileCourseService.SetProfileData(vm.userData);
+
+                vm.courseAverageWidth = {'width': response.data.PromedioCursos+'%' };  
+                vm.projectAverageWidth = {'width': response.data.PromedioProyectos+'%'}; 
+                
+
+            }, function(response){
+
+                FlashService.Error("Error obteniendo las estadísticas del estudiante");
+            });
+        }
 
         //performs a search by name XOR technology
         function search(query,parameter){
