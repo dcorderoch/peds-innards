@@ -5,8 +5,8 @@
         .module('app')
         .controller('AuctionController', AuctionController);
 
-    AuctionController.$inject = ['$location',  'FlashService', '$rootScope', 'JobService', 'UserService', 'ProfileCourseService', '$localStorage'];
-    function AuctionController($location,  FlashService, $rootScope, JobService, UserService, ProfileCourseService, $localStorage) {
+    AuctionController.$inject = ['$location',  'FlashService', 'JobService', 'UserService', 'ProfileCourseService', '$localStorage'];
+    function AuctionController($location,  FlashService, JobService, UserService, ProfileCourseService, $localStorage) {
         var vm = this;
 
         initController();
@@ -16,7 +16,7 @@
         function initController(){
 
             vm.listOfBids=[];
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData();
             vm.workData= ProfileCourseService.GetWorkData();
             vm.approve = approve;
             console.log(vm.workData);
@@ -58,7 +58,7 @@
                 var data = response.data;
                 delete data.Foto;
 
-                $rootScope.userData= data;
+                ProfileCourseService.SetProfileData(data);
                 $location.path('/viewprofile'); 
 
             }, function(response){

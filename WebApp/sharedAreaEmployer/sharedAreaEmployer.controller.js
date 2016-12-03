@@ -27,7 +27,7 @@
 
             vm.workData ={};
             vm.workData = ProfileCourseService.GetWorkData();
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData();
 
             console.log(vm.workData);
 

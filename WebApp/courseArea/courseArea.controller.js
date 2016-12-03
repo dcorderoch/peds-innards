@@ -18,7 +18,7 @@
 
 
             vm.courseData =ProfileCourseService.GetCourseData();
-            vm.courseData.Carnet = $rootScope.userData.Carnet;
+            vm.courseData.Carnet = ProfileCourseService.GetProfileData().Carnet
             //            vm.courseData.status=true;
             vm.gradeWidth = {'width': vm.courseData.Grade+'%'};  
 

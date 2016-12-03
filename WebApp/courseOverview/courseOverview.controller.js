@@ -18,7 +18,7 @@
         function initController(){
 
             vm.courseData =ProfileCourseService.GetCourseData();
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData();
             console.log(vm.courseData);
         }
 

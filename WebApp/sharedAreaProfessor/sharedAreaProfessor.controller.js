@@ -24,8 +24,8 @@
             vm.courseData = {};
 
             vm.courseData =ProfileCourseService.GetCourseData();
-            vm.courseData.Carnet = $rootScope.userData.Carnet;
-            vm.userData = $rootScope.userData;
+            vm.courseData.Carnet = ProfileCourseService.GetProfileData.Carnet;
+            vm.userData = ProfileCourseService.GetProfileData();
             //            vm.courseData.status=true;
             console.log(vm.courseData);
             console.log(vm.userData);
