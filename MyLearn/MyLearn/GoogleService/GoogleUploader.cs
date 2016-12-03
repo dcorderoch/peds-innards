@@ -55,7 +55,7 @@ namespace MyLearn.GoogleService
                 var request = this._GDriveService.Files.Create(fbody, File, "");
                 request.Upload();
                 NewFile = request.ResponseBody;
-                retVal += "https://docs.google.com/uc?id=" + NewFile.Id + "&export=download";
+                retVal += "https://drive.google.com/file/d/" + NewFile.Id + "/edit?usp=sharing";
             }
             catch (Exception e)
             {
