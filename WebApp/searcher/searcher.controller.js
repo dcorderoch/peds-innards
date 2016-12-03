@@ -14,6 +14,7 @@
         vm.results=[];
 
         vm.disableAccount =disableAccount;
+        vm.checkState= checkState;
 
         initController();
 
@@ -75,9 +76,7 @@
                     FlashService.Error("Fallo en traer resultados para búsqueda por tecnología");
                 });
             }
-            else{
-                FlashService.Error("Escoge un parámetro por el cual buscar")
-            }
+
         }
 
         function goOffering( jobData){
@@ -128,6 +127,14 @@
                 }
 
             })
+        }
+        
+        function checkState(number){
+            console.log(number)
+            if (number ==="2"){
+                return true;
+            }
+            return false;
         }
 
     }

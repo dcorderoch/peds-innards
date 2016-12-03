@@ -157,7 +157,7 @@
         }
         function checkFile( file){
 
-            if (file == "0"){
+            if (file == ""){
 
                 return false;
             }

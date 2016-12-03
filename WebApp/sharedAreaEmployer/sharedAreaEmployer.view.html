@@ -18,7 +18,7 @@
                 <div class="personalInformation"> 
 
                     <p><strong>Nombre del proyecto: </strong>{{vm.workData.JobOfferTitle}}</p>
-                    <p><strong>Nombre del estudiante: </strong>{{vm.workData.StudentName}}</p>
+                    <p><strong>Nombre del estudiante: </strong>{{vm.workData.studentInfo.StudentName}} {{vm.workData.studentInfo.StudentSurname}}</p>
                     <p><strong>Descripción: </strong>{{vm.workData.Description}}</p>
                     <p><strong>Fecha de comienzo: </strong>{{vm.workData.StartDate | date}}</p>
                     <p><strong>Fecha de finalización: </strong>{{vm.workData.EndDate | date}}</p>

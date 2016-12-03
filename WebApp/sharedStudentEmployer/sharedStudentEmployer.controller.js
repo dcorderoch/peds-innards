@@ -135,8 +135,8 @@
 
 
         function checkFile( file){
-
-            if (file == "0"){
+            console.log(file)
+            if (file == ""){
 
                 return false;
             }

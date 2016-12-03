@@ -96,7 +96,7 @@
                 <div ng-repeat="activeWork in vm.userData.ActiveJobOffersList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Empleador: </strong> {{activeWork.JobOffer}}
+                            <strong>Empleo: </strong> {{activeWork.JobOffer}}
                             <strong>Descripción del trabajo: </strong> {{activeWork.Description}}
                             <span> 
                                 <button ng-disabled="!vm.toggleEnable" ng-click="vm.goWorkActive(activeWork.JobOfferId)" type="button" class="btn btn-primary yellowButton uniCourse">Abrir trabajo</button>

@@ -18,6 +18,8 @@
             vm.userData = ProfileCourseService.GetProfileData2();
             console.log(vm.userData)
 
+            vm.photo = "data:image/jpg;base64," + $localStorage.Foto2;
+            
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
                 vm.userData.TipoRepositorioArchivos = "Google Drive"
@@ -30,9 +32,7 @@
             vm.courseAverageWidth = {'width': vm.userData.PromedioCursos+'%'};  
             vm.projectAverageWidth = {'width': vm.userData.PromedioProyectos+'%'};  
 
-
-            vm.photo = "data:image/jpg;base64," + $localStorage.Foto2;
-            console.log($localStorage);
+            console.log(vm.photo);
 
 
         }

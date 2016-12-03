@@ -14,7 +14,7 @@
         <div class="border col-md-4" >
 
             <div class="left-panel">
-                <img alt="Foto de perfil" class="img-circle" data-ng-src="{{vm.userData.Foto}}">
+                <img alt="Foto de perfil" class="img-circle" data-ng-src="{{vm.photo}}">
 
                 <div class="personalInformation"> 
                     <p><strong>Nombre Contacto: </strong> {{vm.userData.NombreContacto}}</p>
@@ -89,7 +89,7 @@
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
                             <strong>Nombre del curso:</strong> {{finishedCourse.CourseName}},
-                            <strong>  Descripción:</strong>{{activeCourse.CourseDescription}}
+                            <strong>  Descripción:</strong>{{finishedCourse.CourseDescription}}
 
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
                             <strong>Nombre del trabajo:</strong> {{finishedWork.JobOffer}},
-                            <strong>  Descripción: </strong>{{finishedWork.Description}},
+                            <strong>  Descripción: </strong> {{finishedWork.Description}},
                             <strong>  Nombre del empleador: </strong>{{finishedWork.EmployerName}}
                         </div>
                     </div>               

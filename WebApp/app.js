@@ -131,12 +131,12 @@
 
     run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
     function run($rootScope, $location, $cookieStore, $http) {
-        // keep user logged in after page refresh
 
+        //deprecated and soon will be deleted
         $rootScope.globals = $cookieStore.get('globals') || {};
         $rootScope.userData = $cookieStore.get('dataLogin') || {};
 
-        
+        //Keeps authorization, but deprecated
         if ($rootScope.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; 
         }

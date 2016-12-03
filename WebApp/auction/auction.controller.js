@@ -51,9 +51,7 @@
 
                 console.log(response);
 
-                var userFoto = $localStorage.$default({
-                    Foto2 : response.data.Foto
-                });
+                 $localStorage.Foto2 = response.data.Foto
 
                 var data = response.data;
                 delete data.Foto;

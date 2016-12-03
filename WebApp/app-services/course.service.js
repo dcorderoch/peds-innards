@@ -28,9 +28,12 @@
 
         return service;
 
+
         /**
-        *   Metodo para obtener un curso con toda su información excepto comentarios
-        *
+        * Description for GetCourseAsStudent Get data like 
+        * grades, badges, comments for student
+        * @private
+        * @property undefined
         */
         function GetCourseAsStudent(data) {
             var response=$http({
@@ -41,11 +44,15 @@
             return response;    
         }
 
+
         /**
-        *   Metodo para obtener la lista de estudiantes 
-        *
+        * Description for GetCourseAsProfessor
+        * @private
+        * @method GetCourseAsProfessor
+        * @param {Object} id
+        * @return {Object} description
         */
-        function GetCourseAsProfessor(id) {
+        function GetCourseAsProfessor(id)  {
             var response=$http({
                 method:"post",
                 url:$rootScope.url+"Course/GetCourseAsProfessor",
@@ -197,10 +204,7 @@
             return response;                 
         }
 
-        /**
-        *   
-        *
-        */
+
         function GiveBadge(data){
             var response = $http({
                 method: "post",

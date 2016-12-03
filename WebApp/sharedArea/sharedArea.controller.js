@@ -136,6 +136,7 @@
 
                 vm.comments = response.data;
                 processComments();
+                getAllBadges();
 
             }, function(response){
             })

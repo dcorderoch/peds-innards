@@ -149,7 +149,7 @@
                                 <div class="panel-body">
                                     <strong>Título de la oferta de trabajo:{{result.JobOfferTitle}}</strong>
                                     <p> Descripción del trabajo: {{result.Description}}
-                                        <button type="button" ng-disabled="!vm.toggleEnable" ng-click="vm.goOffering(result)" 
+                                        <button type="button" ng-disabled="!vm.toggleEnable || vm.checkState(result.State)" ng-click="vm.goOffering(result)" 
                                                 class="btn btn-primary uniCourse">Ofertar
                                         </button>
                                     </p>
