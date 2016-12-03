@@ -5,8 +5,15 @@ using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
 {
+    /// <summary>
+    /// Class built in order to manage the countries of the system.
+    /// </summary>
     public class CountryManager
     {
+        /// <summary>
+        /// Method that obtains all countries.
+        /// </summary>
+        /// <returns>List of countries in the application.</returns>
         public List<Country> GetAllCountries()
         {
             using (var context = new MyLearnContext())
