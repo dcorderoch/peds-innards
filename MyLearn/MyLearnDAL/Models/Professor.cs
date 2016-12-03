@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace MyLearnDAL.Models
 {
+    /// <summary>
+    /// Proffesor database model
+    /// </summary>
     [Table("Professor")]
     public class Professor : User
     {

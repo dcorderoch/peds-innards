@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyLearnDAL.Models
 {
+    /// <summary>
+    /// Student model
+    /// </summary>
     [Table("Student")]
     public class Student : User
     {

@@ -6,6 +6,10 @@ using System.Linq;
 
 namespace MyLearnDAL.Repositories
 {
+    /// <summary>
+    /// Generic repository. It provides CRUD operations to be inheited by custom repositories.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Repository<T> : IDisposable where T : class
     {
         private bool disposed = false;

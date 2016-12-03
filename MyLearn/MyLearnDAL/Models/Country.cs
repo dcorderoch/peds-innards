@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyLearnDAL.Models
 {
+    /// <summary>
+    /// Country database model
+    /// </summary>
     [Table("Country")]
     public class Country
     {

@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyLearnDAL.Models
 {
+    /// <summary>
+    /// Bid database model
+    /// </summary>
     [Table("Bid")]
     public class Bid
     {

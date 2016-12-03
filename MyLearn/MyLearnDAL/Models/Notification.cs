@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyLearnDAL.Models
 {
+    /// <summary>
+    /// Student notification database model
+    /// </summary>
     [Table("Notification")]
     public class Notification
     {

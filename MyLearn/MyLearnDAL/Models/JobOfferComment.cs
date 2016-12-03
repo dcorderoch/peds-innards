@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyLearnDAL.Models
 {
+    /// <summary>
+    /// JobOfferComment database model
+    /// </summary>
     [Table("JobOfferComment")]
     public class JobOfferComment { 
         [Key]

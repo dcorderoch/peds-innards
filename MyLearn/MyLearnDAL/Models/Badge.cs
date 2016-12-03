@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyLearnDAL.Models
 {
+    /// <summary>
+    /// Badges database model
+    /// </summary>
     [Table("Badge")]
     public class Badge
     {

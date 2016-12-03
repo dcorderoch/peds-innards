@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyLearnDAL.Models
 {
+    /// <summary>
+    /// Technology model
+    /// </summary>
     [Table("Technology")]
     public class Technology
     {
