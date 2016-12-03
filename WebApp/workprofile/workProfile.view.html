@@ -129,11 +129,9 @@
                 <div ng-repeat="finishedWork in vm.userData.ActiveJobOffersList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del trabajo:</strong> {{finishedWork.project}},
+                            <strong>Nombre del trabajo:</strong> {{finishedWork.JobOffer}},
                             <strong>  Descripción: </strong>{{finishedWork.Description}},
                             <strong>  Nombre del empleador: </strong>{{finishedWork.EmployerName}},
-                            <strong>  Estado: </strong>{{finishedWork.State}},
-                            <strong>  Descripción de estado: </strong>{{finishedWork.StateDescription}}
 
                             <span>     
                                 <button ng-disabled="!vm.toggleEnable" ng-click="vm.goWorkActive(finishedWork.JobOfferId)"  type="button" class="btn btn-primary  uniCourse yellowButton">Abrir trabajo</button>
@@ -149,11 +147,10 @@
                 <div ng-repeat="finishedWork in vm.userData.FinishedJobOffersList">
                     <div class="panel panel-default panelProfile">
                         <div class="panel-body">
-                            <strong>Nombre del trabajo:</strong> {{finishedWork.project}},
+                            <strong>Nombre del trabajo:</strong> {{finishedWork.JobOffer}},
                             <strong>  Descripción: </strong>{{finishedWork.Description}},
                             <strong>  Nombre del empleador: </strong>{{finishedWork.EmployerName}},
-                            <strong>  Estado: </strong>{{finishedWork.State}},
-                            <strong>  Descripción de estado: </strong>{{finishedWork.StateDescription}}
+
 
                             <span>     
                                 <button ng-disabled="!vm.toggleEnable" ng-click="vm.goWorkFinished(finishedWork.JobOfferId)"  type="button" class="btn btn-primary  uniCourse yellowButton">Abrir trabajo</button>

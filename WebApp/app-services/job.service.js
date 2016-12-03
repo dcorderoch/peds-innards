@@ -21,7 +21,8 @@
         service.CloseJob = CloseJob;
         service.Assign = Assign;
         service.GetProfile = GetProfile;
-
+        service.CommentCreateWithFile = CommentCreateWithFile;
+        
         return service;
 
         function Create(createData) {
@@ -97,6 +98,16 @@
             return response;
         }
 
+
+        function CommentCreateWithFile(dataCreate){
+            var response =$http({
+                method:"post",
+                url:$rootScope.url+"JobOfferComment/CreateWithFile",
+                data:dataCreate
+            });
+            return response;
+        }
+
         function BidCreate( data){
             var response= $http({
                 method:"post",
@@ -114,7 +125,7 @@
             });
             return response;            
         }  
-        
+
         function Assign(data){
             var response= $http({
                 method:"post",
@@ -123,7 +134,7 @@
             });
             return response;            
         }
-        
+
         function GetProfile(data){
             var response= $http({
                 method:"post",

@@ -135,6 +135,7 @@
         function getComments (){
 
             var send= {StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
+            console.log(vm.userData)
             CourseService.GetComments(send)
                 .then( function(response){
 

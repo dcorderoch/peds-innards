@@ -17,6 +17,7 @@
 
         vm.replyaMessage = replyaMessage;
         vm.sendComment = sendComment;
+        vm.checkFile = checkFile;
 
         initController();
         function initController(){
@@ -104,23 +105,50 @@
 
         function sendComment(  dataUpload ){
 
-            var send={Commenter:"1", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId, 
-                      StudentUserId: vm.userData.UserId, EmployerUserId: vm.workData.EmployerUserId};
-            console.log(send);
-            JobService.CommentCreate(send)
-                .then(function(response){
+            if ( typeof dataUpload === "undefined" ){
 
-                console.log(response);
-                getComments();
+                var send={Commenter:"1", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId, 
+                          StudentUserId: vm.userData.UserId, EmployerUserId: vm.workData.EmployerUserId};
+                console.log(send);
+                JobService.CommentCreate(send)
+                    .then(function(response){
 
-            }, function(response){
-                //                console.log(response);
-                FlashService.Error("No se pudo enviar el comentario"); 
-            })
-            vm.comment="";
+                    console.log(response);
+                    getComments();
+                    vm.comment="";
+
+                }, function(response){
+                    //                console.log(response);
+                    FlashService.Error("No se pudo enviar el comentario"); 
+                })
+                vm.comment="";
+            }
+            else{
+                var send={Commenter:"1", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId, 
+                          StudentUserId: vm.userData.UserId, EmployerUserId: vm.workData.EmployerUserId, FileName: dataUpload.filename, File: dataUpload.base64, RefreshToken: vm.userData.RefreshToken};
+                JobService.CommentCreateWithFile(send)
+                    .then(function(response){
+
+                    console.log(response);
+                    getComments();
+                    vm.comment="";
+
+                }, function(response){
+                    //                console.log(response);
+                    FlashService.Error("No se pudo enviar el comentario"); 
+                })
+            }
         }
 
 
+        function checkFile( file){
+
+            if (file == "0"){
+
+                return false;
+            }
+            return true;
+        }
 
 
     }
