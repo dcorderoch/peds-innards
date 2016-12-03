@@ -78,3 +78,28 @@ and then Receives
 
 Nota: - 0 error
       - 1 exito
+
+################################################# Create a New Comment with a File
+https://host/Api/JobOfferComment/CreateWithFile
+Web Application sends
+{
+    "JobOfferId":"algo",
+    "JobOfferComment":"algo",
+    "ParentId":"algo",
+    "Commenter":(0|1),
+    "StudentUserId":"algo",
+    "EmployerUserId",
+    "File":"algo",
+    "FileName":"algo",
+    "RefreshToken":"algo"
+}
+Nota: - 0
+      - 1 de Estudiante
+
+and then Receives
+{
+    "ReturnStatus":(0|1)
+}
+
+Nota: - 0 error
+      - 1 exito

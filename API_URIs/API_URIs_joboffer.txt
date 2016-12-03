@@ -239,3 +239,50 @@ and then Receives
 
 Nota: - 0 error
       - 1 exito
+
+################################################# Get JobOffersByStudentId
+https://host/Api/JobOffer/GetByEmployer
+Web Application sends
+{
+    "StudentUserId":"algo"
+}
+
+and then Receives
+{
+    "FinishedJobOffersList":[
+                               {
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
+                               },
+                               {
+                                   "EmployerName":"algo",
+                                   "JobOffer":"algo",
+                                   "Description":"algo",
+                                   "JobOfferId": "Id",
+                                   "State":"NUMERO",
+                                   "StateDescription":"RazonEnTexto"
+                               }
+                           ],
+    "ActiveJobOffersList":[
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              },
+                              {
+                                  "EmployerName":"algo",
+                                  "JobOffer":"algo",
+                                  "Description":"algo",
+                                  "JobOfferId": "Id",
+                                  "State":"NUMERO",
+                                  "StateDescription":"RazonEnTexto"
+                              }
+                         ]
+}
