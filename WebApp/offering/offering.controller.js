@@ -15,7 +15,6 @@
         function initController(){
 
             vm.bids=[];
-            console.log (SearchOfferingService.GetSearchData());
 
             vm.userData = ProfileCourseService.GetProfileData();
             vm.offerData = SearchOfferingService.GetSearchData();
@@ -44,8 +43,6 @@
             var moneyString = money.toString();
 
             var send={JobOfferId: vm.offerData.JobOfferId, Money:moneyString, DurationDays: timeString, StudentSurname: vm.userData.NombreContacto, StudentUserId: vm.userData.UserId };
-
-            console.log(send)
 
             JobService.BidCreate(send)
                 .then( function(response){

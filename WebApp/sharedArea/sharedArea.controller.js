@@ -47,7 +47,6 @@
                 .then(function(response){
 
                 vm.courseData.Badges = response.data;
-                console.log(vm.courseData.Badges)
             }, function(response){
 
                 FlashService.Error("No se pudieron traer los badges");
@@ -59,11 +58,9 @@
 
             var send={Commenter:"1", ParentId:parentId, Comment:replyMessage, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
 
-            console.log(send);
             CourseService.CommentCreate(send)
                 .then(function(response){
 
-                console.log(response);
                 getComments();
 
             }, function(response){
@@ -74,7 +71,7 @@
         }
 
         function brag(bragId){
-            console.log(bragId)
+
             var send = {  BadgeId:bragId, StudentName:vm.userData.NombreContacto, StudentLastName:vm.userData.ApellidoContacto };
 
             CourseService.Brag(send)
@@ -100,7 +97,6 @@
         function processComments(){
 
             var i;
-            console.log(vm.comments);
             for (i=0; i<vm.comments.length; i++){
 
                 if (vm.comments[i].IsFromStudent =="1"){
@@ -135,16 +131,13 @@
         function getComments (){
 
             var send= {StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId};
-            console.log(vm.userData)
             CourseService.GetComments(send)
                 .then( function(response){
 
                 vm.comments = response.data;
-                console.log(vm.comments)
                 processComments();
 
             }, function(response){
-                console.log("no sirvió")
             })
         }
 
@@ -157,7 +150,6 @@
                 CourseService.CommentCreate(send)
                     .then(function(response){
 
-                    console.log(response);
                     getComments();
 
                 }, function(response){
@@ -167,13 +159,11 @@
                 vm.comment="";                
             }
             else{
-                console.log(dataUpload)
                 var send={Commenter:"1", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.userData.UserId, ProfUserId: vm.courseData.ProfUserId, CourseId: vm.courseData.CourseId, FileName: dataUpload.filename, File: dataUpload.base64, RefreshToken: vm.userData.RefreshToken};
-                console.log(send)
+                
                 CourseService.CreateWithFile(send)
                     .then(function(response){
 
-                    console.log(response);
                     getComments();
 
                 }, function(response){

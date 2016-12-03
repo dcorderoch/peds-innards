@@ -51,10 +51,8 @@
                 .then(function (response) {
 
                 vm.technologies = response.data;
-                console.log( response.data)
 
             },function(response){
-                console.log("supongo1")
             });
         }
 
@@ -79,8 +77,6 @@
             JobService.Create(vm.job)
                 .then(function(response){
 
-                setTimeout( function(){console.log(response.data)},1000);
-
                 var result = response.data.ReturnStatus;
                 console.log(result);
 
@@ -100,9 +96,7 @@
 
                 }
 
-                console.log(response.data);
             },function(response){
-                console.log(vm.job);
                 FlashService.Error("No se pudo crear el trabajo")
             });
         }

@@ -25,19 +25,15 @@
             console.log( vm.courseData);
 
             loadTechnologies();
-
-
         }
 
         function loadTechnologies(){
             RegService.GetTechnologies()
                 .then(function (response) {
 
-                console.log(response.data)
                 vm.technologies = response.data;
 
             },function(response){
-                console.log("supongo1")
             });
         }
 
@@ -58,7 +54,9 @@
         function suggestProject(name,dateStart,dateEnd,description,additional){
 
 
-            var array = additional.split(',');
+            if (additional !=="" ){
+                var array = additional.split(',');
+            }
 
             var send = {ProjectName: name, Technologies: Tecnologias, EndDate:dateEnd, StartDate:dateStart, Description: description,  
                         CourseId: vm.courseData.CourseId, StudentUserId: vm.courseData.StudentUserId, OtherFiles:array }

@@ -79,7 +79,7 @@
                     vm.workData.studentInfo = bid;
                     ProfileCourseService.SetWorkData(vm.workData);
                     FlashService.Success("Subasta ganada por "+ bid.StudentName, true);
-                    $location.path("sharedareaemployer");
+                    $location.path('/sharedareaemployer');
                 }
                 else{
                     FlashService.Error("Error en la subasta");

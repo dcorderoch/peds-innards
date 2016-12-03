@@ -39,11 +39,9 @@
 
             var send={Commenter:"0", ParentId:parentId, JobOfferComment:replyMessage, JobOfferId:vm.workData.JobOfferId, 
                       StudentUserId: vm.workData.StudentUserId, EmployerUserId: vm.userData.UserId};
-            console.log(send);
             JobService.CommentCreate(send)
                 .then(function(response){
 
-                console.log(response);
                 getComments();
 
             }, function(response){
@@ -59,7 +57,6 @@
             if (vm.comments == null){
                 return;
             }
-            console.log(vm.comments);
             for (i=0; i<vm.comments.length; i++){
 
                 if (vm.comments[i].IsFromStudent =="1"){
@@ -94,7 +91,6 @@
                 .then( function(response){
 
                 vm.comments = response.data;
-                console.log(vm.comments)
                 processComments();
 
             }, function(response){
@@ -108,11 +104,9 @@
 
                 var send={Commenter:"0", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId,
                           StudentUserId: vm.workData.StudentUserId, EmployerUserId: vm.userData.UserId};
-                console.log(send);
                 JobService.CommentCreate(send)
                     .then(function(response){
 
-                    console.log(response);
                     getComments();
                     vm.comment="";
 
@@ -124,11 +118,9 @@
             else{
                 var send={Commenter:"0", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId,
                           StudentUserId: vm.workData.StudentUserId, EmployerUserId: vm.userData.UserId, FileName: dataUpload.filename, File: dataUpload.base64, RefreshToken: vm.userData.RefreshToken};
-                console.log(send)
                 JobService.CommentCreateWithFile(send)
                     .then(function(response){
 
-                    console.log(response);
                     getComments();
                     vm.comment="";
 
@@ -148,14 +140,12 @@
 
             var send = {JobOfferId:vm.workData.JobOfferId, State:state, 
                         StateDescription: finishProject, Stars: stars.toString()};
-            console.log(send)
             JobService.CloseJob(send)
                 .then(function(response){
 
                 if (response.data.ReturnStatus ===1){ 
                     FlashService.Success("El proyecto se ha cerrado");
                     $location.path("/employerprofile")
-                    console.log(response);
                 }
                 else{
                     FlashService.Error("No se pudo cerrar el proyecto")
@@ -163,7 +153,6 @@
                 }
             }, function(response){
                 FlashService.Error("No se pudo cerrar el proyecto")
-                console.log(response);
             })
         }
         function checkFile( file){

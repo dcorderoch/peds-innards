@@ -26,10 +26,6 @@
             vm.courseData =ProfileCourseService.GetCourseData();
             vm.courseData.Carnet = ProfileCourseService.GetProfileData.Carnet;
             vm.userData = ProfileCourseService.GetProfileData();
-            //            vm.courseData.status=true;
-            console.log(vm.courseData);
-            console.log(vm.userData);
-
 
             vm.gradeWidth = {'width': vm.courseData.Grade+'%'};
 
@@ -40,11 +36,9 @@
 
         function getAllBadges(){
 
-            console.log("entro")
             var send ={ StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, UniversityId:vm.courseData.UniversityId, 
                        Group:vm.courseData.Group, CourseId: vm.courseData.CourseId};
 
-            console.log(send);
             CourseService.GetAllBadges(send)
                 .then(function(response){
 
@@ -63,7 +57,6 @@
             CourseService.CommentCreate(send)
                 .then(function(response){
 
-                console.log(response);
                 getComments();
 
             }, function(response){
@@ -82,7 +75,6 @@
                 CourseService.CommentCreate(send)
                     .then(function(response){
 
-                    console.log(response);
                     getComments();
 
                 }, function(response){
@@ -93,11 +85,9 @@
             else{
 
                 var send={Commenter:"0", ParentId:"-1", Comment:vm.comment, StudentUserId: vm.courseData.StudentUserId, ProfUserId: vm.userData.UserId, CourseId: vm.courseData.CourseId, FileName: dataUpload.filename, File: dataUpload.base64, RefreshToken: vm.userData.RefreshToken};
-                console.log(send)
                 CourseService.CreateWithFile(send)
                     .then(function(response){
 
-                    console.log(response);
                     getComments();
 
                 }, function(response){
@@ -111,7 +101,6 @@
         function processComments(){
 
             var i;
-            console.log(vm.comments);
             for (i=0; i<vm.comments.length; i++){
 
                 if (vm.comments[i].IsFromStudent =="1"){
@@ -153,7 +142,6 @@
                 processComments();
 
             }, function(response){
-                console.log("no sirvió")
             })
         }
 
@@ -167,7 +155,6 @@
                       CourseId: vm.courseData.CourseId,
                       AchievementId: badgeId}
 
-            console.log(send);
             CourseService.GiveBadge(send)
                 .then(function(response){
 

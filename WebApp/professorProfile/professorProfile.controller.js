@@ -73,7 +73,6 @@
                 $location.path('/courseoverview');    
 
             }, function(response){
-                console.log("no sirvio")
             });
         }
         function goCourseActive(course){

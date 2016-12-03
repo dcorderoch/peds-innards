@@ -29,7 +29,6 @@
             vm.userData = ProfileCourseService.GetProfileData();
             vm.workData.Carnet = ProfileCourseService.GetProfileData().Carnet;      
 
-            console.log(vm.workData);
 
             getComments();
             processComments();
@@ -44,7 +43,6 @@
             JobService.CommentCreate(send)
                 .then(function(response){
 
-                console.log(response);
                 getComments();
 
             }, function(response){
@@ -60,7 +58,6 @@
             if (vm.comments == null){
                 return;
             }
-            console.log(vm.comments);
             for (i=0; i<vm.comments.length; i++){
 
                 if (vm.comments[i].IsFromStudent =="1"){
@@ -95,7 +92,6 @@
                 .then( function(response){
 
                 vm.comments = response.data;
-                console.log(vm.comments)
                 processComments();
 
             }, function(response){
@@ -109,11 +105,9 @@
 
                 var send={Commenter:"1", ParentId:"-1", JobOfferComment:vm.comment, JobOfferId:vm.workData.JobOfferId, 
                           StudentUserId: vm.userData.UserId, EmployerUserId: vm.workData.EmployerUserId};
-                console.log(send);
                 JobService.CommentCreate(send)
                     .then(function(response){
 
-                    console.log(response);
                     getComments();
                     vm.comment="";
 
@@ -129,7 +123,6 @@
                 JobService.CommentCreateWithFile(send)
                     .then(function(response){
 
-                    console.log(response);
                     getComments();
                     vm.comment="";
 
