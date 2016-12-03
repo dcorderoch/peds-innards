@@ -6,8 +6,15 @@ using MyLearnDAL.Repositories;
 
 namespace MyLearn.BLL
 {
+    /// <summary>
+    /// Class created to handle technologies in MyLearn.
+    /// </summary>
     public class TechnologyManager
     {
+        /// <summary>
+        /// Obtains a list of all technologies present in the platform.
+        /// </summary>
+        /// <returns>List of technologies.</returns>
         public List<Technology> GetAllTechnologies()
         {
             using (var context = new MyLearnContext())
@@ -24,7 +31,11 @@ namespace MyLearn.BLL
             }
         }
 
-
+        /// <summary>
+        /// Creates a new technology for the platform.
+        /// </summary>
+        /// <param name="technologyName"></param>
+        /// <returns>Return code indicating whether or not the operation was successful.</returns>
         public ReturnCode CreateTechnology(string technologyName)
         {
             using (var context = new MyLearnContext())
