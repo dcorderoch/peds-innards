@@ -4,9 +4,9 @@
     {
         public int NumberOfTopStudents { get; set; }
         public string CountryId { get; set; }
-        public double CourseAvgWeight { get; set; }
-        public double CourseSuccessRateWeight { get; set; }
-        public double ProjectAvgWeight { get; set; }
-        public double ProjectSuccessRateWeight { get; set; }
+        public decimal CourseAvgWeight { get; set; }
+        public decimal CourseSuccessRateWeight { get; set; }
+        public decimal ProjectAvgWeight { get; set; }
+        public decimal ProjectSuccessRateWeight { get; set; }
     }
 }

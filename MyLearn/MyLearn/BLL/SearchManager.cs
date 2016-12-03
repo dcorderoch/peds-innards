@@ -19,10 +19,18 @@ namespace MyLearn.BLL
         {
             using (var context = new MyLearnContext())
             {
+                var topStudents = new List<TopStudent>();
+                if (numberOfStudents <= 0 || numberOfStudents > 1000) return topStudents;
                 var studentRepo = new StudentRepository(context);
                 var retStudents = studentRepo.getStudentsByCountryId(Guid.Parse(countryId));
-                var topStudents = retStudents.Select(student => new TopStudent() {Name = student.Name, Email = student.Email, PhoneNum = student.PhoneNum,
-                    PlaceInSearch = getStudentIndexByCountry(0.3, 0.3, 0.3, 0.1, student)}).OrderByDescending(s => s.PlaceInSearch).Take(numberOfStudents).ToList();
+                topStudents = retStudents.Select(student => new TopStudent()
+                {
+                    Name = student.Name,
+                    Email = student.Email,
+                    PhoneNum = student.PhoneNum,
+                    PlaceInSearch = getStudentIndexByCountry((decimal)0.3, (decimal)0.3, (decimal)0.3, (decimal)0.1, student)
+                }).OrderByDescending(s => s.PlaceInSearch).Take(numberOfStudents).ToList();
+                studentRepo.Dispose();
                 return topStudents;
             }
         }
@@ -37,20 +45,25 @@ namespace MyLearn.BLL
         /// <param name="projectAvgWeight"></param>
         /// <param name="projectSuccessRateWeight"></param>
         /// <returns></returns>
-        public List<TopStudent> GetCustomTopStudentsByCountry(string countryId, int numberOfStudents, double courseAvgWeight,
-            double courseSuccessRateWeight, double projectAvgWeight, double projectSuccessRateWeight)
+        public List<TopStudent> GetCustomTopStudentsByCountry(string countryId, int numberOfStudents, decimal courseAvgWeight,
+            decimal courseSuccessRateWeight, decimal projectAvgWeight, decimal projectSuccessRateWeight)
         {
             using (var context = new MyLearnContext())
             {
+                var topStudents = new List<TopStudent>();
+                decimal weight = courseAvgWeight + courseSuccessRateWeight + projectAvgWeight + projectSuccessRateWeight;
+                if (numberOfStudents <= 0 || numberOfStudents > 1000 ||
+                    (weight).CompareTo((decimal)1.0)!=0) return topStudents;
                 var studentRepo = new StudentRepository(context);
                 var retStudents = studentRepo.getStudentsByCountryId(Guid.Parse(countryId));
-                var topStudents = retStudents.Select(student => new TopStudent()
+                topStudents = retStudents.Select(student => new TopStudent()
                 {
                     Name = student.Name,
                     Email = student.Email,
                     PhoneNum = student.PhoneNum,
-                    PlaceInSearch = getStudentIndexByCountry(projectAvgWeight,courseAvgWeight,projectSuccessRateWeight,courseSuccessRateWeight, student)
+                    PlaceInSearch = getStudentIndexByCountry(projectAvgWeight, courseAvgWeight, projectSuccessRateWeight, courseSuccessRateWeight, student)
                 }).OrderByDescending(s => s.PlaceInSearch).Take(numberOfStudents).ToList();
+                studentRepo.SaveChanges();
                 return topStudents;
             }
         }
@@ -64,21 +77,21 @@ namespace MyLearn.BLL
         /// <param name="suceedProjectW"></param>
         /// <param name="student"></param>
         /// <returns></returns>
-        private int getStudentIndexByCountry(double avgProjectW, double avgCourseW, double suceedProjectW, double suceedCourseW,
+        private int getStudentIndexByCountry(decimal avgProjectW, decimal avgCourseW, decimal suceedProjectW, decimal suceedCourseW,
              MyLearnDAL.Models.Student student)
         {
-            double totalProjects = student.NumFailedProjects + student.NumSuceedProjects;
-            double totalCourses = student.NumFailedCourses + student.NumSuceedCourses;
-            double totalProjectRate = 0.0, totalCourseRate = 0.0;
-            if (!totalProjects.Equals(0.0))
+            decimal totalProjects = student.NumFailedProjects + student.NumSuceedProjects;
+            decimal totalCourses = student.NumFailedCourses + student.NumSuceedCourses;
+            decimal totalProjectRate = (decimal)0.0, totalCourseRate = (decimal)0.0;
+            if (!totalProjects.Equals((decimal)0.0))
             {
                 totalProjectRate = student.NumSuceedProjects/totalProjects;
             }
-            if (!totalCourses.Equals(0.0))
+            if (!totalCourses.Equals((decimal)0.0))
             {
                 totalCourseRate = student.NumSuceedCourses/totalCourses;
             }
-            var index = (int) (avgCourseW* (double)student.AvgCourses + avgProjectW* (double)student.AvgProjects + totalCourseRate*suceedCourseW +
+            var index = (int) (avgCourseW* (decimal)student.AvgCourses + avgProjectW* (decimal)student.AvgProjects + totalCourseRate*suceedCourseW +
                         totalProjectRate*suceedProjectW);
             return index;
         }
