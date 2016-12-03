@@ -24,5 +24,14 @@ namespace MyLearn.Controllers
             }
             return Json(retVal);
         }
+        // Method to get student statistics on courses and jobs
+        [HttpPost]
+        public JsonResult<StudentStats> GetStudentStats(StudentIdentifier studentId)
+        {
+            var retval = new StudentStats();
+            var studentMngr = new StudentManager();
+            retval = studentMngr.GetStats(studentId);
+            return Json(retval);
+        }
     }
 }

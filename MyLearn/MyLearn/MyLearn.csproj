@@ -269,6 +269,7 @@
     <Compile Include="Models\StudentCourses.cs" />
     <Compile Include="Models\StudentInCourse.cs" />
     <Compile Include="Models\StudentProfileAsEmployer.cs" />
+    <Compile Include="Models\StudentStats.cs" />
     <Compile Include="Models\Technology.cs" />
     <Compile Include="Models\TopStudent.cs" />
     <Compile Include="Models\TopStudentResult.cs" />

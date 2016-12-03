@@ -124,5 +124,23 @@ namespace MyLearn.BLL
                 return result;
             }
         }
+        public StudentStats GetStats(StudentIdentifier studentId)
+        {
+            using (var context = new MyLearnContext())
+            {
+                var studentRepo = new StudentRepository(context);
+                var student = studentRepo.GetStudentById(Guid.Parse(studentId.StudentUserId));
+
+                var result = new StudentStats();
+
+                result.PromedioProyectos = student.AvgProjects;
+                result.PromedioCursos = student.AvgCourses;
+                result.CursosAprobados = student.NumSuceedCourses;
+                result.CursosReprobados = student.NumFailedCourses;
+                result.ProyectosExitosos = student.NumSuceedProjects;
+                result.ProyectosFallidos = student.NumFailedProjects;
+                return result;
+            }
+        }
     }
 }

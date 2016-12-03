@@ -90,3 +90,20 @@ and then Receives
                               }
                          ]
 }
+
+https://host/Api/Student/GetStudentStats
+Web Application sends
+{
+    "StudentUserId":"algo"
+}
+
+and then Receives
+and then Receives
+{
+    "PromedioProyectos":[0-9],
+    "PromedioCursos":[0-9],
+    "CursosAprobados":[0-9],
+    "CursosReprobados":[0-9],
+    "ProyectosExitosos":[0-9],
+    "ProyectosFallidos":[0-9]
+}
