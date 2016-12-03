@@ -35,12 +35,6 @@
             getComments();
             processComments();
 
-            // initialize with defaults
-            $("#input-id").rating();
-
-            // with plugin options
-            $("#input-id").rating({min:1, max:10, step:2, size:'lg'});
-
         }
 
         //Sends a nested message, specifies a parent, a message and won't have a file
