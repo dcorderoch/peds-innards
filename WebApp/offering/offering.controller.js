@@ -12,6 +12,7 @@
         initController();
         vm.createBid = createBid;
 
+        // Starts controller gets info from cookies.
         function initController(){
 
             vm.bids=[];
@@ -23,6 +24,8 @@
 
         }
 
+        //Gets bids from other students
+        // Check the bids
         function getBidsById(){
 
             JobService.GetBidsById(vm.offerData.JobOfferId)
@@ -37,6 +40,8 @@
             });
         }
 
+        // Create a new bid to try to get the auction
+        // loads the list of bids from server
         function createBid( time,money ){
 
             var timeString = time.toString();
@@ -57,6 +62,7 @@
             });
         }
 
+        
         function checkBid(){
 
             var i;

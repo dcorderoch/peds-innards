@@ -18,7 +18,8 @@
 
         initController();
 
-
+        // starts the controller, gets data from cookies and server
+        // allows or blocks interaction based on userData.Active
         function initController(){
 
             vm.userData = ProfileCourseService.GetProfileData();
@@ -47,10 +48,10 @@
             if(vm.userData.Active == "1"){
                 vm.toggleEnable = true;
             }
-
-
         }
 
+
+        //performs a search by name XOR technology
         function search(query,parameter){
 
             if (parameter === "0" ) {
@@ -79,15 +80,15 @@
 
         }
 
+        // goes to a job offering to make a bid
         function goOffering( jobData){
             SearchOfferingService.SetSearchData(jobData);
             $location.path("/offering");
 
         }
 
+        //toggles an account from enabled to diabled or vice versa
         function disableAccount(){
-
-
 
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
@@ -128,7 +129,8 @@
 
             })
         }
-        
+
+        //checks if work is over
         function checkState(number){
             console.log(number)
             if (number ==="2"){

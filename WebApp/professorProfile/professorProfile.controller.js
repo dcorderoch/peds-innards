@@ -16,6 +16,8 @@
         vm.disableAccount =disableAccount;
 
 
+        // starts the controller, gets data from cookies and server
+        // allows or blocks interaction based on userData.Active
         function initController(){
 
             vm.userData = ProfileCourseService.GetProfileData();
@@ -29,11 +31,7 @@
                 vm.userData.TipoRepositorioArchivos = "Dropbox"
             }
 
-
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto
-
-            console.log(vm.userData);
-
 
             if (vm.userData.Active == "0"){
                 vm.toggleEnable = false;
@@ -45,6 +43,7 @@
             loadCourses();
         }
 
+        //loads all the courses a professor has, active and finished
         function loadCourses(){
 
             CourseService.GetAllByProfessor(vm.userData.UserId)
@@ -58,8 +57,9 @@
             });
         }
 
+        // Goes to a finished course, sets the course data in cookies
+        //  redirects to course overview view, with list of students
         function goCourseFinished(course){
-
 
             CourseService.GetCourseAsProfessor(course.CourseId)
                 .then(function(response){
@@ -75,6 +75,9 @@
             }, function(response){
             });
         }
+        
+        // Goes to an active course, sets the course data in cookies
+        //  redirects to course overview view, with list of students
         function goCourseActive(course){
 
             CourseService.GetCourseAsProfessor(course.CourseId)
@@ -90,9 +93,9 @@
             });
         }
 
+        //Toggles an account, if successful it will redirect to login or will disable 
+        //all interaction. or will do the contrary if it was disabled.
         function disableAccount(){
-
-
 
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){

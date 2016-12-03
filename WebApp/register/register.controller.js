@@ -19,6 +19,8 @@
 
 
         initController();
+
+        // Loads all necessary for register
         function initController(){
             vm.countries;
             loadTechnologies();
@@ -27,6 +29,7 @@
             loadLanguages();
         }
 
+        //loads languages from server 
         function loadLanguages(){
             RegService.GetLanguages()
                 .then(function (response) {
@@ -37,6 +40,7 @@
             });
         }       
 
+        //loads technologies from server 
         function loadTechnologies(){
             RegService.GetTechnologies()
                 .then(function (response) {
@@ -47,6 +51,7 @@
             });
         }
 
+        //loads countries from server 
         function loadCountries(){
             RegService.GetCountries()
                 .then(function (response) {
@@ -57,6 +62,7 @@
             });
         }
 
+        //loads universities from server
         function loadUniversities(){
             RegService.GetUniversities()
                 .then(function (response) {
@@ -66,7 +72,7 @@
             });
         }
 
-        // toggle selection for a given fruit by name
+        // toggle selection for a given language
         vm.toggleSelectionLanguage = function toggleSelectionTech(language) {
             var idx = vm.regData.Idiomas.indexOf(language.LanguageId);
 
@@ -81,6 +87,7 @@
             }
         };
 
+        // toggle selection for a given technology
         vm.toggleSelectionTech = function toggleSelectionTech(technology) {
             var idx = vm.regData.Tecnologias.indexOf(technology.TechnologyId);
 
@@ -95,7 +102,8 @@
             }
         };
 
-
+        //Register for a student, if successful redirects to profile
+        // transforms and validate fields if neccessary
         function register() {
 
             var oFile = document.getElementById("fileUpload").files[0]; // <input type="file" id="fileUpload" accept=".jpg,.png,.gif,.jpeg"/>

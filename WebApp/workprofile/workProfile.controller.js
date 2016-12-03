@@ -13,6 +13,8 @@
         vm.goWorkFinished = goWorkFinished;
         vm.disableAccount =disableAccount;
 
+        // starts the controller, gets data from cookies and server
+        // allows or blocks interaction based on userData.Active
         initController();
 
         function initController(){
@@ -46,6 +48,9 @@
             jobOfferGetByStudent();
         }
 
+
+        // Gets all job offers by the student
+        //active and finished
         function jobOfferGetByStudent(){
 
             var send = {StudentUserId: vm.userData.UserId}
@@ -64,7 +69,8 @@
 
         }
 
-
+        
+        //goes to the shared area of finished work, without being able to make changes
         function goWorkFinished(id){
 
             console.log("entro")
@@ -81,8 +87,10 @@
 
             }, function(response){
                 console.log("no sirvio")
-            });
+            });    
         }
+        
+        //goes to a shared area of an active course, being able to interact.
         function goWorkActive(id){
 
             JobService.GetById(id)
@@ -98,6 +106,9 @@
             });
         }
 
+
+        //Toggles an account, if successful it will redirect to login or will disable 
+        //all interaction. or will do the contrary if it was disabled.
         function disableAccount(){
 
             console.log(vm.userData.userId);

@@ -14,12 +14,14 @@
         vm.regData={};
 
         initController();
+
+        //loads all the neccessary things for register
         function initController(){
             loadUniversities();
             loadCountries();
         }
 
-
+        //loads countries from server 
         function loadCountries(){
             RegService.GetCountries()
                 .then(function (response) {
@@ -30,6 +32,7 @@
             });
         }
 
+        //loads universities from server 
         function loadUniversities(){
             RegService.GetUniversities()
                 .then(function (response) {
@@ -39,6 +42,8 @@
             });
         }
 
+        //Register for a professor, if successful redirects to profile
+        // transforms and validate fields if neccessary
         function register() {
 
             var oFile = document.getElementById("fileUpload").files[0]; // <input type="file" id="fileUpload" accept=".jpg,.png,.gif,.jpeg"/>

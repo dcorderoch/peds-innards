@@ -16,11 +16,13 @@
 
         initController();
 
+        //loads all the neccessary things for register
         function initController(){
             loadCountries();
         }
 
 
+        //loads countrues from servier
         function loadCountries(){
             RegService.GetCountries()
                 .then(function (response) {
@@ -31,8 +33,9 @@
             });
         }
 
+        //Register for a employer, if successful redirects to profile
+        // transforms and validate fields if neccessary
         function register() {
-
 
             var oFile = document.getElementById("fileUpload").files[0]; // <input type="file" id="fileUpload" accept=".jpg,.png,.gif,.jpeg"/>
 

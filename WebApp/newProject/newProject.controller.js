@@ -18,6 +18,7 @@
         vm.job.Technologies = [];
 
 
+        // Starts the controller stores data on cookies and localstorage
         function initController(){
 
             vm.userData = ProfileCourseService.GetProfileData()
@@ -46,6 +47,7 @@
 
         }
 
+        //loads technologies from server
         function loadTechnologies(){
             RegService.GetTechnologies()
                 .then(function (response) {
@@ -56,6 +58,7 @@
             });
         }
 
+        //Controls the technology checkbox, puts result into vm.job.Technoloies
         vm.toggleSelectionTech = function toggleSelectionTech(technology) {
             var idx = vm.job.Technologies.indexOf(technology.TechnologyId);
 
@@ -70,6 +73,8 @@
             }
         };
 
+        //Created new jobs with the create job form data
+        //Redirects emploter to shared area if successful
         function createJob(){
 
             vm.job.Budget = vm.job.Budget.toString();
@@ -101,6 +106,8 @@
             });
         }
 
+        //Toggles an account saves the changes on cookies
+        // disable or enable actions on the account
         function disableAccount(){
 
             console.log(vm.userData.userId);

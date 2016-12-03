@@ -10,16 +10,18 @@
         var vm = this;
 
 
-
         initController();
 
+        
+        //Toggles an account, if successful it will redirect to login or will disable 
+        //all interaction. or will do the contrary if it was disabled.
         function initController(){
 
             vm.userData = ProfileCourseService.GetProfileData2();
             console.log(vm.userData)
 
             vm.photo = "data:image/jpg;base64," + $localStorage.Foto2;
-            
+
             if (vm.userData.TipoRepositorioArchivos == "0"){
 
                 vm.userData.TipoRepositorioArchivos = "Google Drive"

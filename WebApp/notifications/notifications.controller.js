@@ -12,13 +12,14 @@
         vm.notifications=[];
         initController();
 
+        // Starts controller
         function initController(){
 
             getNotifications();
             console.log(vm.notifications);
         }
 
-
+        //Loads user's notifications from server
         function getNotifications(){
 
             var id = ProfileCourseService.GetProfileData().UserId;

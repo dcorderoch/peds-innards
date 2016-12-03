@@ -15,6 +15,8 @@
         vm.joinCourse = joinCourse;
         vm.disableAccount = disableAccount;
 
+        //Toggles an account, if successful it will redirect to login or will disable 
+        //all interaction. or will do the contrary if it was disabled.
         function initController(){
 
             vm.userData = ProfileCourseService.GetProfileData();
@@ -84,6 +86,8 @@
             });
         }
 
+        //Toggles an account, if successful it will redirect to login or will disable 
+        //all interaction. or will do the contrary if it was disabled.
         function disableAccount(){
 
 
