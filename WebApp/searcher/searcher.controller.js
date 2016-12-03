@@ -60,6 +60,7 @@
                     .then(function(response){
 
                     vm.results = response.data;
+                    console.log(response.data)
 
                 },function(response){
 
@@ -72,6 +73,8 @@
                     .then(function(response){
 
                     vm.results = response.data;
+                    console.log(response.data)
+
                 },function(response){
 
                     FlashService.Error("Fallo en traer resultados para búsqueda por tecnología");
@@ -133,9 +136,10 @@
         //checks if work is over
         function checkState(number){
             console.log(number)
-            if (number ==="2"){
+            if (number ===2 || number === 1){
                 return true;
             }
+            console.log(number)
             return false;
         }
 
