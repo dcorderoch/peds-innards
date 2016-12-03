@@ -5,8 +5,8 @@
         .module('app')
         .controller('ProfessorProfileController', ProfessorProfileController);
 
-    ProfessorProfileController.$inject = ['$location',  'FlashService', '$rootScope', 'CourseService', 'ProfileCourseService', 'UserService', '$localStorage'];
-    function ProfessorProfileController($location,  FlashService, $rootScope, CourseService, ProfileCourseService, UserService, $localStorage) {
+    ProfessorProfileController.$inject = ['$location',  'FlashService',  'CourseService', 'ProfileCourseService', 'UserService', '$localStorage'];
+    function ProfessorProfileController($location,  FlashService,  CourseService, ProfileCourseService, UserService, $localStorage) {
         var vm = this;
 
         initController();

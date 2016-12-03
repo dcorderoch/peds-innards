@@ -5,8 +5,8 @@
         .module('app')
         .controller('SharedAreaEmployerController', SharedAreaEmployerController);
 
-    SharedAreaEmployerController.$inject = ['$location',  'FlashService', '$scope', '$rootScope', 'ProfileCourseService', 'JobService'];
-    function SharedAreaEmployerController($location,  FlashService, $scope, $rootScope, ProfileCourseService, JobService) {
+    SharedAreaEmployerController.$inject = ['$location',  'FlashService', '$scope',  'ProfileCourseService', 'JobService'];
+    function SharedAreaEmployerController($location,  FlashService, $scope,  ProfileCourseService, JobService) {
         var vm = this;
 
         initController();

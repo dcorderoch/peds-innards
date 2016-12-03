@@ -5,8 +5,8 @@
         .module('app')
         .controller('OfferingController', OfferingController);
 
-    OfferingController.$inject = ['$location',  'FlashService', '$rootScope', 'SearchOfferingService', 'JobService' ];
-    function OfferingController($location,  FlashService, $rootScope, SearchOfferingService, JobService ) {
+    OfferingController.$inject = ['$location',  'FlashService', 'SearchOfferingService', 'JobService', 'ProfileCourseService' ];
+    function OfferingController($location,  FlashService, SearchOfferingService, JobService, ProfileCourseService ) {
         var vm = this;
 
         initController();
@@ -16,9 +16,8 @@
 
             vm.bids=[];
             console.log (SearchOfferingService.GetSearchData());
-            console.log($rootScope.userData);
 
-            vm.userData = $rootScope.userData;
+            vm.userData = ProfileCourseService.GetProfileData();
             vm.offerData = SearchOfferingService.GetSearchData();
             console.log(vm.offerData);
             getBidsById();

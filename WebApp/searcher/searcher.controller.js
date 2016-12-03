@@ -5,8 +5,8 @@
         .module('app')
         .controller('SearcherController', SearcherController);
 
-    SearcherController.$inject = ['$location', 'FlashService', '$scope', '$rootScope', 'JobService', 'SearchOfferingService', 'UserService', '$localStorage', 'ProfileCourseService'];
-    function SearcherController($location, FlashService, $scope, $rootScope, JobService, SearchOfferingService, UserService, $localStorage, ProfileCourseService) {
+    SearcherController.$inject = ['$location', 'FlashService', '$scope', 'JobService', 'SearchOfferingService', 'UserService', '$localStorage', 'ProfileCourseService'];
+    function SearcherController($location, FlashService, $scope, JobService, SearchOfferingService, UserService, $localStorage, ProfileCourseService) {
         var vm = this;
 
         vm.goOffering = goOffering;

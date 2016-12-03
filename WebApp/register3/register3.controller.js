@@ -5,8 +5,8 @@
         .module('app')
         .controller('Register3Controller', Register3Controller);
 
-    Register3Controller.$inject = ['$location',  'FlashService', 'UserService', 'RegService', '$rootScope', 'AuthenticationService', '$localStorage'];
-    function Register3Controller($location,  FlashService, UserService, RegService, $rootScope, AuthenticationService, $localStorage) {
+    Register3Controller.$inject = ['$location',  'FlashService', 'UserService', 'RegService',  'AuthenticationService', '$localStorage'];
+    function Register3Controller($location,  FlashService, UserService, RegService,  AuthenticationService, $localStorage) {
         var vm = this;
 
         vm.register=register;
@@ -19,7 +19,6 @@
         function initController(){
             loadCountries();
         }
-
 
 
         function loadCountries(){
