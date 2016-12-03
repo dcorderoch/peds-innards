@@ -37,8 +37,8 @@ namespace MyLearn.BLL
         /// <param name="projectAvgWeight"></param>
         /// <param name="projectSuccessRateWeight"></param>
         /// <returns></returns>
-        public List<TopStudent> GetCustomTopStudentsByCountry(string countryId,int numberOfStudents, int courseAvgWeight, 
-            int courseSuccessRateWeight, int projectAvgWeight, int projectSuccessRateWeight)
+        public List<TopStudent> GetCustomTopStudentsByCountry(string countryId, int numberOfStudents, double courseAvgWeight,
+            double courseSuccessRateWeight, double projectAvgWeight, double projectSuccessRateWeight)
         {
             using (var context = new MyLearnContext())
             {
