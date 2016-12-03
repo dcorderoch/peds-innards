@@ -1,7 +1,8 @@
 ﻿namespace MyLearn.InputModels
 {
-    public class NumberOfTopStudents
+    public class TopStudentsbyCountry
     {
         public int NumberOfStudents { get; set; }
+        public string CountryId { get; set; }
     }
 }

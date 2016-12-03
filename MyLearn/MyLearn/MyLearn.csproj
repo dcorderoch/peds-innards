@@ -231,7 +231,7 @@
     <Compile Include="InputModels\NewJobComment.cs" />
     <Compile Include="InputModels\NewJobOffer.cs" />
     <Compile Include="InputModels\NewTechnology.cs" />
-    <Compile Include="InputModels\NumberOfTopStudents.cs" />
+    <Compile Include="InputModels\TopStudentsbyCountry.cs" />
     <Compile Include="InputModels\ProfessorIdentifier.cs" />
     <Compile Include="InputModels\RegisterEmployerInfo.cs" />
     <Compile Include="InputModels\RegisterEstudianteInfo.cs" />
@@ -271,6 +271,7 @@
     <Compile Include="Models\StudentProfileAsEmployer.cs" />
     <Compile Include="Models\Technology.cs" />
     <Compile Include="Models\TopStudent.cs" />
+    <Compile Include="Models\TopStudentResult.cs" />
     <Compile Include="Models\University.cs" />
     <Compile Include="Models\UserCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,7 +2,8 @@
 https://host/Api/Search/GetTop
 Web Application sends
 {
-    "NumberOfStudents":[0-9]+
+    "NumberOfStudents":[0-9]+,
+    "CountryId":"algo"
 }
 
 and then Receives
@@ -26,6 +27,7 @@ https://host/Api/Search/GetTopSelective
 Web Application sends
 {
     "NumberOfTopStudents":[0-9]+,
+    "CountryId":"algo",
     "CourseAvgWeight":[0-9]+,
     "CourseSuccessRateWeight":[0-9]+,
     "ProjectAvgWeight":[0-9]+,

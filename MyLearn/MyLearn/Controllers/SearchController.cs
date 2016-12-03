@@ -15,13 +15,18 @@ namespace MyLearn.Controllers
         /// <param name="numberOfStudents"></param>
         /// <returns></returns>
         [HttpPost]
-        public JsonResult<List<TopStudent>> GetTop(NumberOfTopStudents numberOfStudents)
+        public JsonResult<List<TopStudentResult>> GetTop(TopStudentsbyCountry numberOfStudents)
         {
             var searchMngr = new SearchManager();
-            var retVal = searchMngr.GetTopStudents(numberOfStudents.NumberOfStudents);
+            var preliminar = searchMngr.GetTopStudentsByCountry(numberOfStudents.CountryId, numberOfStudents.NumberOfStudents);
+            var retVal = new List<TopStudentResult>();
+            foreach(var student in preliminar)
+            {
+                retVal.Add(new TopStudentResult { Name = student.Name, PhoneNum = student.PhoneNum, Email = student.Email });
+            }
             if (retVal == null)
             {
-                retVal = new List<TopStudent>();
+                retVal = new List<TopStudentResult>();
             }
             return Json(retVal);
         }
@@ -34,8 +39,7 @@ namespace MyLearn.Controllers
         public JsonResult<List<TopStudent>> GetTopSelective(CustomTopStudent customStudents)
         {
             var searchMngr = new SearchManager();
-            var retVal = searchMngr.
-                GetTopStudentsByCriteria(customStudents.NumberOfTopStudents,
+            var retVal = searchMngr.GetCustomTopStudentsByCountry(customStudents.CountryId,customStudents.NumberOfTopStudents,
                 customStudents.CourseAvgWeight, customStudents.CourseSuccessRateWeight,
                 customStudents.ProjectAvgWeight, customStudents.ProjectSuccessRateWeight);
             if (retVal == null)

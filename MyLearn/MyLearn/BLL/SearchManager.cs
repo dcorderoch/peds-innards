@@ -22,7 +22,7 @@ namespace MyLearn.BLL
                 var studentRepo = new StudentRepository(context);
                 var retStudents = studentRepo.getStudentsByCountryId(Guid.Parse(countryId));
                 var topStudents = retStudents.Select(student => new TopStudent() {Name = student.Name, Email = student.Email, PhoneNum = student.PhoneNum,
-                    index = getStudentIndexByCountry(0.3, 0.3, 0.3, 0.1, student)}).OrderBy(s => s.index).Take(numberOfStudents).ToList();
+                    PlaceInSearch = getStudentIndexByCountry(0.3, 0.3, 0.3, 0.1, student)}).OrderBy(s => s.PlaceInSearch).Take(numberOfStudents).ToList();
                 return topStudents;
             }
         }
@@ -49,14 +49,14 @@ namespace MyLearn.BLL
                     Name = student.Name,
                     Email = student.Email,
                     PhoneNum = student.PhoneNum,
-                    index = getStudentIndexByCountry(projectAvgWeight,courseAvgWeight,projectSuccessRateWeight,courseSuccessRateWeight, student)
-                }).OrderBy(s => s.index).Take(numberOfStudents).ToList();
+                    PlaceInSearch = getStudentIndexByCountry(projectAvgWeight,courseAvgWeight,projectSuccessRateWeight,courseSuccessRateWeight, student)
+                }).OrderBy(s => s.PlaceInSearch).Take(numberOfStudents).ToList();
                 return topStudents;
             }
         }
 
         /// <summary>
-        /// Calculate the student index by the given atributes weight
+        /// Calculate the student PlaceInSearch by the given atributes weight
         /// </summary>
         /// <param name="avgProjectW"></param>
         /// <param name="avgCourseW"></param>
