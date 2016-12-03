@@ -22,6 +22,7 @@
         service.Assign = Assign;
         service.GetProfile = GetProfile;
         service.CommentCreateWithFile = CommentCreateWithFile;
+        service.JobOfferGetByStudent =JobOfferGetByStudent;
         
         return service;
 
@@ -142,7 +143,17 @@
                 data:data
             });
             return response;            
+        }   
+        
+        function JobOfferGetByStudent(data){
+            var response= $http({
+                method:"post",
+                url:$rootScope.url+"JobOffer/GetByStudent",
+                data:data
+            });
+            return response;            
         }
+        
 
     }
 })();

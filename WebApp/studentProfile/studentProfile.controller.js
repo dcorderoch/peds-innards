@@ -54,7 +54,6 @@
 
                 vm.userData.FinishedCoursesList = response.data.FinishedCourses;
                 vm.userData.ActiveCoursesList = response.data.ActiveCourses;
-                console.log(response);
 
             }, function(response){
                 FlashService.Error("Error al traer los cursos del estudiante")
@@ -82,7 +81,6 @@
                 }
 
             }, function(response){
-                console.log("no sirvio")
             });
         }
 
@@ -93,7 +91,6 @@
             CourseService.GetCourseAsStudent(send)
                 .then(function(response){
 
-                console.log(response)
                 var currentCourseData = response.data;
                 currentCourseData.status=true;
 
@@ -107,14 +104,12 @@
                 }
 
             }, function(response){
-                console.log("no sirvio")
             });
         }
 
         function disableAccount(){
 
-            console.log(vm.userData.UserId);
-            console.log(vm.userData.Active);
+
 
             UserService.Disable(vm.userData.UserId)
                 .then(function(response){
@@ -151,7 +146,6 @@
                     FlashService.Error("No se pudo deshabilitar la cuenta");
                 }
 
-                console.log("no funcó");
             })
         }
 

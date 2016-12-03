@@ -43,6 +43,24 @@
                 vm.toggleEnable = true;
             }
 
+            jobOfferGetByStudent();
+        }
+
+        function jobOfferGetByStudent(){
+
+            var send = {StudentUserId: vm.userData.UserId}
+            console.log(send)
+            JobService.JobOfferGetByStudent(send)
+                .then(function(response){
+
+                vm.userData.FinishedJobOffersList = response.data.FinishedJobOffers;
+                vm.userData.ActiveJobOffersList = response.data.ActiveJobOffers;
+                console.log(response)
+            }, function(response){
+
+                FlashService.Error("Error al traer los trabajos del estudiante")
+
+            });
 
         }
 
